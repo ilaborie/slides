@@ -1,0 +1,42 @@
+package org.ilaborie.slides
+
+sealed class Slide : Slides {
+    open fun id(): String = title().toString().normalize()
+    abstract fun title(): Content?
+    open fun styleClass(): Set<String> = emptySet()
+    abstract fun content(): Content
+
+    override fun toList() = listOf(this)
+}
+
+data class BasicSlide(
+        val id: String,
+        val title: Content? = null,
+        val content: Content = ExternalHtmlContent(ExternalResource("$id.html")),
+        val styleClass: Set<String> = emptySet()) : Slide() {
+    constructor(
+            title: String,
+            id: String = title.normalize(),
+            content: Content = ExternalHtmlContent(ExternalResource("$id.html")),
+            styleClass: Set<String> = emptySet()
+    ) : this(title = RawContent(title), id = id, content = content, styleClass = styleClass)
+
+    override fun id() = id
+    override fun title() = title
+    override fun styleClass() = styleClass
+    override fun content() = content
+}
+
+data class MainTitleSlide(val title: String) : Slide() {
+    override fun id() = title.normalize()
+    override fun title() = RawContent(title)
+    override fun styleClass() = setOf("main")
+    override fun content() = Title(RawContent(title), 1)
+}
+
+data class PartTitleSlide(val title: String) : Slide() {
+    override fun id() = "part_${title.normalize()}"
+    override fun title() = RawContent(title)
+    override fun styleClass() = setOf("part")
+    override fun content() = Title(RawContent(title), 2)
+}
