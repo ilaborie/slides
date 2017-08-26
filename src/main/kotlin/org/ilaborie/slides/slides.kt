@@ -1,17 +1,32 @@
 package org.ilaborie.slides
 
+import org.ilaborie.slides.content.*
+
 interface Slides {
     fun toList(): List<Slide>
 }
 
-data class Presentation(val title: String, private val slides: List<Slides> = emptyList()) : Slides {
+data class Presentation(val title: String, val slides: List<Slides> = emptyList()) : Slides {
     constructor(title: String, vararg slides: Slides) : this(title, slides.toList())
 
     override fun toList(): List<Slide> =
             listOf(MainTitleSlide(title)) + slides.flatMap { it.toList() }
 
     init {
-        // FIXME check id unique
+        // check id unique
+        val multipleId = slides.flatMap { it.toList() }
+                .groupBy { it.id() }
+                .filterValues { it.size > 1 }
+                .toList()
+
+        if (multipleId.isNotEmpty()) {
+            val errors = multipleId.joinToString(separator = " and ") { (id, list) ->
+                "$id: ${list.joinToString(prefix = "{", postfix = "}")}"
+            }
+            throw IllegalArgumentException("Same id used !\n$errors")
+        }
+
+
         // FIXME check content (external file exists)
     }
 }

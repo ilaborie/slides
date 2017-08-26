@@ -1,4 +1,4 @@
-package org.ilaborie.slides
+package org.ilaborie.slides.content
 
 
 sealed class Content {

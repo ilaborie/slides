@@ -1,5 +1,6 @@
-package org.ilaborie.slides
+package org.ilaborie.slides.content
 
+import org.ilaborie.slides.catchWithDefault
 import java.io.File
 import java.nio.charset.Charset
 
@@ -19,14 +20,14 @@ sealed class External {
     fun loadTextContent(charset: Charset = Charsets.UTF_8): String =
             when (this) {
                 is ExternalResource ->
-                    safe("No resource: $resource") {
+                    catchWithDefault("No resource: $resource") {
                         this::class.java
                                 .getResourceAsStream(this.resource)
                                 .reader(charset)
                                 .readText()
                     }
                 is ExternalFile     ->
-                    safe("No file: $file") {
+                    catchWithDefault("No file: $file") {
                         this.file.readText(charset)
                     }
             }

@@ -1,5 +1,7 @@
 package org.ilaborie.slides
 
+import org.ilaborie.slides.content.*
+
 sealed class Slide : Slides {
     open fun id(): String = title().toString().normalize()
     abstract fun title(): Content?
@@ -24,7 +26,10 @@ data class BasicSlide(
     override fun id() = id
     override fun title() = title
     override fun styleClass() = styleClass
-    override fun content() = content
+    override fun content(): Content {
+        val title = title?.h3() ?: EmptyContent
+        return title + content
+    }
 }
 
 data class MainTitleSlide(val title: String) : Slide() {

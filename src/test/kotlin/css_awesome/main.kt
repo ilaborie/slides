@@ -1,6 +1,10 @@
 package css_awesome
 
-import org.ilaborie.slides.*
+import org.ilaborie.slides.Group
+import org.ilaborie.slides.Presentation
+import org.ilaborie.slides.content.*
+import org.ilaborie.slides.writeHtmlTo
+import java.io.File
 
 
 fun main(args: Array<String>) {
@@ -61,5 +65,5 @@ fun main(args: Array<String>) {
                     .slide(title = "🦄 rocks !", contentType = "html")
     )
 
-    println(cssIsAwesome.renderAsMarkdown())
+    cssIsAwesome.writeHtmlTo(File("src/main/web"), "index")
 }
