@@ -1,7 +1,9 @@
 package org.ilaborie.slides
 
 
-sealed class Content
+sealed class Content {
+    operator fun plus(other: Content): Content = CompositeContent(this, other)
+}
 
 object EmptyContent : Content()
 
@@ -12,15 +14,19 @@ data class SvgContent(val svg: String) : Content()
 data class MarkdownContent(val markdown: String) : Content()
 
 data class ExternalHtmlContent(val externalHtml: External) : Content() {
-    val htmlContent: HtmlContent by lazy { HtmlContent(externalHtml.loadTextContent()) }
+    val htmlContent by lazy { HtmlContent(externalHtml.loadTextContent()) }
+}
+
+data class ExternalMarkdownContent(val externalMarkdown: External) : Content() {
+    val markdownContent by lazy { MarkdownContent(externalMarkdown.loadTextContent()) }
 }
 
 data class ExternalCodeContent(val language: Language, val externalCode: External) : Content() {
-    val code: Code by lazy { Code(language, this.externalCode.loadTextContent(), this.externalCode.fileName) }
+    val code by lazy { Code(language, this.externalCode.loadTextContent(), this.externalCode.fileName) }
 }
 
 data class ExternalSvgContent(val externalSvg: External) : Content() {
-    val svgContent: SvgContent by lazy { SvgContent(externalSvg.loadTextContent()) }
+    val svgContent by lazy { SvgContent(externalSvg.loadTextContent()) }
 }
 
 data class ExternalImageContent(val alt: String, val externalImage: External, val title: String?) : Content()
@@ -42,9 +48,35 @@ data class Definitions(val map: Map<String, Content>) : Content() {
 
 // Lang
 enum class Language {
-    None, CSS, Java, Kotlin, TypeScript;
+    None, CSS, Java, Kotlin, TypeScript, JavaScript;
 
     override fun toString() = this.name.toLowerCase()
+
+    companion object {
+        fun findForExtension(ext: String): Language? = when {
+            ext.endsWith("css")  -> CSS
+            ext.endsWith("java") -> Java
+            ext.endsWith("kt")   -> Kotlin
+            ext.endsWith("ts")   -> TypeScript
+            ext.endsWith("js")   -> JavaScript
+            else                 -> null
+        }
+
+    }
 }
+
+// Extension
+fun String.raw(): Content = RawContent(this)
+
+fun String.html(): Content = HtmlContent(this)
+fun String.hX(x: Int): Content = Title(raw(), x)
+fun String.h1(): Content = hX(1)
+fun String.h2(): Content = hX(2)
+fun String.h3(): Content = hX(3)
+
+fun Content.hX(x: Int): Content = Title(this, x)
+fun Content.h1(): Content = hX(1)
+fun Content.h2(): Content = hX(2)
+fun Content.h3(): Content = hX(3)
 
 

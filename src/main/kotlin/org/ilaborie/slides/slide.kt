@@ -19,7 +19,7 @@ data class BasicSlide(
             id: String = title.normalize(),
             content: Content = ExternalHtmlContent(ExternalResource("$id.html")),
             styleClass: Set<String> = emptySet()
-    ) : this(title = RawContent(title), id = id, content = content, styleClass = styleClass)
+    ) : this(title = title.raw(), id = id, content = content, styleClass = styleClass)
 
     override fun id() = id
     override fun title() = title
@@ -29,14 +29,14 @@ data class BasicSlide(
 
 data class MainTitleSlide(val title: String) : Slide() {
     override fun id() = title.normalize()
-    override fun title() = RawContent(title)
+    override fun title() = title.raw()
     override fun styleClass() = setOf("main")
-    override fun content() = Title(RawContent(title), 1)
+    override fun content() = title.h1()
 }
 
 data class PartTitleSlide(val title: String) : Slide() {
     override fun id() = "part_${title.normalize()}"
-    override fun title() = RawContent(title)
+    override fun title() = title.raw()
     override fun styleClass() = setOf("part")
-    override fun content() = Title(RawContent(title), 2)
+    override fun content() = title.h2()
 }

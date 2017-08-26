@@ -11,17 +11,15 @@ fun String.normalize(): String =
                 .replace(Regex("[^\\p{ASCII}]"), "")
 
 
-operator fun String.times(n: Int): String = when {
+operator fun Char.times(n: Int): String = when {
     n < 0  -> throw IllegalArgumentException("Negative number not allowed")
     n == 0 -> ""
-    n == 1 -> this
+    n == 1 -> this.toString()
     else   -> this + this.times(n - 1)
 }
 
-fun <T> safe(default: T, dangerous: () -> T): T =
-        try {
-            dangerous()
-        } catch (e: Throwable) {
-            // e.printStackTrace()
-            default
-        }
+
+fun String.underline(underline: Char): String =
+        """$this
+          |${underline * this.length}"""
+                .trimMargin()

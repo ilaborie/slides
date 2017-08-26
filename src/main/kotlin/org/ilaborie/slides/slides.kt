@@ -4,7 +4,7 @@ interface Slides {
     fun toList(): List<Slide>
 }
 
-data class Presentation(val title: String, private val slides: List<Slides>) : Slides {
+data class Presentation(val title: String, private val slides: List<Slides> = emptyList()) : Slides {
     constructor(title: String, vararg slides: Slides) : this(title, slides.toList())
 
     override fun toList(): List<Slide> =
@@ -17,13 +17,46 @@ data class Presentation(val title: String, private val slides: List<Slides>) : S
 }
 
 
-data class Group(val title: String, val slides: Slides) : Slides {
-    constructor(title: String, vararg slides: Slide) : this(title, object : Slides {
-        override fun toList() = slides.toList()
-    })
-
+data class Group(val title: String, val slides: List<Slide> = emptyList()) : Slides {
     override fun toList(): List<Slide> =
             listOf(PartTitleSlide(title)) + slides.toList()
+///
+
+    private fun resource(slideId: String, contentType: String): Content {
+        val resource = "/${title.normalize()}/${slides.size.format("00")}_$slideId"
+        return when {
+            contentType.endsWith("html") -> ExternalHtmlContent(ExternalResource(resource))
+            contentType.endsWith("md")   -> ExternalMarkdownContent(ExternalResource(resource))
+            contentType.endsWith("svg")  -> ExternalSvgContent(ExternalResource(resource))
+            else                         -> {
+                val lang = Language.findForExtension(contentType)
+                if (lang != null) {
+                    ExternalCodeContent(lang, ExternalResource(resource))
+                } else TODO()
+            }
+        }
+    }
+
+    fun slide(title: Content,
+              id: String,
+              styleClass: Set<String> = emptySet(),
+              contentType: String = "md",
+              contentBuilder: () -> Content = { resource(id, contentType) }): Group =
+            this + BasicSlide(title = title, id = id, styleClass = styleClass, content = contentBuilder())
+
+    fun slide(title: String,
+              id: String = title.normalize(),
+              styleClass: Set<String> = emptySet(),
+              contentType: String = "md",
+              contentBuilder: () -> Content = { resource(id, contentType) }): Group =
+            this + BasicSlide(title = title, id = id, styleClass = styleClass, content = contentBuilder())
+
+    operator fun plus(slide: Slide): Group =
+            this.copy(slides = slides + slide)
 
 }
 
+
+// Group(title) { res ->
+//      slide(title, css) { res(".md")}
+// }

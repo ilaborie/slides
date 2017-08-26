@@ -6,10 +6,8 @@ fun Slides.renderAsMarkdown(): String =
 
 fun Slide.renderAsMarkdown(): String = when (this) {
     is BasicSlide     -> {
-        CompositeContent(
-                if (title != null) Title(title, 3) else EmptyContent,
-                content)
-                .renderAsMarkdown()
+        val title = title?.h3() ?: EmptyContent
+        (title + content).renderAsMarkdown()
     }
     is MainTitleSlide ->
         content().renderAsMarkdown()
@@ -19,49 +17,45 @@ fun Slide.renderAsMarkdown(): String = when (this) {
 
 
 fun Content.renderAsMarkdown(): String = when (this) {
-    EmptyContent            -> ""
-    is RawContent           -> content
-    is HtmlContent          -> html
-    is SvgContent           -> svg
-    is MarkdownContent      -> markdown
-    is ExternalHtmlContent  -> htmlContent.renderAsMarkdown()
-    is ExternalSvgContent   -> svgContent.renderAsMarkdown()
-    is ExternalImageContent -> "![$alt](${externalImage.link()}${if (title != null) " \"$title\"" else ""})"
-    is ExternalCodeContent  -> code.renderAsMarkdown()
-    is CompositeContent     ->
+    EmptyContent               -> ""
+    is RawContent              -> content
+    is HtmlContent             -> html
+    is SvgContent              -> svg
+    is MarkdownContent         -> markdown
+    is ExternalHtmlContent     -> htmlContent.renderAsMarkdown()
+    is ExternalMarkdownContent -> markdownContent.renderAsMarkdown()
+    is ExternalSvgContent      -> svgContent.renderAsMarkdown()
+    is ExternalImageContent    -> "![$alt](${externalImage.link()}${if (title != null) " \"$title\"" else ""})"
+    is ExternalCodeContent     -> code.renderAsMarkdown()
+    is CompositeContent        ->
         contents.joinToString(separator = "\n") { it.renderAsMarkdown() }
-    is Code                 -> when (language) {
-        Language.None -> "`$code`"
-        else          ->
-            """|```$language
-               |$code
-               |```""".trimMargin()
-    }
-
-    is Title                ->
-        when (level) {
-            1    -> {
-                val title = title.renderAsMarkdown()
-                """$title
-                  |${"=" * title.length}""".trimMargin()
-            }
-            2    -> {
-                val title = title.renderAsMarkdown()
-                """$title
-                  |${"-" * title.length}""".trimMargin()
-            }
-            else -> "${"#" * level} ${title.renderAsMarkdown()}\n"
+    is Code                    ->
+        when (language) {
+            Language.None -> "`$code`"
+            else          ->
+                """|```$language
+                   |$code
+                   |```""".trimMargin()
         }
-    is Link                 -> "[$text]($link)"
-    is StyleEditable        ->
+
+    is Title                   ->
+        when (level) {
+            1    -> title.renderAsMarkdown().underline('=')
+            2    -> title.renderAsMarkdown().underline('-')
+            else -> "${'#' * level} ${title.renderAsMarkdown()} ${'#' * level}\n"
+        }
+    is Link                    -> "[$text]($link)"
+    is StyleEditable           ->
         // Edit not supported
         """|```CSS
            |$initialCss
            |```""".trimMargin()
-    is EditableZone         ->
+    is EditableZone            ->
         // treated normally
         content.renderAsMarkdown()
-    is Definitions          -> map
+    is Definitions             -> map
             .toList()
             .joinToString(separator = "\n") { (key, content) -> "$key: ${content.renderAsMarkdown()}" }
 }
+
+
