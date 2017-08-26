@@ -1,2 +1,34 @@
 @import "variables";
 
+.slides-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: transparent;
+
+  &:hover {
+    color: var(--primary);
+    cursor: pointer;
+  }
+}
+
+.slides-nav a {
+  color: inherit;
+}
+
+// previous
+section .previous {
+  color: var(--secondary);
+  &::before {
+    content: 'previous';
+  }
+}
+
+// next
+section .next {
+  color: var(--secondary);
+  &::after {
+    content: 'next';
+  }
+}

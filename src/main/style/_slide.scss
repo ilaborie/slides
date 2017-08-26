@@ -1,5 +1,38 @@
 @import "variables";
 
+// Main
+main {
+  height: 100vh;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+main section {
+  flex: 0 0 auto;
+  width: 100vmin;
+  height: 75vmin; // 3/4
+  //height: 56.25vmin; // 16/9
+}
+
+// Slide
 section {
-  box-shadow: 0 0 0;
+  box-shadow: inset 0 0 0 .125rem blue;
+  padding: 1rem;
+}
+
+section.main {
+  box-shadow: inset 0 0 0 .125rem cyan;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.part {
+  box-shadow: inset 0 0 0 .125rem purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
