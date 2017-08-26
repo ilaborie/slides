@@ -2,3 +2,6 @@
 .idea/
 build/
 out/
+node_modules/
+
+yarn-error.log

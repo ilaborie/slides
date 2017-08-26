@@ -1,0 +1,20 @@
+{
+  "name": "slides",
+  "version": "0.0.0",
+  "author": "Igor Laborie <ilaborie@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "serve": "lite-server --baseDir=src/main/web",
+    "style:index": "node-sass src/main/style/index.scss --output src/main/web/",
+    "style:watch": "npm run style:index -- --watch",
+    "start": "npm run serve & npm run style:watch"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.25",
+    "lite-server": "^2.3.0",
+    "node-sass": "^4.5.3",
+    "puppeteer": "^0.10.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2"
+  }
+}
