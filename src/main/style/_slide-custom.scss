@@ -1,0 +1,34 @@
+// Standard title
+section h3 {
+  background : red; // FIXME
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+
+
+// Cover
+section.cover {
+  @include flexCenter();
+
+  h1 {
+    margin: -1em var(--navigationWidth) 0 var(--navigationWidth);
+    font-family: var(--coverFont);
+    font-size: 4rem;
+    text-align: center;
+  }
+
+  &::before{
+    display: none;
+  }
+}
+
+// Part Separator
+section.part {
+  @include flexCenter();
+  h2 {
+    margin: -1em var(--navigationWidth) 0 var(--navigationWidth);
+    font-family: var(--partFont);
+    font-size: 4rem;
+    text-align: center;
+  }
+}

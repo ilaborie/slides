@@ -20,6 +20,4 @@ operator fun Char.times(n: Int): String = when {
 
 
 fun String.underline(underline: Char): String =
-        """$this
-          |${underline * this.length}"""
-                .trimMargin()
+        "$this\n${underline * this.length}"

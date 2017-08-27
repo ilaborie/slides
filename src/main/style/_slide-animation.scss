@@ -1,2 +1,19 @@
-@import "variables";
 
+main {
+  overflow: hidden;
+}
+
+section {
+  transform: translateX(-100vmax);
+  transition: transform .6s ease-out, opacity .6s ease-out;
+  opacity: 0;
+}
+
+section:target {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+section:target ~ section {
+  transform: translateX(+100vmax);
+}

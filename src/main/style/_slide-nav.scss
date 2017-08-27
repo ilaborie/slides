@@ -1,34 +1,36 @@
-@import "variables";
-
-.slides-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  color: transparent;
-
-  &:hover {
-    color: var(--primary);
-    cursor: pointer;
-  }
-}
-
-.slides-nav a {
-  color: inherit;
-}
-
-// previous
-section .previous {
-  color: var(--secondary);
-  &::before {
-    content: 'previous';
-  }
-}
-
-// next
+// Slide navigation
+section .previous,
 section .next {
-  color: var(--secondary);
-  &::after {
-    content: 'next';
+  color: transparent;
+  &:hover {
+    color: var(--fgSlideNav);
   }
+}
+
+section .previous::before,
+section .next::after {
+  width: var(--navigationWidth);
+  background: var(--bgSlideNav);
+  content: '';
+  position: absolute;
+  top: 25vh;
+  z-index: 1;
+  height: 50vh;
+  font-size: 8rem;
+  text-align: center;
+  line-height: 40vh;
+}
+
+// Previous
+section .previous::before {
+  content: '‹';
+  left: 0;
+  cursor: w-resize;
+}
+
+// Next
+section .next::after {
+  content: '›';
+  right: 0;
+  cursor: e-resize;
 }

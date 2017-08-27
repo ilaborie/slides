@@ -35,7 +35,7 @@ data class BasicSlide(
 data class MainTitleSlide(val title: String) : Slide() {
     override fun id() = title.normalize()
     override fun title() = title.raw()
-    override fun styleClass() = setOf("main")
+    override fun styleClass() = setOf("cover")
     override fun content() = title.h1()
 }
 

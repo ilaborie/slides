@@ -1,9 +1,12 @@
 @import "variables";
 @import "mixins";
 @import "overview";
+@import "navbar";
 @import "slide";
 @import "slide-nav";
 @import "slide-animation";
+@import "slide-custom";
+@import "code";
 
 * {
   margin: 0;
@@ -15,11 +18,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
-}
-
-main {
-  background: gold;
+  font-family: var(--fontBody), sans-serif;
 }
 
 .todo {

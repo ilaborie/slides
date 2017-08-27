@@ -1,0 +1,34 @@
+// Top navbar
+.slides-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  color: transparent;
+  transition: all .4s ease-out;
+
+  &:hover {
+    background: var(--bgNavbar);
+    color: var(--fgNavbar);
+    box-shadow: 0 0 2rem var(--shadowNavbar);
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    height: 2.8rem;
+    font-size: .75rem;
+
+    a {
+      color: inherit;
+      min-width: 2ch;
+      text-align: center;
+      text-decoration: none;
+    }
+  }
+}

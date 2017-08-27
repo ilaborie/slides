@@ -1,38 +1,55 @@
-@import "variables";
-
 // Main
 main {
-  height: 100vh;
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  counter-reset: section;
 }
 
 main section {
-  flex: 0 0 auto;
-  width: 100vmin;
-  height: 75vmin; // 3/4
-  //height: 56.25vmin; // 16/9
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 // Slide
 section {
-  box-shadow: inset 0 0 0 .125rem blue;
-  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: inset 0 0 0 .125rem blue; // FIXME
+
+  box-sizing: border-box;
+  background: var(--bgBody);
+  color: var(--fgBody);
+
 }
 
-section.main {
-  box-shadow: inset 0 0 0 .125rem cyan;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// Counter
+section::before {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 0 .5em 3em 3em;
+  font-family: var(--counterFont);
+  font-size: 2em;
+  letter-spacing: -0.25em;
+  counter-increment: section;
+  content: '# ' counter(section);
+  text-shadow: 1px 1px 1px var(--white);
+  color: var(--fgCounter);
+  background: linear-gradient(45deg, transparent 4em, transparent 0, var(--bgCounter) 4.5em);
 }
 
-section.part {
-  box-shadow: inset 0 0 0 .125rem purple;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// Footer
+section::after {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: .1rem .1rem .1rem .5em;
+  background: var(--bgFooter) var(--logoFooter) no-repeat right;
+  background-size: contain;
+  background-origin: content-box;
+  color: var(--fgFooter);
+
+  content: var(--txtFooter) ; //
 }
