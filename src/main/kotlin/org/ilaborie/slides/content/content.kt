@@ -5,14 +5,22 @@ sealed class Content {
     operator fun plus(other: Content): Content = CompositeContent(this, other)
 }
 
+// Basic
 object EmptyContent : Content()
 
 data class RawContent(val content: String) : Content()
 
+data class CompositeContent(val contents: List<Content>) : Content() {
+    constructor(vararg contents: Content) : this(contents.toList())
+}
+
+// Structured
 data class HtmlContent(val html: String) : Content()
+
 data class SvgContent(val svg: String) : Content()
 data class MarkdownContent(val markdown: String) : Content()
 
+// External
 data class ExternalHtmlContent(val externalHtml: External) : Content() {
     val htmlContent by lazy { HtmlContent(externalHtml.loadTextContent()) }
 }
@@ -31,11 +39,10 @@ data class ExternalSvgContent(val externalSvg: External) : Content() {
 
 data class ExternalImageContent(val alt: String, val externalImage: External, val title: String?) : Content()
 
-data class CompositeContent(val contents: List<Content>) : Content() {
-    constructor(vararg contents: Content) : this(contents.toList())
-}
 
+// Structural
 data class Code(val language: Language = Language.None, val code: String, val fileName: String? = null) : Content()
+
 data class Title(val title: Content, val level: Int) : Content()
 data class Link(val text: String, val link: String) : Content()
 data class StyleEditable(val initialCss: String) : Content()
@@ -44,6 +51,21 @@ data class EditableZone(val content: Content) : Content()
 data class Definitions(val map: Map<String, Content>) : Content() {
     constructor(vararg pairs: Pair<String, Content>) : this(pairs.toMap())
 }
+
+data class OrderedList(val contents: List<Content>) : Content() {
+    constructor(vararg contents: Content) : this(contents.toList())
+}
+data class UnorderedList(val contents: List<Content>) : Content() {
+    constructor(vararg contents: Content) : this(contents.toList())
+}
+
+
+// Styled
+data class Paragraph(val content: Content) : Content()
+
+data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
+data class Strong(val content: Content) : Content()
+data class Emphasis(val content: Content) : Content()
 
 
 // Lang
@@ -61,22 +83,6 @@ enum class Language {
             ext.endsWith("js")   -> JavaScript
             else                 -> null
         }
-
     }
 }
-
-// Extension
-fun String.raw(): Content = RawContent(this)
-
-fun String.html(): Content = HtmlContent(this)
-fun String.hX(x: Int): Content = Title(raw(), x)
-fun String.h1(): Content = hX(1)
-fun String.h2(): Content = hX(2)
-fun String.h3(): Content = hX(3)
-
-fun Content.hX(x: Int): Content = Title(this, x)
-fun Content.h1(): Content = hX(1)
-fun Content.h2(): Content = hX(2)
-fun Content.h3(): Content = hX(3)
-
 

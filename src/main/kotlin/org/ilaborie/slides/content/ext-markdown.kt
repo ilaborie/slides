@@ -1,9 +1,6 @@
 package org.ilaborie.slides.content
 
-import org.ilaborie.slides.Slide
-import org.ilaborie.slides.Slides
-import org.ilaborie.slides.times
-import org.ilaborie.slides.underline
+import org.ilaborie.slides.*
 
 fun Slides.renderAsMarkdown(): String =
         toList().joinToString(separator = "\n\n") { it.renderAsMarkdown() }
@@ -30,6 +27,16 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
         "$key: ${content.renderAsMarkdown()}"
     }
+    is OrderedList             -> contents
+            .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
+            .joinToString(separator = "/n")
+    is UnorderedList           -> contents
+            .map { "* ${it.renderAsMarkdown()}" }
+            .joinToString(separator = "/n")
+    is Paragraph               -> content.renderAsMarkdown()
+    is Quote                   -> content.renderAsMarkdown().indent("> ")
+    is Strong                  -> "**${content.renderAsMarkdown()}**"
+    is Emphasis                -> "*${content.renderAsMarkdown()}*"
 }
 
 fun Code.renderAsMarkdown() = when (language) {

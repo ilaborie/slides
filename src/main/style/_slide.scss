@@ -14,11 +14,10 @@ section {
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: inset 0 0 0 .125rem blue; // FIXME
 
   box-sizing: border-box;
-  background: var(--bgBody);
-  color: var(--fgBody);
+  background: var(--bgSlide);
+  color: var(--fgSlide);
 
 }
 
@@ -50,6 +49,7 @@ section::after {
   background-size: contain;
   background-origin: content-box;
   color: var(--fgFooter);
+  font-family: var(--footerFont);
 
-  content: var(--txtFooter) ; //
+  content: var(--txtFooter) ;
 }

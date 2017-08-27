@@ -2,18 +2,20 @@
 
 :root {
   // Colors
-  --primary         : magenta;
-  --secondary       : green;
+  --primary         : #222;
+  --secondary       : #efefef;
   --black           : #000;
   --white           : #fff;
 
   // Fonts
   --fontBody        : 'Open Sans', sans-serif;
   --coverFont       : 'Open Sans', sans-serif;
-  --counterFont     : 'Pixel Emulator', monospace;
   --partFont        : 'Pacifico', cursive;
+  --titleFont       : 'Open Sans', sans-serif;
   --quoteFont       : 'Seaweed Script', cursive;
   --codeFont        : 'Fira Code', monospace;
+  --counterFont     : 'Pixel Emulator', monospace;
+  --footerFont      : 'Fira Code', monospace;
 
   // Navbar
   --bgNavbar        : var(--white);
@@ -24,13 +26,21 @@
   --bgSlide         : var(--secondary);
   --fgSlide         : var(--primary);
 
+  // Slide Code
+  --bgCover         : var(--secondary);
+  --fgCover         : var(--primary);
+
+  // Slide Part
+  --bgPart          : var(--secondary);
+  --fgPart          : var(--primary);
+
   // Slide Navigation
   --bgSlideNav      : transparent;
   --fgSlideNav      : rgba(0, 0, 0, .2);
   --navigationWidth : 15vw;
 
   // Slide Counter
-  --bgCounter       : rgba(0, 0, 0, .2);
+  --bgCounter       : rgba(0, 0, 0, .1);
   --fgCounter       : var(--black);
 
   // Slide Footer

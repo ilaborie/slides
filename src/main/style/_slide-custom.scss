@@ -1,6 +1,5 @@
 // Standard title
 section h3 {
-  background : red; // FIXME
   font-size: 2rem;
   padding-left: 1rem;
 }
@@ -9,12 +8,15 @@ section h3 {
 // Cover
 section.cover {
   @include flexCenter();
+  background: var(--bgCover);
+  color: var(--fgCover);
 
   h1 {
     margin: -1em var(--navigationWidth) 0 var(--navigationWidth);
     font-family: var(--coverFont);
     font-size: 4rem;
     text-align: center;
+    font-weight: bold;
   }
 
   &::before{
@@ -25,6 +27,9 @@ section.cover {
 // Part Separator
 section.part {
   @include flexCenter();
+  background: var(--bgPart);
+  color: var(--fgPart);
+
   h2 {
     margin: -1em var(--navigationWidth) 0 var(--navigationWidth);
     font-family: var(--partFont);

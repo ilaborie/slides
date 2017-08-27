@@ -2,6 +2,8 @@ package org.ilaborie.slides.content
 
 import org.ilaborie.slides.Presentation
 import org.ilaborie.slides.Slide
+import org.ilaborie.slides.indent
+import org.ilaborie.slides.times
 
 fun Presentation.renderAsHtml(key: String): String {
     val slides = toList()
@@ -29,27 +31,27 @@ fun Presentation.renderAsHtml(key: String): String {
 <body class="$key">
     <div class="slides-nav">
         <nav>
-            ${nav.joinToString(separator = "\n") { it.padStart(12) }}
+            ${nav.joinToString(separator = "\n").indent(' ' * 12)}
         </nav>
     </div>
     <main>
-    ${body.joinToString(separator = "\n") { it.padStart(4) }}
+    ${body.joinToString(separator = "\n").indent(' ' * 4)}
     </main>
 </body>
-</html>
-"""
+</html>"""
 }
 
 fun Slide.renderAsHtml(previousId: String?, nextId: String?): String {
-    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous"></a>""" else ""
-    val nextFun = if (nextId != null) """<a href="#$nextId" class="next"></a>""" else ""
+    val classes = styleClass().joinToString(" ")
+    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous $classes"></a>""" else ""
+    val nextFun = if (nextId != null) """<a href="#$nextId" class="next $classes"></a>""" else ""
     return """
-|<!-- Slide -->
-|<section id="${id()}" class="${styleClass().joinToString(" ")}">
-|  ${content().renderAsHtml()}
-|  $prevFun $nextFun
-|</section>
-""".trimMargin()
+<!-- Slide -->
+<section id="${id()}" class="$classes">
+  ${content().renderAsHtml()}
+  $prevFun $nextFun
+</section>
+"""
 }
 
 
@@ -71,6 +73,14 @@ fun Content.renderAsHtml(): String = when (this) {
     is StyleEditable           -> this.renderAsHtml()
     is EditableZone            -> content.renderAsHtml() // treated normally
     is Definitions             -> this.renderAsHtml()
+    is OrderedList             ->
+        contents.joinToString(separator = "\n", prefix = "<ol>", postfix = "</ol>") { "<li>${it.renderAsHtml()}</li>" }
+    is UnorderedList           ->
+        contents.joinToString(separator = "\n", prefix = "<ul>", postfix = "</ul>") { "<li>${it.renderAsHtml()}</li>" }
+    is Paragraph               -> "<p>${content.renderAsHtml()}</p>"
+    is Quote                   -> this.renderAsHtml()
+    is Strong                  -> "<strong>${content.renderAsHtml()}</strong>"
+    is Emphasis                -> "<em>${content.renderAsHtml()}</em>"
 }
 
 fun StyleEditable.renderAsHtml() = "```CSS\n$initialCss\n```"
@@ -78,7 +88,7 @@ fun StyleEditable.renderAsHtml() = "```CSS\n$initialCss\n```"
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<pre>$code</pre>"
-    else          -> """<pre class="$language">$code</pre>""" // FIXME use a marked
+    else          -> """<pre class="$language">$code</pre>""" // FIXME preformat
 }
 
 
@@ -87,3 +97,10 @@ fun Definitions.renderAsHtml() = map
         .joinToString(separator = "\n", prefix = "<dl>", postfix = "</dl>") { (key, content) ->
             "<dt>$key</dt>\n<dd>${content.renderAsHtml()}</dd>"
         }
+
+
+fun Quote.renderAsHtml() = """
+<blockquote${if (cite != null) "cite=\"$cite\"" else ""}>
+    <p>${content.renderAsHtml()}</p>${if (author != null) "\n    <footer>--$author</footer>" else ""}
+</blockquote>
+"""

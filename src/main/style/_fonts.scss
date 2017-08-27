@@ -6,6 +6,14 @@
 }
 
 @font-face {
+  font-family : 'Open Sans';
+  src         : local('Open Sans'),
+  local('OpenSans'),
+  url('fonts/Open_Sans/OpenSans-Bold.ttf');
+  font-weight: bold;
+}
+
+@font-face {
   font-family : 'Pixel Emulator';
   src         : local('Pixel Emulator'),
   local('PixelEmulator'),
