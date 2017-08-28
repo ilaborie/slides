@@ -32,13 +32,17 @@ data class Presentation(val title: String, val slides: List<Slides> = emptyList(
 }
 
 
-data class Group(val title: String, val slides: List<Slide> = emptyList()) : Slides {
+data class Group(val title: String,
+                 val slides: List<Slide> = emptyList(),
+                 val skipPart: Boolean = false,
+                 val prefix: String = "") : Slides {
     override fun toList(): List<Slide> =
-            listOf(PartTitleSlide(title)) + slides.toList()
+            if (skipPart) slides.toList()
+            else listOf(PartTitleSlide(title)) + slides.toList()
 ///
 
     private fun resource(slideId: String, contentType: String): Content {
-        val resource = "/${title.normalize()}/${slides.size.format("00")}_$slideId"
+        val resource = "/$prefix/${title.normalize()}/${slides.size.format("00")}_$slideId.$contentType"
         return when {
             contentType.endsWith("html") -> ExternalHtmlContent(ExternalResource(resource))
             contentType.endsWith("md")   -> ExternalMarkdownContent(ExternalResource(resource))
@@ -68,10 +72,5 @@ data class Group(val title: String, val slides: List<Slide> = emptyList()) : Sli
 
     operator fun plus(slide: Slide): Group =
             this.copy(slides = slides + slide)
-
 }
 
-
-// Group(title) { res ->
-//      slide(title, css) { res(".md")}
-// }

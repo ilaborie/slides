@@ -9,19 +9,33 @@
 @import "code";
 
 * {
-  margin: 0;
-  padding: 0;
+  margin  : 0;
+  padding : 0;
 }
 
 html {
-  font-size: 3vmin;
+  font-size : 3vmin;
 }
 
 body {
-  font-family: var(--fontBody), sans-serif;
+  font-family : var(--fontBody);
+}
+
+blockquote p {
+  font-family : var(--quoteFont);
+  font-size   : 1.5rem;
+
+  text-align: justify;
+  &::before {
+    content      : '“ ';
+    opacity      : .5;
+    display      : inline-block;
+    transform    : scale(4) translateY(.25rem);
+    margin-right : 1.5em;
+  }
 }
 
 .todo {
-  box-shadow: inset 0 0 0 1rem rgba(80, 0, 0, .5);
+  box-shadow : inset 0 0 0 1rem rgba(80, 0, 0, .5);
 }
 

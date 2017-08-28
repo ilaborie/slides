@@ -10,7 +10,7 @@ fun Slide.renderAsMarkdown(): String = this.content().renderAsMarkdown()
 fun Content.renderAsMarkdown(): String = when (this) {
     EmptyContent               -> ""
     is RawContent              -> content
-    is HtmlContent             -> html
+    is HtmlContent             -> html // TODO see https://github.com/vsch/flexmark-java/wiki/Extensions#html-to-markdown
     is SvgContent              -> svg
     is MarkdownContent         -> markdown
     is ExternalHtmlContent     -> htmlContent.renderAsMarkdown()
@@ -25,7 +25,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
     is EditableZone            -> content.renderAsMarkdown() // treated normally
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
-        "$key: ${content.renderAsMarkdown()}"
+        "$key\n: ${content.renderAsMarkdown()}"
     }
     is OrderedList             -> contents
             .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }

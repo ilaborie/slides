@@ -7,8 +7,8 @@ fun String.normalize(): String =
         Normalizer.normalize(this, Normalizer.Form.NFD)
                 .toLowerCase()
                 .replace(Regex("[\\s]"), "-")
-                .replace(Regex("[\\W]"), "_")
                 .replace(Regex("[^\\p{ASCII}]"), "")
+                .replace(Regex("[\\W]"), "_")
 
 
 operator fun Char.times(n: Int): String = when {

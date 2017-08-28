@@ -1,18 +1,21 @@
 package org.ilaborie.slides.content
 
+import com.vladsch.flexmark.html.HtmlRenderer
+import com.vladsch.flexmark.parser.Parser
+import com.vladsch.flexmark.util.options.MutableDataSet
 import org.ilaborie.slides.Presentation
 import org.ilaborie.slides.Slide
 import org.ilaborie.slides.indent
 import org.ilaborie.slides.times
+
 
 fun Presentation.renderAsHtml(key: String): String {
     val slides = toList()
     fun previous(index: Int): String? = if (index != 0) slides[index - 1].id() else null
     fun next(index: Int): String? = if (index < (slides.size - 2)) slides[index + 1].id() else null
 
-    //const nav = slides.map((slide, index) => `<a href="#${slide.id}" title="${slide.id}">${index}</a>`);
     val nav = slides.mapIndexed { index, slide ->
-        """<a href="#${slide.id()}" title="${slide.title()?.renderAsString() ?: slide.id()}">$index</a>"""
+        """<a href="#${slide.id()}" class="${slide.styleClass().joinToString(separator = " ")}" title="${slide.title()?.renderAsString() ?: slide.id()}">$index</a>"""
     }
 
     val body = slides
@@ -31,25 +34,27 @@ fun Presentation.renderAsHtml(key: String): String {
 <body class="$key">
     <div class="slides-nav">
         <nav>
-            ${nav.joinToString(separator = "\n").indent(' ' * 12)}
+${nav.joinToString(separator = "\n").indent(' ' * 12)}
         </nav>
     </div>
     <main>
-    ${body.joinToString(separator = "\n").indent(' ' * 4)}
+${body.joinToString(separator = "\n").indent(' ' * 4)}
     </main>
 </body>
 </html>"""
 }
 
 fun Slide.renderAsHtml(previousId: String?, nextId: String?): String {
-    val classes = styleClass().joinToString(" ")
-    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous $classes"></a>""" else ""
-    val nextFun = if (nextId != null) """<a href="#$nextId" class="next $classes"></a>""" else ""
+    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous"></a>""" else ""
+    val nextFun = if (nextId != null) """<a href="#$nextId" class="next"></a>""" else ""
     return """
 <!-- Slide -->
-<section id="${id()}" class="$classes">
+<section id="${id()}" class="${styleClass().joinToString(" ")}">
   ${content().renderAsHtml()}
-  $prevFun $nextFun
+  <nav>
+      $prevFun
+      $nextFun
+  </nav>
 </section>
 """
 }
@@ -60,7 +65,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is RawContent              -> content
     is HtmlContent             -> html
     is SvgContent              -> svg
-    is MarkdownContent         -> """<div class="todo">$markdown</div>"""
+    is MarkdownContent         -> this.renderAsHtml()
     is ExternalHtmlContent     -> htmlContent.renderAsHtml()
     is ExternalMarkdownContent -> markdownContent.renderAsHtml()
     is ExternalSvgContent      -> svgContent.renderAsHtml()
@@ -104,3 +109,16 @@ fun Quote.renderAsHtml() = """
     <p>${content.renderAsHtml()}</p>${if (author != null) "\n    <footer>--$author</footer>" else ""}
 </blockquote>
 """
+
+// uncomment to set optional extensions...
+//options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
+//options.set(HtmlRenderer.SOFT_BREAK, "<br />\n");
+
+private val options = MutableDataSet()
+private val parser = Parser.builder(options).build()
+private val renderer = HtmlRenderer.builder(options).build()
+
+fun MarkdownContent.renderAsHtml(): String {
+    val document = parser.parse(markdown)
+    return renderer.render(document)
+}
