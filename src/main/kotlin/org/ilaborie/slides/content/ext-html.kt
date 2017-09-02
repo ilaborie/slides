@@ -86,6 +86,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is Quote                   -> this.renderAsHtml()
     is Strong                  -> "<strong>${content.renderAsHtml()}</strong>"
     is Emphasis                -> "<em>${content.renderAsHtml()}</em>"
+    is Figure                  -> this.renderAsHtml()
 }
 
 fun StyleEditable.renderAsHtml() = "```CSS\n$initialCss\n```"
@@ -109,6 +110,15 @@ fun Quote.renderAsHtml() = """
     <p>${content.renderAsHtml()}</p>${if (author != null) "\n    <footer>--$author</footer>" else ""}
 </blockquote>
 """
+
+fun Figure.renderAsHtml() = """
+<figure>
+  <img src="${externalImage.link()}" alt="$title">
+  <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">$copyright</p>" else ""}
+</figure>"""
+
+
+// Markdown
 
 // uncomment to set optional extensions...
 //options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));

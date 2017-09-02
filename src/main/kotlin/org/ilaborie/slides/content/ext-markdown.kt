@@ -37,6 +37,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Quote                   -> content.renderAsMarkdown().indent("> ")
     is Strong                  -> "**${content.renderAsMarkdown()}**"
     is Emphasis                -> "*${content.renderAsMarkdown()}*"
+    is Figure                   -> "![$title](${externalImage.link()} \"$title\"})" // TODO copyright
 }
 
 fun Code.renderAsMarkdown() = when (language) {

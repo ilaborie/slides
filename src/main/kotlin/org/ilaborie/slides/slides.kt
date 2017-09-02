@@ -25,10 +25,12 @@ data class Presentation(val title: String, val slides: List<Slides> = emptyList(
             }
             throw IllegalArgumentException("Same id used !\n$errors")
         }
-
-
-        // FIXME check content (external file exists)
     }
+
+    fun group(group: Group): Presentation = this + group
+
+    operator fun plus(addon: Slides) =
+            this.copy(slides = slides + addon)
 }
 
 

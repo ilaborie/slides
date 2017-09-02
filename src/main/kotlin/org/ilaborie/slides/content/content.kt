@@ -55,9 +55,12 @@ data class Definitions(val map: Map<String, Content>) : Content() {
 data class OrderedList(val contents: List<Content>) : Content() {
     constructor(vararg contents: Content) : this(contents.toList())
 }
+
 data class UnorderedList(val contents: List<Content>) : Content() {
     constructor(vararg contents: Content) : this(contents.toList())
 }
+
+data class Figure(val title: Content, val externalImage: External, val copyright: String? = null) :Content()
 
 
 // Styled
@@ -66,7 +69,6 @@ data class Paragraph(val content: Content) : Content()
 data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
 data class Strong(val content: Content) : Content()
 data class Emphasis(val content: Content) : Content()
-
 
 
 // Lang
