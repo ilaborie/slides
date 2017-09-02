@@ -1,6 +1,3 @@
-CSS is Awesome !
-================
-
 ### `$ whoami` ###
 
 **Igor Laborie**
@@ -57,34 +54,9 @@ Utiliser un pré-processeur ?
 ### LiveCoding: boutons ###
 
 
-<style scoped contenteditable="true">button {
-    background: lightblue;
-    border: medium solid purple;
-  }
-  button.danger {/*
-     background: salmon;
-     color: rebeccapurple;
-  }*/
-  </style>
-  
-  <div class="editable">
-    <button type="button">Plop</button>
-    <button type="button" class="danger">Plop !️</button>
-  </div>
-  
 
 ### Alors utilise-t-on un pré-processeurs ? ###
 
-Oui, mais privilégiez:
-
-* le CSS
-* les post-processeurs
-
-
-* [`currentColor`](https://css-tricks.com/currentcolor/)
-* [`background-origin`](https://developer.mozilla.org/fr/docs/Web/CSS/background-origin)
-* [CSS Variables (Custom Properties)](https://www.w3.org/TR/css-variables/)
-* [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
 
 
 Unités
@@ -125,8 +97,6 @@ Flexbox et Grid
 ### LiveCoding: Holy Grail Layout avec grid ###
 
 
-* @supports
-* grid
 
 ### Bilan Flexbox & Grid ###
 
@@ -183,20 +153,7 @@ Pseudo classes d'état
 
 ### Principe pour les onglets ###
 
-```html
-<div class="tabs">
-  <input type="radio" name="tab" id="home">
-  <input type="radio" name="tab" id="projects">
-  <input type="radio" name="tab" id="about">
-  <nav>
-    <label for="home">Home</label>
-    <label for="projects">Projects</label>
-    <label for="about">About</label>
-  </nav>
-  <div data-for="home">Home page</div>
-  <div data-for="projects">Projects page</div>
-  <div data-for="about">About page</div>
-</div>```
+
 
 ### Démo des onglets ###
 

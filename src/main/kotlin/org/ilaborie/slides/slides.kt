@@ -1,13 +1,17 @@
 package org.ilaborie.slides
 
-import org.ilaborie.slides.content.*
+import org.ilaborie.slides.ContentType.MARKDOWN
+import org.ilaborie.slides.content.Content
 
 interface Slides {
     fun toList(): List<Slide>
 }
 
-data class Presentation(val title: String, val slides: List<Slides> = emptyList()) : Slides {
-    constructor(title: String, vararg slides: Slides) : this(title, slides.toList())
+data class Presentation(val title: String,
+                        val id: String = title.normalize(),
+                        val slides: List<Slides> = emptyList()) : Slides {
+
+    operator fun invoke(s: Slides): Int = slides.indexOf(s)
 
     override fun toList(): List<Slide> =
             listOf(MainTitleSlide(title)) + slides.flatMap { it.toList() }
@@ -27,50 +31,49 @@ data class Presentation(val title: String, val slides: List<Slides> = emptyList(
         }
     }
 
-    fun group(group: Group): Presentation = this + group
+    fun group(title: String,
+              id: String = title.normalize(),
+              skipPart: Boolean = false,
+              slidesBuilder: Group.() -> Group = { this }): Presentation =
+            this + Group(title = title, id = id, skipPart = skipPart).slidesBuilder()
 
     operator fun plus(addon: Slides) =
             this.copy(slides = slides + addon)
 }
 
-
 data class Group(val title: String,
+                 val id: String = title.normalize(),
                  val slides: List<Slide> = emptyList(),
-                 val skipPart: Boolean = false,
-                 val prefix: String = "") : Slides {
+                 val skipPart: Boolean = false) : Slides {
+
+    operator fun invoke(s: Slide): Int = slides.indexOf(s)
+
     override fun toList(): List<Slide> =
             if (skipPart) slides.toList()
             else listOf(PartTitleSlide(title)) + slides.toList()
 ///
 
-    private fun resource(slideId: String, contentType: String): Content {
-        val resource = "/$prefix/${title.normalize()}/${slides.size.format("00")}_$slideId.$contentType"
-        return when {
-            contentType.endsWith("html") -> ExternalHtmlContent(ExternalResource(resource))
-            contentType.endsWith("md")   -> ExternalMarkdownContent(ExternalResource(resource))
-            contentType.endsWith("svg")  -> ExternalSvgContent(ExternalResource(resource))
-            else                         -> {
-                val lang = Language.findForExtension(contentType)
-                if (lang != null) {
-                    ExternalCodeContent(lang, ExternalResource(resource))
-                } else TODO()
-            }
-        }
-    }
-
     fun slide(title: Content,
               id: String,
               styleClass: Set<String> = emptySet(),
-              contentType: String = "md",
-              contentBuilder: () -> Content = { resource(id, contentType) }): Group =
-            this + BasicSlide(title = title, id = id, styleClass = styleClass, content = contentBuilder())
+              contentType: ContentType = MARKDOWN,
+              contentBuilder: () -> Content? = { null }): Group =
+            this + BasicSlide(title = title,
+                              id = id,
+                              styleClass = styleClass,
+                              content = contentBuilder(),
+                              contentType = contentType)
 
     fun slide(title: String,
               id: String = title.normalize(),
               styleClass: Set<String> = emptySet(),
-              contentType: String = "md",
-              contentBuilder: () -> Content = { resource(id, contentType) }): Group =
-            this + BasicSlide(title = title, id = id, styleClass = styleClass, content = contentBuilder())
+              contentType: ContentType = MARKDOWN,
+              contentBuilder: () -> Content? = { null }): Group =
+            this + BasicSlide(title = title,
+                              id = id,
+                              styleClass = styleClass,
+                              content = contentBuilder(),
+                              contentType = contentType)
 
     operator fun plus(slide: Slide): Group =
             this.copy(slides = slides + slide)

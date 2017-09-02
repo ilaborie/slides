@@ -3,23 +3,27 @@ package org.ilaborie.slides.content
 import com.vladsch.flexmark.html.HtmlRenderer
 import com.vladsch.flexmark.parser.Parser
 import com.vladsch.flexmark.util.options.MutableDataSet
-import org.ilaborie.slides.Presentation
-import org.ilaborie.slides.Slide
-import org.ilaborie.slides.indent
-import org.ilaborie.slides.times
+import org.ilaborie.slides.*
 
+
+fun Slide.classes() = styleClass().joinToString(separator = " ")
+fun Slide.titleAsString() = title()?.renderAsString() ?: id()
 
 fun Presentation.renderAsHtml(key: String): String {
-    val slides = toList()
-    fun previous(index: Int): String? = if (index != 0) slides[index - 1].id() else null
-    fun next(index: Int): String? = if (index < (slides.size - 2)) slides[index + 1].id() else null
+    val slidesList = toList()
+    fun previous(index: Int): String? = if (index != 0) slidesList[index - 1].id() else null
+    fun next(index: Int): String? = if (index < (slidesList.size - 2)) slidesList[index + 1].id() else null
 
-    val nav = slides.mapIndexed { index, slide ->
-        """<a href="#${slide.id()}" class="${slide.styleClass().joinToString(separator = " ")}" title="${slide.title()?.renderAsString() ?: slide.id()}">$index</a>"""
+    val nav = slidesList.mapIndexed { index, slide ->
+        """<a href="#${slide.id()}" class="${slide.classes()}" title="${slide.titleAsString()}">$index</a>"""
     }
 
-    val body = slides
-            .mapIndexed { index, slide -> slide.renderAsHtml(previousId = previous(index), nextId = next(index)) }
+    val body = this.slides
+            .mapIndexed { index, slides -> index to slides }
+            .flatMap { (index, slides) -> slides.toList().map { Triple(index, slides, it) } }
+            .map { (index, slides, slide) ->
+                slide.renderAsHtml(previousId = previous(index), nextId = next(index)) { this.defaultContent(slides, slide) }
+            }
 
     return """
 <!doctype html>
@@ -44,13 +48,13 @@ ${body.joinToString(separator = "\n").indent(' ' * 4)}
 </html>"""
 }
 
-fun Slide.renderAsHtml(previousId: String?, nextId: String?): String {
+fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () -> Content): String {
     val prevFun = if (previousId != null) """<a href="#$previousId" class="previous"></a>""" else ""
     val nextFun = if (nextId != null) """<a href="#$nextId" class="next"></a>""" else ""
     return """
 <!-- Slide -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
-  ${content().renderAsHtml()}
+  ${content(defaultContent).renderAsHtml()}
   <nav>
       $prevFun
       $nextFun

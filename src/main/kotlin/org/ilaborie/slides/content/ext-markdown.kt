@@ -2,10 +2,14 @@ package org.ilaborie.slides.content
 
 import org.ilaborie.slides.*
 
-fun Slides.renderAsMarkdown(): String =
-        toList().joinToString(separator = "\n\n") { it.renderAsMarkdown() }
+fun Presentation.renderAsMarkdown(): String =
+        slides.flatMap { slides -> slides.toList().map { slides to it } }
+                .joinToString(separator = "\n\n") { (slides, slide) ->
+                    slide.renderAsMarkdown { this.defaultContent(slides, slide) }
+                }
 
-fun Slide.renderAsMarkdown(): String = this.content().renderAsMarkdown()
+fun Slide.renderAsMarkdown(defaultContent: () -> Content): String =
+        this.content(defaultContent).renderAsMarkdown()
 
 fun Content.renderAsMarkdown(): String = when (this) {
     EmptyContent               -> ""
@@ -37,7 +41,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Quote                   -> content.renderAsMarkdown().indent("> ")
     is Strong                  -> "**${content.renderAsMarkdown()}**"
     is Emphasis                -> "*${content.renderAsMarkdown()}*"
-    is Figure                   -> "![$title](${externalImage.link()} \"$title\"})" // TODO copyright
+    is Figure                  -> "![$title](${externalImage.link()} \"$title\"})" // TODO copyright
 }
 
 fun Code.renderAsMarkdown() = when (language) {

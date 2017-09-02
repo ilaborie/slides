@@ -1,12 +1,25 @@
 package org.ilaborie.slides
 
+import org.ilaborie.slides.ContentType.INTERNAL
+import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.content.*
+
+enum class ContentType {
+    INTERNAL, HTML, MARKDOWN;
+
+    fun toFileExtension() = when (this) {
+        INTERNAL -> ""
+        HTML     -> ".html"
+        MARKDOWN -> ".md"
+    }
+}
 
 sealed class Slide : Slides {
     open fun id(): String = title().toString().normalize()
     abstract fun title(): Content?
     open fun styleClass(): Set<String> = emptySet()
-    abstract fun content(): Content
+    abstract fun content(defaultContent: () -> Content): Content
+    abstract fun contentType(): ContentType
 
     override fun toList() = listOf(this)
 }
@@ -14,34 +27,38 @@ sealed class Slide : Slides {
 data class BasicSlide(
         val id: String,
         val title: Content? = null,
-        val content: Content = ExternalHtmlContent(ExternalResource("$id.html")),
+        val content: Content? = null,
+        val contentType: ContentType = if (content != null) INTERNAL else MARKDOWN,
         val styleClass: Set<String> = emptySet()) : Slide() {
+
     constructor(
             title: String,
             id: String = title.normalize(),
-            content: Content = ExternalHtmlContent(ExternalResource("$id.html")),
+            content: Content? = null,
+            contentType: ContentType = if (content != null) INTERNAL else MARKDOWN,
             styleClass: Set<String> = emptySet()
-    ) : this(title = title.raw(), id = id, content = content, styleClass = styleClass)
+    ) : this(title = title.raw(), id = id, content = content, contentType = contentType, styleClass = styleClass)
 
     override fun id() = id
     override fun title() = title
     override fun styleClass() = styleClass
-    override fun content(): Content {
-        val title = title?.h3() ?: EmptyContent
-        return title + content
-    }
+    override fun contentType() = contentType
+    override fun content(defaultContent: () -> Content) =
+            (title?.h3() ?: EmptyContent) + (content ?: defaultContent())
 }
 
 data class MainTitleSlide(val title: String) : Slide() {
     override fun id() = title.normalize()
     override fun title() = title.raw()
     override fun styleClass() = setOf("cover")
-    override fun content() = title.h1()
+    override fun contentType() = INTERNAL
+    override fun content(defaultContent: () -> Content) = title.h1()
 }
 
 data class PartTitleSlide(val title: String) : Slide() {
     override fun id() = "part_${title.normalize()}"
     override fun title() = title.raw()
     override fun styleClass() = setOf("part")
-    override fun content() = title.h2()
+    override fun contentType() = INTERNAL
+    override fun content(defaultContent: () -> Content) = title.h2()
 }
