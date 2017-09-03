@@ -1,0 +1,9 @@
+.editable input[type=checkbox] + label::before {
+    content : 'Click if you like it';
+}
+
+.editable input[type=checkbox]:checked + label::before {
+    content : '<3 !';
+}
+
+fieldset input[type=checkbox] { opacity : 0; }

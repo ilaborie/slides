@@ -1,0 +1,14 @@
+.popover {
+    position   : relative;
+    background : teal;
+}
+
+.popover::before {
+    position         : absolute;
+    z-index          : -1;
+    content          : '';
+    top              : 1em; left : 1em;
+    border           : .8em solid transparent;
+    border-top-color : teal;
+    transform        : skew(-30deg);
+}

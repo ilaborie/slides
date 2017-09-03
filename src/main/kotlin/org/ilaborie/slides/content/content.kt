@@ -37,7 +37,7 @@ data class ExternalSvgContent(val externalSvg: External) : Content() {
     val svgContent by lazy { SvgContent(externalSvg.loadTextContent()) }
 }
 
-data class ExternalImageContent(val alt: String, val externalImage: External, val title: String?) : Content()
+data class ExternalImageContent(val alt: String, val externalImage: External, val title: String? = null) : Content()
 
 
 // Structural
@@ -51,8 +51,8 @@ data class Link(val content: Content, val link: String) : Content() {
 data class StyleEditable(val initialCss: External, val finalCss: External? = null) : Content()
 data class EditableZone(val content: Content) : Content()
 
-data class Definitions(val map: Map<String, Content>) : Content() {
-    constructor(vararg pairs: Pair<String, Content>) : this(pairs.toMap())
+data class Definitions(val map: Map<Content, Content>) : Content() {
+    constructor(vararg pairs: Pair<String, Content>) : this(pairs.map { (key, value) -> key.raw() to value }.toMap())
 }
 
 data class OrderedList(val contents: List<Content>) : Content() {
@@ -68,6 +68,7 @@ data class Figure(val title: Content, val externalImage: External, val copyright
 
 // Styled
 data class Paragraph(val content: Content) : Content()
+
 data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
 data class Strong(val content: Content) : Content()
 data class Emphasis(val content: Content) : Content()

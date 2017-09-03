@@ -1,0 +1,7 @@
+.editable input[type=checkbox] + label::before {
+    content: '';
+}
+.editable input[type=checkbox] + label::before {
+    content: '';
+}
+fieldset input[type=checkbox] { opacity: 1; }

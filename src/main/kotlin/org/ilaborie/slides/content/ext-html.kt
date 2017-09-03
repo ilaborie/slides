@@ -42,7 +42,7 @@ ${nav.joinToString(separator = "\n").indent(' ' * 12)}
         </nav>
     </div>
     <main>
-${body.joinToString(separator = "\n").indent(' ' * 4)}
+${body.joinToString(separator = "\n")}
     </main>
 </body>
 </html>"""
@@ -105,7 +105,7 @@ fun Code.renderAsHtml() = when (language) {
         writer.close()
         val code = process.inputStream.bufferedReader().readText()
         """<pre class="lang-$language"><code>
-        |${code.indent("  ")}
+        |${code.trimIndent()}
         |</code></pre>""".trimMargin() // FIXME preformat
     }
 }
