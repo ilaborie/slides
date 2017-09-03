@@ -30,7 +30,7 @@ data class ExternalMarkdownContent(val externalMarkdown: External) : Content() {
 }
 
 data class ExternalCodeContent(val language: Language, val externalCode: External) : Content() {
-    val code by lazy { Code(language, this.externalCode.loadTextContent(), this.externalCode.fileName) }
+    val code by lazy { Code(this.externalCode.loadTextContent(), language, this.externalCode.fileName) }
 }
 
 data class ExternalSvgContent(val externalSvg: External) : Content() {
@@ -41,11 +41,14 @@ data class ExternalImageContent(val alt: String, val externalImage: External, va
 
 
 // Structural
-data class Code(val language: Language = Language.None, val code: String, val fileName: String? = null) : Content()
+data class Code(val code: String, val language: Language = Language.None, val fileName: String? = null) : Content()
 
 data class Title(val title: Content, val level: Int) : Content()
-data class Link(val text: String, val link: String) : Content()
-data class StyleEditable(val initialCss: String) : Content()
+data class Link(val content: Content, val link: String) : Content() {
+    constructor(text: String, link: String) : this(text.raw(), link)
+}
+
+data class StyleEditable(val initialCss: External, val finalCss: External? = null) : Content()
 data class EditableZone(val content: Content) : Content()
 
 data class Definitions(val map: Map<String, Content>) : Content() {
@@ -60,26 +63,27 @@ data class UnorderedList(val contents: List<Content>) : Content() {
     constructor(vararg contents: Content) : this(contents.toList())
 }
 
-data class Figure(val title: Content, val externalImage: External, val copyright: String? = null) :Content()
+data class Figure(val title: Content, val externalImage: External, val copyright: Content? = null) : Content()
 
 
 // Styled
 data class Paragraph(val content: Content) : Content()
-
 data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
 data class Strong(val content: Content) : Content()
 data class Emphasis(val content: Content) : Content()
+data class Block(val content: Content) : Content()
 
 
 // Lang
 enum class Language {
-    None, CSS, Java, Kotlin, TypeScript, JavaScript;
+    None, CSS, HTML, Java, Kotlin, TypeScript, JavaScript;
 
     override fun toString() = this.name.toLowerCase()
 
     companion object {
         fun findForExtension(ext: String): Language? = when {
             ext.endsWith("css")  -> CSS
+            ext.endsWith("html") -> HTML
             ext.endsWith("java") -> Java
             ext.endsWith("kt")   -> Kotlin
             ext.endsWith("ts")   -> TypeScript

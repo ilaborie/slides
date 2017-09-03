@@ -1,0 +1,9 @@
+button {
+    background: lightblue;
+    /*border: medium solid currentColor;*/
+    border: medium solid rgba(0,0,0,.42);
+}
+button.danger {
+    background: salmon;
+    color: rebeccapurple;
+}

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS is Awesome !</title>
+    <link rel="stylesheet" href="slides.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body class="index">
@@ -15,61 +16,69 @@
             <a href="#whoami" class="" title="whoami">1</a>
             <a href="#least-power" class="" title="The Rule of Least Power">2</a>
             <a href="#regles_du_jeu" class="" title="Règles du jeu">3</a>
-            <a href="#le_css_c_est_vaste" class="" title="Le CSS c'est vaste">4</a>
-            <a href="#plan" class="" title="Plan">5</a>
+            <a href="#le_css_c_est_vaste" class="two-columns" title="Le CSS c'est vaste">4</a>
+            <a href="#roadmap" class="roadmap" title="Plan">5</a>
             <a href="#part_utiliser_un_pre_processeur__" class="part" title="Utiliser un pré-processeur ?">6</a>
             <a href="#livecoding__boutons" class="hide-title" title="LiveCoding: boutons">7</a>
             <a href="#alors_utilise_t_on_un_pre_processeurs__" class="" title="Alors utilise-t-on un pré-processeurs ?">8</a>
             <a href="#part_unites" class="part" title="Unités">9</a>
             <a href="#une_histoire_dunites_css" class="" title="Une histoire d’unités CSS">10</a>
             <a href="#les_unites_de_longueur" class="" title="Les unités de longueur">11</a>
-            <a href="#livecoding__holy_grail_layout_avec_calc" class="hide-title" title="LiveCoding: Holy Grail Layout avec calc">12</a>
+            <a href="#holy_grail_layout_avec_calc" class="hide-title" title="Holy Grail Layout avec calc">12</a>
             <a href="#bilan_unites" class="" title="Bilan unités">13</a>
             <a href="#part_flexbox_et_grid" class="part" title="Flexbox et Grid">14</a>
-            <a href="#livecoding__holy_grail_layout_avec_flexbox" class="hide-title" title="LiveCoding: Holy Grail Layout avec flexbox">15</a>
-            <a href="#livecoding__holy_grail_layout_avec_grid" class="hide-title" title="LiveCoding: Holy Grail Layout avec grid">16</a>
-            <a href="#bilan_flexbox___grid" class="" title="Bilan Flexbox & Grid">17</a>
-            <a href="#part_pseudo_elements" class="part" title="Pseudo éléments">18</a>
-            <a href="#livecoding__le_dinner_d_un_philosophe" class="hide-title" title="LiveCoding: le dinner d'un philosophe">19</a>
-            <a href="#livecoding__triangle_avec_des_bordures" class="hide-title" title="LiveCoding: Triangle avec des bordures">20</a>
-            <a href="#livecoding__info_bulle" class="hide-title" title="LiveCoding: Info-bulle">21</a>
-            <a href="#bilan_pseudo_elements" class="" title="Bilan pseudo éléments">22</a>
-            <a href="#part_animations" class="part" title="Animations">23</a>
-            <a href="#livecoding__texte_de_chargement" class="hide-title" title="LiveCoding: texte de chargement">24</a>
-            <a href="#bilan_animations" class="" title="Bilan animations">25</a>
-            <a href="#part_pseudo_classes_d_etat" class="part" title="Pseudo classes d'état">26</a>
-            <a href="#usage_des_info_bulles" class="" title="Usage des info-bulles">27</a>
-            <a href="#livecoding__checkbox" class="hide-title" title="LiveCoding: Checkbox">28</a>
-            <a href="#livecoding__switch" class="hide-title" title="LiveCoding: Switch">29</a>
-            <a href="#livecoding__collapsible_panel" class="hide-title" title="LiveCoding: Collapsible panel">30</a>
-            <a href="#principe_pour_les_onglets" class="" title="Principe pour les onglets">31</a>
-            <a href="#demo_des_onglets" class="" title="Démo des onglets">32</a>
-            <a href="#bilan_pseudo_classes" class="" title="Bilan Pseudo classes">33</a>
-            <a href="#part_compatibilite_des_navigateurs" class="part" title="Compatibilité des navigateurs">34</a>
-            <a href="#partie_1" class="hide-title" title="Partie 1">35</a>
-            <a href="#partie_2" class="hide-title" title="Partie 2">36</a>
-            <a href="#part_conclusion" class="part" title="Conclusion">37</a>
-            <a href="#bilan" class="hide-title" title="Bilan">38</a>
-            <a href="#traitez_le_css_comme_du_code" class="" title="Traitez le CSS comme du code">39</a>
-            <a href="#liens" class="" title="Liens">40</a>
-            <a href="#pour_apprendre" class="" title="Pour apprendre">41</a>
-            <a href="#_rocks__" class="" title="🦄 rocks !">42</a>
+            <a href="#holy_grail_layout_avec_flexbox___grid" class="hide-title" title="Holy Grail Layout avec flexbox & Grid">15</a>
+            <a href="#bilan_flexbox___grid" class="" title="Bilan Flexbox & Grid">16</a>
+            <a href="#part_pseudo_elements" class="part" title="Pseudo éléments">17</a>
+            <a href="#livecoding__le_dinner_d_un_philosophe" class="hide-title" title="LiveCoding: le dinner d'un philosophe">18</a>
+            <a href="#livecoding__triangle_avec_des_bordures" class="hide-title" title="LiveCoding: Triangle avec des bordures">19</a>
+            <a href="#livecoding__info_bulle" class="hide-title" title="LiveCoding: Info-bulle">20</a>
+            <a href="#bilan_pseudo_elements" class="" title="Bilan pseudo éléments">21</a>
+            <a href="#part_animations" class="part" title="Animations">22</a>
+            <a href="#livecoding__texte_de_chargement" class="hide-title" title="LiveCoding: texte de chargement">23</a>
+            <a href="#bilan_animations" class="" title="Bilan animations">24</a>
+            <a href="#part_pseudo_classes_d_etat" class="part" title="Pseudo classes d'état">25</a>
+            <a href="#usage_des_info_bulles" class="" title="Usage des info-bulles">26</a>
+            <a href="#livecoding__checkbox" class="hide-title" title="LiveCoding: Checkbox">27</a>
+            <a href="#livecoding__switch" class="hide-title" title="LiveCoding: Switch">28</a>
+            <a href="#livecoding__collapsible_panel" class="hide-title" title="LiveCoding: Collapsible panel">29</a>
+            <a href="#principe_pour_les_onglets" class="" title="Principe pour les onglets">30</a>
+            <a href="#demo_des_onglets" class="" title="Démo des onglets">31</a>
+            <a href="#bilan_pseudo_classes" class="" title="Bilan Pseudo classes">32</a>
+            <a href="#part_compatibilite_des_navigateurs" class="part" title="Compatibilité des navigateurs">33</a>
+            <a href="#partie_1" class="hide-title" title="Partie 1">34</a>
+            <a href="#partie_2" class="hide-title" title="Partie 2">35</a>
+            <a href="#part_conclusion" class="part" title="Conclusion">36</a>
+            <a href="#bilan" class="hide-title" title="Bilan">37</a>
+            <a href="#traitez_le_css_comme_du_code" class="" title="Traitez le CSS comme du code">38</a>
+            <a href="#liens" class="" title="Liens">39</a>
+            <a href="#pour_apprendre" class="" title="Pour apprendre">40</a>
+            <a href="#_rocks__" class="" title="🦄 rocks !">41</a>
         </nav>
     </div>
     <main>
     
     <!-- Slide -->
-    <section id="whoami" class="">
-      <h3><pre>$ whoami</pre></h3>
-    <p><strong>Igor Laborie</strong>
-    Expert Java &amp; Web, <a href="http://monkeypatch.io">Monkey Patch</a><br />
-    <a href="https://twitter.com/ilaborie">@ilaborie</a>
-    <a href="mailto:igor@monkeypatch.io">igor@monkeypatch.io</a></p>
-    <p>⚠️ <em>Je ne suis pas un designer</em></p>
-    
+    <section id="css_is_awesome__" class="cover">
+      <h1>CSS is Awesome !</h1>
       <nav>
           
           <a href="#whoami" class="next"></a>
+      </nav>
+    </section>
+    
+    
+    <!-- Slide -->
+    <section id="whoami" class="">
+      <h3><pre>$ whoami</pre></h3>
+      <p><strong>Igor Laborie</strong>
+      Expert Java &amp; Web, <a href="http://monkeypatch.io">Monkey Patch</a><br><a href="https://twitter.com/ilaborie">@ilaborie</a>
+      <a href="mailto:igor@monkeypatch.io">igor@monkeypatch.io</a></p>
+      <p> ⚠️ <em>Je ne suis pas un designer</em></p>
+      
+      <nav>
+          <a href="#css_is_awesome__" class="previous"></a>
+          <a href="#least-power" class="next"></a>
       </nav>
     </section>
     
@@ -77,13 +86,14 @@
     <!-- Slide -->
     <section id="least-power" class="">
       <h3><a href="https://www.w3.org/2001/tag/doc/leastPower.html">The Rule of Least Power</a></h3>
-    <blockquote>
-    <p>When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The &quot;Rule of Least Power&quot; suggests <strong>choosing the least powerful language suitable</strong> for a given purpose.</p>
-    </blockquote>
-    
+      
+      <blockquote>
+          <p>When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The "Rule of Least Power" suggests <strong>choosing the least powerful language suitable</strong> for a given purpose.</p>
+      </blockquote>
+      
       <nav>
-          
-          <a href="#whoami" class="next"></a>
+          <a href="#whoami" class="previous"></a>
+          <a href="#regles_du_jeu" class="next"></a>
       </nav>
     </section>
     
@@ -91,61 +101,54 @@
     <!-- Slide -->
     <section id="regles_du_jeu" class="">
       <h3>Règles du jeu</h3>
-    <ol>
-    <li>Texte</li>
-    <li>HTML &amp; CSS</li>
-    <li>SVG</li>
-    <li>JavaScript</li>
-    </ol>
-    <p>⚠️ <em>... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles</em></p>
-    
+      <ol><li>Texte</li>
+      <li>HTML (sémantique) & CSS (layout, style, animations simples)</li>
+      <li>SVG (formes et animations complexes)</li>
+      <li>JavaScripts</li></ol>
+      <em>⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles</em>
       <nav>
-          
-          <a href="#whoami" class="next"></a>
+          <a href="#least-power" class="previous"></a>
+          <a href="#le_css_c_est_vaste" class="next"></a>
       </nav>
     </section>
     
     
     <!-- Slide -->
-    <section id="le_css_c_est_vaste" class="">
+    <section id="le_css_c_est_vaste" class="two-columns">
       <h3>Le CSS c'est vaste</h3>
-    <ul>
-    <li>Selectors</li>
-    <li>Box model</li>
-    <li>Float</li>
-    <li>Media Query</li>
-    <li>Transitions</li>
-    <li>Gradients</li>
-    <li>Responsive Design</li>
-    <li>Media</li>
-    <li>Variables</li>
-    <li>Colors</li>
-    <li>Shapes</li>
-    <li>...</li>
-    </ul>
-    
+      <ul><li>Selectors</li>
+      <li>Box model</li>
+      <li>Float</li>
+      <li>Media Query</li>
+      <li>Transitions</li>
+      <li>Gradients</li>
+      <li>Responsive Design</li>
+      <li>Media</li>
+      <li>Variables</li>
+      <li>Colors</li>
+      <li>Shapes</li>
+      <li>...</li></ul>
       <nav>
-          
-          <a href="#whoami" class="next"></a>
+          <a href="#regles_du_jeu" class="previous"></a>
+          <a href="#roadmap" class="next"></a>
       </nav>
     </section>
     
     
     <!-- Slide -->
-    <section id="plan" class="">
-      <h3>Plan</h3>
-    <ul>
-    <li>Utiliser un pré-processeur ?</li>
-    <li>Unités, <code>calc()</code></li>
-    <li>Pseudo éléments</li>
-    <li>Animations</li>
-    <li>Pseudo classes d'états</li>
-    <li>Support dans les navigateurs</li>
-    </ul>
-    
+    <section id="roadmap" class="roadmap">
+      <h2>Plan</h2>
+      <ol><li>Utiliser un pré-processeur ?</li>
+      <li>Unités</li>
+      <li>Flexbox et Grid</li>
+      <li>Pseudo éléments</li>
+      <li>Animations</li>
+      <li>Pseudo classes d'état</li>
+      <li>Compatibilité des navigateurs</li>
+      <li>Conclusion</li></ol>
       <nav>
-          
-          <a href="#whoami" class="next"></a>
+          <a href="#le_css_c_est_vaste" class="previous"></a>
+          <a href="#part_utiliser_un_pre_processeur__" class="next"></a>
       </nav>
     </section>
     
@@ -154,8 +157,8 @@
     <section id="part_utiliser_un_pre_processeur__" class="part">
       <h2>Utiliser un pré-processeur ?</h2>
       <nav>
-          <a href="#css_is_awesome__" class="previous"></a>
-          <a href="#least-power" class="next"></a>
+          <a href="#roadmap" class="previous"></a>
+          <a href="#livecoding__boutons" class="next"></a>
       </nav>
     </section>
     
@@ -163,10 +166,19 @@
     <!-- Slide -->
     <section id="livecoding__boutons" class="hide-title">
       <h3>LiveCoding: boutons</h3>
-    
+      <style scoped contenteditable="true">button {
+          background: lightblue;
+          border: medium solid purple;
+      }
+      button.danger {/*
+         background: salmon;
+         color: rebeccapurple; */
+      }</style>
+      <div class="editable"><button type="button">Plop</button>
+      <button type="button" class="danger">Plop !️</button></div>
       <nav>
-          <a href="#css_is_awesome__" class="previous"></a>
-          <a href="#least-power" class="next"></a>
+          <a href="#part_utiliser_un_pre_processeur__" class="previous"></a>
+          <a href="#alors_utilise_t_on_un_pre_processeurs__" class="next"></a>
       </nav>
     </section>
     
@@ -174,10 +186,16 @@
     <!-- Slide -->
     <section id="alors_utilise_t_on_un_pre_processeurs__" class="">
       <h3>Alors utilise-t-on un pré-processeurs ?</h3>
-    
+      <div><p>Oui, mais privilégiez:</p>
+      <ul><li>le CSS</li>
+      <li>les post-processeurs</li></ul></div>
+      <ul><li><a href="https://css-tricks.com/currentcolor/"><pre>currentColor</pre></a></li>
+      <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/background-origin"><pre>background-origin</pre></a></li>
+      <li><a href="https://www.w3.org/TR/css-variables/">CSS Variables (aka Custom Properties)</a></li>
+      <li><a href="https://www.w3.org/TR/css-color-4/">CSS Color Module Level 4</a></li></ul>
       <nav>
-          <a href="#css_is_awesome__" class="previous"></a>
-          <a href="#least-power" class="next"></a>
+          <a href="#livecoding__boutons" class="previous"></a>
+          <a href="#part_unites" class="next"></a>
       </nav>
     </section>
     
@@ -186,8 +204,8 @@
     <section id="part_unites" class="part">
       <h2>Unités</h2>
       <nav>
-          <a href="#whoami" class="previous"></a>
-          <a href="#regles_du_jeu" class="next"></a>
+          <a href="#alors_utilise_t_on_un_pre_processeurs__" class="previous"></a>
+          <a href="#une_histoire_dunites_css" class="next"></a>
       </nav>
     </section>
     
@@ -195,10 +213,15 @@
     <!-- Slide -->
     <section id="une_histoire_dunites_css" class="">
       <h3>Une histoire d’unités CSS</h3>
-    
+      
+      <figure>
+        <img src="https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg" alt="RawContent(content=Une histoire d’unités CSS)">
+        <figcaption>Une histoire d’unités CSS</figcaption>
+      <p class="copyright"><a href="http://www.commitstrip.com/fr/">CommitStrip</a></p>
+      </figure>
       <nav>
-          <a href="#whoami" class="previous"></a>
-          <a href="#regles_du_jeu" class="next"></a>
+          <a href="#part_unites" class="previous"></a>
+          <a href="#les_unites_de_longueur" class="next"></a>
       </nav>
     </section>
     
@@ -206,30 +229,41 @@
     <!-- Slide -->
     <section id="les_unites_de_longueur" class="">
       <h3>Les unités de longueur</h3>
-    <dl><dt>px, cm, pt, ...</dt>
-    <dd>longueurs absolues (mesure physique)</dd>
-    <dt>em, rem</dt>
-    <dd>fonction de la <code>font-size</code></dd>
-    <dt>ex, ch</dt>
-    <dd>hauteur d'un <code>x</code>, largeur d'un <code>0</code></dd>
-    <dt>vh, vw</dt>
-    <dd>(100vh, 100vw) = (hauteur, largeur) du <i>viewport</i></dd>
-    <dt>vmin, vmax</dt>
-    <dd>min(1vh, 1vw), max(1vh, 1vw)</dd></dl>
+      <dl><dt>px, cm, pt, ...</dt>
+      <dd>longueurs absolues (mesure physique)</dd>
+      <dt>em, rem</dt>
+      <dd>fonction de la <code>font-size</code></dd>
+      <dt>ex, ch</dt>
+      <dd>hauteur d'un <code>x</code>, largeur d'un <code>0</code></dd>
+      <dt>vh, vw</dt>
+      <dd>(100vh, 100vw) = (hauteur, largeur) du <i>viewport</i></dd>
+      <dt>vmin, vmax</dt>
+      <dd>min(1vh, 1vw), max(1vh, 1vw)</dd></dl>
       <nav>
-          <a href="#whoami" class="previous"></a>
-          <a href="#regles_du_jeu" class="next"></a>
+          <a href="#une_histoire_dunites_css" class="previous"></a>
+          <a href="#holy_grail_layout_avec_calc" class="next"></a>
       </nav>
     </section>
     
     
     <!-- Slide -->
-    <section id="livecoding__holy_grail_layout_avec_calc" class="hide-title">
-      <h3>LiveCoding: Holy Grail Layout avec calc</h3>
-    
+    <section id="holy_grail_layout_avec_calc" class="hide-title">
+      <h3>Holy Grail Layout avec calc</h3>
+      <pre class="lang-html"><code>
+        <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>    
+         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+      </code></pre>
+      <a href="./holy-grail.html">Live coding</a>
       <nav>
-          <a href="#whoami" class="previous"></a>
-          <a href="#regles_du_jeu" class="next"></a>
+          <a href="#les_unites_de_longueur" class="previous"></a>
+          <a href="#bilan_unites" class="next"></a>
       </nav>
     </section>
     
@@ -237,10 +271,11 @@
     <!-- Slide -->
     <section id="bilan_unites" class="">
       <h3>Bilan unités</h3>
-    
+      <ul><li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/length) et [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html">Unités</a></li>
+      <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/calc"><pre>calc</pre></a></li></ul>
       <nav>
-          <a href="#whoami" class="previous"></a>
-          <a href="#regles_du_jeu" class="next"></a>
+          <a href="#holy_grail_layout_avec_calc" class="previous"></a>
+          <a href="#part_flexbox_et_grid" class="next"></a>
       </nav>
     </section>
     
@@ -249,30 +284,31 @@
     <section id="part_flexbox_et_grid" class="part">
       <h2>Flexbox et Grid</h2>
       <nav>
-          <a href="#least-power" class="previous"></a>
-          <a href="#le_css_c_est_vaste" class="next"></a>
+          <a href="#bilan_unites" class="previous"></a>
+          <a href="#holy_grail_layout_avec_flexbox___grid" class="next"></a>
       </nav>
     </section>
     
     
     <!-- Slide -->
-    <section id="livecoding__holy_grail_layout_avec_flexbox" class="hide-title">
-      <h3>LiveCoding: Holy Grail Layout avec flexbox</h3>
-    
+    <section id="holy_grail_layout_avec_flexbox___grid" class="hide-title">
+      <h3>Holy Grail Layout avec flexbox & Grid</h3>
+      <pre class="lang-html"><code>
+        <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+           <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>    
+         <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+      </code></pre>
+      <a href="./holy-grail-flexbox.html">Exemple Flexbox</a>
+      <a href="./holy-grail-grid.html">Exemple Flexbox</a>
       <nav>
-          <a href="#least-power" class="previous"></a>
-          <a href="#le_css_c_est_vaste" class="next"></a>
-      </nav>
-    </section>
-    
-    
-    <!-- Slide -->
-    <section id="livecoding__holy_grail_layout_avec_grid" class="hide-title">
-      <h3>LiveCoding: Holy Grail Layout avec grid</h3>
-    
-      <nav>
-          <a href="#least-power" class="previous"></a>
-          <a href="#le_css_c_est_vaste" class="next"></a>
+          <a href="#part_flexbox_et_grid" class="previous"></a>
+          <a href="#bilan_flexbox___grid" class="next"></a>
       </nav>
     </section>
     
@@ -280,10 +316,13 @@
     <!-- Slide -->
     <section id="bilan_flexbox___grid" class="">
       <h3>Bilan Flexbox & Grid</h3>
-    
+      <h3>Grid</h3>
+      <ul><li>Si plusieurs lignes et colonnes</li>
+      <li><a href="https://gridbyexample.com/">Grid by exemples</a></li>
+      <li><a href="http://cssgridgarden.com/">Grid Garden</a></li></ul>
       <nav>
-          <a href="#least-power" class="previous"></a>
-          <a href="#le_css_c_est_vaste" class="next"></a>
+          <a href="#holy_grail_layout_avec_flexbox___grid" class="previous"></a>
+          <a href="#part_pseudo_elements" class="next"></a>
       </nav>
     </section>
     
@@ -292,8 +331,8 @@
     <section id="part_pseudo_elements" class="part">
       <h2>Pseudo éléments</h2>
       <nav>
-          <a href="#regles_du_jeu" class="previous"></a>
-          <a href="#plan" class="next"></a>
+          <a href="#bilan_flexbox___grid" class="previous"></a>
+          <a href="#livecoding__le_dinner_d_un_philosophe" class="next"></a>
       </nav>
     </section>
     
@@ -301,10 +340,10 @@
     <!-- Slide -->
     <section id="livecoding__le_dinner_d_un_philosophe" class="hide-title">
       <h3>LiveCoding: le dinner d'un philosophe</h3>
-    
+      
       <nav>
-          <a href="#regles_du_jeu" class="previous"></a>
-          <a href="#plan" class="next"></a>
+          <a href="#part_pseudo_elements" class="previous"></a>
+          <a href="#livecoding__triangle_avec_des_bordures" class="next"></a>
       </nav>
     </section>
     
@@ -312,10 +351,10 @@
     <!-- Slide -->
     <section id="livecoding__triangle_avec_des_bordures" class="hide-title">
       <h3>LiveCoding: Triangle avec des bordures</h3>
-    
+      
       <nav>
-          <a href="#regles_du_jeu" class="previous"></a>
-          <a href="#plan" class="next"></a>
+          <a href="#livecoding__le_dinner_d_un_philosophe" class="previous"></a>
+          <a href="#livecoding__info_bulle" class="next"></a>
       </nav>
     </section>
     
@@ -323,10 +362,10 @@
     <!-- Slide -->
     <section id="livecoding__info_bulle" class="hide-title">
       <h3>LiveCoding: Info-bulle</h3>
-    
+      
       <nav>
-          <a href="#regles_du_jeu" class="previous"></a>
-          <a href="#plan" class="next"></a>
+          <a href="#livecoding__triangle_avec_des_bordures" class="previous"></a>
+          <a href="#bilan_pseudo_elements" class="next"></a>
       </nav>
     </section>
     
@@ -334,10 +373,10 @@
     <!-- Slide -->
     <section id="bilan_pseudo_elements" class="">
       <h3>Bilan pseudo éléments</h3>
-    
+      
       <nav>
-          <a href="#regles_du_jeu" class="previous"></a>
-          <a href="#plan" class="next"></a>
+          <a href="#livecoding__info_bulle" class="previous"></a>
+          <a href="#part_animations" class="next"></a>
       </nav>
     </section>
     
@@ -346,8 +385,8 @@
     <section id="part_animations" class="part">
       <h2>Animations</h2>
       <nav>
-          <a href="#le_css_c_est_vaste" class="previous"></a>
-          <a href="#part_utiliser_un_pre_processeur__" class="next"></a>
+          <a href="#bilan_pseudo_elements" class="previous"></a>
+          <a href="#livecoding__texte_de_chargement" class="next"></a>
       </nav>
     </section>
     
@@ -355,10 +394,10 @@
     <!-- Slide -->
     <section id="livecoding__texte_de_chargement" class="hide-title">
       <h3>LiveCoding: texte de chargement</h3>
-    
+      
       <nav>
-          <a href="#le_css_c_est_vaste" class="previous"></a>
-          <a href="#part_utiliser_un_pre_processeur__" class="next"></a>
+          <a href="#part_animations" class="previous"></a>
+          <a href="#bilan_animations" class="next"></a>
       </nav>
     </section>
     
@@ -366,10 +405,10 @@
     <!-- Slide -->
     <section id="bilan_animations" class="">
       <h3>Bilan animations</h3>
-    
+      
       <nav>
-          <a href="#le_css_c_est_vaste" class="previous"></a>
-          <a href="#part_utiliser_un_pre_processeur__" class="next"></a>
+          <a href="#livecoding__texte_de_chargement" class="previous"></a>
+          <a href="#part_pseudo_classes_d_etat" class="next"></a>
       </nav>
     </section>
     
@@ -378,8 +417,8 @@
     <section id="part_pseudo_classes_d_etat" class="part">
       <h2>Pseudo classes d'état</h2>
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#bilan_animations" class="previous"></a>
+          <a href="#usage_des_info_bulles" class="next"></a>
       </nav>
     </section>
     
@@ -387,10 +426,10 @@
     <!-- Slide -->
     <section id="usage_des_info_bulles" class="">
       <h3>Usage des info-bulles</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#part_pseudo_classes_d_etat" class="previous"></a>
+          <a href="#livecoding__checkbox" class="next"></a>
       </nav>
     </section>
     
@@ -398,10 +437,10 @@
     <!-- Slide -->
     <section id="livecoding__checkbox" class="hide-title">
       <h3>LiveCoding: Checkbox</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#usage_des_info_bulles" class="previous"></a>
+          <a href="#livecoding__switch" class="next"></a>
       </nav>
     </section>
     
@@ -409,10 +448,10 @@
     <!-- Slide -->
     <section id="livecoding__switch" class="hide-title">
       <h3>LiveCoding: Switch</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#livecoding__checkbox" class="previous"></a>
+          <a href="#livecoding__collapsible_panel" class="next"></a>
       </nav>
     </section>
     
@@ -420,10 +459,10 @@
     <!-- Slide -->
     <section id="livecoding__collapsible_panel" class="hide-title">
       <h3>LiveCoding: Collapsible panel</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#livecoding__switch" class="previous"></a>
+          <a href="#principe_pour_les_onglets" class="next"></a>
       </nav>
     </section>
     
@@ -431,10 +470,10 @@
     <!-- Slide -->
     <section id="principe_pour_les_onglets" class="">
       <h3>Principe pour les onglets</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#livecoding__collapsible_panel" class="previous"></a>
+          <a href="#demo_des_onglets" class="next"></a>
       </nav>
     </section>
     
@@ -442,10 +481,10 @@
     <!-- Slide -->
     <section id="demo_des_onglets" class="">
       <h3>Démo des onglets</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#principe_pour_les_onglets" class="previous"></a>
+          <a href="#bilan_pseudo_classes" class="next"></a>
       </nav>
     </section>
     
@@ -453,10 +492,10 @@
     <!-- Slide -->
     <section id="bilan_pseudo_classes" class="">
       <h3>Bilan Pseudo classes</h3>
-    
+      
       <nav>
-          <a href="#plan" class="previous"></a>
-          <a href="#livecoding__boutons" class="next"></a>
+          <a href="#demo_des_onglets" class="previous"></a>
+          <a href="#part_compatibilite_des_navigateurs" class="next"></a>
       </nav>
     </section>
     
@@ -465,8 +504,8 @@
     <section id="part_compatibilite_des_navigateurs" class="part">
       <h2>Compatibilité des navigateurs</h2>
       <nav>
-          <a href="#part_utiliser_un_pre_processeur__" class="previous"></a>
-          <a href="#alors_utilise_t_on_un_pre_processeurs__" class="next"></a>
+          <a href="#bilan_pseudo_classes" class="previous"></a>
+          <a href="#partie_1" class="next"></a>
       </nav>
     </section>
     
@@ -474,10 +513,10 @@
     <!-- Slide -->
     <section id="partie_1" class="hide-title">
       <h3>Partie 1</h3>
-    
+      
       <nav>
-          <a href="#part_utiliser_un_pre_processeur__" class="previous"></a>
-          <a href="#alors_utilise_t_on_un_pre_processeurs__" class="next"></a>
+          <a href="#part_compatibilite_des_navigateurs" class="previous"></a>
+          <a href="#partie_2" class="next"></a>
       </nav>
     </section>
     
@@ -485,10 +524,10 @@
     <!-- Slide -->
     <section id="partie_2" class="hide-title">
       <h3>Partie 2</h3>
-    
+      
       <nav>
-          <a href="#part_utiliser_un_pre_processeur__" class="previous"></a>
-          <a href="#alors_utilise_t_on_un_pre_processeurs__" class="next"></a>
+          <a href="#partie_1" class="previous"></a>
+          <a href="#part_conclusion" class="next"></a>
       </nav>
     </section>
     
@@ -497,8 +536,8 @@
     <section id="part_conclusion" class="part">
       <h2>Conclusion</h2>
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#partie_2" class="previous"></a>
+          <a href="#bilan" class="next"></a>
       </nav>
     </section>
     
@@ -506,10 +545,10 @@
     <!-- Slide -->
     <section id="bilan" class="hide-title">
       <h3>Bilan</h3>
-    
+      
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#part_conclusion" class="previous"></a>
+          <a href="#traitez_le_css_comme_du_code" class="next"></a>
       </nav>
     </section>
     
@@ -517,10 +556,10 @@
     <!-- Slide -->
     <section id="traitez_le_css_comme_du_code" class="">
       <h3>Traitez le CSS comme du code</h3>
-    
+      
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#bilan" class="previous"></a>
+          <a href="#liens" class="next"></a>
       </nav>
     </section>
     
@@ -528,10 +567,10 @@
     <!-- Slide -->
     <section id="liens" class="">
       <h3>Liens</h3>
-    
+      
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#traitez_le_css_comme_du_code" class="previous"></a>
+          <a href="#pour_apprendre" class="next"></a>
       </nav>
     </section>
     
@@ -539,10 +578,10 @@
     <!-- Slide -->
     <section id="pour_apprendre" class="">
       <h3>Pour apprendre</h3>
-    
+      
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#liens" class="previous"></a>
+          
       </nav>
     </section>
     
@@ -550,14 +589,14 @@
     <!-- Slide -->
     <section id="_rocks__" class="">
       <h3>🦄 rocks !</h3>
-    
-    <div style="font-size: 146px;">
-        💎
-        ⚠️🐈🦄❤️😱💣😍
-    </div>
+      
+      <div style="font-size: 146px;">
+          💎
+          ⚠️🐈🦄❤️😱💣😍
+      </div>
       <nav>
-          <a href="#livecoding__boutons" class="previous"></a>
-          <a href="#part_unites" class="next"></a>
+          <a href="#pour_apprendre" class="previous"></a>
+          
       </nav>
     </section>
     

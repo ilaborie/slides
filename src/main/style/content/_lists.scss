@@ -1,0 +1,21 @@
+
+dl, ol, ul {
+  margin  : 0;
+  padding : 0;
+}
+
+div > ol, ul {
+  padding-left : 1rem;
+}
+
+// Definition
+
+dl {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-row-gap: .8rem;
+
+  dt {
+    font-weight: bold;
+  }
+}

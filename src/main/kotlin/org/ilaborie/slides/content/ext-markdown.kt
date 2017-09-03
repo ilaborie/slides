@@ -25,7 +25,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is CompositeContent        -> contents.joinToString(separator = "\n") { it.renderAsMarkdown() }
     is Code                    -> this.renderAsMarkdown()
     is Title                   -> this.renderAsMarkdown()
-    is Link                    -> "[$text]($link)"
+    is Link                    -> "[${content.renderAsMarkdown()}]($link)"
     is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
     is EditableZone            -> content.renderAsMarkdown() // treated normally
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
@@ -42,6 +42,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Strong                  -> "**${content.renderAsMarkdown()}**"
     is Emphasis                -> "*${content.renderAsMarkdown()}*"
     is Figure                  -> "![$title](${externalImage.link()} \"$title\"})" // TODO copyright
+    is Block                   -> content.renderAsMarkdown()
 }
 
 fun Code.renderAsMarkdown() = when (language) {

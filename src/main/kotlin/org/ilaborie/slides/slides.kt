@@ -10,11 +10,12 @@ interface Slides {
 data class Presentation(val title: String,
                         val id: String = title.normalize(),
                         val slides: List<Slides> = emptyList()) : Slides {
+    val coverSlide by lazy { MainTitleSlide(title) }
 
     operator fun invoke(s: Slides): Int = slides.indexOf(s)
 
     override fun toList(): List<Slide> =
-            listOf(MainTitleSlide(title)) + slides.flatMap { it.toList() }
+            listOf(coverSlide) + slides.flatMap { it.toList() }
 
     init {
         // check id unique
@@ -52,6 +53,9 @@ data class Group(val title: String,
             if (skipPart) slides.toList()
             else listOf(PartTitleSlide(title)) + slides.toList()
 ///
+
+    fun roadMap(title: String): Group =
+            this + RoadMapSlide(title)
 
     fun slide(title: Content,
               id: String,

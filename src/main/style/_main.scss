@@ -6,7 +6,10 @@
 @import "slide-nav";
 @import "slide-animation";
 @import "slide-custom";
-@import "code";
+
+@import "content/code";
+@import "content/lists";
+@import "content/figure";
 
 * {
   margin  : 0;

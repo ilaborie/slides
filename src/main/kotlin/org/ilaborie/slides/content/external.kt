@@ -12,6 +12,7 @@ sealed class External {
     fun link(): String = when (this) {
         is ExternalResource -> resource
         is ExternalFile     -> file.toString()
+        is ExternalLink     -> url
     }
 
     // FIXME datauri
@@ -29,6 +30,7 @@ sealed class External {
                     catchWithDefault("No file: $file") {
                         this.file.readText(charset)
                     }
+                else                -> TODO()
             }
 
     fun exists(): Boolean =
@@ -37,6 +39,7 @@ sealed class External {
                     this::class.java.getResourceAsStream(this.resource) != null
                 is ExternalFile     ->
                     file.exists()
+                else                -> TODO()
             }
 
     abstract fun create(folder: File)
@@ -61,7 +64,15 @@ data class ExternalFile(val file: File) : External() {
     override fun create(folder: File) {
         file.createNewFile()
     }
+}
 
+data class ExternalLink(val url: String) : External() {
+    override val fileName: String
+        get() = TODO("not implemented")
+
+    override fun create(folder: File) {
+        TODO("not implemented")
+    }
 }
 
 fun Content.toExternal(): Iterable<External> = when (this) {
@@ -70,6 +81,7 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is ExternalCodeContent     -> listOf(externalCode)
     is ExternalSvgContent      -> listOf(externalSvg)
     is ExternalImageContent    -> listOf(externalImage)
+    is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
     is CompositeContent        -> contents.flatMap { it.toExternal() }
     else                       -> emptyList()
 }

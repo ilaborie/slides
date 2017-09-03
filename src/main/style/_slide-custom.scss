@@ -52,3 +52,18 @@ section.part {
     text-align  : center;
   }
 }
+
+// Two Columns
+section.two-columns {
+  ul, ol {
+    column-count : 2;
+    column-gap   : 2em;
+  }
+}
+
+// Roadmap
+section.roadmap {
+  ol {
+    list-style: upper-roman;
+  }
+}

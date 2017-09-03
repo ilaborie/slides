@@ -1,8 +1,5 @@
 package org.ilaborie.slides.content
 
-import com.vladsch.flexmark.html.HtmlRenderer
-import com.vladsch.flexmark.parser.Parser
-import com.vladsch.flexmark.util.options.MutableDataSet
 import org.ilaborie.slides.*
 
 
@@ -18,11 +15,13 @@ fun Presentation.renderAsHtml(key: String): String {
         """<a href="#${slide.id()}" class="${slide.classes()}" title="${slide.titleAsString()}">$index</a>"""
     }
 
-    val body = this.slides
-            .mapIndexed { index, slides -> index to slides }
-            .flatMap { (index, slides) -> slides.toList().map { Triple(index, slides, it) } }
-            .map { (index, slides, slide) ->
-                slide.renderAsHtml(previousId = previous(index), nextId = next(index)) { this.defaultContent(slides, slide) }
+    val body = (listOf(coverSlide) + this.slides)
+            .flatMap { slides -> slides.toList().map { slides to it } }
+            .mapIndexed { index, (parent, slide) -> Triple(index, parent, slide) }
+            .map { (index, parent, slide) ->
+                slide.renderAsHtml(previousId = previous(index), nextId = next(index)) {
+                    this.defaultContent(parent, slide)
+                }
             }
 
     return """
@@ -33,6 +32,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>$title</title>
+    <link rel="stylesheet" href="slides.css">
     <link rel="stylesheet" href="$key.css">
 </head>
 <body class="$key">
@@ -54,7 +54,7 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
     return """
 <!-- Slide -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
-  ${content(defaultContent).renderAsHtml()}
+${content(defaultContent).renderAsHtml().indent(' ' * 2)}
   <nav>
       $prevFun
       $nextFun
@@ -62,7 +62,6 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
 </section>
 """
 }
-
 
 fun Content.renderAsHtml(): String = when (this) {
     EmptyContent               -> ""
@@ -78,9 +77,9 @@ fun Content.renderAsHtml(): String = when (this) {
     is CompositeContent        -> contents.joinToString(separator = "\n") { it.renderAsHtml() }
     is Code                    -> this.renderAsHtml()
     is Title                   -> "<h$level>${title.renderAsHtml()}</h$level>"
-    is Link                    -> """<a href="$link">$text</a>"""
+    is Link                    -> """<a href="$link">${content.renderAsHtml()}</a>"""
     is StyleEditable           -> this.renderAsHtml()
-    is EditableZone            -> content.renderAsHtml() // treated normally
+    is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is Definitions             -> this.renderAsHtml()
     is OrderedList             ->
         contents.joinToString(separator = "\n", prefix = "<ol>", postfix = "</ol>") { "<li>${it.renderAsHtml()}</li>" }
@@ -91,23 +90,31 @@ fun Content.renderAsHtml(): String = when (this) {
     is Strong                  -> "<strong>${content.renderAsHtml()}</strong>"
     is Emphasis                -> "<em>${content.renderAsHtml()}</em>"
     is Figure                  -> this.renderAsHtml()
+    is Block                   -> "<div>${content.renderAsHtml()}</div>"
 }
 
-fun StyleEditable.renderAsHtml() = "```CSS\n$initialCss\n```"
+fun StyleEditable.renderAsHtml() = "<style scoped contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
 
-
+// FIXME test
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<pre>$code</pre>"
-    else          -> """<pre class="$language">$code</pre>""" // FIXME preformat
+    else          -> {
+        val process = ProcessBuilder("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase()).start()
+        val writer = process.outputStream.writer()
+        writer.write(this.code)
+        writer.close()
+        val code = process.inputStream.bufferedReader().readText()
+        """<pre class="lang-$language"><code>
+        |${code.indent("  ")}
+        |</code></pre>""".trimMargin() // FIXME preformat
+    }
 }
-
 
 fun Definitions.renderAsHtml() = map
         .toList()
         .joinToString(separator = "\n", prefix = "<dl>", postfix = "</dl>") { (key, content) ->
             "<dt>$key</dt>\n<dd>${content.renderAsHtml()}</dd>"
         }
-
 
 fun Quote.renderAsHtml() = """
 <blockquote${if (cite != null) "cite=\"$cite\"" else ""}>
@@ -118,21 +125,14 @@ fun Quote.renderAsHtml() = """
 fun Figure.renderAsHtml() = """
 <figure>
   <img src="${externalImage.link()}" alt="$title">
-  <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">$copyright</p>" else ""}
+  <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
 </figure>"""
 
-
-// Markdown
-
-// uncomment to set optional extensions...
-//options.set(Parser.EXTENSIONS, Arrays.asList(TablesExtension.create(), StrikethroughExtension.create()));
-//options.set(HtmlRenderer.SOFT_BREAK, "<br />\n");
-
-private val options = MutableDataSet()
-private val parser = Parser.builder(options).build()
-private val renderer = HtmlRenderer.builder(options).build()
-
+// FIXME test
 fun MarkdownContent.renderAsHtml(): String {
-    val document = parser.parse(markdown)
-    return renderer.render(document)
+    val process = ProcessBuilder("ts-node", "src/main/typescript/md-to-html.ts").start()
+    val writer = process.outputStream.writer()
+    writer.write(this.markdown)
+    writer.close()
+    return process.inputStream.bufferedReader().readText()
 }

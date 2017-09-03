@@ -9,62 +9,44 @@ Expert Java & Web, [Monkey Patch](http://monkeypatch.io)
 
 ### [The Rule of Least Power](https://www.w3.org/2001/tag/doc/leastPower.html) ###
 
-> When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The "Rule of Least Power" suggests **choosing the least powerful language suitable** for a given purpose.
-
+> When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The "Rule of Least Power" suggests <strong>choosing the least powerful language suitable</strong> for a given purpose.
 
 ### Règles du jeu ###
 
-
-1. Texte
-1. HTML & CSS
-1. SVG
-1. JavaScript
-
-⚠️ _... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles_
+0. Texte/n1. HTML (sémantique) & CSS (layout, style, animations simples)/n2. SVG (formes et animations complexes)/n3. JavaScripts
+*⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles*
 
 ### Le CSS c'est vaste ###
 
-* Selectors
-* Box model
-* Float
-* Media Query
-* Transitions
-* Gradients
-* Responsive Design
-* Media
-* Variables
-* Colors
-* Shapes
-* ...
+* Selectors/n* Box model/n* Float/n* Media Query/n* Transitions/n* Gradients/n* Responsive Design/n* Media/n* Variables/n* Colors/n* Shapes/n* ...
 
-### Plan ###
-
-* Utiliser un pré-processeur ?
-* Unités, `calc()`
-* Pseudo éléments
-* Animations
-* Pseudo classes d'états
-* Support dans les navigateurs
-
-
+Plan
+----
+0. Utiliser un pré-processeur ?/n1. Unités/n2. Flexbox et Grid/n3. Pseudo éléments/n4. Animations/n5. Pseudo classes d'état/n6. Compatibilité des navigateurs/n7. Conclusion
 
 Utiliser un pré-processeur ?
 ----------------------------
 
 ### LiveCoding: boutons ###
 
-
+```CSS
+ExternalResource(resource=/cssIsAwesome/01_preprocessor/boutons.css)
+```
+<button type="button">Plop</button>
+<button type="button" class="danger">Plop !️</button>
 
 ### Alors utilise-t-on un pré-processeurs ? ###
 
-
+Oui, mais privilégiez:
+* le CSS/n* les post-processeurs
+* [`currentColor`](https://css-tricks.com/currentcolor/)/n* [`background-origin`](https://developer.mozilla.org/fr/docs/Web/CSS/background-origin)/n* [CSS Variables (aka Custom Properties)](https://www.w3.org/TR/css-variables/)/n* [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
 
 Unités
 ------
 
 ### Une histoire d’unités CSS ###
 
-
+![RawContent(content=Une histoire d’unités CSS)](https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg "RawContent(content=Une histoire d’unités CSS)"})
 
 ### Les unités de longueur ###
 
@@ -79,28 +61,49 @@ vh, vw
 vmin, vmax
 : min(1vh, 1vw), max(1vh, 1vw)
 
-### LiveCoding: Holy Grail Layout avec calc ###
+### Holy Grail Layout avec calc ###
 
-
+```html
+<body>
+ <header>Header</header>
+ <div>
+   <nav>Menu</nav>
+   <main>Content</main>
+   <aside>Side</aside>    
+ </div>
+ <footer>Footer</footer>
+</body>
+```
+[Live coding](./holy-grail.html)
 
 ### Bilan unités ###
 
-
+* [Unités](https://developer.mozilla.org/fr/docs/Web/CSS/length) et [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html)/n* [`calc`](https://developer.mozilla.org/fr/docs/Web/CSS/calc)
 
 Flexbox et Grid
 ---------------
 
-### LiveCoding: Holy Grail Layout avec flexbox ###
+### Holy Grail Layout avec flexbox & Grid ###
 
-
-
-### LiveCoding: Holy Grail Layout avec grid ###
-
-
+```html
+<body>
+ <header>Header</header>
+ <div>
+   <nav>Menu</nav>
+   <main>Content</main>
+   <aside>Side</aside>    
+ </div>
+ <footer>Footer</footer>
+</body>
+```
+[Exemple Flexbox](./holy-grail-flexbox.html)
+[Exemple Flexbox](./holy-grail-grid.html)
 
 ### Bilan Flexbox & Grid ###
 
+### Grid ###
 
+* Si plusieurs lignes et colonnes/n* [Grid by exemples](https://gridbyexample.com/)/n* [Grid Garden](http://cssgridgarden.com/)
 
 Pseudo éléments
 ---------------

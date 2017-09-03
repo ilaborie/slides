@@ -62,3 +62,12 @@ data class PartTitleSlide(val title: String) : Slide() {
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = title.h2()
 }
+
+data class RoadMapSlide(val title: String) : Slide() {
+    override fun id() = "roadmap"
+    override fun title() = title.raw()
+    override fun styleClass() = setOf("roadmap")
+    override fun contentType() = INTERNAL
+    override fun content(defaultContent: () -> Content) =
+            title.h2() + defaultContent()
+}
