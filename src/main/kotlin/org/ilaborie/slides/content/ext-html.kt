@@ -9,7 +9,7 @@ fun Slide.titleAsString() = title()?.renderAsString() ?: id()
 fun Presentation.renderAsHtml(key: String): String {
     val slidesList = toList()
     fun previous(index: Int): String? = if (index != 0) slidesList[index - 1].id() else null
-    fun next(index: Int): String? = if (index < (slidesList.size - 2)) slidesList[index + 1].id() else null
+    fun next(index: Int): String? = if (index < (slidesList.size - 1)) slidesList[index + 1].id() else null
 
     val nav = slidesList.mapIndexed { index, slide ->
         """<a href="#${slide.id()}" class="${slide.classes()}" title="${slide.titleAsString()}">$index</a>"""
@@ -113,7 +113,7 @@ fun Code.renderAsHtml() = when (language) {
 fun Definitions.renderAsHtml() = map
         .toList()
         .joinToString(separator = "\n", prefix = "<dl>", postfix = "</dl>") { (key, content) ->
-            "<dt>$key</dt>\n<dd>${content.renderAsHtml()}</dd>"
+            "<dt>${key.renderAsHtml()}</dt>\n<dd>${content.renderAsHtml()}</dd>"
         }
 
 fun Quote.renderAsHtml() = """

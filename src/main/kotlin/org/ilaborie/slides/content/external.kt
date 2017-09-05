@@ -1,6 +1,7 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.catchWithDefault
+import org.ilaborie.slides.logger
 import java.io.File
 import java.nio.charset.Charset
 
@@ -21,10 +22,11 @@ sealed class External {
             when (this) {
                 is ExternalResource ->
                     catchWithDefault("No resource: $resource") {
-                        this::class.java
-                                .getResourceAsStream(this.resource)
-                                .reader(charset)
-                                .readText()
+                        val input = this::class.java.getResourceAsStream(this.resource)
+                        if (input == null) {
+                            logger.error { "No resources $resource" }
+                        }
+                        input.reader(charset).readText()
                     }
                 is ExternalFile     ->
                     catchWithDefault("No file: $file") {
@@ -39,7 +41,7 @@ sealed class External {
                     this::class.java.getResourceAsStream(this.resource) != null
                 is ExternalFile     ->
                     file.exists()
-                else                -> TODO()
+                is ExternalLink     -> true
             }
 
     abstract fun create(folder: File)
@@ -76,6 +78,7 @@ data class ExternalLink(val url: String) : External() {
 }
 
 fun Content.toExternal(): Iterable<External> = when (this) {
+    EmptyContent               -> emptyList()
     is ExternalHtmlContent     -> listOf(externalHtml)
     is ExternalMarkdownContent -> listOf(externalMarkdown)
     is ExternalCodeContent     -> listOf(externalCode)
@@ -83,5 +86,23 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is ExternalImageContent    -> listOf(externalImage)
     is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
     is CompositeContent        -> contents.flatMap { it.toExternal() }
-    else                       -> emptyList()
+    is RawContent              -> emptyList()
+    is HtmlContent             -> emptyList()
+    is SvgContent              -> emptyList()
+    is MarkdownContent         -> emptyList()
+    is Code                    -> emptyList()
+    is Title                   -> title.toExternal()
+    is Link                    -> content.toExternal()
+    is EditableZone            -> content.toExternal()
+    is Definitions             -> map.toList()
+            .flatMap { (key, value) -> listOf(key, value) }
+            .flatMap { it.toExternal() }
+    is OrderedList             -> contents.flatMap { it.toExternal() }
+    is UnorderedList           -> contents.flatMap { it.toExternal() }
+    is Figure                  -> title.toExternal() + externalImage + (copyright?.toExternal() ?: emptyList())
+    is Paragraph               -> content.toExternal()
+    is Quote                   -> content.toExternal()
+    is Strong                  -> content.toExternal()
+    is Emphasis                -> content.toExternal()
+    is Block                   -> content.toExternal()
 }

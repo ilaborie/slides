@@ -5,6 +5,7 @@ code, pre {
 }
 
 pre[class^=lang-] {
-  box-shadow : inset 0 0 .25rem rgba(0, 0, 0, .25);
-  border-radius: .25rem;
+  box-shadow    : inset 0 0 .25rem rgba(0, 0, 0, .25);
+  border-radius : .25rem;
+  tab-size      : 2;
 }

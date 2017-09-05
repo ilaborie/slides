@@ -129,7 +129,7 @@ ExternalResource(resource=/cssIsAwesome/04_pseudo_elements/philosophe.css)
 	</div>
 </div>
 
-### LiveCoding: Triangle avec des bordures ###
+### Triangle avec des bordures ###
 
 ```CSS
 ExternalResource(resource=/cssIsAwesome/04_pseudo_elements/border.css)
@@ -283,19 +283,19 @@ HTML
 ### Panel ###
 
 ```html
-No resource: /cssIsAwesome/07_HTML/details.html
+
 ```
 ```CSS
 ExternalResource(resource=/cssIsAwesome/07_HTML/panel.css)
 ```
-No resource: /cssIsAwesome/07_HTML/panel.html
+
 
 ### Dialog ###
 
 ```CSS
 ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 ```
-No resource: /cssIsAwesome/07_HTML/dialog.html
+
 
 ### Polyfill ###
 
@@ -358,4 +358,3 @@ Conclusion
 ```CSS
 ExternalResource(resource=/cssIsAwesome/09_conclusion/end.css)
 ```
-No resource: /cssIsAwesome/09_conclusion/end.html

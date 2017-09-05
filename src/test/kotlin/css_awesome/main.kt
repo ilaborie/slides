@@ -113,7 +113,7 @@ fun main(args: Array<String>) {
                 slide(title = "Le dinner d'un philosophe", contentType = HTML, styleClass = setOf("hide-title")) {
                     cssLiveCode("/cssIsAwesome/04_pseudo_elements/philosophe")
                 }
-                        .slide(title = "LiveCoding: Triangle avec des bordures", contentType = HTML, styleClass = setOf("hide-title")) {
+                        .slide(title = "Triangle avec des bordures", contentType = HTML, styleClass = setOf("hide-title")) {
                             cssLiveCode("/cssIsAwesome/04_pseudo_elements/border")
                         }
                         .slide(title = "Info-bulle", contentType = HTML, styleClass = setOf("hide-title")) {
