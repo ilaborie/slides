@@ -7,6 +7,12 @@ section .next {
   }
 }
 
+
+section .previous::after,
+section .next::before {
+  content: '';
+}
+
 section .previous::before,
 section .next::after {
   width: var(--navigationWidth);

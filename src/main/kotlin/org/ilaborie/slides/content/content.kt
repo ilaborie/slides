@@ -67,7 +67,9 @@ data class Figure(val title: Content, val externalImage: External, val copyright
 
 
 // Styled
-data class Paragraph(val content: Content) : Content()
+data class Paragraph(val content: Content) : Content() {
+    constructor(contentBuilder: () -> Content) : this(contentBuilder())
+}
 
 data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
 data class Strong(val content: Content) : Content()

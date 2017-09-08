@@ -26,6 +26,7 @@
 
 :root {
   --who: 'World !';
+  --baseFontSize: 4vmin;
   --primary: #222;
   --secondary: #efefef;
   --black: #000;
@@ -47,11 +48,14 @@
   --fgCover: var(--primary);
   --bgPart: var(--secondary);
   --fgPart: var(--primary);
+  --headerFontSize: 1.8rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
   --bgSlideNav: transparent;
   --fgSlideNav: rgba(0, 0, 0, 0.2);
   --navigationWidth: 15vw;
-  --bgCounter: rgba(0, 0, 0, 0.1);
-  --fgCounter: var(--black);
+  --bgCounter: transparend;
+  --fgCounter: var(--secondary);
   --txtFooter: '@DevFestToulouse @ilaborie #CSS #🦄';
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
@@ -76,8 +80,8 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    height: 2.8rem;
-    font-size: 1.5vw; }
+    height: 1.5em;
+    font-size: .5rem; }
     .slides-nav nav a {
       color: inherit;
       min-width: 2ch;
@@ -134,6 +138,10 @@ section .next {
   section .next:hover {
     color: var(--fgSlideNav); }
 
+section .previous::after,
+section .next::before {
+  content: ''; }
+
 section .previous::before,
 section .next::after {
   width: var(--navigationWidth);
@@ -172,17 +180,25 @@ section:target {
 section:target ~ section {
   transform: translateX(100vmax); }
 
+section a {
+  text-decoration: none;
+  color: currentColor;
+  border-bottom: thin dashed currentColor; }
+  section a::before {
+    content: '➼ '; }
+
 section:not(.cover):not(.part) {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center; }
   section:not(.cover):not(.part) h3 {
-    font-size: 2rem;
-    padding-left: 1rem;
     align-self: stretch;
     flex: 0 0 auto;
-    margin-right: 4rem; }
+    padding: .25em 1em;
+    font-size: var(--headerFontSize);
+    background: var(--bgHeader);
+    color: var(--fgHeader); }
   section:not(.cover):not(.part) > *:not(h3) {
     width: calc(100vw - 2 * var(--navigationWidth));
     text-align: left; }
@@ -357,7 +373,7 @@ style[contenteditable=true] {
   padding: 0; }
 
 html {
-  font-size: 3vmin; }
+  font-size: var(--baseFontSize); }
 
 body {
   font-family: var(--fontBody); }
@@ -372,6 +388,3 @@ blockquote p {
     display: inline-block;
     transform: scale(4) translateY(0.25rem);
     margin-right: 1.5em; }
-
-.todo {
-  box-shadow: inset 0 0 0 1rem rgba(80, 0, 0, 0.5); }

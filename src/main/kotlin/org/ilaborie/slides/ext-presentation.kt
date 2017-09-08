@@ -58,7 +58,7 @@ fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
                 val resource = (listOf(this.id) +
                         when (parent) {
                             is Group ->
-                                listOf("${this(parent).format("00")}_${parent.title.normalize()}",
+                                listOf("${this(parent).format("00")}_${parent.id}",
                                        "${parent(slide).format("00")}_${slide.id()}$contentType")
                             else     ->
                                 listOf("${this(slide).format("00")}_${slide.id()}$contentType")

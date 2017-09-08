@@ -1,8 +1,9 @@
 @import "fonts";
 
 :root {
-  //
+  // Base
   --who             : 'World !';
+  --baseFontSize    : 4vmin;
 
   // Colors
   --primary         : #222;
@@ -37,14 +38,19 @@
   --bgPart          : var(--secondary);
   --fgPart          : var(--primary);
 
+  // Slide standard
+  --headerFontSize  : 1.8rem;
+  --bgHeader        : var(--primary);
+  --fgHeader        : var(--secondary);
+
   // Slide Navigation
   --bgSlideNav      : transparent;
   --fgSlideNav      : rgba(0, 0, 0, .2);
   --navigationWidth : 15vw;
 
   // Slide Counter
-  --bgCounter       : rgba(0, 0, 0, .1);
-  --fgCounter       : var(--black);
+  --bgCounter       : transparend;
+  --fgCounter       : var(--secondary);
 
   // Slide Footer
   --txtFooter       : '@DevFestToulouse @ilaborie #CSS #🦄';

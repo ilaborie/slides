@@ -1,3 +1,15 @@
+// Common
+section {
+  a {
+    text-decoration: none;
+    color: currentColor;
+    border-bottom   : thin dashed currentColor;
+    &::before {
+      content: '➼ ';
+    }
+  }
+}
+
 // Standard title
 section:not(.cover):not(.part) {
   display         : flex;
@@ -6,18 +18,18 @@ section:not(.cover):not(.part) {
   align-items     : center;
 
   h3 {
-    font-size    : 2rem;
-    padding-left : 1rem;
     align-self   : stretch;
     flex         : 0 0 auto;
-    margin-right : 4rem;
+    padding      : .25em 1em;
+    font-size    : var(--headerFontSize);
+    background   : var(--bgHeader);
+    color        : var(--fgHeader);
   }
 
   & > *:not(h3) {
     width      : calc(100vw - 2 * var(--navigationWidth));
     text-align : left;
   }
-
 }
 
 // Cover
@@ -64,13 +76,13 @@ section.two-columns {
 // Roadmap
 section.roadmap {
   ol {
-    list-style: upper-roman;
+    list-style : upper-roman;
   }
 }
 
 // No Title
 section.hide-title {
   h1, h2, h3 {
-    display: none;
+    display : none;
   }
 }

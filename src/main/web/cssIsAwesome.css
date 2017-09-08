@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .mzh-animation .logo-askew, section.cover h1 .logo-askew {
   display: inline-block;
   animation-name: unskew;
@@ -41,3 +42,29 @@ section.cover h1 {
   text-transform: uppercase;
   line-height: 105%;
   text-align: left; }
+
+#whoami h4 {
+  font-size: 1.5rem; }
+
+#whoami > div {
+  display: flex; }
+  #whoami > div div {
+    align-self: flex-end; }
+  #whoami > div svg {
+    flex: 1 1 auto;
+    max-height: 2em;
+    max-width: 25vw; }
+    #whoami > div svg path {
+      fill: currentColor; }
+
+#whoami > a {
+  margin: 0 var(--navigationWidth);
+  width: auto;
+  align-self: flex-start; }
+  #whoami > a[href^='https://twitter.com']::before {
+    content: '🐦 '; }
+  #whoami > a[href^=mailto]::before {
+    content: '✉️ '; }
+
+#least-power blockquote p {
+  font-size: 1.35rem; }

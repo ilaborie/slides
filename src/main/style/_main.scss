@@ -19,7 +19,7 @@
 }
 
 html {
-  font-size : 3vmin;
+  font-size : var(--baseFontSize);
 }
 
 body {
@@ -39,8 +39,3 @@ blockquote p {
     margin-right : 1.5em;
   }
 }
-
-.todo {
-  box-shadow : inset 0 0 0 1rem rgba(80, 0, 0, .5);
-}
-

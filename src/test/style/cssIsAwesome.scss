@@ -1,22 +1,52 @@
 @import "common/animations";
+@import "common/mixins";
 
-$size : 56vh;
-$effectSize : .02em;
-
-// Code
+// Cover
 section.cover {
   h1 {
     @extend .mzh-animation;
-    width          : $size;
-    height         : $size;
-    border         : solid 1vh currentColor;
-    font-size      : $size / 3.55;
-    padding        : 2vh;
-    font-family    : arial, sans-serif;
-    font-weight    : bold;
-    box-sizing     : border-box;
-    text-transform : uppercase;
-    line-height    : 105%;
-    text-align: left;
+    @include cssIsAwesome();
+    text-align : left;
+  }
+}
+
+// Whoami
+#whoami {
+  h4 {
+    font-size : 1.5rem;
+  }
+  & > div {
+    display : flex;
+    div {
+      align-self : flex-end;
+    }
+    svg {
+      flex       : 1 1 auto;
+      max-height : 2em;
+      max-width  : 25vw;
+      path {
+        fill : currentColor;
+      }
+    }
+  }
+
+  & > a {
+    margin     : 0 var(--navigationWidth);
+    width: auto;
+    align-self : flex-start;
+    &[href^='https://twitter.com']::before {
+      content : '🐦 ';
+    }
+    &[href^=mailto]::before {
+      content : '✉️ ';
+    }
+
+  }
+}
+
+// Least Power
+#least-power {
+  blockquote p {
+    font-size : 1.35rem;
   }
 }

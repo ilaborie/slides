@@ -58,13 +58,13 @@ fun main(args: Array<String>) {
                         }
             }
             .group("Pseudo éléments") {
-                slide(title = "Le dinner d'un philosophe", contentType = HTML, styleClass = setOf("hide-title")) {
+                slide(title = "Le dinner d'un philosophe", styleClass = setOf("hide-title")) {
                     cssLiveCode("/cssIsAwesome/04_pseudo_elements/philosophe")
                 }
-                        .slide(title = "Triangle avec des bordures", contentType = HTML, styleClass = setOf("hide-title")) {
+                        .slide(title = "Triangle avec des bordures", styleClass = setOf("hide-title")) {
                             cssLiveCode("/cssIsAwesome/04_pseudo_elements/border")
                         }
-                        .slide(title = "Info-bulle", contentType = HTML, styleClass = setOf("hide-title")) {
+                        .slide(title = "Info-bulle", styleClass = setOf("hide-title")) {
                             cssLiveCode("/cssIsAwesome/04_pseudo_elements/popover")
                         }
                         .slide(title = "Bilan pseudo éléments") {
@@ -97,7 +97,7 @@ fun main(args: Array<String>) {
                             )
                         }
             }
-            .group("Pseudo classes d'état") {
+            .group("Pseudo classes d'état", "pseudo_classes") {
                 slide(title = "Usage des info-bulles", contentType = HTML)
                         .slide(title = "Pseudo états", styleClass = setOf("two-columns")) {
                             UnorderedList(
@@ -126,7 +126,9 @@ fun main(args: Array<String>) {
                         .slide(title = "Démo des onglets") {
                             ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))
                         }
-                        .slide(title = "Bilan Pseudo classes")  // TODO
+                        .slide(title = "Bilan Pseudo classes") {
+                            "TODO".strong()
+                        }
             }
             .group("HTML") {
                 slide("Panel", "panel_html") {
