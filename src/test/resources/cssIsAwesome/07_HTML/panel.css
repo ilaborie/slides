@@ -1,0 +1,9 @@
+details {
+    border        : medium solid currentcolor;
+    border-radius : .25em;
+    width         : 100%;
+}
+
+details summary {
+    background : #080808; color : #f8f8f8;
+}

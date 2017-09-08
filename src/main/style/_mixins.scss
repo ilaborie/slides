@@ -4,3 +4,25 @@
   justify-content: center;
   align-items: center;
 }
+
+
+@mixin board($color1, $color2, $size: 1em) {
+  background: linear-gradient(hsla(0,100%,100%,.75), hsla(0,100%,100%,.75)),
+              linear-gradient(45deg,
+                  $color1 25%,
+                  transparent 25%,
+                  transparent 75%,
+                  $color1 75%,
+                  $color1) 0 0,
+              linear-gradient(45deg,
+                  $color1 25%,
+                  $color2 25%,
+                  $color2 75%,
+                  $color1 75%,
+                  $color1) $size $size,
+                $color2;
+
+  background-size: (2 * $size) (2 * $size);
+
+  z-index: -10;
+}

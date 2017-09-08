@@ -1,0 +1,3 @@
+.awesome-box::before {
+    content: '🦄 is Awesome !';
+}

@@ -7,49 +7,20 @@ import org.ilaborie.slides.content.*
 import java.io.File
 
 
+fun cssLiveCode(prefix: String) =
+        StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +
+                EditableZone(ExternalHtmlContent(ExternalResource("$prefix.html")))
+
 fun main(args: Array<String>) {
     val logger = Logger("CSS")
 
-    val titleLeastPower = Link("The Rule of Least Power", "https://www.w3.org/2001/tag/doc/leastPower.html")
-
-    fun cssLiveCode(prefix: String) =
-            StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +
-                    EditableZone(ExternalHtmlContent(ExternalResource("$prefix.html")))
-
-
     val cssIsAwesome = Presentation(title = "CSS is Awesome !", id = "cssIsAwesome")
-            .group("Introduction", skipPart = true) {
-                slide(title = Code(code = "$ whoami"), id = "whoami")
-                        .slide(title = titleLeastPower, id = "least-power") {
-                            Quote(HtmlContent("When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The \"Rule of Least Power\" suggests <strong>choosing the least powerful language suitable</strong> for a given purpose."))
-                        }
-                        .slide(title = "Règles du jeu") {
-                            listOf("Texte",
-                                   "HTML (sémantique) & CSS (layout, style, animations simples)",
-                                   "SVG (formes et animations complexes)",
-                                   "JavaScripts").ol() +
-                                    "⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles".em()
-                        }
-                        .slide(title = "Le CSS c'est vaste", styleClass = setOf("two-columns")) {
-                            listOf("Selectors",
-                                   "Box model",
-                                   "Float",
-                                   "Media Query",
-                                   "Transitions",
-                                   "Gradients",
-                                   "Responsive Design",
-                                   "Media",
-                                   "Variables",
-                                   "Colors",
-                                   "Shapes",
-                                   "...").ul()
-                        }
-                        .roadMap(title = "Plan")
-            }
+            .group("Introduction", skipPart = true) { intro(this) }
             .group("Utiliser un pré-processeur ?", "preprocessor") {
-                slide(title = "Bordure des boutons", contentType = HTML, styleClass = setOf("hide-title")) {
-                    cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
-                }
+                this
+                        .slide(title = "Bordure des boutons", contentType = HTML, styleClass = setOf("hide-title")) {
+                            cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
+                        }
                         .slide(title = "Alors utilise-t-on un pré-processeurs ?") {
                             Block("Oui, mais privilégiez:".p() +
                                           listOf("le CSS", "les post-processeurs").ul()) +
@@ -60,31 +31,7 @@ fun main(args: Array<String>) {
                                             Link("CSS Color Module Level 4", "https://www.w3.org/TR/css-color-4/"))
                         }
             }
-            .group("Unités") {
-                slide(title = "Une histoire d’unités CSS") {
-                    Figure("Une histoire d’unités CSS".raw(),
-                           ExternalLink("https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg"),
-                           Link("CommitStrip", "http://www.commitstrip.com/fr/"))
-                }
-                        .slide(title = "Les unités de longueur") {
-                            Definitions(
-                                    "px, cm, pt, ..." to "longueurs absolues (mesure physique)".html(),
-                                    "em, rem" to "fonction de la <code>font-size</code>".html(),
-                                    "ex, ch" to "hauteur d'un <code>x</code>, largeur d'un <code>0</code>".html(),
-                                    "vh, vw" to "(100vh, 100vw) = (hauteur, largeur) du <i>viewport</i>".html(),
-                                    "vmin, vmax" to "min(1vh, 1vw), max(1vh, 1vw)".raw())
-                        }
-                        .slide(title = "Holy Grail Layout avec calc", styleClass = setOf("hide-title")) {
-                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")) +
-                                    Link("Live coding", "./holy-grail.html")
-                        }
-                        .slide(title = "Bilan unités") {
-                            UnorderedList(
-                                    Link("Unités", "https://developer.mozilla.org/fr/docs/Web/CSS/length) et [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html"),
-                                    Link(Code(code = "calc"), "https://developer.mozilla.org/fr/docs/Web/CSS/calc")
-                            )
-                        }
-            }
+            .group("Unités") { unites(this) }
             .group("Flexbox et Grid") {
                 slide(title = "Avec flexbox & Grid", styleClass = setOf("hide-title")) {
                     ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/03_flexbox_et_grid/holy_grail.html")) +
@@ -150,8 +97,8 @@ fun main(args: Array<String>) {
                         }
             }
             .group("Pseudo classes d'état") {
-                slide(title = "Usage des info-bulles")
-                        .slide(title = "Pseudo états") {
+                slide(title = "Usage des info-bulles", contentType = HTML)
+                        .slide(title = "Pseudo états", styleClass = setOf("two-columns")) {
                             UnorderedList(
                                     Code(":hover"),
                                     Code(":focus"),
@@ -164,19 +111,19 @@ fun main(args: Array<String>) {
                                     "...".raw())
                         }
                         .slide(title = "Checkbox", styleClass = setOf("hide-title")) {
-                            cssLiveCode("/cssIsAwesome/06_pseudo_classes_d_etat/checkbox")
+                            cssLiveCode("/cssIsAwesome/06_pseudo_classes/checkbox")
                         }
                         .slide(title = "Switch", styleClass = setOf("hide-title")) {
-                            cssLiveCode("/cssIsAwesome/06_pseudo_classes_d_etat/switch")
+                            cssLiveCode("/cssIsAwesome/06_pseudo_classes/switch")
                         }
                         .slide(title = "Panel", styleClass = setOf("hide-title")) {
-                            cssLiveCode("/cssIsAwesome/06_pseudo_classes_d_etat/panel")
+                            cssLiveCode("/cssIsAwesome/06_pseudo_classes/panel")
                         }
                         .slide(title = "Principe pour les onglets") {
-                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/06_pseudo_classes_d_etat/tab.html"))
+                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))
                         }
                         .slide(title = "Démo des onglets") {
-                            ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes_d_etat/tab.html"))
+                            ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))
                         }
                         .slide(title = "Bilan Pseudo classes")  // TODO
             }
@@ -202,46 +149,7 @@ fun main(args: Array<String>) {
                             ExternalHtmlContent(ExternalResource("/cssIsAwesome/08_compat/support.html"))
                 }
             }
-            .group("Conclusion") {
-                slide(title = "Bilan", styleClass = setOf("hide-title")) {
-                    listOf(
-                            "Utilisez du CSS pour simpifier le code",
-                            "Utilisez intelligemment les pre/post processeurs",
-                            "HTML, SVG are Awesome !",
-                            "JavaScript, TypeScript could be Awesome !").ol()
-                }
-                        .slide(title = "Traitez le CSS comme du code") {
-                            listOf(
-                                    "Revue de code",
-                                    "DRY",
-                                    "Clean Code",
-                                    "Single Responsibility Principle",
-                                    "...").ol()
-                        }
-                        .slide(title = "Liens") {
-                            UnorderedList(
-                                    Link("les slides", ""),
-                                    Link("le code", ""),
-                                    Link("Making Of", ""))
-                        }
-                        .slide(title = "Pour apprendre") {
-                            UnorderedList(
-                                    Code("(Ctrl|Cmd) + Shift + i"),
-                                    ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
-                                            Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
-                                    Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS"),
-                                    Link("CodePen", "https://codepen.io/") +
-                                            Link("JSFiddle", "https://jsfiddle.net/") +
-                                            Link("Dabblet", "http://dabblet.com/") + "...".raw(),
-                                    Link("CSS Tricks", ""),
-                                    Link("Shop Talk Show", ""),
-                                    Link("CSS Flags", "")
-                            )
-                        }
-                        .slide(title = "🦄 rocks !", contentType = HTML) {
-                            cssLiveCode("/cssIsAwesome/09_conclusion/end")
-                        }
-            }
+            .group("Conclusion") { conclusion(this) }
 
     val slidesDir = File("src/test/resources/")
 
@@ -251,7 +159,11 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web")
-    cssIsAwesome.writeHtmlTo(dist, "index")
-    cssIsAwesome.writeMarkdownTo(dist, "index")
+    cssIsAwesome.writeHtmlTo(dist, "devfest-tls")
+    cssIsAwesome.writeMarkdownTo(dist, "devfest-tls")
 
+    val holyGrail = slidesDir.resolve(cssIsAwesome.id).resolve("holy-grail.html")
+    holyGrail.copyTo(target = dist.resolve("holy-grail-calc.html"), overwrite = true)
+    holyGrail.copyTo(target = dist.resolve("holy-grail-flexbox.html"), overwrite = true)
+    holyGrail.copyTo(target = dist.resolve("holy-grail-grid.html"), overwrite = true)
 }

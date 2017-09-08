@@ -1,0 +1,11 @@
+.editable {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+
+  @include board(var(--primary), var(--secondary));
+}

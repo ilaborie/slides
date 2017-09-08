@@ -5,8 +5,10 @@
   "license": "MIT",
   "scripts": {
     "serve": "lite-server --baseDir=src/main/web",
-    "style:index": "node-sass src/main/style/slides.scss --output src/main/web/",
-    "style:watch": "npm run style:index -- --watch",
+    "style:slides": "node-sass src/main/style/slides.scss --output src/main/web/",
+    "style:cssIsAwesome": "node-sass src/test/style/cssIsAwesome.scss --output src/main/web/",
+    "style:devfest-tls": "node-sass src/test/style/devfest-tls.scss --output src/main/web/",
+    "style:watch": "npm run style:slides -- --watch & npm run style:cssIsAwesome -- --watch & npm run style:devfest-tls -- --watch",
     "start": "npm run serve & npm run style:watch"
   },
   "devDependencies": {

@@ -65,13 +65,13 @@ RawContent(content=vmin, vmax)
 
 ```html
 <body>
- <header>Header</header>
- <div>
-   <nav>Menu</nav>
-   <main>Content</main>
-   <aside>Side</aside>    
- </div>
- <footer>Footer</footer>
+<header>Header</header>
+<div>
+  <nav>Menu</nav>
+  <main>Content</main>
+  <aside>Side</aside>
+</div>
+<footer>Footer</footer>
 </body>
 ```
 [Live coding](./holy-grail.html)
@@ -191,7 +191,7 @@ Pseudo classes d'état
 ### Checkbox ###
 
 ```CSS
-ExternalResource(resource=/cssIsAwesome/06_pseudo_classes_d_etat/checkbox.css)
+ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/checkbox.css)
 ```
 <blockquote>
 	<p>The science of operations, as derived from mathematics more especially, is a science of itself, and has its own
@@ -206,7 +206,7 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes_d_etat/checkbox.css)
 ### Switch ###
 
 ```CSS
-ExternalResource(resource=/cssIsAwesome/06_pseudo_classes_d_etat/switch.css)
+ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch.css)
 ```
 <label for="switch1">Switch</label>
 <input id="switch1" type="checkbox" class="switch" checked>
@@ -215,7 +215,7 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes_d_etat/switch.css)
 ### Panel ###
 
 ```CSS
-ExternalResource(resource=/cssIsAwesome/06_pseudo_classes_d_etat/panel.css)
+ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 ```
 <div class="panel">
 	<input type="checkbox" id="panel" checked>
@@ -284,18 +284,25 @@ HTML
 
 ```html
 
+<details>
+	<summary>Des détails</summary>
+	<p>Plus d'infos à propos des détails.</p>
+</details>
 ```
 ```CSS
 ExternalResource(resource=/cssIsAwesome/07_HTML/panel.css)
 ```
-
+<details>
+	<summary>Des détails</summary>
+	<p>Plus d'infos à propos des détails.</p>
+</details>
 
 ### Dialog ###
 
 ```CSS
 ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 ```
-
+<dialog id="diag">This is a dialog!</dialog>
 
 ### Polyfill ###
 
@@ -358,3 +365,4 @@ Conclusion
 ```CSS
 ExternalResource(resource=/cssIsAwesome/09_conclusion/end.css)
 ```
+<div class="awesome-box"></div>

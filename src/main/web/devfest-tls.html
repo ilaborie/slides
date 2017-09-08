@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS is Awesome !</title>
     <link rel="stylesheet" href="slides.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="cssIsAwesome.css">
+    <link rel="stylesheet" href="devfest-tls.css">
 </head>
-<body class="index">
+<body class="devfest-tls">
     <div class="slides-nav">
         <nav>
             <a href="#css_is_awesome__" class="cover" title="CSS is Awesome !">0</a>
@@ -40,7 +41,7 @@
             <a href="#bilan_animations" class="" title="Bilan animations">25</a>
             <a href="#part_pseudo_classes_d_etat" class="part" title="Pseudo classes d'état">26</a>
             <a href="#usage_des_info_bulles" class="" title="Usage des info-bulles">27</a>
-            <a href="#pseudo_etats" class="" title="Pseudo états">28</a>
+            <a href="#pseudo_etats" class="two-columns" title="Pseudo états">28</a>
             <a href="#checkbox" class="hide-title" title="Checkbox">29</a>
             <a href="#switch" class="hide-title" title="Switch">30</a>
             <a href="#panel" class="hide-title" title="Panel">31</a>
@@ -58,7 +59,7 @@
             <a href="#traitez_le_css_comme_du_code" class="" title="Traitez le CSS comme du code">43</a>
             <a href="#liens" class="" title="Liens">44</a>
             <a href="#pour_apprendre" class="" title="Pour apprendre">45</a>
-            <a href="#_rocks__" class="" title="🦄 rocks !">46</a>
+            <a href="#_rocks__" class="hide-title" title="🦄 rocks !">46</a>
         </nav>
     </div>
     <main>
@@ -257,13 +258,13 @@
   <h3>Holy Grail Layout avec calc</h3>
   <pre class="lang-html"><code>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-     <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>    
-   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-   <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
   </code></pre>
   <a href="./holy-grail.html">Live coding</a>
@@ -454,6 +455,8 @@
 <section id="texte_de_chargement" class="hide-title">
   <h3>Texte de chargement</h3>
   <style scoped contenteditable="true">.loader {
+      display: inline-block;
+      white-space: normal;
       line-height : 1.5;
       overflow    : auto;
       box-shadow : 0 0 0 .05em red;
@@ -481,6 +484,10 @@
 <section id="dessiner" class="">
   <h3>Dessiner</h3>
   <style scoped contenteditable="true">svg circle, svg rect {
+      stroke: var(--primary);
+      stroke-width: 1em;
+      /*stroke-dasharray: 0;*/
+      /*stroke-dashoffset: 0;*/
   }</style>
   <div class="editable"><svg viewBox="0 0 400 200">
   	<circle cx="100" cy="100" r="80"></circle>
@@ -531,7 +538,7 @@
 
 
 <!-- Slide -->
-<section id="pseudo_etats" class="">
+<section id="pseudo_etats" class="two-columns">
   <h3>Pseudo états</h3>
   <ul><li><pre>:hover</pre></li>
   <li><pre>:focus</pre></li>
@@ -728,10 +735,24 @@
 <section id="panel_html" class="">
   <h3>Panel</h3>
   <pre class="lang-html"><code>
-  
+  <span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+  	<span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Des détails<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
+  	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Plus d'infos à propos des détails.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span>
   </code></pre>
-  <style scoped contenteditable="true"></style>
-  <div class="editable"></div>
+  <style scoped contenteditable="true">details {
+      border        : medium solid currentcolor;
+      border-radius : .25em;
+      width         : 100%;
+  }
+  
+  details summary {
+      background : #080808; color : #f8f8f8;
+  }</style>
+  <div class="editable"><details>
+  	<summary>Des détails</summary>
+  	<p>Plus d'infos à propos des détails.</p>
+  </details></div>
   <nav>
       <a href="#part_html" class="previous"></a>
       <a href="#dialog" class="next"></a>
@@ -742,8 +763,15 @@
 <!-- Slide -->
 <section id="dialog" class="">
   <h3>Dialog</h3>
-  <style scoped contenteditable="true"></style>
-  <div class="editable"></div>
+  <style scoped contenteditable="true">.editable dialog {
+      box-shadow: .25em .25em .125em rgba(0, 0, 0, 0.42);
+  }
+  /* .editable dialog::backdrop {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+  } */</style>
+  <div class="editable"><dialog id="diag">This is a dialog!</dialog></div>
   <nav>
       <a href="#panel_html" class="previous"></a>
       <a href="#polyfill" class="next"></a>
@@ -878,10 +906,12 @@
 
 
 <!-- Slide -->
-<section id="_rocks__" class="">
+<section id="_rocks__" class="hide-title">
   <h3>🦄 rocks !</h3>
-  <style scoped contenteditable="true"></style>
-  <div class="editable"></div>
+  <style scoped contenteditable="true">.awesome-box::before {
+      content: 'CSS is Awesome !';
+  }</style>
+  <div class="editable"><div class="awesome-box"></div></div>
   <nav>
       <a href="#pour_apprendre" class="previous"></a>
       

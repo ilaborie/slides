@@ -33,6 +33,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>$title</title>
     <link rel="stylesheet" href="slides.css">
+    <link rel="stylesheet" href="$id.css">
     <link rel="stylesheet" href="$key.css">
 </head>
 <body class="$key">
