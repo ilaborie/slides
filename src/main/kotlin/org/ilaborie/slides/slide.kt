@@ -47,9 +47,9 @@ data class BasicSlide(
             (title?.h3() ?: EmptyContent) + (content ?: defaultContent())
 }
 
-data class MainTitleSlide(val title: String) : Slide() {
-    override fun id() = title.normalize()
-    override fun title() = title.raw()
+data class MainTitleSlide(val title: Content, val id: String) : Slide() {
+    override fun id() = id
+    override fun title() = title
     override fun styleClass() = setOf("cover")
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = title.h1()

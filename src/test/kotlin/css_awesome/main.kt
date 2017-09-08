@@ -14,7 +14,8 @@ fun cssLiveCode(prefix: String) =
 fun main(args: Array<String>) {
     val logger = Logger("CSS")
 
-    val cssIsAwesome = Presentation(title = "CSS is Awesome !", id = "cssIsAwesome")
+    val title = "C<span class=\"logo-askew\">S</span>S is awesome!".html()
+    val cssIsAwesome = Presentation(title = title, id = "cssIsAwesome")
             .group("Introduction", skipPart = true) { intro(this) }
             .group("Utiliser un pré-processeur ?", "preprocessor") {
                 this

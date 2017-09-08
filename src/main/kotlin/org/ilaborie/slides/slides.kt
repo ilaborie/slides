@@ -2,15 +2,18 @@ package org.ilaborie.slides
 
 import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.content.Content
+import org.ilaborie.slides.content.raw
 
 interface Slides {
     fun toList(): List<Slide>
 }
 
-data class Presentation(val title: String,
-                        val id: String = title.normalize(),
+data class Presentation(val title: Content,
+                        val id: String,
                         val slides: List<Slides> = emptyList()) : Slides {
-    val coverSlide by lazy { MainTitleSlide(title) }
+    constructor(title: String, id: String = title.normalize()) : this(title = title.raw(), id = id)
+
+    val coverSlide by lazy { MainTitleSlide(title, id) }
 
     operator fun invoke(s: Slides): Int = slides.indexOf(s)
 
