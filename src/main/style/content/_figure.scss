@@ -4,8 +4,12 @@ figure {
   align-items: center;
 
   img {
-
     max-width: 100%;
     max-height: 70vh;
+  }
+
+  .copyright {
+    font-size: .75rem;
+    margin: .5em auto;
   }
 }

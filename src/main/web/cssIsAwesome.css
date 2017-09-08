@@ -68,3 +68,10 @@ section.cover h1 {
 
 #least-power blockquote p {
   font-size: 1.35rem; }
+
+#bordure_des_boutons .editable button {
+  padding: .25em .5em;
+  transform: scale(4); }
+
+#une_histoire_dunites_css figcaption {
+  display: none; }

@@ -21,12 +21,12 @@ Expert Java & Web,
 
 * Selectors/n* Box model/n* Float/n* Media Query/n* Transitions/n* Gradients/n* Responsive Design/n* Media/n* Variables/n* Colors/n* Shapes/n* ...
 
-Plan
-----
-0. Utiliser un pré-processeur ?/n1. Unités/n2. Flexbox et Grid/n3. Pseudo éléments/n4. Animations/n5. Pseudo classes d'état/n6. HTML/n7. Compatibilité des navigateurs/n8. Conclusion
+### Plan ###
 
-Utiliser un pré-processeur ?
-----------------------------
+0. Utiliser un pré&#8209;processeur ?/n1. Unités/n2. Flexbox et Grid/n3. Pseudo éléments/n4. Animations/n5. Pseudo classes d'état/n6. HTML/n7. Compatibilité des navigateurs/n8. Conclusion
+
+Utiliser un pré&#8209;processeur ?
+----------------------------------
 
 ### Bordure des boutons ###
 
@@ -36,10 +36,10 @@ ExternalResource(resource=/cssIsAwesome/01_preprocessor/boutons.css)
 <button type="button">Plop</button>
 <button type="button" class="danger">Plop !️</button>
 
-### Alors utilise-t-on un pré-processeurs ? ###
+### Alors utilise-t-on un pré&#8209;processeurs ? ###
 
 Oui, mais privilégiez:
-* le CSS/n* les post-processeurs
+* le CSS/n* les post&#8209;processeurs
 * [`currentColor`](https://css-tricks.com/currentcolor/)/n* [`background-origin`](https://developer.mozilla.org/fr/docs/Web/CSS/background-origin)/n* [CSS Variables (aka Custom Properties)](https://www.w3.org/TR/css-variables/)/n* [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
 
 Unités
@@ -343,7 +343,7 @@ Conclusion
 
 ### Bilan ###
 
-0. Utilisez du CSS pour simpifier le code/n1. Utilisez intelligemment les pre/post processeurs/n2. HTML, SVG are Awesome !/n3. JavaScript, TypeScript could be Awesome !
+0. Utilisez du CSS pour simpifier le code/n1. Utilisez intelligemment les pre/post&#8209;processeurs/n2. HTML, SVG are Awesome !/n3. JavaScript, TypeScript could be Awesome !
 
 ### Traitez le CSS comme du code ###
 

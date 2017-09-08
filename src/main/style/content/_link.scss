@@ -1,0 +1,10 @@
+section {
+  a {
+    text-decoration : none;
+    color           : currentColor;
+    border-bottom   : thin dashed currentColor;
+    &::before {
+      content : '➼ ';
+    }
+  }
+}

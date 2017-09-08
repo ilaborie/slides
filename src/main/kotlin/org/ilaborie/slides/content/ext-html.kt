@@ -98,7 +98,7 @@ fun StyleEditable.renderAsHtml() = "<style scoped contenteditable=\"true\">${ini
 
 // FIXME test
 fun Code.renderAsHtml() = when (language) {
-    Language.None -> "<pre>$code</pre>"
+    Language.None -> "<code>$code</code>"
     else          -> {
         val process = ProcessBuilder("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase()).start()
         val writer = process.outputStream.writer()

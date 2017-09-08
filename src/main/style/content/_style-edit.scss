@@ -1,4 +1,5 @@
 style[contenteditable=true] {
+  @extend .hljs;
   z-index       : 1;
   padding       : .5em;
   margin-top    : 1rem;
@@ -13,14 +14,8 @@ style[contenteditable=true] {
   background    : var(--bgCode);
   box-sizing    : border-box;
   border        : .125em solid transparent;
-  background    : linear-gradient(to left,
-                    var(--bgCode),
-                    var(--bgCode)) padding-box,
-                  repeating-linear-gradient(-45deg,
-                    var(--fgSlide) 0,
-                    var(--fgSlide) 25%,
-                    transparent 0,
-                    transparent 50%) 0 / .6em .6em;
+  background    : linear-gradient(to left, var(--bgCode), var(--bgCode)) padding-box,
+                  repeating-linear-gradient(-45deg, var(--fgSlide) 0, var(--fgSlide) 25%, transparent 0, transparent 50%) 0 / .6em .6em;
   animation     : ants 60s linear infinite;
 }
 

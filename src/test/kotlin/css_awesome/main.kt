@@ -17,14 +17,14 @@ fun main(args: Array<String>) {
     val title = "C<span class=\"logo-askew\">S</span>S is awesome!".html()
     val cssIsAwesome = Presentation(title = title, id = "cssIsAwesome")
             .group("Introduction", skipPart = true) { intro(this) }
-            .group("Utiliser un pré-processeur ?", "preprocessor") {
+            .group("Utiliser un pré&#8209;processeur ?", "preprocessor") {
                 this
                         .slide(title = "Bordure des boutons", contentType = HTML, styleClass = setOf("hide-title")) {
                             cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
                         }
-                        .slide(title = "Alors utilise-t-on un pré-processeurs ?") {
+                        .slide(title = "Alors utilise-t-on un pré&#8209;processeurs ?") {
                             Block("Oui, mais privilégiez:".p() +
-                                          listOf("le CSS", "les post-processeurs").ul()) +
+                                          listOf("le CSS", "les post&#8209;processeurs").ul()) +
                                     UnorderedList(
                                             Link(Code(code = "currentColor"), "https://css-tricks.com/currentcolor/"),
                                             Link(Code(code = "background-origin"), "https://developer.mozilla.org/fr/docs/Web/CSS/background-origin"),

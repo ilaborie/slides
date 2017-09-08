@@ -60,8 +60,8 @@
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
   --logoFooter: url("./assets/logo_white.png");
-  --bgCode: var(--secondary);
-  --fgCode: var(--primary); }
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa; }
 
 .slides-nav {
   position: fixed;
@@ -180,13 +180,6 @@ section:target {
 section:target ~ section {
   transform: translateX(100vmax); }
 
-section a {
-  text-decoration: none;
-  color: currentColor;
-  border-bottom: thin dashed currentColor; }
-  section a::before {
-    content: '➼ '; }
-
 section:not(.cover):not(.part) {
   display: flex;
   flex-direction: column;
@@ -227,7 +220,7 @@ section.part {
   section.part h2 {
     margin: -1em var(--navigationWidth) 0 var(--navigationWidth);
     font-family: var(--partFont);
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center; }
 
 section.two-columns ul, section.two-columns ol {
@@ -245,13 +238,13 @@ section.hide-title h1, section.hide-title h2, section.hide-title h3 {
 Darcula color scheme from the JetBrains family of IDEs
 
 */
-.hljs {
+.hljs, style[contenteditable=true] {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
   background: #2b2b2b; }
 
-.hljs {
+.hljs, style[contenteditable=true] {
   color: #bababa; }
 
 .hljs-strong,
@@ -313,9 +306,17 @@ pre[class^=lang-] {
   border-radius: .25rem;
   tab-size: 2; }
 
+section a {
+  text-decoration: none;
+  color: currentColor;
+  border-bottom: thin dashed currentColor; }
+  section a::before {
+    content: '➼ '; }
+
 dl, ol, ul {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  line-height: 1.8; }
 
 div > ol, ul {
   padding-left: 1rem; }
@@ -323,7 +324,7 @@ div > ol, ul {
 dl {
   display: grid;
   grid-template-columns: auto auto;
-  grid-row-gap: .8rem; }
+  grid-gap: .8rem; }
   dl dt {
     font-weight: bold; }
 
@@ -334,6 +335,9 @@ figure {
   figure img {
     max-width: 100%;
     max-height: 70vh; }
+  figure .copyright {
+    font-size: .75rem;
+    margin: .5em auto; }
 
 .editable {
   flex: 1 1 auto;

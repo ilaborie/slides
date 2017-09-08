@@ -7,7 +7,7 @@ fun conclusion(group: Group) = group
         .slide(title = "Bilan", styleClass = setOf("hide-title")) {
             listOf(
                     "Utilisez du CSS pour simpifier le code",
-                    "Utilisez intelligemment les pre/post processeurs",
+                    "Utilisez intelligemment les pre/post&#8209;processeurs",
                     "HTML, SVG are Awesome !",
                     "JavaScript, TypeScript could be Awesome !").ol()
         }

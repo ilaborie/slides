@@ -2,6 +2,7 @@
 dl, ol, ul {
   margin  : 0;
   padding : 0;
+  line-height : 1.8;
 }
 
 div > ol, ul {
@@ -13,7 +14,7 @@ div > ol, ul {
 dl {
   display: grid;
   grid-template-columns: auto auto;
-  grid-row-gap: .8rem;
+  grid-gap: .8rem;
 
   dt {
     font-weight: bold;
