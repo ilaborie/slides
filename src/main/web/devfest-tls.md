@@ -291,7 +291,7 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 
 ```html
 <div class="tabs">
-	<input type="radio" name="tab" id="home">
+	<input type="radio" name="tab" id="home" checked>
 	<input type="radio" name="tab" id="projects">
 	<input type="radio" name="tab" id="about">
 	<nav>
@@ -308,7 +308,7 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 ### Démo des onglets ###
 
 <div class="tabs">
-	<input type="radio" name="tab" id="home">
+	<input type="radio" name="tab" id="home" checked>
 	<input type="radio" name="tab" id="projects">
 	<input type="radio" name="tab" id="about">
 	<nav>
@@ -320,10 +320,6 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 	<div data-for="projects">Projects page</div>
 	<div data-for="about">About page</div>
 </div>
-
-### Bilan Pseudo classes ###
-
-**TODO**
 
 HTML
 ----

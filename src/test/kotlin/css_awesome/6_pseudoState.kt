@@ -35,8 +35,5 @@ fun pseudoState(group: Group) = group
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))
         }
         .slide(title = "Démo des onglets") {
-            ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))
-        }
-        .slide(title = "Bilan Pseudo classes") {
-            "TODO".strong()
+            EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html")))
         }
