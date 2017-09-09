@@ -1,7 +1,7 @@
 div.top, div.right, div.bottom, div.left {
-    border     : 2em solid transparent;
-    display    : inline-block;
-    box-shadow : 0 0 0 .1em red;
+	border     : 2em solid transparent;
+	display    : inline-block;
+	box-shadow : 0 0 0 .1em red;
 }
 
 div.top { border-top-color : cyan; }

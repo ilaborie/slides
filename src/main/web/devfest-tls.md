@@ -208,13 +208,23 @@ ExternalResource(resource=/cssIsAwesome/05_animations/draw.css)
 
 ### Bilan animations ###
 
-* [Utiliser les animations CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS)/n* [Text Spinner](http://tawian.io/text-spinners/)/n* [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)/n* [Animate.css](https://daneden.github.io/animate.css/)/n* [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)/n* [<code>$lt;progress$gt;</code>](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress)
+* [Utiliser les animations CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS)/n* [Text Spinner](http://tawian.io/text-spinners/)/n* [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)/n* [Animate.css](https://daneden.github.io/animate.css/)/n* [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)/n* [<code>&lt;progress&gt;</code>](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress)
 
 Pseudo classes d'état
 ---------------------
 
 ### Usage des info-bulles ###
 
+<fieldset>
+	<label for="txt">Input Text</label>
+	<input id="txt" required placeholder="mandatory field">
+	<div class="error">Mandatory</div>
+</fieldset>
+
+<div class="hint">
+	<a href="#popover-demo">hover me</a>
+	<div class="pop">Hello</div>
+</div>
 
 
 ### Pseudo états ###
@@ -226,23 +236,28 @@ Pseudo classes d'état
 ```CSS
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/checkbox.css)
 ```
-<blockquote>
-	<p>The science of operations, as derived from mathematics more especially, is a science of itself, and has its own
-		abstract truth and value.</p>
-	<footer><cite>Ada Lovelace</cite></footer>
-</blockquote>
-<fieldset>
-	<input type="checkbox" id="like">
-	<label for="like"></label>
-</fieldset>
+<div class="like">
+	<blockquote>
+		<p>The science of operations, as derived from mathematics more especially, is a science of itself, and has its own
+			abstract truth and value.</p>
+		<footer><cite>Ada Lovelace</cite></footer>
+	</blockquote>
+	<fieldset>
+		<input type="checkbox" id="like">
+		<label for="like"></label>
+	</fieldset>
+</div>
 
 ### Switch ###
 
 ```CSS
-ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch.css)
+ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch-1.css)
+```
+```CSS
+ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch-2.css)
 ```
 <label for="switch1">Switch</label>
-<input id="switch1" type="checkbox" class="switch" checked>
+<input id="switch1" type="checkbox" class="switch">
 <label for="switch1"></label>
 
 ### Panel ###
@@ -251,8 +266,8 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch.css)
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 ```
 <div class="panel">
-	<input type="checkbox" id="panel" checked>
-	<header><label for="panel">Apollo 11</label></header>
+	<input type="checkbox" id="panel-1" checked>
+	<header><label for="panel-1">Apollo 11</label></header>
 	<div class="body">
 		<blockquote>
 			<p>The computer (or rather the software in it) was smart enough to recognize that it was being asked to perform

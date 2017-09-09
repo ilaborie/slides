@@ -1,0 +1,15 @@
+.switch + label {
+	display: block;
+	position: relative;
+	padding: .1em;
+	width: 2em;
+	height: 1em;
+	background-color: #ccc;
+	border-radius: 1em;
+	border: medium solid #444;
+	transition: 0.4s;
+}
+
+.switch:checked + label {
+	background-color: green;
+}

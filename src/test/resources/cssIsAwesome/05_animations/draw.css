@@ -1,6 +1,6 @@
 svg circle, svg rect {
-    stroke: var(--primary);
-    stroke-width: 1em;
-    /*stroke-dasharray: 0;*/
-    /*stroke-dashoffset: 0;*/
+	stroke: var(--primary);
+	stroke-width: 1em;
+	/*stroke-dasharray: 0;*/
+	/*stroke-dashoffset: 0;*/
 }

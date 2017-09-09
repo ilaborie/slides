@@ -18,13 +18,17 @@ fun pseudoState(group: Group) = group
                     Code(":target"),
                     "...".raw())
         }
-        .slide(title = "Checkbox", styleClass = setOf("hide-title")) {
+        .slide(title = "Checkbox") {
             cssLiveCode("/cssIsAwesome/06_pseudo_classes/checkbox")
         }
-        .slide(title = "Switch", styleClass = setOf("hide-title")) {
-            cssLiveCode("/cssIsAwesome/06_pseudo_classes/switch")
+        .slide(title = "Switch") {
+            Block(
+                    StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
+                            StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css"))
+            ) +
+                    EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch.html")))
         }
-        .slide(title = "Panel", styleClass = setOf("hide-title")) {
+        .slide(title = "Panel") {
             cssLiveCode("/cssIsAwesome/06_pseudo_classes/panel")
         }
         .slide(title = "Principe pour les onglets") {

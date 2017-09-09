@@ -1,7 +1,10 @@
-.editable input[type=checkbox] + label::before {
+.like input[type=checkbox] + label {
+    box-shadow: 0 0 0 1px red;
+}
+.like input[type=checkbox] + label::before {
     content: '';
 }
-.editable input[type=checkbox] + label::before {
+.like input[type=checkbox] + label::before {
     content: '';
 }
-fieldset input[type=checkbox] { opacity: 1; }
+.like fieldset input[type=checkbox] { opacity: 1; }

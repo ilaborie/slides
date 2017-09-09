@@ -1,0 +1,16 @@
+.switch + label::before {
+	display: block;
+	position: absolute;
+	content: '';
+	top: 0.1em;
+	left: 0.1em;
+	height: 1em;
+	width: 1em;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: all 0.25s;;
+}
+
+.switch:checked + label::before {
+	transform: translateX(1em);
+}

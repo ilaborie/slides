@@ -1,14 +1,14 @@
 .loader {
-    line-height : 1.5;
-    overflow    : auto;
+	line-height : 1.5;
+	overflow    : auto;
 }
 
 .loader::before {
-    display   : inline-table;
-    content   : '⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏';
-    animation : spin 1s steps(10, end) infinite;
+	display   : inline-table;
+	content   : '⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏';
+	animation : spin 1s steps(10, end) infinite;
 }
 
 @keyframes spin {
-    to { transform : translateY(-15em); }
+	to { transform : translateY(-15em); }
 }
