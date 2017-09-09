@@ -29,9 +29,8 @@ section::before {
   padding: 0 .5em 3em 3em;
   font-family: var(--counterFont);
   font-size: 2em;
-  letter-spacing: -0.25em;
   counter-increment: section;
-  content: '# ' counter(section);
+  content: '#' counter(section);
   text-shadow: 1px 1px 1px var(--white);
   color: var(--fgCounter);
   background: linear-gradient(45deg, transparent 4em, transparent 0, var(--bgCounter) 4.5em);
