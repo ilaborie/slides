@@ -9,7 +9,7 @@ fun intro(group: Group) = group
         .slide(title = Code(code = "$ whoami"), id = "whoami") {
             "Igor Laborie".h4() +
                     Block(Block("Expert Java & Web,".raw()) +
-                                  ExternalSvgContent(ExternalResource("/cssIsAwesome/00_introduction/monkeypatch.svg"))) +
+                                  Link(ExternalSvgContent(ExternalResource("/cssIsAwesome/00_introduction/monkeypatch.svg")), "http://www.monkeypatch.io/")) +
                     Link("@ilaborie", "https://twitter.com/ilaborie") +
                     Link("igor@monkeypatch.io", "mailto:igor@monkeypatch.io") +
                     "⚠️ Je ne suis pas un designer".em()

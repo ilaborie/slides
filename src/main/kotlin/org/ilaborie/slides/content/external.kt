@@ -2,8 +2,11 @@ package org.ilaborie.slides.content
 
 import org.ilaborie.slides.catchWithDefault
 import org.ilaborie.slides.logger
+import org.ilaborie.slides.safe
 import java.io.File
+import java.net.URL
 import java.nio.charset.Charset
+import java.util.*
 
 
 // External
@@ -16,33 +19,60 @@ sealed class External {
         is ExternalLink     -> url
     }
 
-    // FIXME datauri
+    val dataUri: String by lazy {
+        fun readAsBase64() = Base64.getEncoder().encodeToString(loadBytes())
+        fun readAsSingleLine() = loadTextContent().replace("\n", "")
 
-    fun loadTextContent(charset: Charset = Charsets.UTF_8): String =
-            when (this) {
-                is ExternalResource ->
-                    catchWithDefault("No resource: $resource") {
-                        val input = this::class.java.getResourceAsStream(this.resource)
-                        if (input == null) {
-                            logger.error { "No resources $resource" }
-                        }
-                        input.reader(charset).readText()
-                    }
-                is ExternalFile     ->
-                    catchWithDefault("No file: $file") {
-                        this.file.readText(charset)
-                    }
-                else                -> TODO()
-            }
+        val link = link()
+        when {
+            link.endsWith(".svg") -> "data:image/svg+xml;utf8,${readAsSingleLine()}"
+            link.endsWith(".png") -> "data:image/png;base64,${readAsBase64()}"
+            link.endsWith(".jpg") -> "data:image/jpeg;base64,${readAsBase64()}"
+            else                  -> TODO()
+        }
+    }
 
-    fun exists(): Boolean =
-            when (this) {
-                is ExternalResource ->
-                    this::class.java.getResourceAsStream(this.resource) != null
-                is ExternalFile     ->
-                    file.exists()
-                is ExternalLink     -> true
+    fun loadTextContent(charset: Charset = Charsets.UTF_8): String = when (this) {
+        is ExternalResource -> catchWithDefault("No resource: $resource") {
+            val input = this::class.java.getResourceAsStream(this.resource)
+            if (input == null) {
+                logger.error { "No resources $resource" }
             }
+            input.reader(charset).readText()
+        }
+        is ExternalFile     -> catchWithDefault("No file: $file") {
+            this.file.readText(charset)
+        }
+        is ExternalLink     -> catchWithDefault("No link: $url") {
+            URL(url).openStream().reader().readText()
+        }
+    }
+
+
+    private fun loadBytes(): ByteArray = when (this) {
+        is ExternalResource -> safe {
+            val input = this::class.java.getResourceAsStream(this.resource)
+            if (input == null) {
+                logger.error { "No resources $resource" }
+            }
+            input.readBytes()
+        }
+        is ExternalFile     -> safe {
+            this.file.readBytes()
+        }
+        is ExternalLink     -> safe {
+            URL(url).openStream().readBytes()
+        }
+    }
+
+
+    fun exists(): Boolean = when (this) {
+        is ExternalResource ->
+            this::class.java.getResourceAsStream(this.resource) != null
+        is ExternalFile     ->
+            file.exists()
+        is ExternalLink     -> true
+    }
 
     abstract fun create(folder: File)
 }

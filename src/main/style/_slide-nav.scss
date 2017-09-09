@@ -1,42 +1,45 @@
 // Slide navigation
+section > nav {
+  margin-top : 2rem;
+}
+
 section .previous,
 section .next {
-  color: transparent;
+  color : transparent;
   &:hover {
-    color: var(--fgSlideNav);
+    color : var(--fgSlideNav);
   }
 }
 
-
 section .previous::after,
 section .next::before {
-  content: '';
+  content : '';
 }
 
 section .previous::before,
 section .next::after {
-  width: var(--navigationWidth);
-  background: var(--bgSlideNav);
-  content: '';
-  position: absolute;
-  top: 25vh;
-  z-index: 1;
-  height: 50vh;
-  font-size: 8rem;
-  text-align: center;
-  line-height: 40vh;
+  width       : var(--navigationWidth);
+  background  : var(--bgSlideNav);
+  content     : '';
+  position    : absolute;
+  top         : 25vh;
+  z-index     : 1;
+  height      : 50vh;
+  font-size   : 8rem;
+  text-align  : center;
+  line-height : 40vh;
 }
 
 // Previous
 section .previous::before {
-  content: '‹';
-  left: 0;
-  cursor: w-resize;
+  content : '‹';
+  left    : 0;
+  cursor  : w-resize;
 }
 
 // Next
 section .next::after {
-  content: '›';
-  right: 0;
-  cursor: e-resize;
+  content : '›';
+  right   : 0;
+  cursor  : e-resize;
 }

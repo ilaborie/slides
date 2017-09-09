@@ -8,6 +8,14 @@ import java.nio.charset.Charset
 
 val logger = Logger("PresExt")
 
+fun <T> safe(dangerous: () -> T): T =
+        try {
+            dangerous()
+        } catch (e: Throwable) {
+            logger.error(e) { "Oops" }
+            throw RuntimeException(e)
+        }
+
 fun <T> catchWithDefault(default: T, dangerous: () -> T): T =
         try {
             dangerous()

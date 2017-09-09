@@ -30,6 +30,37 @@
   to {
     transform: rotate(-12deg); } }
 
+.holy-grail {
+  align-self: stretch;
+  margin-right: .25rem;
+  font-size: .4rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 1rem auto 1rem;
+  grid-template-areas: "head head head" "menu body side" "foot foot foot"; }
+  .holy-grail header, .holy-grail footer, .holy-grail main, .holy-grail nav, .holy-grail aside {
+    background: var(--bgCode);
+    color: var(--fgCode);
+    border-radius: .05rem;
+    padding: .2rem;
+    box-shadow: 0 0 0 0.125rem var(--bgSlide);
+    display: flex;
+    align-items: center; }
+  .holy-grail header {
+    grid-area: head;
+    justify-content: center; }
+  .holy-grail nav {
+    grid-area: menu; }
+  .holy-grail main {
+    grid-area: body;
+    text-align: justify;
+    overflow: auto; }
+  .holy-grail aside {
+    grid-area: side; }
+  .holy-grail footer {
+    grid-area: foot;
+    justify-content: center; }
+
 section.cover h1 {
   width: 56vh;
   height: 56vh;
@@ -49,7 +80,11 @@ section.cover h1 {
 #whoami > div {
   display: flex; }
   #whoami > div div {
-    align-self: flex-end; }
+    align-self: center; }
+  #whoami > div a {
+    border: none; }
+    #whoami > div a::before {
+      content: ''; }
   #whoami > div svg {
     flex: 1 1 auto;
     max-height: 2em;
@@ -75,3 +110,106 @@ section.cover h1 {
 
 #une_histoire_dunites_css figcaption {
   display: none; }
+
+#holy-grail-calc > div, #holy-grail-flexbox > div, #holy-grail-grid > div {
+  display: flex;
+  align-items: center; }
+  #holy-grail-calc > div img, #holy-grail-flexbox > div img, #holy-grail-grid > div img {
+    max-width: 50%; }
+
+#holy-grail-calc > a, #holy-grail-flexbox > a, #holy-grail-grid > a {
+  width: auto; }
+
+#holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
+  opacity: .25; }
+
+#le_dinner_d_un_philosophe .diner {
+  transform: scale(0.8); }
+  #le_dinner_d_un_philosophe .diner .table-wrapper {
+    transform: rotateX(20deg);
+    min-height: 10rem;
+    transform-origin: bottom;
+    z-index: 9999;
+    position: relative;
+    margin: 10px auto 0;
+    width: 20rem; }
+  #le_dinner_d_un_philosophe .diner .table {
+    transform: scale(1.5);
+    transform-style: preserve-3d;
+    outline: solid 1px transparent;
+    margin: 0 auto 0 auto;
+    min-height: 10rem;
+    padding: 15px 15px 22px 15px;
+    z-index: 999;
+    position: relative;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  #le_dinner_d_un_philosophe .diner .table-surface {
+    box-shadow: 0 2rem 0.5rem rgba(0, 0, 0, 0.2);
+    background: #dd992d;
+    background: linear-gradient(#dd992d, #cd8c26);
+    position: absolute;
+    height: 100%;
+    bottom: 0;
+    width: 100%; }
+  #le_dinner_d_un_philosophe .diner .table-edge {
+    width: 20rem;
+    margin: 0 auto .5rem auto;
+    background: #ac741c;
+    height: 1rem;
+    transform: rotateX(-40deg);
+    transform-origin: top;
+    z-index: 2; }
+  #le_dinner_d_un_philosophe .diner .table-leg {
+    width: 1.5rem;
+    height: .8rem;
+    background: #84570f;
+    position: absolute;
+    top: 1rem; }
+    #le_dinner_d_un_philosophe .diner .table-leg:first-child {
+      left: 1.5rem; }
+    #le_dinner_d_un_philosophe .diner .table-leg:last-child {
+      right: 1.5rem; }
+  #le_dinner_d_un_philosophe .diner .plate {
+    box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px;
+    position: relative;
+    border-bottom: solid 5px #DDD;
+    background: white;
+    border-radius: 50%; }
+    #le_dinner_d_un_philosophe .diner .plate:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc(50% - 32px);
+      top: calc(50% - 32px);
+      height: 65px;
+      width: 65px;
+      border-radius: 60px;
+      border-top: solid 6px #CCC;
+      opacity: .4;
+      background: white; }
+    #le_dinner_d_un_philosophe .diner .plate:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc(50% - 41px);
+      top: calc(50% - 40px);
+      height: 67px;
+      width: 67px;
+      border-radius: 60px;
+      border: solid 8px #009ff2;
+      opacity: .4; }
+
+#info_bulle .popover {
+  transform: scale(1.5);
+  color: #fff;
+  border-radius: .5rem;
+  padding: .25rem .5rem; }
+  #info_bulle .popover:after {
+    content: " " var(--who); }

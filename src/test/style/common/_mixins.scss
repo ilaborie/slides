@@ -10,3 +10,45 @@
   text-transform : uppercase;
   line-height    : 105%;
 }
+
+.holy-grail {
+  align-self: stretch;
+  margin-right: .25rem;
+
+  font-size : .4rem;
+  header, footer, main, nav, aside {
+    background    : var(--bgCode);
+    color         : var(--fgCode);
+    border-radius : .05rem;
+    padding       : .2rem;
+    box-shadow    : 0 0 0 .125rem var(--bgSlide);
+    display: flex;
+    align-items: center;
+  }
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 1rem auto 1rem;
+  grid-template-areas: "head head head"
+                       "menu body side"
+                       "foot foot foot";
+  header {
+    grid-area: head;
+    justify-content: center;
+  }
+  nav {
+    grid-area: menu;
+  }
+  main {
+    grid-area: body;
+    text-align: justify;
+    overflow: auto;
+  }
+  aside {
+    grid-area: side;
+  }
+  footer {
+    grid-area: foot;
+    justify-content: center;
+  }
+}

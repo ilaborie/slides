@@ -1,6 +1,9 @@
 package org.ilaborie.slides.content
 
-import org.ilaborie.slides.*
+import org.ilaborie.slides.Group
+import org.ilaborie.slides.Presentation
+import org.ilaborie.slides.Slide
+import org.ilaborie.slides.defaultContent
 
 
 fun Slide.classes() = styleClass().joinToString(separator = " ")
@@ -11,9 +14,19 @@ fun Presentation.renderAsHtml(key: String): String {
     fun previous(index: Int): String? = if (index != 0) slidesList[index - 1].id() else null
     fun next(index: Int): String? = if (index < (slidesList.size - 1)) slidesList[index + 1].id() else null
 
-    val nav = slidesList.mapIndexed { index, slide ->
-        """<a href="#${slide.id()}" class="${slide.classes()}" title="${slide.titleAsString()}">$index</a>"""
-    }
+    val slideIndex = slidesList.mapIndexed { index, slide -> slide to index }
+            .toMap()
+
+    val groupsTitles = slides.filterIsInstance<Group>()
+            .map { it.title }
+            .joinToString(separator = "\n") { "<strong>$it</strong>" }
+    val groupsNavs = slides.filterIsInstance<Group>()
+            .map {
+                it.toList().joinToString(separator = "\n") {
+                    """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex.get(it)}</a>"""
+                }
+            }
+            .joinToString(separator = "\n") { "<nav>$it</nav>" }
 
     val body = (listOf(coverSlide) + this.slides)
             .flatMap { slides -> slides.toList().map { slides to it } }
@@ -31,16 +44,15 @@ fun Presentation.renderAsHtml(key: String): String {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>$title</title>
+    <title>${title.renderAsString()}</title>
     <link rel="stylesheet" href="slides.css">
     <link rel="stylesheet" href="$id.css">
     <link rel="stylesheet" href="$key.css">
 </head>
 <body class="$key">
-    <div class="slides-nav">
-        <nav>
-${nav.joinToString(separator = "\n").indent(' ' * 12)}
-        </nav>
+    <div class="slides-nav" style="grid-template-columns : repeat(${slides.count()}, auto);">
+        $groupsTitles
+        $groupsNavs
     </div>
     <main>
 ${body.joinToString(separator = "\n")}
@@ -55,7 +67,7 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
     return """
 <!-- Slide -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
-${content(defaultContent).renderAsHtml().indent(' ' * 2)}
+${content(defaultContent).renderAsHtml()}
   <nav>
       $prevFun
       $nextFun
@@ -73,7 +85,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is ExternalHtmlContent     -> htmlContent.renderAsHtml()
     is ExternalMarkdownContent -> markdownContent.renderAsHtml()
     is ExternalSvgContent      -> svgContent.renderAsHtml()
-    is ExternalImageContent    -> """<img alt="$alt" src="${externalImage.link()}"${if (title != null) " title=\"$title\"" else ""}>"""
+    is ExternalImageContent    -> """<img alt="$alt" src="${externalImage.dataUri}"${if (title != null) " title=\"$title\"" else ""}>"""
     is ExternalCodeContent     -> code.renderAsHtml()
     is CompositeContent        -> contents.joinToString(separator = "\n") { it.renderAsHtml() }
     is Code                    -> this.renderAsHtml()
@@ -105,9 +117,7 @@ fun Code.renderAsHtml() = when (language) {
         writer.write(this.code)
         writer.close()
         val code = process.inputStream.bufferedReader().readText()
-        """<pre class="lang-$language"><code>
-        |${code.trimIndent()}
-        |</code></pre>""".trimMargin() // FIXME preformat
+        """<pre class="hljs lang-$language"><code>$code</code></pre>"""
     }
 }
 
@@ -125,7 +135,7 @@ fun Quote.renderAsHtml() = """
 
 fun Figure.renderAsHtml() = """
 <figure>
-  <img src="${externalImage.link()}" alt="$title">
+  <img src="${externalImage.dataUri}" alt="${title.renderAsString()}">
   <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
 </figure>"""
 

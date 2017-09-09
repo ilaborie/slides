@@ -1,11 +1,10 @@
 package css_awesome
 
-import org.ilaborie.slides.ContentType
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
 fun preprocessor(group: Group) = group
-        .slide(title = "Bordure des boutons", contentType = ContentType.HTML, styleClass = setOf("hide-title")) {
+        .slide(title = "Bordure des boutons") {
             cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
         }
         .slide(title = "Alors utilise-t-on un pré&#8209;processeurs ?") {

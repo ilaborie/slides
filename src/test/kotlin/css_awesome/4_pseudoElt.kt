@@ -4,13 +4,13 @@ import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
 fun pseudoElt(group: Group) = group
-        .slide(title = "Le dinner d'un philosophe", styleClass = setOf("hide-title")) {
+        .slide(title = "Le dinner d'un philosophe") {
             cssLiveCode("/cssIsAwesome/04_pseudo_elements/philosophe")
         }
-        .slide(title = "Triangle avec des bordures", styleClass = setOf("hide-title")) {
+        .slide(title = "Triangle avec des bordures") {
             cssLiveCode("/cssIsAwesome/04_pseudo_elements/border")
         }
-        .slide(title = "Info-bulle", styleClass = setOf("hide-title")) {
+        .slide(title = "Info-bulle") {
             cssLiveCode("/cssIsAwesome/04_pseudo_elements/popover")
         }
         .slide(title = "Bilan pseudo éléments") {

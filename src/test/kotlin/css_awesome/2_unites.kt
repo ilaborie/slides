@@ -7,7 +7,7 @@ fun unites(group: Group) = group
         .slide(title = "Une histoire d’unités CSS") {
             Figure("Une histoire d’unités CSS".raw(),
                    ExternalLink("https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg"),
-                   Link("CommitStrip", "http://www.commitstrip.com/fr/"))
+                   Link("CommitStrip", "http://www.commitstrip.com/fr/2016/10/10/a-story-about-css-units/"))
         }
         .slide(title = "Les unités de longueur") {
             Definitions(
@@ -17,9 +17,10 @@ fun unites(group: Group) = group
                     "vh, vw" to "(100vh, 100vw) = (hauteur, largeur) du <i>viewport</i>".html(),
                     "vmin, vmax" to "min(1vh, 1vw), max(1vh, 1vw)".raw())
         }
-        .slide(title = "Holy Grail Layout avec calc", styleClass = setOf("hide-title")) {
-            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")) +
-                    Link("Live coding", "./holy-grail.html")
+        .slide(title = "Holy Grail avec <code>calc</code>".html(), id = "holy-grail-calc") {
+            Block(
+                    ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
+                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")))
         }
         .slide(title = "Bilan unités") {
             UnorderedList(

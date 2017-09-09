@@ -4,8 +4,10 @@ code, pre {
   font-family : var(--codeFont);
 }
 
-pre[class^=lang-] {
-  box-shadow    : inset 0 0 .25rem rgba(0, 0, 0, .25);
+pre.hljs {
+  overflow      : visible;
+  font-size     : .8rem;
+  box-shadow    : 0 0 .25rem rgba(0, 0, 0, .25);
   border-radius : .25rem;
   tab-size      : 2;
 }
