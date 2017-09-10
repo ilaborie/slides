@@ -1,19 +1,9 @@
 package org.ilaborie.slides.content
 
+import org.jsoup.Jsoup
 
-fun Content.renderAsString(): String? = when (this) {
-    is Title            -> title.renderAsString()
-    is RawContent       -> content
-    is Link             -> content.renderAsString()
-    is CompositeContent -> {
-        val lst = contents
-                .map { it.renderAsString() }
-                .filterIsInstance<String>()
-        if (lst.isNotEmpty()) lst.joinToString(separator = "\n") else null
-    }
-    else                -> null
-}
 
+fun Content.renderAsString(): String = Jsoup.parse(this.renderAsHtml()).text()
 
 // Extension
 fun String.raw(): Content = RawContent(this)
