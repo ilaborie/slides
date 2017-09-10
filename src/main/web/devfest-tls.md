@@ -327,7 +327,6 @@ HTML
 ### Panel ###
 
 ```html
-
 <details>
 	<summary>Des détails</summary>
 	<p>Plus d'infos à propos des détails.</p>
@@ -388,7 +387,7 @@ Conclusion
 
 0. Utilisez du CSS pour simpifier le code/n1. Utilisez intelligemment les pre/post&#8209;processeurs/n2. HTML, SVG are Awesome !/n3. JavaScript, TypeScript could be Awesome !
 
-### Traitez le CSS comme du code ###
+### 👉 Traitez le CSS comme du code ###
 
 0. Revue de code/n1. DRY/n2. Clean Code/n3. Single Responsibility Principle/n4. ...
 
@@ -400,13 +399,17 @@ Conclusion
 
 * `(Ctrl|Cmd) + Shift + i`/n* ![CSS Secret](http://lea.verou.me/cover.png)
 [CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)/n* [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)/n* [CodePen](https://codepen.io/)
+, 
 [JSFiddle](https://jsfiddle.net/)
+, 
 [Dabblet](http://dabblet.com/)
-.../n* [CSS Tricks]()/n* [Shop Talk Show]()/n* [CSS Flags]()
+,.../n* [CSS Tricks]()/n* [Shop Talk Show]()/n* [CSS Flags]()
 
 ### 🦄 rocks ! ###
 
 ```CSS
 ExternalResource(resource=/cssIsAwesome/09_conclusion/end.css)
 ```
-<div class="awesome-box"></div>
+<div>
+	<div class="awesome-box"> is Awesome!</div>
+</div>

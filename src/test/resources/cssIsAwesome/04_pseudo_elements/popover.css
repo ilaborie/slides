@@ -1,6 +1,6 @@
 .popover {
-		position   : relative;
-		background : teal;
+	position: relative;
+	background: teal;
 }
 
 /*.popover::before {

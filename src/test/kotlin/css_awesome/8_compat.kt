@@ -1,19 +1,15 @@
 package css_awesome
 
 import org.ilaborie.slides.Group
-import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.ExternalHtmlContent
+import org.ilaborie.slides.content.ExternalResource
+import org.ilaborie.slides.content.Link
+import org.ilaborie.slides.content.h4
 
-fun html(group: Group) = group
-        .slide("Panel", "panel_html") {
-            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/07_HTML/details.html")) +
-                    cssLiveCode("/cssIsAwesome/07_HTML/panel")
-        }
-        .slide("Dialog") {
-            cssLiveCode("/cssIsAwesome/07_HTML/dialog")
-        }
-        .slide("Polyfill") {
-            UnorderedList(
-                    Link("Collapsible Panel Polyfill", "https://github.com/chemerisuk/better-details-polyfill/"),
-                    Link("Dialog Polyfill", "https://github.com/GoogleChrome/dialog-polyfill")
-            )
+
+fun compat(group: Group) = group
+        .slide(title = "Compat", styleClass = setOf("hide-title")) {
+            Link("caniuse", "http://caniuse.com").h4() +
+                    Link("The CSS3 / CSS4 Test", "http://css3test.com").h4() +
+                    ExternalHtmlContent(ExternalResource("/cssIsAwesome/08_compat/support.html"))
         }

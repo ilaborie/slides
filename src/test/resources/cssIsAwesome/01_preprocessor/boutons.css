@@ -2,7 +2,7 @@ button {
 	background: lightblue;
 	border: medium solid purple;
 }
-button.danger {/*
+button.danger { /*
    background: salmon;
    color: rebeccapurple; */
 }

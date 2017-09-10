@@ -56,10 +56,9 @@
   --navigationWidth: 15vw;
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
-  --txtFooter: '@DevFestToulouse @ilaborie #CSS #🦄';
+  --txtFooter: '@ilaborie';
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
-  --logoFooter: url("./assets/logo_white.png");
   --bgCode: #2b2b2b;
   --fgCode: #bababa; }
 

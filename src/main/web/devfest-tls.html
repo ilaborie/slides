@@ -63,8 +63,8 @@
 <nav><a href="#part_compatibilite_des_navigateurs" class="part" title="Compatibilité des navigateurs">39</a>
 <a href="#compat" class="hide-title" title="Compat">40</a></nav>
 <nav><a href="#part_conclusion" class="part" title="Conclusion">41</a>
-<a href="#bilan" class="hide-title" title="Bilan">42</a>
-<a href="#traitez_le_css_comme_du_code" class="" title="Traitez le CSS comme du code">43</a>
+<a href="#bilan" class="" title="Bilan">42</a>
+<a href="#_traitez_le_css_comme_du_code" class="" title="👉 Traitez le CSS comme du code">43</a>
 <a href="#liens" class="" title="Liens">44</a>
 <a href="#pour_apprendre" class="" title="Pour apprendre">45</a>
 <a href="#_rocks__" class="hide-title" title="🦄 rocks !">46</a></nav>
@@ -185,7 +185,7 @@
 	background: lightblue;
 	border: medium solid purple;
 }
-button.danger {/*
+button.danger { /*
    background: salmon;
    color: rebeccapurple; */
 }</style>
@@ -393,8 +393,8 @@ button.danger {/*
 <section id="le_dinner_d_un_philosophe" class="">
 <h3>Le dinner d'un philosophe</h3>
 <style scoped contenteditable="true">.table {
-	color     : gray;
-	font-size : 5em;
+	color: gray;
+	font-size: 5em;
 	/*content: '';*/
 }</style>
 <div class="editable"><div class="diner">
@@ -420,15 +420,15 @@ button.danger {/*
 <section id="triangle_avec_des_bordures" class="">
 <h3>Triangle avec des bordures</h3>
 <style scoped contenteditable="true">div.top, div.right, div.bottom, div.left {
-	border     : 1em solid transparent;
-	display    : inline-block;
-	box-shadow : 0 0 0 .1em transparent;
+	border: 1em solid transparent;
+	display: inline-block;
+	box-shadow: 0 0 0 .1em transparent;
 }
 
-div.top { border-top-color : transparent; }
-div.right { border-right-color : transparent; }
-div.bottom { border-bottom-color : transparent; }
-div.left { border-left-color : transparent; }</style>
+div.top { border-top-color: transparent; }
+div.right { border-right-color: transparent; }
+div.bottom { border-bottom-color: transparent; }
+div.left { border-left-color: transparent; }</style>
 <div class="editable"><div class="top"></div>
 <div class="right"></div>
 <div class="bottom"></div>
@@ -444,8 +444,8 @@ div.left { border-left-color : transparent; }</style>
 <section id="info_bulle" class="">
 <h3>Info-bulle</h3>
 <style scoped contenteditable="true">.popover {
-		position   : relative;
-		background : teal;
+	position: relative;
+	background: teal;
 }
 
 /*.popover::before {
@@ -776,19 +776,18 @@ div.left { border-left-color : transparent; }</style>
 <!-- Slide -->
 <section id="panel_html" class="">
 <h3>Panel</h3>
-<pre class="hljs lang-html"><code>
-<span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
+<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
 	<span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Des détails<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
 	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Plus d'infos à propos des détails.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
 <style scoped contenteditable="true">details {
-    border        : medium solid currentcolor;
-    border-radius : .25em;
-    width         : 100%;
+	border: medium solid currentcolor;
+	border-radius: .25em;
+	width: 100%;
 }
 
 details summary {
-    background : #080808; color : #f8f8f8;
+	background: #888; color: #eee;
 }</style>
 <div class="editable"><details>
 	<summary>Des détails</summary>
@@ -805,8 +804,12 @@ details summary {
 <section id="dialog" class="">
 <h3>Dialog</h3>
 <style scoped contenteditable="true">.editable dialog {
-    box-shadow: .25em .25em .125em rgba(0, 0, 0, 0.42);
+	border: medium solid rgba(0, 0, 0, 0.3);
+	border-radius: .125em;
+	padding: .125rem;
+	box-shadow: .25em .25em .125em rgba(0, 0, 0, 0.42);
 }
+
 /* .editable dialog::backdrop {
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
@@ -884,7 +887,7 @@ details summary {
 
 
 <!-- Slide -->
-<section id="bilan" class="hide-title">
+<section id="bilan" class="">
 <h3>Bilan</h3>
 <ol><li>Utilisez du CSS pour simpifier le code</li>
 <li>Utilisez intelligemment les pre/post&#8209;processeurs</li>
@@ -892,14 +895,14 @@ details summary {
 <li>JavaScript, TypeScript could be Awesome !</li></ol>
   <nav>
       <a href="#part_conclusion" class="previous"></a>
-      <a href="#traitez_le_css_comme_du_code" class="next"></a>
+      <a href="#_traitez_le_css_comme_du_code" class="next"></a>
   </nav>
 </section>
 
 
 <!-- Slide -->
-<section id="traitez_le_css_comme_du_code" class="">
-<h3>Traitez le CSS comme du code</h3>
+<section id="_traitez_le_css_comme_du_code" class="">
+<h3>👉 Traitez le CSS comme du code</h3>
 <ol><li>Revue de code</li>
 <li>DRY</li>
 <li>Clean Code</li>
@@ -919,7 +922,7 @@ details summary {
 <li><a href="">le code</a></li>
 <li><a href="">Making Of</a></li></ul>
   <nav>
-      <a href="#traitez_le_css_comme_du_code" class="previous"></a>
+      <a href="#_traitez_le_css_comme_du_code" class="previous"></a>
       <a href="#pour_apprendre" class="next"></a>
   </nav>
 </section>
@@ -933,9 +936,11 @@ details summary {
 <a href="https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635">CSS Secret by Lea Verou</a></li>
 <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS">CSS sur MDN</a></li>
 <li><a href="https://codepen.io/">CodePen</a>
+, 
 <a href="https://jsfiddle.net/">JSFiddle</a>
+, 
 <a href="http://dabblet.com/">Dabblet</a>
-...</li>
+,...</li>
 <li><a href="">CSS Tricks</a></li>
 <li><a href="">Shop Talk Show</a></li>
 <li><a href="">CSS Flags</a></li></ul>
@@ -950,9 +955,16 @@ details summary {
 <section id="_rocks__" class="hide-title">
 <h3>🦄 rocks !</h3>
 <style scoped contenteditable="true">.awesome-box::before {
-    content: 'CSS is Awesome !';
+	content: 'CSS';
+}
+
+.awesome-box {
+	text-overflow: ellipsis;
+	overflow: hidden;
 }</style>
-<div class="editable"><div class="awesome-box"></div></div>
+<div>
+	<div class="awesome-box"> is Awesome!</div>
+</div>
   <nav>
       <a href="#pour_apprendre" class="previous"></a>
       

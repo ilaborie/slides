@@ -4,14 +4,14 @@ import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
 fun conclusion(group: Group) = group
-        .slide(title = "Bilan", styleClass = setOf("hide-title")) {
+        .slide(title = "Bilan") {
             listOf(
                     "Utilisez du CSS pour simpifier le code",
                     "Utilisez intelligemment les pre/post&#8209;processeurs",
                     "HTML, SVG are Awesome !",
                     "JavaScript, TypeScript could be Awesome !").ol()
         }
-        .slide(title = "Traitez le CSS comme du code") {
+        .slide(title = "👉 Traitez le CSS comme du code") {
             listOf(
                     "Revue de code",
                     "DRY",
@@ -31,14 +31,16 @@ fun conclusion(group: Group) = group
                     ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
                             Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
                     Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS"),
-                    Link("CodePen", "https://codepen.io/") +
-                            Link("JSFiddle", "https://jsfiddle.net/") +
-                            Link("Dabblet", "http://dabblet.com/") + "...".raw(),
+                    Link("CodePen", "https://codepen.io/") + ", ".raw() +
+                            Link("JSFiddle", "https://jsfiddle.net/") + ", ".raw() +
+                            Link("Dabblet", "http://dabblet.com/") + ",...".raw(),
                     Link("CSS Tricks", ""),
                     Link("Shop Talk Show", ""),
                     Link("CSS Flags", "")
             )
         }
         .slide(title = "🦄 rocks !", styleClass = setOf("hide-title")) {
-            cssLiveCode("/cssIsAwesome/09_conclusion/end")
+            StyleEditable(ExternalResource("/cssIsAwesome/09_conclusion/end.css"),
+                          ExternalResource("/cssIsAwesome/09_conclusion/end-final.css")) +
+                    ExternalHtmlContent(ExternalResource("/cssIsAwesome/09_conclusion/end.html"))
         }

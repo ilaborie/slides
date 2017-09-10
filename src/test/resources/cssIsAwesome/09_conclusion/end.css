@@ -1,3 +1,8 @@
 .awesome-box::before {
-    content: 'CSS is Awesome !';
+	content: 'CSS';
+}
+
+.awesome-box {
+	text-overflow: ellipsis;
+	overflow: hidden;
 }

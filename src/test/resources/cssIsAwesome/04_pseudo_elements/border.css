@@ -1,10 +1,10 @@
 div.top, div.right, div.bottom, div.left {
-	border     : 1em solid transparent;
-	display    : inline-block;
-	box-shadow : 0 0 0 .1em transparent;
+	border: 1em solid transparent;
+	display: inline-block;
+	box-shadow: 0 0 0 .1em transparent;
 }
 
-div.top { border-top-color : transparent; }
-div.right { border-right-color : transparent; }
-div.bottom { border-bottom-color : transparent; }
-div.left { border-left-color : transparent; }
+div.top { border-top-color: transparent; }
+div.right { border-right-color: transparent; }
+div.bottom { border-bottom-color: transparent; }
+div.left { border-left-color: transparent; }

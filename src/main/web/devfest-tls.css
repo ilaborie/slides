@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .devfest-tls {
   --blue: #4285f4;
   --green: #0f9d58;
@@ -9,4 +10,6 @@
   --g4: #ebebeb;
   --g5: #f7f7f7;
   --alpha1: rgba(0, 0, 0, 0.54);
-  --alpha2: rgba(0, 0, 0, 0.87); }
+  --alpha2: rgba(0, 0, 0, 0.87);
+  --txtFooter: '@DevFestToulouse @ilaborie #CSS #🦄';
+  --logoFooter: url("./assets/logo_white.png"); }

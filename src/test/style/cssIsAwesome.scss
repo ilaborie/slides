@@ -502,3 +502,32 @@ $plateSize: 100px;
     }
   }
 }
+
+// Details/summary
+#panel_html {
+  .editable {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+// Dialog
+#dialog {
+  .editable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+#_rocks__ {
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .awesome-box {
+      @include cssIsAwesome();
+    }
+  }
+}
