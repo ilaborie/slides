@@ -407,9 +407,6 @@ Conclusion
 
 ### 🦄 rocks ! ###
 
-```CSS
-ExternalResource(resource=/cssIsAwesome/09_conclusion/end.css)
-```
 <div>
-	<div class="awesome-box"> is Awesome!</div>
+	<div class="awesome-box" contenteditable>CSS <br>is <br>Awesome!</div>
 </div>

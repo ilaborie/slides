@@ -523,11 +523,35 @@ $plateSize: 100px;
 #_rocks__ {
   & > div {
     display: flex;
+    height: calc(100vh - 2rem);
     justify-content: center;
     align-items: center;
 
     .awesome-box {
+      position: relative;
       @include cssIsAwesome();
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-image: linear-gradient(315deg, red, orange,  green, teal, blue, indigo, magenta);
+      background-size: 1400% 1400%;
+      width: auto;
+      border: solid 1vh transparent;
+      padding: 5vh;
+      outline: none;
+
+      animation: rainbow 5s ease infinite;
+
+      &::before {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        width: 56vh;
+        height: 56vh;
+        content: ' ';
+        border: solid 1vh currentColor;
+      }
     }
+
   }
 }

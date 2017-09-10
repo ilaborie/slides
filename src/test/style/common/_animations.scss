@@ -38,3 +38,9 @@
     transform : rotate(-12deg);
   }
 }
+
+@keyframes rainbow {
+  0%{background-position:0% 15%}
+  50%{background-position:100% 86%}
+  100%{background-position:0% 15%}
+}

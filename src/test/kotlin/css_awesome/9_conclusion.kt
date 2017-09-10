@@ -40,7 +40,5 @@ fun conclusion(group: Group) = group
             )
         }
         .slide(title = "🦄 rocks !", styleClass = setOf("hide-title")) {
-            StyleEditable(ExternalResource("/cssIsAwesome/09_conclusion/end.css"),
-                          ExternalResource("/cssIsAwesome/09_conclusion/end-final.css")) +
-                    ExternalHtmlContent(ExternalResource("/cssIsAwesome/09_conclusion/end.html"))
+            ExternalHtmlContent(ExternalResource("/cssIsAwesome/09_conclusion/end.html"))
         }
