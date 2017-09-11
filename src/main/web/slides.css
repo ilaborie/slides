@@ -107,7 +107,7 @@ section {
   color: var(--fgSlide); }
 
 section::before {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   padding: 0 .5em 3em 3em;
@@ -119,7 +119,7 @@ section::before {
   background: linear-gradient(45deg, transparent 4em, transparent 0, var(--bgCounter) 4.5em); }
 
 section::after {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;

@@ -85,9 +85,6 @@ main > section {
   page-break-before: always;
   page-break-after: always;
   page-break-inside: avoid;
-  margin: 1em 5vmax 2em 5vmax;
-  width: 90vw;
-  height: calc(100vh - 3em);
   box-sizing: content-box;
   transform: none !important;
   opacity: 1; }

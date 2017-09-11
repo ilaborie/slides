@@ -30,6 +30,14 @@ fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Chars
     file.writeText(renderAsHtml(key), charset)
 }
 
+fun Presentation.writePdfTo(from: File, to: File): Int {
+    val file = from.absolutePath
+    return ProcessBuilder("node", "src/main/typescript/html-to-pdf.js", "file://$file", to.absolutePath)
+            .inheritIO()
+            .start()
+            .waitFor()
+}
+
 fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.md")
     logger.debug { "Write '${this.title}' to $file" }

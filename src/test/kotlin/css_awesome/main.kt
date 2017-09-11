@@ -34,8 +34,10 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web")
-    cssIsAwesome.writeHtmlTo(dist, "devfest-tls")
-    cssIsAwesome.writeMarkdownTo(dist, "devfest-tls")
+    val key = "devfest-tls"
+    cssIsAwesome.writeHtmlTo(dist, key)
+    cssIsAwesome.writeMarkdownTo(dist, key)
+    cssIsAwesome.writePdfTo(dist.resolve("$key.html"), dist.resolve("$key.pdf"))
 
     val holyGrail = slidesDir.resolve(cssIsAwesome.id).resolve("holy-grail.html")
     holyGrail.copyTo(target = dist.resolve("holy-grail-calc.html"), overwrite = true)

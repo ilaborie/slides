@@ -69,7 +69,7 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
 <!-- Slide -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
 ${content(defaultContent).renderAsHtml()}
-  <nav>
+  <nav class="hide-print">
       $prevFun
       $nextFun
   </nav>

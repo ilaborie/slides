@@ -23,7 +23,7 @@ section {
 
 // Counter
 section::before {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   padding: 0 .5em 3em 3em;
@@ -37,7 +37,7 @@ section::before {
 
 // Footer
 section::after {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
