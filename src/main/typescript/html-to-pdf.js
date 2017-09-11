@@ -7,15 +7,18 @@ const options = {
     waitUntil: 'networkidle'
 };
 
-(async () => {
-    const browser = await launch();
-    const page = await browser.newPage();
-    await page.goto(from, options);
-    await page.pdf({
-        path: to,
-        format: 'A4',
-        printBackground: true,
-        landscape: true
-    });
-    browser.close();
-})();
+const pdfOptions = {
+    path: to,
+    format: 'A4',
+    printBackground: true,
+    landscape: true
+};
+
+launch()
+    .then(browser => browser.newPage()
+        .then(page => ({browser, page})))
+    .then(({browser, page}) => page.goto(from, options)
+        .then(() => ({browser, page})))
+    .then(({browser, page}) => page.pdf(pdfOptions)
+        .then(() => browser))
+    .then(browser => browser.close());
