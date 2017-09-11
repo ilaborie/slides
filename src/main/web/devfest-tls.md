@@ -139,7 +139,7 @@ Flexbox et Grid
 * [Flexbox, et le CSS redevient fun ! (Hubert SABLONNIÈRE)](https://www.youtube.com/watch?v=5F_ngjHDcJQ)/n* [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/)/n* [Flexbox Froggy](https://flexboxfroggy.com/)
 #### Grid ####
 
-* [Grid by examples](https://gridbyexample.com/)/n* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)/n* [Grid Garden](http://cssgridgarden.com/)
+* [Grid by examples](https://gridbyexample.com/)/n* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)/n* [Grid Garden](http://cssgridgarden.com/)/n* [Here's a Super Quick Way to Try out CSS Grid](http://jensimmons.com/post/aug-15-2017/heres-super-quick-way-try-out-css-grid)
 
 Pseudo éléments
 ---------------
@@ -220,7 +220,7 @@ Pseudo classes d'état
 </fieldset>
 
 <div class="hint">
-	<a href="#popover-demo">hover me</a>
+	<a href="#usage_des_info_bulles">hover me</a>
 	<div class="pop">Hello</div>
 </div>
 

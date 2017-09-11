@@ -1,0 +1,42 @@
+@import "variables";
+
+@page {
+  size: landscape;
+}
+
+.show-print {
+  display: block;
+}
+
+.hide-print {
+  display: none;
+}
+
+// Show link
+a[href]:after {
+  font-size: 60%;
+  content: ' <' attr(href) '>';
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+// slides
+main > section {
+  position: relative;
+  box-shadow: inset 0 0 0 1px var(--primary);
+  page-break-before: always;
+  page-break-after: always;
+  page-break-inside: avoid;
+
+  margin: 1em 5vmax 2em 5vmax;
+  width: 90vw;
+  height: calc(100vh - 3em);
+  box-sizing: content-box;
+
+  transform: none !important;
+  opacity: 1;
+}

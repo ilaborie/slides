@@ -12,7 +12,7 @@ const rl = createInterface({
     terminal: false
 });
 
-let stack = [];
+let stack: string[] = [];
 
 rl.on('line', line => stack.push(line));
 

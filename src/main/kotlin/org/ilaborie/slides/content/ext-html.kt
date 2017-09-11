@@ -48,9 +48,10 @@ fun Presentation.renderAsHtml(key: String): String {
     <link rel="stylesheet" href="slides.css">
     <link rel="stylesheet" href="$id.css">
     <link rel="stylesheet" href="$key.css">
+    <link rel="stylesheet" href="print.css" media="print">
 </head>
 <body class="$key">
-    <div class="slides-nav" style="grid-template-columns : repeat(${slides.count()}, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count()}, auto);">
         $groupsTitles
         $groupsNavs
     </div>

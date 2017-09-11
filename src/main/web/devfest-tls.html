@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="slides.css">
     <link rel="stylesheet" href="cssIsAwesome.css">
     <link rel="stylesheet" href="devfest-tls.css">
+    <link rel="stylesheet" href="print.css" media="print">
 </head>
 <body class="devfest-tls">
-    <div class="slides-nav" style="grid-template-columns : repeat(10, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(10, auto);">
         <strong>Introduction</strong>
 <strong>Utiliser un pré&#8209;processeur ?</strong>
 <strong>Unités</strong>
@@ -271,15 +272,7 @@ button.danger { /*
 	<aside>Side</aside>
 	<footer>Footer</footer>
 </div>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
+<pre class="hljs lang-html"><code></code></pre></div>
   <nav>
       <a href="#les_unites_de_longueur" class="previous"></a>
       <a href="#bilan_unites" class="next"></a>
@@ -319,15 +312,7 @@ button.danger { /*
 	<aside>Side</aside>
 	<footer>Footer</footer>
 </div>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
+<pre class="hljs lang-html"><code></code></pre></div>
   <nav>
       <a href="#part_flexbox_et_grid" class="previous"></a>
       <a href="#holy-grail-grid" class="next"></a>
@@ -345,15 +330,7 @@ button.danger { /*
 	<aside>Side</aside>
 	<footer>Footer</footer>
 </div>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>Header<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>Menu<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>Content<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">aside</span>&gt;</span>Side<span class="hljs-tag">&lt;/<span class="hljs-name">aside</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>Footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre></div>
+<pre class="hljs lang-html"><code></code></pre></div>
   <nav>
       <a href="#holy-grail-flexbox" class="previous"></a>
       <a href="#bilan_flexbox___grid" class="next"></a>
@@ -371,7 +348,8 @@ button.danger { /*
 <div><h4>Grid</h4>
 <ul><li><a href="https://gridbyexample.com/">Grid by examples</a></li>
 <li><a href="https://www.youtube.com/watch?v=txZq7Laz7_4">CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen</a></li>
-<li><a href="http://cssgridgarden.com/">Grid Garden</a></li></ul></div>
+<li><a href="http://cssgridgarden.com/">Grid Garden</a></li>
+<li><a href="http://jensimmons.com/post/aug-15-2017/heres-super-quick-way-try-out-css-grid">Here's a Super Quick Way to Try out CSS Grid</a></li></ul></div>
   <nav>
       <a href="#holy-grail-grid" class="previous"></a>
       <a href="#part_pseudo_elements" class="next"></a>
@@ -530,7 +508,7 @@ div.left { border-left-color: transparent; }</style>
 	fill: none;
 	/*stroke-dasharray: 0;*/
 	/*stroke-dashoffset: 0;*/
-	/*animation: draw 12s linear;*/
+	/*animation: draw 4s linear;*/
 }
 
 @keyframes draw {
@@ -581,7 +559,7 @@ div.left { border-left-color: transparent; }</style>
 </fieldset>
 
 <div class="hint">
-	<a href="#popover-demo">hover me</a>
+	<a href="#usage_des_info_bulles">hover me</a>
 	<div class="pop">Hello</div>
 </div>
 
@@ -724,19 +702,7 @@ div.left { border-left-color: transparent; }</style>
 <!-- Slide -->
 <section id="principe_pour_les_onglets" class="">
 <h3>Principe pour les onglets</h3>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tabs"</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tab"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"home"</span> <span class="hljs-attr">checked</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tab"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"projects"</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"radio"</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"tab"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"about"</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"home"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"projects"</span>&gt;</span>Projects<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-		<span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"about"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
-	<span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-for</span>=<span class="hljs-string">"home"</span>&gt;</span>Home page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-for</span>=<span class="hljs-string">"projects"</span>&gt;</span>Projects page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">data-for</span>=<span class="hljs-string">"about"</span>&gt;</span>About page<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
+<pre class="hljs lang-html"><code></code></pre>
   <nav>
       <a href="#panel" class="previous"></a>
       <a href="#demo_des_onglets" class="next"></a>
@@ -780,10 +746,7 @@ div.left { border-left-color: transparent; }</style>
 <!-- Slide -->
 <section id="panel_html" class="">
 <h3>Panel</h3>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Des détails<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Plus d'infos à propos des détails.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
+<pre class="hljs lang-html"><code></code></pre>
 <style scoped contenteditable="true">details {
 	border: medium solid currentcolor;
 	border-radius: .25em;
