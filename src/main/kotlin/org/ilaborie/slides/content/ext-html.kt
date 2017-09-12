@@ -1,9 +1,6 @@
 package org.ilaborie.slides.content
 
-import org.ilaborie.slides.Group
-import org.ilaborie.slides.Presentation
-import org.ilaborie.slides.Slide
-import org.ilaborie.slides.defaultContent
+import org.ilaborie.slides.*
 
 
 fun Slide.classes() = styleClass().joinToString(separator = " ")
@@ -66,13 +63,14 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
     val prevFun = if (previousId != null) """<a href="#$previousId" class="previous"></a>""" else ""
     val nextFun = if (nextId != null) """<a href="#$nextId" class="next"></a>""" else ""
     return """
-<!-- Slide -->
+<!-- Slide ${titleAsString()} -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
-${content(defaultContent).renderAsHtml()}
-  <nav class="hide-print">
-      $prevFun
-      $nextFun
-  </nav>
+    $prevFun
+    ${title().renderAsHtml()}
+    <article>
+        ${content(defaultContent).renderAsHtml()}
+    </article>
+    $nextFun
 </section>
 """
 }
@@ -109,11 +107,12 @@ fun Content.renderAsHtml(): String = when (this) {
 
 fun StyleEditable.renderAsHtml() = "<style scoped contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
 
-// FIXME test
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"
     else          -> {
-        val process = ProcessBuilder("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase()).start()
+        val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
+        logger.info { "Run ${cmd.joinToString()} ..." }
+        val process = ProcessBuilder(cmd).start()
         val writer = process.outputStream.writer()
         writer.write(this.code)
         writer.close()
@@ -140,9 +139,10 @@ fun Figure.renderAsHtml() = """
   <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
 </figure>"""
 
-// FIXME test
 fun MarkdownContent.renderAsHtml(): String {
-    val process = ProcessBuilder("ts-node", "src/main/typescript/md-to-html.ts").start()
+    val cmd = listOf("ts-node", "src/main/typescript/md-to-html.ts")
+    logger.info { "Run ${cmd.joinToString()} ..." }
+    val process = ProcessBuilder(cmd).start()
     val writer = process.outputStream.writer()
     writer.write(this.markdown)
     writer.close()

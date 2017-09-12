@@ -16,7 +16,7 @@ enum class ContentType {
 
 sealed class Slide : Slides {
     open fun id(): String = title().toString().normalize()
-    abstract fun title(): Content?
+    abstract fun title(): Content
     open fun styleClass(): Set<String> = emptySet()
     abstract fun content(defaultContent: () -> Content): Content
     abstract fun contentType(): ContentType
@@ -26,7 +26,7 @@ sealed class Slide : Slides {
 
 data class BasicSlide(
         val id: String,
-        val title: Content? = null,
+        val title: Content = EmptyContent,
         val content: Content? = null,
         val contentType: ContentType = if (content != null) INTERNAL else MARKDOWN,
         val styleClass: Set<String> = emptySet()) : Slide() {
@@ -40,34 +40,32 @@ data class BasicSlide(
     ) : this(title = title.raw(), id = id, content = content, contentType = contentType, styleClass = styleClass)
 
     override fun id() = id
-    override fun title() = title
+    override fun title() = title.h3()
     override fun styleClass() = styleClass
     override fun contentType() = contentType
-    override fun content(defaultContent: () -> Content) =
-            (title?.h3() ?: EmptyContent) + (content ?: defaultContent())
+    override fun content(defaultContent: () -> Content) = content ?: defaultContent()
 }
 
 data class MainTitleSlide(val title: Content, val id: String) : Slide() {
     override fun id() = id
-    override fun title() = title
+    override fun title() = title.h1()
     override fun styleClass() = setOf("cover")
     override fun contentType() = INTERNAL
-    override fun content(defaultContent: () -> Content) = title.h1()
+    override fun content(defaultContent: () -> Content) = EmptyContent
 }
 
 data class PartTitleSlide(val title: String) : Slide() {
     override fun id() = "part_${title.normalize()}"
-    override fun title() = title.raw()
+    override fun title() = title.h2()
     override fun styleClass() = setOf("part")
     override fun contentType() = INTERNAL
-    override fun content(defaultContent: () -> Content) = title.h2()
+    override fun content(defaultContent: () -> Content) = EmptyContent
 }
 
 data class RoadMapSlide(val title: String) : Slide() {
     override fun id() = "roadmap"
-    override fun title() = title.raw()
+    override fun title() = title.h3()
     override fun styleClass() = setOf("roadmap")
     override fun contentType() = INTERNAL
-    override fun content(defaultContent: () -> Content) =
-            title.h3() + defaultContent()
+    override fun content(defaultContent: () -> Content) = defaultContent()
 }

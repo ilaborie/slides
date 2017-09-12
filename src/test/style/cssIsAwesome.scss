@@ -11,7 +11,7 @@ section.cover {
 }
 
 // Whoami
-#whoami {
+#whoami article {
   h4 {
     font-size: 1.5rem;
   }
@@ -37,9 +37,6 @@ section.cover {
   }
 
   & > a {
-    margin: 0 var(--navigationWidth);
-    width: auto;
-    align-self: flex-start;
     &[href^='https://twitter.com']::before {
       content: '🐦 ';
     }
@@ -50,9 +47,10 @@ section.cover {
 }
 
 // Least Power
-#least-power {
+#least-power article {
+  align-self: center;
   blockquote p {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
   }
 }
 
@@ -66,22 +64,31 @@ section.cover {
 
 // CommitStrip
 #une_histoire_dunites_css {
-  figcaption {
-    display: none;
+  article {
+    figure {
+      width: 100%;
+      height: 100%;
+      img {
+        max-width: 100%;
+        max-height: 66vh;
+      }
+      figcaption {
+        display: none;
+      }
+    }
   }
 }
 
 // Holy Grail
 #holy-grail-calc, #holy-grail-flexbox, #holy-grail-grid {
-  & > div {
-    display: flex;
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    img {
-      max-width: 50%;
+
+    .holy-grail {
+      height: 50%;
     }
-  }
-  & > a {
-    width: auto;
   }
 }
 
@@ -227,6 +234,11 @@ $plateSize: 100px;
 
 // Popover demo
 #usage_des_info_bulles {
+  article {
+    flex-direction: row;
+    align-items: center;
+  }
+
   fieldset {
     position: relative;
     border: none;
@@ -315,7 +327,7 @@ $plateSize: 100px;
 }
 
 // Checkbox Hack
-#checkbox {
+#checkbox article {
   .editable {
     display: flex;
     flex-direction: column;
@@ -337,15 +349,15 @@ $plateSize: 100px;
 
 // Switch
 #switch {
-  & > div {
-    display: flex;
-    style {
-      flex: 1 1 auto;
-      margin: 0 .1rem;
-      font-size: .6rem;
-    }
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    align-items: stretch;
   }
+
   .editable {
+    grid-column: 1 / 3;
     display: flex;
     justify-content: center;
     label {
@@ -410,6 +422,7 @@ $plateSize: 100px;
 // Tabs
 #demo_des_onglets {
   .editable {
+    width: 100%;
     nav {
       position: relative;
       z-index: 1;
@@ -505,7 +518,16 @@ $plateSize: 100px;
 
 // Details/summary
 #panel_html {
+
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: stretch;
+    align-items: stretch;
+  }
+
   .editable {
+    grid-column: 1 / 3;
     display: flex;
     align-items: flex-start;
   }
@@ -520,8 +542,14 @@ $plateSize: 100px;
   }
 }
 
+#pour_apprendre {
+  img {
+    max-height: 15vh;
+  }
+}
+
 #_rocks__ {
-  & > div {
+  article > div {
     display: flex;
     height: calc(100vh - 2rem);
     justify-content: center;
@@ -532,13 +560,12 @@ $plateSize: 100px;
       @include cssIsAwesome();
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
-      background-image: linear-gradient(315deg, red, orange,  green, teal, blue, indigo, magenta);
+      background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
       background-size: 1400% 1400%;
       width: auto;
       border: solid 1vh transparent;
       padding: 5vh;
       outline: none;
-
       animation: rainbow 5s ease infinite;
 
       &::before {

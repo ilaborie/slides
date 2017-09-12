@@ -1,45 +1,43 @@
 // Slide navigation
-section > nav {
-  margin-top : 2rem;
-}
-
 section .previous,
 section .next {
-  color : transparent;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: calc(var(--headerHeight) / -2);
+  color: transparent;
+  text-decoration: none;
+  outline: none;
   &:hover {
-    color : var(--fgSlideNav);
+    color: var(--fgSlideNav);
+    text-decoration: none;
   }
 }
 
 section .previous::after,
 section .next::before {
-  content : '';
+  content: '';
 }
 
 section .previous::before,
 section .next::after {
-  width       : var(--navigationWidth);
-  background  : var(--bgSlideNav);
-  content     : '';
-  position    : absolute;
-  top         : 25vh;
-  z-index     : 1;
-  height      : 50vh;
-  font-size   : 8rem;
-  text-align  : center;
-  line-height : 40vh;
+  background: var(--bgSlideNav);
+  content: '';
+  font-size: 8rem;
+  text-decoration: none;
 }
 
 // Previous
 section .previous::before {
-  content : '‹';
-  left    : 0;
-  cursor  : w-resize;
+  content: '‹';
+
+  cursor: w-resize;
 }
 
 // Next
 section .next::after {
-  content : '›';
-  right   : 0;
-  cursor  : e-resize;
+  content: '›';
+  cursor: e-resize;
 }

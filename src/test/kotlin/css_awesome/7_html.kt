@@ -8,7 +8,7 @@ fun html(group: Group) = group
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/07_HTML/panel.html")) +
                     cssLiveCode("/cssIsAwesome/07_HTML/panel")
         }
-        .slide("Dialog") {
+        .slide("Dialog", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/07_HTML/dialog")
         }
         .slide("Polyfill") {

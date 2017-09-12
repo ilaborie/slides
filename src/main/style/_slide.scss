@@ -3,32 +3,68 @@ main {
   counter-reset: section;
 }
 
-main section {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
 // Slide
-section {
+main section {
   position: fixed;
   top: 0;
   left: 0;
-
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   box-sizing: border-box;
   background: var(--bgSlide);
   color: var(--fgSlide);
+  display: grid;
+  grid-template-columns: var(--navigationWidth) auto var(--navigationWidth);
+  grid-template-rows: var(--headerHeight) auto var(--footerHeight);
+  grid-gap: .25rem;
+  grid-template-areas: "🎩 🎩 🎩" "👈 🌈 👉" "👟 👟 👟";
+}
 
+// Area
+section {
+  h1, h2 {
+    grid-area: 🌈;
+  }
+  h3 {
+    grid-area: 🎩;
+  }
+  .previous {
+    grid-area: 👈;
+  }
+  article {
+    grid-area: 🌈;
+  }
+  .next {
+    grid-area: 👉;
+  }
+  &::after {
+    grid-area: 👟;
+  }
+  &::before {
+    grid-area: 🎩;
+  }
+}
+
+// Item position
+section {
+  h1, h2, .previous, .next {
+    justify-self: center;
+    align-self: center;
+  }
+  h1, h2 {
+    margin-top: calc(var(--headerHeight) / -2);
+  }
 }
 
 // Counter
 section::before {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 .5em 3em 3em;
+  justify-self: end;
+  align-self: center;
+  z-index: 1;
+  padding: 0.5rem;
   font-family: var(--counterFont);
-  font-size: 1em;
+  font-size: 1rem;
   counter-increment: section;
   content: '#' counter(section);
   color: var(--fgCounter);
@@ -37,17 +73,13 @@ section::before {
 
 // Footer
 section::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  padding: .1rem .1rem .1rem .5em;
+  display: flex;
+  align-items: center;
   background: var(--bgFooter) var(--logoFooter) no-repeat right;
   background-size: contain;
   background-origin: content-box;
   color: var(--fgFooter);
   font-family: var(--footerFont);
-
-  content: var(--txtFooter) ;
+  content: var(--txtFooter);
+  padding: .1rem .5rem;
 }

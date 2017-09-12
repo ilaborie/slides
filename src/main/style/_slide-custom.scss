@@ -1,77 +1,92 @@
-
 // Standard title
-section:not(.cover):not(.part) {
-  display         : flex;
-  flex-direction  : column;
-  justify-content : space-between;
-  align-items     : center;
+section h3 {
+  margin: 0;
+  align-self: stretch;
+  flex: 0 0 auto;
+  padding: .25em 1em;
+  font-size: var(--headerFontSize);
+  background: var(--bgHeader);
+  color: var(--fgHeader);
+}
 
-  h3 {
-    align-self : stretch;
-    flex       : 0 0 auto;
-    padding    : .25em 1em;
-    font-size  : var(--headerFontSize);
-    background : var(--bgHeader);
-    color      : var(--fgHeader);
-  }
+section h4 {
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: .25em .5em;
+}
 
-  & > *:not(h3) {
-    width      : calc(100vw - 2 * var(--navigationWidth));
-    text-align : left;
-  }
+// Body
+section article {
+  max-height: calc(100vh - var(--footerHeight) - var(--headerHeight) - .5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  align-items: flex-start;
 }
 
 // Cover
 section.cover {
-  @include flexCenter();
-  background : var(--bgCover);
-  color      : var(--fgCover);
+  background: var(--bgCover);
+  color: var(--fgCover);
 
   h1 {
-    margin      : -1em var(--navigationWidth) 0 var(--navigationWidth);
-    font-family : var(--coverFont);
-    font-size   : 4rem;
-    text-align  : center;
-    font-weight : bold;
+    font-family: var(--coverFont);
+    font-size: 4rem;
+    text-align: center;
+    font-weight: bold;
   }
 
   &::before {
-    display : none;
+    display: none;
   }
 }
 
 // Part Separator
 section.part {
-  @include flexCenter();
-  background : var(--bgPart);
-  color      : var(--fgPart);
+  background: var(--bgPart);
+  color: var(--fgPart);
 
   h2 {
-    margin      : -1em var(--navigationWidth) 0 var(--navigationWidth);
-    font-family : var(--partFont);
-    font-size   : 3rem;
-    text-align  : center;
+    font-family: var(--partFont);
+    font-size: 3rem;
+    text-align: center;
   }
 }
 
 // Two Columns
-section.two-columns {
+section.two-columns article {
   ul, ol {
-    column-count : 2;
-    column-gap   : 2em;
+    column-count: 2;
+    column-gap: 2em;
   }
 }
 
 // Roadmap
-section.roadmap {
+section.roadmap article {
   ol {
-    list-style : upper-roman;
+    list-style: upper-roman;
   }
 }
 
 // No Title
 section.hide-title {
   h1, h2, h3 {
-    display : none;
+    display: none;
+  }
+}
+
+// Live code CSS
+section.live-code {
+  article {
+    justify-content: stretch;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+
+    .editable {
+      flex: 1 1 auto;
+    }
   }
 }

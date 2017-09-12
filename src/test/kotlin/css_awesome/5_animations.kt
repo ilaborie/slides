@@ -6,10 +6,10 @@ import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.content.html
 
 fun animations(group: Group) = group
-        .slide(title = "Texte de chargement") {
+        .slide(title = "Texte de chargement", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/05_animations/loader")
         }
-        .slide(title = "Dessiner") {
+        .slide(title = "Dessiner", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/05_animations/draw")
         }
         .slide(title = "Bilan animations") {

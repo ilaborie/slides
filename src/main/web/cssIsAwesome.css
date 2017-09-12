@@ -82,51 +82,54 @@ section.cover h1 {
   line-height: 105%;
   text-align: left; }
 
-#whoami h4 {
+#whoami article h4 {
   font-size: 1.5rem; }
 
-#whoami > div {
+#whoami article > div {
   display: flex; }
-  #whoami > div div {
+  #whoami article > div div {
     align-self: center; }
-  #whoami > div a {
+  #whoami article > div a {
     border: none; }
-    #whoami > div a::before {
+    #whoami article > div a::before {
       content: ''; }
-  #whoami > div svg {
+  #whoami article > div svg {
     flex: 1 1 auto;
     max-height: 2em;
     max-width: 25vw; }
-    #whoami > div svg path {
+    #whoami article > div svg path {
       fill: currentColor; }
 
-#whoami > a {
-  margin: 0 var(--navigationWidth);
-  width: auto;
-  align-self: flex-start; }
-  #whoami > a[href^='https://twitter.com']::before {
-    content: '🐦 '; }
-  #whoami > a[href^=mailto]::before {
-    content: '✉️ '; }
+#whoami article > a[href^='https://twitter.com']::before {
+  content: '🐦 '; }
 
-#least-power blockquote p {
-  font-size: 1.35rem; }
+#whoami article > a[href^=mailto]::before {
+  content: '✉️ '; }
+
+#least-power article {
+  align-self: center; }
+  #least-power article blockquote p {
+    font-size: 1.2rem; }
 
 #bordure_des_boutons .editable button {
   padding: .25em .5em;
   transform: scale(4); }
 
-#une_histoire_dunites_css figcaption {
-  display: none; }
+#une_histoire_dunites_css article figure {
+  width: 100%;
+  height: 100%; }
+  #une_histoire_dunites_css article figure img {
+    max-width: 100%;
+    max-height: 66vh; }
+  #une_histoire_dunites_css article figure figcaption {
+    display: none; }
 
-#holy-grail-calc > div, #holy-grail-flexbox > div, #holy-grail-grid > div {
-  display: flex;
+#holy-grail-calc article, #holy-grail-flexbox article, #holy-grail-grid article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center; }
-  #holy-grail-calc > div img, #holy-grail-flexbox > div img, #holy-grail-grid > div img {
-    max-width: 50%; }
-
-#holy-grail-calc > a, #holy-grail-flexbox > a, #holy-grail-grid > a {
-  width: auto; }
+  #holy-grail-calc article .holy-grail, #holy-grail-flexbox article .holy-grail, #holy-grail-grid article .holy-grail {
+    height: 50%; }
 
 #holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
   opacity: .25; }
@@ -228,6 +231,10 @@ section.cover h1 {
   #texte_de_chargement .editable .loader {
     transform: scale(3); }
 
+#usage_des_info_bulles article {
+  flex-direction: row;
+  align-items: center; }
+
 #usage_des_info_bulles fieldset {
   position: relative;
   border: none; }
@@ -296,30 +303,30 @@ section.cover h1 {
     transform: scale(1);
     transition-timing-function: ease-out; }
 
-#checkbox .editable {
+#checkbox article .editable {
   display: flex;
   flex-direction: column; }
 
-#checkbox blockquote p {
+#checkbox article blockquote p {
   font-size: 1rem; }
 
-#checkbox blockquote cite::before {
+#checkbox article blockquote cite::before {
   content: '⟿ '; }
 
-#checkbox fieldset {
+#checkbox article fieldset {
   background: rgba(0, 0, 0, 0.25);
   padding: .125rem .5rem;
   border: thin solid grey;
   transform: scale(2); }
 
-#switch > div {
-  display: flex; }
-  #switch > div style {
-    flex: 1 1 auto;
-    margin: 0 .1rem;
-    font-size: .6rem; }
+#switch article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch; }
 
 #switch .editable {
+  grid-column: 1 / 3;
   display: flex;
   justify-content: center; }
   #switch .editable label {
@@ -362,81 +369,78 @@ section.cover h1 {
     background: #444;
     color: #fff; }
 
-#demo_des_onglets .editable nav {
-  position: relative;
-  z-index: 1;
-  padding-left: 1em; }
-
-#demo_des_onglets .editable nav > label {
-  position: relative;
-  display: inline-block;
-  padding: .3em 1em 0;
-  color: #000;
-  text-decoration: none;
-  margin: 0 -.3em; }
-
-#demo_des_onglets .editable nav > label::before, #demo_des_onglets .editable .tabs > div {
-  border: 0.1em solid rgba(0, 0, 0, 0.4); }
-
-#demo_des_onglets .editable nav label::before {
-  content: '';
-  /* To generate the box */
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  border-bottom: none;
-  border-radius: .5em .5em 0 0;
-  background: #ccc linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
-  box-shadow: 0 .15em white inset;
-  transform: scale(1.1, 1.3) perspective(0.5em) rotateX(5deg);
-  transform-origin: bottom; }
-
-#demo_des_onglets .editable .tabs {
+#demo_des_onglets .editable {
   width: 100%; }
+  #demo_des_onglets .editable nav {
+    position: relative;
+    z-index: 1;
+    padding-left: 1em; }
+  #demo_des_onglets .editable nav > label {
+    position: relative;
+    display: inline-block;
+    padding: .3em 1em 0;
+    color: #000;
+    text-decoration: none;
+    margin: 0 -.3em; }
+  #demo_des_onglets .editable nav > label::before, #demo_des_onglets .editable .tabs > div {
+    border: 0.1em solid rgba(0, 0, 0, 0.4); }
+  #demo_des_onglets .editable nav label::before {
+    content: '';
+    /* To generate the box */
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    border-bottom: none;
+    border-radius: .5em .5em 0 0;
+    background: #ccc linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+    box-shadow: 0 .15em white inset;
+    transform: scale(1.1, 1.3) perspective(0.5em) rotateX(5deg);
+    transform-origin: bottom; }
+  #demo_des_onglets .editable .tabs {
+    width: 100%; }
+  #demo_des_onglets .editable .tabs > div {
+    margin-bottom: 1em;
+    background: #eee;
+    padding: 1em;
+    border-radius: .15em;
+    color: #000;
+    display: none;
+    min-height: 40vh; }
+  #demo_des_onglets .editable input {
+    transform: scale(2); }
+  #demo_des_onglets .editable input#home:checked ~ nav label[for=home] {
+    z-index: 2; }
+    #demo_des_onglets .editable input#home:checked ~ nav label[for=home]::before {
+      background-color: #eee;
+      margin-bottom: -.08em; }
+  #demo_des_onglets .editable input#home:checked ~ div[data-for=home] {
+    display: block; }
+  #demo_des_onglets .editable input#projects:checked ~ nav label[for=projects] {
+    z-index: 2; }
+    #demo_des_onglets .editable input#projects:checked ~ nav label[for=projects]::before {
+      background-color: #eee;
+      margin-bottom: -.08em; }
+  #demo_des_onglets .editable input#projects:checked ~ div[data-for=projects] {
+    display: block; }
+  #demo_des_onglets .editable input#about:checked ~ nav label[for=about] {
+    z-index: 2; }
+    #demo_des_onglets .editable input#about:checked ~ nav label[for=about]::before {
+      background-color: #eee;
+      margin-bottom: -.08em; }
+  #demo_des_onglets .editable input#about:checked ~ div[data-for=about] {
+    display: block; }
 
-#demo_des_onglets .editable .tabs > div {
-  margin-bottom: 1em;
-  background: #eee;
-  padding: 1em;
-  border-radius: .15em;
-  color: #000;
-  display: none;
-  min-height: 40vh; }
-
-#demo_des_onglets .editable input {
-  transform: scale(2); }
-
-#demo_des_onglets .editable input#home:checked ~ nav label[for=home] {
-  z-index: 2; }
-  #demo_des_onglets .editable input#home:checked ~ nav label[for=home]::before {
-    background-color: #eee;
-    margin-bottom: -.08em; }
-
-#demo_des_onglets .editable input#home:checked ~ div[data-for=home] {
-  display: block; }
-
-#demo_des_onglets .editable input#projects:checked ~ nav label[for=projects] {
-  z-index: 2; }
-  #demo_des_onglets .editable input#projects:checked ~ nav label[for=projects]::before {
-    background-color: #eee;
-    margin-bottom: -.08em; }
-
-#demo_des_onglets .editable input#projects:checked ~ div[data-for=projects] {
-  display: block; }
-
-#demo_des_onglets .editable input#about:checked ~ nav label[for=about] {
-  z-index: 2; }
-  #demo_des_onglets .editable input#about:checked ~ nav label[for=about]::before {
-    background-color: #eee;
-    margin-bottom: -.08em; }
-
-#demo_des_onglets .editable input#about:checked ~ div[data-for=about] {
-  display: block; }
+#panel_html article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: stretch;
+  align-items: stretch; }
 
 #panel_html .editable {
+  grid-column: 1 / 3;
   display: flex;
   align-items: flex-start; }
 
@@ -445,12 +449,15 @@ section.cover h1 {
   justify-content: center;
   align-items: center; }
 
-#_rocks__ > div {
+#pour_apprendre img {
+  max-height: 15vh; }
+
+#_rocks__ article > div {
   display: flex;
   height: calc(100vh - 2rem);
   justify-content: center;
   align-items: center; }
-  #_rocks__ > div .awesome-box {
+  #_rocks__ article > div .awesome-box {
     position: relative;
     width: 56vh;
     height: 56vh;
@@ -471,7 +478,7 @@ section.cover h1 {
     padding: 5vh;
     outline: none;
     animation: rainbow 5s ease infinite; }
-    #_rocks__ > div .awesome-box::before {
+    #_rocks__ article > div .awesome-box::before {
       position: absolute;
       z-index: -1;
       top: 0;

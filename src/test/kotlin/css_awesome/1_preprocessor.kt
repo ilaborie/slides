@@ -4,7 +4,7 @@ import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
 fun preprocessor(group: Group) = group
-        .slide(title = "Bordure des boutons") {
+        .slide(title = "Bordure des boutons", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
         }
         .slide(title = "Alors utilise-t-on un pré&#8209;processeurs ?") {

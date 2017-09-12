@@ -1,4 +1,4 @@
-svg path {
+.editable svg path {
 	stroke: purple;
 	stroke-width: .1em;
 	fill: none;

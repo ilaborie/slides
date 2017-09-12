@@ -18,13 +18,13 @@ fun unites(group: Group) = group
                     "vmin, vmax" to "min(1vh, 1vw), max(1vh, 1vw)".raw())
         }
         .slide(title = "Holy Grail avec <code>calc</code>".html(), id = "holy-grail-calc") {
-            Block(
-                    ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")))
+            ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
+                    ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
         }
         .slide(title = "Bilan unités") {
             UnorderedList(
-                    Link("Unités", "https://developer.mozilla.org/fr/docs/Web/CSS/length) et [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html"),
+                    Link("Unités", "https://developer.mozilla.org/fr/docs/Web/CSS/length"),
+                    Link("Truc et astuces", "https://www.w3.org/Style/Examples/007/units.fr.html"),
                     Link(Code(code = "calc"), "https://developer.mozilla.org/fr/docs/Web/CSS/calc")
             )
         }

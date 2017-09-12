@@ -2,17 +2,16 @@ package css_awesome
 
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.Language.*
 
 fun flexgrid(group: Group) = group
         .slide(title = "Holy Grail avec <code>flexbox</code>".html(), id = "holy-grail-flexbox") {
-            Block(
                     ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")))
+                            ExternalCodeContent(HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
         }
         .slide(title = "Holy Grail avec <code>grid</code>".html(), id = "holy-grail-grid") {
-            Block(
                     ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                            ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")))
+                            ExternalCodeContent(HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
         }
         .slide(title = "Bilan Flexbox & Grid") {
             Block(
