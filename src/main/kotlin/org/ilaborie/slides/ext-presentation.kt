@@ -1,12 +1,15 @@
 package org.ilaborie.slides
 
+import org.ilaborie.logger.Level
 import org.ilaborie.logger.Logger
 import org.ilaborie.slides.ContentType.*
 import org.ilaborie.slides.content.*
 import java.io.File
 import java.nio.charset.Charset
 
-val logger = Logger("PresExt")
+val logger = Logger("PresExt").apply {
+    level = Level.DEBUG
+}
 
 fun <T> safe(dangerous: () -> T): T =
         try {

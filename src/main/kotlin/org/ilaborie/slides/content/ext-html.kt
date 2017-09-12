@@ -114,10 +114,11 @@ fun Code.renderAsHtml() = when (language) {
         logger.info { "Run ${cmd.joinToString()} ..." }
         val process = ProcessBuilder(cmd).start()
         val writer = process.outputStream.writer()
+        logger.debug { code }
         writer.write(this.code)
         writer.close()
-        val code = process.inputStream.bufferedReader().readText()
-        """<pre class="hljs lang-$language"><code>$code</code></pre>"""
+        val formattedCode = process.inputStream.bufferedReader().readText()
+        """<pre class="hljs lang-$language"><code>$formattedCode</code></pre>"""
     }
 }
 

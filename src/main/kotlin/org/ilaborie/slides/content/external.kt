@@ -34,6 +34,7 @@ sealed class External {
 
     fun loadTextContent(charset: Charset = Charsets.UTF_8): String = when (this) {
         is ExternalResource -> catchWithDefault("No resource: $resource") {
+            logger.debug { "Read resource $resource" }
             val input = this::class.java.getResourceAsStream(this.resource)
             if (input == null) {
                 logger.error { "No resources $resource" }
@@ -41,9 +42,11 @@ sealed class External {
             input.reader(charset).readText()
         }
         is ExternalFile     -> catchWithDefault("No file: $file") {
+            logger.debug { "Read file $file" }
             this.file.readText(charset)
         }
         is ExternalLink     -> catchWithDefault("No link: $url") {
+            logger.debug { "Read link $url" }
             URL(url).openStream().reader().readText()
         }
     }

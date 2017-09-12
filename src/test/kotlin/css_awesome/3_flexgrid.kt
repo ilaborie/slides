@@ -7,11 +7,11 @@ import org.ilaborie.slides.content.Language.*
 fun flexgrid(group: Group) = group
         .slide(title = "Holy Grail avec <code>flexbox</code>".html(), id = "holy-grail-flexbox") {
                     ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                            ExternalCodeContent(HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
+                            ExternalCodeContent(HTML, holyGrail)
         }
         .slide(title = "Holy Grail avec <code>grid</code>".html(), id = "holy-grail-grid") {
                     ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                            ExternalCodeContent(HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
+                            ExternalCodeContent(HTML, holyGrail)
         }
         .slide(title = "Bilan Flexbox & Grid") {
             Block(

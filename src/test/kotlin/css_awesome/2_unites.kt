@@ -3,6 +3,8 @@ package css_awesome
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
+val holyGrail = ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")
+
 fun unites(group: Group) = group
         .slide(title = "Une histoire d’unités CSS") {
             Figure("Une histoire d’unités CSS".raw(),
@@ -19,7 +21,7 @@ fun unites(group: Group) = group
         }
         .slide(title = "Holy Grail avec <code>calc</code>".html(), id = "holy-grail-calc") {
             ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
-                    ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/02_unites/holy_grail.html"))
+                    ExternalCodeContent(Language.HTML, holyGrail)
         }
         .slide(title = "Bilan unités") {
             UnorderedList(

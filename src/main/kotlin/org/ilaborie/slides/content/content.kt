@@ -30,7 +30,9 @@ data class ExternalMarkdownContent(val externalMarkdown: External) : Content() {
 }
 
 data class ExternalCodeContent(val language: Language, val externalCode: External) : Content() {
-    val code by lazy { Code(this.externalCode.loadTextContent(), language, this.externalCode.fileName) }
+    val code by lazy {
+        Code(this.externalCode.loadTextContent(), language, this.externalCode.fileName)
+    }
 }
 
 data class ExternalSvgContent(val externalSvg: External) : Content() {
