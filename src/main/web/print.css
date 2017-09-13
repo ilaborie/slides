@@ -87,6 +87,5 @@ main > section {
   page-break-before: always;
   page-break-after: always;
   page-break-inside: avoid;
-  box-sizing: content-box;
   transform: none !important;
   opacity: 1; }

@@ -1,10 +1,10 @@
-section {
+section article {
   a {
-    text-decoration : none;
-    color           : currentColor;
-    border-bottom   : thin dashed currentColor;
+    text-decoration: none;
+    color: currentColor;
+    border-bottom: thin dashed currentColor;
     &::before {
-      content : '➼ ';
+      content: '➼ ';
     }
   }
 }

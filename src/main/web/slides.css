@@ -100,13 +100,15 @@ main section {
   top: 0;
   left: 0;
   width: 100vw;
+  max-width: 100vw;
   height: 100vh;
+  max-height: 100vh;
   overflow: hidden;
   box-sizing: border-box;
   background: var(--bgSlide);
   color: var(--fgSlide);
   display: grid;
-  grid-template-columns: var(--navigationWidth) auto var(--navigationWidth);
+  grid-template-columns: var(--navigationWidth) calc(100vw - 2 * var(--navigationWidth) - 0.5rem) var(--navigationWidth);
   grid-template-rows: var(--headerHeight) auto var(--footerHeight);
   grid-gap: .25rem;
   grid-template-areas: "🎩 🎩 🎩" "👈 🌈 👉" "👟 👟 👟"; }
@@ -347,11 +349,11 @@ pre.hljs {
   border-radius: .25rem;
   tab-size: 2; }
 
-section a {
+section article a {
   text-decoration: none;
   color: currentColor;
   border-bottom: thin dashed currentColor; }
-  section a::before {
+  section article a::before {
     content: '➼ '; }
 
 ul, ol, dl {

@@ -262,7 +262,8 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 ```html
 <details>
 	<summary>Des détails</summary>
-	<p>Plus d'infos à propos des détails.</p>
+	<p>Plus d'infos
+		à propos des détails.</p>
 </details>
 ```
 ```CSS
@@ -270,7 +271,8 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/panel.css)
 ```
 <details>
 	<summary>Des détails</summary>
-	<p>Plus d'infos à propos des détails.</p>
+	<p>Plus d'infos
+		à propos des détails.</p>
 </details>
 
 ```CSS

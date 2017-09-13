@@ -152,7 +152,7 @@ $plateSize: 100px;
     }
 
     .table-leg {
-      width: 1.5rem,;
+      width: 1.5rem;
       height: .8rem;
       background: #84570f;
       position: absolute;
@@ -328,22 +328,28 @@ $plateSize: 100px;
 
 // Checkbox Hack
 #checkbox article {
-  .editable {
+  .like {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   blockquote {
-    p { font-size: 1rem; }
+    margin: 0;
+    p {
+      font-size: 1rem;
+      margin: 0;
+    }
     cite::before {
       content: '⟿ ';
     }
   }
   fieldset {
-    background: rgba(0, 0, 0, .25);
+    //background: rgba(0, 0, 0, .25);
     padding: .125rem .5rem;
     border: thin solid grey;
     transform: scale(2);
-    //color: white;
+    background-color: #fff;
   }
 }
 
@@ -352,6 +358,7 @@ $plateSize: 100px;
   article {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: .25rem;
     justify-items: stretch;
     align-items: stretch;
   }
@@ -516,14 +523,25 @@ $plateSize: 100px;
   }
 }
 
+// HTML
+#part_html {
+  h2 {
+    font-family: var(--codeFont);
+  }
+}
 // Details/summary
 #panel_html {
 
   article {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-column-gap: .25rem;
     justify-items: stretch;
     align-items: stretch;
+    pre.hljs, style {
+      font-size: .7rem;
+      margin: 0;
+    }
   }
 
   .editable {
@@ -561,12 +579,15 @@ $plateSize: 100px;
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
-      background-size: 1400% 1400%;
       width: auto;
       border: solid 1vh transparent;
       padding: 5vh;
       outline: none;
       animation: rainbow 5s ease infinite;
+
+      &:hover {
+        background-size: 700% 700%;
+      }
 
       &::before {
         position: absolute;

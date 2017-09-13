@@ -8,7 +8,7 @@
 	width: 1em;
 	background-color: #fff;
 	border-radius: 50%;
-	transition: all 0.25s;;
+	transition: all 0.25s;
 }
 
 .switch:checked + label::before {
