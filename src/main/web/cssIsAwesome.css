@@ -82,53 +82,53 @@ section.cover h1 {
   line-height: 105%;
   text-align: left; }
 
-#whoami article h4 {
+#whoami .slide-body h4 {
   font-size: 1.5rem; }
 
-#whoami article > div {
+#whoami .slide-body > div {
   display: flex; }
-  #whoami article > div div {
+  #whoami .slide-body > div div {
     align-self: center; }
-  #whoami article > div a {
+  #whoami .slide-body > div a {
     border: none; }
-    #whoami article > div a::before {
+    #whoami .slide-body > div a::before {
       content: ''; }
-  #whoami article > div svg {
+  #whoami .slide-body > div svg {
     flex: 1 1 auto;
     max-height: 2em;
     max-width: 25vw; }
-    #whoami article > div svg path {
+    #whoami .slide-body > div svg path {
       fill: currentColor; }
 
-#whoami article > a[href^='https://twitter.com']::before {
+#whoami .slide-body > a[href^='https://twitter.com']::before {
   content: '🐦 '; }
 
-#whoami article > a[href^=mailto]::before {
+#whoami .slide-body > a[href^=mailto]::before {
   content: '✉️ '; }
 
-#least-power article {
+#least-power .slide-body {
   align-self: center; }
-  #least-power article blockquote p {
+  #least-power .slide-body blockquote p {
     font-size: 1.2rem; }
 
 #bordure_des_boutons .editable button {
   padding: .25em .5em;
   transform: scale(4); }
 
-#une_histoire_dunites_css article figure {
+#une_histoire_dunites_css .slide-body figure {
   width: 100%;
   height: 100%; }
-  #une_histoire_dunites_css article figure img {
+  #une_histoire_dunites_css .slide-body figure img {
     max-width: 100%;
     max-height: 66vh; }
-  #une_histoire_dunites_css article figure figcaption {
+  #une_histoire_dunites_css .slide-body figure figcaption {
     display: none; }
 
-#holy-grail-calc article, #holy-grail-flexbox article, #holy-grail-grid article {
+#holy-grail-calc .slide-body, #holy-grail-flexbox .slide-body, #holy-grail-grid .slide-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center; }
-  #holy-grail-calc article .holy-grail, #holy-grail-flexbox article .holy-grail, #holy-grail-grid article .holy-grail {
+  #holy-grail-calc .slide-body .holy-grail, #holy-grail-flexbox .slide-body .holy-grail, #holy-grail-grid .slide-body .holy-grail {
     height: 50%; }
 
 #holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
@@ -231,7 +231,7 @@ section.cover h1 {
   #texte_de_chargement .editable .loader {
     transform: scale(3); }
 
-#usage_des_info_bulles article {
+#usage_des_info_bulles .slide-body {
   flex-direction: row;
   align-items: center; }
 
@@ -303,27 +303,27 @@ section.cover h1 {
     transform: scale(1);
     transition-timing-function: ease-out; }
 
-#checkbox article .like {
+#checkbox .slide-body .like {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
 
-#checkbox article blockquote {
+#checkbox .slide-body blockquote {
   margin: 0; }
-  #checkbox article blockquote p {
+  #checkbox .slide-body blockquote p {
     font-size: 1rem;
     margin: 0; }
-  #checkbox article blockquote cite::before {
+  #checkbox .slide-body blockquote cite::before {
     content: '⟿ '; }
 
-#checkbox article fieldset {
+#checkbox .slide-body fieldset {
   padding: .125rem .5rem;
   border: thin solid grey;
   transform: scale(2);
   background-color: #fff; }
 
-#switch article {
+#switch .slide-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: .25rem;
@@ -441,13 +441,13 @@ section.cover h1 {
 #part_html h2 {
   font-family: var(--codeFont); }
 
-#panel_html article {
+#panel_html .slide-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: .25rem;
   justify-items: stretch;
   align-items: stretch; }
-  #panel_html article pre.hljs, #panel_html article style {
+  #panel_html .slide-body pre.hljs, #panel_html .slide-body style {
     font-size: .7rem;
     margin: 0; }
 
@@ -464,12 +464,12 @@ section.cover h1 {
 #pour_apprendre img {
   max-height: 15vh; }
 
-#_rocks__ article > div {
+#_rocks__ .slide-body > div {
   display: flex;
   height: calc(100vh - 2rem);
   justify-content: center;
   align-items: center; }
-  #_rocks__ article > div .awesome-box {
+  #_rocks__ .slide-body > div .awesome-box {
     position: relative;
     width: 56vh;
     height: 56vh;
@@ -489,9 +489,9 @@ section.cover h1 {
     padding: 5vh;
     outline: none;
     animation: rainbow 5s ease infinite; }
-    #_rocks__ article > div .awesome-box:hover {
+    #_rocks__ .slide-body > div .awesome-box:hover {
       background-size: 700% 700%; }
-    #_rocks__ article > div .awesome-box::before {
+    #_rocks__ .slide-body > div .awesome-box::before {
       position: absolute;
       z-index: -1;
       top: 0;

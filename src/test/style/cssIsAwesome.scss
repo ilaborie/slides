@@ -11,7 +11,7 @@ section.cover {
 }
 
 // Whoami
-#whoami article {
+#whoami .slide-body {
   h4 {
     font-size: 1.5rem;
   }
@@ -47,7 +47,7 @@ section.cover {
 }
 
 // Least Power
-#least-power article {
+#least-power .slide-body {
   align-self: center;
   blockquote p {
     font-size: 1.2rem;
@@ -64,7 +64,7 @@ section.cover {
 
 // CommitStrip
 #une_histoire_dunites_css {
-  article {
+  .slide-body {
     figure {
       width: 100%;
       height: 100%;
@@ -81,7 +81,7 @@ section.cover {
 
 // Holy Grail
 #holy-grail-calc, #holy-grail-flexbox, #holy-grail-grid {
-  article {
+  .slide-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     align-items: center;
@@ -234,7 +234,7 @@ $plateSize: 100px;
 
 // Popover demo
 #usage_des_info_bulles {
-  article {
+  .slide-body {
     flex-direction: row;
     align-items: center;
   }
@@ -327,7 +327,7 @@ $plateSize: 100px;
 }
 
 // Checkbox Hack
-#checkbox article {
+#checkbox .slide-body {
   .like {
     display: flex;
     flex-direction: column;
@@ -355,7 +355,7 @@ $plateSize: 100px;
 
 // Switch
 #switch {
-  article {
+  .slide-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: .25rem;
@@ -532,7 +532,7 @@ $plateSize: 100px;
 // Details/summary
 #panel_html {
 
-  article {
+  .slide-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: .25rem;
@@ -567,7 +567,7 @@ $plateSize: 100px;
 }
 
 #_rocks__ {
-  article > div {
+  .slide-body > div {
     display: flex;
     height: calc(100vh - 2rem);
     justify-content: center;

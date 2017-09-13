@@ -48,7 +48,8 @@ fun Presentation.renderAsHtml(key: String): String {
     <link rel="stylesheet" href="print.css" media="print">
 </head>
 <body class="$key">
-    <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count()}, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count() + 1}, auto);">
+        <a href="#${coverSlide.id()}" class="${coverSlide.classes()}" title="${coverSlide.titleAsString()}">0</a>
         $groupsTitles
         $groupsNavs
     </div>
@@ -67,9 +68,9 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
     $prevFun
     ${title().renderAsHtml()}
-    <article>
+    <div class="slide-body">
         ${content(defaultContent).renderAsHtml()}
-    </article>
+    </div>
     $nextFun
 </section>
 """

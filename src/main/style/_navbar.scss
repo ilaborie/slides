@@ -1,38 +1,45 @@
 // Top navbar
 .slides-nav {
-  position              : fixed;
-  top                   : 0;
-  left                  : 0;
-  right                 : 0;
-  z-index               : 1;
-  color                 : transparent;
-  transition            : all .4s ease-out;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transition: all .4s ease-out;
+
+  color: transparent;
 
   &:hover {
-    background : var(--bgNavbar);
-    color      : var(--fgNavbar);
-    box-shadow : 0 0 2rem var(--shadowNavbar);
+    background: var(--bgNavbar);
+    color: var(--fgNavbar);
+    box-shadow: 0 0 2rem var(--shadowNavbar);
   }
 
-  display               : grid;
-  padding               : 0 .25rem;
-  grid-column-gap       : .1rem;
+  display: grid;
+  padding: 0 .25rem;
+  grid-column-gap: .1rem;
 
   strong {
-    font-size  : .3rem;
-    text-align : center;
+    font-size: .3rem;
+    text-align: center;
   }
   nav {
-    font-size  : .4rem;
-    text-align : center;
-    a {
-      color           : inherit;
-      text-align      : center;
-      text-decoration : none;
+    font-size: .4rem;
+    text-align: center;
+  }
+  a {
+    font-family: var(--codeFont);
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
 
-      &.part {
-        font-weight : bold;
-      }
+    &.part {
+      font-weight: bold;
+    }
+
+    &.cover {
+      grid-row: 1 / 3;
+      align-self: center;
     }
   }
 }
