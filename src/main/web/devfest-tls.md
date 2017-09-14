@@ -108,7 +108,7 @@ RawContent(content=vmin, vmax)
 * [Flexbox, et le CSS redevient fun ! (Hubert SABLONNIÈRE)](https://www.youtube.com/watch?v=5F_ngjHDcJQ)/n* [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/)/n* [Flexbox Froggy](https://flexboxfroggy.com/)
 #### Grid ####
 
-* [Grid by examples](https://gridbyexample.com/)/n* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)/n* [Grid Garden](http://cssgridgarden.com/)/n* [Here's a Super Quick Way to Try out CSS Grid](http://jensimmons.com/post/aug-15-2017/heres-super-quick-way-try-out-css-grid)
+* [Grid by examples](https://gridbyexample.com/)/n* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)/n* [Grid Garden](http://cssgridgarden.com/)
 
 
 
@@ -314,14 +314,16 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 
 0. Revue de code/n1. DRY/n2. Clean Code/n3. Single Responsibility Principle/n4. ...
 
-* [les slides]()/n* [le code]()/n* [Making Of]()
+* [les slides en HTML](https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome)/n* [les slides en PDF](https://ilaborie.github.io/slides/devfest-tls.pdf)/n* [le code](https://github.com/ilaborie/slides)/n* [Making Of](http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html)
 
-* `(Ctrl|Cmd) + Shift + i`/n* ![CSS Secret](http://lea.verou.me/cover.png)
+* `(Ctrl|⌘) + Shift + i`/n* ![CSS Secret](http://lea.verou.me/cover.png)
 [CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)/n* [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)/n* [CodePen](https://codepen.io/)
 , 
 [JSFiddle](https://jsfiddle.net/)
 , 
 [Dabblet](http://dabblet.com/)
-,.../n* [CSS Tricks]()/n* [Shop Talk Show]()/n* [CSS Flags]()
+,.../n* [CSS Tricks](https://css-tricks.com/)
+, 
+[Smashing Magazine](https://www.smashingmagazine.com/)/n* [CSS Flags](https://pixelastic.github.io/css-flags/)
 
 <div class="awesome-box" contenteditable>CSS <br>is <br>Awesome!</div>

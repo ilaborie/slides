@@ -371,13 +371,26 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   section article a[href*="mozilla"]::before, section h1 a[href*="mozilla"]::before, section h2 a[href*="mozilla"]::before, section h3 a[href*="mozilla"]::before, section h4 a[href*="mozilla"]::before {
     content: '🦊 '; }
   section article a[href*="w3.org"]::before, section h1 a[href*="w3.org"]::before, section h2 a[href*="w3.org"]::before, section h3 a[href*="w3.org"]::before, section h4 a[href*="w3.org"]::before {
-    content: '𝙬𝟯𝙘 '; }
-  section article a[href*="css-tricks"]::before, section article a[href*="smashingmagazin"]::before, section h1 a[href*="css-tricks"]::before, section h1 a[href*="smashingmagazin"]::before, section h2 a[href*="css-tricks"]::before, section h2 a[href*="smashingmagazin"]::before, section h3 a[href*="css-tricks"]::before, section h3 a[href*="smashingmagazin"]::before, section h4 a[href*="css-tricks"]::before, section h4 a[href*="smashingmagazin"]::before {
-    content: '📰 '; }
+    content: '𝙬𝟯𝙘 ';
+    color: navy;
+    text-shadow: 1px 1px rgba(255, 255, 255, 0.5); }
+  section article a[href*="css-tricks"]::before, section h1 a[href*="css-tricks"]::before, section h2 a[href*="css-tricks"]::before, section h3 a[href*="css-tricks"]::before, section h4 a[href*="css-tricks"]::before {
+    content: '✽ ';
+    color: #ff9800; }
   section article a[href*="commitstrip"]::before, section h1 a[href*="commitstrip"]::before, section h2 a[href*="commitstrip"]::before, section h3 a[href*="commitstrip"]::before, section h4 a[href*="commitstrip"]::before {
     content: '🎨 '; }
   section article a[href*="flukeout"]::before, section h1 a[href*="flukeout"]::before, section h2 a[href*="flukeout"]::before, section h3 a[href*="flukeout"]::before, section h4 a[href*="flukeout"]::before {
     content: '🍽 '; }
+  section article a[href*="gridbyexample"]::before, section h1 a[href*="gridbyexample"]::before, section h2 a[href*="gridbyexample"]::before, section h3 a[href*="gridbyexample"]::before, section h4 a[href*="gridbyexample"]::before {
+    content: '⌗ '; }
+  section article a[href*="smashingmagazin"]::before, section h1 a[href*="smashingmagazin"]::before, section h2 a[href*="smashingmagazin"]::before, section h3 a[href*="smashingmagazin"]::before, section h4 a[href*="smashingmagazin"]::before {
+    content: '𝓢 ';
+    color: #e95c33; }
+  section article a[href*="wikipedia"]::before, section h1 a[href*="wikipedia"]::before, section h2 a[href*="wikipedia"]::before, section h3 a[href*="wikipedia"]::before, section h4 a[href*="wikipedia"]::before {
+    content: 'ⓦ ';
+    color: #888; }
+  section article a[href*="monkeypatch"]::before, section h1 a[href*="monkeypatch"]::before, section h2 a[href*="monkeypatch"]::before, section h3 a[href*="monkeypatch"]::before, section h4 a[href*="monkeypatch"]::before {
+    content: '🐵 '; }
 
 ul, ol, dl {
   margin-top: 0;
@@ -437,7 +450,7 @@ style[contenteditable=true] {
 * {
   pointer-events: none; }
 
-label, button, input, a, [contenteditable], .slides-nav, summary {
+label, button, input, a, [contenteditable], .slides-nav, summary, .cover h1 {
   pointer-events: auto; }
 
 html {

@@ -21,22 +21,23 @@ fun conclusion(group: Group) = group
         }
         .slide(title = "Liens") {
             UnorderedList(
-                    Link("les slides", ""),
-                    Link("le code", ""),
-                    Link("Making Of", ""))
+                    Link("les slides en HTML", "https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome"),
+                    Link("les slides en PDF", "https://ilaborie.github.io/slides/devfest-tls.pdf"),
+                    Link("le code", "https://github.com/ilaborie/slides"),
+                    Link("Making Of", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))
         }
         .slide(title = "Pour apprendre") {
             UnorderedList(
-                    Code("(Ctrl|Cmd) + Shift + i"),
+                    Code("(Ctrl|⌘) + Shift + i"),
                     ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
                             Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
                     Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS"),
                     Link("CodePen", "https://codepen.io/") + ", ".raw() +
                             Link("JSFiddle", "https://jsfiddle.net/") + ", ".raw() +
                             Link("Dabblet", "http://dabblet.com/") + ",...".raw(),
-                    Link("CSS Tricks", ""),
-                    Link("Shop Talk Show", ""),
-                    Link("CSS Flags", "")
+                    Link("CSS Tricks", "https://css-tricks.com/")+ ", ".raw() +
+                            Link("Smashing Magazine", "https://www.smashingmagazine.com/"),
+                    Link("CSS Flags", "https://pixelastic.github.io/css-flags/")
             )
         }
         .slide(title = "🦄 rocks !", styleClass = setOf("hide-title")) {

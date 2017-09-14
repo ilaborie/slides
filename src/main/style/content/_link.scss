@@ -24,15 +24,32 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="w3.org"]::before {
       content: '𝙬𝟯𝙘 ';
+      color: navy;
+      text-shadow: 1px 1px rgba(#fff, .5);
     }
-    &[href*="css-tricks"]::before, &[href*="smashingmagazin"]::before {
-      content: '📰 ';
+    &[href*="css-tricks"]::before {
+      content: '✽ ';
+      color: #ff9800;
     }
     &[href*="commitstrip"]::before {
       content: '🎨 ';
     }
     &[href*="flukeout"]::before {
       content: '🍽 ';
+    }
+    &[href*="gridbyexample"]::before {
+      content: '⌗ ';
+    }
+    &[href*="smashingmagazin"]::before {
+      content: '𝓢 ';
+      color: #e95c33;
+    }
+    &[href*="wikipedia"]::before {
+      content: 'ⓦ ';
+      color: #888;
+    }
+    &[href*="monkeypatch"]::before {
+      content: '🐵 ';
     }
   }
 }

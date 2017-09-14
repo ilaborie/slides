@@ -26,7 +26,6 @@ fun flexgrid(group: Group) = group
                                     UnorderedList(
                                             Link("Grid by examples", "https://gridbyexample.com/"),
                                             Link("CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen", "https://www.youtube.com/watch?v=txZq7Laz7_4"),
-                                            Link("Grid Garden", "http://cssgridgarden.com/"),
-                                            Link("Here's a Super Quick Way to Try out CSS Grid", "http://jensimmons.com/post/aug-15-2017/heres-super-quick-way-try-out-css-grid")
+                                            Link("Grid Garden", "http://cssgridgarden.com/")
                                     ))
         }
