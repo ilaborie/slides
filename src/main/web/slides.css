@@ -354,11 +354,11 @@ pre.hljs {
   border-radius: .25rem;
   tab-size: 2; }
 
-section .slide-body a {
+section .slide-body a, section h1 a, section h2 a, section h3 a, section h4 a {
   text-decoration: none;
   color: currentColor;
   border-bottom: thin dashed currentColor; }
-  section .slide-body a::before {
+  section .slide-body a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
 
 ul, ol, dl {
@@ -370,7 +370,8 @@ dl {
   grid-template-columns: auto auto;
   grid-gap: .8rem; }
   dl dt {
-    font-weight: bold; }
+    font-weight: bold;
+    justify-self: end; }
 
 figure {
   display: flex;
@@ -417,7 +418,7 @@ style[contenteditable=true] {
 * {
   pointer-events: none; }
 
-label, button, input, a, style[contenteditable] {
+label, button, input, a, style[contenteditable], .slides-nav, summary {
   pointer-events: auto; }
 
 html {
