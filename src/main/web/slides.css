@@ -126,7 +126,7 @@ section h3 {
 section .previous {
   grid-area: 👈; }
 
-section .slide-body {
+section article {
   grid-area: 🌈; }
 
 section .next {
@@ -233,7 +233,7 @@ section h4 {
   margin: 0;
   padding: .25em .5em; }
 
-section .slide-body {
+section article {
   max-height: calc(100vh - var(--footerHeight) - var(--headerHeight) - .5rem);
   display: flex;
   flex-direction: column;
@@ -261,22 +261,22 @@ section.part {
     font-size: 3rem;
     text-align: center; }
 
-section.two-columns .slide-body ul, section.two-columns .slide-body ol {
+section.two-columns article ul, section.two-columns article ol {
   column-count: 2;
   column-gap: 2em; }
 
-section.roadmap .slide-body ol {
+section.roadmap article ol {
   list-style: upper-roman; }
 
 section.hide-title h1, section.hide-title h2, section.hide-title h3 {
   display: none; }
 
-section.live-code .slide-body {
+section.live-code article {
   justify-content: stretch;
   align-items: stretch;
   display: flex;
   flex-direction: column; }
-  section.live-code .slide-body .editable {
+  section.live-code article .editable {
     flex: 1 1 auto; }
 
 /*
@@ -354,16 +354,35 @@ pre.hljs {
   border-radius: .25rem;
   tab-size: 2; }
 
-section .slide-body a, section h1 a, section h2 a, section h3 a, section h4 a {
+section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   text-decoration: none;
   color: currentColor;
   border-bottom: thin dashed currentColor; }
-  section .slide-body a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
+  section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
+  section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
+    content: '📐 '; }
+  section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
+    content: '🎥 '; }
+  section article a[href*="frog"]::before, section h1 a[href*="frog"]::before, section h2 a[href*="frog"]::before, section h3 a[href*="frog"]::before, section h4 a[href*="frog"]::before {
+    content: '🐸 '; }
+  section article a[href*="garden"]::before, section h1 a[href*="garden"]::before, section h2 a[href*="garden"]::before, section h3 a[href*="garden"]::before, section h4 a[href*="garden"]::before {
+    content: '🥕 '; }
+  section article a[href*="mozilla"]::before, section h1 a[href*="mozilla"]::before, section h2 a[href*="mozilla"]::before, section h3 a[href*="mozilla"]::before, section h4 a[href*="mozilla"]::before {
+    content: '🦊 '; }
+  section article a[href*="w3.org"]::before, section h1 a[href*="w3.org"]::before, section h2 a[href*="w3.org"]::before, section h3 a[href*="w3.org"]::before, section h4 a[href*="w3.org"]::before {
+    content: '𝙬𝟯𝙘 '; }
+  section article a[href*="css-tricks"]::before, section article a[href*="smashingmagazin"]::before, section h1 a[href*="css-tricks"]::before, section h1 a[href*="smashingmagazin"]::before, section h2 a[href*="css-tricks"]::before, section h2 a[href*="smashingmagazin"]::before, section h3 a[href*="css-tricks"]::before, section h3 a[href*="smashingmagazin"]::before, section h4 a[href*="css-tricks"]::before, section h4 a[href*="smashingmagazin"]::before {
+    content: '📰 '; }
+  section article a[href*="commitstrip"]::before, section h1 a[href*="commitstrip"]::before, section h2 a[href*="commitstrip"]::before, section h3 a[href*="commitstrip"]::before, section h4 a[href*="commitstrip"]::before {
+    content: '🎨 '; }
+  section article a[href*="flukeout"]::before, section h1 a[href*="flukeout"]::before, section h2 a[href*="flukeout"]::before, section h3 a[href*="flukeout"]::before, section h4 a[href*="flukeout"]::before {
+    content: '🍽 '; }
 
 ul, ol, dl {
   margin-top: 0;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  line-height: 1.8; }
 
 dl {
   display: grid;
@@ -418,7 +437,7 @@ style[contenteditable=true] {
 * {
   pointer-events: none; }
 
-label, button, input, a, style[contenteditable], .slides-nav, summary {
+label, button, input, a, [contenteditable], .slides-nav, summary {
   pointer-events: auto; }
 
 html {

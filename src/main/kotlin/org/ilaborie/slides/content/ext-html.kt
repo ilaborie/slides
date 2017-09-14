@@ -68,9 +68,9 @@ fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () 
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
     $prevFun
     ${title().renderAsHtml()}
-    <div class="slide-body">
+    <article>
         ${content(defaultContent).renderAsHtml()}
-    </div>
+    </article>
     $nextFun
 </section>
 """
@@ -106,7 +106,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is Block                   -> "<div>${content.renderAsHtml()}</div>"
 }
 
-fun StyleEditable.renderAsHtml() = "<style scoped contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
+fun StyleEditable.renderAsHtml() = "<style contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"

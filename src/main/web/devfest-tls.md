@@ -324,6 +324,4 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 [Dabblet](http://dabblet.com/)
 ,.../n* [CSS Tricks]()/n* [Shop Talk Show]()/n* [CSS Flags]()
 
-<div>
-	<div class="awesome-box" contenteditable>CSS <br>is <br>Awesome!</div>
-</div>
+<div class="awesome-box" contenteditable>CSS <br>is <br>Awesome!</div>

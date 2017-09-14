@@ -17,7 +17,7 @@
 * {
   pointer-events: none;
 }
-label, button, input, a, style[contenteditable], .slides-nav, summary {
+label, button, input, a, [contenteditable], .slides-nav, summary {
   pointer-events: auto;
 }
 

@@ -17,7 +17,7 @@ section h4 {
 }
 
 // Body
-section .slide-body {
+section article {
   max-height: calc(100vh - var(--footerHeight) - var(--headerHeight) - .5rem);
   display: flex;
   flex-direction: column;
@@ -58,7 +58,7 @@ section.part {
 }
 
 // Two Columns
-section.two-columns .slide-body {
+section.two-columns article {
   ul, ol {
     column-count: 2;
     column-gap: 2em;
@@ -66,7 +66,7 @@ section.two-columns .slide-body {
 }
 
 // Roadmap
-section.roadmap .slide-body {
+section.roadmap article {
   ol {
     list-style: upper-roman;
   }
@@ -81,7 +81,7 @@ section.hide-title {
 
 // Live code CSS
 section.live-code {
-  .slide-body {
+  article {
     justify-content: stretch;
     align-items: stretch;
     display: flex;
