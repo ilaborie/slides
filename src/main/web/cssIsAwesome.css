@@ -137,6 +137,10 @@ section.cover h1 {
 #holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
   opacity: .25; }
 
+#dessiner .editable svg {
+  width: 40vh;
+  height: 100%; }
+
 #le_dinner_d_un_philosophe .diner {
   transform: scale(0.8); }
   #le_dinner_d_un_philosophe .diner .table-wrapper {

@@ -1,9 +1,9 @@
 svg path {
 	stroke: purple;
-	stroke-width: .1em;
+	stroke-width: .5em;
 	fill: none;
-	stroke-dasharray: 490;
-	stroke-dashoffset: 490;
+	stroke-dasharray: 4700;
+	stroke-dashoffset: 4700;
 	animation: draw 4s linear infinite;
 }
 

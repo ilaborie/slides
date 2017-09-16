@@ -106,6 +106,14 @@ section.cover {
   }
 }
 
+// Draw
+#dessiner {
+  .editable svg {
+    width: 40vh;
+    height: 100%;
+  }
+}
+
 // Philosophe
 $plateSize: 100px;
 #le_dinner_d_un_philosophe {
@@ -536,6 +544,7 @@ $plateSize: 100px;
     font-family: var(--codeFont);
   }
 }
+
 // Details/summary
 #panel_html {
 
@@ -579,7 +588,7 @@ $plateSize: 100px;
 }
 
 #_rocks__:target {
-  article  {
+  article {
     display: flex;
     height: calc(100vh - 2rem);
     justify-content: center;
@@ -591,14 +600,12 @@ $plateSize: 100px;
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
-
       background-size: 200% 200%;
       width: auto;
       border: solid 1vh transparent;
       padding: 5vh;
       outline: none;
       animation: rainbow 5s ease infinite;
-
 
       &::before {
         position: absolute;
