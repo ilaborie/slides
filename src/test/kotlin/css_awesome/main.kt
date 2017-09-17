@@ -6,7 +6,7 @@ import org.ilaborie.slides.content.*
 import java.io.File
 
 
-val browers = "> 1% in FR"
+val browsersThreshold = .5
 
 fun cssLiveCode(prefix: String) =
         StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +

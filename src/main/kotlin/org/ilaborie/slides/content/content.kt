@@ -1,5 +1,7 @@
 package org.ilaborie.slides.content
 
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import org.ilaborie.slides.logger
 import org.ilaborie.table.Table
 
@@ -59,65 +61,93 @@ data class StyleEditable(val initialCss: External, val finalCss: External? = nul
 
 data class EditableZone(val content: Content) : Content()
 
+val mapper = jacksonObjectMapper()
 
-typealias Feature = String
-typealias Browser = String
+data class Stat(val version: String, val status: String?) {
+    val compatibility by lazy { CompatibilityStatus.fromString(status) }
+}
+
+data class Browser(val key: String, val usage: Float, val mobile: Boolean, val versions: List<String>)
+data class Feature(val key: String, val title: String, val description: String, val spec: String)
+data class Value(val browser: String, val feature: String, val stats: List<Stat>)
+
+data class CompatibilityStatusResult(
+        val total: Number,
+        val browsers: List<Browser>,
+        val features: List<Feature>,
+        val values: List<Value>)
+
 sealed class CompatibilityStatus {
     companion object {
-        fun fromString(s: String): CompatibilityStatus = when (s) {
-            "null"   -> NotAvailable
-            else -> Available(since = s)
+        fun fromString(s: String?): CompatibilityStatus = when {
+            s == null       -> NotAvailable
+            s.contains("y") -> Available
+            else            -> NotAvailable
         }
     }
 }
 
 object NotAvailable : CompatibilityStatus()
-data class Available(val since: String) : CompatibilityStatus()
+object Available : CompatibilityStatus()
 
-data class CssCompatibility(private val browsers: String, private val features: List<String>) : Content() {
-    val table: Table<Feature, Browser, CompatibilityStatus> by lazy {
-        val cmd = listOf("node", "src/main/typescript/compat.js", browsers, features.joinToString(separator = ","))
+data class CssCompatibility(private val threshold: Number, private val features: List<String>) : Content() {
+    private val result: CompatibilityStatusResult by lazy {
+        val cmd = listOf("node", "src/main/typescript/compat.js", threshold.toString(), features.joinToString(separator = ","))
         logger.info {
-            "Run ${cmd.joinToString(separator = " ") { "\"$it\"" }} ..." }
-            val process = ProcessBuilder(cmd).start()
-            process.outputStream.close()
-            val lines = process.inputStream.bufferedReader().readLines()
-            lines.fold(Table.sparse<Feature, Browser, CompatibilityStatus>()) { table, line ->
-                val (feature, browser, status) = line.split("\t")
-                table.add(feature, browser, CompatibilityStatus.fromString(status))
-            }
-            }
+            "Run ${cmd.joinToString(separator = " ") { "\"$it\"" }} ..."
         }
+        val process = ProcessBuilder(cmd).start()
+        process.outputStream.close()
+        val json = process.inputStream.bufferedReader().readText()
+        mapper.readValue<CompatibilityStatusResult>(json)
+    }
 
+    private fun getBrowser(key: String): Browser = result.browsers
+            .find { it.key == key }
+            ?: throw IllegalArgumentException("Browser $key not found")
+
+    private fun getFeature(key: String): Feature = result.features
+            .find { it.key == key }
+            ?: throw IllegalArgumentException("Feature $key not found")
+
+    val table: Table<Feature, Browser, Value> by lazy {
+        val init = Table.sparse<Feature, Browser, Value>()
+        result.values.fold(init) { table, value ->
+            val feature = getFeature(value.feature)
+            val browser = getBrowser(value.browser)
+            table.add(feature, browser, value)
+        }
+    }
+}
 // END HTML CSS
 
-        data class Definitions(val map: Map<Content, Content>) : Content() {
-            constructor(vararg pairs: Pair<String, Content>) : this(pairs.map { (key, value) -> key.raw() to value }.toMap())
-        }
+data class Definitions(val map: Map<Content, Content>) : Content() {
+    constructor(vararg pairs: Pair<String, Content>) : this(pairs.map { (key, value) -> key.raw() to value }.toMap())
+}
 
-        data class OrderedList(val contents: List<Content>) : Content()
+data class OrderedList(val contents: List<Content>) : Content()
 
-        data class UnorderedList(val contents: List<Content>) : Content() {
-            constructor(vararg contents: Content) : this(contents.toList())
-        }
+data class UnorderedList(val contents: List<Content>) : Content() {
+    constructor(vararg contents: Content) : this(contents.toList())
+}
 
-        data class Figure(val title: Content, val externalImage: External, val copyright: Content? = null) : Content()
-
-
-        // Styled
-        data class Paragraph(val content: Content) : Content()
-
-        data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
-        data class Strong(val content: Content) : Content()
-        data class Emphasis(val content: Content) : Content()
-        data class Block(val content: Content) : Content()
+data class Figure(val title: Content, val externalImage: External, val copyright: Content? = null) : Content()
 
 
-        // Lang
-        enum class Language {
-            None, CSS, HTML, Java, Kotlin, TypeScript, JavaScript;
+// Styled
+data class Paragraph(val content: Content) : Content()
 
-            override fun toString() = this.name.toLowerCase()
+data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
+data class Strong(val content: Content) : Content()
+data class Emphasis(val content: Content) : Content()
+data class Block(val content: Content) : Content()
+
+
+// Lang
+enum class Language {
+    None, CSS, HTML, Java, Kotlin, TypeScript, JavaScript;
+
+    override fun toString() = this.name.toLowerCase()
 
 //    companion object {
 //        fun findForExtension(ext: String): Language? = when {
@@ -130,5 +160,5 @@ data class CssCompatibility(private val browsers: String, private val features: 
 //            else                 -> null
 //        }
 //    }
-        }
+}
 

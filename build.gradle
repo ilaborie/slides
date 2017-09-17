@@ -20,7 +20,9 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     compile 'org.jsoup:jsoup:1.10.3'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.0'
 }
 
 compileKotlin {

@@ -2,7 +2,6 @@ package org.ilaborie.slides
 
 import java.text.Normalizer
 
-
 fun String.normalize(): String =
         Normalizer.normalize(this, Normalizer.Form.NFD)
                 .toLowerCase()

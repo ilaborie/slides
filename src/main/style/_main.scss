@@ -18,7 +18,8 @@
 * {
   pointer-events: none;
 }
-label, button, input, a, [contenteditable], .slides-nav, summary, .cover h1 {
+label, button, input, a, [contenteditable],
+.slides-nav, summary, .cover h1, .browser {
   pointer-events: auto;
 }
 

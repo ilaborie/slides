@@ -24,9 +24,8 @@
     "node-sass": "^4.5.3",
     "puppeteer": "^0.10.2",
     "ts-node": "^3.3.0",
-    "typescript": "^2.5.2"
-  },
-  "dependencies": {
-    "caniuse-api": "^2.0.0"
+    "typescript": "^2.5.2",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
   }
 }

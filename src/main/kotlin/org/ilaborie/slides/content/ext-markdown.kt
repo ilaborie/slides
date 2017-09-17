@@ -44,13 +44,13 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
     is EditableZone            -> content.renderAsMarkdown() // treated normally
     is CssCompatibility        -> {
-        val columns = table.columns()
-        columns.joinToString(separator = "|", prefix = "feature|") +
-                columns.map { "---" }.joinToString(separator = "|", prefix = "feature|") +
+        val browsers = table.columns()
+        browsers.joinToString(separator = "|", prefix = "feature|") +
+                browsers.map { "---" }.joinToString(separator = "|", prefix = "feature|") +
                 table.rows()
-                        .map { row -> row to columns.map { column -> table.get(row, column) } }
-                        .joinToString(separator = "\n") { (row, values) ->
-                            values.joinToString(separator = "|", prefix = "$row|")
+                        .map { feature -> feature to browsers.map { browser -> table.get(feature, browser) } }
+                        .joinToString(separator = "\n") { (feature, values) ->
+                            values.joinToString(separator = "|", prefix = "$feature|")
                         }
     }
 

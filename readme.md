@@ -12,5 +12,6 @@ TODO
 Thanks for resources
 ---
 
-* [World Vector Logo](https://worldvectorlogo.com/)
 * [CommitStrip](https://www.commitstrip.com/)
+* [World Vector Logo](https://worldvectorlogo.com/)
+* [Browser Logos](https://github.com/alrra/browser-logos)

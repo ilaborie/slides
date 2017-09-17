@@ -1,10 +1,12 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.*
+import java.text.DecimalFormat
 
 
 fun Slide.classes() = styleClass().joinToString(separator = " ")
 fun Slide.titleAsString() = title().renderAsString()
+
 
 fun Presentation.renderAsHtml(key: String): String {
     val slidesList = toList()
@@ -20,7 +22,7 @@ fun Presentation.renderAsHtml(key: String): String {
     val groupsNavs = slides.filterIsInstance<Group>()
             .map {
                 it.toList().joinToString(separator = "\n") {
-                    """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex.get(it)}</a>"""
+                    """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex[it]}</a>"""
                 }
             }
             .joinToString(separator = "\n") { "<nav>$it</nav>" }
@@ -155,29 +157,42 @@ fun MarkdownContent.renderAsHtml(): String {
 }
 
 fun CssCompatibility.renderAsHtml(): String {
-    val columns = table.columns()
-    fun CompatibilityStatus?.toClass(): String = when (this) {
-        null            -> "unknown"
-        is NotAvailable -> "not-available"
-        is Available    -> "available"
+    val browsers: List<Browser> = table.columns()
+            .sortedBy { it.usage }
+            .reversed()
+            .toList()
+
+    fun Stat.toClass(): String = when (this.compatibility) {
+        NotAvailable -> "not-available"
+        Available    -> "available"
     }
 
-    fun CompatibilityStatus?.toInfo(): String = when (this) {
-        null            -> "∅"
-        is NotAvailable -> ""
-        is Available    -> since
-    }
+    fun Stat.toInfo(): String = if (compatibility is Available) version else "$version: ${status ?: ""}"
 
-    val rows = table.rows().map { row -> row to columns.map { column -> table.get(row, column) } }
-            .map { (row, values) -> row to values.joinToString(separator = "") { """<div class="value ${it.toClass()}">${it.toInfo()}</div>""" } }
+    val features = table.rows()
+            .map { feature -> feature to (browsers.map { browser -> browser to table.get(feature, browser) }) }
+            .map { (feature, values) ->
+                feature to values.joinToString(separator = "") { (browser, value) ->
+                    """<div class="value ${browser.key} ${feature.key}">${
+                    (value?.stats ?: emptyList()).joinToString("\n") { stat ->
+                        """<div class="${stat.toClass()}">${stat.toInfo()}</div>"""
+                    }}</div>"""
+                }
+            }
+
+    val formatter = DecimalFormat("0.0")
 
     return """
-<div class="compatibility" style="grid-template-columns : repeat(${columns.count() + 1}, 1fr);">
+<div class="compatibility" style="grid-template-columns : repeat(${browsers.count() + 1}, 1fr);">
     <div class="void"></div>
-    ${columns.joinToString(separator = "") { """<div class="browser $it" aria-label="$it"></div>""" }}
-    ${rows.joinToString(separator = "") { (row, values) ->
-        """<div class="feature $row">
-        |   <a href="https://caniuse.com/#feat=$row" aria-label="$row"></a>
+    ${browsers.joinToString(separator = "") { """<div class="browser ${it.key}${if (it.mobile) " mobile" else ""}" aria-label="${it.key}"></div>""" }}
+    <div class="void"></div>
+    ${browsers.joinToString(separator = "") { """<div class="browser-percent">${formatter.format(it.usage)} %</div>""" }}
+    ${features.joinToString(separator = "") { (feature, values) ->
+        """<div class="feature ${feature.key}">
+        |   <a href="https://caniuse.com/#feat=${feature.key}" aria-label="${feature.title}" title="{${feature.description}}">
+        |       ${feature.title}
+        |   </a>
         |</div>$values""".trimMargin()
     }}
 </div>
