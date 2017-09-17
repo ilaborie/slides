@@ -16,3 +16,6 @@ fun preprocessor(group: Group) = group
                             Link("CSS Variables (aka Custom Properties)", "https://www.w3.org/TR/css-variables/"),
                             Link("CSS Color Module Level 4", "https://www.w3.org/TR/css-color-4/"))
         }
+        .slide(title = "Conpatibilité", id = "compat-1") {
+            CssCompatibility(browers, listOf("currentcolor", "background-img-opts", "css-variables"))
+        }

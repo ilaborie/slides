@@ -1,5 +1,17 @@
 @charset "UTF-8";
 @font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma"); }
+
+@font-face {
+  font-family: code;
+  font-style: normal;
+  font-weight: 300;
+  src: local("Fira Code"), local("Menlo"), local("Monaco"); }
+
+@font-face {
   font-family: 'Open Sans';
   src: url("fonts/Open_Sans/OpenSans-Regular.ttf"); }
 
@@ -31,14 +43,14 @@
   --secondary: #efefef;
   --black: #000;
   --white: #fff;
-  --fontBody: 'Open Sans', sans-serif;
-  --coverFont: 'Open Sans', sans-serif;
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: system, system-ui, sans-serif;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
   --partFont: 'Pacifico', cursive;
-  --titleFont: 'Open Sans', sans-serif;
   --quoteFont: 'Seaweed Script', cursive;
-  --codeFont: 'Fira Code', Menlo, Monaco, monospace;
-  --counterFont: 'Pixel Emulator', monospace;
-  --footerFont: 'Fira Code', monospace;
+  --counterFont: 'Pixel Emulator', fantasy;
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
   --shadowNavbar: rgba(0, 0, 0, 0.2);
@@ -446,6 +458,50 @@ style[contenteditable=true] {
 @keyframes ants {
   to {
     background-position: 100% 100%; } }
+
+.compatibility {
+  display: grid;
+  font-size: .8rem;
+  grid-gap: .1rem;
+  grid-auto-rows: 1fr; }
+  .compatibility .browser, .compatibility .feature, .compatibility .value {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .compatibility .browser {
+    padding-bottom: 100%;
+    background-origin: padding-box;
+    background-size: contain;
+    background-repeat: no-repeat; }
+    .compatibility .browser.and_chr {
+      background-image: url("./assets/browsers/and_chr.svg"); }
+    .compatibility .browser.chrome {
+      background-image: url("./assets/browsers/chrome.svg"); }
+    .compatibility .browser.edge {
+      background-image: url("./assets/browsers/edge.svg"); }
+    .compatibility .browser.firefox {
+      background-image: url("./assets/browsers/firefox.svg"); }
+    .compatibility .browser.ie {
+      background-image: url("./assets/browsers/ie.svg"); }
+    .compatibility .browser.safari {
+      background-image: url("./assets/browsers/safari.svg"); }
+    .compatibility .browser.ios_saf {
+      background-image: url("./assets/browsers/ios_saf.svg"); }
+  .compatibility .feature {
+    text-align: center; }
+    .compatibility .feature.currentcolor a::before {
+      content: 'CSS currentColor value'; }
+    .compatibility .feature.background-img-opts a::before {
+      content: 'CSS3 Background-image options'; }
+    .compatibility .feature.css-variables a::before {
+      content: 'CSS Variables (Custom Properties)'; }
+  .compatibility .value {
+    background: gray;
+    color: #fff; }
+    .compatibility .value.available {
+      background: #39b54a; }
+    .compatibility .value.not-available {
+      background: #c44230; }
 
 * {
   pointer-events: none; }

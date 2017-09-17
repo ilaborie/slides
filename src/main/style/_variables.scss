@@ -12,14 +12,14 @@
   --white: #fff;
 
   // Fonts
-  --fontBody: 'Open Sans', sans-serif;
-  --coverFont: 'Open Sans', sans-serif;
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: system, system-ui, sans-serif;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
   --partFont: 'Pacifico', cursive;
-  --titleFont: 'Open Sans', sans-serif;
   --quoteFont: 'Seaweed Script', cursive;
-  --codeFont: 'Fira Code', Menlo, Monaco, monospace;
-  --counterFont: 'Pixel Emulator', monospace;
-  --footerFont: 'Fira Code', monospace;
+  --counterFont: 'Pixel Emulator', fantasy;
 
   // Navbar
   --bgNavbar: var(--white);

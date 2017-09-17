@@ -4,7 +4,7 @@ import org.ilaborie.slides.*
 
 
 fun Slide.classes() = styleClass().joinToString(separator = " ")
-fun Slide.titleAsString() = title()?.renderAsString() ?: id()
+fun Slide.titleAsString() = title().renderAsString()
 
 fun Presentation.renderAsHtml(key: String): String {
     val slidesList = toList()
@@ -39,7 +39,7 @@ fun Presentation.renderAsHtml(key: String): String {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${title.renderAsString()}</title>
     <link rel="stylesheet" href="slides.css">
@@ -61,8 +61,8 @@ ${body.joinToString(separator = "\n")}
 }
 
 fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () -> Content): String {
-    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous"></a>""" else ""
-    val nextFun = if (nextId != null) """<a href="#$nextId" class="next"></a>""" else ""
+    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous" aria-label="Précédant"></a>""" else ""
+    val nextFun = if (nextId != null) """<a href="#$nextId" class="next" aria-label="Suivant"></a>""" else ""
     return """
 <!-- Slide ${titleAsString()} -->
 <section id="${id()}" class="${styleClass().joinToString(" ")}">
@@ -91,8 +91,6 @@ fun Content.renderAsHtml(): String = when (this) {
     is Code                    -> this.renderAsHtml()
     is Title                   -> "<h$level>${title.renderAsHtml()}</h$level>"
     is Link                    -> """<a href="$link">${content.renderAsHtml()}</a>"""
-    is StyleEditable           -> this.renderAsHtml()
-    is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is Definitions             -> this.renderAsHtml()
     is OrderedList             ->
         contents.joinToString(separator = "\n", prefix = "<ol>", postfix = "</ol>") { "<li>${it.renderAsHtml()}</li>" }
@@ -104,6 +102,10 @@ fun Content.renderAsHtml(): String = when (this) {
     is Emphasis                -> "<em>${content.renderAsHtml()}</em>"
     is Figure                  -> this.renderAsHtml()
     is Block                   -> "<div>${content.renderAsHtml()}</div>"
+// For CSS, HTML
+    is StyleEditable           -> this.renderAsHtml()
+    is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
+    is CssCompatibility        -> this.renderAsHtml()
 }
 
 fun StyleEditable.renderAsHtml() = "<style contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
@@ -138,7 +140,8 @@ fun Quote.renderAsHtml() = """
 fun Figure.renderAsHtml() = """
 <figure>
   <img src="${externalImage.dataUri}" alt="${title.renderAsString()}">
-  <figcaption>${title.renderAsHtml()}</figcaption>${if (copyright != null) "\n<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
+  <figcaption>${title.renderAsHtml()}</figcaption>
+  ${if (copyright != null) "<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
 </figure>"""
 
 fun MarkdownContent.renderAsHtml(): String {
@@ -149,4 +152,34 @@ fun MarkdownContent.renderAsHtml(): String {
     writer.write(this.markdown)
     writer.close()
     return process.inputStream.bufferedReader().readText()
+}
+
+fun CssCompatibility.renderAsHtml(): String {
+    val columns = table.columns()
+    fun CompatibilityStatus?.toClass(): String = when (this) {
+        null            -> "unknown"
+        is NotAvailable -> "not-available"
+        is Available    -> "available"
+    }
+
+    fun CompatibilityStatus?.toInfo(): String = when (this) {
+        null            -> "∅"
+        is NotAvailable -> ""
+        is Available    -> since
+    }
+
+    val rows = table.rows().map { row -> row to columns.map { column -> table.get(row, column) } }
+            .map { (row, values) -> row to values.joinToString(separator = "") { """<div class="value ${it.toClass()}">${it.toInfo()}</div>""" } }
+
+    return """
+<div class="compatibility" style="grid-template-columns : repeat(${columns.count() + 1}, 1fr);">
+    <div class="void"></div>
+    ${columns.joinToString(separator = "") { """<div class="browser $it" aria-label="$it"></div>""" }}
+    ${rows.joinToString(separator = "") { (row, values) ->
+        """<div class="feature $row">
+        |   <a href="https://caniuse.com/#feat=$row" aria-label="$row"></a>
+        |</div>$values""".trimMargin()
+    }}
+</div>
+    """
 }

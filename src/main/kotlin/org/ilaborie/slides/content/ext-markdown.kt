@@ -26,23 +26,34 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Code                    -> this.renderAsMarkdown()
     is Title                   -> this.renderAsMarkdown()
     is Link                    -> "[${content.renderAsMarkdown()}]($link)"
-    is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
-    is EditableZone            -> content.renderAsMarkdown() // treated normally
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
         "$key\n: ${content.renderAsMarkdown()}"
     }
     is OrderedList             -> contents
             .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
-            .joinToString(separator = "/n")
+            .joinToString(separator = "\n")
     is UnorderedList           -> contents
             .map { "* ${it.renderAsMarkdown()}" }
-            .joinToString(separator = "/n")
+            .joinToString(separator = "\n")
     is Paragraph               -> content.renderAsMarkdown()
     is Quote                   -> content.renderAsMarkdown().indent("> ")
     is Strong                  -> "**${content.renderAsMarkdown()}**"
     is Emphasis                -> "*${content.renderAsMarkdown()}*"
-    is Figure                  -> "![$title](${externalImage.link()} \"$title\"})" // TODO copyright
+    is Figure                  -> "![${title.renderAsMarkdown()}](${externalImage.link()} \"$title\"})" // TODO copyright
     is Block                   -> content.renderAsMarkdown()
+    is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
+    is EditableZone            -> content.renderAsMarkdown() // treated normally
+    is CssCompatibility        -> {
+        val columns = table.columns()
+        columns.joinToString(separator = "|", prefix = "feature|") +
+                columns.map { "---" }.joinToString(separator = "|", prefix = "feature|") +
+                table.rows()
+                        .map { row -> row to columns.map { column -> table.get(row, column) } }
+                        .joinToString(separator = "\n") { (row, values) ->
+                            values.joinToString(separator = "|", prefix = "$row|")
+                        }
+    }
+
 }
 
 fun Code.renderAsMarkdown() = when (language) {

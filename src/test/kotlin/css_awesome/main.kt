@@ -6,6 +6,8 @@ import org.ilaborie.slides.content.*
 import java.io.File
 
 
+val browers = "> 1% in FR"
+
 fun cssLiveCode(prefix: String) =
         StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +
                 EditableZone(ExternalHtmlContent(ExternalResource("$prefix.html")))

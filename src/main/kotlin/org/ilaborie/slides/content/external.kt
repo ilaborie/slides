@@ -117,7 +117,6 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is ExternalCodeContent     -> listOf(externalCode)
     is ExternalSvgContent      -> listOf(externalSvg)
     is ExternalImageContent    -> listOf(externalImage)
-    is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
     is CompositeContent        -> contents.flatMap { it.toExternal() }
     is RawContent              -> emptyList()
     is HtmlContent             -> emptyList()
@@ -126,7 +125,6 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is Code                    -> emptyList()
     is Title                   -> title.toExternal()
     is Link                    -> content.toExternal()
-    is EditableZone            -> content.toExternal()
     is Definitions             -> map.toList()
             .flatMap { (key, value) -> listOf(key, value) }
             .flatMap { it.toExternal() }
@@ -138,4 +136,7 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is Strong                  -> content.toExternal()
     is Emphasis                -> content.toExternal()
     is Block                   -> content.toExternal()
+    is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
+    is EditableZone            -> content.toExternal()
+    is CssCompatibility        -> emptyList()
 }

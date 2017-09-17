@@ -27,6 +27,7 @@ fun unites(group: Group) = group
             UnorderedList(
                     Link("Unités", "https://developer.mozilla.org/fr/docs/Web/CSS/length"),
                     Link("Truc et astuces", "https://www.w3.org/Style/Examples/007/units.fr.html"),
-                    Link(Code(code = "calc"), "https://developer.mozilla.org/fr/docs/Web/CSS/calc")
+                    Link(Code(code = "calc"), "https://developer.mozilla.org/fr/docs/Web/CSS/calc"),
+                    Link("Fun with Viewport Units", "https://css-tricks.com/fun-viewport-units/")
             )
         }

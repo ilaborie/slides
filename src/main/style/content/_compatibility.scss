@@ -1,0 +1,72 @@
+.compatibility {
+  display: grid;
+  font-size: .8rem;
+  grid-gap: .1rem;
+  grid-auto-rows: 1fr;
+
+  .browser, .feature, .value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .void {
+  }
+  // Browser
+  .browser {
+    padding-bottom: 100%;
+    background-origin: padding-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &.and_chr {
+      background-image: url('./assets/browsers/and_chr.svg');
+    }
+    &.chrome {
+      background-image: url('./assets/browsers/chrome.svg');
+    }
+    &.edge {
+      background-image: url('./assets/browsers/edge.svg');
+    }
+    &.firefox {
+      background-image: url('./assets/browsers/firefox.svg');
+    }
+    &.ie {
+      background-image: url('./assets/browsers/ie.svg');
+    }
+    &.safari {
+      background-image: url('./assets/browsers/safari.svg');
+    }
+    &.ios_saf {
+      background-image: url('./assets/browsers/ios_saf.svg');
+    }
+  }
+
+  // Feature
+  .feature {
+    text-align: center;
+
+    &.currentcolor a::before {
+      content: 'CSS currentColor value';
+    }
+    &.background-img-opts a::before {
+      content: 'CSS3 Background-image options';
+    }
+    &.css-variables a::before {
+      content: 'CSS Variables (Custom Properties)';
+    }
+  }
+
+  // Value
+  .value {
+    background: gray; // TODO
+    color: #fff;
+
+    &.available {
+      background: #39b54a;
+    }
+    &.not-available {
+      background: #c44230;
+    }
+  }
+}

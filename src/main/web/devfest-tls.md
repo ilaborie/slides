@@ -8,12 +8,34 @@ Expert Java & Web,
 
 > When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The "Rule of Least Power" suggests <strong>choosing the least powerful language suitable</strong> for a given purpose.
 
-0. Texte/n1. HTML (sémantique) & CSS (layout, style, animations simples)/n2. SVG (formes et animations complexes)/n3. JavaScripts
+0. Texte
+1. HTML (sémantique) & CSS (layout, style, animations simples)
+2. SVG (formes et animations complexes)
+3. JavaScripts
 *⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles*
 
-* Selectors/n* Box model/n* Float/n* Media Query/n* Transitions/n* Gradients/n* Responsive Design/n* Media/n* Variables/n* Colors/n* Shapes/n* ...
+* Selectors
+* Box model
+* Float
+* Media Query
+* Transitions
+* Gradients
+* Responsive Design
+* Media
+* Variables
+* Colors
+* Shapes
+* ...
 
-0. Utiliser un pré&#8209;processeur ?/n1. Unités/n2. Flexbox et Grid/n3. Pseudo éléments/n4. Animations/n5. Pseudo classes d'état/n6. HTML/n7. Compatibilité des navigateurs/n8. Conclusion
+0. Utiliser un pré&#8209;processeur ?
+1. Unités
+2. Flexbox et Grid
+3. Pseudo éléments
+4. Animations
+5. Pseudo classes d'état
+6. HTML
+7. Compatibilité des navigateurs
+8. Conclusion
 
 
 
@@ -24,12 +46,20 @@ ExternalResource(resource=/cssIsAwesome/01_preprocessor/boutons.css)
 <button type="button" class="danger">Plop !️</button>
 
 Oui, mais privilégiez:
-* le CSS/n* les post&#8209;processeurs
-* [`currentColor`](https://css-tricks.com/currentcolor/)/n* [`background-origin`](https://developer.mozilla.org/fr/docs/Web/CSS/background-origin)/n* [CSS Variables (aka Custom Properties)](https://www.w3.org/TR/css-variables/)/n* [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
+* le CSS
+* les post&#8209;processeurs
+* [`currentColor`](https://css-tricks.com/currentcolor/)
+* [`background-origin`](https://developer.mozilla.org/fr/docs/Web/CSS/background-origin)
+* [CSS Variables (aka Custom Properties)](https://www.w3.org/TR/css-variables/)
+* [CSS Color Module Level 4](https://www.w3.org/TR/css-color-4/)
+
+feature|and_chr|chrome|edge|firefox|ie|ios_saf|safarifeature|---|---|---|---|---|---|---currentcolor|Available(since=61)|Available(since=4)|Available(since=12)|Available(since=2)|Available(since=9)|Available(since=4)|Available(since=4)
+background-img-opts|Available(since=61)|Available(since=15)|Available(since=12)|Available(since=4)|Available(since=9)|Available(since=7)|Available(since=7)
+css-variables|Available(since=61)|Available(since=49)|Available(since=16)|Available(since=31)|org.ilaborie.slides.content.NotAvailable@1372ed45|Available(since=9.3)|Available(since=9.1)
 
 
 
-![RawContent(content=Une histoire d’unités CSS)](https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg "RawContent(content=Une histoire d’unités CSS)"})
+![Une histoire d’unités CSS](https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg "RawContent(content=Une histoire d’unités CSS)"})
 
 RawContent(content=px, cm, pt, ...)
 : longueurs absolues (mesure physique)
@@ -61,7 +91,10 @@ RawContent(content=vmin, vmax)
 </body>
 ```
 
-* [Unités](https://developer.mozilla.org/fr/docs/Web/CSS/length)/n* [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html)/n* [`calc`](https://developer.mozilla.org/fr/docs/Web/CSS/calc)
+* [Unités](https://developer.mozilla.org/fr/docs/Web/CSS/length)
+* [Truc et astuces](https://www.w3.org/Style/Examples/007/units.fr.html)
+* [`calc`](https://developer.mozilla.org/fr/docs/Web/CSS/calc)
+* [Fun with Viewport Units](https://css-tricks.com/fun-viewport-units/)
 
 
 
@@ -105,10 +138,14 @@ RawContent(content=vmin, vmax)
 
 #### Flexbox ####
 
-* [Flexbox, et le CSS redevient fun ! (Hubert SABLONNIÈRE)](https://www.youtube.com/watch?v=5F_ngjHDcJQ)/n* [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/)/n* [Flexbox Froggy](https://flexboxfroggy.com/)
+* [Flexbox, et le CSS redevient fun ! (Hubert SABLONNIÈRE)](https://www.youtube.com/watch?v=5F_ngjHDcJQ)
+* [Solved by Flexbox](https://philipwalton.github.io/solved-by-flexbox/)
+* [Flexbox Froggy](https://flexboxfroggy.com/)
 #### Grid ####
 
-* [Grid by examples](https://gridbyexample.com/)/n* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)/n* [Grid Garden](http://cssgridgarden.com/)
+* [Grid by examples](https://gridbyexample.com/)
+* [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)
+* [Grid Garden](http://cssgridgarden.com/)
 
 
 
@@ -141,10 +178,13 @@ ExternalResource(resource=/cssIsAwesome/04_pseudo_elements/popover.css)
 ```
 <div class="popover">Hello</div>
 
-* [The :before and :after pseudo-elements](https://www.w3.org/TR/CSS22/generate.html#before-after-content)/n* mais aussi <code>::first-letter</code>, <code>::first-line</code>, <code>::selection</code>, <code>::backdrop</code>/n* [An Ultimate Guide To CSS Pseudo-Classes And Pseudo-Elements](https://www.smashingmagazine.com/2016/05/an-ultimate-guide-to-css-pseudo-classes-and-pseudo-elements)
+* [The :before and :after pseudo-elements](https://www.w3.org/TR/CSS22/generate.html#before-after-content)
+* mais aussi <code>::first-letter</code>, <code>::first-line</code>, <code>::selection</code>, <code>::backdrop</code>
+* [An Ultimate Guide To CSS Pseudo-Classes And Pseudo-Elements](https://www.smashingmagazine.com/2016/05/an-ultimate-guide-to-css-pseudo-classes-and-pseudo-elements)
 ⚠️ <code>::before</code> et <code>::after</code> ne marchent pas sur <code>input</code>, <code>img</code>, <code>iframe</code> (pas encore spécifié)
 * Table et assiette de 
-[CSS Diner](https://flukeout.github.io/)/n* [Dîner des philosophes](https://fr.wikipedia.org/wiki/D%C3%AEner_des_philosophes)
+[CSS Diner](https://flukeout.github.io/)
+* [Dîner des philosophes](https://fr.wikipedia.org/wiki/D%C3%AEner_des_philosophes)
 
 
 
@@ -158,7 +198,12 @@ ExternalResource(resource=/cssIsAwesome/05_animations/draw.css)
 ```
 <svg xmlns="http://www.w3.org/2000/svg" width="1022.717" height="913.38" viewBox="0 0 1534 1370"><path d="M843 127.12c41.765 34.316 17.825 112.52 48.844 144.294 44.694-39.975 65.342-104.483 112.637-141.38 35.46 39.77 31.64 105.082 41.42 153.42-4.466 34.466-1.188 105.591 46.74 62.842 46.557-28.824 94.533-55.326 139.175-85.192 51.163-33.154 105.458-61.408 155.235-96.396 70.887-5.72-4.192 61.03-20.772 85.175-45.147 43.182-80.248 94.376-123.725 139.92-27.867 36.445-58.75 69.834-88.121 104.747 4.904 58.728 66.611 105.395 88.141 162.957 28.15 50.016 53.754 102.219 86.559 148.62 25.738 50.458 57.53 100.138 63.856 158.168 6.615 58.633-24.45 121.837-80.597 146.349-50.744 28.018-119.335 44.147-168.363 4.423-55.214-34.14-108.003-75.261-172.023-93.049-53.216-1.459-109.58-14.34-159.356 2.58-14.283 47.411-25.543 96.734-40.65 144.402-47.133 63.507-132.09 35.58-188.96 2.708-51.875-27.791-91.014-75.763-152.43-81.52-34.916-.899-70.085-59.372-83.586-5.313-10.777 31.318-81.188 70.482-60.024 11.125 11.461-54.431 15.15-113.038-2.533-165.412-3.294-57.681-.584-115.75-1.467-173.588 7.626-54.744 5.327-115.68 35.087-166.692 24.752-55.863 75.056-91.984 109.39-140.908 44.836-44.966 64.218-113.558 122.084-147.455 51.158-33.038 111.87-51.057 172.81-43.316 57.264-19.162 70.607-99.898 118.139-131.845z" fill="none" stroke="#000" id="myPath"/></svg>
 
-* [Utiliser les animations CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS)/n* [Text Spinner](http://tawian.io/text-spinners/)/n* [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)/n* [Animate.css](https://daneden.github.io/animate.css/)/n* [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)/n* [<code>&lt;progress&gt;</code>](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress)
+* [Utiliser les animations CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS)
+* [Text Spinner](http://tawian.io/text-spinners/)
+* [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)
+* [Animate.css](https://daneden.github.io/animate.css/)
+* [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)
+* [<code>&lt;progress&gt;</code>](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress)
 
 
 
@@ -174,7 +219,15 @@ ExternalResource(resource=/cssIsAwesome/05_animations/draw.css)
 </div>
 
 
-* `:hover`/n* `:focus`/n* `:visited`/n* `:checked`/n* `:valid`/n* `:invalid`/n* `:empty`/n* `:target`/n* ...
+* `:hover`
+* `:focus`
+* `:visited`
+* `:checked`
+* `:valid`
+* `:invalid`
+* `:empty`
+* `:target`
+* ...
 
 ```CSS
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/checkbox.css)
@@ -279,7 +332,8 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 ```
 <dialog id="diag">This is a dialog!</dialog>
 
-* [Collapsible Panel Polyfill](https://github.com/chemerisuk/better-details-polyfill/)/n* [Dialog Polyfill](https://github.com/GoogleChrome/dialog-polyfill)
+* [Collapsible Panel Polyfill](https://github.com/chemerisuk/better-details-polyfill/)
+* [Dialog Polyfill](https://github.com/GoogleChrome/dialog-polyfill)
 
 
 
@@ -309,20 +363,35 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 
 
 
-0. Utilisez du CSS pour simpifier le code/n1. Utilisez intelligemment les pre/post&#8209;processeurs/n2. HTML, SVG are Awesome !/n3. JavaScript, TypeScript could be Awesome !
+0. Utilisez du CSS pour simpifier le code
+1. Utilisez intelligemment les pre/post&#8209;processeurs
+2. HTML, SVG are Awesome !
+3. JavaScript, TypeScript could be Awesome !
 
-0. Revue de code/n1. DRY/n2. Clean Code/n3. Single Responsibility Principle/n4. ...
+0. Revue de code
+1. DRY
+2. Clean Code
+3. Single Responsibility Principle
+4. ...
 
-* [les slides en HTML](https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome)/n* [les slides en PDF](https://ilaborie.github.io/slides/devfest-tls.pdf)/n* [le code](https://github.com/ilaborie/slides)/n* [Making Of](http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html)
+* [les slides en HTML](https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome)
+* [les slides en PDF](https://ilaborie.github.io/slides/devfest-tls.pdf)
+* [le code](https://github.com/ilaborie/slides)
+* [Making Of](http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html)
 
-* `(Ctrl|⌘) + Shift + i`/n* ![CSS Secret](http://lea.verou.me/cover.png)
-[CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)/n* [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)/n* [CodePen](https://codepen.io/)
+* `(Ctrl|⌘) + Shift + i`
+* ![CSS Secret](http://lea.verou.me/cover.png)
+[CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)
+* [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)
+* [CodePen](https://codepen.io/)
 , 
 [JSFiddle](https://jsfiddle.net/)
 , 
 [Dabblet](http://dabblet.com/)
-,.../n* [CSS Tricks](https://css-tricks.com/)
+,...
+* [CSS Tricks](https://css-tricks.com/)
 , 
-[Smashing Magazine](https://www.smashingmagazine.com/)/n* [CSS Flags](https://pixelastic.github.io/css-flags/)
+[Smashing Magazine](https://www.smashingmagazine.com/)
+* [CSS Flags](https://pixelastic.github.io/css-flags/)
 
 <div class="awesome-box" contenteditable>CSS <br>is <br>Awesome!</div>
