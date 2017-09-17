@@ -84,10 +84,6 @@
 .hide-print {
   display: none; }
 
-a[href]:after {
-  font-size: 60%;
-  content: " <" attr(href) ">"; }
-
 main {
   display: flex;
   flex-direction: column;

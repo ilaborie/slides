@@ -17,3 +17,6 @@ fun html(group: Group) = group
                     Link("Dialog Polyfill", "https://github.com/GoogleChrome/dialog-polyfill")
             )
         }
+        .slide(title = "Compatibilité", id = "compat-7") {
+            CssCompatibility(browsersThreshold, listOf("details", "dialog", "progress"))
+        }

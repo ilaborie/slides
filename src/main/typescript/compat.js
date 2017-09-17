@@ -40,7 +40,8 @@ const browsers = request({uri: `${url}/region-usage-json/FR.json`, json: true})
 
 // feature
 const extractFeature = feature => request({uri: `${url}/features-json/${feature}.json`, json: true})
-    .then(({title, description, spec, stats}) => ({key: feature, title, description, spec, stats}))
+    .then(({title, description, spec, stats, notes_by_num}) =>
+        ({key: feature, title, description, spec, stats, notes_by_num}))
     .catch(err => console.error(`Oops, ${feature}`, err));
 
 const allFeatures = Promise.all(features.map(extractFeature));
@@ -55,8 +56,8 @@ const buildStats = (browser, feature) => browser.versions
 Promise.all([browsers, allFeatures])
     .then(([browsers, allFeatures]) => {
         const total = browsers.reduce((acc, elt) => acc + elt.usage, 0);
-        const features = allFeatures.map(({key, title, description, spec}) =>
-            ({key, title, description, spec}));
+        const features = allFeatures.map(({key, title, description, spec, notes_by_num}) =>
+            ({key, title, description, spec, notes_by_num}));
         const values = browsers.reduce((acc, browser) => {
             const v = allFeatures.map(feature => ({
                 browser: browser.key,

@@ -31,3 +31,6 @@ fun unites(group: Group) = group
                     Link("Fun with Viewport Units", "https://css-tricks.com/fun-viewport-units/")
             )
         }
+        .slide(title = "Compatibilité", id = "compat-2") {
+            CssCompatibility(browsersThreshold, listOf("rem", "viewport-units", "calc"))
+        }

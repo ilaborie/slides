@@ -6,7 +6,7 @@ import org.ilaborie.slides.content.*
 import java.io.File
 
 
-val browsersThreshold = .5
+val browsersThreshold = .4
 
 fun cssLiveCode(prefix: String) =
         StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +
@@ -25,7 +25,6 @@ fun main(args: Array<String>) {
             .group("Animations") { animations(this) }
             .group("Pseudo classes d'état", "pseudo_classes") { pseudoState(this) }
             .group("HTML") { html(this) }
-            .group("Compatibilité des navigateurs", "compat") { compat(this) }
             .group("Conclusion") { conclusion(this) }
 
     val slidesDir = File("src/test/resources/")

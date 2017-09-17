@@ -3,6 +3,11 @@ section article, section h1, section h2, section h3, section h4 {
     text-decoration: none;
     color: currentColor;
     border-bottom: thin dashed currentColor;
+
+    &:hover {
+      text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff;
+    }
+
     &::before {
       content: '➼ ';
     }

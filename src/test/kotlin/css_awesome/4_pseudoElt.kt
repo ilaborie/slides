@@ -24,3 +24,6 @@ fun pseudoElt(group: Group) = group
                             "Table et assiette de ".raw() + Link("CSS Diner", "https://flukeout.github.io/"),
                             Link("Dîner des philosophes", "https://fr.wikipedia.org/wiki/D%C3%AEner_des_philosophes"))
         }
+        .slide(title = "Compatibilité", id = "compat-4") {
+            CssCompatibility(browsersThreshold, listOf("css-gencontent", "transforms2d"))
+        }

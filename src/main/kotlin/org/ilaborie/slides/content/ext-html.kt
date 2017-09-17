@@ -162,12 +162,30 @@ fun CssCompatibility.renderAsHtml(): String {
             .reversed()
             .toList()
 
-    fun Stat.toClass(): String = when (this.compatibility) {
+    fun Stat.toClass(feature: Feature): String = when (compatibility(feature)) {
         NotAvailable -> "not-available"
         Available    -> "available"
+        is Partial   -> "partial"
+        is Prefix    -> "partial prefix"
+        is Flag      -> "partial flag"
+        is Buggy     -> "buggy"
     }
 
-    fun Stat.toInfo(): String = if (compatibility is Available) version else "$version: ${status ?: ""}"
+    fun Stat.toInfo(feature: Feature): String {
+        val compatibility = compatibility(feature)
+        return when (compatibility) {
+            NotAvailable -> version
+            Available    -> version
+            is Partial   -> """<div class="version">$version</div>
+                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+            is Prefix    -> """<div class="version">$version</div>
+                |<div class="info">Prefix ${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+            is Flag      -> """<div class="version">$version</div>
+                |<div class="info">Flag ${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+            is Buggy     -> """<div class="version">$version</div>
+                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+        }
+    }
 
     val features = table.rows()
             .map { feature -> feature to (browsers.map { browser -> browser to table.get(feature, browser) }) }
@@ -175,7 +193,7 @@ fun CssCompatibility.renderAsHtml(): String {
                 feature to values.joinToString(separator = "") { (browser, value) ->
                     """<div class="value ${browser.key} ${feature.key}">${
                     (value?.stats ?: emptyList()).joinToString("\n") { stat ->
-                        """<div class="${stat.toClass()}">${stat.toInfo()}</div>"""
+                        """<div class="${stat.toClass(feature)}">${stat.toInfo(feature)}</div>"""
                     }}</div>"""
                 }
             }

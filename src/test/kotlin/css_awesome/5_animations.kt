@@ -1,6 +1,7 @@
 package css_awesome
 
 import org.ilaborie.slides.Group
+import org.ilaborie.slides.content.CssCompatibility
 import org.ilaborie.slides.content.Link
 import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.content.html
@@ -21,4 +22,7 @@ fun animations(group: Group) = group
                     Link("How SVG Line Animation Works", "https://css-tricks.com/svg-line-animation-works/"),
                     Link("<code>&lt;progress&gt;</code>".html(), "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress")
             )
+        }
+        .slide(title = "Compatibilité", id = "compat-5") {
+            CssCompatibility(browsersThreshold, listOf("css-animation", "svg"))
         }

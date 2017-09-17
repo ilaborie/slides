@@ -21,6 +21,17 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
+    transform: scale(0.9);
+    transition: transform .4s ease-in-out;
+    &:hover {
+      transform: scale(1);
+      filter: drop-shadow(0 0 .25rem black);
+    }
+
+    &.mobile {
+      border-top: .25rem solid rgba(0, 0, 0, .5);
+      border-radius: .25rem;
+    }
 
     &.and_chr {
       background-image: url('./assets/browsers/and_chr.svg');
@@ -57,7 +68,9 @@
     }
   }
   .browser-percent {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: .5rem;
   }
 
@@ -76,7 +89,7 @@
     align-items: stretch;
     font-size: .5rem;
 
-    .available, .not-available {
+    .available, .not-available, .partial, .buggy {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -84,9 +97,46 @@
     .available {
       background: #39b54a;
     }
+    .partial {
+      background: #91b54c;
+      position: relative;
+      .version {
+        cursor: help;
+      }
+      .info {
+        background: #91b54c;
+      }
+    }
+    .buggy {
+      background: orange;
+      position: relative;
+      .version {
+        cursor: help;
+      }
+      .info {
+        background: orange;
+      }
+    }
 
     .not-available {
       background: #c44230;
+    }
+
+    .version:hover ~ .info {
+      display: inline-block;
+    }
+    .info {
+      position: absolute;
+      display: none;
+      top: 80%;
+      z-index: 2;
+      width: 20vw;
+      border-radius: .1rem;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .5);
+      p {
+        margin: 0;
+        padding: .2em;
+      }
     }
 
     &.chrome, &.firefox {

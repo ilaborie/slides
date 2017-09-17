@@ -35,3 +35,6 @@ fun pseudoState(group: Group) = group
         .slide(title = "Démo des onglets") {
             EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html")))
         }
+        .slide(title = "Compatibilité", id = "compat-6") {
+            CssCompatibility(browsersThreshold, listOf("css-sel3", "form-validation", "transforms3d"))
+        }

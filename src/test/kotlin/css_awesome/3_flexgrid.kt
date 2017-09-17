@@ -29,3 +29,6 @@ fun flexgrid(group: Group) = group
                                             Link("Grid Garden", "http://cssgridgarden.com/")
                                     ))
         }
+        .slide(title = "Compatibilité", id = "compat-3") {
+            CssCompatibility(browsersThreshold, listOf("flexbox", "css-grid"))
+        }
