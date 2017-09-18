@@ -1,5 +1,17 @@
 @charset "UTF-8";
 @font-face {
+  font-family: system;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma"); }
+
+@font-face {
+  font-family: code;
+  font-style: normal;
+  font-weight: 300;
+  src: local("Fira Code"), local("Menlo"), local("Monaco"); }
+
+@font-face {
   font-family: 'Open Sans';
   src: url("fonts/Open_Sans/OpenSans-Regular.ttf"); }
 
@@ -31,14 +43,14 @@
   --secondary: #efefef;
   --black: #000;
   --white: #fff;
-  --fontBody: 'Open Sans', sans-serif;
-  --coverFont: 'Open Sans', sans-serif;
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: system, system-ui, sans-serif;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
   --partFont: 'Pacifico', cursive;
-  --titleFont: 'Open Sans', sans-serif;
   --quoteFont: 'Seaweed Script', cursive;
-  --codeFont: 'Fira Code', Menlo, Monaco, monospace;
-  --counterFont: 'Pixel Emulator', monospace;
-  --footerFont: 'Fira Code', monospace;
+  --counterFont: 'Pixel Emulator', fantasy;
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
   --shadowNavbar: rgba(0, 0, 0, 0.2);
@@ -358,6 +370,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   text-decoration: none;
   color: currentColor;
   border-bottom: thin dashed currentColor; }
+  section article a:hover, section h1 a:hover, section h2 a:hover, section h3 a:hover, section h4 a:hover {
+    text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff; }
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
@@ -389,6 +403,10 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   section article a[href*="wikipedia"]::before, section h1 a[href*="wikipedia"]::before, section h2 a[href*="wikipedia"]::before, section h3 a[href*="wikipedia"]::before, section h4 a[href*="wikipedia"]::before {
     content: 'ⓦ ';
     color: #888; }
+  section article a[href*="monkeypatch"]::before, section h1 a[href*="monkeypatch"]::before, section h2 a[href*="monkeypatch"]::before, section h3 a[href*="monkeypatch"]::before, section h4 a[href*="monkeypatch"]::before {
+    content: '🐵 '; }
+  section article a[href*="caniuse"]::before, section h1 a[href*="caniuse"]::before, section h2 a[href*="caniuse"]::before, section h3 a[href*="caniuse"]::before, section h4 a[href*="caniuse"]::before {
+    content: '📊 '; }
 
 ul, ol, dl {
   margin-top: 0;
@@ -402,6 +420,9 @@ dl {
   dl dt {
     font-weight: bold;
     justify-self: end; }
+
+ul li {
+  list-style: url("./assets/puce.svg"); }
 
 figure {
   display: flex;
@@ -420,7 +441,7 @@ figure {
   align-items: center;
   margin-top: .25rem;
   margin-bottom: .25rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), linear-gradient(45deg, var(--primary) 25%, transparent 25%, transparent 75%, var(--primary) 75%, var(--primary)) 0 0, linear-gradient(45deg, var(--primary) 25%, var(--secondary) 25%, var(--secondary) 75%, var(--primary) 75%, var(--primary)) 1em 1em, var(--secondary);
+  background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff) 0 0, linear-gradient(45deg, #fff 25%, #999 25%, #999 75%, #fff 75%, #fff) 1em 1em, #999;
   background-size: 2em 2em;
   z-index: -10; }
 
@@ -445,10 +466,111 @@ style[contenteditable=true] {
   to {
     background-position: 100% 100%; } }
 
+.compatibility {
+  display: grid;
+  font-size: .8rem;
+  grid-gap: .1rem;
+  grid-template-rows: 1fr 1.2em;
+  grid-auto-rows: 1fr; }
+  .compatibility .browser, .compatibility .feature, .compatibility .value {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 15vh; }
+  .compatibility .browser {
+    padding-bottom: 100%;
+    background-origin: padding-box;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    transform: scale(0.9);
+    transition: transform .4s ease-in-out; }
+    .compatibility .browser:hover {
+      transform: scale(1);
+      filter: drop-shadow(0 0 0.25rem black); }
+    .compatibility .browser.mobile {
+      border-top: 0.25rem solid rgba(0, 0, 0, 0.5);
+      border-radius: .25rem; }
+    .compatibility .browser.and_chr {
+      background-image: url("./assets/browsers/and_chr.svg"); }
+    .compatibility .browser.chrome {
+      background-image: url("./assets/browsers/chrome.svg"); }
+    .compatibility .browser.edge {
+      background-image: url("./assets/browsers/edge.svg"); }
+    .compatibility .browser.firefox {
+      background-image: url("./assets/browsers/firefox.svg"); }
+    .compatibility .browser.ie {
+      background-image: url("./assets/browsers/ie.svg"); }
+    .compatibility .browser.safari {
+      background-image: url("./assets/browsers/safari.svg"); }
+    .compatibility .browser.ios_saf {
+      background-image: url("./assets/browsers/ios_saf.svg"); }
+    .compatibility .browser.android {
+      background-image: url("./assets/browsers/android.png"); }
+    .compatibility .browser.opera {
+      background-image: url("./assets/browsers/opera.svg"); }
+    .compatibility .browser.and_uc {
+      background-image: url("./assets/browsers/and_uc.png"); }
+    .compatibility .browser.op_mini {
+      background-image: url("./assets/browsers/op_mini.png"); }
+  .compatibility .browser-percent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .5rem; }
+  .compatibility .feature {
+    text-align: center;
+    font-size: .5rem; }
+  .compatibility .value {
+    color: #fff;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    align-items: stretch;
+    font-size: .5rem; }
+    .compatibility .value .available, .compatibility .value .not-available, .compatibility .value .partial, .compatibility .value .buggy {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+    .compatibility .value .available {
+      background: #39b54a; }
+    .compatibility .value .partial {
+      background: #91b54c;
+      position: relative; }
+      .compatibility .value .partial .version {
+        cursor: help; }
+      .compatibility .value .partial .info {
+        background: #91b54c; }
+    .compatibility .value .buggy {
+      background: orange;
+      position: relative; }
+      .compatibility .value .buggy .version {
+        cursor: help; }
+      .compatibility .value .buggy .info {
+        background: orange; }
+    .compatibility .value .not-available {
+      background: #c44230; }
+    .compatibility .value .version:hover ~ .info {
+      display: inline-block; }
+    .compatibility .value .info {
+      position: absolute;
+      display: none;
+      top: 80%;
+      z-index: 2;
+      width: 20vw;
+      border-radius: .1rem;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5); }
+      .compatibility .value .info p {
+        margin: 0;
+        padding: .2em; }
+    .compatibility .value.chrome, .compatibility .value.firefox {
+      grid-template-columns: 1fr 1fr; }
+
 * {
   pointer-events: none; }
 
-label, button, input, a, [contenteditable], .slides-nav, summary, .cover h1 {
+label, button, input, a, [contenteditable],
+.slides-nav, summary, .cover h1, .browser, .version {
   pointer-events: auto; }
 
 html {
@@ -467,3 +589,6 @@ blockquote p {
     display: inline-block;
     transform: scale(4) translateY(0.25rem);
     margin-right: 1.5em; }
+
+.show-print {
+  display: none; }

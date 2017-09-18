@@ -69,6 +69,10 @@
     grid-area: foot;
     justify-content: center; }
 
+@media print {
+  .slides-nav {
+    display: none; } }
+
 section.cover h1 {
   width: 56vh;
   height: 56vh;
@@ -111,6 +115,9 @@ section.cover h1 {
   #least-power article blockquote p {
     font-size: 1.2rem; }
 
+#le_css_c_est_vaste article, #pseudo_etats article {
+  align-items: center; }
+
 #bordure_des_boutons .editable button {
   padding: .25em .5em;
   transform: scale(4); }
@@ -136,6 +143,10 @@ section.cover h1 {
 
 #holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
   opacity: .25; }
+
+#dessiner .editable svg {
+  width: 40vh;
+  height: 100%; }
 
 #le_dinner_d_un_philosophe .diner {
   transform: scale(0.8); }
@@ -316,9 +327,13 @@ section.cover h1 {
   margin: 0; }
   #checkbox article blockquote p {
     font-size: 1rem;
+    text-shadow: 2px 2px white;
     margin: 0; }
   #checkbox article blockquote cite::before {
     content: '⟿ '; }
+  #checkbox article blockquote cite {
+    font-weight: bold;
+    text-shadow: 2px 2px white; }
 
 #checkbox article fieldset {
   padding: .125rem .5rem;
@@ -340,6 +355,8 @@ section.cover h1 {
   #switch .editable label {
     box-shadow: none;
     margin: 0 .25em; }
+  #switch .editable input[type=checkbox] {
+    transform: scale(2); }
 
 #panel blockquote p {
   font-size: .7rem; }
@@ -487,6 +504,7 @@ section.cover h1 {
     box-sizing: border-box;
     text-transform: uppercase;
     line-height: 105%;
+    font-size: 128px;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
@@ -498,10 +516,9 @@ section.cover h1 {
     animation: rainbow 5s ease infinite; }
     #_rocks__:target article .awesome-box::before {
       position: absolute;
-      z-index: -1;
       top: 0;
       left: 0;
-      width: 56vh;
-      height: 56vh;
+      width: 460px;
+      height: 460px;
       content: ' ';
       border: solid 1vh currentColor; }
