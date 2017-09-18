@@ -190,14 +190,22 @@
     <a href="#part_utiliser_un_pre__8209_processeur__" class="previous" aria-label="Précédant"></a>
     <h3>Bordure des boutons</h3>
     <article>
-        <style contenteditable="true">button {
+        <style contenteditable="true" class="hide-print">button {
 	background: lightblue;
 	border: medium solid purple;
 }
 button.danger { /*
    background: salmon;
    color: rebeccapurple; */
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-tag">button</span> {
+	<span class="hljs-attribute">background</span>: lightblue;
+	<span class="hljs-comment">/*border: medium solid currentColor;*/</span>
+	<span class="hljs-attribute">border</span>: medium solid <span class="hljs-built_in">rgba</span>(0,0,0,.42);
+}
+<span class="hljs-selector-tag">button</span><span class="hljs-selector-class">.danger</span> {
+	<span class="hljs-attribute">background</span>: salmon;
+	<span class="hljs-attribute">color</span>: rebeccapurple;
+}</code></pre>
 <div class="editable"><button type="button">Plop</button>
 <button type="button" class="danger">Plop !️</button></div>
     </article>
@@ -607,11 +615,16 @@ button.danger { /*
     <a href="#part_pseudo_elements" class="previous" aria-label="Précédant"></a>
     <h3>Le dinner d'un philosophe</h3>
     <article>
-        <style contenteditable="true">.table {
+        <style contenteditable="true" class="hide-print">.table {
 	color: gray;
 	font-size: 5em;
 	/*content: '';*/
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.table</span><span class="hljs-selector-pseudo">::before</span>, <span class="hljs-selector-class">.table</span><span class="hljs-selector-pseudo">::after</span> {
+	<span class="hljs-attribute">color</span>: gray;
+	<span class="hljs-attribute">font-size</span>: <span class="hljs-number">2.5em</span>;
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">'⋔'</span>;
+	<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotate</span>(180deg);
+}</code></pre>
 <div class="editable"><div class="diner">
 	<div class="table-wrapper">
 		<div class="table-surface"></div>
@@ -634,7 +647,7 @@ button.danger { /*
     <a href="#le_dinner_d_un_philosophe" class="previous" aria-label="Précédant"></a>
     <h3>Triangle avec des bordures</h3>
     <article>
-        <style contenteditable="true">div.top, div.right, div.bottom, div.left {
+        <style contenteditable="true" class="hide-print">div.top, div.right, div.bottom, div.left {
 	border: 1em solid transparent;
 	display: inline-block;
 	box-shadow: 0 0 0 .1em transparent;
@@ -643,7 +656,19 @@ button.danger { /*
 div.top { border-top-color: transparent; }
 div.right { border-right-color: transparent; }
 div.bottom { border-bottom-color: transparent; }
-div.left { border-left-color: transparent; }</style>
+div.left { border-left-color: transparent; }</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.top</span>, <span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.right</span>, <span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.bottom</span>, <span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.left</span> {
+	<span class="hljs-attribute">border</span>: <span class="hljs-number">2em</span> solid transparent;
+	<span class="hljs-attribute">display</span>: inline-block;
+	<span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> .<span class="hljs-number">1em</span> red;
+}
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.top</span> { <span class="hljs-attribute">border-top-color</span>: cyan; }
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.right</span> { <span class="hljs-attribute">border-right-color</span>: purple; }
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.bottom</span> { <span class="hljs-attribute">border-bottom-color</span>: green; }
+
+<span class="hljs-selector-tag">div</span><span class="hljs-selector-class">.left</span> { <span class="hljs-attribute">border-left-color</span>: gold; }</code></pre>
 <div class="editable"><div class="top"></div>
 <div class="right"></div>
 <div class="bottom"></div>
@@ -658,7 +683,7 @@ div.left { border-left-color: transparent; }</style>
     <a href="#triangle_avec_des_bordures" class="previous" aria-label="Précédant"></a>
     <h3>Info-bulle</h3>
     <article>
-        <style contenteditable="true">.popover {
+        <style contenteditable="true" class="hide-print">.popover {
 	position: relative;
 	background: teal;
 }
@@ -670,7 +695,20 @@ div.left { border-left-color: transparent; }</style>
 	top: 0em; left: 0em;
 	border: 1em solid red;
 	border-top-color: red;
-}*/</style>
+}*/</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.popover</span> {
+	<span class="hljs-attribute">position</span>: relative;
+	<span class="hljs-attribute">background</span>: teal;
+}
+
+<span class="hljs-selector-class">.popover</span><span class="hljs-selector-pseudo">::before</span> {
+	<span class="hljs-attribute">position</span>: absolute;
+	<span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">''</span>;
+	<span class="hljs-attribute">top</span>: <span class="hljs-number">1em</span>; <span class="hljs-attribute">left</span>: <span class="hljs-number">1em</span>;
+	<span class="hljs-attribute">border</span>: .<span class="hljs-number">8em</span> solid transparent;
+	<span class="hljs-attribute">border-top-color</span>: teal;
+	<span class="hljs-attribute">transform</span>: <span class="hljs-built_in">skew</span>(-30deg);
+}</code></pre>
 <div class="editable"><div class="popover">Hello</div></div>
     </article>
     <a href="#bilan_pseudo_elements" class="next" aria-label="Suivant"></a>
@@ -767,7 +805,7 @@ div.left { border-left-color: transparent; }</style>
     <a href="#part_animations" class="previous" aria-label="Précédant"></a>
     <h3>Texte de chargement</h3>
     <article>
-        <style contenteditable="true">.loader {
+        <style contenteditable="true" class="hide-print">.loader {
 	display : inline-block;
 	white-space : normal;
 	height: 1em;
@@ -783,7 +821,20 @@ div.left { border-left-color: transparent; }</style>
 }
 @keyframes spin {
 	to { transform : translateY(-15em); }
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.loader</span> {
+	<span class="hljs-attribute">line-height </span>: <span class="hljs-number">1.5</span>;
+	<span class="hljs-attribute">overflow    </span>: auto;
+}
+
+<span class="hljs-selector-class">.loader</span><span class="hljs-selector-pseudo">::before</span> {
+	<span class="hljs-attribute">display   </span>: inline-table;
+	<span class="hljs-attribute">content   </span>: <span class="hljs-string">'⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏'</span>;
+	<span class="hljs-attribute">animation </span>: spin <span class="hljs-number">1s</span> <span class="hljs-built_in">steps</span>(10, end) infinite;
+}
+
+@<span class="hljs-keyword">keyframes</span> spin {
+	<span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">transform </span>: <span class="hljs-built_in">translateY</span>(-15em); }
+}</code></pre>
 <div class="editable"><div class="loader"></div></div>
     </article>
     <a href="#dessiner" class="next" aria-label="Suivant"></a>
@@ -795,7 +846,7 @@ div.left { border-left-color: transparent; }</style>
     <a href="#texte_de_chargement" class="previous" aria-label="Précédant"></a>
     <h3>Dessiner</h3>
     <article>
-        <style contenteditable="true">.editable svg path {
+        <style contenteditable="true" class="hide-print">.editable svg path {
 	stroke: purple;
 	stroke-width: .1em;
 	fill: none;
@@ -806,7 +857,18 @@ div.left { border-left-color: transparent; }</style>
 
 @keyframes draw {
 	to { stroke-dashoffset: 0; }
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">svg</span> <span class="hljs-selector-tag">path</span> {
+	<span class="hljs-attribute">stroke</span>: purple;
+	<span class="hljs-attribute">stroke-width</span>: .<span class="hljs-number">5em</span>;
+	<span class="hljs-attribute">fill</span>: none;
+	<span class="hljs-attribute">stroke-dasharray</span>: <span class="hljs-number">4700</span>;
+	<span class="hljs-attribute">stroke-dashoffset</span>: <span class="hljs-number">4700</span>;
+	<span class="hljs-attribute">animation</span>: draw <span class="hljs-number">4s</span> linear infinite;
+}
+
+@<span class="hljs-keyword">keyframes</span> draw {
+	<span class="hljs-selector-tag">to</span> { <span class="hljs-attribute">stroke-dashoffset</span>: <span class="hljs-number">0</span>; }
+}</code></pre>
 <div class="editable"><svg xmlns="http://www.w3.org/2000/svg" width="1022.717" height="913.38" viewBox="0 0 1534 1370"><path d="M843 127.12c41.765 34.316 17.825 112.52 48.844 144.294 44.694-39.975 65.342-104.483 112.637-141.38 35.46 39.77 31.64 105.082 41.42 153.42-4.466 34.466-1.188 105.591 46.74 62.842 46.557-28.824 94.533-55.326 139.175-85.192 51.163-33.154 105.458-61.408 155.235-96.396 70.887-5.72-4.192 61.03-20.772 85.175-45.147 43.182-80.248 94.376-123.725 139.92-27.867 36.445-58.75 69.834-88.121 104.747 4.904 58.728 66.611 105.395 88.141 162.957 28.15 50.016 53.754 102.219 86.559 148.62 25.738 50.458 57.53 100.138 63.856 158.168 6.615 58.633-24.45 121.837-80.597 146.349-50.744 28.018-119.335 44.147-168.363 4.423-55.214-34.14-108.003-75.261-172.023-93.049-53.216-1.459-109.58-14.34-159.356 2.58-14.283 47.411-25.543 96.734-40.65 144.402-47.133 63.507-132.09 35.58-188.96 2.708-51.875-27.791-91.014-75.763-152.43-81.52-34.916-.899-70.085-59.372-83.586-5.313-10.777 31.318-81.188 70.482-60.024 11.125 11.461-54.431 15.15-113.038-2.533-165.412-3.294-57.681-.584-115.75-1.467-173.588 7.626-54.744 5.327-115.68 35.087-166.692 24.752-55.863 75.056-91.984 109.39-140.908 44.836-44.966 64.218-113.558 122.084-147.455 51.158-33.038 111.87-51.057 172.81-43.316 57.264-19.162 70.607-99.898 118.139-131.845z" fill="none" stroke="#000" id="myPath"/></svg></div>
     </article>
     <a href="#bilan_animations" class="next" aria-label="Suivant"></a>
@@ -942,7 +1004,7 @@ div.left { border-left-color: transparent; }</style>
     <a href="#pseudo_etats" class="previous" aria-label="Précédant"></a>
     <h3>Checkbox</h3>
     <article>
-        <style contenteditable="true">.like input[type=checkbox] + label {
+        <style contenteditable="true" class="hide-print">.like input[type=checkbox] + label {
     box-shadow: 0 0 0 1px red;
 }
 .like input[type=checkbox] + label::before {
@@ -951,7 +1013,15 @@ div.left { border-left-color: transparent; }</style>
 .like input[type=checkbox] + label::before {
     content: '';
 }
-.like fieldset input[type=checkbox] { opacity: 1; }</style>
+.like fieldset input[type=checkbox] { opacity: 1; }</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> + <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">content </span>: <span class="hljs-string">'Click if you like it'</span>;
+}
+
+<span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span><span class="hljs-selector-pseudo">:checked</span> + <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">::before</span> {
+    <span class="hljs-attribute">content </span>: <span class="hljs-string">'&lt;3 !'</span>;
+}
+
+<span class="hljs-selector-tag">fieldset</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> { <span class="hljs-attribute">opacity </span>: <span class="hljs-number">0</span>; }</code></pre>
 <div class="editable"><div class="like">
 	<blockquote>
 		<p>The science of operations, as derived from mathematics more especially, is a science of itself, and has its own
@@ -973,7 +1043,7 @@ div.left { border-left-color: transparent; }</style>
     <a href="#checkbox" class="previous" aria-label="Précédant"></a>
     <h3>Switch</h3>
     <article>
-        <style contenteditable="true">.switch + label {
+        <style contenteditable="true" class="hide-print">.switch + label {
 	display: block;
 	position: relative;
 	padding: .1em;
@@ -989,7 +1059,7 @@ div.left { border-left-color: transparent; }</style>
 	background-color: green;
 }
 </style>
-<style contenteditable="true">.switch + label::before {
+<style contenteditable="true" class="hide-print">.switch + label::before {
 	display: block;
 	position: absolute;
 	content: '';
@@ -1018,9 +1088,12 @@ div.left { border-left-color: transparent; }</style>
     <a href="#switch" class="previous" aria-label="Précédant"></a>
     <h3>Panel</h3>
     <article>
-        <style contenteditable="true">.panel input[type=checkbox] {
+        <style contenteditable="true" class="hide-print">.panel input[type=checkbox] {
     /* hide me */
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.panel</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> {
+    <span class="hljs-attribute">position </span>: fixed;
+    <span class="hljs-attribute">left     </span>: -<span class="hljs-number">100vmax</span>;
+}</code></pre>
 <div class="editable"><div class="panel">
 	<input type="checkbox" id="panel-1" checked>
 	<header><label for="panel-1">Apollo 11</label></header>
@@ -1203,7 +1276,7 @@ div.left { border-left-color: transparent; }</style>
 	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Plus d'infos
 		à propos des détails.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
-<style contenteditable="true">details {
+<style contenteditable="true" class="hide-print">details {
 	border: medium solid currentcolor;
 	border-radius: .25em;
 	width: 100%;
@@ -1211,7 +1284,15 @@ div.left { border-left-color: transparent; }</style>
 
 details summary {
 	background: #888; color: #eee;
-}</style>
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span> {
+    <span class="hljs-attribute">box-shadow </span>: .<span class="hljs-number">25em</span> .<span class="hljs-number">25em</span> .<span class="hljs-number">125em</span> <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.42);
+}
+
+<span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span><span class="hljs-selector-pseudo">::backdrop</span> {
+    <span class="hljs-attribute">position         </span>: fixed;
+    <span class="hljs-attribute">top              </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">left </span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background-color </span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.8);
+}</code></pre>
 <div class="editable"><details>
 	<summary>Des détails</summary>
 	<p>Plus d'infos
@@ -1227,7 +1308,7 @@ details summary {
     <a href="#panel_html" class="previous" aria-label="Précédant"></a>
     <h3>Dialog</h3>
     <article>
-        <style contenteditable="true">.editable dialog {
+        <style contenteditable="true" class="hide-print">.editable dialog {
 	border: medium solid rgba(0, 0, 0, 0.3);
 	border-radius: .125em;
 	padding: .125rem;
@@ -1238,7 +1319,15 @@ details summary {
   position: fixed;
   top: 0; right: 0; bottom: 0; left: 0;
   background-color: rgba(0, 0, 0, 0.8);
-} */</style>
+} */</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span> {
+    <span class="hljs-attribute">box-shadow </span>: .<span class="hljs-number">25em</span> .<span class="hljs-number">25em</span> .<span class="hljs-number">125em</span> <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.42);
+}
+
+<span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span><span class="hljs-selector-pseudo">::backdrop</span> {
+    <span class="hljs-attribute">position         </span>: fixed;
+    <span class="hljs-attribute">top              </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">left </span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background-color </span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.8);
+}</code></pre>
 <div class="editable"><dialog id="diag">This is a dialog!</dialog></div>
     </article>
     <a href="#polyfill" class="next" aria-label="Suivant"></a>

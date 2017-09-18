@@ -81,8 +81,8 @@
 .show-print {
   display: block; }
 
-.hide-print {
-  display: none; }
+body {
+  margin: 0; }
 
 main {
   display: flex;
@@ -97,3 +97,9 @@ main > section {
   page-break-inside: avoid;
   transform: none !important;
   opacity: 1; }
+
+style[contenteditable=true] {
+  display: none; }
+
+.editable {
+  z-index: 0; }

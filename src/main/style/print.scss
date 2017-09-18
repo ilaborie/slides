@@ -8,8 +8,8 @@
   display: block;
 }
 
-.hide-print {
-  display: none;
+body {
+  margin: 0;
 }
 
 main {
@@ -28,4 +28,12 @@ main > section {
 
   transform: none !important;
   opacity: 1;
+}
+
+style[contenteditable=true] {
+  display: none;
+}
+
+.editable {
+  z-index: 0;
 }

@@ -110,21 +110,24 @@ fun Content.renderAsHtml(): String = when (this) {
     is CssCompatibility        -> this.renderAsHtml()
 }
 
-fun StyleEditable.renderAsHtml() = "<style contenteditable=\"true\">${initialCss.loadTextContent()}</style>"
+fun StyleEditable.renderAsHtml() = """<style contenteditable="true" class="hide-print">${initialCss.loadTextContent()}</style>""" +
+        if (finalCss != null)
+            """<pre class="hljs lang-css show-print"><code>${getFormattedCode(Language.CSS, finalCss.loadTextContent())}</code></pre>"""
+        else ""
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"
-    else          -> {
-        val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
-        logger.info { "Run ${cmd.joinToString()} ..." }
-        val process = ProcessBuilder(cmd).start()
-        val writer = process.outputStream.writer()
-        logger.debug { code }
-        writer.write(this.code)
-        writer.close()
-        val formattedCode = process.inputStream.bufferedReader().readText()
-        """<pre class="hljs lang-$language"><code>$formattedCode</code></pre>"""
-    }
+    else          -> """<pre class="hljs lang-$language"><code>${getFormattedCode(language, code)}</code></pre>"""
+}
+
+private fun getFormattedCode(language: Language, code: String): String {
+    val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
+    logger.info { "Run ${cmd.joinToString()} ..." }
+    val process = ProcessBuilder(cmd).start()
+    val writer = process.outputStream.writer()
+    writer.write(code)
+    writer.close()
+    return process.inputStream.bufferedReader().readText()
 }
 
 fun Definitions.renderAsHtml() = map
