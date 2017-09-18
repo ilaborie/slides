@@ -23,7 +23,9 @@ fun pseudoState(group: Group) = group
         }
         .slide(title = "Switch") {
             StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
+            //TODO for print StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
                     StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
+                    //TODO for print StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
                     EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch.html")))
         }
         .slide(title = "Panel", styleClass = setOf("live-code")) {

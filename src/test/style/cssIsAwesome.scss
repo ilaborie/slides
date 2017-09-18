@@ -1,5 +1,6 @@
 @import "common/animations";
 @import "common/mixins";
+@import "common/print";
 
 // Fonts
 // "04b03regular",BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif
@@ -55,6 +56,12 @@ section.cover {
   align-self: center;
   blockquote p {
     font-size: 1.2rem;
+  }
+}
+
+#le_css_c_est_vaste, #pseudo_etats {
+  article {
+    align-items: center;
   }
 }
 
@@ -357,10 +364,15 @@ $plateSize: 100px;
     margin: 0;
     p {
       font-size: 1rem;
+      text-shadow: 2px 2px white;
       margin: 0;
     }
     cite::before {
       content: '⟿ ';
+    }
+    cite {
+      font-weight: bold;
+      text-shadow: 2px 2px white;
     }
   }
   fieldset {
@@ -389,6 +401,9 @@ $plateSize: 100px;
     label {
       box-shadow: none;
       margin: 0 .25em;
+    }
+    input[type=checkbox] {
+      transform: scale(2);
     }
   }
 }
@@ -601,6 +616,7 @@ $plateSize: 100px;
     .awesome-box {
       position: relative;
       @include cssIsAwesome();
+      font-size: 128px;
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
@@ -613,11 +629,11 @@ $plateSize: 100px;
 
       &::before {
         position: absolute;
-        z-index: -1;
+        //z-index: ;
         top: 0;
         left: 0;
-        width: 56vh;
-        height: 56vh;
+        width: 460px;
+        height: 460px;
         content: ' ';
         border: solid 1vh currentColor;
       }

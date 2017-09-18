@@ -421,6 +421,9 @@ dl {
     font-weight: bold;
     justify-self: end; }
 
+ul li {
+  list-style: url("./assets/puce.svg"); }
+
 figure {
   display: flex;
   flex-direction: column;
@@ -438,7 +441,7 @@ figure {
   align-items: center;
   margin-top: .25rem;
   margin-bottom: .25rem;
-  background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), linear-gradient(45deg, var(--primary) 25%, transparent 25%, transparent 75%, var(--primary) 75%, var(--primary)) 0 0, linear-gradient(45deg, var(--primary) 25%, var(--secondary) 25%, var(--secondary) 75%, var(--primary) 75%, var(--primary)) 1em 1em, var(--secondary);
+  background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), linear-gradient(45deg, #fff 25%, transparent 25%, transparent 75%, #fff 75%, #fff) 0 0, linear-gradient(45deg, #fff 25%, #999 25%, #999 75%, #fff 75%, #fff) 1em 1em, #999;
   background-size: 2em 2em;
   z-index: -10; }
 
