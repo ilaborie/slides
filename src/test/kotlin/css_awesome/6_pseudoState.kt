@@ -18,18 +18,19 @@ fun pseudoState(group: Group) = group
                     Code(":target"),
                     "...".raw())
         }
-        .slide(title = "Checkbox", styleClass = setOf("live-code")) {
+        .slide(title = "Checkbox Hack", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/06_pseudo_classes/checkbox")
         }
         .slide(title = "Switch") {
             StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
-            //TODO for print StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
+                    ExternalCodeContent(Language.CSS, ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
                     StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
-                    //TODO for print StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
+                    ExternalCodeContent(Language.CSS, ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
                     EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch.html")))
         }
         .slide(title = "Panel", styleClass = setOf("live-code")) {
-            cssLiveCode("/cssIsAwesome/06_pseudo_classes/panel")
+            Link("Hiding Content for Accessibility", "https://snook.ca/archives/html_and_css/hiding-content-for-accessibility") +
+                    cssLiveCode("/cssIsAwesome/06_pseudo_classes/panel")
         }
         .slide(title = "Principe pour les onglets") {
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html"))

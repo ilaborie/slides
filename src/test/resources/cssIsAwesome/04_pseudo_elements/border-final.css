@@ -5,9 +5,6 @@ div.top, div.right, div.bottom, div.left {
 }
 
 div.top { border-top-color: cyan; }
-
 div.right { border-right-color: purple; }
-
 div.bottom { border-bottom-color: green; }
-
 div.left { border-left-color: gold; }

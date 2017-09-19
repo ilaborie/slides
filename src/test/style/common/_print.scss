@@ -6,5 +6,42 @@
   #bordure_des_boutons {
     @import "../../resources/cssIsAwesome/01_preprocessor/boutons-final";
   }
-  
+
+  #le_dinner_d_un_philosophe {
+    @import "../../resources/cssIsAwesome/04_pseudo_elements/philosophe-final";
+  }
+
+  #triangle_avec_des_bordures {
+    @import "../../resources/cssIsAwesome/04_pseudo_elements/border-final";
+  }
+
+  #info_bulle {
+    @import "../../resources/cssIsAwesome/04_pseudo_elements/popover-final";
+  }
+
+  #texte_de_chargement {
+    @import "../../resources/cssIsAwesome/05_animations/loader-final";
+  }
+
+  #dessiner {
+    @import "../../resources/cssIsAwesome/05_animations/draw-final";
+  }
+
+  #usage_des_info_bulles {
+    .pop {
+      transform: scale(1) !important;
+    }
+  }
+
+  #checkbox_hack {
+    @import "../../resources/cssIsAwesome/06_pseudo_classes/checkbox-final";
+  }
+  #switch {
+    article {
+      pre.hljs {
+        display: block;
+      }
+    }
+  }
+
 }

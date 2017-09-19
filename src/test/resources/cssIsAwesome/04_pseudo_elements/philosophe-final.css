@@ -1,6 +1,6 @@
 .table::before, .table::after {
 	color: gray;
-	font-size: 2.5em;
+	font-size: 2rem;
 	content: '⋔';
 	transform: rotate(180deg);
 }

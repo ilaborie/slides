@@ -31,11 +31,12 @@ fun conclusion(group: Group) = group
                     Code("(Ctrl|⌘) + Shift + i"),
                     ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
                             Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
-                    Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS"),
+                    Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS") +
+                            Link("The A11Y Project", "http://a11yproject.com/"),
                     Link("CodePen", "https://codepen.io/") + ", ".raw() +
                             Link("JSFiddle", "https://jsfiddle.net/") + ", ".raw() +
                             Link("Dabblet", "http://dabblet.com/") + ",...".raw(),
-                    Link("CSS Tricks", "https://css-tricks.com/")+ ", ".raw() +
+                    Link("CSS Tricks", "https://css-tricks.com/") + ", ".raw() +
                             Link("Smashing Magazine", "https://www.smashingmagazine.com/"),
                     Link("CSS Flags", "https://pixelastic.github.io/css-flags/")
             )

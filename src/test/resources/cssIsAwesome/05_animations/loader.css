@@ -1,16 +1,16 @@
 .loader {
-	display : inline-block;
-	white-space : normal;
+	display: inline-block;
+	white-space: normal;
 	height: 1.3em; margin-top: -.3rem;
-	line-height : 1.5;
+	line-height: 1.5;
 	overflow: auto;
-	box-shadow  : 0 0 0 .05em red;
+	box-shadow: 0 0 0 .05em red;
 }
 .loader::before {
-	display : inline-table;
+	display: inline-table;
 	/*content: '⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏';*/
 	/*animation: spin 5s infinite;*/
 }
 @keyframes spin {
-	to { transform : translateY(-15em); }
+	to { transform: translateY(-15em); }
 }

@@ -69,17 +69,6 @@
     grid-area: foot;
     justify-content: center; }
 
-@media print {
-  .slides-nav {
-    display: none; }
-  #bordure_des_boutons button {
-    background: lightblue;
-    /*border: medium solid currentColor;*/
-    border: medium solid rgba(0, 0, 0, 0.42); }
-  #bordure_des_boutons button.danger {
-    background: salmon;
-    color: rebeccapurple; } }
-
 section.cover h1 {
   width: 56vh;
   height: 56vh;
@@ -120,7 +109,7 @@ section.cover h1 {
 #least-power article {
   align-self: center; }
   #least-power article blockquote p {
-    font-size: 1.2rem; }
+    font-size: 1.6rem; }
 
 #le_css_c_est_vaste article, #pseudo_etats article {
   align-items: center; }
@@ -134,7 +123,7 @@ section.cover h1 {
   height: 100%; }
   #une_histoire_dunites_css article figure img {
     max-width: 100%;
-    max-height: 66vh; }
+    min-height: 66vh; }
   #une_histoire_dunites_css article figure figcaption {
     display: none; }
 
@@ -319,34 +308,34 @@ section.cover h1 {
       border: 1em solid transparent;
       border-bottom-color: teal; }
     #usage_des_info_bulles .hint .pop::after {
-      content: " " var(--popoverName) " !"; }
+      content: " " var(--who) " !"; }
   #usage_des_info_bulles .hint a:hover + .pop {
     transform: scale(1);
     transition-timing-function: ease-out; }
 
-#checkbox article .like {
+#checkbox_hack article .like {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-
-#checkbox article blockquote {
-  margin: 0; }
-  #checkbox article blockquote p {
-    font-size: 1rem;
-    text-shadow: 2px 2px white;
+  #checkbox_hack article .like blockquote {
     margin: 0; }
-  #checkbox article blockquote cite::before {
-    content: '⟿ '; }
-  #checkbox article blockquote cite {
-    font-weight: bold;
-    text-shadow: 2px 2px white; }
-
-#checkbox article fieldset {
-  padding: .125rem .5rem;
-  border: thin solid grey;
-  transform: scale(2);
-  background-color: #fff; }
+    #checkbox_hack article .like blockquote p {
+      font-size: 1.2rem;
+      text-shadow: 2px 2px white;
+      margin: 0; }
+    #checkbox_hack article .like blockquote cite::before {
+      content: '⟿ '; }
+    #checkbox_hack article .like blockquote cite {
+      font-weight: bold;
+      text-shadow: 2px 2px white; }
+  #checkbox_hack article .like fieldset {
+    padding: .125rem .5rem;
+    border: thin solid grey;
+    background-color: #fff;
+    transform: scale(1.5); }
+    #checkbox_hack article .like fieldset input {
+      transform: scale(2); }
 
 #switch article {
   display: grid;
@@ -354,6 +343,8 @@ section.cover h1 {
   grid-column-gap: .25rem;
   justify-items: stretch;
   align-items: stretch; }
+  #switch article pre.hljs {
+    display: none; }
 
 #switch .editable {
   grid-column: 1 / 3;
@@ -365,11 +356,13 @@ section.cover h1 {
   #switch .editable input[type=checkbox] {
     transform: scale(2); }
 
-#panel blockquote p {
-  font-size: .7rem; }
-
-#panel blockquote footer cite {
-  font-size: .5rem; }
+#panel blockquote {
+  margin: .5rem; }
+  #panel blockquote p {
+    font-size: .9rem;
+    margin: .25rem 0; }
+  #panel blockquote footer cite {
+    font-size: .5rem; }
 
 #panel .editable {
   display: flex;
@@ -465,9 +458,6 @@ section.cover h1 {
   #demo_des_onglets .editable input#about:checked ~ div[data-for=about] {
     display: block; }
 
-#part_html h2 {
-  font-family: var(--codeFont); }
-
 #panel_html article {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -500,6 +490,7 @@ section.cover h1 {
   justify-content: center;
   align-items: center; }
   #_rocks__:target article .awesome-box {
+    transform: scale(1.5);
     position: relative;
     width: 56vh;
     height: 56vh;
@@ -525,7 +516,81 @@ section.cover h1 {
       position: absolute;
       top: 0;
       left: 0;
-      width: 460px;
-      height: 460px;
+      width: 485px;
+      height: 485px;
       content: ' ';
       border: solid 1vh currentColor; }
+
+@media print {
+  .slides-nav {
+    display: none; }
+  #bordure_des_boutons button {
+    background: lightblue;
+    /*border: medium solid currentColor;*/
+    border: medium solid rgba(0, 0, 0, 0.42); }
+  #bordure_des_boutons button.danger {
+    background: salmon;
+    color: rebeccapurple; }
+  #le_dinner_d_un_philosophe .table::before, #le_dinner_d_un_philosophe .table::after {
+    color: gray;
+    font-size: 2rem;
+    content: '⋔';
+    transform: rotate(180deg); }
+  #triangle_avec_des_bordures div.top, #triangle_avec_des_bordures div.right, #triangle_avec_des_bordures div.bottom, #triangle_avec_des_bordures div.left {
+    border: 2em solid transparent;
+    display: inline-block;
+    box-shadow: 0 0 0 .1em red; }
+  #triangle_avec_des_bordures div.top {
+    border-top-color: cyan; }
+  #triangle_avec_des_bordures div.right {
+    border-right-color: purple; }
+  #triangle_avec_des_bordures div.bottom {
+    border-bottom-color: green; }
+  #triangle_avec_des_bordures div.left {
+    border-left-color: gold; }
+  #info_bulle .popover {
+    position: relative;
+    background: teal; }
+  #info_bulle .popover::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    top: 1.25em;
+    left: 1em;
+    border: .8em solid transparent;
+    border-top-color: teal;
+    transform: skew(-30deg); }
+  #texte_de_chargement .loader {
+    display: inline-block;
+    white-space: pre;
+    height: 1.3em;
+    margin-top: -.3rem;
+    line-height: 1.5;
+    overflow: hidden; }
+  #texte_de_chargement .loader::before {
+    display: inline-table;
+    content: '⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏';
+    animation: spin 1s steps(10, end) infinite; }
+  @keyframes spin {
+    to {
+      transform: translateY(-15em); } }
+  #dessiner .editable svg path {
+    stroke: purple;
+    stroke-width: 1em;
+    fill: none;
+    stroke-dasharray: 4700;
+    stroke-dashoffset: 4700;
+    animation: draw 2s linear infinite; }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0; } }
+  #usage_des_info_bulles .pop {
+    transform: scale(1) !important; }
+  #checkbox_hack .editable input[type=checkbox] + label::before {
+    content: 'Click if you like it'; }
+  #checkbox_hack .editable input[type=checkbox]:checked + label::before {
+    content: '💗💖💕'; }
+  #checkbox_hack fieldset input[type=checkbox] {
+    opacity: 0; }
+  #switch article pre.hljs {
+    display: block; } }

@@ -1,10 +1,8 @@
 @import "common/animations";
 @import "common/mixins";
-@import "common/print";
 
 // Fonts
 // "04b03regular",BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif
-
 
 // Cover
 section.cover {
@@ -55,7 +53,7 @@ section.cover {
 #least-power article {
   align-self: center;
   blockquote p {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -81,7 +79,7 @@ section.cover {
       height: 100%;
       img {
         max-width: 100%;
-        max-height: 66vh;
+        min-height: 66vh;
       }
       figcaption {
         display: none;
@@ -340,7 +338,7 @@ $plateSize: 100px;
       }
 
       &::after {
-        content: ' ' var(--popoverName) ' !';
+        content: ' ' var(--who) ' !';
       }
     }
 
@@ -353,34 +351,39 @@ $plateSize: 100px;
 }
 
 // Checkbox Hack
-#checkbox article {
+#checkbox_hack article {
   .like {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  blockquote {
-    margin: 0;
-    p {
-      font-size: 1rem;
-      text-shadow: 2px 2px white;
+
+    blockquote {
       margin: 0;
+      p {
+        font-size: 1.2rem;
+        text-shadow: 2px 2px white;
+        margin: 0;
+      }
+      cite::before {
+        content: '⟿ ';
+      }
+      cite {
+        font-weight: bold;
+        text-shadow: 2px 2px white;
+      }
     }
-    cite::before {
-      content: '⟿ ';
+    fieldset {
+      //background: rgba(0, 0, 0, .25);
+      padding: .125rem .5rem;
+      border: thin solid grey;
+      background-color: #fff;
+      transform: scale(1.5);
+
+      input {
+        transform: scale(2);
+      }
     }
-    cite {
-      font-weight: bold;
-      text-shadow: 2px 2px white;
-    }
-  }
-  fieldset {
-    //background: rgba(0, 0, 0, .25);
-    padding: .125rem .5rem;
-    border: thin solid grey;
-    transform: scale(2);
-    background-color: #fff;
   }
 }
 
@@ -392,6 +395,10 @@ $plateSize: 100px;
     grid-column-gap: .25rem;
     justify-items: stretch;
     align-items: stretch;
+
+    pre.hljs {
+      display: none;
+    }
   }
 
   .editable {
@@ -411,8 +418,10 @@ $plateSize: 100px;
 // Panel
 #panel {
   blockquote {
+    margin: .5rem;
     p {
-      font-size: .7rem;
+      font-size: .9rem;
+      margin: .25rem 0;
     }
     footer cite {
       font-size: .5rem;
@@ -557,13 +566,6 @@ $plateSize: 100px;
   }
 }
 
-// HTML
-#part_html {
-  h2 {
-    font-family: var(--codeFont);
-  }
-}
-
 // Details/summary
 #panel_html {
 
@@ -614,6 +616,7 @@ $plateSize: 100px;
     align-items: center;
 
     .awesome-box {
+      transform: scale(1.5);
       position: relative;
       @include cssIsAwesome();
       font-size: 128px;
@@ -632,12 +635,13 @@ $plateSize: 100px;
         //z-index: ;
         top: 0;
         left: 0;
-        width: 460px;
-        height: 460px;
+        width: 485px;
+        height: 485px;
         content: ' ';
         border: solid 1vh currentColor;
       }
     }
-
   }
 }
+
+@import "common/print";
