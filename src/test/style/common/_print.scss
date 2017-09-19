@@ -2,4 +2,9 @@
   .slides-nav {
     display: none;
   }
+
+  #bordure_des_boutons {
+    @import "../../resources/cssIsAwesome/01_preprocessor/boutons-final";
+  }
+  
 }

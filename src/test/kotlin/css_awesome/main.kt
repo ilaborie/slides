@@ -41,7 +41,5 @@ fun main(args: Array<String>) {
     cssIsAwesome.writePdfTo(dist.resolve("$key.html"), dist.resolve("$key.pdf"))
 
     val holyGrail = slidesDir.resolve(cssIsAwesome.id).resolve("holy-grail.html")
-    holyGrail.copyTo(target = dist.resolve("holy-grail-calc.html"), overwrite = true)
-    holyGrail.copyTo(target = dist.resolve("holy-grail-flexbox.html"), overwrite = true)
-    holyGrail.copyTo(target = dist.resolve("holy-grail-grid.html"), overwrite = true)
+    holyGrail.copyTo(target = dist.resolve("holy-grail.html"), overwrite = true)
 }

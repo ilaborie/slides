@@ -569,7 +569,7 @@ style[contenteditable=true] {
 * {
   pointer-events: none; }
 
-label, button, input, a, [contenteditable],
+label, button, input, a, [contenteditable], .loader,
 .slides-nav, summary, .cover h1, .browser, .version {
   pointer-events: auto; }
 

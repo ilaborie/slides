@@ -1,0 +1,8 @@
+{
+  "server": {
+    "baseDir": "src/main/web",
+    "directory": true
+  },
+  "notify": false,
+  "open": false
+}

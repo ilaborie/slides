@@ -71,7 +71,14 @@
 
 @media print {
   .slides-nav {
-    display: none; } }
+    display: none; }
+  #bordure_des_boutons button {
+    background: lightblue;
+    /*border: medium solid currentColor;*/
+    border: medium solid rgba(0, 0, 0, 0.42); }
+  #bordure_des_boutons button.danger {
+    background: salmon;
+    color: rebeccapurple; } }
 
 section.cover h1 {
   width: 56vh;
@@ -120,7 +127,7 @@ section.cover h1 {
 
 #bordure_des_boutons .editable button {
   padding: .25em .5em;
-  transform: scale(4); }
+  transform: scale(6); }
 
 #une_histoire_dunites_css article figure {
   width: 100%;
