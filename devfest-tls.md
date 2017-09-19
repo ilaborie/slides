@@ -212,7 +212,7 @@ ExternalResource(resource=/cssIsAwesome/05_animations/draw.css)
 * [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)
 * [Animate.css](https://daneden.github.io/animate.css/)
 * [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)
-* [<code>&lt;progress&gt;</code>](https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress)
+* [Animated line drawing in SVG](https://jakearchibald.com/2013/animated-line-drawing-svg/)
 
 feature|Browser(key=chrome, usage=26.63196, mobile=false, versions=[49, 58, 59, 60])|Browser(key=and_chr, usage=18.645052, mobile=true, versions=[61])|Browser(key=ios_saf, usage=15.83396, mobile=true, versions=[9.0-9.2, 9.3, 10.0-10.2, 10.3])|Browser(key=firefox, usage=11.529649, mobile=false, versions=[48, 52, 54, 55])|Browser(key=ie, usage=4.6965423, mobile=false, versions=[11])|Browser(key=safari, usage=4.357715, mobile=false, versions=[10, 9.1, 10.1])|Browser(key=edge, usage=1.257417, mobile=false, versions=[14])|Browser(key=android, usage=1.0446022, mobile=false, versions=[4.4, 4.4.3-4.4.4])|Browser(key=opera, usage=0.525587, mobile=false, versions=[46])feature|---|---|---|---|---|---|---|---|---Feature(key=css-animation, title=CSS Animation, description=Complex method of animating certain properties of an element, spec=http://www.w3.org/TR/css3-animations/, notes_by_num={1=Partial support in Android browser refers to buggy behavior in different scenarios., 2=Does not support the `steps()`, `step-start` & `step-end` timing functions})|Value(browser=chrome, feature=css-animation, stats=[Stat(version=49, status=y), Stat(version=58, status=y), Stat(version=59, status=y), Stat(version=60, status=y)])|Value(browser=and_chr, feature=css-animation, stats=[Stat(version=61, status=y)])|Value(browser=ios_saf, feature=css-animation, stats=[Stat(version=9.0-9.2, status=y), Stat(version=9.3, status=y), Stat(version=10.0-10.2, status=y), Stat(version=10.3, status=y)])|Value(browser=firefox, feature=css-animation, stats=[Stat(version=48, status=y), Stat(version=52, status=y), Stat(version=54, status=y), Stat(version=55, status=y)])|Value(browser=ie, feature=css-animation, stats=[Stat(version=11, status=y)])|Value(browser=safari, feature=css-animation, stats=[Stat(version=10, status=y), Stat(version=9.1, status=y), Stat(version=10.1, status=y)])|Value(browser=edge, feature=css-animation, stats=[Stat(version=14, status=y)])|Value(browser=android, feature=css-animation, stats=[Stat(version=4.4, status=y x), Stat(version=4.4.3-4.4.4, status=y x)])|Value(browser=opera, feature=css-animation, stats=[Stat(version=46, status=y)])
 Feature(key=svg, title=SVG (basic support), description=Method of displaying basic Vector Graphics features using the embed or object elements. Refers to the SVG 1.1 spec., spec=http://www.w3.org/TR/SVG/, notes_by_num={1=Partial support in Android 3 & 4 refers to not supporting masking., 2=IE9-11 desktop & mobile don't properly scale SVG files.  [Adding height, width, viewBox, and CSS rules](http://codepen.io/tomByrer/pen/qEBbzw?editors=110) seem to be the best workaround.})|Value(browser=chrome, feature=svg, stats=[Stat(version=49, status=y), Stat(version=58, status=y), Stat(version=59, status=y), Stat(version=60, status=y)])|Value(browser=and_chr, feature=svg, stats=[Stat(version=61, status=y)])|Value(browser=ios_saf, feature=svg, stats=[Stat(version=9.0-9.2, status=y), Stat(version=9.3, status=y), Stat(version=10.0-10.2, status=y), Stat(version=10.3, status=y)])|Value(browser=firefox, feature=svg, stats=[Stat(version=48, status=y), Stat(version=52, status=y), Stat(version=54, status=y), Stat(version=55, status=y)])|Value(browser=ie, feature=svg, stats=[Stat(version=11, status=y #2)])|Value(browser=safari, feature=svg, stats=[Stat(version=10, status=y), Stat(version=9.1, status=y), Stat(version=10.1, status=y)])|Value(browser=edge, feature=svg, stats=[Stat(version=14, status=y #2)])|Value(browser=android, feature=svg, stats=[Stat(version=4.4, status=y), Stat(version=4.4.3-4.4.4, status=y)])|Value(browser=opera, feature=svg, stats=[Stat(version=46, status=y)])
@@ -251,7 +251,7 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/checkbox.css)
 		<footer><cite>Ada Lovelace</cite></footer>
 	</blockquote>
 	<fieldset>
-		<input type="checkbox" id="like">
+		<input type="checkbox" id="like" checked>
 		<label for="like"></label>
 	</fieldset>
 </div>
@@ -259,13 +259,50 @@ ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/checkbox.css)
 ```CSS
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch-1.css)
 ```
+```css
+.switch + label {
+	display: block;
+	position: relative;
+	padding: .1em;
+	width: 2em;
+	height: 1em;
+	background-color: #ccc;
+	border-radius: 1em;
+	border: medium solid #444;
+	transition: 0.4s;
+}
+
+.switch:checked + label {
+	background-color: green;
+}
+
+```
 ```CSS
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/switch-2.css)
 ```
+```css
+.switch + label::before {
+	display: block;
+	position: absolute;
+	content: '';
+	top: 0.1em;
+	left: 0.1em;
+	height: 1em;
+	width: 1em;
+	background-color: #fff;
+	border-radius: 50%;
+	transition: all 0.25s;
+}
+
+.switch:checked + label::before {
+	transform: translateX(1em);
+}
+```
 <label for="switch1">Switch</label>
-<input id="switch1" type="checkbox" class="switch">
+<input id="switch1" type="checkbox" class="switch" checked>
 <label for="switch1"></label>
 
+[Hiding Content for Accessibility](https://snook.ca/archives/html_and_css/hiding-content-for-accessibility)
 ```CSS
 ExternalResource(resource=/cssIsAwesome/06_pseudo_classes/panel.css)
 ```
@@ -346,7 +383,7 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/panel.css)
 ```CSS
 ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 ```
-<dialog id="diag">This is a dialog!</dialog>
+<dialog id="diag" open>This is a dialog!</dialog>
 
 * [Collapsible Panel Polyfill](https://github.com/chemerisuk/better-details-polyfill/)
 * [Dialog Polyfill](https://github.com/GoogleChrome/dialog-polyfill)
@@ -377,6 +414,7 @@ Feature(key=progress, title=progress element, description=Method of indicating a
 * ![CSS Secret](http://lea.verou.me/cover.png)
 [CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)
 * [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)
+[The A11Y Project](http://a11yproject.com/)
 * [CodePen](https://codepen.io/)
 , 
 [JSFiddle](https://jsfiddle.net/)
