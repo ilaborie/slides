@@ -342,6 +342,7 @@ pre.hljs {
   tab-size: 2; }
 
 section article a, section h1 a, section h2 a, section h3 a, section h4 a {
+  align-self: flex-start;
   text-decoration: none;
   color: currentColor;
   border-bottom: thin dashed currentColor; }
@@ -463,9 +464,8 @@ style[contenteditable=true] {
     .compatibility .browser:hover {
       transform: scale(1);
       filter: drop-shadow(0 0 0.25rem black); }
-    .compatibility .browser.mobile {
-      border-top: 0.25rem solid rgba(0, 0, 0, 0.5);
-      border-radius: .25rem; }
+    .compatibility .browser.mobile::before {
+      content: 'Mobile'; }
     .compatibility .browser.and_chr {
       background-image: url("./assets/browsers/and_chr.svg"); }
     .compatibility .browser.chrome {

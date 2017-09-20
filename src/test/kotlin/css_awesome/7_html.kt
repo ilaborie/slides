@@ -3,7 +3,13 @@ package css_awesome
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 
+private val progress = ExternalResource("/cssIsAwesome/07_HTML/progress.html")
 fun html(group: Group) = group
+        .slide("Progress") {
+            Link("The HTML5 progress Element\n", "https://css-tricks.com/html5-progress-element/") +
+                    ExternalCodeContent(Language.HTML, progress) +
+                    EditableZone(ExternalHtmlContent(progress))
+        }
         .slide("Panel", "panel_html") {
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/07_HTML/panel.html")) +
                     cssLiveCode("/cssIsAwesome/07_HTML/panel")

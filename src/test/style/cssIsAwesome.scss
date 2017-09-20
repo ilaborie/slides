@@ -4,6 +4,12 @@
 // Fonts
 // "04b03regular",BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif
 
+section article {
+  input[type=checkbox], input[type=radio] {
+    transform: scale(4);
+  }
+}
+
 // Cover
 section.cover {
   h1 {
@@ -561,6 +567,23 @@ $plateSize: 100px;
       }
       & ~ div[data-for=about] {
         display: block;
+      }
+    }
+  }
+}
+
+//
+#progress {
+  article {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .editable {
+      display: flex;
+      flex-direction: column;
+      progress {
+        margin: .5rem;
       }
     }
   }

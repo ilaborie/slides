@@ -20,7 +20,6 @@ fun animations(group: Group) = group
                     Link("Animate.css", "https://daneden.github.io/animate.css/"),
                     Link("How SVG Line Animation Works", "https://css-tricks.com/svg-line-animation-works/"),
                     Link("Animated line drawing in SVG", "https://jakearchibald.com/2013/animated-line-drawing-svg/")
-//                    Link("<code>&lt;progress&gt;</code>".html(), "https://developer.mozilla.org/fr/docs/Web/HTML/Element/Progress")
             )
         }
         .slide(title = "Compatibilité", id = "compat-5") {

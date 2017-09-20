@@ -1,5 +1,6 @@
 section article, section h1, section h2, section h3, section h4 {
   a {
+    align-self: flex-start;
     text-decoration: none;
     color: currentColor;
     border-bottom: thin dashed currentColor;
