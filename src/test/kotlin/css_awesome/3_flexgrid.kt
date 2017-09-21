@@ -24,7 +24,7 @@ fun flexgrid(group: Group) = group
                     Block(
                             "Grid".h4() +
                                     UnorderedList(
-                                            Link("<code>@supports<code>".html(), "https://developer.mozilla.org/fr/docs/Web/CSS/@supports"),
+                                            Link("<code>@supports</code>".html(), "https://developer.mozilla.org/fr/docs/Web/CSS/@supports"),
                                             Link("Grid by examples", "https://gridbyexample.com/"),
                                             Link("CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen", "https://www.youtube.com/watch?v=txZq7Laz7_4"),
                                             Link("Grid Garden", "http://cssgridgarden.com/")

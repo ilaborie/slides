@@ -146,7 +146,7 @@ Feature(key=calc, title=calc() as CSS unit value, description=Method of allowing
 * [Flexbox Froggy](https://flexboxfroggy.com/)
 #### Grid ####
 
-* [<code>@supports<code>](https://developer.mozilla.org/fr/docs/Web/CSS/@supports)
+* [<code>@supports</code>](https://developer.mozilla.org/fr/docs/Web/CSS/@supports)
 * [Grid by examples](https://gridbyexample.com/)
 * [CSS Grid Changes Everything (About Web Layouts) by Morten Rand-Hendriksen](https://www.youtube.com/watch?v=txZq7Laz7_4)
 * [Grid Garden](http://cssgridgarden.com/)
@@ -369,15 +369,11 @@ Feature(key=transforms3d, title=CSS3 3D Transforms, description=Method of transf
 [The HTML5 progress Element
 ](https://css-tricks.com/html5-progress-element/)
 ```html
-
 <progress value="42" max="100">42 %</progress>
-
 <progress></progress>
 
 ```
-
 <progress value="42" max="100">42 %</progress>
-
 <progress></progress>
 
 

@@ -179,7 +179,7 @@ section .previous::before,
 section .next::after {
   background: var(--bgSlideNav);
   content: '';
-  font-size: 8rem;
+  font-size: 6rem;
   text-decoration: none; }
 
 section .previous::before {
