@@ -11,7 +11,7 @@ Expert Java & Web,
 0. Texte
 1. HTML (sémantique) & CSS (layout, style, animations simples)
 2. SVG (formes et animations complexes)
-3. JavaScripts
+3. JavaScript, ...
 *⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles*
 
 * Selectors
