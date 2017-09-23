@@ -210,6 +210,7 @@ section h3 {
   align-self: stretch;
   flex: 0 0 auto;
   padding: .25em 1em;
+  font-family: var(--titleFont);
   font-size: var(--headerFontSize);
   background: var(--bgHeader);
   color: var(--fgHeader); }
@@ -552,7 +553,8 @@ style[contenteditable=true] {
   pointer-events: none; }
 
 label, button, input, a, [contenteditable], .loader,
-.slides-nav, summary, .cover h1, .browser, .version {
+.slides-nav, summary, .cover h1, .browser, .version,
+.hljs {
   pointer-events: auto; }
 
 html {

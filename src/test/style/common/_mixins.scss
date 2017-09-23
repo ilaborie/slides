@@ -29,26 +29,27 @@
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: 1rem auto 1rem;
-  grid-template-areas: "head head head"
-                       "menu body side"
-                       "foot foot foot";
+  grid-template-areas: "🎓 🎓 🎓"
+                       "👈 👘 👉"
+                       "👞 👞 👞";
+  grid-gap: .1rem;
   header {
-    grid-area: head;
+    grid-area: 🎓;
     justify-content: center;
   }
   nav {
-    grid-area: menu;
+    grid-area: 👈;
   }
   main {
-    grid-area: body;
+    grid-area: 👘;
     text-align: justify;
     overflow: auto;
   }
   aside {
-    grid-area: side;
+    grid-area: 👉;
   }
   footer {
-    grid-area: foot;
+    grid-area: 👞;
     justify-content: center;
   }
 }

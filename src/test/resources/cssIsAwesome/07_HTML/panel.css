@@ -1,8 +1,11 @@
 details {
 	border: medium solid currentcolor;
 	border-radius: .25em;
+	width: auto;
 }
 
 details summary {
-	background: #888; color: #eee;
+	background: #888;
+	color: #eee;
+	cursor: auto;
 }

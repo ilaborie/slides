@@ -45,7 +45,8 @@
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: 1rem auto 1rem;
-  grid-template-areas: "head head head" "menu body side" "foot foot foot"; }
+  grid-template-areas: "🎓 🎓 🎓" "👈 👘 👉" "👞 👞 👞";
+  grid-gap: .1rem; }
   .holy-grail header, .holy-grail footer, .holy-grail main, .holy-grail nav, .holy-grail aside {
     background: var(--bgCode);
     color: var(--fgCode);
@@ -55,18 +56,18 @@
     display: flex;
     align-items: center; }
   .holy-grail header {
-    grid-area: head;
+    grid-area: 🎓;
     justify-content: center; }
   .holy-grail nav {
-    grid-area: menu; }
+    grid-area: 👈; }
   .holy-grail main {
-    grid-area: body;
+    grid-area: 👘;
     text-align: justify;
     overflow: auto; }
   .holy-grail aside {
-    grid-area: side; }
+    grid-area: 👉; }
   .holy-grail footer {
-    grid-area: foot;
+    grid-area: 👞;
     justify-content: center; }
 
 section article input[type=checkbox], section article input[type=radio] {
@@ -142,6 +143,9 @@ section.cover h1 {
 
 #holy-grail-grid .hljs-tag:nth-of-type(4), #holy-grail-grid .hljs-tag:nth-of-type(11) {
   opacity: .25; }
+
+#bilan_flexbox___grid article {
+  font-size: .9rem; }
 
 #dessiner .editable svg {
   width: 40vh;
@@ -536,6 +540,7 @@ section.cover h1 {
     background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
     background-size: 200% 200%;
     width: auto;
+    height: auto;
     border: solid 1vh transparent;
     padding: 5vh;
     outline: none;

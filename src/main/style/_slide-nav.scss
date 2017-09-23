@@ -32,7 +32,6 @@ section .next::after {
 // Previous
 section .previous::before {
   content: '‹';
-
   cursor: w-resize;
 }
 

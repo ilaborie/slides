@@ -5,6 +5,8 @@
   --yellow: #f4b400;
   --green: #0f9d58;
   --red: #db4437;
+  --black: #000;
+  --white: #fff;
   --g1: #263238;
   --g2: #37424b;
   --g3: #455a64;
@@ -12,5 +14,42 @@
   --g5: #f7f7f7;
   --alpha1: rgba(0, 0, 0, 0.54);
   --alpha2: rgba(0, 0, 0, 0.87);
+  --primary: var(--g1);
+  --secondary: var(--white);
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: system, system-ui, sans-serif;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: 'Permanent Marker', cursive;
+  --quoteFont: 'Just Another Hand', cursive;
+  --counterFont: 'Press Start 2P', fantasy;
+  --bgNavbar: var(--white);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, 0.2);
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: url("./assets/bg.svg") var(--secondary);
+  --fgSlide: var(--primary);
+  --bgCover: var(--secondary);
+  --fgCover: var(--primary);
+  --bgPart: var(--secondary);
+  --fgPart: var(--primary);
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, 0.2);
+  --navigationWidth: 10vw;
+  --bgCounter: transparend;
+  --fgCounter: var(--secondary);
   --txtFooter: '@DevFestToulouse @ilaborie #CSS #🦄';
-  --logoFooter: url("./assets/devfest-logo-v2017.svg"); }
+  --logoFooter: url("./assets/devfest-logo-v2017.svg");
+  --bgFooter: var(--primary);
+  --fgFooter: var(--secondary);
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa; }
+
+main section {
+  background-position: 25vh center;
+  background-repeat: no-repeat; }

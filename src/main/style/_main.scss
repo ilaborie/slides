@@ -19,7 +19,8 @@
   pointer-events: none;
 }
 label, button, input, a, [contenteditable], .loader,
-.slides-nav, summary, .cover h1, .browser, .version {
+.slides-nav, summary, .cover h1, .browser, .version,
+.hljs {
   pointer-events: auto;
 }
 

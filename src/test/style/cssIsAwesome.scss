@@ -121,6 +121,12 @@ section.cover {
   }
 }
 
+#bilan_flexbox___grid {
+  article {
+    font-size: .9rem;
+  }
+}
+
 // Draw
 #dessiner {
   .editable svg {
@@ -668,6 +674,7 @@ $plateSize: 100px;
       background-image: linear-gradient(315deg, red, orange, green, teal, blue, indigo, magenta);
       background-size: 200% 200%;
       width: auto;
+      height: auto;
       border: solid 1vh transparent;
       padding: 5vh;
       outline: none;
