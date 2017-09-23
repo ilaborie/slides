@@ -19,7 +19,8 @@ fun animations(group: Group) = group
                     Link("CSS only loader", "https://www.pexels.com/blog/css-only-loaders/"),
                     Link("Animate.css", "https://daneden.github.io/animate.css/"),
                     Link("How SVG Line Animation Works", "https://css-tricks.com/svg-line-animation-works/"),
-                    Link("Animated line drawing in SVG", "https://jakearchibald.com/2013/animated-line-drawing-svg/")
+                    Link("Animated line drawing in SVG", "https://jakearchibald.com/2013/animated-line-drawing-svg/"),
+                    Link("CSS trigger","https://csstriggers.com/")
             )
         }
         .slide(title = "Compatibilité", id = "compat-5") {

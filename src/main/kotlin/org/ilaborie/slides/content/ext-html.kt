@@ -49,6 +49,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <link rel="stylesheet" href="$id.css">
     <link rel="stylesheet" href="$key.css">
     <link rel="stylesheet" href="print.css" media="print">
+    <link rel="icon" type="image/png" href="assets/$key.png" />
 </head>
 <body class="$key">
     <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count() + 1}, auto);">
