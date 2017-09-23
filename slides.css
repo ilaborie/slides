@@ -442,6 +442,13 @@ style[contenteditable=true] {
   to {
     background-position: 100% 100%; } }
 
+.compatibility-caption {
+  font-size: .7rem; }
+  .compatibility-caption::before {
+    content: 'Navigateur usage ≥ '; }
+  .compatibility-caption::after {
+    content: '% en France'; }
+
 .compatibility {
   display: grid;
   font-size: .8rem;
@@ -465,7 +472,7 @@ style[contenteditable=true] {
       transform: scale(1);
       filter: drop-shadow(0 0 0.25rem black); }
     .compatibility .browser.mobile::before {
-      content: 'Mobile'; }
+      content: '📱'; }
     .compatibility .browser.and_chr {
       background-image: url("./assets/browsers/and_chr.svg"); }
     .compatibility .browser.chrome {
