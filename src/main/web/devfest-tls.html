@@ -1018,23 +1018,23 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
     <h3>Checkbox Hack</h3>
     <article>
         <style contenteditable="true" class="hide-print">.like input[type=checkbox] + label {
-    box-shadow: 0 0 0 1px red;
+	box-shadow: 0 0 0 1px red;
 }
 .like input[type=checkbox] + label::before {
-    content: '';
+	content: '';
 }
 .like input[type=checkbox] + label::before {
-    content: '';
+	content: '';
 }
 .like fieldset input[type=checkbox] { opacity: 1; }</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> + <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">::before</span> {
-    <span class="hljs-attribute">content </span>: <span class="hljs-string">'Click if you like it'</span>;
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">'Click if you like it'</span>;
 }
 
 <span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span><span class="hljs-selector-pseudo">:checked</span> + <span class="hljs-selector-tag">label</span><span class="hljs-selector-pseudo">::before</span> {
-    <span class="hljs-attribute">content </span>: <span class="hljs-string">'💗💖💕'</span>;
+	<span class="hljs-attribute">content</span>: <span class="hljs-string">'💗💖💕'</span>;
 }
 
-<span class="hljs-selector-tag">fieldset</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> { <span class="hljs-attribute">opacity </span>: <span class="hljs-number">0</span>; }</code></pre>
+<span class="hljs-selector-tag">fieldset</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> { <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0</span>; }</code></pre>
 <div class="editable"><div class="like">
 	<blockquote>
 		<p>The science of operations, as derived from mathematics more especially, is a science of itself, and has its own
@@ -1134,10 +1134,10 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
     <article>
         <a href="https://snook.ca/archives/html_and_css/hiding-content-for-accessibility">Hiding Content for Accessibility</a>
 <style contenteditable="true" class="hide-print">.panel input[type=checkbox] {
-    /* hide me */
+	/* hide me */
 }</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.panel</span> <span class="hljs-selector-tag">input</span><span class="hljs-selector-attr">[type=checkbox]</span> {
-    <span class="hljs-attribute">position </span>: fixed;
-    <span class="hljs-attribute">left     </span>: -<span class="hljs-number">100vmax</span>;
+	<span class="hljs-attribute">position</span>: fixed;
+	<span class="hljs-attribute">left</span>: -<span class="hljs-number">100vmax</span>;
 }</code></pre>
 <div class="editable"><div class="panel">
 	<input type="checkbox" id="panel-1" checked>
@@ -1341,19 +1341,17 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
 <style contenteditable="true" class="hide-print">details {
 	border: medium solid currentcolor;
 	border-radius: .25em;
-	width: 100%;
 }
 
 details summary {
 	background: #888; color: #eee;
-}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span> {
-    <span class="hljs-attribute">box-shadow </span>: .<span class="hljs-number">25em</span> .<span class="hljs-number">25em</span> .<span class="hljs-number">125em</span> <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.42);
+}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-tag">details</span> {
+	<span class="hljs-attribute">border</span>: medium solid currentcolor;
+	<span class="hljs-attribute">border-radius</span>: .<span class="hljs-number">25em</span>;
 }
 
-<span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span><span class="hljs-selector-pseudo">::backdrop</span> {
-    <span class="hljs-attribute">position         </span>: fixed;
-    <span class="hljs-attribute">top              </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">left </span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">background-color </span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.8);
+<span class="hljs-selector-tag">details</span> <span class="hljs-selector-tag">summary</span> {
+	<span class="hljs-attribute">background</span>: <span class="hljs-number">#888</span>; <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
 }</code></pre>
 <div class="editable"><details>
 	<summary>Des détails</summary>
