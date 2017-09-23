@@ -34,3 +34,7 @@ fun Content.em(): Content = Emphasis(this)
 fun Content.p(): Content = Paragraph(this)
 fun Content.quote(author: String? = null, cite: String? = null): Content = Quote(this, author, cite)
 
+fun String.escapeHtml():String = this
+        .replace("\"", "&quot;")
+        .replace(">", "&gt;")
+        .replace("<", "&lt;")

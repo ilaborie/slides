@@ -186,13 +186,13 @@ fun CssCompatibility.renderAsHtml(): String {
             NotAvailable -> version
             Available    -> version
             is Partial   -> """<div class="version">$version</div>
-                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
             is Prefix    -> """<div class="version">$version</div>
-                |<div class="info">Prefix ${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+                |<div class="info">Prefix ${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
             is Flag      -> """<div class="version">$version</div>
-                |<div class="info">Flag ${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+                |<div class="info">Flag ${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
             is Buggy     -> """<div class="version">$version</div>
-                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml()}</div>""".trimMargin()
+                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
         }
     }
 
@@ -218,7 +218,7 @@ fun CssCompatibility.renderAsHtml(): String {
     ${browsers.joinToString(separator = "") { """<div class="browser-percent">${formatter.format(it.usage)} %</div>""" }}
     ${features.joinToString(separator = "") { (feature, values) ->
         """<div class="feature ${feature.key}">
-        |   <a href="https://caniuse.com/#feat=${feature.key}" aria-label="${feature.title}" title="{${feature.description}}">
+        |   <a href="https://caniuse.com/#feat=${feature.key}" aria-label="${feature.title}" title="{${feature.description.escapeHtml()}}">
         |       ${feature.title}
         |   </a>
         |</div>$values""".trimMargin()

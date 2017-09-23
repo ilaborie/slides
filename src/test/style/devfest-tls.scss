@@ -37,7 +37,7 @@
   // Slide
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: url('./assets/bg.svg') var(--secondary);
+  --bgSlide: var(--secondary);
   --fgSlide: var(--primary);
 
   // Slide Cover
@@ -74,6 +74,6 @@
 }
 
 main section {
-  background-position: 25vh center;
-  background-repeat: no-repeat;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0), rgba(0,0,0,0) 60%, rgba(0,0,0,.1) 80%,rgba(0,0,0,0.3) 100%),
+              url('./assets/bg.svg') no-repeat 25vh center;
 }

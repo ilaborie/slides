@@ -29,7 +29,7 @@
   --shadowNavbar: rgba(0, 0, 0, 0.2);
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: url("./assets/bg.svg") var(--secondary);
+  --bgSlide: var(--secondary);
   --fgSlide: var(--primary);
   --bgCover: var(--secondary);
   --fgCover: var(--primary);
@@ -51,5 +51,4 @@
   --fgCode: #bababa; }
 
 main section {
-  background-position: 25vh center;
-  background-repeat: no-repeat; }
+  background: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/bg.svg") no-repeat 25vh center; }
