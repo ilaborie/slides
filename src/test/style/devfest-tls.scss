@@ -37,15 +37,15 @@
   // Slide
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: var(--secondary);
+  --bgSlide: radial-gradient(ellipse at center, rgba(0,0,0,0), rgba(0,0,0,0) 60%, rgba(0,0,0,.1) 80%,rgba(0,0,0,0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
   --fgSlide: var(--primary);
 
   // Slide Cover
-  --bgCover: var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0,0,0,0), rgba(0,0,0,0) 60%, rgba(0,0,0,.1) 80%,rgba(0,0,0,0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
   --fgCover: var(--primary);
 
   // Slide Part
-  --bgPart: var(--secondary);
+  --bgPart: radial-gradient(ellipse at center, rgba(0,0,0,0), rgba(0,0,0,0) 60%, rgba(0,0,0,.1) 80%,rgba(0,0,0,0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
   --fgPart: var(--primary);
 
   // Slide standard
@@ -71,9 +71,4 @@
   // Code
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
-}
-
-main section {
-  background: radial-gradient(ellipse at center, rgba(0,0,0,0), rgba(0,0,0,0) 60%, rgba(0,0,0,.1) 80%,rgba(0,0,0,0.3) 100%),
-              url('./assets/bg.svg') no-repeat 25vh center;
 }

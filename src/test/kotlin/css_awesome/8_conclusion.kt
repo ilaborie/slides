@@ -38,7 +38,8 @@ fun conclusion(group: Group) = group
                             Link("Dabblet", "http://dabblet.com/") + ",...".raw(),
                     Link("CSS Tricks", "https://css-tricks.com/") + ", ".raw() +
                             Link("Smashing Magazine", "https://www.smashingmagazine.com/"),
-                    Link("CSS Flags", "https://pixelastic.github.io/css-flags/")
+                    Link("CSS Flags", "https://pixelastic.github.io/css-flags/") + ",".raw() +
+                            Link("A Single Div","http://a.singlediv.com/")
             )
         }
         .slide(title = "🦄 rocks !", styleClass = setOf("hide-title")) {
