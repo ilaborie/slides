@@ -21,7 +21,7 @@ fun intro(group: Group) = group
             listOf("Texte",
                    "HTML (sémantique) & CSS (layout, style, animations simples)",
                    "SVG (formes et animations complexes)",
-                   "JavaScripts").ol() +
+                   "JavaScript, ...").ol() +
                     "⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles".em()
         }
         .slide(title = "Le CSS c'est vaste", styleClass = setOf("two-columns")) {

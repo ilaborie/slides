@@ -22,32 +22,37 @@
 		aside { background: green; }
 		footer { background: purple; }
 
-		/* size */
-		header { height: 80px; }
-		nav { width: 15vw; }
-		aside { width: 10vw; }
-		footer { height: 1.5em; }
-
 		/* layout */
-		body { }
+		body { 
+			display: grid;
+			height: 100vh;
 
-		body > div { }
+			grid-template-columns: auto 1fr auto;
+			grid-template-rows: auto 1fr auto;
+			grid-template-areas: 
+			 "head head head"
+			 "left body righ"
+			 "foot foot foot";
+		}
+		header {grid-area: head;}
+		nav {grid-area: righ;}
+		main {grid-area: body;}
+		aside {grid-area: left;}
+		footer {grid-area: foot;}
 
-		body > div > * { }
-
-		main {}
+		main {
+			overflow: auto;
+		}
 	</style>
 </head>
 
 <body>
 	<header>Header</header>
-	<div>
-		<nav>Menu</nav>
-		<main>
-			(p>lorem)*
-		</main>
-		<aside>Side</aside>
-	</div>
+	<nav>Menu</nav>
+	<main>
+		(p>lorem)*
+	</main>
+	<aside>Side</aside>
 	<footer>Footer</footer>
 </body>
 

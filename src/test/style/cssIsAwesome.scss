@@ -665,7 +665,6 @@ $plateSize: 100px;
     align-items: center;
 
     .awesome-box {
-      transform: scale(1.5);
       position: relative;
       @include cssIsAwesome();
       font-size: 128px;
