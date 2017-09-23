@@ -25,10 +25,12 @@ fun pseudoState(group: Group) = group
             cssLiveCode("/cssIsAwesome/06_pseudo_classes/checkbox")
         }
         .slide(title = "Switch") {
-            StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
-                    ExternalCodeContent(Language.CSS, ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")) +
-                    StyleEditable(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
-                    ExternalCodeContent(Language.CSS, ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")) +
+            val initialCss = ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-1.css")
+            val initialCss1 = ExternalResource("/cssIsAwesome/06_pseudo_classes/switch-2.css")
+            StyleEditable(initialCss) +
+                    ExternalCodeContent(Language.CSS, initialCss) +
+                    StyleEditable(initialCss1) +
+                    ExternalCodeContent(Language.CSS, initialCss1) +
                     EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/switch.html")))
         }
         .slide(title = "Panel", styleClass = setOf("live-code")) {

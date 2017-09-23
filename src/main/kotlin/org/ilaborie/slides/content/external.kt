@@ -8,7 +8,6 @@ import org.ilaborie.slides.logger
 import org.ilaborie.slides.safe
 import java.io.File
 import java.net.URL
-import java.nio.charset.Charset
 import java.util.*
 
 
@@ -23,8 +22,8 @@ sealed class External {
     }
 
     val dataUri: String by lazy {
-        fun readAsBase64() = Base64.getEncoder().encodeToString(loadBytes())
-        fun readAsSingleLine() = loadTextContent().replace("\n", "")
+        fun readAsBase64() = Base64.getEncoder().encodeToString(bytes)
+        fun readAsSingleLine() = textContent.replace("\n", "")
 
         val link = link()
         when {
@@ -35,39 +34,43 @@ sealed class External {
         }
     }
 
-    fun loadTextContent(charset: Charset = Charsets.UTF_8): String = when (this) {
-        is ExternalResource -> catchWithDefault("No resource: $resource") {
-            logger.debug { "Read resource $resource" }
-            val input = this::class.java.getResourceAsStream(this.resource)
-            if (input == null) {
-                logger.error { "No resources $resource" }
+    val textContent: String by lazy {
+        when (this) {
+            is ExternalResource -> catchWithDefault("No resource: $resource") {
+                logger.debug { "Read resource $resource" }
+                val input = this::class.java.getResourceAsStream(this.resource)
+                if (input == null) {
+                    logger.error { "No resources $resource" }
+                }
+                input.reader().readText()
             }
-            input.reader(charset).readText()
-        }
-        is ExternalFile     -> catchWithDefault("No file: $file") {
-            logger.debug { "Read file $file" }
-            this.file.readText(charset)
-        }
-        is ExternalLink     -> catchWithDefault("No link: $url") {
-            logger.debug { "Read link $url" }
-            URL(url).openStream().reader().readText()
+            is ExternalFile     -> catchWithDefault("No file: $file") {
+                logger.debug { "Read file $file" }
+                this.file.readText()
+            }
+            is ExternalLink     -> catchWithDefault("No link: $url") {
+                logger.debug { "Read link $url" }
+                URL(url).openStream().reader().readText()
+            }
         }
     }
 
 
-    private fun loadBytes(): ByteArray = when (this) {
-        is ExternalResource -> safe {
-            val input = this::class.java.getResourceAsStream(this.resource)
-            if (input == null) {
-                logger.error { "No resources $resource" }
+    val bytes: ByteArray by lazy {
+        when (this) {
+            is ExternalResource -> safe {
+                val input = this::class.java.getResourceAsStream(this.resource)
+                if (input == null) {
+                    logger.error { "No resources $resource" }
+                }
+                input.readBytes()
             }
-            input.readBytes()
-        }
-        is ExternalFile     -> safe {
-            this.file.readBytes()
-        }
-        is ExternalLink     -> safe {
-            URL(url).openStream().readBytes()
+            is ExternalFile     -> safe {
+                this.file.readBytes()
+            }
+            is ExternalLink     -> safe {
+                URL(url).openStream().readBytes()
+            }
         }
     }
 

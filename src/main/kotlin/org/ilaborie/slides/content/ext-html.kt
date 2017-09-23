@@ -112,9 +112,9 @@ fun Content.renderAsHtml(): String = when (this) {
     else                       -> TODO()
 }
 
-fun StyleEditable.renderAsHtml() = """<style contenteditable="true" class="hide-print">${initialCss.loadTextContent()}</style>""" +
+fun StyleEditable.renderAsHtml() = """<style contenteditable="true" class="hide-print">${initialCss.textContent}</style>""" +
         if (finalCss != null)
-            """<pre class="hljs lang-css show-print"><code>${getFormattedCode(Language.CSS, finalCss.loadTextContent())}</code></pre>"""
+            """<pre class="hljs lang-css show-print"><code>${getFormattedCode(Language.CSS, finalCss.textContent)}</code></pre>"""
         else ""
 
 fun Code.renderAsHtml() = when (language) {
@@ -122,15 +122,17 @@ fun Code.renderAsHtml() = when (language) {
     else          -> """<pre class="hljs lang-$language"><code>${getFormattedCode(language, code)}</code></pre>"""
 }
 
-private fun getFormattedCode(language: Language, code: String): String {
-    val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
-    logger.info { "Run ${cmd.joinToString()} ..." }
-    val process = ProcessBuilder(cmd).start()
-    val writer = process.outputStream.writer()
-    writer.write(code)
-    writer.close()
-    return process.inputStream.bufferedReader().readText()
-}
+private val codeCache = mutableMapOf<Pair<Language, String>, String>()
+private fun getFormattedCode(language: Language, code: String): String =
+        codeCache.getOrPut(language to code) {
+            val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
+            logger.info { "Run ${cmd.joinToString()} ..." }
+            val process = ProcessBuilder(cmd).start()
+            val writer = process.outputStream.writer()
+            writer.write(code)
+            writer.close()
+            return process.inputStream.bufferedReader().readText()
+        }
 
 fun Definitions.renderAsHtml() = map
         .toList()
@@ -151,15 +153,17 @@ fun Figure.renderAsHtml() = """
   ${if (copyright != null) "<p class=\"copyright\">${copyright.renderAsHtml()}</p>" else ""}
 </figure>"""
 
-fun MarkdownContent.renderAsHtml(): String {
-    val cmd = listOf("ts-node", "src/main/typescript/md-to-html.ts")
-    logger.info { "Run ${cmd.joinToString()} ..." }
-    val process = ProcessBuilder(cmd).start()
-    val writer = process.outputStream.writer()
-    writer.write(this.markdown)
-    writer.close()
-    return process.inputStream.bufferedReader().readText()
-}
+private val mdCache = mutableMapOf<String, String>()
+fun MarkdownContent.renderAsHtml(): String =
+        mdCache.getOrPut(this.markdown) {
+            val cmd = listOf("ts-node", "src/main/typescript/md-to-html.ts")
+            logger.info { "Run ${cmd.joinToString()} ..." }
+            val process = ProcessBuilder(cmd).start()
+            val writer = process.outputStream.writer()
+            writer.write(this.markdown)
+            writer.close()
+            process.inputStream.bufferedReader().readText()
+        }
 
 fun CssCompatibility.renderAsHtml(): String {
     val browsers: List<Browser> = table.columns()

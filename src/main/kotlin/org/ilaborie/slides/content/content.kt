@@ -22,21 +22,21 @@ data class MarkdownContent(val markdown: String) : Content()
 
 // External
 data class ExternalHtmlContent(val externalHtml: External) : Content() {
-    val htmlContent by lazy { HtmlContent(externalHtml.loadTextContent()) }
+    val htmlContent by lazy { HtmlContent(externalHtml.textContent) }
 }
 
 data class ExternalMarkdownContent(val externalMarkdown: External) : Content() {
-    val markdownContent by lazy { MarkdownContent(externalMarkdown.loadTextContent()) }
+    val markdownContent by lazy { MarkdownContent(externalMarkdown.textContent) }
 }
 
 data class ExternalCodeContent(val language: Language, val externalCode: External) : Content() {
     val code by lazy {
-        Code(this.externalCode.loadTextContent(), language, this.externalCode.fileName)
+        Code(this.externalCode.textContent, language, this.externalCode.fileName)
     }
 }
 
 data class ExternalSvgContent(val externalSvg: External) : Content() {
-    val svgContent by lazy { SvgContent(externalSvg.loadTextContent()) }
+    val svgContent by lazy { SvgContent(externalSvg.textContent) }
 }
 
 data class ExternalImageContent(val alt: String, val externalImage: External, val title: String? = null) : Content()
