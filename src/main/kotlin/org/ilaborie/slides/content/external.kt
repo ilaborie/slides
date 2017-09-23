@@ -1,6 +1,9 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.catchWithDefault
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.StyleEditable
 import org.ilaborie.slides.logger
 import org.ilaborie.slides.safe
 import java.io.File
@@ -139,4 +142,5 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
     is EditableZone            -> content.toExternal()
     is CssCompatibility        -> emptyList()
+    else                       -> TODO()
 }

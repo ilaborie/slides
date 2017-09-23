@@ -1,9 +1,9 @@
 package css_awesome
 
 import org.ilaborie.slides.Group
-import org.ilaborie.slides.content.CssCompatibility
 import org.ilaborie.slides.content.Link
 import org.ilaborie.slides.content.UnorderedList
+import org.ilaborie.slides.content.web.CssCompatibility
 
 fun animations(group: Group) = group
         .slide(title = "Texte de chargement", styleClass = setOf("live-code")) {

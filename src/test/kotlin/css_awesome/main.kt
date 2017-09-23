@@ -3,10 +3,12 @@ package css_awesome
 import org.ilaborie.logger.Logger
 import org.ilaborie.slides.*
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.StyleEditable
 import java.io.File
 
 
-val browsersThreshold = .4
+val browsersThreshold = 0.4
 
 fun cssLiveCode(prefix: String) =
         StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +

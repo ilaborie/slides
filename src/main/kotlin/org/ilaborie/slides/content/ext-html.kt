@@ -1,6 +1,7 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.*
+import org.ilaborie.slides.content.web.*
 import java.text.DecimalFormat
 
 
@@ -108,6 +109,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is StyleEditable           -> this.renderAsHtml()
     is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is CssCompatibility        -> this.renderAsHtml()
+    else                       -> TODO()
 }
 
 fun StyleEditable.renderAsHtml() = """<style contenteditable="true" class="hide-print">${initialCss.loadTextContent()}</style>""" +
@@ -204,6 +206,7 @@ fun CssCompatibility.renderAsHtml(): String {
     val formatter = DecimalFormat("0.0")
 
     return """
+<div class="compatibility-caption">${formatter.format(threshold)}</div>
 <div class="compatibility" style="grid-template-columns : repeat(${browsers.count() + 1}, 1fr);">
     <div class="void"></div>
     ${browsers.joinToString(separator = "") { """<div class="browser ${it.key}${if (it.mobile) " mobile" else ""}" aria-label="${it.key}"></div>""" }}

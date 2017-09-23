@@ -1,6 +1,9 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.*
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.StyleEditable
 
 fun Presentation.renderAsMarkdown(): String =
         slides.flatMap { slides -> slides.toList().map { slides to it } }
@@ -53,6 +56,7 @@ fun Content.renderAsMarkdown(): String = when (this) {
                             values.joinToString(separator = "|", prefix = "$feature|")
                         }
     }
+    else                       -> TODO()
 
 }
 

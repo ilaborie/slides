@@ -2,6 +2,7 @@ package css_awesome
 
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.CssCompatibility
 
 fun pseudoElt(group: Group) = group
         .slide(title = "Le dinner d'un philosophe", styleClass = setOf("live-code")) {

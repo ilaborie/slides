@@ -2,6 +2,7 @@ package css_awesome
 
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.CssCompatibility
 
 fun preprocessor(group: Group) = group
         .slide(title = "Bordure des boutons", styleClass = setOf("live-code")) {

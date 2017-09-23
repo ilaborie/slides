@@ -584,6 +584,7 @@ $plateSize: 100px;
       flex-direction: column;
       progress {
         margin: .5rem;
+        transform: scale(2);
       }
     }
   }
@@ -622,6 +623,14 @@ $plateSize: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+#liens {
+  a[href*=github]::after{
+    content: '\a  ' attr(href);
+    white-space: pre;
+    font-size: .6rem;
   }
 }
 

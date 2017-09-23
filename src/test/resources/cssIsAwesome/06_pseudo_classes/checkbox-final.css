@@ -1,9 +1,9 @@
 .editable input[type=checkbox] + label::before {
-    content : 'Click if you like it';
+	content: 'Click if you like it';
 }
 
 .editable input[type=checkbox]:checked + label::before {
-    content : '💗💖💕';
+	content: '💗💖💕';
 }
 
-fieldset input[type=checkbox] { opacity : 0; }
+fieldset input[type=checkbox] { opacity: 0; }

@@ -469,7 +469,8 @@ section.cover h1 {
     display: flex;
     flex-direction: column; }
     #progress article .editable progress {
-      margin: .5rem; }
+      margin: .5rem;
+      transform: scale(2); }
 
 #panel_html article {
   display: grid;
@@ -493,6 +494,11 @@ section.cover h1 {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+#liens a[href*=github]::after {
+  content: "\a  " attr(href);
+  white-space: pre;
+  font-size: .6rem; }
 
 #pour_apprendre img {
   max-height: 15vh; }

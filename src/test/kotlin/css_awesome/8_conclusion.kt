@@ -24,7 +24,7 @@ fun conclusion(group: Group) = group
                     Link("les slides en HTML", "https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome"),
                     Link("les slides en PDF", "https://ilaborie.github.io/slides/devfest-tls.pdf"),
                     Link("le code", "https://github.com/ilaborie/slides"),
-                    Link("Making Of", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))
+                    Link("Blog: 'Making Of'", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))
         }
         .slide(title = "Pour apprendre") {
             UnorderedList(

@@ -2,6 +2,8 @@ package css_awesome
 
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
 
 private val progress = ExternalResource("/cssIsAwesome/07_HTML/progress.html")
 fun html(group: Group) = group

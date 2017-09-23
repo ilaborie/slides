@@ -3,6 +3,9 @@ package css_awesome
 import org.ilaborie.slides.ContentType
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.StyleEditable
 
 fun pseudoState(group: Group) = group
         .slide(title = "Usage des info-bulles", contentType = ContentType.HTML)

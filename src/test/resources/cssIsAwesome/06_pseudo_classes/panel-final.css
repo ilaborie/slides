@@ -1,4 +1,4 @@
 .panel input[type=checkbox] {
-    position : fixed;
-    left     : -100vmax;
+	position: fixed;
+	left: -100vmax;
 }

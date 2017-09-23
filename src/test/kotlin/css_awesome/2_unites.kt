@@ -2,6 +2,7 @@ package css_awesome
 
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.web.CssCompatibility
 
 val holyGrail = ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")
 

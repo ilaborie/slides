@@ -1,3 +1,13 @@
+.compatibility-caption {
+  font-size: .7rem;
+
+  &::before {
+    content: 'Navigateur utilisés par au moins ';
+  }
+  &::after {
+    content: '% en France';
+  }
+}
 .compatibility {
   display: grid;
   font-size: .8rem;
@@ -29,7 +39,7 @@
     }
 
     &.mobile::before {
-      content: 'Mobile';
+      content: '📱';
     }
 
     &.and_chr {

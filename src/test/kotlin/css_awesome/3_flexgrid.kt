@@ -3,6 +3,7 @@ package css_awesome
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.Language.*
+import org.ilaborie.slides.content.web.CssCompatibility
 
 fun flexgrid(group: Group) = group
         .slide(title = "Holy Grail avec <code>flexbox</code>".html(), id = "holy-grail-flexbox") {
