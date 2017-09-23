@@ -1,5 +1,6 @@
 button {
 	background: lightblue;
+	color: purple;
 	/*border: medium solid currentColor;*/
 	border: medium solid rgba(0,0,0,.42);
 }

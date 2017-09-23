@@ -29,7 +29,7 @@ fun <T> catchWithDefault(default: T, dangerous: () -> T): T =
 
 fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.html")
-    logger.debug { "Write '${this.title}' to $file" }
+    logger.debug { "Write '${this.title.renderAsString()}' to $file" }
     file.writeText(renderAsHtml(key), charset)
 }
 
@@ -43,7 +43,7 @@ fun Presentation.writePdfTo(from: File, to: File): Int {
 
 fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.md")
-    logger.debug { "Write '${this.title}' to $file" }
+    logger.debug { "Write '${this.title.renderAsString()}' to $file" }
     file.writeText(renderAsMarkdown(), charset)
 }
 
@@ -60,7 +60,7 @@ private fun Presentation.getExternals() = slides
 fun Presentation.hasMissingExternals(): Boolean {
     val externals = this.getExternals()
     val result = externals.any { !it.exists() }
-    logger.trace { "'${this.title}' hasMissingExternals? $result" }
+    logger.trace { "'${this.title.renderAsString()}' hasMissingExternals? $result" }
     return result
 }
 

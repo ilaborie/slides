@@ -445,7 +445,7 @@ style[contenteditable=true] {
 .compatibility-caption {
   font-size: .7rem; }
   .compatibility-caption::before {
-    content: 'Navigateur utilisés par au moins '; }
+    content: 'Navigateur usage ≥ '; }
   .compatibility-caption::after {
     content: '% en France'; }
 

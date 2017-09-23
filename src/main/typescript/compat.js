@@ -6,7 +6,12 @@ const threshold = parseFloat(process.argv[2]);
 const features = process.argv[3].split(',');
 
 const extractBrowser = (browser, data) => Object.keys(data)
-    .map(version => ({key: browser, version, usage: data[version], mobile: browser.indexOf('_') >= 0}))
+    .map(version => ({
+        key: browser,
+        version,
+        usage: data[version],
+        mobile: browser.startsWith('and') || browser.startsWith('ios')
+    }))
     .filter(({usage}) => usage >= threshold)
     .map(browser => {
         if (browser.key === 'and_chr' && browser.version === "0") {
