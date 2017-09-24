@@ -1,5 +1,5 @@
 // Standard title
-section h3 {
+section > h3 {
   margin: 0;
   align-self: stretch;
   flex: 0 0 auto;
@@ -25,7 +25,6 @@ section article {
   justify-content: space-around;
   text-align: left;
   align-items: flex-start;
-
   pointer-events: none;
 }
 
@@ -75,7 +74,7 @@ section.roadmap article {
 
 // No Title
 section.hide-title {
-  h1, h2, h3 {
+  & > h1, & > h2, & > h3 {
     display: none;
   }
 }

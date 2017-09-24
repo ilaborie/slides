@@ -3,6 +3,10 @@
     display: none;
   }
 
+  main section article .editable {
+    transform: scale(.8);
+  }
+
   #bordure_des_boutons {
     @import "../../resources/cssIsAwesome/01_preprocessor/boutons-final";
   }

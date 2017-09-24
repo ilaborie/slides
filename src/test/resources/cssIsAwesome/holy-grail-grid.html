@@ -8,45 +8,52 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Holy Grail Layout</title>
 	<style>
-		* {
-			margin: 0;
-			padding: 0;
-			font-family: sans-serif;
-			font-size: 2rem;
-		}
-		/* color */
-		body { background: lightgray; }
-		header { background: cyan; }
-		nav { background: gold; }
-		main { background: white; }
-		aside { background: green; }
-		footer { background: purple; }
+* {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 2rem;
+}
+/* color */
+body { background: lightgray; }
+header { background: cyan; }
+nav { background: gold; }
+main { background: white; }
+aside { background: green; }
+footer { background: purple; }
 
-		/* layout */
-		body { }
+/* layout */
+body {
+	height: 100vh;
 
-		body {  }
-		header {  }
-		nav {  }
-		main {  }
-		aside {  }
-		footer {  }
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	grid-template-rows: auto 1fr auto;
+	grid-template-areas:
+		"head head head"
+		"left body right"
+		"foot foot foot";
+}
 
-		main {
-			overflow: auto;
-		}
+header { grid-area: head; }
+nav { grid-area: left; }
+main { grid-area: body; }
+aside { grid-area: right; }
+footer { grid-area: foot; }
+
+main {
+	overflow: auto;
+}
 	</style>
 </head>
 
 <body>
 	<header>Header</header>
-	<div>
-		<nav>Menu</nav>
-		<main>
-			(p>lorem)*
-		</main>
-		<aside>Side</aside>
-	</div>
+	<nav>Menu</nav>
+	<main>
+		(p>lorem)*
+	</main>
+	<aside>Side</aside>
 	<footer>Footer</footer>
 </body>
 

@@ -556,6 +556,8 @@ section.cover h1 {
 @media print {
   .slides-nav {
     display: none; }
+  main section article .editable {
+    transform: scale(0.8); }
   #bordure_des_boutons button {
     background: lightblue;
     color: purple;

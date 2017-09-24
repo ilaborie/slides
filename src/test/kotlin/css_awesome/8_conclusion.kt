@@ -11,13 +11,14 @@ fun conclusion(group: Group) = group
                     "HTML, SVG are Awesome !",
                     "JavaScript, TypeScript could be Awesome !").ol()
         }
-        .slide(title = "👉 Traitez le CSS comme du code") {
-            listOf(
-                    "Revue de code",
-                    "DRY",
-                    "Clean Code",
-                    "Single Responsibility Principle",
-                    "...").ol()
+        .slide(title = "Traitez le CSS comme du code", styleClass = setOf("hide-title")) {
+            "👉 Traitez le CSS comme du code".h3() +
+                    listOf(
+                            "Revue de code",
+                            "DRY",
+                            "Clean Code",
+                            "Single Responsibility Principle",
+                            "...").ol()
         }
         .slide(title = "Liens") {
             UnorderedList(
@@ -31,7 +32,7 @@ fun conclusion(group: Group) = group
                     Code("(Ctrl|⌘) + Shift + i"),
                     ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
                             Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
-                    Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS") +
+                    Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS") + ", ".raw() +
                             Link("The A11Y Project", "http://a11yproject.com/"),
                     Link("CodePen", "https://codepen.io/") + ", ".raw() +
                             Link("JSFiddle", "https://jsfiddle.net/") + ", ".raw() +
@@ -39,7 +40,7 @@ fun conclusion(group: Group) = group
                     Link("CSS Tricks", "https://css-tricks.com/") + ", ".raw() +
                             Link("Smashing Magazine", "https://www.smashingmagazine.com/"),
                     Link("CSS Flags", "https://pixelastic.github.io/css-flags/") + ",".raw() +
-                            Link("A Single Div","http://a.singlediv.com/")
+                            Link("A Single Div", "http://a.singlediv.com/")
             )
         }
         .slide(title = "🦄 rocks !", styleClass = setOf("hide-title")) {

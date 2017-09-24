@@ -187,13 +187,13 @@ fun CssCompatibility.renderAsHtml(): String {
             NotAvailable -> version
             Available    -> version
             is Partial   -> """<div class="version">$version</div>
-                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
+                |<div class="info">${MarkdownContent(compatibility.info.escapeHtml()).renderAsHtml()}</div>""".trimMargin()
             is Prefix    -> """<div class="version">$version</div>
-                |<div class="info">Prefix ${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
+                |<div class="info">Prefix ${MarkdownContent(compatibility.info.escapeHtml()).renderAsHtml()}</div>""".trimMargin()
             is Flag      -> """<div class="version">$version</div>
-                |<div class="info">Flag ${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
+                |<div class="info">Flag ${MarkdownContent(compatibility.info.escapeHtml()).renderAsHtml()}</div>""".trimMargin()
             is Buggy     -> """<div class="version">$version</div>
-                |<div class="info">${MarkdownContent(compatibility.info).renderAsHtml().escapeHtml()}</div>""".trimMargin()
+                |<div class="info">${MarkdownContent(compatibility.info.escapeHtml()).renderAsHtml()}</div>""".trimMargin()
         }
     }
 

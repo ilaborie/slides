@@ -2,7 +2,9 @@ package css_awesome
 
 import org.ilaborie.logger.Logger
 import org.ilaborie.slides.*
-import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.ExternalHtmlContent
+import org.ilaborie.slides.content.ExternalResource
+import org.ilaborie.slides.content.html
 import org.ilaborie.slides.content.web.EditableZone
 import org.ilaborie.slides.content.web.StyleEditable
 import java.io.File
@@ -42,8 +44,11 @@ fun main(args: Array<String>) {
     cssIsAwesome.writeMarkdownTo(dist, key)
     cssIsAwesome.writePdfTo(dist.resolve("$key.html"), dist.resolve("$key.pdf"))
 
-    val holyGrail = slidesDir.resolve(cssIsAwesome.id).resolve("holy-grail.html")
-    holyGrail.copyTo(target = dist.resolve("holy-grail.html"), overwrite = true)
-    holyGrail.copyTo(target = dist.resolve("holy-grail-flexbox.html"), overwrite = true)
-    holyGrail.copyTo(target = dist.resolve("holy-grail-grid.html"), overwrite = true)
+
+    val resolve = slidesDir.resolve(cssIsAwesome.id)
+    listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")
+            .map {
+                resolve.resolve(it)
+                        .copyTo(target = dist.resolve(it), overwrite = true)
+            }
 }
