@@ -205,7 +205,7 @@ section:target {
 section:target ~ section {
   transform: translateX(100vmax); }
 
-section h3 {
+section > h3 {
   margin: 0;
   align-self: stretch;
   flex: 0 0 auto;
@@ -256,7 +256,7 @@ section.two-columns article ul, section.two-columns article ol {
 section.roadmap article ol {
   list-style: upper-roman; }
 
-section.hide-title h1, section.hide-title h2, section.hide-title h3 {
+section.hide-title > h1, section.hide-title > h2, section.hide-title > h3 {
   display: none; }
 
 section.live-code article {
