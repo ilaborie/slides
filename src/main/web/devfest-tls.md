@@ -9,16 +9,17 @@ Expert Java & Web,
 > When designing computer systems, one is often faced with a choice between using a more or less powerful language for publishing information, for expressing constraints, or for solving some problem. This finding explores tradeoffs relating the choice of language to reusability of information. The "Rule of Least Power" suggests <strong>choosing the least powerful language suitable</strong> for a given purpose.
 
 0. Texte
-1. HTML (sémantique) & CSS (layout, style, animations simples)
-2. SVG (formes et animations complexes)
-3. JavaScript, ...
+1. HTML (sémantique)
+2. CSS (layout, style, animations simples)
+3. SVG (formes et animations complexes)
+4. JavaScript, WebAssembly (gestion d'états, appel backend, calculs)
 *⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles*
 
 * Selectors
 * Box model
 * Float
 * Media Query
-* Transitions
+* Animations
 * Gradients
 * Responsive Design
 * Media
@@ -215,12 +216,12 @@ ExternalResource(resource=/cssIsAwesome/05_animations/draw.css)
 <svg xmlns="http://www.w3.org/2000/svg" width="1022.717" height="913.38" viewBox="0 0 1534 1370"><path d="M843 127.12c41.765 34.316 17.825 112.52 48.844 144.294 44.694-39.975 65.342-104.483 112.637-141.38 35.46 39.77 31.64 105.082 41.42 153.42-4.466 34.466-1.188 105.591 46.74 62.842 46.557-28.824 94.533-55.326 139.175-85.192 51.163-33.154 105.458-61.408 155.235-96.396 70.887-5.72-4.192 61.03-20.772 85.175-45.147 43.182-80.248 94.376-123.725 139.92-27.867 36.445-58.75 69.834-88.121 104.747 4.904 58.728 66.611 105.395 88.141 162.957 28.15 50.016 53.754 102.219 86.559 148.62 25.738 50.458 57.53 100.138 63.856 158.168 6.615 58.633-24.45 121.837-80.597 146.349-50.744 28.018-119.335 44.147-168.363 4.423-55.214-34.14-108.003-75.261-172.023-93.049-53.216-1.459-109.58-14.34-159.356 2.58-14.283 47.411-25.543 96.734-40.65 144.402-47.133 63.507-132.09 35.58-188.96 2.708-51.875-27.791-91.014-75.763-152.43-81.52-34.916-.899-70.085-59.372-83.586-5.313-10.777 31.318-81.188 70.482-60.024 11.125 11.461-54.431 15.15-113.038-2.533-165.412-3.294-57.681-.584-115.75-1.467-173.588 7.626-54.744 5.327-115.68 35.087-166.692 24.752-55.863 75.056-91.984 109.39-140.908 44.836-44.966 64.218-113.558 122.084-147.455 51.158-33.038 111.87-51.057 172.81-43.316 57.264-19.162 70.607-99.898 118.139-131.845z" fill="none" stroke="#000" id="myPath"/></svg>
 
 * [Utiliser les animations CSS](https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS)
-* [Text Spinner](http://tawian.io/text-spinners/)
-* [CSS only loader](https://www.pexels.com/blog/css-only-loaders/)
+* [Text spinners](http://tawian.io/text-spinners/)
+* [CSS only loaders](https://www.pexels.com/blog/css-only-loaders/)
 * [Animate.css](https://daneden.github.io/animate.css/)
 * [How SVG Line Animation Works](https://css-tricks.com/svg-line-animation-works/)
 * [Animated line drawing in SVG](https://jakearchibald.com/2013/animated-line-drawing-svg/)
-* [CSS trigger](https://csstriggers.com/)
+* [CSS triggers](https://csstriggers.com/)
 
 feature|Browser(key=chrome, usage=26.63196, mobile=false, versions=[49, 58, 59, 60])|Browser(key=and_chr, usage=18.645052, mobile=true, versions=[61])|Browser(key=ios_saf, usage=15.83396, mobile=true, versions=[9.0-9.2, 9.3, 10.0-10.2, 10.3])|Browser(key=firefox, usage=11.529649, mobile=false, versions=[48, 52, 54, 55])|Browser(key=ie, usage=4.6965423, mobile=false, versions=[11])|Browser(key=safari, usage=4.357715, mobile=false, versions=[10, 9.1, 10.1])|Browser(key=edge, usage=1.257417, mobile=false, versions=[14])|Browser(key=android, usage=1.0446022, mobile=true, versions=[4.4, 4.4.3-4.4.4])|Browser(key=opera, usage=0.525587, mobile=false, versions=[46])feature|---|---|---|---|---|---|---|---|---Feature(key=css-animation, title=CSS Animation, description=Complex method of animating certain properties of an element, spec=http://www.w3.org/TR/css3-animations/, notes_by_num={1=Partial support in Android browser refers to buggy behavior in different scenarios., 2=Does not support the `steps()`, `step-start` & `step-end` timing functions})|Value(browser=chrome, feature=css-animation, stats=[Stat(version=49, status=y), Stat(version=58, status=y), Stat(version=59, status=y), Stat(version=60, status=y)])|Value(browser=and_chr, feature=css-animation, stats=[Stat(version=61, status=y)])|Value(browser=ios_saf, feature=css-animation, stats=[Stat(version=9.0-9.2, status=y), Stat(version=9.3, status=y), Stat(version=10.0-10.2, status=y), Stat(version=10.3, status=y)])|Value(browser=firefox, feature=css-animation, stats=[Stat(version=48, status=y), Stat(version=52, status=y), Stat(version=54, status=y), Stat(version=55, status=y)])|Value(browser=ie, feature=css-animation, stats=[Stat(version=11, status=y)])|Value(browser=safari, feature=css-animation, stats=[Stat(version=10, status=y), Stat(version=9.1, status=y), Stat(version=10.1, status=y)])|Value(browser=edge, feature=css-animation, stats=[Stat(version=14, status=y)])|Value(browser=android, feature=css-animation, stats=[Stat(version=4.4, status=y x), Stat(version=4.4.3-4.4.4, status=y x)])|Value(browser=opera, feature=css-animation, stats=[Stat(version=46, status=y)])
 Feature(key=svg, title=SVG (basic support), description=Method of displaying basic Vector Graphics features using the embed or object elements. Refers to the SVG 1.1 spec., spec=http://www.w3.org/TR/SVG/, notes_by_num={1=Partial support in Android 3 & 4 refers to not supporting masking., 2=IE9-11 desktop & mobile don't properly scale SVG files.  [Adding height, width, viewBox, and CSS rules](http://codepen.io/tomByrer/pen/qEBbzw?editors=110) seem to be the best workaround.})|Value(browser=chrome, feature=svg, stats=[Stat(version=49, status=y), Stat(version=58, status=y), Stat(version=59, status=y), Stat(version=60, status=y)])|Value(browser=and_chr, feature=svg, stats=[Stat(version=61, status=y)])|Value(browser=ios_saf, feature=svg, stats=[Stat(version=9.0-9.2, status=y), Stat(version=9.3, status=y), Stat(version=10.0-10.2, status=y), Stat(version=10.3, status=y)])|Value(browser=firefox, feature=svg, stats=[Stat(version=48, status=y), Stat(version=52, status=y), Stat(version=54, status=y), Stat(version=55, status=y)])|Value(browser=ie, feature=svg, stats=[Stat(version=11, status=y #2)])|Value(browser=safari, feature=svg, stats=[Stat(version=10, status=y), Stat(version=9.1, status=y), Stat(version=10.1, status=y)])|Value(browser=edge, feature=svg, stats=[Stat(version=14, status=y #2)])|Value(browser=android, feature=svg, stats=[Stat(version=4.4, status=y), Stat(version=4.4.3-4.4.4, status=y)])|Value(browser=opera, feature=svg, stats=[Stat(version=46, status=y)])
@@ -404,7 +405,7 @@ ExternalResource(resource=/cssIsAwesome/07_HTML/dialog.css)
 ```
 <dialog id="diag" open>This is a dialog!</dialog>
 
-* [Collapsible Panel Polyfill](https://github.com/chemerisuk/better-details-polyfill/)
+* [Better details polyfill](https://github.com/chemerisuk/better-details-polyfill/)
 * [Dialog Polyfill](https://github.com/GoogleChrome/dialog-polyfill)
 
 feature|Browser(key=chrome, usage=26.63196, mobile=false, versions=[49, 58, 59, 60])|Browser(key=and_chr, usage=18.645052, mobile=true, versions=[61])|Browser(key=ios_saf, usage=15.83396, mobile=true, versions=[9.0-9.2, 9.3, 10.0-10.2, 10.3])|Browser(key=firefox, usage=11.529649, mobile=false, versions=[48, 52, 54, 55])|Browser(key=ie, usage=4.6965423, mobile=false, versions=[11])|Browser(key=safari, usage=4.357715, mobile=false, versions=[10, 9.1, 10.1])|Browser(key=edge, usage=1.257417, mobile=false, versions=[14])|Browser(key=android, usage=1.0446022, mobile=true, versions=[4.4, 4.4.3-4.4.4])|Browser(key=opera, usage=0.525587, mobile=false, versions=[46])feature|---|---|---|---|---|---|---|---|---Feature(key=details, title=Details & Summary elements, description=The <details> element generates a simple no-JavaScript widget to show/hide element contents, optionally by clicking on its child <summary> element., spec=https://html.spec.whatwg.org/multipage/forms.html#the-details-element, notes_by_num={1=Enabled in Firefox through the `dom.details_element.enabled` flag, 2='toggle' event is not supported, 3=<summary> is not keyboard accessible})|Value(browser=chrome, feature=details, stats=[Stat(version=49, status=y), Stat(version=58, status=y), Stat(version=59, status=y), Stat(version=60, status=y)])|Value(browser=and_chr, feature=details, stats=[Stat(version=61, status=y)])|Value(browser=ios_saf, feature=details, stats=[Stat(version=9.0-9.2, status=y), Stat(version=9.3, status=y), Stat(version=10.0-10.2, status=y), Stat(version=10.3, status=y)])|Value(browser=firefox, feature=details, stats=[Stat(version=48, status=n d #1), Stat(version=52, status=y), Stat(version=54, status=y), Stat(version=55, status=y)])|Value(browser=ie, feature=details, stats=[Stat(version=11, status=n)])|Value(browser=safari, feature=details, stats=[Stat(version=10, status=y #2), Stat(version=9.1, status=y #2), Stat(version=10.1, status=y)])|Value(browser=edge, feature=details, stats=[Stat(version=14, status=n)])|Value(browser=android, feature=details, stats=[Stat(version=4.4, status=y), Stat(version=4.4.3-4.4.4, status=y)])|Value(browser=opera, feature=details, stats=[Stat(version=46, status=y)])
@@ -416,7 +417,7 @@ Feature(key=progress, title=progress element, description=Method of indicating a
 0. Utilisez du CSS pour simpifier le code
 1. Utilisez intelligemment les pre/post&#8209;processeurs
 2. HTML, SVG are Awesome !
-3. JavaScript, TypeScript could be Awesome !
+3. JavaScript, TypeScript can be Awesome !
 
 ### 👉 Traitez le CSS comme du code ###
 
@@ -432,8 +433,7 @@ Feature(key=progress, title=progress element, description=Method of indicating a
 * [Blog: 'Making Of'](http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html)
 
 * `(Ctrl|⌘) + Shift + i`
-* ![CSS Secret](http://lea.verou.me/cover.png)
-[CSS Secret by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)
+* [CSS Secrets by Lea Verou](https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635)
 * [CSS sur MDN](https://developer.mozilla.org/fr/docs/Web/CSS)
 , 
 [The A11Y Project](http://a11yproject.com/)

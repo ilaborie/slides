@@ -21,7 +21,7 @@ fun html(group: Group) = group
         }
         .slide("Polyfill") {
             UnorderedList(
-                    Link("Collapsible Panel Polyfill", "https://github.com/chemerisuk/better-details-polyfill/"),
+                    Link("Better details polyfill", "https://github.com/chemerisuk/better-details-polyfill/"),
                     Link("Dialog Polyfill", "https://github.com/GoogleChrome/dialog-polyfill")
             )
         }

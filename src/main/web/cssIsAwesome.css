@@ -115,6 +115,9 @@ section.cover h1 {
   #least-power article blockquote p {
     font-size: 1.6rem; }
 
+#roadmap article ol {
+  padding-left: 3rem; }
+
 #le_css_c_est_vaste article, #pseudo_etats article {
   align-items: center; }
 

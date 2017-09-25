@@ -9,7 +9,7 @@ fun conclusion(group: Group) = group
                     "Utilisez du CSS pour simpifier le code",
                     "Utilisez intelligemment les pre/post&#8209;processeurs",
                     "HTML, SVG are Awesome !",
-                    "JavaScript, TypeScript could be Awesome !").ol()
+                    "JavaScript, TypeScript can be Awesome !").ol()
         }
         .slide(title = "Traitez le CSS comme du code", styleClass = setOf("hide-title")) {
             "👉 Traitez le CSS comme du code".h3() +
@@ -30,8 +30,7 @@ fun conclusion(group: Group) = group
         .slide(title = "Pour apprendre") {
             UnorderedList(
                     Code("(Ctrl|⌘) + Shift + i"),
-                    ExternalImageContent("CSS Secret", ExternalLink("http://lea.verou.me/cover.png")) +
-                            Link("CSS Secret by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
+                            Link("CSS Secrets by Lea Verou", "https://www.amazon.fr/CSS-Secrets-Lea-Verou/dp/1449372635"),
                     Link("CSS sur MDN", "https://developer.mozilla.org/fr/docs/Web/CSS") + ", ".raw() +
                             Link("The A11Y Project", "http://a11yproject.com/"),
                     Link("CodePen", "https://codepen.io/") + ", ".raw() +

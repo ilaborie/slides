@@ -1,3 +1,4 @@
+
 section article, section h1, section h2, section h3, section h4 {
   a {
     align-self: flex-start;
@@ -6,7 +7,7 @@ section article, section h1, section h2, section h3, section h4 {
     border-bottom: thin dashed currentColor;
 
     &:hover {
-      text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,.5);
     }
 
     &::before {
@@ -31,7 +32,7 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="w3.org"]::before {
       content: '𝙬𝟯𝙘 ';
       color: navy;
-      text-shadow: 1px 1px rgba(#fff, .5);
+      text-shadow: 1px 1px 4px  rgba(#fff, .75);
     }
     &[href*="css-tricks"]::before {
       content: '✽ ';

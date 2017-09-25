@@ -15,12 +15,12 @@ fun animations(group: Group) = group
         .slide(title = "Bilan animations") {
             UnorderedList(
                     Link("Utiliser les animations CSS", "https://developer.mozilla.org/fr/docs/Web/CSS/Animations_CSS/Utiliser_les_animations_CSS"),
-                    Link("Text Spinner", "http://tawian.io/text-spinners/"),
-                    Link("CSS only loader", "https://www.pexels.com/blog/css-only-loaders/"),
+                    Link("Text spinners", "http://tawian.io/text-spinners/"),
+                    Link("CSS only loaders", "https://www.pexels.com/blog/css-only-loaders/"),
                     Link("Animate.css", "https://daneden.github.io/animate.css/"),
                     Link("How SVG Line Animation Works", "https://css-tricks.com/svg-line-animation-works/"),
                     Link("Animated line drawing in SVG", "https://jakearchibald.com/2013/animated-line-drawing-svg/"),
-                    Link("CSS trigger","https://csstriggers.com/")
+                    Link("CSS triggers","https://csstriggers.com/")
             )
         }
         .slide(title = "Compatibilité", id = "compat-5") {

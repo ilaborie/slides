@@ -19,9 +19,10 @@ fun intro(group: Group) = group
         }
         .slide(title = "Règles du jeu") {
             listOf("Texte",
-                   "HTML (sémantique) & CSS (layout, style, animations simples)",
+                   "HTML (sémantique)",
+                   "CSS (layout, style, animations simples)",
                    "SVG (formes et animations complexes)",
-                   "JavaScript, ...").ol() +
+                   "JavaScript, WebAssembly (gestion d'états, appel backend, calculs)").ol() +
                     "⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles".em()
         }
         .slide(title = "Le CSS c'est vaste", styleClass = setOf("two-columns")) {
@@ -29,7 +30,7 @@ fun intro(group: Group) = group
                    "Box model",
                    "Float",
                    "Media Query",
-                   "Transitions",
+                   "Animations",
                    "Gradients",
                    "Responsive Design",
                    "Media",

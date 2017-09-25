@@ -82,6 +82,7 @@ section::after {
   background-origin: content-box;
   color: var(--fgFooter);
   font-family: var(--footerFont);
+  font-size: .9rem;
   content: var(--txtFooter);
   padding: .1rem .5rem;
 }

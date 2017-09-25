@@ -152,6 +152,7 @@ section::after {
   background-origin: content-box;
   color: var(--fgFooter);
   font-family: var(--footerFont);
+  font-size: .9rem;
   content: var(--txtFooter);
   padding: .1rem .5rem; }
 
@@ -162,7 +163,6 @@ section .next {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: calc(var(--headerHeight) / -2);
   color: transparent;
   text-decoration: none;
   outline: none; }
@@ -177,18 +177,20 @@ section .next::before {
 
 section .previous::before,
 section .next::after {
-  background: var(--bgSlideNav);
   content: '';
   font-size: 6rem;
-  text-decoration: none; }
+  text-decoration: none;
+  margin-top: calc(var(--headerHeight) / -2); }
 
-section .previous::before {
-  content: '‹';
+section .previous {
   cursor: w-resize; }
+  section .previous::before {
+    content: '‹'; }
 
-section .next::after {
-  content: '›';
+section .next {
   cursor: e-resize; }
+  section .next::after {
+    content: '›'; }
 
 main {
   overflow: hidden; }
@@ -348,7 +350,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   color: currentColor;
   border-bottom: thin dashed currentColor; }
   section article a:hover, section h1 a:hover, section h2 a:hover, section h3 a:hover, section h4 a:hover {
-    text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff; }
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
@@ -364,7 +366,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   section article a[href*="w3.org"]::before, section h1 a[href*="w3.org"]::before, section h2 a[href*="w3.org"]::before, section h3 a[href*="w3.org"]::before, section h4 a[href*="w3.org"]::before {
     content: '𝙬𝟯𝙘 ';
     color: navy;
-    text-shadow: 1px 1px rgba(255, 255, 255, 0.5); }
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.75); }
   section article a[href*="css-tricks"]::before, section h1 a[href*="css-tricks"]::before, section h2 a[href*="css-tricks"]::before, section h3 a[href*="css-tricks"]::before, section h4 a[href*="css-tricks"]::before {
     content: '✽ ';
     color: #ff9800; }

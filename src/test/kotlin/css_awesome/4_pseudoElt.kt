@@ -5,7 +5,7 @@ import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.web.CssCompatibility
 
 fun pseudoElt(group: Group) = group
-        .slide(title = "Le dinner d'un philosophe", styleClass = setOf("live-code")) {
+        .slide(title = "Le dîner d'un philosophe", styleClass = setOf("live-code")) {
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/04_pseudo_elements/philosophe-table.html"))+
             cssLiveCode("/cssIsAwesome/04_pseudo_elements/philosophe")
         }

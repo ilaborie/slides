@@ -6,7 +6,6 @@ section .next {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: calc(var(--headerHeight) / -2);
   color: transparent;
   text-decoration: none;
   outline: none;
@@ -23,20 +22,24 @@ section .next::before {
 
 section .previous::before,
 section .next::after {
-  background: var(--bgSlideNav);
   content: '';
   font-size: 6rem;
   text-decoration: none;
+  margin-top: calc(var(--headerHeight) / -2);
 }
 
 // Previous
-section .previous::before {
-  content: '‹';
+section .previous {
   cursor: w-resize;
+  &::before {
+    content: '‹';
+  }
 }
 
 // Next
-section .next::after {
-  content: '›';
+section .next {
   cursor: e-resize;
+  &::after {
+    content: '›';
+  }
 }
