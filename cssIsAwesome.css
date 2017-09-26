@@ -560,7 +560,8 @@ section.cover h1 {
   .slides-nav {
     display: none; }
   main section article .editable {
-    transform: scale(0.8); }
+    transform: scale(0.8);
+    margin-top: -1rem; }
   #bordure_des_boutons button {
     background: lightblue;
     color: purple;
