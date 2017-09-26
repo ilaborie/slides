@@ -354,7 +354,12 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
-    content: '📐 '; }
+    content: '';
+    background-image: url("./assets/github-octocat.svg");
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-size: contain; }
   section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
     content: '🎥 '; }
   section article a[href*="frog"]::before, section h1 a[href*="frog"]::before, section h2 a[href*="frog"]::before, section h3 a[href*="frog"]::before, section h4 a[href*="frog"]::before {
@@ -383,7 +388,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     content: 'ⓦ ';
     color: #888; }
   section article a[href*="monkeypatch"]::before, section h1 a[href*="monkeypatch"]::before, section h2 a[href*="monkeypatch"]::before, section h3 a[href*="monkeypatch"]::before, section h4 a[href*="monkeypatch"]::before {
-    content: '🐵 '; }
+    content: '🍌 '; }
   section article a[href*="caniuse"]::before, section h1 a[href*="caniuse"]::before, section h2 a[href*="caniuse"]::before, section h3 a[href*="caniuse"]::before, section h4 a[href*="caniuse"]::before {
     content: '📊 '; }
 
