@@ -26,5 +26,5 @@ fun html(group: Group) = group
             )
         }
         .slide(title = "Compatibilité", id = "compat-7") {
-            CssCompatibility(browsersThreshold, listOf("details", "dialog", "progress"))
+            CssCompatibility(browsersThreshold, listOf("progress", "details", "dialog"))
         }
