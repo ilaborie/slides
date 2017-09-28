@@ -43,7 +43,7 @@
   --navigationWidth: 10vw;
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
-  --txtFooter: '@DevFestToulouse @ilaborie #CSS #🦄';
+  --txtFooter: '#DevFestToulouse @ilaborie #CSS #🦄';
   --logoFooter: url("./assets/devfest-logo-v2017.svg");
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
