@@ -45,11 +45,11 @@ fun Presentation.renderAsHtml(key: String): String {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>${title.renderAsString()}</title>
-    <link rel="stylesheet" href="slides.css">
-    <link rel="stylesheet" href="$id.css">
-    <link rel="stylesheet" href="$key.css">
-    <link rel="stylesheet" href="print.css" media="print">
-    <link rel="icon" type="image/png" href="assets/$key.png" />
+    <link rel="stylesheet" href="../slides.css">
+    <link rel="stylesheet" href="../$id.css">
+    <link rel="stylesheet" href="../$key.css">
+    <link rel="stylesheet" href="../print.css" media="print">
+    <link rel="icon" type="image/png" href="../assets/$key/favicon.png" />
 </head>
 <body class="$key">
     <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count() + 1}, auto);">

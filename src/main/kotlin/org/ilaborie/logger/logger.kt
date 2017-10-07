@@ -18,8 +18,8 @@ enum class Level {
     fun highlight(): String = when (this) {
         Level.TRACE -> GREY + this + RESET
         Level.DEBUG -> GREEN + this + RESET
-        Level.INFO  -> BLUE + this + RESET
-        Level.WARN  -> ORANGE + this + RESET
+        Level.INFO  -> BLUE + this + ' ' + RESET
+        Level.WARN  -> ORANGE + this + ' ' + RESET
         Level.ERROR -> RED + this + RESET
     }
 }

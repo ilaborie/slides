@@ -12,20 +12,22 @@ val logger = Logger("PresExt").apply {
 }
 
 fun <T> safe(dangerous: () -> T): T =
-        try {
-            dangerous()
-        } catch (e: Throwable) {
-            logger.error(e) { "Oops" }
-            throw RuntimeException(e)
-        }
+    try {
+        dangerous()
+    } catch (e: Throwable) {
+        logger.error(e) { "Oops" }
+        throw RuntimeException(e)
+    }
 
 fun <T> catchWithDefault(default: T, dangerous: () -> T): T =
-        try {
-            dangerous()
-        } catch (e: Throwable) {
-            logger.warn(e) { "Use default" }
-            default
-        }
+    try {
+        dangerous()
+    } catch (e: Throwable) {
+        logger.warn(e) { "Use default" }
+        default
+    }
+
+// Outputs
 
 fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.html")
@@ -33,12 +35,12 @@ fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Chars
     file.writeText(renderAsHtml(key), charset)
 }
 
-fun Presentation.writePdfTo(from: File, to: File): Int {
+fun htmlToPdf(from: File, to: File): Int {
     val file = from.absolutePath
     return ProcessBuilder("node", "src/main/typescript/html-to-pdf.js", "file://$file", to.absolutePath)
-            .inheritIO()
-            .start()
-            .waitFor()
+        .inheritIO()
+        .start()
+        .waitFor()
 }
 
 fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
@@ -47,15 +49,22 @@ fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: C
     file.writeText(renderAsMarkdown(), charset)
 }
 
+fun Presentation.buildAll(dist: File, key: String) {
+    val output = dist.resolve(this.id)
+    output.mkdirs()
+    this.writeHtmlTo(output, key)
+    this.writeMarkdownTo(output, key)
+    htmlToPdf(output.resolve("$key.html"), output.resolve("$key.pdf"))
+}
 
 // Externals
 private fun Presentation.getExternals() = slides
-        .flatMap { slides -> slides.toList().map { slides to it } }
-        .filterNot { (_, slide) -> slide.contentType() == INTERNAL }
-        .flatMap { (parent, slide) ->
-            val content = slide.content { this.defaultContent(parent, slide) }
-            content.toExternal()
-        }
+    .flatMap { slides -> slides.toList().map { slides to it } }
+    .filterNot { (_, slide) -> slide.contentType() == INTERNAL }
+    .flatMap { (parent, slide) ->
+        val content = slide.content { this.defaultContent(parent, slide) }
+        content.toExternal()
+    }
 
 fun Presentation.hasMissingExternals(): Boolean {
     val externals = this.getExternals()
@@ -66,32 +75,32 @@ fun Presentation.hasMissingExternals(): Boolean {
 
 // Default content
 fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
-        when (slide) {
-            is RoadMapSlide -> OrderedList(
-                    slides.filterIsInstance<Group>()
-                            .filterNot { it.skipPart }
-                            .map { it.title }
-                            .map { it.raw() })
-            else            -> {
-                val contentType = slide.contentType().toFileExtension()
-                val resource = (listOf(this.id) +
-                        when (parent) {
-                            is Group ->
-                                listOf("${this(parent).format("00")}_${parent.id}",
-                                       "${parent(slide).format("00")}_${slide.id()}$contentType")
-                            else     ->
-                                listOf("${this(slide).format("00")}_${slide.id()}$contentType")
-                        }).joinToString(prefix = "/", separator = "/")
+    when (slide) {
+        is RoadMapSlide -> OrderedList(
+                slides.filterIsInstance<Group>()
+                    .filterNot { it.skipPart }
+                    .map { it.title }
+                    .map { it.raw() })
+        else            -> {
+            val contentType = slide.contentType().toFileExtension()
+            val resource = (listOf(this.id) +
+                    when (parent) {
+                        is Group ->
+                            listOf("${this(parent).format("00")}_${parent.id}",
+                                   "${parent(slide).format("00")}_${slide.id()}$contentType")
+                        else     ->
+                            listOf("${this(slide).format("00")}_${slide.id()}$contentType")
+                    }).joinToString(prefix = "/", separator = "/")
 
-                logger.trace { "Default content for $resource" }
+            logger.trace { "Default content for $resource" }
 
-                when (slide.contentType()) {
-                    HTML     -> ExternalHtmlContent(ExternalResource(resource))
-                    MARKDOWN -> ExternalMarkdownContent(ExternalResource(resource))
-                    else     -> TODO()
-                }
+            when (slide.contentType()) {
+                HTML     -> ExternalHtmlContent(ExternalResource(resource))
+                MARKDOWN -> ExternalMarkdownContent(ExternalResource(resource))
+                else     -> TODO()
             }
         }
+    }
 
 
 fun Presentation.generateMissingExternals(folder: File = File("")): List<External> {
