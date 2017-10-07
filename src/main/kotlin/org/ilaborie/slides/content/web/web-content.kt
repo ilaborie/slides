@@ -22,7 +22,7 @@ data class CssCompatibility(val threshold: Number, private val features: List<St
         process.outputStream.close()
         val json = process.inputStream.bufferedReader().readText()
         try {
-            JSON.parse<CompatibilityStatusResult>(json.replace("~", "&#126;"))
+            JSON.parse<CompatibilityStatusResult>(json)
         } catch (e: Exception) {
             throw IllegalStateException("Cannot parse:\n$json", e)
         }

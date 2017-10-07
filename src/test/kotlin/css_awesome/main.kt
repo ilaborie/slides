@@ -39,16 +39,21 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web")
-    val key = "devfest-tls"
+    buildAll(cssIsAwesome, dist, "devfest-tls")
+    buildAll(cssIsAwesome, dist, "devoxx-ma")
+
+    copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist)
+}
+
+private fun copyExtraFiles(srcDir: File, destDir: File) {
+    listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")
+            .map { it to srcDir.resolve(it) }
+            .map { (fileName, srcDir) -> srcDir.copyTo(target = destDir.resolve(fileName), overwrite = true) }
+}
+
+private fun buildAll(cssIsAwesome: Presentation, dist: File, key: String) {
     cssIsAwesome.writeHtmlTo(dist, key)
     cssIsAwesome.writeMarkdownTo(dist, key)
     cssIsAwesome.writePdfTo(dist.resolve("$key.html"), dist.resolve("$key.pdf"))
-
-
-    val resolve = slidesDir.resolve(cssIsAwesome.id)
-    listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")
-            .map {
-                resolve.resolve(it)
-                        .copyTo(target = dist.resolve(it), overwrite = true)
-            }
 }
+
