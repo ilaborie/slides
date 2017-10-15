@@ -211,7 +211,7 @@ fun CssCompatibility.renderAsHtml(): String {
     val formatter = DecimalFormat("0.0")
 
     return """
-<div class="compatibility-caption">${formatter.format(threshold)}</div>
+<div class="compatibility-caption country-$country">${formatter.format(threshold)}</div>
 <div class="compatibility" style="grid-template-columns : repeat(${browsers.count() + 1}, 1fr);">
     <div class="void"></div>
     ${browsers.joinToString(separator = "") { """<div class="browser ${it.key}${if (it.mobile) " mobile" else ""}" aria-label="${it.key}"></div>""" }}

@@ -2,8 +2,9 @@ const request = require('request-promise-native');
 
 const url = 'https://raw.githubusercontent.com/Fyrd/caniuse/master';
 
-const threshold = parseFloat(process.argv[2]);
-const features = process.argv[3].split(',');
+const country = process.argv[2];
+const threshold = parseFloat(process.argv[3]);
+const features = process.argv[4].split(',');
 
 const extractBrowser = (browser, data) => Object.keys(data)
     .map(version => ({
@@ -33,7 +34,7 @@ const extractBrowser = (browser, data) => Object.keys(data)
         return acc;
     }, []);
 
-const browsers = request({uri: `${url}/region-usage-json/FR.json`, json: true})
+const browsers = request({uri: `${url}/region-usage-json/${country}.json`, json: true})
     .then(body => body.data)
     .then(data =>
         Object.keys(data)

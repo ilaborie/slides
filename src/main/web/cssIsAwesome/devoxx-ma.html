@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="../assets/devoxx-ma/favicon.png" />
 </head>
 <body class="devoxx-ma">
-    <div class="slides-nav hide-print" style="grid-template-columns : repeat(10, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(9, auto);">
         <a href="#cssIsAwesome" class="cover" title="CSS is awesome!">0</a>
         <strong>Introduction</strong>
 <strong>Utiliser un pré&#8209;processeur ?</strong>
@@ -22,12 +22,11 @@
 <strong>Pseudo éléments</strong>
 <strong>Animations</strong>
 <strong>Pseudo classes d'état</strong>
-<strong>HTML</strong>
 <strong>Conclusion</strong>
         <nav><a href="#whoami" class="" title="$ whoami">1</a>
 <a href="#least-power" class="" title="The Rule of Least Power">2</a>
 <a href="#regles_du_jeu" class="" title="Règles du jeu">3</a>
-<a href="#le_css_c_est_vaste" class="two-columns" title="Le CSS c'est vaste">4</a>
+<a href="#omit" class="two-columns" title="Le CSS c'est vaste">4</a>
 <a href="#roadmap" class="roadmap" title="Plan">5</a></nav>
 <nav><a href="#part_utiliser_un_pre__8209_processeur__" class="part" title="Utiliser un pré‑processeur ?">6</a>
 <a href="#bordure_des_boutons" class="live-code" title="Bordure des boutons">7</a>
@@ -64,18 +63,12 @@
 <a href="#principe_pour_les_onglets" class="" title="Principe pour les onglets">38</a>
 <a href="#demo_des_onglets" class="" title="Démo des onglets">39</a>
 <a href="#compat-6" class="" title="Compatibilité">40</a></nav>
-<nav><a href="#part_html" class="part" title="HTML">41</a>
-<a href="#progress" class="" title="Progress">42</a>
-<a href="#panel_html" class="" title="Panel">43</a>
-<a href="#dialog" class="live-code" title="Dialog">44</a>
-<a href="#polyfill" class="" title="Polyfill">45</a>
-<a href="#compat-7" class="" title="Compatibilité">46</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">47</a>
-<a href="#bilan" class="" title="Bilan">48</a>
-<a href="#traitez_le_css_comme_du_code" class="hide-title" title="Traitez le CSS comme du code">49</a>
-<a href="#liens" class="" title="Liens">50</a>
-<a href="#pour_apprendre" class="" title="Pour apprendre">51</a>
-<a href="#_rocks__" class="hide-title" title="🦄 rocks !">52</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">41</a>
+<a href="#bilan" class="" title="Bilan">42</a>
+<a href="#traitez_le_css_comme_du_code" class="hide-title" title="Traitez le CSS comme du code">43</a>
+<a href="#Liens" class="" title="">44</a>
+<a href="#pour_apprendre" class="" title="Pour apprendre">45</a>
+<a href="#_rocks__" class="hide-title" title="🦄 rocks !">46</a></nav>
     </div>
     <main>
 
@@ -133,12 +126,12 @@
 <li>JavaScript, WebAssembly (gestion d'états, appel backend, calculs)</li></ol>
 <em>⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles</em>
     </article>
-    <a href="#le_css_c_est_vaste" class="next" aria-label="Suivant"></a>
+    <a href="#omit" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Le CSS c'est vaste -->
-<section id="le_css_c_est_vaste" class="two-columns">
+<section id="omit" class="two-columns">
     <a href="#regles_du_jeu" class="previous" aria-label="Précédant"></a>
     <h3>Le CSS c'est vaste</h3>
     <article>
@@ -161,7 +154,7 @@
 
 <!-- Slide Plan -->
 <section id="roadmap" class="roadmap">
-    <a href="#le_css_c_est_vaste" class="previous" aria-label="Précédant"></a>
+    <a href="#omit" class="previous" aria-label="Précédant"></a>
     <h3>Plan</h3>
     <article>
         <ol><li>Utiliser un pré&#8209;processeur ?</li>
@@ -170,7 +163,6 @@
 <li>Pseudo éléments</li>
 <li>Animations</li>
 <li>Pseudo classes d'état</li>
-<li>HTML</li>
 <li>Conclusion</li></ol>
     </article>
     <a href="#part_utiliser_un_pre__8209_processeur__" class="next" aria-label="Suivant"></a>
@@ -241,63 +233,68 @@ button.danger { /*
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature currentcolor">
    <a href="https://caniuse.com/#feat=currentcolor" aria-label="CSS currentColor value" title="{A CSS value that will apply the existing `color` value to other properties like `background-color`, etc. }">
        CSS currentColor value
    </a>
-</div><div class="value chrome currentcolor"><div class="available">49</div>
+</div><div class="value chrome currentcolor"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr currentcolor"><div class="available">61</div></div><div class="value ios_saf currentcolor"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox currentcolor"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr currentcolor"><div class="available">61</div></div><div class="value firefox currentcolor"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie currentcolor"><div class="available">11</div></div><div class="value safari currentcolor"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge currentcolor"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android currentcolor"><div class="available">4.4</div></div><div class="value opera currentcolor"><div class="available">46</div></div><div class="feature background-img-opts">
+<div class="available">55</div></div><div class="value ios_saf currentcolor"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android currentcolor"><div class="available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera currentcolor"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini currentcolor"><div class="available">all</div></div><div class="value ie currentcolor"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari currentcolor"><div class="available">10.1</div></div><div class="value edge currentcolor"><div class="available">14</div></div><div class="feature background-img-opts">
    <a href="https://caniuse.com/#feat=background-img-opts" aria-label="CSS3 Background-image options" title="{New properties to affect background images, including background-clip, background-origin and background-size}">
        CSS3 Background-image options
    </a>
-</div><div class="value chrome background-img-opts"><div class="available">49</div>
+</div><div class="value chrome background-img-opts"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr background-img-opts"><div class="available">61</div></div><div class="value ios_saf background-img-opts"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox background-img-opts"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr background-img-opts"><div class="available">61</div></div><div class="value firefox background-img-opts"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie background-img-opts"><div class="available">11</div></div><div class="value safari background-img-opts"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge background-img-opts"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android background-img-opts"><div class="available">4.4</div></div><div class="value opera background-img-opts"><div class="available">46</div></div><div class="feature css-variables">
+<div class="available">55</div></div><div class="value ios_saf background-img-opts"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android background-img-opts"><div class="partial"><div class="version">4.2-4.3</div>
+<div class="info"><p>Does not support <code>background-size</code> values in the <code>background</code> shorthand</p>
+</div></div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera background-img-opts"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini background-img-opts"><div class="partial"><div class="version">all</div>
+<div class="info"><p>Partial support in Opera Mini refers to not supporting background sizing or background attachments. However Opera Mini 7.5 supports background sizing (including cover and contain values).</p>
+</div></div></div><div class="value ie background-img-opts"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari background-img-opts"><div class="available">10.1</div></div><div class="value edge background-img-opts"><div class="available">14</div></div><div class="feature css-variables">
    <a href="https://caniuse.com/#feat=css-variables" aria-label="CSS Variables (Custom Properties)" title="{Permits the declaration and usage of cascading variables in stylesheets.}">
        CSS Variables (Custom Properties)
    </a>
-</div><div class="value chrome css-variables"><div class="available">49</div>
+</div><div class="value chrome css-variables"><div class="not-available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-variables"><div class="available">61</div></div><div class="value ios_saf css-variables"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-variables"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr css-variables"><div class="available">61</div></div><div class="value firefox css-variables"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-variables"><div class="not-available">11</div></div><div class="value safari css-variables"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-variables"><div class="not-available">14</div>
-<div class="partial"><div class="version">15</div>
-<div class="info"><p>Partial support is due to bugs present (see known issues)</p>
-</div></div></div><div class="value android css-variables"><div class="not-available">4.4</div></div><div class="value opera css-variables"><div class="available">46</div></div>
+<div class="available">55</div></div><div class="value ios_saf css-variables"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-variables"><div class="not-available">4.2-4.3</div>
+<div class="not-available">4.4</div>
+<div class="not-available">4.4.3-4.4.4</div></div><div class="value opera css-variables"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-variables"><div class="not-available">all</div></div><div class="value ie css-variables"><div class="not-available">8</div>
+<div class="not-available">11</div></div><div class="value safari css-variables"><div class="available">10.1</div></div><div class="value edge css-variables"><div class="not-available">14</div></div>
 </div>
     
     </article>
@@ -398,69 +395,72 @@ button.danger { /*
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature rem">
    <a href="https://caniuse.com/#feat=rem" aria-label="rem (root em) units" title="{Type of unit similar to `em`, but relative only to the root element, not any parent element. Thus compounding does not occur as it does with `em` units.}">
        rem (root em) units
    </a>
-</div><div class="value chrome rem"><div class="available">49</div>
+</div><div class="value chrome rem"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr rem"><div class="available">61</div></div><div class="value ios_saf rem"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox rem"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr rem"><div class="available">61</div></div><div class="value firefox rem"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie rem"><div class="available">11</div></div><div class="value safari rem"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge rem"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android rem"><div class="available">4.4</div></div><div class="value opera rem"><div class="available">46</div></div><div class="feature viewport-units">
+<div class="available">55</div></div><div class="value ios_saf rem"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android rem"><div class="available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera rem"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini rem"><div class="available">all</div></div><div class="value ie rem"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari rem"><div class="available">10.1</div></div><div class="value edge rem"><div class="available">14</div></div><div class="feature viewport-units">
    <a href="https://caniuse.com/#feat=viewport-units" aria-label="Viewport units: vw, vh, vmin, vmax" title="{Length units representing a percentage of the current viewport dimensions: width (vw), height (vh), the smaller of the two (vmin), or the larger of the two (vmax).}">
        Viewport units: vw, vh, vmin, vmax
    </a>
-</div><div class="value chrome viewport-units"><div class="available">49</div>
+</div><div class="value chrome viewport-units"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr viewport-units"><div class="available">61</div></div><div class="value ios_saf viewport-units"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox viewport-units"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr viewport-units"><div class="available">61</div></div><div class="value firefox viewport-units"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie viewport-units"><div class="partial"><div class="version">11</div>
+<div class="available">55</div></div><div class="value ios_saf viewport-units"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android viewport-units"><div class="not-available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera viewport-units"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini viewport-units"><div class="not-available">all</div></div><div class="value ie viewport-units"><div class="not-available">8</div>
+<div class="partial"><div class="version">11</div>
 <div class="info"><p>Partial support refers to not supporting the &quot;vmax&quot; unit. </p>
-</div></div></div><div class="value safari viewport-units"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge viewport-units"><div class="partial"><div class="version">14</div>
+</div></div></div><div class="value safari viewport-units"><div class="available">10.1</div></div><div class="value edge viewport-units"><div class="partial"><div class="version">14</div>
 <div class="info"><p>Partial support refers to not supporting the &quot;vmax&quot; unit. </p>
-</div></div>
-<div class="partial"><div class="version">15</div>
-<div class="info"><p>Partial support refers to not supporting the &quot;vmax&quot; unit. </p>
-</div></div></div><div class="value android viewport-units"><div class="available">4.4</div></div><div class="value opera viewport-units"><div class="available">46</div></div><div class="feature calc">
+</div></div></div><div class="feature calc">
    <a href="https://caniuse.com/#feat=calc" aria-label="calc() as CSS unit value" title="{Method of allowing calculated values for length units, i.e. `width: calc(100% - 3em)`}">
        calc() as CSS unit value
    </a>
-</div><div class="value chrome calc"><div class="available">49</div>
+</div><div class="value chrome calc"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr calc"><div class="available">61</div></div><div class="value ios_saf calc"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox calc"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr calc"><div class="available">61</div></div><div class="value firefox calc"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie calc"><div class="available">11</div></div><div class="value safari calc"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge calc"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android calc"><div class="partial"><div class="version">4.4</div>
+<div class="available">55</div></div><div class="value ios_saf calc"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android calc"><div class="not-available">4.2-4.3</div>
+<div class="partial"><div class="version">4.4</div>
 <div class="info"><p>Partial support in Android Browser 4.4 refers to the browser lacking the ability to multiply and divide values.</p>
-</div></div></div><div class="value opera calc"><div class="available">46</div></div>
+</div></div>
+<div class="partial"><div class="version">4.4.3-4.4.4</div>
+<div class="info"><p>Partial support in Android Browser 4.4 refers to the browser lacking the ability to multiply and divide values.</p>
+</div></div></div><div class="value opera calc"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini calc"><div class="not-available">all</div></div><div class="value ie calc"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari calc"><div class="available">10.1</div></div><div class="value edge calc"><div class="available">14</div></div>
 </div>
     
     </article>
@@ -556,70 +556,74 @@ button.danger { /*
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature flexbox">
    <a href="https://caniuse.com/#feat=flexbox" aria-label="CSS Flexible Box Layout Module" title="{Method of positioning elements in horizontal or vertical stacks. Support includes all properties prefixed with `flex`, as well as `display: flex`, `display: inline-flex`, `align-content`, `align-items`, `align-self`, `justify-content` and `order`.}">
        CSS Flexible Box Layout Module
    </a>
-</div><div class="value chrome flexbox"><div class="available">49</div>
+</div><div class="value chrome flexbox"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr flexbox"><div class="available">61</div></div><div class="value ios_saf flexbox"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox flexbox"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr flexbox"><div class="available">61</div></div><div class="value firefox flexbox"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie flexbox"><div class="partial"><div class="version">11</div>
+<div class="available">55</div></div><div class="value ios_saf flexbox"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android flexbox"><div class="partial prefix"><div class="version">4.2-4.3</div>
+<div class="info">Prefix </div></div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera flexbox"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini flexbox"><div class="available">all</div></div><div class="value ie flexbox"><div class="not-available">8</div>
+<div class="partial"><div class="version">11</div>
 <div class="info"><p>Partial support is due to large amount of bugs present (see known issues)</p>
-</div></div></div><div class="value safari flexbox"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge flexbox"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android flexbox"><div class="available">4.4</div></div><div class="value opera flexbox"><div class="available">46</div></div><div class="feature css-grid">
+</div></div></div><div class="value safari flexbox"><div class="available">10.1</div></div><div class="value edge flexbox"><div class="available">14</div></div><div class="feature css-grid">
    <a href="https://caniuse.com/#feat=css-grid" aria-label="CSS Grid Layout" title="{Method of using a grid concept to lay out content, providing a mechanism for authors to divide available space for layout into columns and rows using a set of predictable sizing behaviors}">
        CSS Grid Layout
    </a>
-</div><div class="value chrome css-grid"><div class="partial flag"><div class="version">49</div>
+</div><div class="value chrome css-grid"><div class="partial flag"><div class="version">43</div>
+<div class="info">Flag </div></div>
+<div class="partial flag"><div class="version">49</div>
+<div class="info">Flag </div></div>
+<div class="partial flag"><div class="version">55</div>
 <div class="info">Flag </div></div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-grid"><div class="available">61</div></div><div class="value ios_saf css-grid"><div class="available">11</div>
-<div class="not-available">9.3</div>
-<div class="not-available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-grid"><div class="partial flag"><div class="version">48</div>
-<div class="info">Flag </div></div>
-<div class="partial"><div class="version">52</div>
+<div class="available">60</div></div><div class="value and_chr css-grid"><div class="available">61</div></div><div class="value firefox css-grid"><div class="partial"><div class="version">52</div>
 <div class="info"><p>There are some bugs with overflow (<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1356820">1356820</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348857">1348857</a>, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1350925">1350925</a>)</p>
 </div></div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-grid"><div class="partial prefix"><div class="version">11</div>
-<div class="info">Prefix </div></div></div><div class="value safari css-grid"><div class="not-available">10</div>
-<div class="not-available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-grid"><div class="partial prefix"><div class="version">14</div>
-<div class="info">Prefix </div></div>
-<div class="partial prefix"><div class="version">15</div>
-<div class="info">Prefix </div></div></div><div class="value android css-grid"><div class="not-available">4.4</div></div><div class="value opera css-grid"><div class="available">46</div></div><div class="feature css-featurequeries">
+<div class="available">55</div></div><div class="value ios_saf css-grid"><div class="available">11</div>
+<div class="not-available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-grid"><div class="not-available">4.2-4.3</div>
+<div class="not-available">4.4</div>
+<div class="not-available">4.4.3-4.4.4</div></div><div class="value opera css-grid"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-grid"><div class="not-available">all</div></div><div class="value ie css-grid"><div class="not-available">8</div>
+<div class="partial prefix"><div class="version">11</div>
+<div class="info">Prefix </div></div></div><div class="value safari css-grid"><div class="available">10.1</div></div><div class="value edge css-grid"><div class="partial prefix"><div class="version">14</div>
+<div class="info">Prefix </div></div></div><div class="feature css-featurequeries">
    <a href="https://caniuse.com/#feat=css-featurequeries" aria-label="CSS Feature Queries" title="{CSS Feature Queries allow authors to condition rules based on whether particular property declarations are supported in CSS using the @supports at rule.}">
        CSS Feature Queries
    </a>
-</div><div class="value chrome css-featurequeries"><div class="available">49</div>
+</div><div class="value chrome css-featurequeries"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-featurequeries"><div class="available">61</div></div><div class="value ios_saf css-featurequeries"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-featurequeries"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr css-featurequeries"><div class="available">61</div></div><div class="value firefox css-featurequeries"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-featurequeries"><div class="not-available">11</div></div><div class="value safari css-featurequeries"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-featurequeries"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android css-featurequeries"><div class="available">4.4</div></div><div class="value opera css-featurequeries"><div class="available">46</div></div>
+<div class="available">55</div></div><div class="value ios_saf css-featurequeries"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-featurequeries"><div class="not-available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera css-featurequeries"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-featurequeries"><div class="available">all</div></div><div class="value ie css-featurequeries"><div class="not-available">8</div>
+<div class="not-available">11</div></div><div class="value safari css-featurequeries"><div class="available">10.1</div></div><div class="value edge css-featurequeries"><div class="available">14</div></div>
 </div>
     
     </article>
@@ -765,52 +769,56 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature css-gencontent">
    <a href="https://caniuse.com/#feat=css-gencontent" aria-label="CSS Generated content for pseudo-elements" title="{Method of displaying text or images before or after the given element's contents using the ::before and ::after pseudo-elements. All browsers with support also support the `attr()` notation in the `content` property. }">
        CSS Generated content for pseudo-elements
    </a>
-</div><div class="value chrome css-gencontent"><div class="available">49</div>
+</div><div class="value chrome css-gencontent"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-gencontent"><div class="available">61</div></div><div class="value ios_saf css-gencontent"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-gencontent"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr css-gencontent"><div class="available">61</div></div><div class="value firefox css-gencontent"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-gencontent"><div class="available">11</div></div><div class="value safari css-gencontent"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-gencontent"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android css-gencontent"><div class="available">4.4</div></div><div class="value opera css-gencontent"><div class="available">46</div></div><div class="feature transforms2d">
+<div class="available">55</div></div><div class="value ios_saf css-gencontent"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-gencontent"><div class="available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera css-gencontent"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-gencontent"><div class="available">all</div></div><div class="value ie css-gencontent"><div class="partial"><div class="version">8</div>
+<div class="info"><p>IE8 only supports the single-colon CSS 2.1 syntax (i.e. :pseudo-class). It does not support the double-colon CSS3 syntax (i.e. ::pseudo-element).</p>
+</div></div>
+<div class="available">11</div></div><div class="value safari css-gencontent"><div class="available">10.1</div></div><div class="value edge css-gencontent"><div class="available">14</div></div><div class="feature transforms2d">
    <a href="https://caniuse.com/#feat=transforms2d" aria-label="CSS3 2D Transforms" title="{Method of transforming an element including rotating, scaling, etc. Includes support for `transform` as well as `transform-origin` properties.}">
        CSS3 2D Transforms
    </a>
-</div><div class="value chrome transforms2d"><div class="available">49</div>
+</div><div class="value chrome transforms2d"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr transforms2d"><div class="available">61</div></div><div class="value ios_saf transforms2d"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox transforms2d"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr transforms2d"><div class="available">61</div></div><div class="value firefox transforms2d"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie transforms2d"><div class="partial"><div class="version">11</div>
+<div class="available">55</div></div><div class="value ios_saf transforms2d"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android transforms2d"><div class="partial prefix"><div class="version">4.2-4.3</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4.3-4.4.4</div>
+<div class="info">Prefix </div></div></div><div class="value opera transforms2d"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini transforms2d"><div class="not-available">all</div></div><div class="value ie transforms2d"><div class="not-available">8</div>
+<div class="partial"><div class="version">11</div>
 <div class="info"><p>Does not support CSS transforms on SVG elements (transform attribute can be used instead)</p>
-</div></div></div><div class="value safari transforms2d"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge transforms2d"><div class="partial"><div class="version">14</div>
+</div></div></div><div class="value safari transforms2d"><div class="available">10.1</div></div><div class="value edge transforms2d"><div class="partial"><div class="version">14</div>
 <div class="info"><p>Does not support CSS transforms on SVG elements (transform attribute can be used instead)</p>
-</div></div>
-<div class="partial"><div class="version">15</div>
-<div class="info"><p>Does not support CSS transforms on SVG elements (transform attribute can be used instead)</p>
-</div></div></div><div class="value android transforms2d"><div class="partial prefix"><div class="version">4.4</div>
-<div class="info">Prefix </div></div></div><div class="value opera transforms2d"><div class="available">46</div></div>
+</div></div></div>
 </div>
     
     </article>
@@ -926,52 +934,56 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature css-animation">
    <a href="https://caniuse.com/#feat=css-animation" aria-label="CSS Animation" title="{Complex method of animating certain properties of an element}">
        CSS Animation
    </a>
-</div><div class="value chrome css-animation"><div class="available">49</div>
+</div><div class="value chrome css-animation"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-animation"><div class="available">61</div></div><div class="value ios_saf css-animation"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-animation"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr css-animation"><div class="available">61</div></div><div class="value firefox css-animation"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-animation"><div class="available">11</div></div><div class="value safari css-animation"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-animation"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android css-animation"><div class="partial prefix"><div class="version">4.4</div>
-<div class="info">Prefix </div></div></div><div class="value opera css-animation"><div class="available">46</div></div><div class="feature svg">
+<div class="available">55</div></div><div class="value ios_saf css-animation"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-animation"><div class="partial prefix"><div class="version">4.2-4.3</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4.3-4.4.4</div>
+<div class="info">Prefix </div></div></div><div class="value opera css-animation"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-animation"><div class="not-available">all</div></div><div class="value ie css-animation"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari css-animation"><div class="available">10.1</div></div><div class="value edge css-animation"><div class="available">14</div></div><div class="feature svg">
    <a href="https://caniuse.com/#feat=svg" aria-label="SVG (basic support)" title="{Method of displaying basic Vector Graphics features using the embed or object elements. Refers to the SVG 1.1 spec.}">
        SVG (basic support)
    </a>
-</div><div class="value chrome svg"><div class="available">49</div>
+</div><div class="value chrome svg"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr svg"><div class="available">61</div></div><div class="value ios_saf svg"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox svg"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr svg"><div class="available">61</div></div><div class="value firefox svg"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie svg"><div class="partial"><div class="version">11</div>
-<div class="info"><p>IE9-11 desktop &amp; mobile don&#39;t properly scale SVG files.  <a href="http://codepen.io/tomByrer/pen/qEBbzw?editors=110">Adding height, width, viewBox, and CSS rules</a> seem to be the best workaround.</p>
-</div></div></div><div class="value safari svg"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge svg"><div class="partial"><div class="version">14</div>
-<div class="info"><p>IE9-11 desktop &amp; mobile don&#39;t properly scale SVG files.  <a href="http://codepen.io/tomByrer/pen/qEBbzw?editors=110">Adding height, width, viewBox, and CSS rules</a> seem to be the best workaround.</p>
+<div class="available">55</div></div><div class="value ios_saf svg"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android svg"><div class="partial"><div class="version">4.2-4.3</div>
+<div class="info"><p>Partial support in Android 3 &amp; 4 refers to not supporting masking.</p>
 </div></div>
-<div class="partial"><div class="version">15</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera svg"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini svg"><div class="available">all</div></div><div class="value ie svg"><div class="not-available">8</div>
+<div class="partial"><div class="version">11</div>
 <div class="info"><p>IE9-11 desktop &amp; mobile don&#39;t properly scale SVG files.  <a href="http://codepen.io/tomByrer/pen/qEBbzw?editors=110">Adding height, width, viewBox, and CSS rules</a> seem to be the best workaround.</p>
-</div></div></div><div class="value android svg"><div class="available">4.4</div></div><div class="value opera svg"><div class="available">46</div></div>
+</div></div></div><div class="value safari svg"><div class="available">10.1</div></div><div class="value edge svg"><div class="partial"><div class="version">14</div>
+<div class="info"><p>IE9-11 desktop &amp; mobile don&#39;t properly scale SVG files.  <a href="http://codepen.io/tomByrer/pen/qEBbzw?editors=110">Adding height, width, viewBox, and CSS rules</a> seem to be the best workaround.</p>
+</div></div></div>
 </div>
     
     </article>
@@ -1235,280 +1247,87 @@ div.left { border-left-color: transparent; }</style><pre class="hljs lang-css sh
     <h3>Compatibilité</h3>
     <article>
         
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
+<div class="compatibility-caption country-MA">0,4</div>
+<div class="compatibility" style="grid-template-columns : repeat(11, 1fr);">
     <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
+    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div><div class="browser op_mini" aria-label="op_mini"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div>
     <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
+    <div class="browser-percent">32,7 %</div><div class="browser-percent">29,6 %</div><div class="browser-percent">6,3 %</div><div class="browser-percent">5,0 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">1,8 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">1,4 %</div><div class="browser-percent">0,7 %</div><div class="browser-percent">0,6 %</div>
     <div class="feature css-sel3">
    <a href="https://caniuse.com/#feat=css-sel3" aria-label="CSS3 selectors" title="{Advanced element selection using selectors including: `[foo^=&quot;bar&quot;]`, `[foo$=&quot;bar&quot;]`, `[foo*=&quot;bar&quot;]`, `:root`, `:nth-child()`,  `:nth-last-child()`, `nth-of-type`, `nth-last-of-type()`, `:last-child`, `:first-of-type`, `:last-of-type`, `:only-child`, `:only-of-type`, `:empty`, `:target`, `:enabled`, `:disabled`, `:checked`, `:not()`, `~` (general sibling)}">
        CSS3 selectors
    </a>
-</div><div class="value chrome css-sel3"><div class="available">49</div>
+</div><div class="value chrome css-sel3"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr css-sel3"><div class="available">61</div></div><div class="value ios_saf css-sel3"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox css-sel3"><div class="available">48</div>
-<div class="available">52</div>
+<div class="available">60</div></div><div class="value and_chr css-sel3"><div class="available">61</div></div><div class="value firefox css-sel3"><div class="available">52</div>
 <div class="available">54</div>
-<div class="available">55</div></div><div class="value ie css-sel3"><div class="available">11</div></div><div class="value safari css-sel3"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge css-sel3"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android css-sel3"><div class="available">4.4</div></div><div class="value opera css-sel3"><div class="available">46</div></div><div class="feature form-validation">
+<div class="available">55</div></div><div class="value ios_saf css-sel3"><div class="available">11</div>
+<div class="available">10.0-10.2</div>
+<div class="available">10.3</div></div><div class="value android css-sel3"><div class="available">4.2-4.3</div>
+<div class="available">4.4</div>
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera css-sel3"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini css-sel3"><div class="available">all</div></div><div class="value ie css-sel3"><div class="partial"><div class="version">8</div>
+<div class="info"><p>IE7 and IE8 support only these CSS3 selectors: General siblings (<code>element1~element2</code>) and Attribute selectors <code>[attr^=val]</code>, <code>[attr$=val]</code>, and <code>[attr*=val]</code></p>
+</div></div>
+<div class="available">11</div></div><div class="value safari css-sel3"><div class="available">10.1</div></div><div class="value edge css-sel3"><div class="available">14</div></div><div class="feature form-validation">
    <a href="https://caniuse.com/#feat=form-validation" aria-label="Form validation" title="{Method of setting required fields and field types without requiring JavaScript. This includes preventing forms from being submitted when appropriate, the `checkValidity()` method as well as support for the `:invalid`, `:valid`, and `:required` CSS pseudo-classes.}">
        Form validation
    </a>
-</div><div class="value chrome form-validation"><div class="available">49</div>
+</div><div class="value chrome form-validation"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr form-validation"><div class="available">61</div></div><div class="value ios_saf form-validation"><div class="available">11</div>
-<div class="partial"><div class="version">9.3</div>
-<div class="info"><p>Partial support refers to lack of notice when form with required fields is attempted to be submitted. See <a href="https://bugs.webkit.org/show_bug.cgi?id=28649">WebKit bug</a>.</p>
-</div></div>
+<div class="available">60</div></div><div class="value and_chr form-validation"><div class="available">61</div></div><div class="value firefox form-validation"><div class="available">52</div>
+<div class="available">54</div>
+<div class="available">55</div></div><div class="value ios_saf form-validation"><div class="available">11</div>
 <div class="partial"><div class="version">10.0-10.2</div>
 <div class="info"><p>Partial support refers to lack of notice when form with required fields is attempted to be submitted. See <a href="https://bugs.webkit.org/show_bug.cgi?id=28649">WebKit bug</a>.</p>
 </div></div>
-<div class="available">10.3</div></div><div class="value firefox form-validation"><div class="available">48</div>
-<div class="available">52</div>
-<div class="available">54</div>
-<div class="available">55</div></div><div class="value ie form-validation"><div class="available">11</div></div><div class="value safari form-validation"><div class="partial"><div class="version">10</div>
+<div class="available">10.3</div></div><div class="value android form-validation"><div class="partial"><div class="version">4.2-4.3</div>
 <div class="info"><p>Partial support refers to lack of notice when form with required fields is attempted to be submitted. See <a href="https://bugs.webkit.org/show_bug.cgi?id=28649">WebKit bug</a>.</p>
 </div></div>
-<div class="partial"><div class="version">9.1</div>
+<div class="partial"><div class="version">4.4</div>
 <div class="info"><p>Partial support refers to lack of notice when form with required fields is attempted to be submitted. See <a href="https://bugs.webkit.org/show_bug.cgi?id=28649">WebKit bug</a>.</p>
 </div></div>
-<div class="available">10.1</div></div><div class="value edge form-validation"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android form-validation"><div class="partial"><div class="version">4.4</div>
-<div class="info"><p>Partial support refers to lack of notice when form with required fields is attempted to be submitted. See <a href="https://bugs.webkit.org/show_bug.cgi?id=28649">WebKit bug</a>.</p>
-</div></div></div><div class="value opera form-validation"><div class="available">46</div></div><div class="feature transforms3d">
+<div class="available">4.4.3-4.4.4</div></div><div class="value opera form-validation"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini form-validation"><div class="partial"><div class="version">all</div>
+<div class="info"><p>Partial support in Opera Mini refers to only supporting the CSS pseudo classes.</p>
+</div></div></div><div class="value ie form-validation"><div class="not-available">8</div>
+<div class="available">11</div></div><div class="value safari form-validation"><div class="available">10.1</div></div><div class="value edge form-validation"><div class="available">14</div></div><div class="feature transforms3d">
    <a href="https://caniuse.com/#feat=transforms3d" aria-label="CSS3 3D Transforms" title="{Method of transforming an element in the third dimension using the `transform` property. Includes support for the `perspective` property to set the perspective in z-space and the `backface-visibility` property to toggle display of the reverse side of a 3D-transformed element.}">
        CSS3 3D Transforms
    </a>
-</div><div class="value chrome transforms3d"><div class="available">49</div>
+</div><div class="value chrome transforms3d"><div class="available">43</div>
+<div class="available">49</div>
+<div class="available">55</div>
 <div class="available">58</div>
 <div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr transforms3d"><div class="available">61</div></div><div class="value ios_saf transforms3d"><div class="partial"><div class="version">11</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
-</div></div>
-<div class="partial"><div class="version">9.3</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
+<div class="available">60</div></div><div class="value and_chr transforms3d"><div class="available">61</div></div><div class="value firefox transforms3d"><div class="available">52</div>
+<div class="available">54</div>
+<div class="available">55</div></div><div class="value ios_saf transforms3d"><div class="partial"><div class="version">11</div>
+<div class="info"><p>Safari 9, 10 &amp; 11 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
 </div></div>
 <div class="partial"><div class="version">10.0-10.2</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
+<div class="info"><p>Safari 9, 10 &amp; 11 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
 </div></div>
 <div class="partial"><div class="version">10.3</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
-</div></div></div><div class="value firefox transforms3d"><div class="available">48</div>
-<div class="available">52</div>
-<div class="available">54</div>
-<div class="available">55</div></div><div class="value ie transforms3d"><div class="partial"><div class="version">11</div>
+<div class="info"><p>Safari 9, 10 &amp; 11 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
+</div></div></div><div class="value android transforms3d"><div class="partial prefix"><div class="version">4.2-4.3</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4</div>
+<div class="info">Prefix </div></div>
+<div class="partial prefix"><div class="version">4.4.3-4.4.4</div>
+<div class="info">Prefix </div></div></div><div class="value opera transforms3d"><div class="available">46</div>
+<div class="available">47</div></div><div class="value op_mini transforms3d"><div class="not-available">all</div></div><div class="value ie transforms3d"><div class="not-available">8</div>
+<div class="partial"><div class="version">11</div>
 <div class="info"><p>Partial support in IE refers to not supporting <a href="http://msdn.microsoft.com/en-us/library/ie/hh673529%28v=vs.85%29.aspx#the_ms_transform_style_property">the transform-style: preserve-3d property</a>. This prevents nesting 3D transformed elements.</p>
-</div></div></div><div class="value safari transforms3d"><div class="partial"><div class="version">10</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
-</div></div>
-<div class="partial"><div class="version">9.1</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
-</div></div>
-<div class="partial"><div class="version">10.1</div>
-<div class="info"><p>Safari 9 &amp; 10 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
-</div></div></div><div class="value edge transforms3d"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android transforms3d"><div class="partial prefix"><div class="version">4.4</div>
-<div class="info">Prefix </div></div></div><div class="value opera transforms3d"><div class="available">46</div></div>
-</div>
-    
-    </article>
-    <a href="#part_html" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide HTML -->
-<section id="part_html" class="part">
-    <a href="#compat-6" class="previous" aria-label="Précédant"></a>
-    <h2>HTML</h2>
-    <article>
-        
-    </article>
-    <a href="#progress" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Progress -->
-<section id="progress" class="">
-    <a href="#part_html" class="previous" aria-label="Précédant"></a>
-    <h3>Progress</h3>
-    <article>
-        <a href="https://css-tricks.com/html5-progress-element/">The HTML5 progress Element
-</a>
-<pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">progress</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"42"</span> <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span>&gt;</span>42 %<span class="hljs-tag">&lt;/<span class="hljs-name">progress</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">progress</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">progress</span>&gt;</span></code></pre>
-<div class="editable"><progress value="42" max="100">42 %</progress>
-<progress></progress>
-</div>
-    </article>
-    <a href="#panel_html" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Panel -->
-<section id="panel_html" class="">
-    <a href="#progress" class="previous" aria-label="Précédant"></a>
-    <h3>Panel</h3>
-    <article>
-        <pre class="hljs lang-html"><code><span class="hljs-tag">&lt;<span class="hljs-name">details</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">summary</span>&gt;</span>Des détails<span class="hljs-tag">&lt;/<span class="hljs-name">summary</span>&gt;</span>
-	<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Plus d'infos
-		à propos des détails.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">details</span>&gt;</span></code></pre>
-<style contenteditable="true" class="hide-print">details {
-	border: medium solid currentcolor;
-	border-radius: .25em;
-	width: auto;
-}
-
-details summary {
-	background: #888;
-	color: #eee;
-	cursor: auto;
-}</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-tag">details</span> {
-	<span class="hljs-attribute">border</span>: medium solid currentcolor;
-	<span class="hljs-attribute">border-radius</span>: .<span class="hljs-number">25em</span>;
-}
-
-<span class="hljs-selector-tag">details</span> <span class="hljs-selector-tag">summary</span> {
-	<span class="hljs-attribute">background</span>: <span class="hljs-number">#888</span>; <span class="hljs-attribute">color</span>: <span class="hljs-number">#eee</span>;
-}</code></pre>
-<div class="editable"><details>
-	<summary>Des détails</summary>
-	<p>Plus d'infos
-		à propos des détails.</p>
-</details></div>
-    </article>
-    <a href="#dialog" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Dialog -->
-<section id="dialog" class="live-code">
-    <a href="#panel_html" class="previous" aria-label="Précédant"></a>
-    <h3>Dialog</h3>
-    <article>
-        <style contenteditable="true" class="hide-print">.editable dialog {
-	border: medium solid rgba(0, 0, 0, 0.3);
-	border-radius: .125em;
-	padding: .125rem;
-	box-shadow: .25em .25em .125em rgba(0, 0, 0, 0.42);
-}
-
-/* .editable dialog::backdrop {
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-} */</style><pre class="hljs lang-css show-print"><code><span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span> {
-    <span class="hljs-attribute">box-shadow </span>: .<span class="hljs-number">25em</span> .<span class="hljs-number">25em</span> .<span class="hljs-number">125em</span> <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.42);
-}
-
-<span class="hljs-selector-class">.editable</span> <span class="hljs-selector-tag">dialog</span><span class="hljs-selector-pseudo">::backdrop</span> {
-    <span class="hljs-attribute">position         </span>: fixed;
-    <span class="hljs-attribute">top              </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">right </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">bottom </span>: <span class="hljs-number">0</span>; <span class="hljs-attribute">left </span>: <span class="hljs-number">0</span>;
-    <span class="hljs-attribute">background-color </span>: <span class="hljs-built_in">rgba</span>(0, 0, 0, 0.8);
-}</code></pre>
-<div class="editable"><dialog id="diag" open>This is a dialog!</dialog></div>
-    </article>
-    <a href="#polyfill" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Polyfill -->
-<section id="polyfill" class="">
-    <a href="#dialog" class="previous" aria-label="Précédant"></a>
-    <h3>Polyfill</h3>
-    <article>
-        <ul><li><a href="https://github.com/chemerisuk/better-details-polyfill/">Better details polyfill</a></li>
-<li><a href="https://github.com/GoogleChrome/dialog-polyfill">Dialog Polyfill</a></li></ul>
-    </article>
-    <a href="#compat-7" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Compatibilité -->
-<section id="compat-7" class="">
-    <a href="#polyfill" class="previous" aria-label="Précédant"></a>
-    <h3>Compatibilité</h3>
-    <article>
-        
-<div class="compatibility-caption">0,4</div>
-<div class="compatibility" style="grid-template-columns : repeat(10, 1fr);">
-    <div class="void"></div>
-    <div class="browser chrome" aria-label="chrome"></div><div class="browser and_chr mobile" aria-label="and_chr"></div><div class="browser ios_saf mobile" aria-label="ios_saf"></div><div class="browser firefox" aria-label="firefox"></div><div class="browser ie" aria-label="ie"></div><div class="browser safari" aria-label="safari"></div><div class="browser edge" aria-label="edge"></div><div class="browser android mobile" aria-label="android"></div><div class="browser opera" aria-label="opera"></div>
-    <div class="void"></div>
-    <div class="browser-percent">26,6 %</div><div class="browser-percent">18,6 %</div><div class="browser-percent">15,8 %</div><div class="browser-percent">11,5 %</div><div class="browser-percent">4,7 %</div><div class="browser-percent">4,4 %</div><div class="browser-percent">3,4 %</div><div class="browser-percent">0,6 %</div><div class="browser-percent">0,5 %</div>
-    <div class="feature progress">
-   <a href="https://caniuse.com/#feat=progress" aria-label="progress element" title="{Method of indicating a progress state.}">
-       progress element
-   </a>
-</div><div class="value chrome progress"><div class="available">49</div>
-<div class="available">58</div>
-<div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr progress"><div class="available">61</div></div><div class="value ios_saf progress"><div class="partial"><div class="version">11</div>
-<div class="info"><p>iOS Safari does not support &quot;indeterminate&quot; &lt;progress&gt; elements.</p>
-</div></div>
-<div class="partial"><div class="version">9.3</div>
-<div class="info"><p>iOS Safari does not support &quot;indeterminate&quot; &lt;progress&gt; elements.</p>
-</div></div>
-<div class="partial"><div class="version">10.0-10.2</div>
-<div class="info"><p>iOS Safari does not support &quot;indeterminate&quot; &lt;progress&gt; elements.</p>
-</div></div>
-<div class="partial"><div class="version">10.3</div>
-<div class="info"><p>iOS Safari does not support &quot;indeterminate&quot; &lt;progress&gt; elements.</p>
-</div></div></div><div class="value firefox progress"><div class="available">48</div>
-<div class="available">52</div>
-<div class="available">54</div>
-<div class="available">55</div></div><div class="value ie progress"><div class="available">11</div></div><div class="value safari progress"><div class="available">10</div>
-<div class="available">9.1</div>
-<div class="available">10.1</div></div><div class="value edge progress"><div class="available">14</div>
-<div class="available">15</div></div><div class="value android progress"><div class="available">4.4</div></div><div class="value opera progress"><div class="available">46</div></div><div class="feature details">
-   <a href="https://caniuse.com/#feat=details" aria-label="Details & Summary elements" title="{The &lt;details&gt; element generates a simple no-JavaScript widget to show/hide element contents, optionally by clicking on its child &lt;summary&gt; element.}">
-       Details & Summary elements
-   </a>
-</div><div class="value chrome details"><div class="available">49</div>
-<div class="available">58</div>
-<div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr details"><div class="available">61</div></div><div class="value ios_saf details"><div class="available">11</div>
-<div class="available">9.3</div>
-<div class="available">10.0-10.2</div>
-<div class="available">10.3</div></div><div class="value firefox details"><div class="partial flag"><div class="version">48</div>
-<div class="info">Flag </div></div>
-<div class="available">52</div>
-<div class="available">54</div>
-<div class="available">55</div></div><div class="value ie details"><div class="not-available">11</div></div><div class="value safari details"><div class="partial"><div class="version">10</div>
-<div class="info"><p>&#39;toggle&#39; event is not supported</p>
-</div></div>
-<div class="partial"><div class="version">9.1</div>
-<div class="info"><p>&#39;toggle&#39; event is not supported</p>
-</div></div>
-<div class="available">10.1</div></div><div class="value edge details"><div class="not-available">14</div>
-<div class="not-available">15</div></div><div class="value android details"><div class="available">4.4</div></div><div class="value opera details"><div class="available">46</div></div><div class="feature dialog">
-   <a href="https://caniuse.com/#feat=dialog" aria-label="Dialog element" title="{Method of easily creating custom dialog boxes to display to the user with modal or non-modal options. Also includes a `::backdrop` pseudo-element for behind the element.}">
-       Dialog element
-   </a>
-</div><div class="value chrome dialog"><div class="available">49</div>
-<div class="available">58</div>
-<div class="available">59</div>
-<div class="available">60</div></div><div class="value and_chr dialog"><div class="available">61</div></div><div class="value ios_saf dialog"><div class="not-available">11</div>
-<div class="not-available">9.3</div>
-<div class="not-available">10.0-10.2</div>
-<div class="not-available">10.3</div></div><div class="value firefox dialog"><div class="not-available">48</div>
-<div class="not-available">52</div>
-<div class="partial flag"><div class="version">54</div>
-<div class="info">Flag </div></div>
-<div class="partial flag"><div class="version">55</div>
-<div class="info">Flag </div></div></div><div class="value ie dialog"><div class="not-available">11</div></div><div class="value safari dialog"><div class="not-available">10</div>
-<div class="not-available">9.1</div>
-<div class="not-available">10.1</div></div><div class="value edge dialog"><div class="not-available">14</div>
-<div class="not-available">15</div></div><div class="value android dialog"><div class="not-available">4.4</div></div><div class="value opera dialog"><div class="available">46</div></div>
+</div></div></div><div class="value safari transforms3d"><div class="partial"><div class="version">10.1</div>
+<div class="info"><p>Safari 9, 10 &amp; 11 are reported to still require a prefix for the related <code>backface-visibility</code> property.</p>
+</div></div></div><div class="value edge transforms3d"><div class="available">14</div></div>
 </div>
     
     </article>
@@ -1518,7 +1337,7 @@ details summary {
 
 <!-- Slide Conclusion -->
 <section id="part_conclusion" class="part">
-    <a href="#compat-7" class="previous" aria-label="Précédant"></a>
+    <a href="#compat-6" class="previous" aria-label="Précédant"></a>
     <h2>Conclusion</h2>
     <article>
         
@@ -1553,17 +1372,17 @@ details summary {
 <li>Single Responsibility Principle</li>
 <li>...</li></ol>
     </article>
-    <a href="#liens" class="next" aria-label="Suivant"></a>
+    <a href="#Liens" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Liens -->
-<section id="liens" class="">
+<!-- Slide  -->
+<section id="Liens" class="">
     <a href="#traitez_le_css_comme_du_code" class="previous" aria-label="Précédant"></a>
-    <h3>Liens</h3>
+    <h3></h3>
     <article>
-        <ul><li><a href="https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome">les slides en HTML</a></li>
-<li><a href="https://ilaborie.github.io/slides/devfest-tls.pdf">les slides en PDF</a></li>
+        <ul><li><a href="https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome">les slides en HTML</a></li>
+<li><a href="https://ilaborie.github.io/slides/devoxx-ma.pdf">les slides en PDF</a></li>
 <li><a href="https://github.com/ilaborie/slides">le code</a></li>
 <li><a href="http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html">Blog: 'Making Of'</a></li></ul>
     </article>
@@ -1573,7 +1392,7 @@ details summary {
 
 <!-- Slide Pour apprendre -->
 <section id="pour_apprendre" class="">
-    <a href="#liens" class="previous" aria-label="Précédant"></a>
+    <a href="#Liens" class="previous" aria-label="Précédant"></a>
     <h3>Pour apprendre</h3>
     <article>
         <ul><li><code>(Ctrl|⌘) + Shift + i</code></li>

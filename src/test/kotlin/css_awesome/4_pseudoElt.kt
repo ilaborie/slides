@@ -4,7 +4,7 @@ import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.web.CssCompatibility
 
-fun pseudoElt(group: Group) = group
+fun pseudoElt(country:String, group: Group) = group
         .slide(title = "Le dîner d'un philosophe", styleClass = setOf("live-code")) {
             ExternalCodeContent(Language.HTML, ExternalResource("/cssIsAwesome/04_pseudo_elements/philosophe-table.html"))+
             cssLiveCode("/cssIsAwesome/04_pseudo_elements/philosophe")
@@ -27,5 +27,5 @@ fun pseudoElt(group: Group) = group
                             Link("Dîner des philosophes", "https://fr.wikipedia.org/wiki/D%C3%AEner_des_philosophes"))
         }
         .slide(title = "Compatibilité", id = "compat-4") {
-            CssCompatibility(browsersThreshold, listOf("css-gencontent", "transforms2d"))
+            CssCompatibility(country, browsersThreshold, listOf("css-gencontent", "transforms2d"))
         }

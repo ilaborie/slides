@@ -29,11 +29,11 @@
   --shadowNavbar: rgba(0, 0, 0, 0.2);
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/bg.svg") no-repeat 25vh center, var(--secondary);
+  --bgSlide: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/devfest-tls/bg.svg") no-repeat 25vh center, var(--secondary);
   --fgSlide: var(--primary);
-  --bgCover: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/bg.svg") no-repeat 25vh center, var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/devfest-tls/bg.svg") no-repeat 25vh center, var(--secondary);
   --fgCover: var(--primary);
-  --bgPart: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/bg.svg") no-repeat 25vh center, var(--secondary);
+  --bgPart: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), url("./assets/devfest-tls/bg.svg") no-repeat 25vh center, var(--secondary);
   --fgPart: var(--primary);
   --headerFontSize: 1.5rem;
   --bgHeader: var(--primary);
@@ -44,8 +44,11 @@
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
   --txtFooter: '#DevFestToulouse @ilaborie #CSS #🦄';
-  --logoFooter: url("./assets/devfest-logo-v2017.svg");
+  --logoFooter: url("./assets/devfest-tls/devfest-logo-v2017.svg");
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
   --bgCode: #2b2b2b;
   --fgCode: #bababa; }
+
+ul li {
+  list-style: url("./assets/devfest-tls/puce.svg"); }

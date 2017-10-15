@@ -4,7 +4,7 @@ import org.ilaborie.slides.Group
 import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.web.CssCompatibility
 
-fun preprocessor(group: Group) = group
+fun preprocessor(country:String, group: Group) = group
         .slide(title = "Bordure des boutons", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/01_preprocessor/boutons")
         }
@@ -18,5 +18,5 @@ fun preprocessor(group: Group) = group
                             Link("CSS Color Module Level 4", "https://www.w3.org/TR/css-color-4/"))
         }
         .slide(title = "Compatibilité", id = "compat-1") {
-            CssCompatibility(browsersThreshold, listOf("currentcolor", "background-img-opts", "css-variables"))
+            CssCompatibility(country, browsersThreshold, listOf("currentcolor", "background-img-opts", "css-variables"))
         }

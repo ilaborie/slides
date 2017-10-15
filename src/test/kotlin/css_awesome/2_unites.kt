@@ -6,7 +6,7 @@ import org.ilaborie.slides.content.web.CssCompatibility
 
 val holyGrail = ExternalResource("/cssIsAwesome/02_unites/holy_grail.html")
 
-fun unites(group: Group) = group
+fun unites(country:String, group: Group) = group
         .slide(title = "Une histoire d’unités CSS") {
             Figure("Une histoire d’unités CSS".raw(),
                    ExternalLink("https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg"),
@@ -33,5 +33,5 @@ fun unites(group: Group) = group
             )
         }
         .slide(title = "Compatibilité", id = "compat-2") {
-            CssCompatibility(browsersThreshold, listOf("rem", "viewport-units", "calc"))
+            CssCompatibility(country,browsersThreshold, listOf("rem", "viewport-units", "calc"))
         }

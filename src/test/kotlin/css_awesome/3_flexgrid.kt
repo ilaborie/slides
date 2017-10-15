@@ -5,7 +5,7 @@ import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.Language.*
 import org.ilaborie.slides.content.web.CssCompatibility
 
-fun flexgrid(group: Group) = group
+fun flexgrid(country:String, group: Group) = group
         .slide(title = "Holy Grail avec <code>flexbox</code>".html(), id = "holy-grail-flexbox") {
                     ExternalHtmlContent(ExternalResource("/cssIsAwesome/02_unites/holy_grail-inner.html")) +
                             ExternalCodeContent(HTML, holyGrail)
@@ -32,5 +32,5 @@ fun flexgrid(group: Group) = group
                                     ))
         }
         .slide(title = "Compatibilité", id = "compat-3") {
-            CssCompatibility(browsersThreshold, listOf("flexbox", "css-grid", "css-featurequeries"))
+            CssCompatibility(country, browsersThreshold, listOf("flexbox", "css-grid", "css-featurequeries"))
         }

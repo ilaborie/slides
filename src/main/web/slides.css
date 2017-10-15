@@ -355,7 +355,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     content: '➼ '; }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
     content: '';
-    background-image: url("./assets/github-octocat.svg");
+    background-image: url("./assets/brands/github-octocat.svg");
     width: 1em;
     height: 1em;
     display: inline-block;
@@ -405,9 +405,6 @@ dl {
     font-weight: bold;
     justify-self: end; }
 
-ul li {
-  list-style: url("./assets/puce.svg"); }
-
 figure {
   display: flex;
   flex-direction: column;
@@ -453,15 +450,17 @@ style[contenteditable=true] {
 .compatibility-caption {
   font-size: .7rem; }
   .compatibility-caption::before {
-    content: 'Navigateur usage ≥ '; }
-  .compatibility-caption::after {
+    content: 'Navigateurs, usage ≥ '; }
+  .compatibility-caption.country-FR::after {
     content: '% en France'; }
+  .compatibility-caption.country-MA::after {
+    content: '% au Maroc'; }
 
 .compatibility {
   display: grid;
   font-size: .8rem;
   grid-gap: .1rem;
-  grid-template-rows: 1fr 1.2em;
+  grid-template-rows: 5em 1.2em;
   grid-auto-rows: 1fr; }
   .compatibility .browser, .compatibility .feature, .compatibility .value {
     display: flex;
@@ -568,7 +567,8 @@ html {
   font-size: var(--baseFontSize); }
 
 body {
-  font-family: var(--fontBody); }
+  font-family: var(--fontBody);
+  margin: 0; }
 
 blockquote p {
   font-family: var(--quoteFont);

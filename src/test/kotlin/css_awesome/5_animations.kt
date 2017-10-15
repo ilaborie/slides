@@ -5,7 +5,7 @@ import org.ilaborie.slides.content.Link
 import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.content.web.CssCompatibility
 
-fun animations(group: Group) = group
+fun animations(country:String, group: Group) = group
         .slide(title = "Texte de chargement", styleClass = setOf("live-code")) {
             cssLiveCode("/cssIsAwesome/05_animations/loader")
         }
@@ -24,5 +24,5 @@ fun animations(group: Group) = group
             )
         }
         .slide(title = "Compatibilité", id = "compat-5") {
-            CssCompatibility(browsersThreshold, listOf("css-animation", "svg"))
+            CssCompatibility(country, browsersThreshold, listOf("css-animation", "svg"))
         }

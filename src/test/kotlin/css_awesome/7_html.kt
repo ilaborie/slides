@@ -6,7 +6,7 @@ import org.ilaborie.slides.content.web.CssCompatibility
 import org.ilaborie.slides.content.web.EditableZone
 
 private val progress = ExternalResource("/cssIsAwesome/07_HTML/progress.html")
-fun html(group: Group) = group
+fun html(country:String, group: Group) = group
         .slide("Progress") {
             Link("The HTML5 progress Element\n", "https://css-tricks.com/html5-progress-element/") +
                     ExternalCodeContent(Language.HTML, progress) +
@@ -26,5 +26,5 @@ fun html(group: Group) = group
             )
         }
         .slide(title = "Compatibilité", id = "compat-7") {
-            CssCompatibility(browsersThreshold, listOf("progress", "details", "dialog"))
+            CssCompatibility(country, browsersThreshold, listOf("progress", "details", "dialog"))
         }

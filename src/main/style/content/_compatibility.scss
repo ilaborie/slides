@@ -2,17 +2,20 @@
   font-size: .7rem;
 
   &::before {
-    content: 'Navigateur usage ≥ ';
+    content: 'Navigateurs, usage ≥ ';
   }
-  &::after {
+  &.country-FR::after {
     content: '% en France';
+  }
+  &.country-MA::after {
+    content: '% au Maroc';
   }
 }
 .compatibility {
   display: grid;
   font-size: .8rem;
   grid-gap: .1rem;
-  grid-template-rows: 1fr 1.2em;
+  grid-template-rows: 5em 1.2em;
   grid-auto-rows: 1fr;
 
   .browser, .feature, .value {

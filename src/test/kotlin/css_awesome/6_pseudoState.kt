@@ -7,7 +7,7 @@ import org.ilaborie.slides.content.web.CssCompatibility
 import org.ilaborie.slides.content.web.EditableZone
 import org.ilaborie.slides.content.web.StyleEditable
 
-fun pseudoState(group: Group) = group
+fun pseudoState(country:String, group: Group) = group
         .slide(title = "Usage des info-bulles", contentType = ContentType.HTML)
         .slide(title = "Pseudo états", styleClass = setOf("two-columns")) {
             UnorderedList(
@@ -44,5 +44,5 @@ fun pseudoState(group: Group) = group
             EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/06_pseudo_classes/tab.html")))
         }
         .slide(title = "Compatibilité", id = "compat-6") {
-            CssCompatibility(browsersThreshold, listOf("css-sel3", "form-validation", "transforms3d"))
+            CssCompatibility(country, browsersThreshold, listOf("css-sel3", "form-validation", "transforms3d"))
         }

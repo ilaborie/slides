@@ -15,7 +15,7 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="github"]::before {
       content: '';
-      background-image: url('./assets/github-octocat.svg');
+      background-image: url('./assets/brands/github-octocat.svg');
       width: 1em;
       height: 1em;
       display: inline-block;

@@ -12,9 +12,9 @@ data class StyleEditable(val initialCss: External, val finalCss: External? = nul
 data class EditableZone(val content: Content) : Content()
 
 
-data class CssCompatibility(val threshold: Number, private val features: List<String>) : Content() {
+data class CssCompatibility(val country: String, val threshold: Number, private val features: List<String>) : Content() {
     private val result: CompatibilityStatusResult by lazy {
-        val cmd = listOf("node", "src/main/typescript/compat.js", threshold.toString(), features.joinToString(separator = ","))
+        val cmd = listOf("node", "src/main/typescript/compat.js", country, threshold.toString(), features.joinToString(separator = ","))
         logger.info {
             "Run ${cmd.joinToString(separator = " ") { "\"$it\"" }} ..."
         }
@@ -29,11 +29,11 @@ data class CssCompatibility(val threshold: Number, private val features: List<St
     }
 
     private fun getBrowser(key: String): Browser = result.browsers
-            .find { it.key == key }
+        .find { it.key == key }
             ?: throw IllegalArgumentException("Browser $key not found")
 
     private fun getFeature(key: String): Feature = result.features
-            .find { it.key == key }
+        .find { it.key == key }
             ?: throw IllegalArgumentException("Feature $key not found")
 
     val table: Table<Feature, Browser, Value> by lazy {

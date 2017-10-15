@@ -1,15 +1,11 @@
 package css_awesome
 
-import org.ilaborie.logger.Logger
+import org.ilaborie.slides.BasicSlide
 import org.ilaborie.slides.Presentation
 import org.ilaborie.slides.buildAll
-import org.ilaborie.slides.content.ExternalHtmlContent
-import org.ilaborie.slides.content.ExternalResource
-import org.ilaborie.slides.content.html
+import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.web.EditableZone
 import org.ilaborie.slides.content.web.StyleEditable
-import org.ilaborie.slides.generateMissingExternals
-import org.ilaborie.slides.hasMissingExternals
 import java.io.File
 
 
@@ -20,30 +16,44 @@ fun cssLiveCode(prefix: String) =
             EditableZone(ExternalHtmlContent(ExternalResource("$prefix.html")))
 
 fun main(args: Array<String>) {
-    val logger = Logger("CSS")
-
-    val title = "C<span class=\"logo-askew\">S</span>S is awesome!".html()
-    val cssIsAwesome = Presentation(title = title, id = "cssIsAwesome")
-        .group("Introduction", skipPart = true) { intro(this) }
-        .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor(this) }
-        .group("Unités") { unites(this) }
-        .group("Flexbox et Grid") { flexgrid(this) }
-        .group("Pseudo éléments") { pseudoElt(this) }
-        .group("Animations") { animations(this) }
-        .group("Pseudo classes d'état", "pseudo_classes") { pseudoState(this) }
-        .group("HTML") { html(this) }
-        .group("Conclusion") { conclusion(this) }
 
     val slidesDir = File("src/test/resources/")
-
-    if (cssIsAwesome.hasMissingExternals()) {
-        logger.info { "Generate missing slides" }
-        cssIsAwesome.generateMissingExternals(slidesDir)
-    }
-
     val dist = File("src/main/web")
-    cssIsAwesome.buildAll(dist, "devfest-tls")
-    cssIsAwesome.buildAll(dist, "devoxx-ma")
+
+    val title = "C<span class=\"logo-askew\">S</span>S is awesome!".html()
+
+    // Devfest Toulouse
+    val cssIsAwesome = Presentation(title = title, id = "cssIsAwesome")
+        .group("Introduction", skipPart = true) { intro(this) }
+        .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor("FR", this) }
+        .group("Unités") { unites("FR", this) }
+        .group("Flexbox et Grid") { flexgrid("FR", this) }
+        .group("Pseudo éléments") { pseudoElt("FR", this) }
+        .group("Animations") { animations("FR", this) }
+        .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("FR", this) }
+        .group("HTML") { html("FR", this) }
+        .group("Conclusion") { conclusion(this) }
+    cssIsAwesome
+        .buildAll(dist, "devfest-tls")
+
+    // Devoxx Maroc
+    Presentation(title = title, id = "cssIsAwesome")
+        .group("Introduction", skipPart = true) { intro(this) }
+        .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor("MA", this) }
+        .group("Unités") { unites("MA", this) }
+        .group("Flexbox et Grid") { flexgrid("MA", this) }
+        .group("Pseudo éléments") { pseudoElt("MA", this) }
+        .group("Animations") { animations("MA", this) }
+        .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("MA", this) }
+        .group("Conclusion") { conclusion(this) }
+        .removeSlide("omit")
+        .replaceSlide("liens", BasicSlide(id = "Liens",
+                                          content = UnorderedList(
+                                                  Link("les slides en HTML", "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome"),
+                                                  Link("les slides en PDF", "https://ilaborie.github.io/slides/devoxx-ma.pdf"),
+                                                  Link("le code", "https://github.com/ilaborie/slides"),
+                                                  Link("Blog: 'Making Of'", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))))
+        .buildAll(dist, "devoxx-ma")
 
     copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist.resolve(cssIsAwesome.id))
 }

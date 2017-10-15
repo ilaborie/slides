@@ -25,7 +25,7 @@ fun intro(group: Group) = group
                    "JavaScript, WebAssembly (gestion d'états, appel backend, calculs)").ol() +
                     "⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles".em()
         }
-        .slide(title = "Le CSS c'est vaste", styleClass = setOf("two-columns")) {
+        .slide(title = "Le CSS c'est vaste", id= "omit",styleClass = setOf("two-columns")) {
             listOf("Selectors",
                    "Box model",
                    "Float",

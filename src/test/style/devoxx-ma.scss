@@ -48,15 +48,15 @@
   // Slide
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
   --fgSlide: var(--primary);
 
   // Slide Cover
-  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
   --fgCover: var(--primary);
 
   // Slide Part
-  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/bg.svg') no-repeat 25vh center, var(--secondary);
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
   --fgPart: var(--primary);
 
   // Slide standard
@@ -82,4 +82,25 @@
   // Code
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
+
+
+  main section::after {
+    background-origin: unset;
+  }
+
+  $fgPattern: rgb(248, 247, 251);
+
+  main section {
+    // from http://lea.verou.me/css3patterns/#marrakesh
+    background-image:
+            radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%),
+            radial-gradient($fgPattern 9px, transparent 10px),
+            repeating-radial-gradient($fgPattern 0, $fgPattern 4px, transparent 5px, transparent 20px, $fgPattern 21px, $fgPattern 25px, transparent 26px, transparent 50px);
+    background-size: contain, 30px 30px, 90px 90px;
+    background-position: 0 0;
+  }
+
+  main section.part::before {
+    color: var(--primary);
+  }
 }
