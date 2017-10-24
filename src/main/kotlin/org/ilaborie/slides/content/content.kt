@@ -54,7 +54,9 @@ data class Definitions(val map: Map<Content, Content>) : Content() {
     constructor(vararg pairs: Pair<String, Content>) : this(pairs.map { (key, value) -> key.raw() to value }.toMap())
 }
 
-data class OrderedList(val contents: List<Content>) : Content()
+data class OrderedList(val contents: List<Content>) : Content() {
+    constructor(vararg contents: Content) : this(contents.toList())
+}
 
 data class UnorderedList(val contents: List<Content>) : Content() {
     constructor(vararg contents: Content) : this(contents.toList())
@@ -70,7 +72,11 @@ data class Quote(val content: Content, val author: String? = null, val cite: Str
 data class Strong(val content: Content) : Content()
 data class Emphasis(val content: Content) : Content()
 data class Block(val content: Content) : Content()
+data class Notice(val kind: NoticeKind, val content: Content) : Content()
 
+enum class NoticeKind {
+    Tips, Info, Warning, Error
+}
 
 // Lang
 enum class Language {

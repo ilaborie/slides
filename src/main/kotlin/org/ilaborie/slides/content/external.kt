@@ -132,8 +132,8 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is Title                   -> title.toExternal()
     is Link                    -> content.toExternal()
     is Definitions             -> map.toList()
-            .flatMap { (key, value) -> listOf(key, value) }
-            .flatMap { it.toExternal() }
+        .flatMap { (key, value) -> listOf(key, value) }
+        .flatMap { it.toExternal() }
     is OrderedList             -> contents.flatMap { it.toExternal() }
     is UnorderedList           -> contents.flatMap { it.toExternal() }
     is Figure                  -> title.toExternal() + externalImage + (copyright?.toExternal() ?: emptyList())
@@ -145,5 +145,6 @@ fun Content.toExternal(): Iterable<External> = when (this) {
     is StyleEditable           -> if (finalCss != null) listOf(initialCss, finalCss) else listOf(initialCss)
     is EditableZone            -> content.toExternal()
     is CssCompatibility        -> emptyList()
+    is Notice                  -> content.toExternal()
     else                       -> TODO()
 }

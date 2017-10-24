@@ -353,13 +353,18 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
-  section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
+  section article a[href*="github"]::before, section article a[href*="twitter"]::before, section article a[href*="jetbrains"]::before, section h1 a[href*="github"]::before, section h1 a[href*="twitter"]::before, section h1 a[href*="jetbrains"]::before, section h2 a[href*="github"]::before, section h2 a[href*="twitter"]::before, section h2 a[href*="jetbrains"]::before, section h3 a[href*="github"]::before, section h3 a[href*="twitter"]::before, section h3 a[href*="jetbrains"]::before, section h4 a[href*="github"]::before, section h4 a[href*="twitter"]::before, section h4 a[href*="jetbrains"]::before {
     content: '';
-    background-image: url("./assets/brands/github-octocat.svg");
     width: 1em;
     height: 1em;
     display: inline-block;
     background-size: contain; }
+  section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
+    background-image: url("./assets/brands/github-octocat.svg"); }
+  section article a[href*="twitter"]::before, section h1 a[href*="twitter"]::before, section h2 a[href*="twitter"]::before, section h3 a[href*="twitter"]::before, section h4 a[href*="twitter"]::before {
+    background-image: url("./assets/brands/twitter.svg"); }
+  section article a[href*="jetbrains"]::before, section h1 a[href*="jetbrains"]::before, section h2 a[href*="jetbrains"]::before, section h3 a[href*="jetbrains"]::before, section h4 a[href*="jetbrains"]::before {
+    background-image: url("./assets/brands/intellij-idea.svg"); }
   section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
     content: '🎥 '; }
   section article a[href*="frog"]::before, section h1 a[href*="frog"]::before, section h2 a[href*="frog"]::before, section h3 a[href*="frog"]::before, section h4 a[href*="frog"]::before {
@@ -388,9 +393,23 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     content: 'ⓦ ';
     color: #888; }
   section article a[href*="monkeypatch"]::before, section h1 a[href*="monkeypatch"]::before, section h2 a[href*="monkeypatch"]::before, section h3 a[href*="monkeypatch"]::before, section h4 a[href*="monkeypatch"]::before {
-    content: '🍌 '; }
+    content: ' '; }
   section article a[href*="caniuse"]::before, section h1 a[href*="caniuse"]::before, section h2 a[href*="caniuse"]::before, section h3 a[href*="caniuse"]::before, section h4 a[href*="caniuse"]::before {
     content: '📊 '; }
+
+.notice {
+  font-size: .7rem;
+  border-radius: .25rem;
+  border: thin solid currentColor; }
+  .notice.notice-tips {
+    background: rgba(255, 255, 255, 0.5); }
+    .notice.notice-tips::before {
+      content: 'Tips\A';
+      font-weight: bold;
+      white-space: pre;
+      padding: .25rem; }
+  .notice ul {
+    list-style: none; }
 
 ul, ol, dl {
   margin-top: 0;

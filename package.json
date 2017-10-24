@@ -8,10 +8,10 @@
     "style:slides": "node-sass src/main/style/slides.scss --output src/main/web/",
     "style:print": "node-sass src/main/style/print.scss --output src/main/web/",
     "style:cssIsAwesome": "node-sass src/test/style/cssIsAwesome.scss --output src/main/web/",
+    "style:koltinHandsOn": "node-sass src/test/style/kotlinHandsOn.scss --output src/main/web/",
     "style:devfest-tls": "node-sass src/test/style/devfest-tls.scss --output src/main/web/",
     "style:devoxx-ma": "node-sass src/test/style/devoxx-ma.scss --output src/main/web/",
-    "style:watch": "npm run style:slides -- --watch & npm run style:print -- --watch & npm run style:cssIsAwesome -- --watch & npm run style:devfest-tls -- --watch & npm run style:devoxx-ma -- --watch",
-    "start": "npm run serve & npm run style:watch",
+    "start": "run-p -nl serve \"style:** -- --watch\"",
     "publish": "gh-pages --dist src/main/web"
   },
   "devDependencies": {
@@ -22,6 +22,7 @@
     "husky": "^0.14.3",
     "lite-server": "^2.3.0",
     "node-sass": "^4.5.3",
+    "npm-run-all": "^4.1.1",
     "ts-node": "^3.3.0",
     "typescript": "^2.5.2"
   },

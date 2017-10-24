@@ -6,18 +6,18 @@ import org.ilaborie.slides.content.web.EditableZone
 import org.ilaborie.slides.content.web.StyleEditable
 
 fun Presentation.renderAsMarkdown(): String =
-        slides.flatMap { slides -> slides.toList().map { slides to it } }
-                .joinToString(separator = "\n\n") { (slides, slide) ->
-                    slide.renderAsMarkdown { this.defaultContent(slides, slide) }
-                }
+    slides.flatMap { slides -> slides.toList().map { slides to it } }
+        .joinToString(separator = "\n\n") { (slides, slide) ->
+            slide.renderAsMarkdown { this.defaultContent(slides, slide) }
+        }
 
 fun Slide.renderAsMarkdown(defaultContent: () -> Content): String =
-        this.content(defaultContent).renderAsMarkdown()
+    this.content(defaultContent).renderAsMarkdown()
 
 fun Content.renderAsMarkdown(): String = when (this) {
     EmptyContent               -> ""
     is RawContent              -> content
-    is HtmlContent             -> html // TODO see https://github.com/vsch/flexmark-java/wiki/Extensions#html-to-markdown
+    is HtmlContent             -> html
     is SvgContent              -> svg
     is MarkdownContent         -> markdown
     is ExternalHtmlContent     -> htmlContent.renderAsMarkdown()
@@ -33,11 +33,11 @@ fun Content.renderAsMarkdown(): String = when (this) {
         "$key\n: ${content.renderAsMarkdown()}"
     }
     is OrderedList             -> contents
-            .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
-            .joinToString(separator = "\n")
+        .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
+        .joinToString(separator = "\n")
     is UnorderedList           -> contents
-            .map { "* ${it.renderAsMarkdown()}" }
-            .joinToString(separator = "\n")
+        .map { "* ${it.renderAsMarkdown()}" }
+        .joinToString(separator = "\n")
     is Paragraph               -> content.renderAsMarkdown()
     is Quote                   -> content.renderAsMarkdown().indent("> ")
     is Strong                  -> "**${content.renderAsMarkdown()}**"
@@ -46,16 +46,8 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Block                   -> content.renderAsMarkdown()
     is StyleEditable           -> "```CSS\n$initialCss\n```" // Edit not supported
     is EditableZone            -> content.renderAsMarkdown() // treated normally
-    is CssCompatibility        -> {
-        val browsers = table.columns()
-        browsers.joinToString(separator = "|", prefix = "feature|") +
-                browsers.map { "---" }.joinToString(separator = "|", prefix = "feature|") +
-                table.rows()
-                        .map { feature -> feature to browsers.map { browser -> table.get(feature, browser) } }
-                        .joinToString(separator = "\n") { (feature, values) ->
-                            values.joinToString(separator = "|", prefix = "$feature|")
-                        }
-    }
+    is CssCompatibility        -> this.renderAsMarkdown()
+    is Notice                  -> "*$kind*\n${content.renderAsMarkdown()}"
     else                       -> TODO()
 
 }
@@ -69,4 +61,15 @@ fun Title.renderAsMarkdown() = when (level) {
     1    -> title.renderAsMarkdown().underline('=')
     2    -> title.renderAsMarkdown().underline('-')
     else -> "${'#' * level} ${title.renderAsMarkdown()} ${'#' * level}\n"
+}
+
+fun CssCompatibility.renderAsMarkdown(): String {
+    val browsers = table.columns()
+    return browsers.joinToString(separator = "|", prefix = "feature|") +
+            browsers.map { "---" }.joinToString(separator = "|", prefix = "feature|") +
+            table.rows()
+                .map { feature -> feature to browsers.map { browser -> table.get(feature, browser) } }
+                .joinToString(separator = "\n") { (feature, values) ->
+                    values.joinToString(separator = "|", prefix = "$feature|")
+                }
 }

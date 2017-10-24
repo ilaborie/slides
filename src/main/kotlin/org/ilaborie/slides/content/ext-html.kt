@@ -51,7 +51,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <link rel="stylesheet" href="../print.css" media="print">
     <link rel="icon" type="image/png" href="../assets/$key/favicon.png" />
 </head>
-<body class="$key">
+<body class="$key $id">
     <div class="slides-nav hide-print" style="grid-template-columns : repeat(${slides.count() + 1}, auto);">
         <a href="#${coverSlide.id()}" class="${coverSlide.classes()}" title="${coverSlide.titleAsString()}">0</a>
         $groupsTitles
@@ -110,6 +110,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is StyleEditable           -> this.renderAsHtml()
     is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is CssCompatibility        -> this.renderAsHtml()
+    is Notice   -> this.renderAsHtml()
     else                       -> TODO()
 }
 
@@ -225,5 +226,11 @@ fun CssCompatibility.renderAsHtml(): String {
         |</div>$values""".trimMargin()
     }}
 </div>
-    """
+"""
 }
+
+fun Notice.renderAsHtml(): String = """
+<div class="notice notice-${kind.toString().toLowerCase()}">
+    ${content.renderAsHtml()}
+</div>
+"""

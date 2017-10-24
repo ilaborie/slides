@@ -13,13 +13,21 @@ section article, section h1, section h2, section h3, section h4 {
     &::before {
       content: '➼ ';
     }
-    &[href*="github"]::before {
+    &[href*="github"]::before, &[href*="twitter"]::before, &[href*="jetbrains"]::before {
       content: '';
-      background-image: url('./assets/brands/github-octocat.svg');
       width: 1em;
       height: 1em;
       display: inline-block;
       background-size: contain;
+    }
+    &[href*="github"]::before {
+      background-image: url('./assets/brands/github-octocat.svg');
+    }
+    &[href*="twitter"]::before {
+      background-image: url('./assets/brands/twitter.svg');
+    }
+    &[href*="jetbrains"]::before {
+      background-image: url('./assets/brands/intellij-idea.svg');
     }
     &[href*="youtube"]::before {
       content: '🎥 ';
@@ -60,7 +68,7 @@ section article, section h1, section h2, section h3, section h4 {
       color: #888;
     }
     &[href*="monkeypatch"]::before {
-      content: '🍌 ';
+      content: ' ';
     }
     &[href*="caniuse"]::before {
       content: '📊 ';

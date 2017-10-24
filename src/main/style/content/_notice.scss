@@ -1,0 +1,19 @@
+.notice {
+  font-size: .7rem;
+  border-radius: .25rem;
+  border: thin solid currentColor;
+
+  &.notice-tips {
+    background: hsla(1, 100%, 100%, .5);
+    &::before {
+      content: 'Tips\A';
+      font-weight: bold;
+      white-space: pre;
+      padding: .25rem;
+    }
+  }
+
+  ul {
+    list-style: none;
+  }
+}
