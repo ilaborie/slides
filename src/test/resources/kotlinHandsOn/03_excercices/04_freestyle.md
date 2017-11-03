@@ -7,4 +7,4 @@
 
 #### Exercice
 
-Résoudre le problème du transvasement en Kotlin
+* Résoudre le problème du transvasement en Kotlin

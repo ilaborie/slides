@@ -60,6 +60,9 @@ fun Presentation.renderAsHtml(key: String): String {
     <main>
 ${body.joinToString(separator = "\n")}
     </main>
+    ${this.scripts.joinToString(separator = "\n") {
+        """<script type="application/javascript" src="$it"></script>"""
+    }}
 </body>
 </html>"""
 }

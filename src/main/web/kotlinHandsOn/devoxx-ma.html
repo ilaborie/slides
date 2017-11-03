@@ -23,27 +23,30 @@
         <nav><a href="#pre_requis" class="" title="Pré-requis">1</a>
 <a href="#speakers" class="hide-title" title="Speakers">2</a>
 <a href="#pourquoi_un_nouveau_langage__" class="" title="Pourquoi un nouveau langage ?">3</a>
-<a href="#caracteristique_de_kotlin" class="" title="Caractéristique de Kotlin">4</a>
+<a href="#caracteristiques_de_kotlin" class="" title="Caractéristiques de Kotlin">4</a>
 <a href="#cible" class="" title="Cible">5</a>
 <a href="#roadmap" class="roadmap" title="Roadmap">6</a></nav>
 <nav><a href="#part_water_pouring_problem" class="part" title="Water Pouring Problem">7</a>
 <a href="#theiere_magique" class="" title="Théière magique">8</a>
-<a href="#verre" class="" title="Verre">9</a>
-<a href="#operations" class="" title="Opérations">10</a>
-<a href="#demo" class="" title="Démo">11</a></nav>
-<nav><a href="#part_live_code" class="part" title="Live Code">12</a>
-<a href="#hello_world" class="" title="Hello World">13</a>
-<a href="#glass" class="" title="Glass">14</a>
-<a href="#moves" class="" title="Moves">15</a></nav>
-<nav><a href="#part_excercices" class="part" title="Excercices">16</a>
-<a href="#choisir_son_exercice" class="" title="Choisir son exercice">17</a>
-<a href="#android" class="exo" title="Android">18</a>
-<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">19</a>
-<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">20</a>
-<a href="#freestyle" class="exo" title="Freestyle">21</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">22</a>
-<a href="#kotlin_magic" class="two-columns" title="Kotlin magic">23</a>
-<a href="#missing_part" class="" title="Missing part">24</a></nav>
+<a href="#verres" class="operation" title="Verres">9</a>
+<a href="#remplire" class="operation" title="Remplire">10</a>
+<a href="#vider" class="operation" title="Vider">11</a>
+<a href="#verser" class="operation" title="Verser">12</a>
+<a href="#demo" class="" title="Démo">13</a></nav>
+<nav><a href="#part_live_code" class="part" title="Live Code">14</a>
+<a href="#hello_world" class="" title="Hello World">15</a>
+<a href="#glass" class="" title="Glass">16</a>
+<a href="#moves" class="" title="Moves">17</a></nav>
+<nav><a href="#part_excercices" class="part" title="Excercices">18</a>
+<a href="#choisir_son_exercice" class="" title="Choisir son exercice">19</a>
+<a href="#android" class="exo" title="Android">20</a>
+<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">21</a>
+<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">22</a>
+<a href="#freestyle" class="exo" title="Freestyle">23</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">24</a>
+<a href="#les_manques" class="" title="Les manques">25</a>
+<a href="#ce_qui_est_super" class="two-columns" title="Ce qui est super">26</a>
+<a href="#liens" class="" title="Liens">27</a></nav>
     </div>
     <main>
 
@@ -63,10 +66,10 @@
     <a href="#kotlinHandsOn" class="previous" aria-label="Précédant"></a>
     <h3>Pré-requis</h3>
     <article>
-        TODO
-<ol><li>TODO Wifi</li>
-<li><code>git clone</code></li>
-<li><code>./gradlew assemble</code></li></ol>
+        <ol><li>TODO Wifi</li>
+<li><a href="http://">Récupérer la présentation TODO</a></li>
+<li><code>git clone TODO</code></li>
+<li><code>./gradlew downloadDependencies</code></li></ol>
     </article>
     <a href="#speakers" class="next" aria-label="Suivant"></a>
 </section>
@@ -96,23 +99,23 @@ Expert Java & Web
     <a href="#speakers" class="previous" aria-label="Précédant"></a>
     <h3>Pourquoi un nouveau langage ?</h3>
     <article>
-        <ul><li>Safety</li>
-<li>Time to market</li>
-<li>Ease of transcription of our ideas</li></ul>
+        <ul><li>Écrire du code plus sûr</li>
+<li>Facilité la maintenance</li>
+<li>Écrire plus rapidement</li>
+<li>...</li></ul>
     </article>
-    <a href="#caracteristique_de_kotlin" class="next" aria-label="Suivant"></a>
+    <a href="#caracteristiques_de_kotlin" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Caractéristique de Kotlin -->
-<section id="caracteristique_de_kotlin" class="">
+<!-- Slide Caractéristiques de Kotlin -->
+<section id="caracteristiques_de_kotlin" class="">
     <a href="#pourquoi_un_nouveau_langage__" class="previous" aria-label="Précédant"></a>
-    <h3>Caractéristique de Kotlin</h3>
+    <h3>Caractéristiques de Kotlin</h3>
     <article>
-        <ul><li>Sûr</li>
-<li>Abordable</li>
-<li>Pragmatic</li>
-<li>Statiquement typé</li>
+        <ul><li>Éviter les NPE, statiquement typé</li>
+<li>Abordable, si on vient de Java</li>
+<li>Expressif et pragmatique</li>
 <li>Inspiré par Java, Scala, C#, Groovy, ...</li></ul>
     </article>
     <a href="#cible" class="next" aria-label="Suivant"></a>
@@ -121,12 +124,18 @@ Expert Java & Web
 
 <!-- Slide Cible -->
 <section id="cible" class="">
-    <a href="#caracteristique_de_kotlin" class="previous" aria-label="Précédant"></a>
+    <a href="#caracteristiques_de_kotlin" class="previous" aria-label="Précédant"></a>
     <h3>Cible</h3>
     <article>
-        <ul><li>la JVM et Android</li>
-<li>JavaScript</li>
-<li>Native avec LLVM (Expérimentale)</li></ul>
+        <img src="../assets/brands/java.svg" alt="JVM" class="jvm">
+<img src="../assets/brands/android.svg" alt="Android" class="android">
+<img src="../assets/brands/javascript.svg" alt="JavaScript" class="js">
+<img src="../assets/brands/LLVM.svg" alt="LLVM" class="native">
+
+<h4 class="jvm-android">JVM et Android</h4>
+<h4 class="js">JavaScript</h4>
+<h4 class="native">Native avec LLVM</h4>
+
     </article>
     <a href="#roadmap" class="next" aria-label="Suivant"></a>
 </section>
@@ -164,29 +173,121 @@ Expert Java & Web
     <article>
         TODO
     </article>
-    <a href="#verre" class="next" aria-label="Suivant"></a>
+    <a href="#verres" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Verre -->
-<section id="verre" class="">
+<!-- Slide Verres -->
+<section id="verres" class="operation">
     <a href="#theiere_magique" class="previous" aria-label="Précédant"></a>
-    <h3>Verre</h3>
+    <h3>Verres</h3>
     <article>
-        TODO
+        <div>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 8rem;background-image: linear-gradient(to top, chocolate 100%, transparent 0px);"></div>
+		<span>8 / 8</span>
+	</div>
+
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 6rem;background-image: linear-gradient(to top, chocolate 0%, transparent 0px);"></div>
+		<span>0 / 6</span>
+	</div>
+
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 25%, transparent 0px);"></div>
+		<span>1 / 4</span>
+	</div>
+</div>
+
     </article>
-    <a href="#operations" class="next" aria-label="Suivant"></a>
+    <a href="#remplire" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Opérations -->
-<section id="operations" class="">
-    <a href="#verre" class="previous" aria-label="Précédant"></a>
-    <h3>Opérations</h3>
+<!-- Slide Remplire -->
+<section id="remplire" class="operation">
+    <a href="#verres" class="previous" aria-label="Précédant"></a>
+    <h3>Remplire</h3>
     <article>
-        <ul><li>Vider</li>
-<li>Remplire</li>
-<li>Verser</li></ul>
+        <div>
+	Fill
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 25%, transparent 0px);"></div>
+		<span>1 / 4</span>
+	</div>
+	<span class="ope">➡️</span>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 100%, transparent 0px);"></div>
+		<span>4 / 4</span>
+	</div>
+</div>
+    </article>
+    <a href="#vider" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Vider -->
+<section id="vider" class="operation">
+    <a href="#remplire" class="previous" aria-label="Précédant"></a>
+    <h3>Vider</h3>
+    <article>
+        <div>
+	Empty
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 75%, transparent 0px);"></div>
+		<span>3 / 4</span>
+	</div>
+	<span class="ope">➡️</span>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 0%, transparent 0px);"></div>
+		<span>4 / 4</span>
+	</div>
+</div>
+    </article>
+    <a href="#verser" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Verser -->
+<section id="verser" class="operation">
+    <a href="#vider" class="previous" aria-label="Précédant"></a>
+    <h3>Verser</h3>
+    <article>
+        <div>
+	Pour
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 8rem;background-image: linear-gradient(to top, chocolate 75%, transparent 0px);"></div>
+		<span>6 / 8</span>
+	</div>
+	into
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 33.3%, transparent 0px);"></div>
+		<span>2 / 6</span>
+	</div>
+
+	<span class="ope">➡️</span>
+
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 8rem;background-image: linear-gradient(to top, chocolate 25%, transparent 0px);"></div>
+		<span>2 / 8</span>
+	</div>
+	,
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 100%, transparent 0px);"></div>
+		<span>6 / 6</span>
+	</div>
+</div>
     </article>
     <a href="#demo" class="next" aria-label="Suivant"></a>
 </section>
@@ -194,7 +295,7 @@ Expert Java & Web
 
 <!-- Slide Démo -->
 <section id="demo" class="">
-    <a href="#operations" class="previous" aria-label="Précédant"></a>
+    <a href="#verser" class="previous" aria-label="Précédant"></a>
     <h3>Démo</h3>
     <article>
         TODO
@@ -396,7 +497,9 @@ Implémenter sans guide</p>
 <li>Un IDE qui marche bien avec Kotlin comme <a href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA CE</a></li>
 </ul>
 <h4 id="exercice">Exercice</h4>
-<p>Résoudre le problème du transvasement en Kotlin</p>
+<ul>
+<li>Résoudre le problème du transvasement en Kotlin</li>
+</ul>
 
     </article>
     <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
@@ -410,44 +513,64 @@ Implémenter sans guide</p>
     <article>
         
     </article>
-    <a href="#kotlin_magic" class="next" aria-label="Suivant"></a>
+    <a href="#les_manques" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Kotlin magic -->
-<section id="kotlin_magic" class="two-columns">
+<!-- Slide Les manques -->
+<section id="les_manques" class="">
     <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
-    <h3>Kotlin magic</h3>
+    <h3>Les manques</h3>
     <article>
-        <ul><li>Null Safety</li>
+        <ul><li>Un vrai pattern-matching</li>
+<li>Privé par défaut ?</li></ul>
+    </article>
+    <a href="#ce_qui_est_super" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Ce qui est super -->
+<section id="ce_qui_est_super" class="two-columns">
+    <a href="#les_manques" class="previous" aria-label="Précédant"></a>
+    <h3>Ce qui est super</h3>
+    <article>
+        <ul><li>Null safety</li>
 <li>Lambda</li>
-<li>data class</li>
+<li>Les data class</li>
+<li>Pas de type primitive</li>
+<li>Top Level Function</li>
+<li>Paramètres nommés, valeur par défaut</li>
+<li>Tail recursion</li>
+<li>Super <code>switch</code> avec <code>when</code></li>
 <li>Déconstruction</li>
-<li>No primitive type</li>
-<li>Function first class citizen</li>
+<li>Coroutines</li>
+<li>Posibilité d'écrire des DSL</li>
 <li>Multi-platform</li>
-<li>DSL ready</li>
-<li>Named parameter, default parameter value</li>
-<li>Coroutine</li>
-<li>tail recursion</li>
-<li>super <code>switch</code> avec <code>when</code></li>
 <li>...</li></ul>
     </article>
-    <a href="#missing_part" class="next" aria-label="Suivant"></a>
+    <a href="#liens" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Missing part -->
-<section id="missing_part" class="">
-    <a href="#kotlin_magic" class="previous" aria-label="Précédant"></a>
-    <h3>Missing part</h3>
+<!-- Slide Liens -->
+<section id="liens" class="">
+    <a href="#ce_qui_est_super" class="previous" aria-label="Précédant"></a>
+    <h3>Liens</h3>
     <article>
-        <ul><li>Real pattern matching</li>
-<li>private by default ?</li></ul>
+        <ul>
+<li>TODO</li>
+<li>TODO</li>
+<li>TODO</li>
+<li>TODO</li>
+</ul>
+
     </article>
     
 </section>
 
     </main>
+    <script type="application/javascript" src="../scripts/navigation.js"></script>
+<script type="application/javascript" src="../scripts/water-pouring.js"></script>
+<script type="application/javascript" src="../scripts/water-pouring-demo.js"></script>
 </body>
 </html>

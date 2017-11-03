@@ -13,8 +13,11 @@ interface Slides {
 
 data class Presentation(val title: Content,
                         override val id: String,
-                        val slides: List<Slides> = emptyList()) : Slides {
-    constructor(title: String, id: String = title.normalize()) : this(title = title.raw(), id = id)
+                        val slides: List<Slides> = emptyList(),
+                        val scripts: List<String> = emptyList()) : Slides {
+    constructor(title: String,
+                id: String = title.normalize(),
+                scripts: List<String> = emptyList()) : this(title = title.raw(), id = id, scripts = scripts)
 
     val coverSlide by lazy { MainTitleSlide(title, id) }
 

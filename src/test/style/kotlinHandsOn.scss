@@ -4,6 +4,7 @@
 }
 
 @import "common/print";
+@import "./water-pouring";
 
 #speakers {
   background: #00b0f0;
@@ -50,6 +51,51 @@
 
 }
 
+#cible {
+  article {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 2fr;
+    align-content: center;
+    justify-items: center;
+    grid-gap: .5rem;
+
+    .jvm-android {
+      grid-column: 1 / 3;
+    }
+
+    img {
+      width: 12vw;
+      align-self: end;
+    }
+  }
+}
+
+#roadmap {
+  ol {
+    margin-left: 4rem;
+  }
+}
+
+section.operation {
+  article {
+    align-items: stretch;
+    & > div {
+      margin-top: -2rem;
+      display: flex;
+      font-weight: bold;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-end;
+      .glass-container {
+        margin-bottom: -2rem;
+      }
+      .ope {
+        font-size: 2rem;
+      }
+    }
+  }
+}
+
 #choisir_son_exercice {
   article {
     display: grid;
@@ -68,6 +114,12 @@
       justify-content: center;
       align-items: stretch;
       text-align: center;
+      transition: all .4s ease-in-out;
+
+      &:hover {
+        box-shadow: .125rem .125rem .125rem rgba(0, 0, 0, 0.5);
+        transform: translateY(-0.03125rem);
+      }
 
       a {
         align-self: center;

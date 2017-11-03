@@ -1,6 +1,7 @@
 package kotlin_hands_on
 
 import org.ilaborie.logger.Logger
+import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.Presentation
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.*
@@ -14,63 +15,60 @@ fun main(args: Array<String>) {
 
     val logger = Logger("Kotlin Hands on")
 
-    val kotlinHandsOn = Presentation(title = "Kotlin par l'exemple", id = "kotlinHandsOn")
+    val kotlinHandsOn = Presentation(title = "Kotlin par l'exemple",
+                                     id = "kotlinHandsOn",
+                                     scripts = listOf(
+                                             "../scripts/navigation.js",
+                                             "../scripts/water-pouring.js",
+                                             "../scripts/water-pouring-demo.js"
+                                     ))
         .group("Introduction", skipPart = true) {
             slide("Pré-requis") {
-                "TODO".html() +
-                        OrderedList(
-                                "TODO Wifi".html(),
-                                Code("git clone"),
-                                // FIXME https://stackoverflow.com/questions/21814652/how-to-download-dependencies-in-gradle
-                                Code("./gradlew assemble"))
+                OrderedList(
+                        "TODO Wifi".html(),
+                        Link("Récupérer la présentation TODO", "http://"),
+                        Code("git clone TODO"),
+                        // FIXME https://stackoverflow.com/questions/21814652/how-to-download-dependencies-in-gradle
+                        Code("./gradlew downloadDependencies"))
             }
                 .slide("Speakers", styleClass = setOf("hide-title")) {
                     Block("Emmanuel Vinas".h4() +
-                                    "Expert Android & Java".html() +
-                                    Link("@emmanuelvinas", "https://twitter.com/emmanuelvinas") +
-                                    Link("emmanuel@monkeypatch.io", "mailto:emmanuel@monkeypatch.io")
+                                  "Expert Android & Java".html() +
+                                  Link("@emmanuelvinas", "https://twitter.com/emmanuelvinas") +
+                                  Link("emmanuel@monkeypatch.io", "mailto:emmanuel@monkeypatch.io")
                     ) +
                             Block("Igor Laborie".h4() +
-                                            "Expert Java & Web".html() +
-                                            Link("@ilaborie", "https://twitter.com/ilaborie") +
-                                            Link("igor@monkeypatch.io", "mailto:igor@monkeypatch.io")
+                                          "Expert Java & Web".html() +
+                                          Link("@ilaborie", "https://twitter.com/ilaborie") +
+                                          Link("igor@monkeypatch.io", "mailto:igor@monkeypatch.io")
                             ) +
                             Link(ExternalSvgContent(ExternalResource("/cssIsAwesome/00_introduction/monkeypatch.svg")), "http://www.monkeypatch.io/")
                 }
                 .slide("Pourquoi un nouveau langage ?") {
                     listOf(
-                            "Safety",
-                            "Time to market",
-                            "Ease of transcription of our ideas"
+                            "Écrire du code plus sûr",
+                            "Facilité la maintenance",
+                            "Écrire plus rapidement",
+                            "..."
                     ).ul()
                 }
-                .slide("Caractéristique de Kotlin") {
+                .slide("Caractéristiques de Kotlin") {
                     listOf(
-                            "Sûr",
-                            "Abordable",
-                            "Pragmatic",
-                            "Statiquement typé",
+                            "Éviter les NPE, statiquement typé",
+                            "Abordable, si on vient de Java",
+                            "Expressif et pragmatique",
                             "Inspiré par Java, Scala, C#, Groovy, ..."
                     ).ul()
                 }
-                .slide("Cible") {
-                    listOf(
-                            "la JVM et Android",
-                            "JavaScript",
-                            "Native avec LLVM (Expérimentale)"
-                    ).ul()
-                }
+                .slide("Cible", contentType = HTML)
                 .roadMap("Roadmap")
         }
         .group("Water Pouring Problem") {
             slide("Théière magique") { "TODO".html() }
-                .slide("Verre") { "TODO".html() }
-                .slide("Opérations") {
-                    UnorderedList(
-                            "Vider".html(),
-                            "Remplire".html(),
-                            "Verser".html())
-                }
+                .slide("Verres", contentType = HTML, styleClass = setOf("operation"))
+                .slide("Remplire", contentType = HTML, styleClass = setOf("operation"))
+                .slide("Vider", contentType = HTML, styleClass = setOf("operation"))
+                .slide("Verser", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Démo") { "TODO".html() }
 
         }
@@ -102,29 +100,28 @@ fun main(args: Array<String>) {
                 .slide("Freestyle", styleClass = setOf("exo"))
         }
         .group("Conclusion") {
-            slide("Kotlin magic", styleClass = setOf("two-columns")) {
+            slide("Les manques") {
                 UnorderedList(
-                        "Null Safety".html(),
-                        "Lambda".html(),
-                        "data class".html(),
-                        "Déconstruction".html(),
-                        "No primitive type".html(),
-                        "Function first class citizen".html(),
-                        "Multi-platform".html(),
-                        "DSL ready".html(),
-                        "Named parameter, default parameter value".html(),
-                        "Coroutine".html(),
-                        "tail recursion".html(),
-                        "super <code>switch</code> avec <code>when</code>".html(),
-                        "...".html()
-                )
+                        "Un vrai pattern-matching".html(),
+                        "Privé par défaut ?".html())
             }
-                .slide("Missing part") {
+                .slide("Ce qui est super", styleClass = setOf("two-columns")) {
                     UnorderedList(
-                            "Real pattern matching".html(),
-                            "private by default ?".html())
+                            "Null safety".html(),
+                            "Lambda".html(),
+                            "Les data class".html(),
+                            "Pas de type primitive".html(),
+                            "Top Level Function".html(),
+                            "Paramètres nommés, valeur par défaut".html(),
+                            "Tail recursion".html(),
+                            "Super <code>switch</code> avec <code>when</code>".html(),
+                            "Déconstruction".html(),
+                            "Coroutines".html(),
+                            "Posibilité d'écrire des DSL".html(),
+                            "Multi-platform".html(),
+                            "...".html())
                 }
-
+                .slide("Liens")
         }
 
     val slidesDir = File("src/test/resources/")
