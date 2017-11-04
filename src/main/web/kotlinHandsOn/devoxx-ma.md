@@ -42,7 +42,7 @@ Expert Java & Web
 
 
 
-TODO
+![Théière magique](/kotlinHandsOn/01_water_pouring_problem/teapot.png)
 
 <div>
 	<div class="glass-container">
@@ -66,7 +66,7 @@ TODO
 
 
 <div>
-	Fill
+	<code>Fill</code>
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 25%, transparent 0px);"></div>
@@ -81,7 +81,7 @@ TODO
 </div>
 
 <div>
-	Empty
+	<code>Empty</code>
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 75%, transparent 0px);"></div>
@@ -96,13 +96,13 @@ TODO
 </div>
 
 <div>
-	Pour
+	<code>Pour</code>
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 8rem;background-image: linear-gradient(to top, chocolate 75%, transparent 0px);"></div>
 		<span>6 / 8</span>
 	</div>
-	into
+	<code>into</code>
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 4rem;background-image: linear-gradient(to top, chocolate 33.3%, transparent 0px);"></div>

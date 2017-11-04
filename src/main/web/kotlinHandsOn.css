@@ -201,6 +201,9 @@ input[type=number] {
       align-self: center;
       grid-column: 1 / 3; }
 
+section.list-big {
+  font-size: 1.3rem; }
+
 #cible article {
   display: grid;
   grid-template-columns: 1fr 1fr 2fr 2fr;
@@ -216,6 +219,11 @@ input[type=number] {
 #roadmap ol {
   margin-left: 4rem; }
 
+#theiere_magique article {
+  align-items: center; }
+  #theiere_magique article img {
+    height: 75vh; }
+
 section.operation article {
   align-items: stretch; }
   section.operation article > div {
@@ -223,10 +231,10 @@ section.operation article {
     display: flex;
     font-weight: bold;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
     align-items: flex-end; }
     section.operation article > div .glass-container {
-      margin-bottom: -2rem; }
+      margin: 0 2rem -2rem 2rem; }
     section.operation article > div .ope {
       font-size: 2rem; }
 

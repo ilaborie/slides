@@ -64,9 +64,12 @@ fun main(args: Array<String>) {
                 .roadMap("Roadmap")
         }
         .group("Water Pouring Problem") {
-            slide("Théière magique") { "TODO".html() }
+            slide("Théière magique") {
+                //                ExternalSvgContent(ExternalResource("/kotlinHandsOn/01_water_pouring_problem/teapot.svg"))
+                ExternalImageContent("Théière magique", ExternalResource("/kotlinHandsOn/01_water_pouring_problem/teapot.png"))
+            }
                 .slide("Verres", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Remplire", contentType = HTML, styleClass = setOf("operation"))
+                .slide("Remplir", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Vider", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Verser", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Démo") { "TODO".html() }
@@ -93,10 +96,8 @@ fun main(args: Array<String>) {
             slide("Choisir son exercice")
                 .slide("Android", styleClass = setOf("exo"))
                 .slide("Serveur avec SpringBoot 2", styleClass = setOf("exo"))
-//                .slide("Serveur avec ktor")
                 .slide("Navigateur avec KotlinJS", styleClass = setOf("exo"))
 //                .slide("Native")
-//                .slide("JavaFX")
                 .slide("Freestyle", styleClass = setOf("exo"))
         }
         .group("Conclusion") {
@@ -110,7 +111,7 @@ fun main(args: Array<String>) {
                             "Null safety".html(),
                             "Lambda".html(),
                             "Les data class".html(),
-                            "Pas de type primitive".html(),
+                            "Pas de type primitif".html(),
                             "Top Level Function".html(),
                             "Paramètres nommés, valeur par défaut".html(),
                             "Tail recursion".html(),
@@ -118,7 +119,7 @@ fun main(args: Array<String>) {
                             "Déconstruction".html(),
                             "Coroutines".html(),
                             "Posibilité d'écrire des DSL".html(),
-                            "Multi-platform".html(),
+                            "Multi-platformes".html(),
                             "...".html())
                 }
                 .slide("Liens")

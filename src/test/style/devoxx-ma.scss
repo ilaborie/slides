@@ -27,7 +27,7 @@
   --alpha2: rgba(0, 0, 0, .87);
 
   // Customization
-  --primary: #0f0a40;
+  --primary: #15427e;
   --secondary: var(--white);
 
   // Fonts
@@ -89,6 +89,7 @@
   }
 
   $fgPattern: rgb(248, 247, 251);
+  //$fgPattern: rgba(orange, .2);
 
   main section {
     // from http://lea.verou.me/css3patterns/#marrakesh
