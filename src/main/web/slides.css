@@ -362,7 +362,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     background-repeat: no-repeat;
     background-size: contain; }
   section article a[href*="springboot"]::before, section h1 a[href*="springboot"]::before, section h2 a[href*="springboot"]::before, section h3 a[href*="springboot"]::before, section h4 a[href*="springboot"]::before {
-    background-image: url("./assets/brands/springboot.png"); }
+    background-image: url("./assets/brands/springboot.svg"); }
   section article a[href*="android"]::before, section h1 a[href*="android"]::before, section h2 a[href*="android"]::before, section h3 a[href*="android"]::before, section h4 a[href*="android"]::before {
     background-image: url("./assets/brands/android.svg"); }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {

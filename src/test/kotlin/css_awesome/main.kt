@@ -39,14 +39,14 @@ fun main(args: Array<String>) {
     // Devoxx Maroc
     Presentation(title = title, id = "cssIsAwesome")
         .group("Introduction", skipPart = true) { intro(this)
-            .removeSlide("omit")
+            .removeSlide("omit") // TODO mettre un lien sur le slide suivant
         }
         .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor("MA", this) }
         .group("Unités") { unites("MA", this) }
         .group("Flexbox et Grid") { flexgrid("MA", this) }
         .group("Pseudo éléments") { pseudoElt("MA", this) }
         .group("Animations") { animations("MA", this)
-            .removeSlide("texte_de_chargement") }
+            .removeSlide("texte_de_chargement") } // TODO garder, mais avec la solution
         .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("MA", this) }
         .group("Conclusion") { conclusion(this) }
         .replaceSlide("liens", BasicSlide(id = "Liens",
