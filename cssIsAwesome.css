@@ -73,6 +73,11 @@
 section article input[type=checkbox], section article input[type=radio] {
   transform: scale(4); }
 
+section[id^=compat] article {
+  justify-content: flex-start; }
+  section[id^=compat] article .compatibility {
+    margin-top: 1rem; }
+
 section.cover h1 {
   width: 56vh;
   height: 56vh;
@@ -104,12 +109,6 @@ section.cover h1 {
     #whoami article > div svg path {
       fill: currentColor; }
 
-#whoami article > a[href^='https://twitter.com']::before {
-  content: '🐦 '; }
-
-#whoami article > a[href^=mailto]::before {
-  content: '✉️ '; }
-
 #least-power article {
   align-self: center; }
   #least-power article blockquote p {
@@ -118,10 +117,13 @@ section.cover h1 {
 #roadmap article ol {
   padding-left: 3rem; }
 
-#le_css_c_est_vaste article, #pseudo_etats article {
+#omit article, #pseudo_etats article {
   align-items: center; }
+  #omit article ul, #pseudo_etats article ul {
+    column-gap: 4rem; }
 
 #bordure_des_boutons .editable button {
+  border-radius: .125rem;
   padding: .25em .5em;
   transform: scale(6); }
 
@@ -511,10 +513,19 @@ section.cover h1 {
   justify-content: center;
   align-items: center; }
 
-#liens a[href*=github]::after {
-  content: "\a  " attr(href);
-  white-space: pre;
-  font-size: .6rem; }
+#traitez_le_css_comme_du_code article {
+  margin-top: -2rem;
+  padding-left: 3rem; }
+
+#Liens h3::before {
+  content: 'Liens'; }
+
+#Liens article {
+  padding-left: 3rem; }
+  #Liens article ul li a::after {
+    content: "\a  " attr(href);
+    white-space: pre;
+    font-size: .6rem; }
 
 #pour_apprendre img {
   max-height: 15vh; }

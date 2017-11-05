@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Holy Grail Layout</title>
+	<style>
+* {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	font-size: 2rem;
+}
+/* color */
+body { background: lightgray; }
+header { background: cyan; }
+nav { background: gold; }
+main { background: white; }
+aside { background: green; }
+footer { background: purple; }
+
+/* layout */
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+body > div {
+	display: flex;
+	flex: 1 1 auto;
+}
+
+main {
+	overflow: auto;
+	flex: 1 1 auto;
+}
+	</style>
+</head>
+
+<body>
+	<header>Header</header>
+	<div>
+		<nav>Menu</nav>
+		<main>
+			(p>lorem)*
+		</main>
+		<aside>Side</aside>
+	</div>
+	<footer>Footer</footer>
+</body>
+
+</html>
