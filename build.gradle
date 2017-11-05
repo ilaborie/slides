@@ -46,11 +46,11 @@ task cssIsAwesome(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
     main = "css_awesome.MainKt"
 }
-task koltinHandsOn(type: JavaExec) {
+task kotlinHandsOn(type: JavaExec) {
     classpath sourceSets.test.runtimeClasspath
     main = "kotlin_hands_on.MainKt"
 }
 
 task slides {
 }
-slides.dependsOn cssIsAwesome, koltinHandsOn
+slides.dependsOn cssIsAwesome, kotlinHandsOn

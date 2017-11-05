@@ -6,6 +6,77 @@
 @import "common/print";
 @import "./water-pouring";
 
+#roadmap {
+  article {
+    .roadmap {
+      display: grid;
+      grid-template-columns: 1fr 6fr 1fr;
+
+      .init, .exo, .homework {
+        padding: .5rem;
+        position: relative;
+        color: #fff;
+        font-size: .75rem;
+        height: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .init {
+        background: green;
+        &::before {
+          content: '17h30'
+        }
+      }
+      .exo {
+        background: orange;
+        &::before {
+          content: '17h50'
+        }
+        &::after {
+          content: '19h30'
+        }
+      }
+      .homework {
+        background: linear-gradient(to right, purple, purple 60%, transparent 100%);
+        min-width: 5rem;
+        margin-left: .5rem;
+      }
+
+      .init::before, .exo::before {
+        position: absolute;
+        top: -.8rem;
+        left: -2.5ch;
+        color: var(--primary);
+      }
+      .exo::after {
+        position: absolute;
+        top: -.8rem;
+        right: -2.5ch;
+        color: var(--primary);
+      }
+
+    }
+  }
+}
+
+#pre_requis {
+  article {
+    font-size: .8rem;
+
+    .wifi {
+      font-size: 1.2rem;
+      align-self: stretch;
+      text-align: center;
+    }
+
+    img {
+      max-height: 3rem;
+    }
+  }
+}
+
 #speakers {
   background: #00b0f0;
   color: #fff;
@@ -28,6 +99,16 @@
       align-items: center;
       text-align: center;
 
+      img.speakerRound {
+        width: 128px;
+        float: left;
+        margin-right: 20px;
+        margin-top: 22px;
+        border-radius: 100px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+      }
+
       & > * {
         align-self: center;
         text-align: center;
@@ -38,9 +119,16 @@
         font-size: 1.25rem;
         font-weight: bold;
       }
+      span, a {
+        grid-column: 2 / 3;
+      }
       a {
         font-size: .8rem;
         margin-top: .5rem;
+
+        &[href*="twitter"]::before {
+          background-image: url('./assets/brands/twitter-white.svg');
+        }
       }
     }
     & > a {
@@ -74,9 +162,17 @@ section.list-big {
   }
 }
 
-#roadmap {
-  ol {
-    margin-left: 4rem;
+#demo {
+  article {
+    align-items: stretch;
+    justify-content: flex-start;
+    .water-pouring-demo {
+      .main {
+        pointer-events: auto;
+        overflow: auto;
+        max-height: 75vh;
+      }
+    }
   }
 }
 

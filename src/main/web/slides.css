@@ -353,37 +353,47 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
-  section article a[href*="github"]::before, section article a[href*="twitter"]::before, section article a[href*="jetbrains"]::before, section h1 a[href*="github"]::before, section h1 a[href*="twitter"]::before, section h1 a[href*="jetbrains"]::before, section h2 a[href*="github"]::before, section h2 a[href*="twitter"]::before, section h2 a[href*="jetbrains"]::before, section h3 a[href*="github"]::before, section h3 a[href*="twitter"]::before, section h3 a[href*="jetbrains"]::before, section h4 a[href*="github"]::before, section h4 a[href*="twitter"]::before, section h4 a[href*="jetbrains"]::before {
+  section article a[href*="github"]::before, section article a[href*="twitter"]::before, section article a[href*="jetbrains"]::before, section article a[href*="mozilla"]::before, section article a[href*="youtube"]::before, section article a[href*="kotlin"]::before, section article a[href*="android"]::before, section article a[href*="springboot"]::before, section h1 a[href*="github"]::before, section h1 a[href*="twitter"]::before, section h1 a[href*="jetbrains"]::before, section h1 a[href*="mozilla"]::before, section h1 a[href*="youtube"]::before, section h1 a[href*="kotlin"]::before, section h1 a[href*="android"]::before, section h1 a[href*="springboot"]::before, section h2 a[href*="github"]::before, section h2 a[href*="twitter"]::before, section h2 a[href*="jetbrains"]::before, section h2 a[href*="mozilla"]::before, section h2 a[href*="youtube"]::before, section h2 a[href*="kotlin"]::before, section h2 a[href*="android"]::before, section h2 a[href*="springboot"]::before, section h3 a[href*="github"]::before, section h3 a[href*="twitter"]::before, section h3 a[href*="jetbrains"]::before, section h3 a[href*="mozilla"]::before, section h3 a[href*="youtube"]::before, section h3 a[href*="kotlin"]::before, section h3 a[href*="android"]::before, section h3 a[href*="springboot"]::before, section h4 a[href*="github"]::before, section h4 a[href*="twitter"]::before, section h4 a[href*="jetbrains"]::before, section h4 a[href*="mozilla"]::before, section h4 a[href*="youtube"]::before, section h4 a[href*="kotlin"]::before, section h4 a[href*="android"]::before, section h4 a[href*="springboot"]::before {
     content: '';
     width: 1em;
     height: 1em;
     display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
     background-size: contain; }
+  section article a[href*="springboot"]::before, section h1 a[href*="springboot"]::before, section h2 a[href*="springboot"]::before, section h3 a[href*="springboot"]::before, section h4 a[href*="springboot"]::before {
+    background-image: url("./assets/brands/springboot.png"); }
+  section article a[href*="android"]::before, section h1 a[href*="android"]::before, section h2 a[href*="android"]::before, section h3 a[href*="android"]::before, section h4 a[href*="android"]::before {
+    background-image: url("./assets/brands/android.svg"); }
   section article a[href*="github"]::before, section h1 a[href*="github"]::before, section h2 a[href*="github"]::before, section h3 a[href*="github"]::before, section h4 a[href*="github"]::before {
     background-image: url("./assets/brands/github-octocat.svg"); }
   section article a[href*="twitter"]::before, section h1 a[href*="twitter"]::before, section h2 a[href*="twitter"]::before, section h3 a[href*="twitter"]::before, section h4 a[href*="twitter"]::before {
     background-image: url("./assets/brands/twitter.svg"); }
+  section article a[href*="mozilla"]::before, section h1 a[href*="mozilla"]::before, section h2 a[href*="mozilla"]::before, section h3 a[href*="mozilla"]::before, section h4 a[href*="mozilla"]::before {
+    background-image: url("./assets/brands/mdn.svg"); }
+  section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
+    background-image: url("./assets/brands/youtube.svg"); }
+  section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
+    background-image: url("./assets/brands/youtube.svg"); }
+  section article a[href*="kotlinlang"]::before, section article a[href*="kotlin.link"]::before, section h1 a[href*="kotlinlang"]::before, section h1 a[href*="kotlin.link"]::before, section h2 a[href*="kotlinlang"]::before, section h2 a[href*="kotlin.link"]::before, section h3 a[href*="kotlinlang"]::before, section h3 a[href*="kotlin.link"]::before, section h4 a[href*="kotlinlang"]::before, section h4 a[href*="kotlin.link"]::before {
+    background-image: url("./assets/brands/kotlin.svg"); }
+  section article a[href*="slack"]::before, section h1 a[href*="slack"]::before, section h2 a[href*="slack"]::before, section h3 a[href*="slack"]::before, section h4 a[href*="slack"]::before {
+    background-image: url("./assets/brands/slack.svg"); }
   section article a[href*="jetbrains"]::before, section h1 a[href*="jetbrains"]::before, section h2 a[href*="jetbrains"]::before, section h3 a[href*="jetbrains"]::before, section h4 a[href*="jetbrains"]::before {
     background-image: url("./assets/brands/intellij-idea.svg"); }
-  section article a[href*="youtube"]::before, section h1 a[href*="youtube"]::before, section h2 a[href*="youtube"]::before, section h3 a[href*="youtube"]::before, section h4 a[href*="youtube"]::before {
-    content: '🎥 '; }
   section article a[href*="frog"]::before, section h1 a[href*="frog"]::before, section h2 a[href*="frog"]::before, section h3 a[href*="frog"]::before, section h4 a[href*="frog"]::before {
     content: '🐸 '; }
   section article a[href*="garden"]::before, section h1 a[href*="garden"]::before, section h2 a[href*="garden"]::before, section h3 a[href*="garden"]::before, section h4 a[href*="garden"]::before {
     content: '🥕 '; }
-  section article a[href*="mozilla"]::before, section h1 a[href*="mozilla"]::before, section h2 a[href*="mozilla"]::before, section h3 a[href*="mozilla"]::before, section h4 a[href*="mozilla"]::before {
-    content: '🦊 '; }
   section article a[href*="w3.org"]::before, section h1 a[href*="w3.org"]::before, section h2 a[href*="w3.org"]::before, section h3 a[href*="w3.org"]::before, section h4 a[href*="w3.org"]::before {
     content: '𝙬𝟯𝙘 ';
     color: navy;
-    text-shadow: 1px 1px 4px rgba(255, 255, 255, 0.75); }
+    text-shadow: 1px 1px 8px #fff; }
   section article a[href*="css-tricks"]::before, section h1 a[href*="css-tricks"]::before, section h2 a[href*="css-tricks"]::before, section h3 a[href*="css-tricks"]::before, section h4 a[href*="css-tricks"]::before {
     content: '✽ ';
     color: #ff9800; }
   section article a[href*="commitstrip"]::before, section h1 a[href*="commitstrip"]::before, section h2 a[href*="commitstrip"]::before, section h3 a[href*="commitstrip"]::before, section h4 a[href*="commitstrip"]::before {
     content: '🎨 '; }
-  section article a[href*="flukeout"]::before, section h1 a[href*="flukeout"]::before, section h2 a[href*="flukeout"]::before, section h3 a[href*="flukeout"]::before, section h4 a[href*="flukeout"]::before {
-    content: '🍽 '; }
   section article a[href*="gridbyexample"]::before, section h1 a[href*="gridbyexample"]::before, section h2 a[href*="gridbyexample"]::before, section h3 a[href*="gridbyexample"]::before, section h4 a[href*="gridbyexample"]::before {
     content: '⌗ '; }
   section article a[href*="smashingmagazin"]::before, section h1 a[href*="smashingmagazin"]::before, section h2 a[href*="smashingmagazin"]::before, section h3 a[href*="smashingmagazin"]::before, section h4 a[href*="smashingmagazin"]::before {
@@ -396,6 +406,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     content: ' '; }
   section article a[href*="caniuse"]::before, section h1 a[href*="caniuse"]::before, section h2 a[href*="caniuse"]::before, section h3 a[href*="caniuse"]::before, section h4 a[href*="caniuse"]::before {
     content: '📊 '; }
+  section article a[href^=mailto]::before, section h1 a[href^=mailto]::before, section h2 a[href^=mailto]::before, section h3 a[href^=mailto]::before, section h4 a[href^=mailto]::before {
+    content: '✉️ '; }
 
 .notice {
   font-size: .7rem;

@@ -12,38 +12,17 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-
     val logger = Logger("Kotlin Hands on")
 
     val kotlinHandsOn = Presentation(title = "Kotlin par l'exemple",
                                      id = "kotlinHandsOn",
                                      scripts = listOf(
                                              "../scripts/navigation.js",
-                                             "../scripts/water-pouring.js",
-                                             "../scripts/water-pouring-demo.js"
-                                     ))
+                                             "../scripts/water-pouring.js"))
         .group("Introduction", skipPart = true) {
-            slide("Pré-requis") {
-                OrderedList(
-                        "TODO Wifi".html(),
-                        Link("Récupérer la présentation TODO", "http://"),
-                        Code("git clone TODO"),
-                        // FIXME https://stackoverflow.com/questions/21814652/how-to-download-dependencies-in-gradle
-                        Code("./gradlew downloadDependencies"))
-            }
-                .slide("Speakers", styleClass = setOf("hide-title")) {
-                    Block("Emmanuel Vinas".h4() +
-                                  "Expert Android & Java".html() +
-                                  Link("@emmanuelvinas", "https://twitter.com/emmanuelvinas") +
-                                  Link("emmanuel@monkeypatch.io", "mailto:emmanuel@monkeypatch.io")
-                    ) +
-                            Block("Igor Laborie".h4() +
-                                          "Expert Java & Web".html() +
-                                          Link("@ilaborie", "https://twitter.com/ilaborie") +
-                                          Link("igor@monkeypatch.io", "mailto:igor@monkeypatch.io")
-                            ) +
-                            Link(ExternalSvgContent(ExternalResource("/cssIsAwesome/00_introduction/monkeypatch.svg")), "http://www.monkeypatch.io/")
-                }
+            slide("Speakers", contentType = HTML, styleClass = setOf("hide-title"))
+                .slide("Roadmap", contentType = HTML)
+                .slide("Pré-requis", contentType = HTML)
                 .slide("Pourquoi un nouveau langage ?") {
                     listOf(
                             "Écrire du code plus sûr",
@@ -61,19 +40,17 @@ fun main(args: Array<String>) {
                     ).ul()
                 }
                 .slide("Cible", contentType = HTML)
-                .roadMap("Roadmap")
+//                .roadMap("Roadmap")
         }
         .group("Water Pouring Problem") {
             slide("Théière magique") {
-                //                ExternalSvgContent(ExternalResource("/kotlinHandsOn/01_water_pouring_problem/teapot.svg"))
                 ExternalImageContent("Théière magique", ExternalResource("/kotlinHandsOn/01_water_pouring_problem/teapot.png"))
             }
                 .slide("Verres", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Remplir", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Vider", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Verser", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Démo") { "TODO".html() }
-
+                .slide("Démo", contentType = HTML)
         }
         .group("Live Code") {
             slide("Hello World") {
@@ -99,31 +76,31 @@ fun main(args: Array<String>) {
                 .slide("Navigateur avec KotlinJS", styleClass = setOf("exo"))
 //                .slide("Native")
                 .slide("Freestyle", styleClass = setOf("exo"))
-        }
-        .group("Conclusion") {
-            slide("Les manques") {
-                UnorderedList(
-                        "Un vrai pattern-matching".html(),
-                        "Privé par défaut ?".html())
-            }
-                .slide("Ce qui est super", styleClass = setOf("two-columns")) {
-                    UnorderedList(
-                            "Null safety".html(),
-                            "Lambda".html(),
-                            "Les data class".html(),
-                            "Pas de type primitif".html(),
-                            "Top Level Function".html(),
-                            "Paramètres nommés, valeur par défaut".html(),
-                            "Tail recursion".html(),
-                            "Super <code>switch</code> avec <code>when</code>".html(),
-                            "Déconstruction".html(),
-                            "Coroutines".html(),
-                            "Posibilité d'écrire des DSL".html(),
-                            "Multi-platformes".html(),
-                            "...".html())
-                }
                 .slide("Liens")
         }
+//        .group("Conclusion") {
+//            slide("Les manques") {
+//                UnorderedList(
+//                        "Un vrai pattern-matching".html(),
+//                        "Privé par défaut ?".html())
+//            }
+//                .slide("Ce qui est super", styleClass = setOf("two-columns")) {
+//                    UnorderedList(
+//                            "Null safety".html(),
+//                            "Lambda".html(),
+//                            "Les data class".html(),
+//                            "Pas de type primitif".html(),
+//                            "Top Level Function".html(),
+//                            "Paramètres nommés, valeur par défaut".html(),
+//                            "Tail recursion".html(),
+//                            "Super <code>switch</code> avec <code>when</code>".html(),
+//                            "Déconstruction".html(),
+//                            "Coroutines".html(),
+//                            "Posibilité d'écrire des DSL".html(),
+//                            "Multi-platformes".html(),
+//                            "...".html())
+//                }
+//        }
 
     val slidesDir = File("src/test/resources/")
 

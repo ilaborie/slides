@@ -1,14 +1,3 @@
-//
-//Morocco
-//---
-//
-//[Camel](https://unsplash.com/photos/h9MzeBg73TA)
-//[Light](https://unsplash.com/photos/bnXUaEq9xYQ)
-//[Palace](https://unsplash.com/photos/LzDtQIWBgoU)
-//[Dunes](https://unsplash.com/photos/WIoeSvwJYRQ)
-//[Grand Mosque](https://unsplash.com/photos/ERLAcTp-8MQ)
-//[Spices](https://unsplash.com/photos/zmELujDq5sU)
-//
 
 .devoxx-ma {
   --who: 'Devoxx Morocco !';
@@ -27,7 +16,7 @@
   --alpha2: rgba(0, 0, 0, .87);
 
   // Customization
-  --primary: #15427e;
+  --primary: midnightblue;
   --secondary: var(--white);
 
   // Fonts
@@ -89,7 +78,6 @@
   }
 
   $fgPattern: rgb(248, 247, 251);
-  //$fgPattern: rgba(orange, .2);
 
   main section {
     // from http://lea.verou.me/css3patterns/#marrakesh

@@ -18,6 +18,7 @@ fun pseudoState(country:String, group: Group) = group
                     Code(":valid"),
                     Code(":invalid"),
                     Code(":empty"),
+                    Code(":active"),
                     Code(":target"),
                     "...".raw())
         }

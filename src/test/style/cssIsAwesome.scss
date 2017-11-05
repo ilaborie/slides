@@ -10,6 +10,15 @@ section article {
   }
 }
 
+section[id^=compat] {
+  article {
+    justify-content: flex-start;
+    .compatibility {
+      margin-top: 1rem;
+    }
+  }
+}
+
 // Cover
 section.cover {
   h1 {
@@ -44,15 +53,6 @@ section.cover {
       }
     }
   }
-
-  & > a {
-    &[href^='https://twitter.com']::before {
-      content: '🐦 ';
-    }
-    &[href^=mailto]::before {
-      content: '✉️ ';
-    }
-  }
 }
 
 // Least Power
@@ -69,15 +69,19 @@ section.cover {
   }
 }
 
-#le_css_c_est_vaste, #pseudo_etats {
+#omit, #pseudo_etats {
   article {
     align-items: center;
+    ul {
+      column-gap: 4rem;
+    }
   }
 }
 
 // Buttons
 #bordure_des_boutons {
   .editable button {
+    border-radius: .125rem;
     padding: .25em .5em;
     transform: scale(6);
   }
@@ -649,11 +653,25 @@ $plateSize: 100px;
   }
 }
 
-#liens {
-  a[href*=github]::after{
-    content: '\a  ' attr(href);
-    white-space: pre;
-    font-size: .6rem;
+#traitez_le_css_comme_du_code {
+  article {
+    margin-top: -2rem;
+    padding-left: 3rem;
+  }
+}
+
+#Liens {
+  h3::before {
+    content: 'Liens';
+  }
+  article {
+    padding-left: 3rem;
+
+    ul li a::after {
+      content: '\a  ' attr(href);
+      white-space: pre;
+      font-size: .6rem;
+    }
   }
 }
 

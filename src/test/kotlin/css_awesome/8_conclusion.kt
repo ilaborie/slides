@@ -20,7 +20,7 @@ fun conclusion(group: Group) = group
                             "Single Responsibility Principle",
                             "...").ol()
         }
-        .slide(title = "Liens") {
+        .slide("Liens") {
             UnorderedList(
                     Link("les slides en HTML", "https://ilaborie.github.io/slides/devfest-tls.html#cssIsAwesome"),
                     Link("les slides en PDF", "https://ilaborie.github.io/slides/devfest-tls.pdf"),

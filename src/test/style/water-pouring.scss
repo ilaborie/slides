@@ -1,16 +1,18 @@
-body {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  font-family: sans-serif;
+.water-pouring-demo {
+  //background: hsla(1, 100%, 100%, .5);
+  font-size: .6rem;
+
+  h1 {
+    display: none;
+  }
 }
 
 /*buttons*/
 .main button {
-  font-size: 1.25rem;
+  font-size: 1.25em;
   border-radius: 2.5em;
   border: medium solid currentColor;
-  color: chocolate;
+  color: #e2b65e;
   padding: .25em .5em;
   background-color: #fff;
   outline: currentColor 1px;
@@ -25,9 +27,9 @@ input[type=number] {
 /*main and layout */
 .main {
   display: grid;
-  grid-gap: .5rem;
+  grid-gap: .5em;
   grid-template-columns: 1fr 1fr;
-  margin: .5rem;
+  margin: .5em;
   h1, .btn-solve, .error, ul {
     grid-column: 1 / 3;
   }
@@ -36,10 +38,10 @@ input[type=number] {
     text-align: center;
   }
   .error {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     background-color: firebrick;
     color: white;
-    padding: .25rem 1rem;
+    padding: .25em 1em;
     white-space: pre;
     overflow: auto;
   }
@@ -61,27 +63,27 @@ input[type=number] {
 .glass-container {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  margin: 1em;
   justify-content: flex-end;
   align-items: center;
 }
 
 /*Glass*/
 .glass {
-  width: 3rem;
-  margin-top: 2.5rem;
-  margin-bottom: .5rem;
+  width: 3em;
+  margin-top: 2.5em;
+  margin-bottom: .5em;
   display: inline-block;
   color: lightblue;
   background-color: currentColor;
   border: medium solid currentColor;
-  border-bottom-width: .8rem;
+  border-bottom-width: .8em;
   border-top: none;
   border-radius: .25em;
   transform: perspective(.5em) rotateX(-1deg) scaleY(.8);
   transform-origin: bottom;
-  box-shadow: .125rem .125rem 0.25rem rgba(0, 0, 0, .5),
-  inset .625rem .25rem 2.5rem hsla(1, 100%, 100%, .9);
+  box-shadow: .125em .125em 0.25em rgba(0, 0, 0, .5),
+  inset .625em .25em 2.5em hsla(1, 100%, 100%, .9);
 }
 
 /*solve list*/
@@ -90,11 +92,11 @@ input[type=number] {
   padding: 0;
   li {
     display: grid;
-    grid-gap: .5rem;
+    grid-gap: .5em;
     grid-template-columns: 1fr 1fr;
     border: thin solid rgba(0, 0, 0, .25);
-    margin: .25rem 0;
-    padding: .25rem;
+    margin: .25em 0;
+    padding: .25em;
   }
 }
 
@@ -102,5 +104,5 @@ input[type=number] {
 .move {
   align-self: center;
   justify-self: center;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }

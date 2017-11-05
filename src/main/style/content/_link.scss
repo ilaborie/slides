@@ -13,12 +13,22 @@ section article, section h1, section h2, section h3, section h4 {
     &::before {
       content: '➼ ';
     }
-    &[href*="github"]::before, &[href*="twitter"]::before, &[href*="jetbrains"]::before {
+    &[href*="github"]::before, &[href*="twitter"]::before, &[href*="jetbrains"]::before,
+    &[href*="mozilla"]::before, &[href*="youtube"]::before, &[href*="kotlin"]::before,
+    &[href*="android"]::before, &[href*="springboot"]::before {
       content: '';
       width: 1em;
       height: 1em;
       display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
       background-size: contain;
+    }
+    &[href*="springboot"]::before {
+      background-image: url('./assets/brands/springboot.png');
+    }
+    &[href*="android"]::before {
+      background-image: url('./assets/brands/android.svg');
     }
     &[href*="github"]::before {
       background-image: url('./assets/brands/github-octocat.svg');
@@ -26,25 +36,35 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="twitter"]::before {
       background-image: url('./assets/brands/twitter.svg');
     }
+    &[href*="mozilla"]::before {
+      background-image: url('./assets/brands/mdn.svg');
+    }
+    &[href*="youtube"]::before {
+      background-image: url('./assets/brands/youtube.svg');
+    }
+    &[href*="youtube"]::before {
+      background-image: url('./assets/brands/youtube.svg');
+    }
+    &[href*="kotlinlang"]::before, &[href*="kotlin.link"]::before {
+      background-image: url('./assets/brands/kotlin.svg');
+    }
+    &[href*="slack"]::before {
+      background-image: url('./assets/brands/slack.svg');
+    }
     &[href*="jetbrains"]::before {
       background-image: url('./assets/brands/intellij-idea.svg');
     }
-    &[href*="youtube"]::before {
-      content: '🎥 ';
-    }
+
     &[href*="frog"]::before {
       content: '🐸 ';
     }
     &[href*="garden"]::before {
       content: '🥕 ';
     }
-    &[href*="mozilla"]::before {
-      content: '🦊 ';
-    }
     &[href*="w3.org"]::before {
       content: '𝙬𝟯𝙘 ';
       color: navy;
-      text-shadow: 1px 1px 4px  rgba(#fff, .75);
+      text-shadow: 1px 1px 8px #fff;
     }
     &[href*="css-tricks"]::before {
       content: '✽ ';
@@ -52,9 +72,6 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="commitstrip"]::before {
       content: '🎨 ';
-    }
-    &[href*="flukeout"]::before {
-      content: '🍽 ';
     }
     &[href*="gridbyexample"]::before {
       content: '⌗ ';
@@ -72,6 +89,9 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="caniuse"]::before {
       content: '📊 ';
+    }
+    &[href^=mailto]::before {
+      content: '✉️ ';
     }
   }
 }
