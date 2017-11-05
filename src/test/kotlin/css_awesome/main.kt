@@ -9,7 +9,7 @@ import org.ilaborie.slides.content.web.StyleEditable
 import java.io.File
 
 
-val browsersThreshold = 0.4
+val browsersThreshold = 0.5
 
 fun cssLiveCode(prefix: String) =
     StyleEditable(ExternalResource("$prefix.css"), ExternalResource("$prefix-final.css")) +
@@ -33,20 +33,22 @@ fun main(args: Array<String>) {
         .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("FR", this) }
         .group("HTML") { html("FR", this) }
         .group("Conclusion") { conclusion(this) }
-    cssIsAwesome
-        .buildAll(dist, "devfest-tls")
+//    cssIsAwesome
+//        .buildAll(dist, "devfest-tls")
 
     // Devoxx Maroc
     Presentation(title = title, id = "cssIsAwesome")
-        .group("Introduction", skipPart = true) { intro(this) }
+        .group("Introduction", skipPart = true) { intro(this)
+            .removeSlide("omit")
+        }
         .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor("MA", this) }
         .group("Unités") { unites("MA", this) }
         .group("Flexbox et Grid") { flexgrid("MA", this) }
         .group("Pseudo éléments") { pseudoElt("MA", this) }
-        .group("Animations") { animations("MA", this) }
+        .group("Animations") { animations("MA", this)
+            .removeSlide("texte_de_chargement") }
         .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("MA", this) }
         .group("Conclusion") { conclusion(this) }
-        .removeSlide("omit")
         .replaceSlide("liens", BasicSlide(id = "Liens",
                                           content = UnorderedList(
                                                   Link("les slides en HTML", "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome"),
