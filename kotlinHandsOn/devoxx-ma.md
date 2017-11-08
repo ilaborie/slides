@@ -76,10 +76,12 @@
 	<li><code>./gradlew downloadDependencies</code></li>
 </ol>
 
+
 * Écrire du code plus sûr
 * Facilité la maintenance
 * Écrire plus rapidement
 * ...
+
 
 * Éviter les NPE, statiquement typé
 * Abordable, si on vient de Java
