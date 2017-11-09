@@ -85,6 +85,9 @@
   .water-pouring-demo h1 {
     display: none; }
 
+.glass-container div:nth-child(2) {
+  transform: scale(1.5); }
+
 /*buttons*/
 .main button {
   font-size: 1.25em;
@@ -124,7 +127,7 @@ input[type=number] {
 /*State*/
 .state {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end; }
 
 /*glass container*/
@@ -169,6 +172,9 @@ input[type=number] {
   justify-self: center;
   font-size: 1.5em; }
 
+section article > pre.hljs {
+  align-self: center; }
+
 #roadmap article .roadmap {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr; }
@@ -186,7 +192,7 @@ input[type=number] {
     #roadmap article .roadmap .init::before {
       content: '17h30'; }
   #roadmap article .roadmap .exo {
-    background: orange; }
+    background: #e49400; }
     #roadmap article .roadmap .exo::before {
       content: '17h50'; }
     #roadmap article .roadmap .exo::after {

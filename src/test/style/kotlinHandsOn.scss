@@ -6,6 +6,10 @@
 @import "common/print";
 @import "./water-pouring";
 
+section article > pre.hljs {
+  align-self: center;
+}
+
 #roadmap {
   article {
     .roadmap {
@@ -30,7 +34,7 @@
         }
       }
       .exo {
-        background: orange;
+        background: #e49400;
         &::before {
           content: '17h50'
         }

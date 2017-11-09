@@ -7,6 +7,10 @@
   }
 }
 
+.glass-container div:nth-child(2) {
+  transform: scale(1.5);
+}
+
 /*buttons*/
 .main button {
   font-size: 1.25em;
@@ -55,7 +59,7 @@ input[type=number] {
 /*State*/
 .state {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-end;
 }
 

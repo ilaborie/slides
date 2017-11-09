@@ -37,7 +37,7 @@ fun main(args: Array<String>) {
                 .slide("Verser", contentType = HTML, styleClass = setOf("operation"))
                 .slide("Démo", contentType = HTML)
         }
-        .group("Live Code") {
+        .group("Pour démarrer") {
             slide("Hello World") {
                 ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/hello-world.kt")) +
                         Notice(NoticeKind.Tips,
@@ -48,10 +48,22 @@ fun main(args: Array<String>) {
                         )
             }
                 .slide("Glass") {
-                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/glass.kt"))
+                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/glass.kt")) +
+                            Notice(NoticeKind.Info,
+                                   UnorderedList(
+                                           "En écrivant du Kotlin vous aurez plein de <code>fun</code> !".html(),
+                                           "Le <code>typealias</code> nécessite Kotlin 1.1.".html()
+                                   )
+                            )
                 }
                 .slide("Moves") {
-                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/move.kt"))
+                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/move.kt")) +
+                            Notice(NoticeKind.Tips,
+                                   UnorderedList(
+                                           "Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>".html(),
+                                           "Le <code>sealed</code> nécessite Kotlin 1.1.".html()
+                                   )
+                            )
                 }
         }
         .group("Excercices") {

@@ -213,6 +213,9 @@ data class Glass(val capacity: Int, val current: Int = 0) {
 typealias State = List<Glass>
 
 ```
+*Info*
+* En écrivant du Kotlin vous aurez plein de <code>fun</code> !
+* Le <code>typealias</code> nécessite Kotlin 1.1.
 
 ```kotlin
 sealed class Move
@@ -227,15 +230,18 @@ data class Pour(val from: Int, val to: Int) : Move() {
     }
 }
 ```
+*Tips*
+* Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
+* Le <code>sealed</code> nécessite Kotlin 1.1.
 
 
 
-
-[Android](#android)
-Définition et affichage de la solution sous Android
 
 [Serveur avec SpringBoot 2](#serveur_avec_springboot_2)
 Implémentation du solveur côté serveur
+
+[Android](#android)
+Définition et affichage de la solution sous Android
 
 [Navigateur avec KotlinJS](#navigateur_avec_kotlinjs)
 Définition et affichage de la solution dans un navigateur
