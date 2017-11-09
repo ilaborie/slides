@@ -17,7 +17,7 @@
         <a href="#kotlinHandsOn" class="cover" title="Kotlin par l'exemple">0</a>
         <strong>Introduction</strong>
 <strong>Water Pouring Problem</strong>
-<strong>Live Code</strong>
+<strong>Pour démarrer</strong>
 <strong>Excercices</strong>
         <nav><a href="#speakers" class="hide-title" title="Speakers">1</a>
 <a href="#roadmap" class="" title="Roadmap">2</a>
@@ -32,7 +32,7 @@
 <a href="#vider" class="operation" title="Vider">11</a>
 <a href="#verser" class="operation" title="Verser">12</a>
 <a href="#demo" class="" title="Démo">13</a></nav>
-<nav><a href="#part_live_code" class="part" title="Live Code">14</a>
+<nav><a href="#part_pour_demarrer" class="part" title="Pour démarrer">14</a>
 <a href="#hello_world" class="" title="Hello World">15</a>
 <a href="#glass" class="" title="Glass">16</a>
 <a href="#moves" class="" title="Moves">17</a></nav>
@@ -360,14 +360,14 @@
     <article>
         <div class="water-pouring-demo"></div>
     </article>
-    <a href="#part_live_code" class="next" aria-label="Suivant"></a>
+    <a href="#part_pour_demarrer" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Live Code -->
-<section id="part_live_code" class="part">
+<!-- Slide Pour démarrer -->
+<section id="part_pour_demarrer" class="part">
     <a href="#demo" class="previous" aria-label="Précédant"></a>
-    <h2>Live Code</h2>
+    <h2>Pour démarrer</h2>
     <article>
         
     </article>
@@ -377,7 +377,7 @@
 
 <!-- Slide Hello World -->
 <section id="hello_world" class="">
-    <a href="#part_live_code" class="previous" aria-label="Précédant"></a>
+    <a href="#part_pour_demarrer" class="previous" aria-label="Précédant"></a>
     <h3>Hello World</h3>
     <article>
         <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
@@ -413,6 +413,12 @@
 }
 
 typealias State = List&lt;Glass&gt;</code></pre>
+
+<div class="notice notice-info">
+    <ul><li>En écrivant du Kotlin vous aurez plein de <code>fun</code> !</li>
+<li>Le <code>typealias</code> nécessite Kotlin 1.1.</li></ul>
+</div>
+
     </article>
     <a href="#moves" class="next" aria-label="Suivant"></a>
 </section>
@@ -434,6 +440,12 @@ typealias State = List&lt;Glass&gt;</code></pre>
         require(from != to)
     }
 }</code></pre>
+
+<div class="notice notice-tips">
+    <ul><li>Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em></li>
+<li>Le <code>sealed</code> nécessite Kotlin 1.1.</li></ul>
+</div>
+
     </article>
     <a href="#part_excercices" class="next" aria-label="Suivant"></a>
 </section>
@@ -455,10 +467,10 @@ typealias State = List&lt;Glass&gt;</code></pre>
     <a href="#part_excercices" class="previous" aria-label="Précédant"></a>
     <h3>Choisir son exercice</h3>
     <article>
-        <p><a href="#android">Android</a>
-Définition et affichage de la solution sous Android</p>
-<p><a href="#serveur_avec_springboot_2">Serveur avec SpringBoot 2</a>
+        <p><a href="#serveur_avec_springboot_2">Serveur avec SpringBoot 2</a>
 Implémentation du solveur côté serveur</p>
+<p><a href="#android">Android</a>
+Définition et affichage de la solution sous Android</p>
 <p><a href="#navigateur_avec_kotlinjs">Navigateur avec KotlinJS</a>
 Définition et affichage de la solution dans un navigateur</p>
 <p><a href="#freestyle">Freestyle</a>

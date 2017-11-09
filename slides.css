@@ -413,11 +413,19 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   font-size: .7rem;
   border-radius: .25rem;
   padding: .25rem;
-  border: thin solid currentColor; }
+  border: thin solid currentColor;
+  align-self: stretch; }
   .notice.notice-tips {
     background: rgba(255, 255, 255, 0.5); }
     .notice.notice-tips::before {
-      content: 'Tips\A';
+      content: '✨ Tips\A';
+      font-weight: bold;
+      white-space: pre;
+      padding: .25rem; }
+  .notice.notice-info {
+    background: rgba(255, 255, 255, 0.5); }
+    .notice.notice-info::before {
+      content: 'ℹ️ Info\A';
       font-weight: bold;
       white-space: pre;
       padding: .25rem; }
