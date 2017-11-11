@@ -81,19 +81,24 @@
     display: block; } }
 
 .water-pouring-demo {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: .5rem;
   font-size: .6rem; }
   .water-pouring-demo h1 {
     display: none; }
+  .water-pouring-demo .main ul {
+    font-size: .6rem; }
 
 .glass-container div:nth-child(2) {
-  transform: scale(1.5); }
+  transform: scale(1.5);
+  display: flex;
+  align-items: center; }
 
 /*buttons*/
 .main button {
   font-size: 1.25em;
   border-radius: 2.5em;
   border: medium solid currentColor;
-  color: #e2b65e;
   padding: .25em .5em;
   background-color: #fff;
   outline: currentColor 1px; }
@@ -129,6 +134,8 @@ input[type=number] {
   display: flex;
   justify-content: space-around;
   align-items: flex-end; }
+  .state.initial {
+    box-shadow: 0.5rem 0 0 rgba(0, 0, 0, 0.25); }
 
 /*glass container*/
 .glass-container {
@@ -286,6 +293,8 @@ section.list-big {
     pointer-events: auto;
     overflow: auto;
     max-height: 75vh; }
+    #demo article .water-pouring-demo .main button {
+      color: var(--primary); }
 
 #theiere_magique article {
   align-items: center; }

@@ -4,25 +4,25 @@
   padding: .25rem;
   border: thin solid currentColor;
   align-self: stretch;
+  background: hsla(1, 100%, 100%, .5);
 
-  &.notice-tips {
-    background: hsla(1, 100%, 100%, .5);
-    &::before {
-      content: '✨ Tips\A';
-      font-weight: bold;
-      white-space: pre;
-      padding: .25rem;
-    }
+  &::before {
+    font-size: 1.2rem;
+    float: left;
   }
 
-  &.notice-info {
-    background: hsla(1, 100%, 100%, .5);
-    &::before {
-      content: 'ℹ️ Info\A';
-      font-weight: bold;
-      white-space: pre;
-      padding: .25rem;
-    }
+  &.notice-tips::before {
+    content: '✨';
+    font-weight: bold;
+    white-space: pre;
+    padding: .25rem;
+  }
+
+  &.notice-info::before {
+    content: 'ℹ️';
+    font-weight: bold;
+    white-space: pre;
+    padding: .25rem;
   }
 
   ul {
