@@ -7,13 +7,17 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Slides</title>
 	<style>
+		body{
+			font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+		}
 		main {
-			display: grid;
-			grid-gap: 1rem;
-			grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
 		}
 
 		section {
+			margin: .5rem;
 			padding: .5rem;
 			border: thin solid rgba(0,0,0,.2);
 			box-shadow: .125rem .125rem .25rem rgba(0,0,0,.2);
@@ -21,6 +25,41 @@
 		}
 		section h2{
 			margin: .5rem;
+		}
+
+		article {
+			display: flex;
+			align-items: center;
+			margin: .5rem;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+		a:hover {
+			text-decoration: underline wavy currentColor;
+		}
+		a[class^='slide-'] {
+			color: #fff;
+			background: #ccc;
+			border-radius: .25rem;
+			padding: .125rem .5rem;
+			font-weight: bold;
+			margin: .25rem .5rem;
+			word-break: keep-all;
+		}
+		a[class^='slide-']::before {
+			content: '⬇ ';
+		}
+		a.conf {
+			flex-grow: 1;
+		}
+		a.slide-html {
+			background: forestgreen;
+		}
+		a.slide-pdf {
+			background: firebrick;
 		}
 	</style>
 </head>
@@ -32,22 +71,22 @@
 	<section>
 		<h2>CSS is Awesome !</h2>
 		<article>
-			<a href="https://devfesttoulouse.fr/schedule/day1?sessionId=1556">@ Devfest Toulouse 2017</a>
-			<a href="cssIsAwesome/devfest-tls.html#cssIsAwesome">HTML</a>
-			<a href="cssIsAwesome/devfest-tls.pdf">PDF</a>
+			<a class="conf" href="https://devfesttoulouse.fr/schedule/day1?sessionId=1556">@ Devfest Toulouse 2017</a>
+			<a class="slide-html" href="cssIsAwesome/devfest-tls.html#cssIsAwesome">HTML</a>
+			<a class="slide-pdf" href="cssIsAwesome/devfest-tls.pdf">PDF</a>
 		</article>
 		<article>
-			<a href="https://cfp.devoxx.ma/2017/talk/QXS-8539">@ Devoxx Morocco 2017</a>
-			<a href="cssIsAwesome/devoxx-ma.html#cssIsAwesome">HTML</a>
-			<a href="cssIsAwesome/devoxx-ma.pdf">PDF</a>
+			<a class="conf" href="https://cfp.devoxx.ma/2017/talk/QXS-8539">@ Devoxx Morocco 2017</a>
+			<a class="slide-html" href="cssIsAwesome/devoxx-ma.html#cssIsAwesome">HTML</a>
+			<a class="slide-pdf" href="cssIsAwesome/devoxx-ma.pdf">PDF</a>
 		</article>
 	</section>
 	<section>
 		<h2>Kotlin par l'exemple</h2>
 		<article>
-			<a href="https://cfp.devoxx.ma/2017/talk/GWR-8354/Kotlin_par_l'exemple">@ Devoxx Morocco 2017</a>
-			<a href="kotlinHandsOn/devoxx-ma.html#kotlinHandsOn">HTML</a>
-			<a href="kotlinHandsOn/devoxx-ma.pdf">PDF</a>
+			<a class="conf" href="https://cfp.devoxx.ma/2017/talk/GWR-8354/Kotlin_par_l'exemple">@ Devoxx Morocco 2017</a>
+			<a class="slide-html" href="kotlinHandsOn/devoxx-ma.html#kotlinHandsOn">HTML</a>
+			<a class="slide-pdf" href="kotlinHandsOn/devoxx-ma.pdf">PDF</a>
 		</article>
 	</section>
 
