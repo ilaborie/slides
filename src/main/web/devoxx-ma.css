@@ -44,7 +44,7 @@
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
   --txtFooter: '#DevoxxMa @ilaborie #CSS #🦄';
-  --logoFooter: url("./assets/devoxx-ma/devoxx-ma-logo.png");
+  --logoFooter: url("./assets/devoxx-ma/devoxx-ma-logo2.png");
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
   --bgCode: #2b2b2b;
@@ -57,3 +57,34 @@
     background-position: 0 0; }
   .devoxx-ma main section.part::before {
     color: var(--primary); }
+  .devoxx-ma main section::after {
+    background: var(--bgFooter); }
+
+main::after {
+  content: '';
+  position: fixed;
+  display: block;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-size: auto 3rem;
+  background: url("./assets/devoxx-ma/devoxx-ma-logo2.png") no-repeat bottom right; }
+
+@media print {
+  main::after {
+    background-size: auto 2.5rem; } }
+
+section.cover::before {
+  content: 'Sous le haut patronage de sa Majesté le roi Mohammed VI';
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  color: currentColor;
+  font-family: inherit;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: rgba(255, 255, 255, 0.4);
+  text-align: center; }

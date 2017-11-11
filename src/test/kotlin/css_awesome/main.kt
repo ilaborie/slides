@@ -38,28 +38,54 @@ fun main(args: Array<String>) {
 
     // Devoxx Maroc
     Presentation(title = title, id = "cssIsAwesome")
-        .group("Introduction", skipPart = true) { intro(this)
-            .removeSlide("omit") // TODO mettre un lien sur le slide suivant
+        .group("Introduction", skipPart = true) {
+            intro(this)
+                .removeSlide("omit")
+                .removeSlide("least-power")
+                .replaceSlide("regles_du_jeu",
+                              BasicSlide(id = "regles_du_jeu",
+                                         title = "Règles du jeu",
+                                         content =
+                                         Link("The Rule of Least Power", "https://www.w3.org/2001/tag/doc/leastPower.html") +
+                                                 listOf("Texte",
+                                                        "HTML (sémantique)",
+                                                        "CSS (layout, style, animations simples)",
+                                                        "SVG (formes et animations complexes)",
+                                                        "JavaScript, WebAssembly (gestion d'états, appel backend, calculs)").ol() +
+                                                 "⚠️... mais il y a toujours de bonnes raisons pour ne pas suivre ces règles".em()
+                              ))
         }
         .group("Utiliser un pré&#8209;processeur ?", "preprocessor") { preprocessor("MA", this) }
         .group("Unités") { unites("MA", this) }
         .group("Flexbox et Grid") { flexgrid("MA", this) }
         .group("Pseudo éléments") { pseudoElt("MA", this) }
-        .group("Animations") { animations("MA", this)
-            .removeSlide("texte_de_chargement") } // TODO garder, mais avec la solution
+        .group("Animations") {
+            animations("MA", this)
+                .removeSlide("texte_de_chargement")
+//                .replaceSlide("texte_de_chargement",
+//                              BasicSlide(id = "texte_de_chargement",
+//                                         title = "Texte de chargement",
+//                                         content =
+//                                         StyleEditable(ExternalResource("/cssIsAwesome/05_animations/loader-final.css"), ExternalResource("/cssIsAwesome/05_animations/loader-final.css")) +
+//                                                 EditableZone(ExternalHtmlContent(ExternalResource("/cssIsAwesome/05_animations/loader.html")))
+//                              ))
+        }
         .group("Pseudo classes d'état", "pseudo_classes") { pseudoState("MA", this) }
-        .group("Conclusion") { conclusion(this) }
-        .replaceSlide("liens", BasicSlide(id = "Liens",
-                                          content = UnorderedList(
-                                                  Link("les slides en HTML", "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome"),
-                                                  Link("les slides en PDF", "https://ilaborie.github.io/slides/devoxx-ma.pdf"),
-                                                  Link("le code", "https://github.com/ilaborie/slides"),
-                                                  Link("Blog: 'Making Of'", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))))
+        .group("Conclusion") {
+            conclusion(this)
+                .replaceSlide("liens",
+                              BasicSlide(id = "liens",
+                                         title = "Liens",
+                                         content = UnorderedList(
+                                                 Link("les slides en HTML", "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome"),
+                                                 Link("les slides en PDF", "https://ilaborie.github.io/slides/devoxx-ma.pdf"),
+                                                 Link("le code", "https://github.com/ilaborie/slides"),
+                                                 Link("Blog: 'Making Of'", "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html"))))
+        }
         .buildAll(dist, "devoxx-ma")
 
     copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist.resolve(cssIsAwesome.id))
 }
-
 
 private fun copyExtraFiles(srcDir: File, destDir: File) {
     listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")

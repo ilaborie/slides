@@ -65,7 +65,7 @@ section article > pre.hljs {
   }
 }
 
-#pre_requis {
+#pre_requis___kotlin {
   article {
     font-size: .8rem;
 
@@ -84,6 +84,7 @@ section article > pre.hljs {
 #speakers {
   background: #00b0f0;
   color: #fff;
+  z-index: 2;
 
   &::after {
     display: none;

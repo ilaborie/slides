@@ -64,14 +64,13 @@
 
   // Slide Footer
   --txtFooter: '#DevoxxMa @ilaborie #CSS #🦄';
-  --logoFooter: url('./assets/devoxx-ma/devoxx-ma-logo.png');
+  --logoFooter: url('./assets/devoxx-ma/devoxx-ma-logo2.png');
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
 
   // Code
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
-
 
   main section::after {
     background-origin: unset;
@@ -81,10 +80,9 @@
 
   main section {
     // from http://lea.verou.me/css3patterns/#marrakesh
-    background-image:
-            radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%),
-            radial-gradient($fgPattern 9px, transparent 10px),
-            repeating-radial-gradient($fgPattern 0, $fgPattern 4px, transparent 5px, transparent 20px, $fgPattern 21px, $fgPattern 25px, transparent 26px, transparent 50px);
+    background-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%),
+    radial-gradient($fgPattern 9px, transparent 10px),
+    repeating-radial-gradient($fgPattern 0, $fgPattern 4px, transparent 5px, transparent 20px, $fgPattern 21px, $fgPattern 25px, transparent 26px, transparent 50px);
     background-size: contain, 30px 30px, 90px 90px;
     background-position: 0 0;
   }
@@ -92,4 +90,39 @@
   main section.part::before {
     color: var(--primary);
   }
+
+  main section::after {
+    background: var(--bgFooter);
+  }
+}
+
+main::after {
+  content: '';
+  position: fixed;
+  display: block;
+  z-index: 1;
+  top: 0; bottom: 0;
+  right: 0; left: 0;
+  background-size: auto 3rem;
+  background: url('./assets/devoxx-ma/devoxx-ma-logo2.png') no-repeat bottom right;
+}
+
+@media print {
+  main::after {
+    background-size: auto 2.5rem;
+  }
+}
+
+section.cover::before {
+  content: 'Sous le haut patronage de sa Majesté le roi Mohammed VI';
+  display: block;
+  font-size: .8rem;
+  text-transform: uppercase;
+  color: currentColor;
+  font-family: inherit;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: hsla(1, 100%, 100%, .4);
+  text-align: center;
 }

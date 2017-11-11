@@ -219,18 +219,19 @@ section article > pre.hljs {
     right: -2.5ch;
     color: var(--primary); }
 
-#pre_requis article {
+#pre_requis___kotlin article {
   font-size: .8rem; }
-  #pre_requis article .wifi {
+  #pre_requis___kotlin article .wifi {
     font-size: 1.2rem;
     align-self: stretch;
     text-align: center; }
-  #pre_requis article img {
+  #pre_requis___kotlin article img {
     max-height: 3rem; }
 
 #speakers {
   background: #00b0f0;
-  color: #fff; }
+  color: #fff;
+  z-index: 2; }
   #speakers::after {
     display: none; }
   #speakers article {
