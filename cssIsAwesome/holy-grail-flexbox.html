@@ -24,33 +24,39 @@ footer { background: purple; }
 
 /* layout */
 
+/*
 body {
+	display: flex;
+	flex-direction: column;
 	height: 100vh;
-	display: grid;
-	grid-template-columns: auto 1fr auto;
-	grid-template-rows: auto 1fr auto;
 }
+*/
 
-header, footer {
-	grid-column: 1 / 4;
+/*
+body > div {
+	display: flex;
+	flex-grow: 1;
 }
+*/
 
+/*
 main {
 	overflow: auto;
+	flex-grow: 1;
 }
-
+*/
 	</style>
 </head>
 
 <body>
 	<header>Header</header>
-	<nav>Menu</nav>
-	<main>
-		<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis inventore natus temporibus modi at veniam vitae laboriosam quia. Facilis reiciendis vero accusantium consectetur magnam, cupiditate in laudantium ex molestias autem!</p>
-		<p>Consequuntur sit nobis mollitia, corrupti fuga, adipisci temporibus labore doloribus aliquam, nulla odit et facere atque nihil? Eos repellat alias placeat, at obcaecati esse, reprehenderit, inventore non accusantium reiciendis provident?</p>
-		<p>Dolores obcaecati aut quibusdam, voluptatum, tempora, dolorem quasi non architecto excepturi sint in! Natus aut dicta suscipit officia. Ipsam facilis enim quisquam adipisci quas similique suscipit cumque non, quasi error.</p>
-	</main>
-	<aside>Side</aside>
+	<div>
+		<nav>Menu</nav>
+		<main>
+			(p>lorem)*
+		</main>
+		<aside>Side</aside>
+	</div>
 	<footer>Footer</footer>
 </body>
 
