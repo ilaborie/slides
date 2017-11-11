@@ -150,7 +150,7 @@
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 0%, transparent 0px);"></div>
-		<span>4 / 4</span>
+		<span>0 / 4</span>
 	</div>
 </div>
 
@@ -254,18 +254,6 @@ Implémenter sans guide
 #### Pré-requis
 
 * Java 8
-* ??? Android Studio 3 
-* ??? Android SDK ?
-
-#### Exercices
-
-???
-  
-
-
-#### Pré-requis
-
-* Java 8
 * Un IDE qui marche bien avec Kotlin comme [IntelliJ IDEA CE](https://www.jetbrains.com/idea/download/)
 
 #### Exercices
@@ -280,6 +268,18 @@ Implémenter sans guide
 * [Ktor](http://ktor.io/index.html)
 * ...
  
+
+
+#### Pré-requis
+
+* Java 8
+* ??? Android Studio 3 
+* ??? Android SDK ?
+
+#### Exercices
+
+???
+  
 
 #### Pré-requis
 
