@@ -68,8 +68,8 @@ fun main(args: Array<String>) {
         }
         .group("Excercices") {
             slide("Choisir son exercice")
-                .slide("Android", styleClass = setOf("exo"))
                 .slide("Serveur avec SpringBoot 2", styleClass = setOf("exo"))
+                .slide("Android", styleClass = setOf("exo"))
                 .slide("Navigateur avec KotlinJS", styleClass = setOf("exo"))
                 .slide("Freestyle", styleClass = setOf("exo"))
                 .slide("Liens")
