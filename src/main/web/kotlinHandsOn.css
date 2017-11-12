@@ -219,14 +219,21 @@ section article > pre.hljs {
     right: -2.5ch;
     color: var(--primary); }
 
-#pre_requis___kotlin article {
-  font-size: .8rem; }
-  #pre_requis___kotlin article .wifi {
-    font-size: 1.2rem;
-    align-self: stretch;
-    text-align: center; }
-  #pre_requis___kotlin article img {
-    max-height: 3rem; }
+#pre_requis___ide article .wifi, #pre_requis___exercices article .wifi {
+  font-size: 1.2rem;
+  align-self: stretch;
+  text-align: center; }
+
+#pre_requis___ide article img, #pre_requis___exercices article img {
+  max-height: 3rem; }
+
+#pre_requis___ide article li code, #pre_requis___exercices article li code {
+  background: white;
+  box-shadow: inset 0 0 0.25rem;
+  padding: .125rem .5rem;
+  border-radius: .25rem;
+  font-size: .8rem;
+  white-space: nowrap; }
 
 #speakers {
   background: #00b0f0;

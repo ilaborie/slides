@@ -22,7 +22,8 @@ fun main(args: Array<String>) {
         .group("Introduction", skipPart = true) {
             slide("Speakers", contentType = HTML, styleClass = setOf("hide-title"))
                 .slide("Roadmap", contentType = HTML)
-                .slide("Pré-requis - Kotlin", contentType = HTML)
+                .slide("Pré-requis - IDE", contentType = HTML)
+                .slide("Pré-requis - Exercices", contentType = HTML)
                 .slide("Pourquoi un nouveau langage ?")
                 .slide("Caractéristiques de Kotlin")
                 .slide("Cible", contentType = HTML)

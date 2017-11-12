@@ -65,9 +65,8 @@ section article > pre.hljs {
   }
 }
 
-#pre_requis___kotlin {
+#pre_requis___ide, #pre_requis___exercices {
   article {
-    font-size: .8rem;
 
     .wifi {
       font-size: 1.2rem;
@@ -77,6 +76,15 @@ section article > pre.hljs {
 
     img {
       max-height: 3rem;
+    }
+
+    li code {
+      background: rgba(255, 255, 255,1);
+      box-shadow: inset 0 0 0.25rem;
+      padding: .125rem .5rem;
+      border-radius: .25rem;
+      font-size: .8rem;
+      white-space: nowrap;
     }
   }
 }
