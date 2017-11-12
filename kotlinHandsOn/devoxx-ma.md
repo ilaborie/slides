@@ -7,7 +7,7 @@
 </div>
 
 <div>
-	<img class="speakerRound" src="http://www.gravatar.com/avatar/5870075cc4934bb7c32f2a6c56cc4f8d" alt="Igor Laborie" title="Igor Laborie">
+	<img class="speakerRound" src="https://www.gravatar.com/avatar/5870075cc4934bb7c32f2a6c56cc4f8d" alt="Igor Laborie" title="Igor Laborie">
 	<h4>Igor Laborie</h4>
 	<span>Expert Java &amp; Web</span>
 	<a href="https://twitter.com/ilaborie">@ilaborie</a>
@@ -262,24 +262,21 @@ Implémenter sans guide
 * Exercice 2: un peu plus loin
 * Exercice 3: (SpringBoot) injection, routes, reactor, ...
   
-#### Variantes
-
-* [SparkJava](http://sparkjava.com/) 
-* [Ktor](http://ktor.io/index.html)
-* ...
- 
 
 
 #### Pré-requis
 
 * Java 8
-* ??? Android Studio 3 
-* ??? Android SDK ?
+* [Android Studio 3](https://developer.android.com/studio/index.html) 
+* Android SDK 27
+
 
 #### Exercices
 
-???
-  
+* Exercice 1: les bases
+* Exercice 2: un peu plus loin
+* Exercice 3: android
+
 
 #### Pré-requis
 
@@ -294,11 +291,6 @@ Implémenter sans guide
 * Exercice 2: construire du HTML avec le DSL [kotlinx-html](https://github.com/Kotlin/kotlinx.html)
 * Exercice 3: créer des actions
 * Exercice 4: implémenter la résolution du problème
-  
-#### Variantes
-
-* Utiliser [RxJS](https://github.com/Reactive-Extensions/RxJS)
-* Utiliser un autre gestionnaire d'état
  
 
 
