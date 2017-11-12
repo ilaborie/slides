@@ -10,9 +10,3 @@
 * Exercice 2: un peu plus loin
 * Exercice 3: (SpringBoot) injection, routes, reactor, ...
   
-#### Variantes
-
-* [SparkJava](http://sparkjava.com/) 
-* [Ktor](http://ktor.io/index.html)
-* ...
- 

@@ -3,12 +3,11 @@
 
 * Java 8
 * [Android Studio 3](https://developer.android.com/studio/index.html) 
-* Android SDK `in 16..26`
+* Android SDK 27
 
 
 #### Exercices
 
-???
-
-#### Variantes
-  
+* Exercice 1: les bases
+* Exercice 2: un peu plus loin
+* Exercice 3: android
