@@ -7,7 +7,7 @@
 </div>
 
 <div>
-	<img class="speakerRound" src="http://www.gravatar.com/avatar/5870075cc4934bb7c32f2a6c56cc4f8d" alt="Igor Laborie" title="Igor Laborie">
+	<img class="speakerRound" src="https://www.gravatar.com/avatar/5870075cc4934bb7c32f2a6c56cc4f8d" alt="Igor Laborie" title="Igor Laborie">
 	<h4>Igor Laborie</h4>
 	<span>Expert Java &amp; Web</span>
 	<a href="https://twitter.com/ilaborie">@ilaborie</a>
@@ -273,12 +273,15 @@ Implémenter sans guide
 #### Pré-requis
 
 * Java 8
-* ??? Android Studio 3 
-* ??? Android SDK ?
+* [Android Studio 3](https://developer.android.com/studio/index.html) 
+* Android SDK `in 16..26`
+
 
 #### Exercices
 
 ???
+
+#### Variantes
   
 
 #### Pré-requis

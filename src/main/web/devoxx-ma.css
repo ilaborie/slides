@@ -70,11 +70,9 @@ main::after {
   right: 0;
   left: 0;
   background-size: auto 3rem;
-  background: url("./assets/devoxx-ma/devoxx-ma-logo2.png") no-repeat bottom right; }
-
-@media print {
-  main::after {
-    background-size: auto 2.5rem; } }
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-image: url("./assets/devoxx-ma/devoxx-ma-logo2.png"); }
 
 section.cover::before {
   content: 'Sous le haut patronage de sa Majesté le roi Mohammed VI';
