@@ -53,7 +53,7 @@
 	<code>NAME / CODE</code>
 </div>
 
-<ol>
+<ul>
 	<li class="ide">
 		Installation de l'IDE<br>
 		<a href="https://developer.android.com/studio/index.html">Android Studio 3.0</a>,
@@ -63,18 +63,30 @@
 		Configuration du plugin Kotlin<br>
 		<code>Tools | Kotlin | Configure Kotlin Plugin Updates</code><br>
 		<div class="capture">
-			<img src="../assets/devoxx-ma/update-kotlin-plugin.png" alt="Configure Kotlin Plugin Updates">
+			<img src="../assets/devoxx-ma/update-kotlin-plugin.png" alt="Configure Kotlin Plugin Updates"><br>
 			Sélectionner <code>Early Access Preview 1.2</code><br>
 			Puis cliquer sur <code>Check for updates now</code>
 		</div>
 	</li>
+</ul>
+
+<div class="wifi">
+	<code>NAME / CODE</code>
+</div>
+
+<ul>
 	<li>
 		Récupérer la présentation<br>
 		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf">https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf</a>
 	</li>
-	<li><code>git clone TODO</code></li>
-	<li><code>./gradlew downloadDependencies</code></li>
-</ol>
+	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
+	<li>
+		<code>git checkout exo-server</code> ou
+		<code>git checkout exo-web</code> ou
+		<code>git checkout exo-mobile</code>
+	</li>
+	<li><code>./gradlew clean assemble test</code></li>
+</ul>
 
 
 * Écrire du code plus sûr
@@ -251,6 +263,8 @@ Définition et affichage de la solution dans un navigateur
 Implémenter sans guide
 
 
+## `exo-server`
+
 #### Pré-requis
 
 * Java 8
@@ -263,6 +277,8 @@ Implémenter sans guide
 * Exercice 3: (SpringBoot) injection, routes, reactor, ...
   
 
+
+## `exo-mobile`
 
 #### Pré-requis
 
@@ -277,6 +293,8 @@ Implémenter sans guide
 * Exercice 2: un peu plus loin
 * Exercice 3: android
 
+
+## `exo-web`
 
 #### Pré-requis
 
