@@ -3,3 +3,4 @@
 * Abordable, si on vient de Java
 * Expressif et pragmatique
 * Inspiré par Java, Scala, C#, Groovy, ...
+* Cross-platform
