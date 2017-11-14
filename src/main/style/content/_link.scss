@@ -87,6 +87,9 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="monkeypatch"]::before {
       content: ' ';
     }
+    &[href*="fungus"]::before {
+      content: ' ';
+    }
     &[href*="caniuse"]::before {
       content: '📊 ';
     }

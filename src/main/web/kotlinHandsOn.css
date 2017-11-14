@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .devoxx-ma.kotlinHandsOn {
-  --txtFooter: '#DevoxxMa @ilaborie @EmmanuelVinas #kotlin'; }
+  --txtFooter: '#DevoxxMa @EmmanuelVinas @dplaindoux #kotlin'; }
 
 @media print {
   .slides-nav {
@@ -236,24 +236,27 @@ section article > pre.hljs {
   white-space: nowrap; }
 
 #speakers {
-  background: #00b0f0;
   color: #fff;
   z-index: 2; }
   #speakers::after {
     display: none; }
   #speakers article {
-    display: grid;
-    grid-column-gap: 1rem;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    justify-items: center; }
-    #speakers article > div {
+    flex-direction: row;
+    grid-column: 1 / 4;
+    grid-row: 1 / 4; }
+    #speakers article .emmanuel {
+      background: #00b0f0; }
+    #speakers article .didier {
+      background: #345678; }
+    #speakers article .emmanuel, #speakers article .didier {
+      height: 100vh;
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center; }
-      #speakers article > div img.speakerRound {
+      #speakers article .emmanuel img.speakerRound, #speakers article .didier img.speakerRound {
         width: 128px;
         float: left;
         margin-right: 20px;
@@ -261,19 +264,21 @@ section article > pre.hljs {
         border-radius: 100px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); }
-      #speakers article > div > * {
+      #speakers article .emmanuel a > img, #speakers article .emmanuel a > svg, #speakers article .didier a > img, #speakers article .didier a > svg {
+        height: 25vh; }
+      #speakers article .emmanuel > *, #speakers article .didier > * {
         align-self: center;
         text-align: center;
         white-space: nowrap; }
-      #speakers article > div h4 {
+      #speakers article .emmanuel h4, #speakers article .didier h4 {
         font-size: 1.25rem;
         font-weight: bold; }
-      #speakers article > div span, #speakers article > div a {
+      #speakers article .emmanuel span, #speakers article .emmanuel a, #speakers article .didier span, #speakers article .didier a {
         grid-column: 2 / 3; }
-      #speakers article > div a {
+      #speakers article .emmanuel a, #speakers article .didier a {
         font-size: .8rem;
         margin-top: .5rem; }
-        #speakers article > div a[href*="twitter"]::before {
+        #speakers article .emmanuel a[href*="twitter"]::before, #speakers article .didier a[href*="twitter"]::before {
           background-image: url("./assets/brands/twitter-white.svg"); }
     #speakers article > a {
       align-self: center;
