@@ -1,7 +1,7 @@
 {
   "minCapacity": 1,
   "maxCapacity": 12,
-  "url": "http://localhost:8080/api/solve",
+  "url": "http://ilaborie:8080/api/solve",
   "debug": false,
   "host": "#demo article .water-pouring-demo",
   "initial": "0/5, 0/3",

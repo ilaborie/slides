@@ -55,10 +55,6 @@
 	</div>
 </div>
 
-<div class="wifi">
-	<code>NAME / CODE</code>
-</div>
-
 <ul>
 	<li class="ide">
 		Installation de l'IDE<br>
@@ -75,10 +71,6 @@
 		</div>
 	</li>
 </ul>
-
-<div class="wifi">
-	<code>NAME / CODE</code>
-</div>
 
 <ul>
 	<li>
