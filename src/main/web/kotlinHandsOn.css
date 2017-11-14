@@ -197,13 +197,13 @@ section article > pre.hljs {
   #roadmap article .roadmap .init {
     background: green; }
     #roadmap article .roadmap .init::before {
-      content: '17h30'; }
+      content: '16h30'; }
   #roadmap article .roadmap .exo {
     background: #e49400; }
     #roadmap article .roadmap .exo::before {
-      content: '17h50'; }
+      content: '16h50'; }
     #roadmap article .roadmap .exo::after {
-      content: '19h30'; }
+      content: '18h30'; }
   #roadmap article .roadmap .homework {
     background: linear-gradient(to right, purple, purple 60%, transparent 100%);
     min-width: 5rem;
