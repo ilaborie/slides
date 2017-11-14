@@ -106,6 +106,7 @@
 * Abordable, si on vient de Java
 * Expressif et pragmatique
 * Inspiré par Java, Scala, C#, Groovy, ...
+* Cross-platform
 
 <img src="../assets/brands/java.svg" alt="JVM" class="jvm">
 <img src="../assets/brands/android.svg" alt="Android" class="android">
