@@ -404,6 +404,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     color: #888; }
   section article a[href*="monkeypatch"]::before, section h1 a[href*="monkeypatch"]::before, section h2 a[href*="monkeypatch"]::before, section h3 a[href*="monkeypatch"]::before, section h4 a[href*="monkeypatch"]::before {
     content: ' '; }
+  section article a[href*="fungus"]::before, section h1 a[href*="fungus"]::before, section h2 a[href*="fungus"]::before, section h3 a[href*="fungus"]::before, section h4 a[href*="fungus"]::before {
+    content: ' '; }
   section article a[href*="caniuse"]::before, section h1 a[href*="caniuse"]::before, section h2 a[href*="caniuse"]::before, section h3 a[href*="caniuse"]::before, section h4 a[href*="caniuse"]::before {
     content: '📊 '; }
   section article a[href^=mailto]::before, section h1 a[href^=mailto]::before, section h2 a[href^=mailto]::before, section h3 a[href^=mailto]::before, section h4 a[href^=mailto]::before {
