@@ -42,18 +42,9 @@
 
 
 
-<div class="roadmap">
-	<div class="init">
-		Présentation,
-		Installation
-	</div>
-	<div class="exo">
-		Exercice
-	</div>
-	<div class="homework">
-		...
-	</div>
-</div>
+0. Water Pouring Problem
+1. Pour démarrer
+2. Excercices
 
 <ul>
 	<li class="ide">
@@ -112,7 +103,7 @@
 
 
 
-![Théière magique](/kotlinHandsOn/01_water_pouring_problem/teapot.png)
+![Théière magique](/kotlinHandsOn/water_pouring_problem/teapot.png)
 
 <div>
 	<div class="glass-container">
@@ -206,8 +197,7 @@ fun main(args: Array<String>) {
 
 ```
 *Tips*
-* Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
-* Ou copiez du code Java dans un fichier Kotlin
+
 
 ```kotlin
 data class Glass(val capacity: Int, val current: Int = 0) {
@@ -226,8 +216,7 @@ typealias State = List<Glass>
 
 ```
 *Info*
-* En écrivant du Kotlin vous aurez plein de <code>fun</code> !
-* Le <code>typealias</code> nécessite Kotlin 1.1.
+
 
 ```kotlin
 sealed class Move
@@ -242,9 +231,8 @@ data class Pour(val from: Int, val to: Int) : Move() {
     }
 }
 ```
-*Tips*
-* Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
-* Le <code>sealed</code> nécessite Kotlin 1.1.
+*Info*
+
 
 
 

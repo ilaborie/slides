@@ -66,11 +66,11 @@ data class PartTitleSlide(val title: String) : Slide() {
     override fun content(defaultContent: () -> Content) = EmptyContent
 }
 
-data class RoadMapSlide(val title: String) : Slide() {
+data class RoadMapSlide(val title: String, val styleClass: Set<String> = emptySet()) : Slide() {
     override val id = "roadmap"
     override fun id() = id
     override fun title() = title.h3()
-    override fun styleClass() = setOf("roadmap")
+    override fun styleClass() = styleClass + "roadmap"
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = defaultContent()
 }

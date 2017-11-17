@@ -1,0 +1,128 @@
+package org.ilaborie.slides.dsl
+
+import org.ilaborie.slides.*
+import org.ilaborie.slides.ContentType.HTML
+import org.ilaborie.slides.ContentType.MARKDOWN
+import org.ilaborie.slides.content.*
+
+/**
+ * Presentation
+ */
+fun presentation(title: String,
+                 key: String = title.normalize(),
+                 b: PresentationBuilder.() -> Unit): Presentation =
+    PresentationBuilder(title = title, key = key)
+        .apply(b)
+        .invoke()
+
+typealias IPresentationBuilder = () -> Presentation
+class PresentationBuilder(private val key: String, title: String) : IPresentationBuilder {
+    internal var groups = listOf<IPartBuilder>()
+    internal var scripts = listOf<String>()
+    var title = title.html()
+
+    override fun invoke(): Presentation {
+        return Presentation(title = this.title,
+                            id = key,
+                            slides = groups.map { it(key) },
+                            scripts = scripts)
+    }
+}
+
+fun PresentationBuilder.part(title: String, function: PartBuilder.() -> Unit) {
+    groups += PartBuilder(title = title).apply(function)
+}
+
+/**
+ * Part Builder
+ */
+typealias IPartBuilder = (String) -> Group
+class PartBuilder(private val title: String,
+                  private val key: String = title.normalize()) : IPartBuilder {
+
+    internal val slideBuilders = mutableListOf<ISlideBuilder>()
+    var skipHeader = false
+
+    override fun invoke(presentationKey: String) = Group(
+            title = title,
+            id = key,
+            slides = slideBuilders.map { it(presentationKey, key) },
+            skipPart = skipHeader)
+}
+
+
+fun PartBuilder.roadmap(title: String = "Roadmap") {
+    this.slideBuilders += object : ISlideBuilder {
+        override var styleClass = setOf<String>()
+        override fun invoke(presentationKey: String, groupKey: String): Slide =
+            RoadMapSlide(title, styleClass)
+    }
+}
+
+
+fun PartBuilder.slide(title: String?,
+                      key: String? = title?.normalize(),
+                      styleClass: Set<String> = setOf(),
+                      b: ContentContainer.() -> Unit) {
+
+    slideBuilders += SlideBuilder()
+        .apply {
+            this.id = key ?: ""
+            this.title = title?.html() ?: EmptyContent
+            this.styleClass += styleClass
+            val builder = ContentContainer()
+            b(builder)
+            this.content = builder()
+        }
+}
+
+
+fun PartBuilder.slideFromResource(title: String,
+                                  key: String = title.normalize(),
+                                  contentType: ContentType = MARKDOWN,
+                                  b: ISlideBuilder.() -> Unit = {}) {
+
+    slideBuilders += object : ISlideBuilder {
+        override var styleClass = setOf<String>()
+        override fun invoke(presentationKey: String, groupKey: String): Slide {
+            val resource = "/$presentationKey/$groupKey/$key"
+            val content = when (contentType) {
+                MARKDOWN -> ExternalMarkdownContent(ExternalResource("$resource.md"))
+                HTML     -> ExternalMarkdownContent(ExternalResource("$resource.html"))
+                else     -> throw IllegalStateException("Unsupported content type: $contentType")
+            }
+            return BasicSlide(id = key,
+                              title = title.html(), // TODO content
+                              content = content,
+                              contentType = contentType,
+                              styleClass = styleClass)
+        }
+
+    }.apply(b)
+}
+
+/**
+ * Slide Builder
+ */
+interface ISlideBuilder {
+    var styleClass: Set<String>
+    operator fun invoke(presentationKey: String, groupKey: String): Slide
+
+}
+
+class SlideBuilder : ISlideBuilder {
+    internal var title: Content = EmptyContent
+    internal var id: String = ""
+
+    override var styleClass = setOf<String>()
+    var content: Content = EmptyContent
+
+    override fun invoke(presentationKey: String, groupKey: String): BasicSlide =
+        BasicSlide(
+                id = id,
+                title = title,
+                styleClass = styleClass,
+                content = content,
+                contentType = ContentType.INTERNAL)
+
+}

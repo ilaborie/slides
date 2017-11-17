@@ -2,11 +2,13 @@ package org.ilaborie.slides.content
 
 
 open class Content {
-    operator fun plus(other: Content): Content = CompositeContent(this, other)
+    open operator fun plus(other: Content): Content = CompositeContent(this, other)
 }
 
 // Basic
-object EmptyContent : Content()
+object EmptyContent : Content() {
+    override operator fun plus(other: Content): Content = other
+}
 
 data class RawContent(val content: String) : Content()
 
@@ -46,8 +48,8 @@ data class ExternalImageContent(val alt: String, val externalImage: External, va
 data class Code(val code: String, val language: Language = Language.None, val fileName: String? = null) : Content()
 
 data class Title(val title: Content, val level: Int) : Content()
-data class Link(val content: Content, val link: String) : Content() {
-    constructor(text: String, link: String) : this(text.raw(), link)
+data class Link(val content: Content, val link: String, val alt: String? = null) : Content() {
+    constructor(text: String, link: String, alt: String? = null) : this(text.raw(), link, alt)
 }
 
 data class Definitions(val map: Map<Content, Content>) : Content() {
@@ -75,7 +77,7 @@ data class Block(val content: Content) : Content()
 data class Notice(val kind: NoticeKind, val content: Content) : Content()
 
 enum class NoticeKind {
-    Tips, Info, Warning, Error
+    Tips, Info, Warning, Danger
 }
 
 // Lang
@@ -84,16 +86,16 @@ enum class Language {
 
     override fun toString() = this.name.toLowerCase()
 
-//    companion object {
-//        fun findForExtension(ext: String): Language? = when {
-//            ext.endsWith("css")  -> CSS
-//            ext.endsWith("html") -> HTML
-//            ext.endsWith("java") -> Java
-//            ext.endsWith("kt")   -> Kotlin
-//            ext.endsWith("ts")   -> TypeScript
-//            ext.endsWith("js")   -> JavaScript
-//            else                 -> null
-//        }
-//    }
+    companion object {
+        fun findForExtension(ext: String): Language? = when {
+            ext.endsWith("css")  -> CSS
+            ext.endsWith("html") -> HTML
+            ext.endsWith("java") -> Java
+            ext.endsWith("kt")   -> Kotlin
+            ext.endsWith("ts")   -> TypeScript
+            ext.endsWith("js")   -> JavaScript
+            else                 -> null
+        }
+    }
 }
 

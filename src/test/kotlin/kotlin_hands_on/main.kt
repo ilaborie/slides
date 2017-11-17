@@ -2,10 +2,10 @@ package kotlin_hands_on
 
 import org.ilaborie.logger.Logger
 import org.ilaborie.slides.ContentType.HTML
-import org.ilaborie.slides.Presentation
+import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.buildAll
-import org.ilaborie.slides.content.*
-import org.ilaborie.slides.content.Language.Kotlin
+import org.ilaborie.slides.content.NoticeKind
+import org.ilaborie.slides.dsl.*
 import org.ilaborie.slides.generateMissingExternals
 import org.ilaborie.slides.hasMissingExternals
 import java.io.File
@@ -14,67 +14,7 @@ import java.io.File
 fun main(args: Array<String>) {
     val logger = Logger("Kotlin Hands on")
 
-    val kotlinHandsOn = Presentation(title = "Kotlin par l'exemple",
-                                     id = "kotlinHandsOn",
-                                     scripts = listOf(
-                                             "../scripts/navigation.js",
-                                             "../scripts/water-pouring.js"))
-        .group("Introduction", skipPart = true) {
-            slide("Speakers", contentType = HTML, styleClass = setOf("hide-title"))
-                .slide("Roadmap", contentType = HTML)
-                .slide("Pré-requis - IDE", contentType = HTML)
-                .slide("Pré-requis - Exercices", contentType = HTML)
-                .slide("Pourquoi un nouveau langage ?")
-                .slide("Caractéristiques de Kotlin")
-                .slide("Cible", contentType = HTML)
-        }
-        .group("Water Pouring Problem") {
-            slide("Théière magique") {
-                ExternalImageContent("Théière magique", ExternalResource("/kotlinHandsOn/01_water_pouring_problem/teapot.png"))
-            }
-                .slide("Verres", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Remplir", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Vider", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Verser", contentType = HTML, styleClass = setOf("operation"))
-                .slide("Démo", contentType = HTML)
-        }
-        .group("Pour démarrer") {
-            slide("Hello World") {
-                ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/hello-world.kt")) +
-                        Notice(NoticeKind.Tips,
-                               UnorderedList(
-                                       "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin".html(),
-                                       "Ou copiez du code Java dans un fichier Kotlin".html()
-                               )
-                        )
-            }
-                .slide("Glass") {
-                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/glass.kt")) +
-                            Notice(NoticeKind.Info,
-                                   UnorderedList(
-                                           "En écrivant du Kotlin vous aurez plein de <code>fun</code> !".html(),
-                                           "Le <code>typealias</code> nécessite Kotlin 1.1.".html()
-                                   )
-                            )
-                }
-                .slide("Moves") {
-                    ExternalCodeContent(Kotlin, ExternalResource("/kotlinHandsOn/move.kt")) +
-                            Notice(NoticeKind.Tips,
-                                   UnorderedList(
-                                           "Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>".html(),
-                                           "Le <code>sealed</code> nécessite Kotlin 1.1.".html()
-                                   )
-                            )
-                }
-        }
-        .group("Excercices") {
-            slide("Choisir son exercice")
-                .slide("Serveur avec SpringBoot 2", styleClass = setOf("exo"))
-                .slide("Android", styleClass = setOf("exo"))
-                .slide("Navigateur avec KotlinJS", styleClass = setOf("exo"))
-                .slide("Freestyle", styleClass = setOf("exo"))
-                .slide("Liens")
-        }
+    val kotlinHandsOn = prez()
 
     val slidesDir = File("src/test/resources/")
 
@@ -85,4 +25,67 @@ fun main(args: Array<String>) {
 
     val dist = File("src/main/web/")
     kotlinHandsOn.buildAll(dist, "devoxx-ma")
+}
+
+fun prez() = presentation(title = "Kotlin par l'exemple", key = "kotlinHandsOn") {
+    scripts += "../scripts/navigation.js"
+    scripts += "../scripts/water-pouring.js"
+
+    part(title = "Introduction") {
+        skipHeader = true
+        slideFromResource(title = "Speakers", contentType = HTML)
+        roadmap()
+        slideFromResource(title = "Pré-requis - IDE", contentType = HTML)
+        slideFromResource(title = "Pré-requis - Exercices", contentType = HTML)
+        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
+        slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
+        slideFromResource(title = "Cible", contentType = HTML)
+    }
+    part(title = "Water Pouring Problem") {
+        slide(title = "Théière magique") {
+            img(alt = "Théière magique", resource = "/kotlinHandsOn/water_pouring_problem/teapot.png")
+        }
+        slideFromResource(title = "Verres", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Remplir", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Vider", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Verser", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Démo", contentType = HTML)
+    }
+    part("Pour démarrer") {
+        slide("Hello World") {
+            codeFromResource("/kotlinHandsOn/hello-world.kt")
+            notice(NoticeKind.Tips) {
+                ul {
+                    html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
+                    html { "Ou copiez du code Java dans un fichier Kotlin" }
+                }
+            }
+        }
+        slide("Glass") {
+            codeFromResource("/kotlinHandsOn/glass.kt")
+            notice(NoticeKind.Info) {
+                ul {
+                    html { "En écrivant du Kotlin vous aurez plein de <code>fun</code> !" }
+                    html { "Le <code>typealias</code> nécessite Kotlin 1.1." }
+                }
+            }
+        }
+        slide("Moves") {
+            codeFromResource("/kotlinHandsOn/move.kt")
+            notice(NoticeKind.Info) {
+                ul {
+                    html { "Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>" }
+                    html { "Le <code>sealed</code> nécessite Kotlin 1.1." }
+                }
+            }
+        }
+    }
+    part("Excercices") {
+        slideFromResource(title = "Choisir son exercice")
+        slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass + "exo" }
+        slideFromResource(title = "Android") { styleClass + "exo" }
+        slideFromResource(title = "Navigateur avec KotlinJS") { styleClass + "exo" }
+        slideFromResource(title = "Freestyle") { styleClass + "exo" }
+        slideFromResource(title = "Liens")
+    }
 }
