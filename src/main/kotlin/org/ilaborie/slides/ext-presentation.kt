@@ -80,7 +80,7 @@ fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
                 slides.filterIsInstance<Group>()
                     .filterNot { it.skipPart }
                     .map { it.title }
-                    .map { it.raw() })
+                    .map { HtmlContent(it) })
         else            -> {
             val contentType = slide.contentType().toFileExtension()
             val resource = (listOf(this.id) +

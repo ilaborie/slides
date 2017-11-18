@@ -19,7 +19,7 @@ typealias IPresentationBuilder = () -> Presentation
 class PresentationBuilder(private val key: String, title: String) : IPresentationBuilder {
     internal var groups = listOf<IPartBuilder>()
     internal var scripts = listOf<String>()
-    var title = title.html()
+    var title: Content = HtmlContent(title)
 
     override fun invoke(): Presentation {
         return Presentation(title = this.title,
@@ -54,7 +54,7 @@ class PartBuilder(private val title: String,
 fun PartBuilder.roadmap(title: String = "Roadmap") {
     this.slideBuilders += object : ISlideBuilder {
         override var styleClass = setOf<String>()
-        override fun invoke(presentationKey: String, groupKey: String): Slide =
+        override fun invoke(presentationKey: String, groupKey: String?): Slide =
             RoadMapSlide(title, styleClass)
     }
 }
@@ -68,7 +68,7 @@ fun PartBuilder.slide(title: String?,
     slideBuilders += SlideBuilder()
         .apply {
             this.id = key ?: ""
-            this.title = title?.html() ?: EmptyContent
+            this.title = title?.let { HtmlContent(it) } ?: EmptyContent
             this.styleClass += styleClass
             val builder = ContentContainer()
             b(builder)
@@ -84,15 +84,15 @@ fun PartBuilder.slideFromResource(title: String,
 
     slideBuilders += object : ISlideBuilder {
         override var styleClass = setOf<String>()
-        override fun invoke(presentationKey: String, groupKey: String): Slide {
-            val resource = "/$presentationKey/$groupKey/$key"
+        override fun invoke(presentationKey: String, groupKey: String?): Slide {
+            val resource = if (groupKey == null) "/$presentationKey/$key" else "/$presentationKey/$groupKey/$key"
             val content = when (contentType) {
                 MARKDOWN -> ExternalMarkdownContent(ExternalResource("$resource.md"))
                 HTML     -> ExternalMarkdownContent(ExternalResource("$resource.html"))
                 else     -> throw IllegalStateException("Unsupported content type: $contentType")
             }
             return BasicSlide(id = key,
-                              title = title.html(), // TODO content
+                              title = HtmlContent(title),
                               content = content,
                               contentType = contentType,
                               styleClass = styleClass)
@@ -106,7 +106,7 @@ fun PartBuilder.slideFromResource(title: String,
  */
 interface ISlideBuilder {
     var styleClass: Set<String>
-    operator fun invoke(presentationKey: String, groupKey: String): Slide
+    operator fun invoke(presentationKey: String, groupKey: String? = null): Slide
 
 }
 
@@ -117,7 +117,7 @@ class SlideBuilder : ISlideBuilder {
     override var styleClass = setOf<String>()
     var content: Content = EmptyContent
 
-    override fun invoke(presentationKey: String, groupKey: String): BasicSlide =
+    override fun invoke(presentationKey: String, groupKey: String?): BasicSlide =
         BasicSlide(
                 id = id,
                 title = title,

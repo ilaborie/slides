@@ -49,20 +49,14 @@ data class Code(val code: String, val language: Language = Language.None, val fi
 
 data class Title(val title: Content, val level: Int) : Content()
 data class Link(val content: Content, val link: String, val alt: String? = null) : Content() {
-    constructor(text: String, link: String, alt: String? = null) : this(text.raw(), link, alt)
+    constructor(text: String, link: String, alt: String? = null) : this(RawContent(text), link, alt)
 }
 
-data class Definitions(val map: Map<Content, Content>) : Content() {
-    constructor(vararg pairs: Pair<String, Content>) : this(pairs.map { (key, value) -> key.raw() to value }.toMap())
-}
+data class Definitions(val map: Map<Content, Content>) : Content()
 
-data class OrderedList(val contents: List<Content>) : Content() {
-    constructor(vararg contents: Content) : this(contents.toList())
-}
+data class OrderedList(val contents: List<Content>) : Content()
 
-data class UnorderedList(val contents: List<Content>) : Content() {
-    constructor(vararg contents: Content) : this(contents.toList())
-}
+data class UnorderedList(val contents: List<Content>) : Content()
 
 data class Figure(val title: Content, val externalImage: External, val copyright: Content? = null) : Content()
 

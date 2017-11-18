@@ -2,7 +2,11 @@ package org.ilaborie.slides
 
 import org.ilaborie.slides.ContentType.INTERNAL
 import org.ilaborie.slides.ContentType.MARKDOWN
-import org.ilaborie.slides.content.*
+import org.ilaborie.slides.content.Content
+import org.ilaborie.slides.content.EmptyContent
+import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.content.Title
+import org.ilaborie.slides.dsl.ContentContainer
 
 enum class ContentType {
     INTERNAL, HTML, MARKDOWN;
@@ -24,7 +28,10 @@ sealed class Slide : Slides {
     override fun toList() = listOf(this)
     // not called
     override fun removeSlide(slideId: String) = this
-    override fun replaceSlide(slideId: String, replacement: Slide): Slides = this
+
+    override fun replaceSlide(slideKeys: String,
+                              newTitle: String?,
+                              replacement: ContentContainer.() -> Unit): Slides = this
 }
 
 data class BasicSlide(
@@ -40,10 +47,10 @@ data class BasicSlide(
         content: Content? = null,
         contentType: ContentType = if (content != null) INTERNAL else MARKDOWN,
         styleClass: Set<String> = emptySet()
-    ) : this(title = title.raw(), id = id, content = content, contentType = contentType, styleClass = styleClass)
+    ) : this(title = HtmlContent(title), id = id, content = content, contentType = contentType, styleClass = styleClass)
 
     override fun id() = id
-    override fun title() = title.h3()
+    override fun title() = Title(level = 3, title = title)
     override fun styleClass() = styleClass
     override fun contentType() = contentType
     override fun content(defaultContent: () -> Content) = content ?: defaultContent()
@@ -51,7 +58,7 @@ data class BasicSlide(
 
 data class MainTitleSlide(val title: Content, override val id: String) : Slide() {
     override fun id() = id
-    override fun title() = title.h1()
+    override fun title() = Title(level = 1, title = title)
     override fun styleClass() = setOf("cover")
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = EmptyContent
@@ -60,7 +67,7 @@ data class MainTitleSlide(val title: Content, override val id: String) : Slide()
 data class PartTitleSlide(val title: String) : Slide() {
     override val id = "part_${title.normalize()}"
     override fun id() = id
-    override fun title() = title.h2()
+    override fun title() = Title(level = 2, title = HtmlContent(title))
     override fun styleClass() = setOf("part")
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = EmptyContent
@@ -69,7 +76,7 @@ data class PartTitleSlide(val title: String) : Slide() {
 data class RoadMapSlide(val title: String, val styleClass: Set<String> = emptySet()) : Slide() {
     override val id = "roadmap"
     override fun id() = id
-    override fun title() = title.h3()
+    override fun title() = Title(level = 3, title = HtmlContent(title))
     override fun styleClass() = styleClass + "roadmap"
     override fun contentType() = INTERNAL
     override fun content(defaultContent: () -> Content) = defaultContent()

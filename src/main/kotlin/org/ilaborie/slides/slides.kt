@@ -1,24 +1,23 @@
 package org.ilaborie.slides
 
-import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.content.Content
-import org.ilaborie.slides.content.raw
+import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.dsl.ContentContainer
+import org.ilaborie.slides.dsl.SlideBuilder
 
 interface Slides {
     val id: String
     fun toList(): List<Slide>
     fun removeSlide(slideId: String): Slides
-    fun replaceSlide(slideId: String, replacement: Slide): Slides
+    fun replaceSlide(slideKeys: String,
+                     newTitle: String? = null,
+                     replacement: ContentContainer.() -> Unit): Slides
 }
 
 data class Presentation(val title: Content,
                         override val id: String,
                         val slides: List<Slides> = emptyList(),
                         val scripts: List<String> = emptyList()) : Slides {
-    constructor(title: String,
-                id: String = title.normalize(),
-                scripts: List<String> = emptyList()) : this(title = title.raw(), id = id, scripts = scripts)
-
     val coverSlide by lazy { MainTitleSlide(title, id) }
 
     operator fun invoke(s: Slides): Int = slides.indexOf(s)
@@ -41,28 +40,21 @@ data class Presentation(val title: Content,
         }
     }
 
-    fun group(title: String,
-              id: String = title.normalize(),
-              skipPart: Boolean = false,
-              slidesBuilder: Group.() -> Group = { this }): Presentation =
-        this + Group(title = title, id = id, skipPart = skipPart).slidesBuilder()
-
     operator fun plus(addon: Slides) =
         copy(slides = slides + addon)
 
     override fun removeSlide(slideId: String) =
         copy(slides = slides
             .filterNot { it.id == slideId }
-            .map { it.removeSlide(id) })
+            .map { it.removeSlide(slideId) })
 
-    fun replaceGroup(groupId: String, replacement: Group): Slides =
-        copy(slides = slides
-            .map { if (it.id == groupId) replacement else it })
-
-    override fun replaceSlide(slideId: String, replacement: Slide) =
-        copy(slides = slides
-            .map { it.replaceSlide(slideId, replacement) }
-            .map { if (it.id == slideId) replacement else it })
+    override fun replaceSlide(slideKeys: String,
+                              newTitle: String?,
+                              replacement: ContentContainer.() -> Unit): Presentation {
+        val (pKey) = slideKeys.split("/")
+        return if (pKey != id) this.copy() else
+            copy(slides = slides.map { it.replaceSlide(slideKeys, newTitle, replacement) })
+    }
 }
 
 data class Group(val title: String,
@@ -75,32 +67,6 @@ data class Group(val title: String,
     override fun toList(): List<Slide> =
         if (skipPart) slides.toList()
         else listOf(PartTitleSlide(title)) + slides.toList()
-///
-
-    fun roadMap(title: String): Group =
-        this + RoadMapSlide(title)
-
-    fun slide(title: Content,
-              id: String,
-              styleClass: Set<String> = emptySet(),
-              contentType: ContentType = MARKDOWN,
-              contentBuilder: () -> Content? = { null }): Group =
-        this + BasicSlide(title = title,
-                          id = id,
-                          styleClass = styleClass,
-                          content = contentBuilder(),
-                          contentType = contentType)
-
-    fun slide(title: String,
-              id: String = title.normalize(),
-              styleClass: Set<String> = emptySet(),
-              contentType: ContentType = MARKDOWN,
-              contentBuilder: () -> Content? = { null }): Group =
-        this + BasicSlide(title = title,
-                          id = id,
-                          styleClass = styleClass,
-                          content = contentBuilder(),
-                          contentType = contentType)
 
     operator fun plus(slide: Slide): Group =
         copy(slides = slides + slide)
@@ -109,8 +75,23 @@ data class Group(val title: String,
     override fun removeSlide(slideId: String) =
         copy(slides = slides.filterNot { it.id == slideId })
 
-    override fun replaceSlide(slideId: String, replacement: Slide) =
-        copy(slides = slides
-            .map { if (it.id == slideId) replacement else it })
+    override fun replaceSlide(slideKeys: String,
+                              newTitle: String?,
+                              replacement: ContentContainer.() -> Unit): Group {
+        val (pKey, gKey, sKey) = slideKeys.split("/")
+        fun newSlide(previous: Slide): Slide {
+            val c = ContentContainer()
+            replacement(c)
+            val b = SlideBuilder().apply {
+                title = newTitle?.let { HtmlContent(it) } ?: previous.title()
+                id = previous.id()
+                content = c()
+            }
+            return b(presentationKey = pKey, groupKey = gKey)
+        }
+        return if (gKey != id) this.copy() else
+            copy(slides = slides
+                .map { if (it.id == sKey) newSlide(it) else it })
+    }
 }
 

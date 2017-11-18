@@ -31,10 +31,15 @@ class ContentContainer : IContentContainer() {
         builder(listContainer)
         builders += { listContainer() }
     }
+
     fun addMap(builder: MapContentContainer.() -> Unit, f: (Map<Content, Content>) -> Content) {
         val mapContainer = MapContentContainer(f)
         builder(mapContainer)
         builders += { mapContainer() }
+    }
+
+    operator fun plus(s: String) {
+        builders += { HtmlContent(s) }
     }
 
     override operator fun invoke(): Content =
@@ -73,6 +78,7 @@ fun ContentContainer.codeFromResource(resource: String) {
                             externalCode = ExternalResource(resource))
     }
 }
+
 fun ContentContainer.htmlFromResource(resource: String) {
     add {
         ExternalHtmlContent(externalHtml = ExternalResource(resource))
@@ -95,10 +101,10 @@ fun ContentContainer.svg(resource: String) {
     }
 }
 
-fun ContentContainer.figure(title: String, link: String, copyright: String?) {
+fun ContentContainer.figure(title: String, link: String, copyright: String? = null) {
     add {
-        Figure(title = title.html(),
-               copyright = copyright?.html(),
+        Figure(title = HtmlContent(title),
+               copyright = copyright?.let { HtmlContent(it) },
                externalImage = ExternalLink(link))
     }
 }
@@ -122,9 +128,21 @@ fun ContentContainer.header(level: Int, builder: ContentContainer.() -> Unit) {
     }
 }
 
+fun ContentContainer.headerText(level: Int, builder: () -> String) {
+    add {
+        Title(title = HtmlContent(builder()), level = level)
+    }
+}
+
 fun ContentContainer.p(builder: ContentContainer.() -> Unit) {
     add(builder) {
         Paragraph(content = it)
+    }
+}
+
+fun ContentContainer.pText(builder: () -> String) {
+    add {
+        Paragraph(content = HtmlContent(builder()))
     }
 }
 
@@ -154,6 +172,13 @@ fun ContentContainer.link(link: String, alt: String? = null, builder: ContentCon
     }
 }
 
+fun ContentContainer.linkText(link: String, alt: String? = null, builder: () -> String) {
+    add {
+        val text = builder()
+        Link(content = HtmlContent(text), link = link, alt = alt ?: text)
+    }
+}
+
 // List
 
 fun ContentContainer.ul(builder: ListContentContainer.() -> Unit) {
@@ -176,15 +201,25 @@ fun ContentContainer.definitions(builder: MapContentContainer.() -> Unit) {
 
 
 // CSS
-fun ContentContainer.cssLiveCode(code: String,
-                                 soluce: String = "$code-final",
-                                 playground: String = "$code.html") {
+
+fun ContentContainer.styleEditable(code: String,
+                                   soluce: String = "$code-final") {
     add {
         StyleEditable(ExternalResource("$code.css"), ExternalResource("$soluce.css"))
     }
+}
+
+fun ContentContainer.editableZone(htmlResource: String) {
     add {
-        EditableZone(ExternalHtmlContent(ExternalResource("$playground.html")))
+        EditableZone(ExternalHtmlContent(ExternalResource(htmlResource)))
     }
+}
+
+fun ContentContainer.cssLiveCode(code: String,
+                                 soluce: String = "$code-final",
+                                 playground: String = "$code.html") {
+    styleEditable(code, soluce)
+    editableZone(playground)
 }
 
 fun ContentContainer.cssCompatibility(country: String = Locale.getDefault().country,
