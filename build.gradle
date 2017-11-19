@@ -51,6 +51,11 @@ task kotlinHandsOn(type: JavaExec) {
     main = "kotlin_hands_on.MainKt"
 }
 
+task kotlinBbl(type: JavaExec) {
+    classpath sourceSets.test.runtimeClasspath
+    main = "kotlin_bbl.MainKt"
+}
+
 task slides {
 }
 slides.dependsOn cssIsAwesome, kotlinHandsOn
