@@ -1,5 +1,6 @@
 import * as  express from 'express';
 import {Request, Response} from 'express';
+import * as morgan from 'morgan';
 
 import {code} from './code-to-html';
 import {compatibility} from './compat';
@@ -8,6 +9,7 @@ import {renderPdf} from './html-to-pdf';
 
 const app = express();
 
+app.use(morgan('dev'));
 
 // body parser as string
 app.use((req: Request, res: Response, next) => {
@@ -31,21 +33,24 @@ app.use(express.static('src/main/web'));
 app.post('/code', (req: Request, res: Response) => {
     const lang = req.query['lang'];
     const body = req.body as string;
+    console.log(`code [${lang}]`);
     code(lang, body)
         .then(html => res.send(html));
 });
 
 // get Browser Compatibility
 app.get('/compatibility', (req: Request, res: Response) => {
-    const country = req.query['lang'];
+    const country = req.query['country'];
     const threshold = parseFloat(req.query['threshold']);
     const features = req.query['features'].split(',');
+    console.log(`compatibility ${country} ${threshold}: ${features.join(', ')}`);
     compatibility(country, threshold, features)
         .then(html => res.send(html));
 });
 
 // Markdown to HTML, with syntax highlighting
 app.post('/markdown', (req: Request, res: Response) => {
+    console.log(`markdown`);
     const body = req.body as string;
     markdown(body)
         .then(html => res.send(html));
@@ -55,6 +60,7 @@ app.post('/markdown', (req: Request, res: Response) => {
 app.post('/pdf', (req: Request, res: Response) => {
     const from = req.query['from'];
     const to = req.query['to'];
+    console.log(`pdf ${from} -> ${to}`);
     renderPdf(from, to)
         .then(() => res.send('ok'));
 });

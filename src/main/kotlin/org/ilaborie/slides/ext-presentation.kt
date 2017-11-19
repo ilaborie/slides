@@ -32,7 +32,7 @@ fun <T> catchWithDefault(default: T, dangerous: () -> T): T =
 fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.html")
     logger.debug { "Write '${this.title.renderAsString()}' to $file" }
-    file.writeText(renderAsHtml(key), charset)
+    file.bufferedWriter(charset).write(renderAsHtml(key))
 }
 
 fun htmlToPdf(from: File, to: File) {
@@ -44,7 +44,7 @@ fun htmlToPdf(from: File, to: File) {
 fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.md")
     logger.debug { "Write '${this.title.renderAsString()}' to $file" }
-    file.writeText(renderAsMarkdown(), charset)
+    file.bufferedWriter(charset).write(renderAsMarkdown())
 }
 
 fun Presentation.buildAll(dist: File, key: String) {

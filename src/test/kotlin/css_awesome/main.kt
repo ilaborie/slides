@@ -1,6 +1,7 @@
 package css_awesome
 
 import org.ilaborie.slides.ContentType.HTML
+import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.Code
 import org.ilaborie.slides.content.HtmlContent
 import org.ilaborie.slides.content.Link
@@ -14,8 +15,6 @@ fun main(args: Array<String>) {
 
     // Devfest Toulouse
     val cssIsAwesome = cssIsAwesome(country = "FR", browsersThreshold = 0.4)
-//    cssIsAwesome
-//        .buildAll(dist, "devfest-tls")
 
     // Devoxx Maroc
     val cssIsAwesomeShort = cssIsAwesome(country = "MA", browsersThreshold = 0.5)
@@ -36,7 +35,9 @@ fun main(args: Array<String>) {
                 }
             }
         }
-//        .buildAll(dist, "devoxx-ma")
+
+//    cssIsAwesome.buildAll(dist, "devfest-tls")
+//    cssIsAwesomeShort.buildAll(dist, "devoxx-ma")
 
     copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist.resolve(cssIsAwesome.id))
 }
@@ -330,12 +331,12 @@ fun cssIsAwesome(country: String = "FR", browsersThreshold: Number = 0.5) =
                 cssLiveCode("/cssIsAwesome/pseudo_classes/checkbox")
             }
             slide(title = "Switch") {
-                val initialCss = "/cssIsAwesome/pseudo_classes/switch-1.css"
-                val initialCss1 = "/cssIsAwesome/pseudo_classes/switch-2.css"
-                styleEditable(initialCss)
-                codeFromResource(initialCss)
-                styleEditable(initialCss1)
-                codeFromResource(initialCss1)
+                val initialCss = "/cssIsAwesome/pseudo_classes/switch-1"
+                val initialCss1 = "/cssIsAwesome/pseudo_classes/switch-2"
+                styleEditable(initialCss, initialCss)
+                codeFromResource(initialCss + ".css")
+                styleEditable(initialCss1, initialCss1)
+                codeFromResource(initialCss1 + ".css")
                 editableZone("/cssIsAwesome/pseudo_classes/switch.html")
             }
             slide(title = "Panel", styleClass = setOf("live-code")) {
