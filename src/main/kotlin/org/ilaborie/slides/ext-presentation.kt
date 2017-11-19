@@ -35,12 +35,10 @@ fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Chars
     file.writeText(renderAsHtml(key), charset)
 }
 
-fun htmlToPdf(from: File, to: File): Int {
+fun htmlToPdf(from: File, to: File) {
     val file = from.absolutePath
-    return ProcessBuilder("node", "src/main/typescript/html-to-pdf.js", "file://$file", to.absolutePath)
-        .inheritIO()
-        .start()
-        .waitFor()
+    val helperClient = createClient("http://localhost:5000/")
+    helperClient.pdf("file://$file", to.absolutePath)
 }
 
 fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {

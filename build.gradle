@@ -4,6 +4,7 @@ version '1.0-SNAPSHOT'
 buildscript {
     ext.kotlinVersion = '1.2.0-rc-39'
     ext.serializationVersion = '0.2'
+    ext.feignVersion = '9.5.1'
 
     repositories {
         jcenter()
@@ -32,7 +33,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serializationVersion"
     compile 'org.jsoup:jsoup:1.10.3'
-
+    compile "io.github.openfeign:feign-core:$feignVersion"
 }
 
 compileKotlin {

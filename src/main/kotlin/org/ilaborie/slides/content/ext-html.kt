@@ -130,13 +130,8 @@ fun Code.renderAsHtml() = when (language) {
 private val codeCache = mutableMapOf<Pair<Language, String>, String>()
 private fun getFormattedCode(language: Language, code: String): String =
         codeCache.getOrPut(language to code) {
-            val cmd = listOf("ts-node", "src/main/typescript/code-to-html.ts", language.toString().toLowerCase())
-            logger.info { "Run ${cmd.joinToString()} ..." }
-            val process = ProcessBuilder(cmd).start()
-            val writer = process.outputStream.writer()
-            writer.write(code)
-            writer.close()
-            return process.inputStream.bufferedReader().readText()
+            val helperClient = createClient("http://localhost:5000/")
+            return helperClient.codeToHtml(language.toString().toLowerCase(), code)
         }
 
 fun Definitions.renderAsHtml() = map
@@ -160,14 +155,9 @@ fun Figure.renderAsHtml() = """
 
 private val mdCache = mutableMapOf<String, String>()
 fun MarkdownContent.renderAsHtml(): String =
-        mdCache.getOrPut(this.markdown) {
-            val cmd = listOf("ts-node", "src/main/typescript/md-to-html.ts")
-            logger.info { "Run ${cmd.joinToString()} ..." }
-            val process = ProcessBuilder(cmd).start()
-            val writer = process.outputStream.writer()
-            writer.write(this.markdown)
-            writer.close()
-            process.inputStream.bufferedReader().readText()
+        mdCache.getOrPut(markdown) {
+            val helperClient = createClient("http://localhost:5000/")
+            return helperClient.markdown(markdown)
         }
 
 fun CssCompatibility.renderAsHtml(): String {

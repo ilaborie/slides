@@ -3,7 +3,7 @@ package org.ilaborie.slides.content.web
 import kotlinx.serialization.json.JSON
 import org.ilaborie.slides.content.Content
 import org.ilaborie.slides.content.External
-import org.ilaborie.slides.logger
+import org.ilaborie.slides.content.createClient
 import org.ilaborie.table.Table
 
 
@@ -12,15 +12,12 @@ data class StyleEditable(val initialCss: External, val finalCss: External? = nul
 data class EditableZone(val content: Content) : Content()
 
 
-data class CssCompatibility(val country: String, val threshold: Number, private val features: List<String>) : Content() {
+data class CssCompatibility(val country: String,
+                            val threshold: Number,
+                            private val features: List<String>) : Content() {
     private val result: CompatibilityStatusResult by lazy {
-        val cmd = listOf("node", "src/main/typescript/compat.js", country, threshold.toString(), features.joinToString(separator = ","))
-        logger.info {
-            "Run ${cmd.joinToString(separator = " ") { "\"$it\"" }} ..."
-        }
-        val process = ProcessBuilder(cmd).start()
-        process.outputStream.close()
-        val json = process.inputStream.bufferedReader().readText()
+        val helperClient = createClient("http://localhost:5000/")
+        val json = helperClient.compatibility(country, threshold.toString(), features.joinToString(separator = ","))
         try {
             JSON.parse<CompatibilityStatusResult>(json)
         } catch (e: Exception) {
