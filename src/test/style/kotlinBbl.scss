@@ -95,14 +95,23 @@ section article > pre.hljs {
     flex-direction: row;
     grid-column: 1 / 4;
     grid-row: 1 / 4;
+    background: #00b0f0;
+    display: grid;
+    max-height: 100vh;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+    grid-template-areas:
+        "manu igor"
+        "mkp mkp";
+    align-items: center;
 
-    .emmanuel, .igor {
-      background: #00b0f0;
+    .emmanuel {
+      grid-area: manu;
     }
-
+    .igor {
+      grid-area: igor;
+    }
     .emmanuel, .igor {
-      height: 100vh;
-      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -144,9 +153,11 @@ section article > pre.hljs {
         }
       }
     }
-    & > a {
-      align-self: center;
-      grid-column: 1 / 3;
+
+    p {
+      align-self: flex-start;
+      grid-area: mkp;
+      text-align: center;
     }
   }
 

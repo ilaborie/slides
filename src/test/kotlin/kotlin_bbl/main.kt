@@ -34,8 +34,6 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         skipHeader = true
         slideFromResource(title = "Speakers", contentType = ContentType.HTML)
         roadmap()
-        slideFromResource(title = "Pré-requis - IDE", contentType = ContentType.HTML)
-        slideFromResource(title = "Pré-requis - Exercices", contentType = ContentType.HTML)
         slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = ContentType.MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = ContentType.MARKDOWN)
         slideFromResource(title = "Cible", contentType = ContentType.HTML)
