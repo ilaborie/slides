@@ -280,7 +280,7 @@ section article > pre.hljs {
         margin-top: .5rem; }
         #speakers article .emmanuel a[href*="twitter"]::before, #speakers article .igor a[href*="twitter"]::before {
           background-image: url("./assets/brands/twitter-white.svg"); }
-    #speakers article p {
+    #speakers article > a {
       align-self: flex-start;
       grid-area: mkp;
       text-align: center; }

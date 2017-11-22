@@ -43,37 +43,6 @@
 2. Android
 3. Conclusion
 
-<ul>
-	<li class="ide">
-		Installation de l'IDE<br>
-		<a href="https://developer.android.com/studio/index.html">Android Studio 3.0</a>,
-		<a href="https://www.jetbrains.com/idea/download/">Download IntelliJ IDEA</a>
-	</li>
-	<li>
-		Configuration du plugin Kotlin<br>
-		<code>Tools | Kotlin | Configure Kotlin Plugin Updates</code><br>
-		<div class="capture">
-			<img src="../assets/devoxx-ma/update-kotlin-plugin.png" alt="Configure Kotlin Plugin Updates"><br>
-			Sélectionner <code>Early Access Preview 1.2</code><br>
-			Puis cliquer sur <code>Check for updates now</code>
-		</div>
-	</li>
-</ul>
-
-<ul>
-	<li>
-		Récupérer la présentation<br>
-		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf">https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf</a>
-	</li>
-	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
-	<li>
-		<code>git checkout exo-server</code> ou
-		<code>git checkout exo-web</code> ou
-		<code>git checkout exo-mobile</code>
-	</li>
-	<li><code>./gradlew clean assemble test</code></li>
-</ul>
-
 
 * Écrire du code plus sûr
 * Facilité la maintenance
@@ -134,4 +103,41 @@
 	<div class="glass-container">
 		<div class="glass"
 		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 100%, transparent 0px);"></div>
-		<span>
+		<span>4 / 4</span>
+	</div>
+</div>
+
+<div>
+	<code>Empty</code>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 75%, transparent 0px);"></div>
+		<span>3 / 4</span>
+	</div>
+	<span class="ope">➡️</span>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 0%, transparent 0px);"></div>
+		<span>0 / 4</span>
+	</div>
+</div>
+
+<div>
+	<code>Pour</code>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 8rem;background-image: linear-gradient(to top, #e2b65e 75%, transparent 0px);"></div>
+		<span>6 / 8</span>
+	</div>
+	<code>into</code>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 33.3%, transparent 0px);"></div>
+		<span>2 / 6</span>
+	</div>
+
+	<span class="ope">➡️</span>
+
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 8rem;background-image: linear-gradient(to top, #e2b65e 25

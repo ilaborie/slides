@@ -88,7 +88,7 @@ fun PartBuilder.slideFromResource(title: String,
             val resource = if (groupKey == null) "/$presentationKey/$key" else "/$presentationKey/$groupKey/$key"
             val content = when (contentType) {
                 MARKDOWN -> ExternalMarkdownContent(ExternalResource("$resource.md"))
-                HTML     -> ExternalMarkdownContent(ExternalResource("$resource.html"))
+                HTML     -> ExternalHtmlContent(ExternalResource("$resource.html"))
                 else     -> throw IllegalStateException("Unsupported content type: $contentType")
             }
             return BasicSlide(id = key,

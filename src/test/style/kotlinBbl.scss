@@ -154,7 +154,7 @@ section article > pre.hljs {
       }
     }
 
-    p {
+    &> a {
       align-self: flex-start;
       grid-area: mkp;
       text-align: center;

@@ -1,8 +1,8 @@
 package kotlin_bbl
 
-import kotlin_hands_on.prez
 import org.ilaborie.logger.Logger
-import org.ilaborie.slides.ContentType
+import org.ilaborie.slides.ContentType.HTML
+import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.NoticeKind
 import org.ilaborie.slides.dsl.*
@@ -32,21 +32,21 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
 
     part(title = "Introduction") {
         skipHeader = true
-        slideFromResource(title = "Speakers", contentType = ContentType.HTML)
+        slideFromResource(title = "Speakers", contentType = HTML)
         roadmap()
-        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = ContentType.MARKDOWN)
-        slideFromResource(title = "Caractéristiques de Kotlin", contentType = ContentType.MARKDOWN)
-        slideFromResource(title = "Cible", contentType = ContentType.HTML)
+        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
+        slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
+        slideFromResource(title = "Cible", contentType = HTML)
     }
     part(title = "Water Pouring Problem") {
         slide(title = "Théière magique") {
             img(alt = "Théière magique", resource = "/kotlinHandsOn/water_pouring_problem/teapot.png")
         }
-        slideFromResource(title = "Verres", contentType = ContentType.HTML) { styleClass + "operation" }
-        slideFromResource(title = "Remplir", contentType = ContentType.HTML) { styleClass + "operation" }
-        slideFromResource(title = "Vider", contentType = ContentType.HTML) { styleClass + "operation" }
-        slideFromResource(title = "Verser", contentType = ContentType.HTML) { styleClass + "operation" }
-        slideFromResource(title = "Démo", contentType = ContentType.HTML)
+        slideFromResource(title = "Verres", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Remplir", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Vider", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Verser", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Démo", contentType = HTML)
     }
     part("Live Coding") {
         slide("Hello World") {
