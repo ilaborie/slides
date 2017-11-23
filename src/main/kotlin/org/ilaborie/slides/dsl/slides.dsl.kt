@@ -17,20 +17,28 @@ fun presentation(title: String,
 
 typealias IPresentationBuilder = () -> Presentation
 class PresentationBuilder(private val key: String, title: String) : IPresentationBuilder {
-    internal var groups = listOf<IPartBuilder>()
-    internal var scripts = listOf<String>()
+    private var groups = listOf<IPartBuilder>()
+    private var scripts = listOf<String>()
     var title: Content = HtmlContent(title)
 
-    override fun invoke(): Presentation {
-        return Presentation(title = this.title,
-                            id = key,
-                            slides = groups.map { it(key) },
-                            scripts = scripts)
+    override fun invoke() = Presentation(
+            title = this.title,
+            id = key,
+            slides = groups.map { it(key) },
+            scripts = scripts)
+
+    fun addScript(script: String) {
+        scripts += script
     }
+
+    fun addGroup(group: IPartBuilder) {
+        groups += group
+    }
+
 }
 
 fun PresentationBuilder.part(title: String, function: PartBuilder.() -> Unit) {
-    groups += PartBuilder(title = title).apply(function)
+    addGroup(PartBuilder(title = title).apply(function))
 }
 
 /**
@@ -40,7 +48,7 @@ typealias IPartBuilder = (String) -> Group
 class PartBuilder(private val title: String,
                   private val key: String = title.normalize()) : IPartBuilder {
 
-    internal val slideBuilders = mutableListOf<ISlideBuilder>()
+    private var slideBuilders = listOf<ISlideBuilder>()
     var skipHeader = false
 
     override fun invoke(presentationKey: String) = Group(
@@ -48,15 +56,19 @@ class PartBuilder(private val title: String,
             id = key,
             slides = slideBuilders.map { it(presentationKey, key) },
             skipPart = skipHeader)
+
+    fun addSlide(slide: ISlideBuilder) {
+        this.slideBuilders += slide
+    }
 }
 
 
 fun PartBuilder.roadmap(title: String = "Roadmap") {
-    this.slideBuilders += object : ISlideBuilder {
+    addSlide(object : ISlideBuilder {
         override var styleClass = setOf<String>()
         override fun invoke(presentationKey: String, groupKey: String?): Slide =
             RoadMapSlide(title, styleClass)
-    }
+    })
 }
 
 
@@ -65,15 +77,15 @@ fun PartBuilder.slide(title: String?,
                       styleClass: Set<String> = setOf(),
                       b: ContentContainer.() -> Unit) {
 
-    slideBuilders += SlideBuilder()
-        .apply {
-            this.id = key ?: ""
-            this.title = title?.let { HtmlContent(it) } ?: EmptyContent
-            this.styleClass += styleClass
-            val builder = ContentContainer()
-            b(builder)
-            this.content = builder()
-        }
+    addSlide(SlideBuilder()
+                 .apply {
+                     this.id = key ?: ""
+                     this.title = title?.let { HtmlContent(it) } ?: EmptyContent
+                     this.styleClass += styleClass
+                     val builder = ContentContainer()
+                     b(builder)
+                     this.content = builder()
+                 })
 }
 
 
@@ -82,7 +94,7 @@ fun PartBuilder.slideFromResource(title: String,
                                   contentType: ContentType = MARKDOWN,
                                   b: ISlideBuilder.() -> Unit = {}) {
 
-    slideBuilders += object : ISlideBuilder {
+    addSlide(object : ISlideBuilder {
         override var styleClass = setOf<String>()
         override fun invoke(presentationKey: String, groupKey: String?): Slide {
             val resource = if (groupKey == null) "/$presentationKey/$key" else "/$presentationKey/$groupKey/$key"
@@ -98,7 +110,7 @@ fun PartBuilder.slideFromResource(title: String,
                               styleClass = styleClass)
         }
 
-    }.apply(b)
+    }.apply(b))
 }
 
 /**

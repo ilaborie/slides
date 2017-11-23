@@ -28,8 +28,8 @@ fun main(args: Array<String>) {
 }
 
 fun prez() = presentation(title = "Kotlin par l'exemple", key = "kotlinHandsOn") {
-    scripts += "../scripts/navigation.js"
-    scripts += "../scripts/water-pouring.js"
+    addScript("../scripts/navigation.js")
+    addScript("../scripts/water-pouring.js")
 
     part(title = "Introduction") {
         skipHeader = true

@@ -140,4 +140,45 @@
 
 	<div class="glass-container">
 		<div class="glass"
-		     style="height: 8rem;background-image: linear-gradient(to top, #e2b65e 25
+		     style="height: 8rem;background-image: linear-gradient(to top, #e2b65e 25%, transparent 0px);"></div>
+		<span>2 / 8</span>
+	</div>
+	,
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 100%, transparent 0px);"></div>
+		<span>6 / 6</span>
+	</div>
+</div>
+
+<div class="water-pouring-demo"></div>
+
+
+
+*Tips*
+Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
+Ou copiez du code Java dans un fichier Kotlin
+
+
+*Info*
+En écrivant du Kotlin vous aurez plein de <code>fun</code> !
+Le <code>typealias</code> nécessite Kotlin 1.1.
+
+
+*Info*
+Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
+Le <code>sealed</code> nécessite Kotlin 1.1.
+
+
+
+
+
+
+
+* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* [Référence](http://kotlinlang.org/docs/reference/)
+* [https://kotlin.link/](https://kotlin.link/)
+* [Blog](https://blog.jetbrains.com/kotlin/)
+* [Forum](https://discuss.kotlinlang.org/)
+* [Slack](https://kotlinslack.herokuapp.com/)
+* [Kotlin Evolution and Enhancement Process](https://github.com/Kotlin/KEEP)

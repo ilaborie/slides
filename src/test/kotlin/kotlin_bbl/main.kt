@@ -27,8 +27,8 @@ fun main(args: Array<String>) {
 }
 
 fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
-    scripts += "../scripts/navigation.js"
-    scripts += "../scripts/water-pouring.js"
+    addScript("../scripts/navigation.js")
+    addScript("../scripts/water-pouring.js")
 
     part(title = "Introduction") {
         skipHeader = true
