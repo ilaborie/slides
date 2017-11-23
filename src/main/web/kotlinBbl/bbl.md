@@ -40,7 +40,7 @@
 
 0. Water Pouring Problem
 1. Live Coding
-2. Android
+2. Ecosystème
 3. Conclusion
 
 
@@ -170,9 +170,32 @@ Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <e
 Le <code>sealed</code> nécessite Kotlin 1.1.
 
 
+TODO
+
+TODO
 
 
 
+TODO
+
+String 5, SpringBoot 2
+Vert.x
+SparkJava
+...
+
+
+Partager du code commun (backend, frontend)
+React ?
+
+
+Devices sans JVM
+iOS
+JS
+
+
+
+
+TODO
 
 
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)

@@ -73,10 +73,43 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
                 }
             }
         }
+        slide("Solver") {
+            html {  "TODO"} // TODO
+        }
+        slide("State::move") {
+            html {"TODO"} // TODO
+        }
     }
-    part("Android") {
+    part("Ecosystème") {
+        slide("Android") {
+            html{ "TODO"} // TODO
+        }
+        slide("Server") {
+            ul {
+                html { "String 5, SpringBoot 2" }
+                html { "Vert.x" }
+                html { "SparkJava" }
+                html { "..." }
+            }
+        }
+        slide("Web") {
+            ul {
+                html { "Partager du code commun (backend, frontend)" }
+                html { "React ?" }
+            }
+        }
+        slide("Natif") {
+            ul {
+                html { "Devices sans JVM" }
+                html { "iOS" }
+                html { "JS" }
+            }
+        }
     }
     part("Conclusion") {
+        slide("Pourquoi Kotlin") {
+            html{ "TODO"} // TODO
+        }
         slideFromResource(title = "Liens")
     }
 }
