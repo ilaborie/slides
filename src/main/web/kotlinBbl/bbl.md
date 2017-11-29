@@ -38,11 +38,6 @@
 
 
 
-0. Water Pouring Problem
-1. Live Coding
-2. Ecosystème
-3. Conclusion
-
 
 * Écrire du code plus sûr
 * Facilité la maintenance
@@ -67,9 +62,12 @@
 <h4 class="native">Native avec LLVM</h4>
 
 
+0. Water Pouring Problem
+1. Live Coding
+2. Kotlin dès maintenant
+3. Conclusion
 
 
-![Théière magique](/kotlinHandsOn/water_pouring_problem/teapot.png)
 
 <div>
 	<div class="glass-container">
@@ -174,9 +172,16 @@ TODO
 
 TODO
 
-
-
 TODO
+
+
+
+Faible overhead
+Coder en Java 15 dès maintenant
+Support officiel par Google
+[Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
+[Kotlin Guide](https://android.github.io/kotlin-guides/)
+
 
 String 5, SpringBoot 2
 Vert.x
@@ -190,7 +195,7 @@ React ?
 
 Devices sans JVM
 iOS
-JS
+WebAssembly
 
 
 

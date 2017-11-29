@@ -33,15 +33,12 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
     part(title = "Introduction") {
         skipHeader = true
         slideFromResource(title = "Speakers", contentType = HTML)
-        roadmap()
         slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
         slideFromResource(title = "Cible", contentType = HTML)
+        roadmap()
     }
     part(title = "Water Pouring Problem") {
-        slide(title = "Théière magique") {
-            img(alt = "Théière magique", resource = "/kotlinHandsOn/water_pouring_problem/teapot.png")
-        }
         slideFromResource(title = "Verres", contentType = HTML) { styleClass + "operation" }
         slideFromResource(title = "Remplir", contentType = HTML) { styleClass + "operation" }
         slideFromResource(title = "Vider", contentType = HTML) { styleClass + "operation" }
@@ -74,15 +71,24 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
             }
         }
         slide("Solver") {
-            html {  "TODO"} // TODO
+            html { "TODO" } // TODO
         }
         slide("State::move") {
-            html {"TODO"} // TODO
+            html { "TODO" } // TODO
+        }
+        slide("Mais aussi") {
+            html { "TODO" } // TODO
         }
     }
-    part("Ecosystème") {
+    part("Kotlin dès maintenant") {
         slide("Android") {
-            html{ "TODO"} // TODO
+            ul {
+                html { "Faible overhead" }
+                html { "Coder en Java 15 dès maintenant" }
+                html { "Support officiel par Google" }
+                linkText(link = "https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit") { "Using Project Kotlin for Android" }
+                linkText(link = "https://android.github.io/kotlin-guides/") { "Kotlin Guide" }
+            }
         }
         slide("Server") {
             ul {
@@ -102,13 +108,13 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
             ul {
                 html { "Devices sans JVM" }
                 html { "iOS" }
-                html { "JS" }
+                html { "WebAssembly" }
             }
         }
     }
     part("Conclusion") {
         slide("Pourquoi Kotlin") {
-            html{ "TODO"} // TODO
+            html { "TODO" } // TODO
         }
         slideFromResource(title = "Liens")
     }
