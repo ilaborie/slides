@@ -36,6 +36,14 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
         slideFromResource(title = "Cible", contentType = HTML)
+        slide("Hello World") {
+            notice(NoticeKind.Tips) {
+                ul {
+                    html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
+                    html { "Ou copiez du code Java dans un fichier Kotlin" }
+                }
+            }
+        }
         roadmap()
     }
     part(title = "Water Pouring Problem") {
@@ -46,14 +54,6 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         slideFromResource(title = "Démo", contentType = HTML)
     }
     part("Live Coding") {
-        slide("Hello World") {
-            notice(NoticeKind.Tips) {
-                ul {
-                    html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
-                    html { "Ou copiez du code Java dans un fichier Kotlin" }
-                }
-            }
-        }
         slide("Glass") {
             notice(NoticeKind.Info) {
                 ul {

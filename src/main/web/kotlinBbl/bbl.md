@@ -1,10 +1,3 @@
-<div class="emmanuel">
-	<img class="speakerRound" src="https://lh4.googleusercontent.com/-PPNaC_SZen8/AAAAAAAAAAI/AAAAAAAARt8/lRnd47vDjyM/photo.jpg" alt="Emmanuel Vinas" title="Emmanuel Vinas">
-	<h4>Emmanuel Vinas</h4>
-	<span>Expert Android &amp; Java</span>
-	<a href="https://twitter.com/emmanuelvinas">@emmanuelvinas</a>
-	<a href="mailto:emmanuel@monkeypatch.io">emmanuel@monkeypatch.io</a>
-</div>
 
 <div class="igor">
 	<img class="speakerRound" src="https://fr.gravatar.com/userimage/22791211/57581e5e2480deef3c22876196ac43ba.jpg?size=200" alt="Igor Laborie" title="Igor Laborie">
@@ -60,6 +53,11 @@
 <h4 class="jvm-android">JVM et Android</h4>
 <h4 class="js">JavaScript</h4>
 <h4 class="native">Native avec LLVM</h4>
+
+
+*Tips*
+Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
+Ou copiez du code Java dans un fichier Kotlin
 
 
 0. Water Pouring Problem
@@ -151,11 +149,6 @@
 
 <div class="water-pouring-demo"></div>
 
-
-
-*Tips*
-Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
-Ou copiez du code Java dans un fichier Kotlin
 
 
 *Info*
