@@ -61,7 +61,7 @@ fun main(args: Array<String>) {
 }
 ```
 *Tips*
-Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
+Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br>
 Ou copiez du code Java dans un fichier Kotlin
 
 

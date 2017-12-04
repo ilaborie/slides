@@ -26,7 +26,7 @@ fun main(args: Array<String>) {
     kotlinBbl.buildAll(dist, "bbl")
 }
 
-fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
+fun kotlinBbl() = presentation(title = "", key = "kotlinBbl") {
     addScript("../scripts/navigation.js")
     addScript("../scripts/water-pouring.js")
 
@@ -40,12 +40,11 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
             codeFromResource("/kotlinBbl/code/hello.kt")
             notice(NoticeKind.Tips) {
                 ul {
-                    html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
+                    html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br>" }
                     html { "Ou copiez du code Java dans un fichier Kotlin" }
                 }
             }
         }
-        roadmap()
     }
     part(title = "Water Pouring Problem") {
         slideFromResource(title = "Verres", contentType = HTML) { styleClass + "operation" }

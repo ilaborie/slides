@@ -182,6 +182,17 @@ input[type=number] {
 section article > pre.hljs {
   align-self: center; }
 
+#kotlinBbl h1 {
+  background-image: url("./assets/brands/kotlin-logo-text.png");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-height: 50vh; }
+  #kotlinBbl h1::before {
+    color: #000;
+    content: 'Découvrir';
+    font-weight: bold; }
+
 #speakers {
   color: #fff;
   z-index: 2; }
