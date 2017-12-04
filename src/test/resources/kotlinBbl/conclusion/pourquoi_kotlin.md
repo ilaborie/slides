@@ -1,7 +1,6 @@
-* Code plus sûr
-* Code plus simple
+* Code plus sûr, plus simple
 * Interoperable avec Java
 * Outillage
-* Ecosystème
-* Mature
+* Ecosystème et communauté
+* Déjà mature
 * Simple à apprendre

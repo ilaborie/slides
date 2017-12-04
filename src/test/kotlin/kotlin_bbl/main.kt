@@ -57,21 +57,9 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
     part("Live Coding") {
         slide("Glass & State") {
             codeFromResource("/kotlinBbl/code/glass.kt")
-//            notice(NoticeKind.Info) {
-//                ul {
-//                    html { "En écrivant du Kotlin vous aurez plein de <code>fun</code> !" }
-//                    html { "Le <code>typealias</code> nécessite Kotlin 1.1." }
-//                }
-//            }
         }
         slide("Move") {
             codeFromResource("/kotlinBbl/code/moves.kt")
-            notice(NoticeKind.Info) {
-                ul {
-                    html { "Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>" }
-                    html { "Le <code>sealed</code> nécessite Kotlin 1.1." }
-                }
-            }
         }
         slide("Solver") {
             codeFromResource("/kotlinBbl/code/solve.kt")
@@ -84,38 +72,13 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         slideFromResource(title = "Android")
         slideFromResource(title = "Serveur")
         slideFromResource(title = "Web et Natif")
-//        slide("Android") {
-//            ul {
-//                html { "Faible overhead" }
-//                html { "Support officiel par Google" }
-//                linkText(link = "https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit") { "Using Project Kotlin for Android" }
-//                linkText(link = "https://android.github.io/kotlin-guides/") { "Kotlin Guide" }
-//            }
-//        }
-//        slide("Server") {
-//            ul {
-//                html { "String 5, SpringBoot 2" }
-//                html { "Vert.x" }
-//                html { "SparkJava" }
-//                html { "..." }
-//            }
-//        }
-//        slide("Web") {
-//            ul {
-//                html { "Partager du code commun (backend, frontend)" }
-//                html { "React ?" }
-//            }
-//        }
-//        slide("Natif") {
-//            ul {
-//                html { "Devices sans JVM" }
-//                html { "iOS" }
-//                html { "WebAssembly" }
-//            }
-//        }
     }
     part("Conclusion") {
         slideFromResource(title = "Pourquoi Kotlin")
         slideFromResource(title = "Liens")
+        slide("Question", styleClass = setOf("hide-title")) {
+            header(3) { html { "Question ?" } }
+
+        }
     }
 }

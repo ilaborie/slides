@@ -191,10 +191,6 @@ data class Pour(val from: Int, val to: Int) : Move() {
     }
 }
 ```
-*Info*
-Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
-Le <code>sealed</code> nécessite Kotlin 1.1.
-
 
 ```kotlin
 private typealias StateWithHistory = Pair<State, List<Move>>
@@ -235,27 +231,43 @@ fun State.move(move: Move): State =
 
 
 
+* Faible overhead
+* Support officiel par Google
+* [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
+* [Kotlin Guide](https://android.github.io/kotlin-guides/)
+
+
+* Supporter officielement depuis Spring 5, SpringBoot 2
+* Vert.x
+* SparkJava
+* ...
+
+#### Web
+
+* Partager du code commun
+* [Use Kotlin with npm, webpack and react](https://blog.jetbrains.com/kotlin/2017/04/use-kotlin-with-npm-webpack-and-react/)
+
+#### Natif
+
+* Faire des applications sans JVM
+* Partager du code avec iOS
+* WebAssembly
 
 
 
-
-
-
-
-
-* Code plus sûr
-* Code plus simple
+* Code plus sûr, plus simple
 * Interoperable avec Java
 * Outillage
-* Ecosystème
-* Mature
+* Ecosystème et communauté
+* Déjà mature
 * Simple à apprendre
 
 
-* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
 * [Référence](http://kotlinlang.org/docs/reference/)
 * [https://kotlin.link/](https://kotlin.link/)
 * [Blog](https://blog.jetbrains.com/kotlin/)
-* [Forum](https://discuss.kotlinlang.org/)
-* [Slack](https://kotlinslack.herokuapp.com/)
-* [Kotlin Evolution and Enhancement Process](https://github.com/Kotlin/KEEP)
+* [Forum](https://discuss.kotlinlang.org/), [Slack](https://kotlinslack.herokuapp.com/)
+* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+
+### Question ? ###
