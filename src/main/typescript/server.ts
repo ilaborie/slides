@@ -35,6 +35,7 @@ app.post('/code', (req: Request, res: Response) => {
     const body = req.body as string;
     console.log(`code [${lang}]`);
     code(lang, body)
+        .then(result => result.value)
         .then(html => res.send(html));
 });
 

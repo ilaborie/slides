@@ -1,12 +1,14 @@
 @import "node_modules/highlight.js/styles/darcula";
+
 code, pre {
-  font-family : var(--codeFont);
+  font-family: var(--codeFont);
 }
 
 pre.hljs {
-  overflow      : visible;
-  font-size     : .8rem;
-  box-shadow    : 0 0 .25rem rgba(0, 0, 0, .25);
-  border-radius : .25rem;
-  tab-size      : 2;
+  overflow: visible;
+  font-size: .8rem;
+  box-shadow: 0 0 .25rem rgba(0, 0, 0, .25);
+  border-radius: .25rem;
+  tab-size: 2;
+  min-width: 100%;
 }

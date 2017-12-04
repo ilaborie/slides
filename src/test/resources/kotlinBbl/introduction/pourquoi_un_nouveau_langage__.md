@@ -1,6 +1,6 @@
 
 * Écrire du code plus sûr
 * Facilité la maintenance
-* Écrire plus rapidement
+* Écrire et Tester plus rapidement
 * Résoudre de nouveaux problèmes
 * ...

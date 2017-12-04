@@ -37,6 +37,7 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
         slideFromResource(title = "Cible", contentType = HTML)
         slide("Hello World") {
+            codeFromResource("/kotlinBbl/code/hello.kt")
             notice(NoticeKind.Tips) {
                 ul {
                     html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
@@ -54,15 +55,17 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
         slideFromResource(title = "Démo", contentType = HTML)
     }
     part("Live Coding") {
-        slide("Glass") {
-            notice(NoticeKind.Info) {
-                ul {
-                    html { "En écrivant du Kotlin vous aurez plein de <code>fun</code> !" }
-                    html { "Le <code>typealias</code> nécessite Kotlin 1.1." }
-                }
-            }
+        slide("Glass & State") {
+            codeFromResource("/kotlinBbl/code/glass.kt")
+//            notice(NoticeKind.Info) {
+//                ul {
+//                    html { "En écrivant du Kotlin vous aurez plein de <code>fun</code> !" }
+//                    html { "Le <code>typealias</code> nécessite Kotlin 1.1." }
+//                }
+//            }
         }
-        slide("Moves") {
+        slide("Move") {
+            codeFromResource("/kotlinBbl/code/moves.kt")
             notice(NoticeKind.Info) {
                 ul {
                     html { "Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>" }
@@ -71,51 +74,48 @@ fun kotlinBbl() = presentation(title = "Kotlin BBL", key = "kotlinBbl") {
             }
         }
         slide("Solver") {
-            html { "TODO" } // TODO
+            codeFromResource("/kotlinBbl/code/solve.kt")
         }
         slide("State::move") {
-            html { "TODO" } // TODO
-        }
-        slide("Mais aussi") {
-            html { "TODO" } // TODO
+            codeFromResource("/kotlinBbl/code/state-move.kt")
         }
     }
     part("Kotlin dès maintenant") {
-        slide("Android") {
-            ul {
-                html { "Faible overhead" }
-                html { "Coder en Java 15 dès maintenant" }
-                html { "Support officiel par Google" }
-                linkText(link = "https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit") { "Using Project Kotlin for Android" }
-                linkText(link = "https://android.github.io/kotlin-guides/") { "Kotlin Guide" }
-            }
-        }
-        slide("Server") {
-            ul {
-                html { "String 5, SpringBoot 2" }
-                html { "Vert.x" }
-                html { "SparkJava" }
-                html { "..." }
-            }
-        }
-        slide("Web") {
-            ul {
-                html { "Partager du code commun (backend, frontend)" }
-                html { "React ?" }
-            }
-        }
-        slide("Natif") {
-            ul {
-                html { "Devices sans JVM" }
-                html { "iOS" }
-                html { "WebAssembly" }
-            }
-        }
+        slideFromResource(title = "Android")
+        slideFromResource(title = "Serveur")
+        slideFromResource(title = "Web et Natif")
+//        slide("Android") {
+//            ul {
+//                html { "Faible overhead" }
+//                html { "Support officiel par Google" }
+//                linkText(link = "https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit") { "Using Project Kotlin for Android" }
+//                linkText(link = "https://android.github.io/kotlin-guides/") { "Kotlin Guide" }
+//            }
+//        }
+//        slide("Server") {
+//            ul {
+//                html { "String 5, SpringBoot 2" }
+//                html { "Vert.x" }
+//                html { "SparkJava" }
+//                html { "..." }
+//            }
+//        }
+//        slide("Web") {
+//            ul {
+//                html { "Partager du code commun (backend, frontend)" }
+//                html { "React ?" }
+//            }
+//        }
+//        slide("Natif") {
+//            ul {
+//                html { "Devices sans JVM" }
+//                html { "iOS" }
+//                html { "WebAssembly" }
+//            }
+//        }
     }
     part("Conclusion") {
-        slide("Pourquoi Kotlin") {
-            html { "TODO" } // TODO
-        }
+        slideFromResource(title = "Pourquoi Kotlin")
         slideFromResource(title = "Liens")
     }
 }

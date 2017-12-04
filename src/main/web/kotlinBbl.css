@@ -1,6 +1,6 @@
 @charset "UTF-8";
-.devoxx-ma.kotlinHandsOn {
-  --txtFooter: '#BrownBagLunch @EmmanuelVinas @ilaborie #kotlin'; }
+.kotlinBbl {
+  --txtFooter: '#BrownBagLunch @ilaborie #kotlin'; }
 
 @media print {
   .slides-nav {
@@ -182,70 +182,20 @@ input[type=number] {
 section article > pre.hljs {
   align-self: center; }
 
-#roadmap article .roadmap {
-  display: grid;
-  grid-template-columns: 1fr 6fr 1fr; }
-  #roadmap article .roadmap .init, #roadmap article .roadmap .exo, #roadmap article .roadmap .homework {
-    padding: .5rem;
-    position: relative;
-    color: #fff;
-    font-size: .75rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-  #roadmap article .roadmap .init {
-    background: green; }
-    #roadmap article .roadmap .init::before {
-      content: '16h30'; }
-  #roadmap article .roadmap .exo {
-    background: #e49400; }
-    #roadmap article .roadmap .exo::before {
-      content: '16h50'; }
-    #roadmap article .roadmap .exo::after {
-      content: '18h30'; }
-  #roadmap article .roadmap .homework {
-    background: linear-gradient(to right, purple, purple 60%, transparent 100%);
-    min-width: 5rem;
-    margin-left: .5rem; }
-  #roadmap article .roadmap .init::before, #roadmap article .roadmap .exo::before {
-    position: absolute;
-    top: -.8rem;
-    left: -2.5ch;
-    color: var(--primary); }
-  #roadmap article .roadmap .exo::after {
-    position: absolute;
-    top: -.8rem;
-    right: -2.5ch;
-    color: var(--primary); }
-
-#pre_requis___ide article img, #pre_requis___exercices article img {
-  max-height: 3rem; }
-
-#pre_requis___ide article li code, #pre_requis___exercices article li code {
-  background: white;
-  box-shadow: inset 0 0 0.25rem;
-  padding: .125rem .5rem;
-  border-radius: .25rem;
-  font-size: .8rem;
-  white-space: nowrap; }
-
 #speakers {
   color: #fff;
   z-index: 2; }
   #speakers::after {
     display: none; }
   #speakers article {
-    flex-direction: row;
+    flex-direction: column;
     grid-column: 1 / 4;
     grid-row: 1 / 4;
     background: #00b0f0;
-    display: grid;
     max-height: 100vh;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 3fr 1fr;
-    grid-template-areas: "manu igor" "mkp mkp";
-    align-items: center; }
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around; }
     #speakers article .emmanuel {
       grid-area: manu; }
     #speakers article .igor {
@@ -281,9 +231,8 @@ section article > pre.hljs {
         #speakers article .emmanuel a[href*="twitter"]::before, #speakers article .igor a[href*="twitter"]::before {
           background-image: url("./assets/brands/twitter-white.svg"); }
     #speakers article > a {
-      align-self: flex-start;
-      grid-area: mkp;
-      text-align: center; }
+      align-self: center;
+      grid-area: mkp; }
 
 section.list-big {
   font-size: 1.3rem; }
@@ -299,6 +248,20 @@ section.list-big {
   #cible article img {
     width: 12vw;
     align-self: end; }
+
+#verres article, #remplir article, #vider article, #verser article {
+  align-items: stretch; }
+  #verres article > div, #remplir article > div, #vider article > div, #verser article > div {
+    margin-top: -2rem;
+    display: flex;
+    font-weight: bold;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end; }
+    #verres article > div .glass-container, #remplir article > div .glass-container, #vider article > div .glass-container, #verser article > div .glass-container {
+      margin: 0 2rem -2rem 2rem; }
+    #verres article > div .ope, #remplir article > div .ope, #vider article > div .ope, #verser article > div .ope {
+      font-size: 2rem; }
 
 #demo article {
   align-items: stretch;

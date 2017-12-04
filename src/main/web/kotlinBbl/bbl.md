@@ -34,14 +34,14 @@
 
 * Écrire du code plus sûr
 * Facilité la maintenance
-* Écrire plus rapidement
+* Écrire et Tester plus rapidement
 * Résoudre de nouveaux problèmes
 * ...
 
 
-* Éviter les NPE, statiquement typé
-* Abordable, si on vient de Java
 * Expressif et pragmatique
+* _null-safety_ (éviter les NPE), statiquement typé
+* Abordable, si on vient de Java
 * Inspiré par Java, Scala, C#, Groovy, ...
 * Cross-platform
 
@@ -55,6 +55,11 @@
 <h4 class="native">Native avec LLVM</h4>
 
 
+```kotlin
+fun main(args: Array<String>) {
+    println("Hello World!")
+}
+```
 *Tips*
 Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
 Ou copiez du code Java dans un fichier Kotlin
@@ -151,49 +156,100 @@ Ou copiez du code Java dans un fichier Kotlin
 
 
 
-*Info*
-En écrivant du Kotlin vous aurez plein de <code>fun</code> !
-Le <code>typealias</code> nécessite Kotlin 1.1.
+```kotlin
+data class Glass(val capacity: Int, val current: Int = 0) {
+    init {
+        require(capacity > 0)
+        require(current in 0..capacity)
+    }
 
+    val isEmpty: Boolean = (current == 0)
+    val isFull: Boolean = (current == capacity)
+    val remainingVolume: Int  by lazy { capacity - current }
+    fun empty(): Glass = copy(current = 0)
+    fun fill(): Glass = copy(current = capacity)
+    operator fun plus(value: Int): Glass =
+        copy(current = (current + value).coerceAtMost(capacity))
+    operator fun minus(value: Int): Glass =
+        copy(current = (current - value).coerceAtLeast(0))
+    override fun toString() = "$current/$capacity"
+}
 
+typealias State = List<Glass>
+```
+
+```kotlin
+sealed class Move
+
+data class Empty(val index: Int) : Move()
+
+data class Fill(val index: Int) : Move()
+
+data class Pour(val from: Int, val to: Int) : Move() {
+    init {
+        require(from != to)
+    }
+}
+```
 *Info*
 Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
 Le <code>sealed</code> nécessite Kotlin 1.1.
 
 
-TODO
+```kotlin
+private typealias StateWithHistory = Pair<State, List<Move>>
 
-TODO
+fun solve(from: State, to: State): List<Move> {
+    tailrec fun solveAux(states: List<StateWithHistory>, visitedStates: Set<State>) {
+        val solution: StateWithHistory? = states.find { (state, _) -> state == to }
+        if (solution != null) { return solution.second }
 
-TODO
+        val next = states
+            .flatMap { (state, history) ->
+                val moves = state.availableMoves()
+                moves.map { move -> state.move(move) to (history + move) }
+            }
+            .filterNot { (state, _) -> visitedStates.contains(state) }
+        val nextVisited = visitedStates + next.map { it.first }
+        return solveAux(next, nextVisited)
+    }
+    return solveAux(listOf(from to emptyList()), setOf(from))
+}
+```
+
+```kotlin
+fun State.move(move: Move): State =
+    mapIndexed { index, glass ->
+        when (move) {
+            is Empty -> if (index == move.index) glass.empty() else glass
+            is Fill  -> if (index == move.index) glass.fill() else glass
+            is Pour  -> when (index) {
+                move.from -> glass - get(move.to).remainingVolume
+                move.to   -> glass + get(move.from).current
+                else      -> glass
+            }
+        }
+    }
+
+```
 
 
 
-Faible overhead
-Coder en Java 15 dès maintenant
-Support officiel par Google
-[Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
-[Kotlin Guide](https://android.github.io/kotlin-guides/)
-
-
-String 5, SpringBoot 2
-Vert.x
-SparkJava
-...
-
-
-Partager du code commun (backend, frontend)
-React ?
-
-
-Devices sans JVM
-iOS
-WebAssembly
 
 
 
 
-TODO
+
+
+
+
+* Code plus sûr
+* Code plus simple
+* Interoperable avec Java
+* Outillage
+* Ecosystème
+* Mature
+* Simple à apprendre
 
 
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)

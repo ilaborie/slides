@@ -33,19 +33,17 @@
 <a href="#verser" class="" title="Verser">11</a>
 <a href="#demo" class="" title="Démo">12</a></nav>
 <nav><a href="#part_live_coding" class="part" title="Live Coding">13</a>
-<a href="#glass" class="" title="Glass">14</a>
-<a href="#moves" class="" title="Moves">15</a>
+<a href="#glass___state" class="" title="Glass & State">14</a>
+<a href="#move" class="" title="Move">15</a>
 <a href="#solver" class="" title="Solver">16</a>
-<a href="#state__move" class="" title="State::move">17</a>
-<a href="#mais_aussi" class="" title="Mais aussi">18</a></nav>
-<nav><a href="#part_kotlin_des_maintenant" class="part" title="Kotlin dès maintenant">19</a>
-<a href="#android" class="" title="Android">20</a>
-<a href="#server" class="" title="Server">21</a>
-<a href="#web" class="" title="Web">22</a>
-<a href="#natif" class="" title="Natif">23</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">24</a>
-<a href="#pourquoi_kotlin" class="" title="Pourquoi Kotlin">25</a>
-<a href="#liens" class="" title="Liens">26</a></nav>
+<a href="#state__move" class="" title="State::move">17</a></nav>
+<nav><a href="#part_kotlin_des_maintenant" class="part" title="Kotlin dès maintenant">18</a>
+<a href="#android" class="" title="Android">19</a>
+<a href="#serveur" class="" title="Serveur">20</a>
+<a href="#web_et_natif" class="" title="Web et Natif">21</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">22</a>
+<a href="#pourquoi_kotlin" class="" title="Pourquoi Kotlin">23</a>
+<a href="#liens" class="" title="Liens">24</a></nav>
     </div>
     <main>
 
@@ -110,7 +108,7 @@
         <ul>
 <li>Écrire du code plus sûr</li>
 <li>Facilité la maintenance</li>
-<li>Écrire plus rapidement</li>
+<li>Écrire et Tester plus rapidement</li>
 <li>Résoudre de nouveaux problèmes</li>
 <li>...</li>
 </ul>
@@ -126,9 +124,9 @@
     <h3>Caractéristiques de Kotlin</h3>
     <article>
         <ul>
-<li>Éviter les NPE, statiquement typé</li>
-<li>Abordable, si on vient de Java</li>
 <li>Expressif et pragmatique</li>
+<li><em>null-safety</em> (éviter les NPE), statiquement typé</li>
+<li>Abordable, si on vient de Java</li>
 <li>Inspiré par Java, Scala, C#, Groovy, ...</li>
 <li>Cross-platform</li>
 </ul>
@@ -162,7 +160,10 @@
     <a href="#cible" class="previous" aria-label="Précédant"></a>
     <h3>Hello World</h3>
     <article>
-        
+        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    println(<span class="hljs-string">"Hello World!"</span>)
+}</code></pre>
+
 <div class="notice notice-tips">
     Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
 Ou copiez du code Java dans un fichier Kotlin
@@ -333,33 +334,56 @@ Ou copiez du code Java dans un fichier Kotlin
     <article>
         
     </article>
-    <a href="#glass" class="next" aria-label="Suivant"></a>
+    <a href="#glass___state" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Glass -->
-<section id="glass" class="">
+<!-- Slide Glass & State -->
+<section id="glass___state" class="">
     <a href="#part_live_coding" class="previous" aria-label="Précédant"></a>
-    <h3>Glass</h3>
+    <h3>Glass & State</h3>
     <article>
-        
-<div class="notice notice-info">
-    En écrivant du Kotlin vous aurez plein de <code>fun</code> !
-Le <code>typealias</code> nécessite Kotlin 1.1.
-<ul></ul>
-</div>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Glass</span></span>(<span class="hljs-keyword">val</span> capacity: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> current: <span class="hljs-built_in">Int</span> = <span class="hljs-number">0</span>) {
+    init {
+        require(capacity &gt; <span class="hljs-number">0</span>)
+        require(current <span class="hljs-keyword">in</span> <span class="hljs-number">0.</span>.capacity)
+    }
 
+    <span class="hljs-keyword">val</span> isEmpty: <span class="hljs-built_in">Boolean</span> = (current == <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">val</span> isFull: <span class="hljs-built_in">Boolean</span> = (current == capacity)
+    <span class="hljs-keyword">val</span> remainingVolume: <span class="hljs-built_in">Int</span>  <span class="hljs-keyword">by</span> lazy { capacity - current }
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>: Glass = copy(current = <span class="hljs-number">0</span>)
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">fill</span><span class="hljs-params">()</span></span>: Glass = copy(current = capacity)
+    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">plus</span><span class="hljs-params">(value: <span class="hljs-type">Int</span>)</span></span>: Glass =
+        copy(current = (current + value).coerceAtMost(capacity))
+    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">minus</span><span class="hljs-params">(value: <span class="hljs-type">Int</span>)</span></span>: Glass =
+        copy(current = (current - value).coerceAtLeast(<span class="hljs-number">0</span>))
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span> = <span class="hljs-string">"<span class="hljs-variable">$current</span>/<span class="hljs-variable">$capacity</span>"</span>
+}
+
+typealias State = List&lt;Glass&gt;</code></pre>
     </article>
-    <a href="#moves" class="next" aria-label="Suivant"></a>
+    <a href="#move" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Moves -->
-<section id="moves" class="">
-    <a href="#glass" class="previous" aria-label="Précédant"></a>
-    <h3>Moves</h3>
+<!-- Slide Move -->
+<section id="move" class="">
+    <a href="#glass___state" class="previous" aria-label="Précédant"></a>
+    <h3>Move</h3>
     <article>
-        
+        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Move</span></span>
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Empty</span></span>(<span class="hljs-keyword">val</span> index: <span class="hljs-built_in">Int</span>) : Move()
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fill</span></span>(<span class="hljs-keyword">val</span> index: <span class="hljs-built_in">Int</span>) : Move()
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pour</span></span>(<span class="hljs-keyword">val</span> from: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> to: <span class="hljs-built_in">Int</span>) : Move() {
+    init {
+        require(from != to)
+    }
+}</code></pre>
+
 <div class="notice notice-info">
     Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
 Le <code>sealed</code> nécessite Kotlin 1.1.
@@ -373,10 +397,27 @@ Le <code>sealed</code> nécessite Kotlin 1.1.
 
 <!-- Slide Solver -->
 <section id="solver" class="">
-    <a href="#moves" class="previous" aria-label="Précédant"></a>
+    <a href="#move" class="previous" aria-label="Précédant"></a>
     <h3>Solver</h3>
     <article>
-        TODO
+        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">private</span> typealias StateWithHistory = Pair&lt;State, List&lt;Move&gt;&gt;
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solve</span><span class="hljs-params">(from: <span class="hljs-type">State</span>, to: <span class="hljs-type">State</span>)</span></span>: List&lt;Move&gt; {
+    tailrec <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solveAux</span><span class="hljs-params">(states: <span class="hljs-type">List</span>&lt;<span class="hljs-type">StateWithHistory</span>&gt;, visitedStates: <span class="hljs-type">Set</span>&lt;<span class="hljs-type">State</span>&gt;)</span></span> {
+        <span class="hljs-keyword">val</span> solution: StateWithHistory? = states.find { (state, _) -&gt; state == to }
+        <span class="hljs-keyword">if</span> (solution != <span class="hljs-literal">null</span>) { <span class="hljs-keyword">return</span> solution.second }
+
+        <span class="hljs-keyword">val</span> next = states
+            .flatMap { (state, history) -&gt;
+                <span class="hljs-keyword">val</span> moves = state.availableMoves()
+                moves.map { move -&gt; state.move(move) to (history + move) }
+            }
+            .filterNot { (state, _) -&gt; visitedStates.contains(state) }
+        <span class="hljs-keyword">val</span> nextVisited = visitedStates + next.map { it.first }
+        <span class="hljs-keyword">return</span> solveAux(next, nextVisited)
+    }
+    <span class="hljs-keyword">return</span> solveAux(listOf(from to emptyList()), setOf(from))
+}</code></pre>
     </article>
     <a href="#state__move" class="next" aria-label="Suivant"></a>
 </section>
@@ -387,18 +428,19 @@ Le <code>sealed</code> nécessite Kotlin 1.1.
     <a href="#solver" class="previous" aria-label="Précédant"></a>
     <h3>State::move</h3>
     <article>
-        TODO
-    </article>
-    <a href="#mais_aussi" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Mais aussi -->
-<section id="mais_aussi" class="">
-    <a href="#state__move" class="previous" aria-label="Précédant"></a>
-    <h3>Mais aussi</h3>
-    <article>
-        TODO
+        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> State.<span class="hljs-title">move</span><span class="hljs-params">(move: <span class="hljs-type">Move</span>)</span></span>: State =
+    mapIndexed { index, glass -&gt;
+        <span class="hljs-keyword">when</span> (move) {
+            <span class="hljs-keyword">is</span> Empty -&gt; <span class="hljs-keyword">if</span> (index == move.index) glass.empty() <span class="hljs-keyword">else</span> glass
+            <span class="hljs-keyword">is</span> Fill  -&gt; <span class="hljs-keyword">if</span> (index == move.index) glass.fill() <span class="hljs-keyword">else</span> glass
+            <span class="hljs-keyword">is</span> Pour  -&gt; <span class="hljs-keyword">when</span> (index) {
+                move.from -&gt; glass - <span class="hljs-keyword">get</span>(move.to).remainingVolume
+                move.to   -&gt; glass + <span class="hljs-keyword">get</span>(move.from).current
+                <span class="hljs-keyword">else</span>      -&gt; glass
+            }
+        }
+    }
+</code></pre>
     </article>
     <a href="#part_kotlin_des_maintenant" class="next" aria-label="Suivant"></a>
 </section>
@@ -406,7 +448,7 @@ Le <code>sealed</code> nécessite Kotlin 1.1.
 
 <!-- Slide Kotlin dès maintenant -->
 <section id="part_kotlin_des_maintenant" class="part">
-    <a href="#mais_aussi" class="previous" aria-label="Précédant"></a>
+    <a href="#state__move" class="previous" aria-label="Précédant"></a>
     <h2>Kotlin dès maintenant</h2>
     <article>
         
@@ -420,54 +462,29 @@ Le <code>sealed</code> nécessite Kotlin 1.1.
     <a href="#part_kotlin_des_maintenant" class="previous" aria-label="Précédant"></a>
     <h3>Android</h3>
     <article>
-        Faible overhead
-Coder en Java 15 dès maintenant
-Support officiel par Google
-<a href="https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit">Using Project Kotlin for Android</a>
-<a href="https://android.github.io/kotlin-guides/">Kotlin Guide</a>
-<ul></ul>
+        
     </article>
-    <a href="#server" class="next" aria-label="Suivant"></a>
+    <a href="#serveur" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Server -->
-<section id="server" class="">
+<!-- Slide Serveur -->
+<section id="serveur" class="">
     <a href="#android" class="previous" aria-label="Précédant"></a>
-    <h3>Server</h3>
+    <h3>Serveur</h3>
     <article>
-        String 5, SpringBoot 2
-Vert.x
-SparkJava
-...
-<ul></ul>
+        
     </article>
-    <a href="#web" class="next" aria-label="Suivant"></a>
+    <a href="#web_et_natif" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Web -->
-<section id="web" class="">
-    <a href="#server" class="previous" aria-label="Précédant"></a>
-    <h3>Web</h3>
+<!-- Slide Web et Natif -->
+<section id="web_et_natif" class="">
+    <a href="#serveur" class="previous" aria-label="Précédant"></a>
+    <h3>Web et Natif</h3>
     <article>
-        Partager du code commun (backend, frontend)
-React ?
-<ul></ul>
-    </article>
-    <a href="#natif" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Natif -->
-<section id="natif" class="">
-    <a href="#web" class="previous" aria-label="Précédant"></a>
-    <h3>Natif</h3>
-    <article>
-        Devices sans JVM
-iOS
-WebAssembly
-<ul></ul>
+        
     </article>
     <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
 </section>
@@ -475,7 +492,7 @@ WebAssembly
 
 <!-- Slide Conclusion -->
 <section id="part_conclusion" class="part">
-    <a href="#natif" class="previous" aria-label="Précédant"></a>
+    <a href="#web_et_natif" class="previous" aria-label="Précédant"></a>
     <h2>Conclusion</h2>
     <article>
         
@@ -489,7 +506,16 @@ WebAssembly
     <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
     <h3>Pourquoi Kotlin</h3>
     <article>
-        TODO
+        <ul>
+<li>Code plus sûr</li>
+<li>Code plus simple</li>
+<li>Interoperable avec Java</li>
+<li>Outillage</li>
+<li>Ecosystème</li>
+<li>Mature</li>
+<li>Simple à apprendre</li>
+</ul>
+
     </article>
     <a href="#liens" class="next" aria-label="Suivant"></a>
 </section>
