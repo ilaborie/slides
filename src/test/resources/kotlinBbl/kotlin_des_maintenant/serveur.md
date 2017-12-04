@@ -1,4 +1,4 @@
-* Supporter officielement depuis Spring 5, SpringBoot 2
+* Supporter officiellement depuis Spring 5, SpringBoot 2
 * Vert.x
 * SparkJava
 * ...

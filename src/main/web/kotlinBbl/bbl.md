@@ -65,11 +65,6 @@ Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd
 Ou copiez du code Java dans un fichier Kotlin
 
 
-0. Water Pouring Problem
-1. Live Coding
-2. Kotlin dès maintenant
-3. Conclusion
-
 
 
 <div>
@@ -237,7 +232,7 @@ fun State.move(move: Move): State =
 * [Kotlin Guide](https://android.github.io/kotlin-guides/)
 
 
-* Supporter officielement depuis Spring 5, SpringBoot 2
+* Supporter officiellement depuis Spring 5, SpringBoot 2
 * Vert.x
 * SparkJava
 * ...
