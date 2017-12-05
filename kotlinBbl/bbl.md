@@ -1,11 +1,13 @@
-<div class="emmanuel">
-	<img class="speakerRound" src="https://lh4.googleusercontent.com/-PPNaC_SZen8/AAAAAAAAAAI/AAAAAAAARt8/lRnd47vDjyM/photo.jpg" alt="Emmanuel Vinas" title="Emmanuel Vinas">
-	<h4>Emmanuel Vinas</h4>
-	<span>Expert Android &amp; Java</span>
-	<a href="https://twitter.com/emmanuelvinas">@emmanuelvinas</a>
-	<a href="mailto:emmanuel@monkeypatch.io">emmanuel@monkeypatch.io</a>
 
-	<a href="http://www.monkeypatch.io/" style="border: none;">
+<div class="igor">
+	<img class="speakerRound" src="https://fr.gravatar.com/userimage/22791211/57581e5e2480deef3c22876196ac43ba.jpg?size=200" alt="Igor Laborie" title="Igor Laborie">
+	<h4>Igor Laborie</h4>
+	<span>Expert Web &amp; Java</span>
+	<a href="https://twitter.com/ilaborie">@ilaborie</a>
+	<a href="mailto:igor@monkeypatch.io">igor@monkeypatch.io</a>
+</div>
+
+<a href="http://www.monkeypatch.io/" style="border: none;">
 		<svg xmlns="http://www.w3.org/2000/svg" width="492.5" height="104.5" viewBox="5.5 202.5 492.5 104.5">
 			<path fill="#FFF"
 			      d="M164.208 291.503v-15.404c0-1.878-.271-3.295-.811-4.25-.54-.956-1.408-1.435-2.604-1.435-1.646 0-2.833.656-3.564 1.97-.73 1.313-1.097 3.564-1.097 6.756v12.363h-9.747V263.26h7.354l1.223 3.489h.573c.831-1.33 1.981-2.327 3.452-2.991 1.472-.664 3.162-.997 5.073-.997 3.124 0 5.556.905 7.292 2.718 1.736 1.812 2.605 4.361 2.605 7.651v18.372h-9.749v.001zM190.034 275.624c1.18-1.878 2.185-3.341 3.016-4.388l6.332-7.978h10.869l-9.796 12.017 10.419 16.228H199.73l-6.182-10.121-3.166 2.418v7.703h-9.797v-38.788h9.797v15.257a52.62 52.62 0 0 1-.549 7.652h.201zM226.904 292.002c-4.703 0-8.354-1.251-10.955-3.752-2.602-2.501-3.901-6.062-3.901-10.682 0-4.771 1.205-8.43 3.615-10.98 2.409-2.55 5.85-3.826 10.319-3.826 4.254 0 7.541 1.108 9.859 3.327 2.318 2.22 3.477 5.414 3.477 9.585v4.338h-17.424c.066 1.578.645 2.816 1.732 3.715 1.088.897 2.572 1.346 4.45 1.346 1.711 0 3.285-.162 4.724-.485 1.438-.323 2.996-.877 4.674-1.657v7.005a17.255 17.255 0 0 1-4.736 1.62c-1.63.295-3.575.446-5.834.446zm-.574-22.611c-1.146 0-2.106.361-2.879 1.085-.773.723-1.227 1.855-1.359 3.401h8.376c-.034-1.361-.42-2.45-1.159-3.266-.74-.811-1.733-1.22-2.979-1.22zM240.39 263.26h10.271l4.785 16.202c.233.849.392 1.869.475 3.066h.2c.133-1.147.332-2.152.598-3.017l4.911-16.253h9.946l-11.167 30.037c-1.431 3.822-3.188 6.522-5.272 8.103-2.085 1.578-4.807 2.368-8.164 2.368a19.74 19.74 0 0 1-3.989-.424v-7.653c.881.2 1.887.3 3.018.3.863 0 1.62-.167 2.268-.499a5.166 5.166 0 0 0 1.695-1.408c.481-.605.997-1.6 1.545-2.979l-11.12-27.843zM344.495 291.503l-1.869-3.738h-.2c-1.313 1.629-2.65 2.741-4.014 3.341-1.361.598-3.124.896-5.283.896-2.66 0-4.754-.798-6.282-2.394-1.529-1.596-2.294-3.839-2.294-6.73 0-3.008 1.047-5.247 3.141-6.718 2.095-1.471 5.127-2.298 9.101-2.479l4.711-.149v-.399c0-2.325-1.146-3.488-3.439-3.488-2.061 0-4.679.696-7.853 2.094l-2.817-6.432c3.291-1.695 7.445-2.543 12.465-2.543 3.622 0 6.427.896 8.412 2.691 1.986 1.795 2.979 4.305 2.979 7.528v18.521h-6.758v-.001zm-7.229-6.382c1.181 0 2.188-.374 3.029-1.121.839-.748 1.259-1.721 1.259-2.917v-2.192l-2.243.1c-3.207.116-4.812 1.296-4.812 3.54.001 1.727.923 2.59 2.767 2.59zM371.665 284.299c1.313 0 2.884-.323 4.712-.973v7.104c-1.313.564-2.564.969-3.753 1.209-1.188.24-2.579.361-4.176.361-3.272 0-5.633-.802-7.079-2.405-1.445-1.604-2.169-4.066-2.169-7.392v-11.642h-3.414v-3.964l4.337-3.065 2.519-5.933h6.382v5.657h6.93v7.305h-6.93v10.993c0 1.831.881 2.745 2.641 2.745zM394.174 292.002c-4.619 0-8.122-1.247-10.507-3.738-2.386-2.493-3.577-6.074-3.577-10.744 0-4.688 1.288-8.317 3.863-10.895 2.575-2.576 6.239-3.863 10.993-3.863 3.273 0 6.356.715 9.248 2.145l-2.867 7.204a30.913 30.913 0 0 0-3.266-1.234 10.518 10.518 0 0 0-3.115-.461c-1.579 0-2.801.615-3.664 1.845-.864 1.229-1.297 2.967-1.297 5.211 0 4.521 1.67 6.779 5.011 6.779 2.858 0 5.602-.831 8.227-2.493v7.753c-2.51 1.66-5.525 2.491-9.049 2.491zM426.656 291.503v-15.404c0-3.789-1.122-5.685-3.364-5.685-1.596 0-2.771.669-3.527 2.007s-1.134 3.562-1.134 6.668v12.414h-9.747v-38.788h9.747v5.511c0 2.491-.134 5.334-.398 8.524h.448c.931-1.463 2.035-2.493 3.314-3.092 1.279-.598 2.768-.896 4.462-.896 3.157 0 5.612.909 7.366 2.729 1.753 1.819 2.63 4.366 2.63 7.64v18.372h-9.797zM54.093 247.937c.247-.016.621.438 1.122 1.354l11.021 21.017c.776 1.418 1.4 2.112 1.871 2.088.246-.016.729-.886 1.44-2.611 1.501-3.625 3.541-8.629 6.116-15.009l.823-2.05 1.935 3.629c1.64 2.076 3.903 3.356 6.405 3.356 1.25 0 2.44-.319 3.523-.899l1.194-.821.606 1.77 2.057 4.039.038 1.548c.063 1.978.13 3.629.204 4.949.136 2.444.439 6.105.914 10.982.474 4.877.777 8.526.912 10.948.039.692-.267 1.06-.917 1.097l-11.905.662c-.65.036-.997-.338-1.041-1.123-.126-2.265-.231-5.665-.315-10.204s-.188-7.941-.313-10.206c-.036-.647-.156-.992-.36-1.024-.24.146-1.549 3.694-3.929 10.645a7788.52 7788.52 0 0 1-4.181 12.209c-.193.529-.458.848-.791.956-.108.028-.558.063-1.343.107-1.166.064-1.874-.12-2.123-.559-1.348-2.396-3.14-5.896-5.375-10.496-2.385-4.859-4.166-8.372-5.344-10.532-.051-.108-.159-.228-.323-.354-.146.211-.207.54-.182.988.123 2.195.36 5.488.719 9.879.357 4.389.596 7.682.719 9.88.043.784-.249 1.191-.876 1.229l-11.232.625c-.448.025-.729-.03-.836-.172-.109-.141-.175-.39-.193-.749-.136-2.441-.223-6.122-.26-11.035-.037-4.91-.123-8.59-.262-11.032-.145-2.604-.526-7.474-1.148-14.612-.126-1.86-.381-4.624-.768-8.291l-.063-.57c-.047-.447.411-.696 1.375-.751 1.233-.067 3.081-.211 5.543-.427 2.463-.22 4.31-.362 5.543-.43zM323.695 265.926c.246 5.432-.979 9.894-3.678 13.387-2.89 3.704-7.016 5.679-12.378 5.92-.897.042-2.251.052-4.063.033-1.812-.021-3.166-.011-4.063.029-.965.043-1.429.479-1.394 1.313.049 1.032.22 2.563.514 4.597.293 2.032.464 3.553.509 4.563.023.517-.2.783-.671.806-1.369.063-3.424.115-6.163.161-2.741.045-4.796.099-6.165.16-.647.027-.99-.281-1.02-.935-.112-2.488-.241-6.23-.391-11.228-.146-4.996-.275-8.738-.39-11.229-.318-7.044-.955-14.434-1.911-22.169l-.055-.469c-.065-.424.261-.699.975-.82 1.738-.303 5.593-.59 11.563-.857 3.521-.16 6.898-.269 10.136-.323 5.322-.083 9.684 1.395 13.081 4.434 3.473 3.123 5.324 7.332 5.564 12.627zm-13.402 1.145c-.236-5.228-2.9-7.727-7.993-7.496-3.59.162-5.465.449-5.626.861-.146.298-.105 2.894.115 7.784.029.693.104 1.721.224 3.073.117 1.355.191 2.382.223 3.075.021.448 2.05.582 6.088.399 4.867-.217 7.192-2.783 6.969-7.696z"></path>
@@ -26,68 +28,20 @@
 		</svg>
 	</a>
 
-</div>
-
-<div class="didier">
-	<img class="speakerRound" src="https://avatars1.githubusercontent.com/u/752324?s=460&v=4" alt="Didier Plaindoux" title="Didier Plaindoux">
-	<h4>Didier Plaindoux</h4>
-	<span>Freelance Computer Scientist</span>
-	<a href="https://twitter.com/dplaindoux">@dplaindoux</a>
-	<a href="mailto:d.plaindoux@free.fr">d.plaindoux@free.fr</a>
-
-	<a href="http://www.fungus.fr/" style="border: none;">
-		<img src="../assets/devoxx-ma/fungus.png" alt="Funguns">
-	</a>
-</div>
 
 
-
-0. Water Pouring Problem
-1. Pour démarrer
-2. Excercices
-
-<ul>
-	<li class="ide">
-		Installation de l'IDE<br>
-		<a href="https://developer.android.com/studio/index.html">Android Studio 3.0</a>,
-		<a href="https://www.jetbrains.com/idea/download/">Download IntelliJ IDEA</a>
-	</li>
-	<li>
-		Configuration du plugin Kotlin<br>
-		<code>Tools | Kotlin | Configure Kotlin Plugin Updates</code><br>
-		<div class="capture">
-			<img src="../assets/devoxx-ma/update-kotlin-plugin.png" alt="Configure Kotlin Plugin Updates"><br>
-			Sélectionner <code>Early Access Preview 1.2</code><br>
-			Puis cliquer sur <code>Check for updates now</code>
-		</div>
-	</li>
-</ul>
-
-<ul>
-	<li>
-		Récupérer la présentation<br>
-		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf">https://ilaborie.github.io/slides/kotlinHandsOn/devoxx-ma.pdf</a>
-	</li>
-	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
-	<li>
-		<code>git checkout exo-server</code> ou
-		<code>git checkout exo-web</code> ou
-		<code>git checkout exo-mobile</code>
-	</li>
-	<li><code>./gradlew clean assemble test</code></li>
-</ul>
 
 
 * Écrire du code plus sûr
 * Facilité la maintenance
-* Écrire plus rapidement
+* Écrire et Tester plus rapidement
 * Résoudre de nouveaux problèmes
 * ...
 
 
-* Éviter les NPE, statiquement typé
-* Abordable, si on vient de Java
 * Expressif et pragmatique
+* _null-safety_ (éviter les NPE), statiquement typé
+* Abordable, si on vient de Java
 * Inspiré par Java, Scala, C#, Groovy, ...
 * Cross-platform
 
@@ -101,9 +55,17 @@
 <h4 class="native">Native avec LLVM</h4>
 
 
+```kotlin
+fun main(args: Array<String>) {
+    println("Hello World!")
+}
+```
+*Tips*
+Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br>
+Ou copiez du code Java dans un fichier Kotlin
 
 
-![Théière magique](/kotlinHandsOn/water_pouring_problem/teapot.png)
+
 
 <div>
 	<div class="glass-container">
@@ -190,33 +152,26 @@
 
 
 ```kotlin
-fun main(args: Array<String>) {
-    println("Hello Devoxx Morocco !")
-}
-
-
-```
-*Tips*
-
-
-```kotlin
 data class Glass(val capacity: Int, val current: Int = 0) {
-
     init {
-        require(capacity > 0) {
-            "Capacity: $capacity should be > 0"
-        }
-        require(current in 0..capacity) {
-            "Current: $current should be into [0, $capacity]"
-        }
+        require(capacity > 0)
+        require(current in 0..capacity)
     }
+
+    val isEmpty: Boolean = (current == 0)
+    val isFull: Boolean = (current == capacity)
+    val remainingVolume: Int  by lazy { capacity - current }
+    fun empty(): Glass = copy(current = 0)
+    fun fill(): Glass = copy(current = capacity)
+    operator fun plus(value: Int): Glass =
+        copy(current = (current + value).coerceAtMost(capacity))
+    operator fun minus(value: Int): Glass =
+        copy(current = (current - value).coerceAtLeast(0))
+    override fun toString() = "$current/$capacity"
 }
 
 typealias State = List<Glass>
-
 ```
-*Info*
-
 
 ```kotlin
 sealed class Move
@@ -231,90 +186,84 @@ data class Pour(val from: Int, val to: Int) : Move() {
     }
 }
 ```
-*Info*
+
+```kotlin
+private typealias StateWithHistory = Pair<State, List<Move>>
+
+fun solve(from: State, to: State): List<Move> {
+    tailrec fun solveAux(states: List<StateWithHistory>, visitedStates: Set<State>) {
+        val solution: StateWithHistory? = states.find { (state, _) -> state == to }
+        if (solution != null) { return solution.second }
+
+        val next = states
+            .flatMap { (state, history) ->
+                state.availableMoves()
+                    .map { move -> state.move(move) to (history + move) }
+            }
+            .filterNot { (state, _) -> visitedStates.contains(state) }
+        val nextVisited = visitedStates + next.map { it.first }
+        return solveAux(next, nextVisited)
+    }
+    return solveAux(listOf(from to emptyList()), setOf(from))
+}
+```
+
+```kotlin
+fun State.move(move: Move): State =
+    mapIndexed { index, glass ->
+        when (move) {
+            is Empty -> if (index == move.index) glass.empty() else glass
+            is Fill  -> if (index == move.index) glass.fill() else glass
+            is Pour  -> when (index) {
+                move.from -> glass - get(move.to).remainingVolume
+                move.to   -> glass + get(move.from).current
+                else      -> glass
+            }
+        }
+    }
+
+```
 
 
 
+* Faible overhead
+* Support officiel par Google
+* [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
+* [Kotlin Guide](https://android.github.io/kotlin-guides/)
 
 
-[Serveur avec SpringBoot 2](#serveur_avec_springboot_2)
-Implémentation du solveur côté serveur
+* Supporter officiellement depuis [Spring 5](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0), SpringBoot 2
+* [Vert.x](http://vertx.io/docs/vertx-core/kotlin/)
+* [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html)
+* [KTor](http://ktor.io/)
+* ...
 
-[Android](#android)
-Définition et affichage de la solution sous Android
+#### Web
 
-[Navigateur avec KotlinJS](#navigateur_avec_kotlinjs)
-Définition et affichage de la solution dans un navigateur
+* Partager du code commun
+* [Use Kotlin with npm, webpack and react](https://blog.jetbrains.com/kotlin/2017/04/use-kotlin-with-npm-webpack-and-react/)
 
-[Freestyle](#freestyle)
-Implémenter sans guide
+#### Natif
 
-
-## `exo-server`
-
-#### Pré-requis
-
-* Java 8
-* Un IDE qui marche bien avec Kotlin comme [IntelliJ IDEA CE](https://www.jetbrains.com/idea/download/)
-
-#### Exercices
-
-* Exercice 1: les bases
-* Exercice 2: un peu plus loin
-* Exercice 3: (SpringBoot) injection, routes, reactor, ...
-  
-
-
-## `exo-mobile`
-
-#### Pré-requis
-
-* Java 8
-* [Android Studio 3](https://developer.android.com/studio/index.html) 
-* Android SDK 27
-
-
-#### Exercices
-
-* Exercice 1: les bases
-* Exercice 2: un peu plus loin
-* Exercice 3: android
-
-
-## `exo-web`
-
-#### Pré-requis
-
-* Java 8
-* NodeJS LTS ou stable (8+)
-* Un IDE qui marche bien avec Kotlin comme [IntelliJ IDEA CE](https://www.jetbrains.com/idea/download/)
-* Un navigateur moderne
-
-#### Exercices
-
-* Exercice 1: les bases
-* Exercice 2: construire du HTML avec le DSL [kotlinx-html](https://github.com/Kotlin/kotlinx.html)
-* Exercice 3: créer des actions
-* Exercice 4: implémenter la résolution du problème
- 
-
-
-#### Pré-requis
-
-* Java 6+
-* Un IDE qui marche bien avec Kotlin comme [IntelliJ IDEA CE](https://www.jetbrains.com/idea/download/)
-
-
-#### Exercice
-
-* Résoudre le problème du transvasement en Kotlin
+* Faire des applications sans JVM
+* Partager du code avec iOS
+* WebAssembly
 
 
 
-* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* Code plus sûr, plus simple
+* Interoperable avec Java
+* Outillage
+* Ecosystème et communauté
+* Déjà mature
+* Simple à apprendre
+
+
 * [Référence](http://kotlinlang.org/docs/reference/)
 * [https://kotlin.link/](https://kotlin.link/)
 * [Blog](https://blog.jetbrains.com/kotlin/)
-* [Forum](https://discuss.kotlinlang.org/)
-* [Slack](https://kotlinslack.herokuapp.com/)
-* [Kotlin Evolution and Enhancement Process](https://github.com/Kotlin/KEEP)
+* [Forum](https://discuss.kotlinlang.org/), [Slack](https://kotlinslack.herokuapp.com/)
+* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+
+### Question ? ###
