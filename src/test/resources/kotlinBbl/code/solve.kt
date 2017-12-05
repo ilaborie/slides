@@ -7,8 +7,8 @@ fun solve(from: State, to: State): List<Move> {
 
         val next = states
             .flatMap { (state, history) ->
-                val moves = state.availableMoves()
-                moves.map { move -> state.move(move) to (history + move) }
+                state.availableMoves()
+                    .map { move -> state.move(move) to (history + move) }
             }
             .filterNot { (state, _) -> visitedStates.contains(state) }
         val nextVisited = visitedStates + next.map { it.first }

@@ -388,8 +388,8 @@ typealias State = List&lt;Glass&gt;</code></pre>
 
         <span class="hljs-keyword">val</span> next = states
             .flatMap { (state, history) -&gt;
-                <span class="hljs-keyword">val</span> moves = state.availableMoves()
-                moves.map { move -&gt; state.move(move) to (history + move) }
+                state.availableMoves()
+                    .map { move -&gt; state.move(move) to (history + move) }
             }
             .filterNot { (state, _) -&gt; visitedStates.contains(state) }
         <span class="hljs-keyword">val</span> nextVisited = visitedStates + next.map { it.first }
@@ -459,9 +459,10 @@ typealias State = List&lt;Glass&gt;</code></pre>
     <h3>Serveur</h3>
     <article>
         <ul>
-<li>Supporter officiellement depuis Spring 5, SpringBoot 2</li>
-<li>Vert.x</li>
-<li>SparkJava</li>
+<li>Supporter officiellement depuis <a href="https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0">Spring 5</a>, SpringBoot 2</li>
+<li><a href="http://vertx.io/docs/vertx-core/kotlin/">Vert.x</a></li>
+<li><a href="https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html">SparkJava</a></li>
+<li><a href="http://ktor.io/">KTor</a></li>
 <li>...</li>
 </ul>
 

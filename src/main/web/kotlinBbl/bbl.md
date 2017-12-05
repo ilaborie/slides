@@ -197,8 +197,8 @@ fun solve(from: State, to: State): List<Move> {
 
         val next = states
             .flatMap { (state, history) ->
-                val moves = state.availableMoves()
-                moves.map { move -> state.move(move) to (history + move) }
+                state.availableMoves()
+                    .map { move -> state.move(move) to (history + move) }
             }
             .filterNot { (state, _) -> visitedStates.contains(state) }
         val nextVisited = visitedStates + next.map { it.first }
@@ -232,9 +232,10 @@ fun State.move(move: Move): State =
 * [Kotlin Guide](https://android.github.io/kotlin-guides/)
 
 
-* Supporter officiellement depuis Spring 5, SpringBoot 2
-* Vert.x
-* SparkJava
+* Supporter officiellement depuis [Spring 5](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0), SpringBoot 2
+* [Vert.x](http://vertx.io/docs/vertx-core/kotlin/)
+* [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html)
+* [KTor](http://ktor.io/)
 * ...
 
 #### Web
