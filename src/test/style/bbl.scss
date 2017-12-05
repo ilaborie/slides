@@ -5,7 +5,7 @@
   --alpha2: rgba(0, 0, 0, .87);
 
   // Customization
-  --primary: #3E342A;
+  --primary: #364081;
   --secondary: white;
 
   // Fonts
@@ -53,7 +53,7 @@
 
   // Slide Footer
   --txtFooter: '#BrownBagLunch @ilaborie';
-  --bgFooter: var(--primary);
+  --bgFooter: #0095D5;
   --fgFooter: var(--secondary);
   --logoFooter: url('./assets/bbl/BBL_light.png');
 
@@ -61,6 +61,8 @@
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
 }
+
+
 
 //body.bbl {
 //  background-color: var(--secondary);

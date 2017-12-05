@@ -2,7 +2,7 @@
   --who: 'BBL Toulouse';
   --alpha1: rgba(0, 0, 0, 0.54);
   --alpha2: rgba(0, 0, 0, 0.87);
-  --primary: #3E342A;
+  --primary: #364081;
   --secondary: white;
   --fontBody: system, system-ui, sans-serif;
   --coverFont: system, system-ui, sans-serif;
@@ -32,7 +32,7 @@
   --bgCounter: transparent;
   --fgCounter: var(--secondary);
   --txtFooter: '#BrownBagLunch @ilaborie';
-  --bgFooter: var(--primary);
+  --bgFooter: #0095D5;
   --fgFooter: var(--secondary);
   --logoFooter: url("./assets/bbl/BBL_light.png");
   --bgCode: #2b2b2b;
