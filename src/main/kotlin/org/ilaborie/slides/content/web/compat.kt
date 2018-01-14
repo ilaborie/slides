@@ -7,21 +7,24 @@ import kotlinx.serialization.Serializable
 data class Browser(val key: String, val usage: Float, val mobile: Boolean, val versions: List<String>)
 
 @Serializable
-data class Feature(val key: String,
-                   val title: String,
-                   val description: String,
-                   val spec: String,
-                   val notes_by_num: Map<String, String>)
+data class Feature(
+    val key: String,
+    val title: String,
+    val description: String,
+    val spec: String,
+    val notes_by_num: Map<String, String>
+)
 
 @Serializable
 data class Value(val browser: String, val feature: String, val stats: List<Stat>)
 
 @Serializable
 data class CompatibilityStatusResult(
-        val total: Float,
-        val browsers: List<Browser>,
-        val features: List<Feature>,
-        val values: List<Value>)
+    val total: Float,
+    val browsers: List<Browser>,
+    val features: List<Feature>,
+    val values: List<Value>
+)
 
 
 @Serializable

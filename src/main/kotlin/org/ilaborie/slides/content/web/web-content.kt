@@ -12,9 +12,11 @@ data class StyleEditable(val initialCss: External, val finalCss: External? = nul
 data class EditableZone(val content: Content) : Content()
 
 
-data class CssCompatibility(val country: String,
-                            val threshold: Number,
-                            private val features: List<String>) : Content() {
+data class CssCompatibility(
+    val country: String,
+    val threshold: Number,
+    private val features: List<String>
+) : Content() {
     private val result: CompatibilityStatusResult by lazy {
         val helperClient = createClient("http://localhost:5000/")
         val json = helperClient.compatibility(country, threshold.toString(), features.joinToString(separator = ","))

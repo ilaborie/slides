@@ -74,8 +74,10 @@ fun ContentContainer.code(language: Language = Language.None, codeBuilder: () ->
 
 fun ContentContainer.codeFromResource(resource: String) {
     add {
-        ExternalCodeContent(language = Language.findForExtension(resource) ?: Language.None,
-                            externalCode = ExternalResource(resource))
+        ExternalCodeContent(
+            language = Language.findForExtension(resource) ?: Language.None,
+            externalCode = ExternalResource(resource)
+        )
     }
 }
 
@@ -89,9 +91,11 @@ fun ContentContainer.htmlFromResource(resource: String) {
 
 fun ContentContainer.img(alt: String, resource: String, title: String? = null) {
     add {
-        ExternalImageContent(alt = alt,
-                             title = title,
-                             externalImage = ExternalResource(resource))
+        ExternalImageContent(
+            alt = alt,
+            title = title,
+            externalImage = ExternalResource(resource)
+        )
     }
 }
 
@@ -103,9 +107,11 @@ fun ContentContainer.svg(resource: String) {
 
 fun ContentContainer.figure(title: String, link: String, copyright: String? = null) {
     add {
-        Figure(title = HtmlContent(title),
-               copyright = copyright?.let { HtmlContent(it) },
-               externalImage = ExternalLink(link))
+        Figure(
+            title = HtmlContent(title),
+            copyright = copyright?.let { HtmlContent(it) },
+            externalImage = ExternalLink(link)
+        )
     }
 }
 
@@ -202,8 +208,10 @@ fun ContentContainer.definitions(builder: MapContentContainer.() -> Unit) {
 
 // CSS
 
-fun ContentContainer.styleEditable(code: String,
-                                   soluce: String = "$code-final") {
+fun ContentContainer.styleEditable(
+    code: String,
+    soluce: String = "$code-final"
+) {
     add {
         StyleEditable(ExternalResource("$code.css"), ExternalResource("$soluce.css"))
     }
@@ -215,20 +223,26 @@ fun ContentContainer.editableZone(htmlResource: String) {
     }
 }
 
-fun ContentContainer.cssLiveCode(code: String,
-                                 soluce: String = "$code-final",
-                                 playground: String = "$code.html") {
+fun ContentContainer.cssLiveCode(
+    code: String,
+    soluce: String = "$code-final",
+    playground: String = "$code.html"
+) {
     styleEditable(code, soluce)
     editableZone(playground)
 }
 
-fun ContentContainer.cssCompatibility(country: String = Locale.getDefault().country,
-                                      threshold: Number = 0.5f,
-                                      features: List<String>) {
+fun ContentContainer.cssCompatibility(
+    country: String = Locale.getDefault().country,
+    threshold: Number = 0.5f,
+    features: List<String>
+) {
     add {
-        CssCompatibility(country = country,
-                         threshold = threshold,
-                         features = features)
+        CssCompatibility(
+            country = country,
+            threshold = threshold,
+            features = features
+        )
     }
 }
 

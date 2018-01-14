@@ -9,15 +9,19 @@ interface Slides {
     val id: String
     fun toList(): List<Slide>
     fun removeSlide(slideId: String): Slides
-    fun replaceSlide(slideKeys: String,
-                     newTitle: String? = null,
-                     replacement: ContentContainer.() -> Unit): Slides
+    fun replaceSlide(
+        slideKeys: String,
+        newTitle: String? = null,
+        replacement: ContentContainer.() -> Unit
+    ): Slides
 }
 
-data class Presentation(val title: Content,
-                        override val id: String,
-                        val slides: List<Slides> = emptyList(),
-                        val scripts: List<String> = emptyList()) : Slides {
+data class Presentation(
+    val title: Content,
+    override val id: String,
+    val slides: List<Slides> = emptyList(),
+    val scripts: List<String> = emptyList()
+) : Slides {
     val coverSlide by lazy { MainTitleSlide(title, id) }
 
     operator fun invoke(s: Slides): Int = slides.indexOf(s)
@@ -48,24 +52,30 @@ data class Presentation(val title: Content,
             .filterNot { it.id == slideId }
             .map { it.removeSlide(slideId) })
 
-    override fun replaceSlide(slideKeys: String,
-                              newTitle: String?,
-                              replacement: ContentContainer.() -> Unit): Presentation {
+    override fun replaceSlide(
+        slideKeys: String,
+        newTitle: String?,
+        replacement: ContentContainer.() -> Unit
+    ): Presentation {
         val (pKey) = slideKeys.split("/")
-        return if (pKey != id) this.copy() else
+        return if (pKey != id
+        ) this.copy() else
             copy(slides = slides.map { it.replaceSlide(slideKeys, newTitle, replacement) })
     }
 }
 
-data class Group(val title: String,
-                 override val id: String = title.normalize(),
-                 val slides: List<Slide> = emptyList(),
-                 val skipPart: Boolean = false) : Slides {
+data class Group(
+    val title: String,
+    override val id: String = title.normalize(),
+    val slides: List<Slide> = emptyList(),
+    val skipPart: Boolean = false
+) : Slides {
 
     operator fun invoke(s: Slide): Int = slides.indexOf(s)
 
     override fun toList(): List<Slide> =
-        if (skipPart) slides.toList()
+        if (skipPart
+        ) slides.toList()
         else listOf(PartTitleSlide(title)) + slides.toList()
 
     operator fun plus(slide: Slide): Group =
@@ -75,9 +85,11 @@ data class Group(val title: String,
     override fun removeSlide(slideId: String) =
         copy(slides = slides.filterNot { it.id == slideId })
 
-    override fun replaceSlide(slideKeys: String,
-                              newTitle: String?,
-                              replacement: ContentContainer.() -> Unit): Group {
+    override fun replaceSlide(
+        slideKeys: String,
+        newTitle: String?,
+        replacement: ContentContainer.() -> Unit
+    ): Group {
         val (pKey, gKey, sKey) = slideKeys.split("/")
         fun newSlide(previous: Slide): Slide {
             val c = ContentContainer()

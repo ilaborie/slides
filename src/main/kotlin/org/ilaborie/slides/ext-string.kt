@@ -3,11 +3,11 @@ package org.ilaborie.slides
 import java.text.Normalizer
 
 fun String.normalize(): String =
-        Normalizer.normalize(this, Normalizer.Form.NFD)
-                .toLowerCase()
-                .replace(Regex("[\\s]"), "-")
-                .replace(Regex("[^\\p{ASCII}]"), "")
-                .replace(Regex("[\\W]"), "_")
+    Normalizer.normalize(this, Normalizer.Form.NFD)
+        .toLowerCase()
+        .replace(Regex("[\\s]"), "-")
+        .replace(Regex("[^\\p{ASCII}]"), "")
+        .replace(Regex("[\\W]"), "_")
 
 
 operator fun Char.times(n: Int): String = when {
@@ -19,8 +19,8 @@ operator fun Char.times(n: Int): String = when {
 
 
 fun String.underline(underline: Char): String =
-        "$this\n${underline * this.length}"
+    "$this\n${underline * this.length}"
 
 
 fun String.indent(indentation: String = "  "): String =
-        this.lines().joinToString("\n") { indentation + it }
+    this.lines().joinToString("\n") { indentation + it }

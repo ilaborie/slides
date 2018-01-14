@@ -11,9 +11,11 @@ interface HelperClient {
     fun codeToHtml(@Param("lang") lang: String, code: String): String
 
     @RequestLine("GET /compatibility?country={country}&threshold={threshold}&features={features}")
-    fun compatibility(@Param("country") country: String,
-                      @Param("threshold") threshold: String,
-                      @Param("features") features: String): String
+    fun compatibility(
+        @Param("country") country: String,
+        @Param("threshold") threshold: String,
+        @Param("features") features: String
+    ): String
 
     @RequestLine("POST /markdown")
     fun markdown(md: String): String

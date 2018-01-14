@@ -30,8 +30,8 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Title                   -> this.renderAsMarkdown()
     is Link                    -> "[${content.renderAsMarkdown()}]($link)"
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
-        "$key\n: ${content.renderAsMarkdown()}"
-    }
+            "$key\n: ${content.renderAsMarkdown()}"
+        }
     is OrderedList             -> contents
         .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
         .joinToString(separator = "\n")

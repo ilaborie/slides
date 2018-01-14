@@ -1,7 +1,10 @@
 package org.ilaborie.slides.content
 
-import org.ilaborie.slides.*
+import org.ilaborie.slides.Group
+import org.ilaborie.slides.Presentation
+import org.ilaborie.slides.Slide
 import org.ilaborie.slides.content.web.*
+import org.ilaborie.slides.defaultContent
 import java.text.DecimalFormat
 
 
@@ -15,27 +18,27 @@ fun Presentation.renderAsHtml(key: String): String {
     fun next(index: Int): String? = if (index < (slidesList.size - 1)) slidesList[index + 1].id() else null
 
     val slideIndex = slidesList.mapIndexed { index, slide -> slide to index }
-            .toMap()
+        .toMap()
 
     val groupsTitles = slides.filterIsInstance<Group>()
-            .map { it.title }
-            .joinToString(separator = "\n") { "<strong>$it</strong>" }
+        .map { it.title }
+        .joinToString(separator = "\n") { "<strong>$it</strong>" }
     val groupsNavs = slides.filterIsInstance<Group>()
-            .map {
-                it.toList().joinToString(separator = "\n") {
+        .map {
+            it.toList().joinToString(separator = "\n") {
                     """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex[it]}</a>"""
                 }
-            }
-            .joinToString(separator = "\n") { "<nav>$it</nav>" }
+        }
+        .joinToString(separator = "\n") { "<nav>$it</nav>" }
 
     val body = (listOf(coverSlide) + this.slides)
-            .flatMap { slides -> slides.toList().map { slides to it } }
-            .mapIndexed { index, (parent, slide) -> Triple(index, parent, slide) }
-            .map { (index, parent, slide) ->
-                slide.renderAsHtml(previousId = previous(index), nextId = next(index)) {
-                    this.defaultContent(parent, slide)
-                }
+        .flatMap { slides -> slides.toList().map { slides to it } }
+        .mapIndexed { index, (parent, slide) -> Triple(index, parent, slide) }
+        .map { (index, parent, slide) ->
+            slide.renderAsHtml(previousId = previous(index), nextId = next(index)) {
+                this.defaultContent(parent, slide)
             }
+        }
 
     return """
 <!doctype html>
@@ -68,7 +71,8 @@ ${body.joinToString(separator = "\n")}
 }
 
 fun Slide.renderAsHtml(previousId: String?, nextId: String?, defaultContent: () -> Content): String {
-    val prevFun = if (previousId != null) """<a href="#$previousId" class="previous" aria-label="Précédant"></a>""" else ""
+    val prevFun =
+        if (previousId != null) """<a href="#$previousId" class="previous" aria-label="Précédant"></a>""" else ""
     val nextFun = if (nextId != null) """<a href="#$nextId" class="next" aria-label="Suivant"></a>""" else ""
     return """
 <!-- Slide ${titleAsString()} -->
@@ -113,14 +117,19 @@ fun Content.renderAsHtml(): String = when (this) {
     is StyleEditable           -> this.renderAsHtml()
     is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is CssCompatibility        -> this.renderAsHtml()
-    is Notice   -> this.renderAsHtml()
+    is Notice                  -> this.renderAsHtml()
     else                       -> TODO()
 }
 
-fun StyleEditable.renderAsHtml() = """<style contenteditable="true" class="hide-print">${initialCss.textContent}</style>""" +
-        if (finalCss != null)
-            """<pre class="hljs lang-css show-print"><code>${getFormattedCode(Language.CSS, finalCss.textContent)}</code></pre>"""
-        else ""
+fun StyleEditable.renderAsHtml() =
+    """<style contenteditable="true" class="hide-print">${initialCss.textContent}</style>""" +
+            if (finalCss != null
+            )
+                """<pre class="hljs lang-css show-print"><code>${getFormattedCode(
+                    Language.CSS,
+                    finalCss.textContent
+                )}</code></pre>"""
+            else ""
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"
@@ -129,16 +138,16 @@ fun Code.renderAsHtml() = when (language) {
 
 private val codeCache = mutableMapOf<Pair<Language, String>, String>()
 private fun getFormattedCode(language: Language, code: String): String =
-        codeCache.getOrPut(language to code) {
-            val helperClient = createClient("http://localhost:5000/")
-            return helperClient.codeToHtml(language.toString().toLowerCase(), code)
-        }
+    codeCache.getOrPut(language to code) {
+        val helperClient = createClient("http://localhost:5000/")
+        return helperClient.codeToHtml(language.toString().toLowerCase(), code)
+    }
 
 fun Definitions.renderAsHtml() = map
-        .toList()
-        .joinToString(separator = "\n", prefix = "<dl>", postfix = "</dl>") { (key, content) ->
-            "<dt>${key.renderAsHtml()}</dt>\n<dd>${content.renderAsHtml()}</dd>"
-        }
+    .toList()
+    .joinToString(separator = "\n", prefix = "<dl>", postfix = "</dl>") { (key, content) ->
+        "<dt>${key.renderAsHtml()}</dt>\n<dd>${content.renderAsHtml()}</dd>"
+    }
 
 fun Quote.renderAsHtml() = """
 <blockquote${if (cite != null) "cite=\"$cite\"" else ""}>
@@ -155,16 +164,16 @@ fun Figure.renderAsHtml() = """
 
 private val mdCache = mutableMapOf<String, String>()
 fun MarkdownContent.renderAsHtml(): String =
-        mdCache.getOrPut(markdown) {
-            val helperClient = createClient("http://localhost:5000/")
-            return helperClient.markdown(markdown)
-        }
+    mdCache.getOrPut(markdown) {
+        val helperClient = createClient("http://localhost:5000/")
+        return helperClient.markdown(markdown)
+    }
 
 fun CssCompatibility.renderAsHtml(): String {
     val browsers: List<Browser> = table.columns()
-            .sortedBy { it.usage }
-            .reversed()
-            .toList()
+        .sortedBy { it.usage }
+        .reversed()
+        .toList()
 
     fun Stat.toClass(feature: Feature): String = when (compatibility(feature)) {
         NotAvailable -> "not-available"
@@ -192,15 +201,15 @@ fun CssCompatibility.renderAsHtml(): String {
     }
 
     val features = table.rows()
-            .map { feature -> feature to (browsers.map { browser -> browser to table.get(feature, browser) }) }
-            .map { (feature, values) ->
-                feature to values.joinToString(separator = "") { (browser, value) ->
-                    """<div class="value ${browser.key} ${feature.key}">${
-                    (value?.stats ?: emptyList()).joinToString("\n") { stat ->
-                        """<div class="${stat.toClass(feature)}">${stat.toInfo(feature)}</div>"""
-                    }}</div>"""
-                }
+        .map { feature -> feature to (browsers.map { browser -> browser to table.get(feature, browser) }) }
+        .map { (feature, values) ->
+            feature to values.joinToString(separator = "") { (browser, value) ->
+                """<div class="value ${browser.key} ${feature.key}">${
+                (value?.stats ?: emptyList()).joinToString("\n") { stat ->
+                    """<div class="${stat.toClass(feature)}">${stat.toInfo(feature)}</div>"""
+                }}</div>"""
             }
+        }
 
     val formatter = DecimalFormat("0.0")
 

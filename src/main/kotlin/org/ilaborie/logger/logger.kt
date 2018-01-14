@@ -55,7 +55,8 @@ class Logger(val name: String, var level: Level = Level.INFO, var appender: Appe
     }
 
     private fun log(logLevel: Level, cause: Throwable?, messageBuilder: () -> String) {
-        if (logLevel >= level) {
+        if (logLevel >= level
+        ) {
             appender.write(logLevel, LogInfo(logLevel, LocalDateTime.now(), messageBuilder()))
             if (cause != null) appender.write(logLevel, cause)
         }

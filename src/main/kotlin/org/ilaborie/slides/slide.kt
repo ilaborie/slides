@@ -29,9 +29,11 @@ sealed class Slide : Slides {
     // not called
     override fun removeSlide(slideId: String) = this
 
-    override fun replaceSlide(slideKeys: String,
-                              newTitle: String?,
-                              replacement: ContentContainer.() -> Unit): Slides = this
+    override fun replaceSlide(
+        slideKeys: String,
+        newTitle: String?,
+        replacement: ContentContainer.() -> Unit
+    ): Slides = this
 }
 
 data class BasicSlide(
@@ -39,7 +41,8 @@ data class BasicSlide(
     val title: Content = EmptyContent,
     val content: Content? = null,
     val contentType: ContentType = if (content != null) INTERNAL else MARKDOWN,
-    val styleClass: Set<String> = emptySet()) : Slide() {
+    val styleClass: Set<String> = emptySet()
+) : Slide() {
 
     constructor(
         title: String,

@@ -32,7 +32,7 @@ fun <T> catchWithDefault(default: T, dangerous: () -> T): T =
 fun Presentation.writeHtmlTo(folder: File, key: String = "index", charset: Charset = Charsets.UTF_8) {
     val file = folder.resolve("$key.html")
     logger.debug { "Write '${this.title.renderAsString()}' to $file" }
-    file.writeText(renderAsHtml(key),charset)
+    file.writeText(renderAsHtml(key), charset)
 }
 
 fun htmlToPdf(from: File, to: File) {
@@ -75,17 +75,19 @@ fun Presentation.hasMissingExternals(): Boolean {
 fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
     when (slide) {
         is RoadMapSlide -> OrderedList(
-                slides.filterIsInstance<Group>()
-                    .filterNot { it.skipPart }
-                    .map { it.title }
-                    .map { HtmlContent(it) })
+            slides.filterIsInstance<Group>()
+                .filterNot { it.skipPart }
+                .map { it.title }
+                .map { HtmlContent(it) })
         else            -> {
             val contentType = slide.contentType().toFileExtension()
             val resource = (listOf(this.id) +
                     when (parent) {
                         is Group ->
-                            listOf("${this(parent).format("00")}_${parent.id}",
-                                   "${parent(slide).format("00")}_${slide.id()}$contentType")
+                            listOf(
+                                "${this(parent).format("00")}_${parent.id}",
+                                "${parent(slide).format("00")}_${slide.id()}$contentType"
+                            )
                         else     ->
                             listOf("${this(slide).format("00")}_${slide.id()}$contentType")
                     }).joinToString(prefix = "/", separator = "/")
@@ -93,9 +95,9 @@ fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
             logger.trace { "Default content for $resource" }
 
             when (slide.contentType()) {
-                HTML     -> ExternalHtmlContent(ExternalResource(resource))
+                HTML -> ExternalHtmlContent(ExternalResource(resource))
                 MARKDOWN -> ExternalMarkdownContent(ExternalResource(resource))
-                else     -> TODO()
+                else -> TODO()
             }
         }
     }
