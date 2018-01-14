@@ -1,52 +1,51 @@
 package css_awesome
 
 import org.ilaborie.slides.ContentType.HTML
-import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.Code
 import org.ilaborie.slides.content.HtmlContent
 import org.ilaborie.slides.content.Link
 import org.ilaborie.slides.dsl.*
-import java.io.File
 
 
 fun main(args: Array<String>) {
-    val slidesDir = File("src/test/resources/")
-    val dist = File("src/main/web")
-
-    // Devfest Toulouse
+//    val slidesDir = File("src/main/slides-resources/")
+//    val dist = File("src/main/web")
+//
+//    // Devfest Toulouse
     val cssIsAwesome = cssIsAwesome(country = "FR", browsersThreshold = 0.4)
-
-    // Devoxx Maroc
-    val cssIsAwesomeShort = cssIsAwesome(country = "MA", browsersThreshold = 0.5)
-        .removeSlide(slideId = "texte_de_chargement")
-        .replaceSlide(slideKeys = "/cssIsAwesome/conclusion/liens") {
-            ul {
-                linkText(link = "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome") {
-                    "les slides en HTML"
-                }
-                linkText(link = "https://ilaborie.github.io/slides/devoxx-ma.pdf") {
-                    "les slides en PDF"
-                }
-                linkText(link = "https://github.com/ilaborie/slides") {
-                    "le code"
-                }
-                linkText(link = "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html") {
-                    "Blog: 'Making Of'"
-                }
-            }
-        }
-
-//    cssIsAwesome.buildAll(dist, "devfest-tls")
-//    cssIsAwesomeShort.buildAll(dist, "devoxx-ma")
-
-    copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist.resolve(cssIsAwesome.id))
+    println("Skip generation of $cssIsAwesome")
+//
+//    // Devoxx Maroc
+//    val cssIsAwesomeShort = cssIsAwesome(country = "MA", browsersThreshold = 0.5)
+//        .removeSlide(slideId = "texte_de_chargement")
+//        .replaceSlide(slideKeys = "/cssIsAwesome/conclusion/liens") {
+//            ul {
+//                linkText(link = "https://ilaborie.github.io/slides/devoxx-ma.html#cssIsAwesome") {
+//                    "les slides en HTML"
+//                }
+//                linkText(link = "https://ilaborie.github.io/slides/devoxx-ma.pdf") {
+//                    "les slides en PDF"
+//                }
+//                linkText(link = "https://github.com/ilaborie/slides") {
+//                    "le code"
+//                }
+//                linkText(link = "http://www.monkeypatch.io/2017/05/02/MakingOf_CSS_is_Awesome.html") {
+//                    "Blog: 'Making Of'"
+//                }
+//            }
+//        }
+//
+////    cssIsAwesome.buildAll(dist, "devfest-tls")
+////    cssIsAwesomeShort.buildAll(dist, "devoxx-ma")
+//
+//    copyExtraFiles(slidesDir.resolve(cssIsAwesome.id), dist.resolve(cssIsAwesome.id))
 }
 
-private fun copyExtraFiles(srcDir: File, destDir: File) {
-    listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")
-        .map { it to srcDir.resolve(it) }
-        .map { (fileName, srcDir) -> srcDir.copyTo(target = destDir.resolve(fileName), overwrite = true) }
-}
+//private fun copyExtraFiles(srcDir: File, destDir: File) {
+//    listOf("holy-grail.html", "holy-grail-calc.html", "holy-grail-flexbox.html", "holy-grail-grid.html")
+//        .map { it to srcDir.resolve(it) }
+//        .map { (fileName, srcDir) -> srcDir.copyTo(target = destDir.resolve(fileName), overwrite = true) }
+//}
 
 fun cssIsAwesome(country: String = "FR", browsersThreshold: Number = 0.5) =
     presentation(title = "CSS is Awesome !", key = "cssIsAwesome") {
@@ -142,7 +141,8 @@ fun cssIsAwesome(country: String = "FR", browsersThreshold: Number = 0.5) =
         // Units
         part(title = "Unités") {
             slide(title = "Une histoire d’unités CSS") {
-                figure(title = "Une histoire d’unités CSS", link = "https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg")
+                figure(title = "Une histoire d’unités CSS",
+                       link = "https://www.commitstrip.com/wp-content/uploads/2016/10/Strip-High-Level-CSS-650-final-2.jpg")
                 link(link = "http://www.commitstrip.com/fr/2016/10/10/a-story-about-css-units/") {
                     html { "CommitStrip" }
                 }
@@ -307,7 +307,9 @@ fun cssIsAwesome(country: String = "FR", browsersThreshold: Number = 0.5) =
                 }
             }
             slide(title = "Compatibilité", key = "compat-5") {
-                cssCompatibility(country = country, threshold = browsersThreshold, features = listOf("css-animation", "svg"))
+                cssCompatibility(country = country,
+                                 threshold = browsersThreshold,
+                                 features = listOf("css-animation", "svg"))
             }
         }
         // Pseudo state

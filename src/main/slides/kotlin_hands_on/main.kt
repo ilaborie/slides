@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
 
     val kotlinHandsOn = prez()
 
-    val slidesDir = File("src/test/resources/")
+    val slidesDir = File("src/main/slides-resources/")
 
     if (kotlinHandsOn.hasMissingExternals()) {
         logger.info { "Generate missing slides" }

@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
     val logger = Logger("Kotlin BBL")
 
     val kotlinBbl = kotlinBbl()
-    val slidesDir = File("src/test/resources/")
+    val slidesDir = File("src/main/slides-resources/")
 
     if (kotlinBbl.hasMissingExternals()) {
         logger.info { "Generate missing slides" }

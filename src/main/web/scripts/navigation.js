@@ -7,15 +7,15 @@
             btn.click();
         }
     };
-    const previous = () => clickOn("section:target .previous");
-    const next = () => clickOn("section:target .next");
+    const previousSlide = () => clickOn("section:target .previous");
+    const nextSlide = () => clickOn("section:target .next");
     const home = () => clickOn(".slides-nav .cover");
 
     // Register handlers
     const keys = {
-        ArrowRight: next,
-        ArrowLeft: previous,
-        Space: next,
+        ArrowRight: nextSlide,
+        ArrowLeft: previousSlide,
+        Space: nextSlide,
         Home: home
     };
 

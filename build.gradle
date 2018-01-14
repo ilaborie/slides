@@ -36,6 +36,11 @@ dependencies {
     compile "io.github.openfeign:feign-core:$feignVersion"
 }
 
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/slides'
+    main.resources.srcDirs += 'src/main/slides-resources'
+}
+
 compileKotlin {
     kotlinOptions.jvmTarget = "1.8"
 }
@@ -44,19 +49,20 @@ compileTestKotlin {
 }
 
 task cssIsAwesome(type: JavaExec) {
-    classpath sourceSets.test.runtimeClasspath
+    classpath sourceSets.main.runtimeClasspath
     main = "css_awesome.MainKt"
 }
 task kotlinHandsOn(type: JavaExec) {
-    classpath sourceSets.test.runtimeClasspath
+    classpath sourceSets.main.runtimeClasspath
     main = "kotlin_hands_on.MainKt"
 }
 
 task kotlinBbl(type: JavaExec) {
-    classpath sourceSets.test.runtimeClasspath
+    classpath sourceSets.main.runtimeClasspath
     main = "kotlin_bbl.MainKt"
 }
 
-task slides {
+task jsFunctional(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "js_functional.Js_functionalKt"
 }
-slides.dependsOn cssIsAwesome, kotlinHandsOn

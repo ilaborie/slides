@@ -1,0 +1,76 @@
+
+.bbl {
+  --who: 'BBL Toulouse';
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+
+  // Customization
+  --primary: #364081;
+  --secondary: white;
+
+  // Fonts
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: system, system-ui, sans-serif;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: 'Permanent Marker', cursive;
+  --quoteFont: 'Just Another Hand', cursive;
+  --counterFont: 'Press Start 2P', fantasy;
+
+  // Navbar
+  --bgNavbar: var(--secondary);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+
+  // Slide
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgSlide: var(--primary);
+
+  // Slide Cover
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgCover: var(--primary);
+
+  // Slide Part
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgPart: var(--primary);
+
+  // Slide standard
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+
+  // Slide Navigation
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+
+  // Slide Counter
+  --bgCounter: transparent;
+  --fgCounter: var(--secondary);
+
+  // Slide Footer
+  --txtFooter: '#BrownBagLunch @ilaborie';
+  --bgFooter: #0095D5;
+  --fgFooter: var(--secondary);
+  --logoFooter: url('./assets/bbl/BBL_light.png');
+
+  // Code
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa;
+}
+
+
+
+//body.bbl {
+//  background-color: var(--secondary);
+//  background-image: linear-gradient(90deg, rgba(255, 255, 255, .07) 50%, transparent 50%),
+//  linear-gradient(90deg, rgba(255, 255, 255, .13) 50%, transparent 50%),
+//  linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .17) 50%),
+//  linear-gradient(90deg, transparent 50%, rgba(255, 255, 255, .19) 50%);
+//  background-size: 13px, 29px, 37px, 53px;
+//
+//  //text-shadow: 1px 1px 1px white;
+//}
