@@ -2,8 +2,8 @@ group 'org.ilaborie.slides'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlinVersion = '1.2.10'
-    ext.serializationVersion = '0.2'
+    ext.kotlinVersion = '1.2.20'
+    ext.serializationVersion = '0.4'
     ext.feignVersion = '9.5.1'
 
     repositories {
