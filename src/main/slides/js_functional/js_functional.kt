@@ -52,7 +52,7 @@ fun jsFunctional() =
             slideFromResource(title = "Lisibilité")
             slideFromResource(title = "Part I - bilan")
         }
-        part("Entract") {
+        part("Entracte") {
             slideFromResource(title = "PandaRoux", contentType = HTML)
         }
         part("Programmation fonctionnelle en JavaScript - Part II") {

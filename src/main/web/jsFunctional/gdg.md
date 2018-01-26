@@ -44,7 +44,7 @@ Python, SML, Racket, Rust, Swift, Go, ...
 
 0. Langages fonctionnels
 1. Programmation fonctionnelle en JavaScript - Part I
-2. Entract
+2. Entracte
 3. Programmation fonctionnelle en JavaScript - Part II
 4. Remaque sur la performance
 5. Conclusion
@@ -175,12 +175,32 @@ console.log({sum});
 
 
 
+
 const
 
 Object.freeze
 
+referentially transparent
+
 
 avec [ImmutableJS](https://facebook.github.io/immutable-js/)
+
+Comment fait-on ?
+
+```typescript
+class List<T> {
+    private array: T[];
+    
+    constructor(elements: T[] = []) {
+        this.array = [... elements]; 
+    }
+    
+    add(element: T) : List<T> {
+        return new [...this.array, element];
+    }
+    
+}
+```
 
 ### High Order function
 
@@ -268,6 +288,22 @@ speakers
     
 
 
+Les bases sont là !*
+
+* `function` first-class citizen
+* immutable faisable
+
+Avoid
+
+* Loops: `while`, `do...while`, `for`, `for...of`, `for...in`   
+* Variable declarations with var or let
+* Void functions
+* Object mutation (for example: o.x = 5;)
+* Array mutator methods: `copyWithin`, `fill`, `pop`, `push`, `reverse`, `shift`,`sort`, `splice`, `unshift`
+* Map mutator methods: `clear`, `delete`, `set`
+* Set mutator methods: `add`, `clear`, `delete`
+
+
 
 
 
@@ -346,6 +382,10 @@ const multCurry2 = a => b => a * b;
 
 
 
+High Order Function
+
+https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e
+https://www.sitepoint.com/implementing-memoization-in-javascript/
 
 ```typescript
 
@@ -367,9 +407,12 @@ datatype rational = Whole of int
                   | Frac  of int*int
 ```
 
-### Pattern matching
 
-Pas encore, mais
+### TypeScript
+
+type union
+
+Un exemple:
 
 ```javascript
 let getLength = vector => match (vector) {
@@ -382,7 +425,23 @@ let getLength = vector => match (vector) {
 }
 ```
 
-[ECMAScript Pattern Matching Syntax - TC39 stage 0 proposal](https://github.com/tc39/proposal-pattern-matching)
+Pour implémenter du pattern-matching il faut de la déconstruction.
+On l'a déjà sur les `{}` et les `[]`.
+
+```java
+const myPoint = { x: 14, y: 3 };
+const {x, y} = myPoint; // x === 14, y === 3
+
+const tab = [1, 2, 3, 4];
+const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
+
+```
+
+
+C'est une [Stage 0 Proposal](https://github.com/tc39/proposal-pattern-matching)
+
+
+
 
 
 
@@ -399,12 +458,50 @@ Some(1)
 
 
 
+* langage souple permet pas mal de manipulation
+* manque `flatMap`
+* mais [Ramda](http://ramdajs.com/)
+
+
+
+
+
+### Performance en quoi ?
+
+* temps d'éxécution (mimimum, maximun, moyen, première exécution) ?
+* consomation de mémoire ?
+* consomation d'énergie ?
 
 
 
 
 
 
+* on réfléchi aux bonnes structure de donnée
+* on évite les IO (disque, résau), c'est l'occasion de faire de la FRP
+
+* le code doit être bien testé
+* on priviligie la lisibilité du code à une (hypothétique) optimisation de performance
+* si besoin de meilleures performances (à définir), on définit le seuil désiré
+* on effectue  des **mesures**
+* on suit l'évolution de ces performances dans toute la durée de vie du projet
+* on isole la zone à optimiser, idéalement la plus petite possible
+* on commente, pour expliquer pourquoi on n'a perdu de la lisibilité
+* on effectue  des **mesures** 
+* mettre en cache n'est pas toujours la bonne solution
+* on effectue  des **mesures**
+
+* Douter de toutes les mythes et légende
+* tout les leviers sont bon, y compris le langage
+
+
+
+
+
+* quel est l'objectif (mesurable) ?
+* faire des mesures
+* identifier le bottleneck
+* amélioration
 
 
 

@@ -18,7 +18,7 @@
         <strong>Introduction</strong>
 <strong>Langages fonctionnels</strong>
 <strong>Programmation fonctionnelle en JavaScript - Part I</strong>
-<strong>Entract</strong>
+<strong>Entracte</strong>
 <strong>Programmation fonctionnelle en JavaScript - Part II</strong>
 <strong>Remaque sur la performance</strong>
 <strong>Conclusion</strong>
@@ -40,7 +40,7 @@
 <a href="#recursion" class="" title="Recursion">16</a>
 <a href="#lisibilite" class="" title="Lisibilité">17</a>
 <a href="#part_i___bilan" class="" title="Part I - bilan">18</a></nav>
-<nav><a href="#part_entract" class="part" title="Entract">19</a>
+<nav><a href="#part_entracte" class="part" title="Entracte">19</a>
 <a href="#pandaroux" class="" title="PandaRoux">20</a></nav>
 <nav><a href="#part_programmation_fonctionnelle_en_javascript___part_ii" class="part" title="Programmation fonctionnelle en JavaScript - Part II">21</a>
 <a href="#jargon" class="" title="Jargon">22</a>
@@ -145,7 +145,7 @@
     <article>
         <ol><li>Langages fonctionnels</li>
 <li>Programmation fonctionnelle en JavaScript - Part I</li>
-<li>Entract</li>
+<li>Entracte</li>
 <li>Programmation fonctionnelle en JavaScript - Part II</li>
 <li>Remaque sur la performance</li>
 <li>Conclusion</li></ol>
@@ -349,7 +349,22 @@ console.log({sum});
     <article>
         <p>const</p>
 <p>Object.freeze</p>
+<p>referentially transparent</p>
 <p>avec <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
+<p>Comment fait-on ?</p>
+<pre><code class="lang-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;T&gt; {</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-built_in">array</span>: T[];
+
+    constructor(elements: T[] = []) {
+        <span class="hljs-keyword">this</span>.<span class="hljs-built_in">array</span> = [... elements]; 
+    }
+
+    add(element: T) : List&lt;T&gt; {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> [...<span class="hljs-keyword">this</span>.<span class="hljs-built_in">array</span>, element];
+    }
+
+}
+</code></pre>
 
     </article>
     <a href="#composition" class="next" aria-label="Suivant"></a>
@@ -453,16 +468,31 @@ speakers
     <a href="#lisibilite" class="previous" aria-label="Précédant"></a>
     <h3>Part I - bilan</h3>
     <article>
-        
+        <p>Les bases sont là !*</p>
+<ul>
+<li><code>function</code> first-class citizen</li>
+<li>immutable faisable</li>
+</ul>
+<p>Avoid</p>
+<ul>
+<li>Loops: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
+<li>Variable declarations with var or let</li>
+<li>Void functions</li>
+<li>Object mutation (for example: o.x = 5;)</li>
+<li>Array mutator methods: <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code></li>
+<li>Map mutator methods: <code>clear</code>, <code>delete</code>, <code>set</code></li>
+<li>Set mutator methods: <code>add</code>, <code>clear</code>, <code>delete</code></li>
+</ul>
+
     </article>
-    <a href="#part_entract" class="next" aria-label="Suivant"></a>
+    <a href="#part_entracte" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Entract -->
-<section id="part_entract" class="part">
+<!-- Slide Entracte -->
+<section id="part_entracte" class="part">
     <a href="#part_i___bilan" class="previous" aria-label="Précédant"></a>
-    <h2>Entract</h2>
+    <h2>Entracte</h2>
     <article>
         
     </article>
@@ -472,7 +502,7 @@ speakers
 
 <!-- Slide PandaRoux -->
 <section id="pandaroux" class="">
-    <a href="#part_entract" class="previous" aria-label="Précédant"></a>
+    <a href="#part_entracte" class="previous" aria-label="Précédant"></a>
     <h3>PandaRoux</h3>
     <article>
         <figure>
@@ -565,7 +595,10 @@ Ailurus fulgens
     <a href="#currification" class="previous" aria-label="Précédant"></a>
     <h3>Memoïsation</h3>
     <article>
-        <pre><code class="lang-typescript">
+        <p>High Order Function</p>
+<p><a href="https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e">https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e</a>
+<a href="https://www.sitepoint.com/implementing-memoization-in-javascript/">https://www.sitepoint.com/implementing-memoization-in-javascript/</a></p>
+<pre><code class="lang-typescript">
 <span class="hljs-keyword">const</span> fibonacci = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(n)</span> </span>{
     <span class="hljs-keyword">switch</span> (n) {
         <span class="hljs-keyword">case</span> <span class="hljs-number">1</span> : <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
@@ -590,18 +623,8 @@ Ailurus fulgens
 <pre><code class="lang-sml"><span class="hljs-keyword">datatype</span> rational = <span class="hljs-type">Whole</span> <span class="hljs-keyword">of</span> <span class="hljs-built_in">int</span>
                   | <span class="hljs-type">Frac</span>  <span class="hljs-keyword">of</span> <span class="hljs-built_in">int</span>*<span class="hljs-built_in">int</span>
 </code></pre>
-<h3 id="pattern-matching">Pattern matching</h3>
-<p>Pas encore, mais</p>
-<pre><code class="lang-javascript"><span class="hljs-built_in">let</span> getLength = <span class="hljs-built_in">vector</span> =&gt; match (<span class="hljs-built_in">vector</span>) {
-    { x, y, z }: Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span> + z ** <span class="hljs-number">2</span>),
-    { x, y }:    Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span>),
-    [...]:       <span class="hljs-built_in">vector</span>.<span class="hljs-built_in">length</span>,
-    <span class="hljs-keyword">else</span>: {
-        <span class="hljs-built_in">throw</span> <span class="hljs-built_in">new</span> Error(<span class="hljs-string">"Unknown vector type"</span>);
-    }
-}
-</code></pre>
-<p><a href="https://github.com/tc39/proposal-pattern-matching">ECMAScript Pattern Matching Syntax - TC39 stage 0 proposal</a></p>
+<h3 id="typescript">TypeScript</h3>
+<p>type union</p>
 
     </article>
     <a href="#pattern_matching" class="next" aria-label="Suivant"></a>
@@ -613,7 +636,26 @@ Ailurus fulgens
     <a href="#adt" class="previous" aria-label="Précédant"></a>
     <h3>Pattern Matching</h3>
     <article>
-        
+        <p>Un exemple:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">let</span> getLength = <span class="hljs-built_in">vector</span> =&gt; match (<span class="hljs-built_in">vector</span>) {
+    { x, y, z }: Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span> + z ** <span class="hljs-number">2</span>),
+    { x, y }:    Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span>),
+    [...]:       <span class="hljs-built_in">vector</span>.<span class="hljs-built_in">length</span>,
+    <span class="hljs-keyword">else</span>: {
+        <span class="hljs-built_in">throw</span> <span class="hljs-built_in">new</span> Error(<span class="hljs-string">"Unknown vector type"</span>);
+    }
+}
+</code></pre>
+<p>Pour implémenter du pattern-matching il faut de la déconstruction.
+On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
+<pre><code class="lang-java"><span class="hljs-keyword">const</span> myPoint = { x: 14, y: 3 };
+<span class="hljs-keyword">const</span> {x, y} = myPoint; <span class="hljs-comment">// x === 14, y === 3</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">tab</span> = [1, 2, 3, 4];
+<span class="hljs-keyword">const</span> [head, ...tail] = <span class="hljs-keyword">tab</span>; <span class="hljs-comment">// head === 1, tail === [ 2, 3, 4]</span>
+</code></pre>
+<p>C&#39;est une <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 Proposal</a></p>
+
     </article>
     <a href="#monads" class="next" aria-label="Suivant"></a>
 </section>
@@ -640,7 +682,12 @@ Ailurus fulgens
     <a href="#monads" class="previous" aria-label="Précédant"></a>
     <h3>Part II - bilan</h3>
     <article>
-        
+        <ul>
+<li>langage souple permet pas mal de manipulation</li>
+<li>manque <code>flatMap</code></li>
+<li>mais <a href="http://ramdajs.com/">Ramda</a></li>
+</ul>
+
     </article>
     <a href="#part_remaque_sur_la_performance" class="next" aria-label="Suivant"></a>
 </section>
@@ -662,7 +709,13 @@ Ailurus fulgens
     <a href="#part_remaque_sur_la_performance" class="previous" aria-label="Précédant"></a>
     <h3>What</h3>
     <article>
-        
+        <h3 id="performance-en-quoi-">Performance en quoi ?</h3>
+<ul>
+<li>temps d&#39;éxécution (mimimum, maximun, moyen, première exécution) ?</li>
+<li>consomation de mémoire ?</li>
+<li>consomation d&#39;énergie ?</li>
+</ul>
+
     </article>
     <a href="#rules" class="next" aria-label="Suivant"></a>
 </section>
@@ -673,7 +726,27 @@ Ailurus fulgens
     <a href="#what" class="previous" aria-label="Précédant"></a>
     <h3>Rules</h3>
     <article>
-        
+        <ul>
+<li>on réfléchi aux bonnes structure de donnée</li>
+<li><p>on évite les IO (disque, résau), c&#39;est l&#39;occasion de faire de la FRP</p>
+</li>
+<li><p>le code doit être bien testé</p>
+</li>
+<li>on priviligie la lisibilité du code à une (hypothétique) optimisation de performance</li>
+<li>si besoin de meilleures performances (à définir), on définit le seuil désiré</li>
+<li>on effectue  des <strong>mesures</strong></li>
+<li>on suit l&#39;évolution de ces performances dans toute la durée de vie du projet</li>
+<li>on isole la zone à optimiser, idéalement la plus petite possible</li>
+<li>on commente, pour expliquer pourquoi on n&#39;a perdu de la lisibilité</li>
+<li>on effectue  des <strong>mesures</strong> </li>
+<li>mettre en cache n&#39;est pas toujours la bonne solution</li>
+<li><p>on effectue  des <strong>mesures</strong></p>
+</li>
+<li><p>Douter de toutes les mythes et légende</p>
+</li>
+<li>tout les leviers sont bon, y compris le langage</li>
+</ul>
+
     </article>
     <a href="#whenmatter" class="next" aria-label="Suivant"></a>
 </section>
@@ -684,7 +757,13 @@ Ailurus fulgens
     <a href="#rules" class="previous" aria-label="Précédant"></a>
     <h3>WhenMatter</h3>
     <article>
-        
+        <ul>
+<li>quel est l&#39;objectif (mesurable) ?</li>
+<li>faire des mesures</li>
+<li>identifier le bottleneck</li>
+<li>amélioration</li>
+</ul>
+
     </article>
     <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
 </section>

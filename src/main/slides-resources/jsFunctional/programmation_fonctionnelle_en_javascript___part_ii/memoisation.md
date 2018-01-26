@@ -1,4 +1,8 @@
 
+High Order Function
+
+https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e
+https://www.sitepoint.com/implementing-memoization-in-javascript/
 
 ```typescript
 

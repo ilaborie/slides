@@ -2,6 +2,9 @@
 
 
 
+
+
+
 ```typescript
 Some(1)
     .map { it + 1 }
