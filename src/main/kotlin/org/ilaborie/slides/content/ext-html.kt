@@ -26,8 +26,8 @@ fun Presentation.renderAsHtml(key: String): String {
     val groupsNavs = slides.filterIsInstance<Group>()
         .map {
             it.toList().joinToString(separator = "\n") {
-                    """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex[it]}</a>"""
-                }
+                """<a href="#${it.id()}" class="${it.classes()}" title="${it.titleAsString()}">${slideIndex[it]}</a>"""
+            }
         }
         .joinToString(separator = "\n") { "<nav>$it</nav>" }
 
@@ -118,6 +118,8 @@ fun Content.renderAsHtml(): String = when (this) {
     is EditableZone            -> "<div class=\"editable\">${content.renderAsHtml()}</div>"
     is CssCompatibility        -> this.renderAsHtml()
     is Notice                  -> this.renderAsHtml()
+    is CodeEditor              -> this.renderAsHtml()
+    is ExternalCodeEditor      -> this.codeEditor.renderAsHtml()
     else                       -> TODO()
 }
 
@@ -236,3 +238,22 @@ fun Notice.renderAsHtml(): String = """
     ${content.renderAsHtml()}
 </div>
 """
+
+// Editor
+
+fun CodeEditor.renderAsHtml(): String {
+    val buttons = listOf("full-screen", "toggle-console", "reset", "load-final", "clear-console", "run")
+    return """
+<div class="code-editor" data-lang="$language">
+  <pre class="initialCode">$code</pre>
+  <pre class="finalCode">$finalCode</pre>
+  <div class="toolbar">
+  ${buttons.joinToString("\n  ") { """<button type="button" class="$it"></button>""" }}
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
+"""
+}

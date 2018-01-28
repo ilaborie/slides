@@ -1,9 +1,7 @@
 package org.ilaborie.slides.content
 
 import org.ilaborie.slides.*
-import org.ilaborie.slides.content.web.CssCompatibility
-import org.ilaborie.slides.content.web.EditableZone
-import org.ilaborie.slides.content.web.StyleEditable
+import org.ilaborie.slides.content.web.*
 
 fun Presentation.renderAsMarkdown(): String =
     slides.flatMap { slides -> slides.toList().map { slides to it } }
@@ -30,8 +28,8 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is Title                   -> this.renderAsMarkdown()
     is Link                    -> "[${content.renderAsMarkdown()}]($link)"
     is Definitions             -> map.toList().joinToString(separator = "\n") { (key, content) ->
-            "$key\n: ${content.renderAsMarkdown()}"
-        }
+        "$key\n: ${content.renderAsMarkdown()}"
+    }
     is OrderedList             -> contents
         .mapIndexed { index, content -> "$index. ${content.renderAsMarkdown()}" }
         .joinToString(separator = "\n")
@@ -48,6 +46,8 @@ fun Content.renderAsMarkdown(): String = when (this) {
     is EditableZone            -> content.renderAsMarkdown() // treated normally
     is CssCompatibility        -> this.renderAsMarkdown()
     is Notice                  -> "*$kind*\n${content.renderAsMarkdown()}"
+    is CodeEditor              -> this.asCode.renderAsMarkdown()
+    is ExternalCodeEditor      -> this.codeEditor.asCode.renderAsMarkdown()
     else                       -> TODO()
 
 }

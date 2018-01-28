@@ -1,9 +1,7 @@
 package org.ilaborie.slides.content.web
 
 import kotlinx.serialization.json.JSON
-import org.ilaborie.slides.content.Content
-import org.ilaborie.slides.content.External
-import org.ilaborie.slides.content.createClient
+import org.ilaborie.slides.content.*
 import org.ilaborie.table.Table
 
 
@@ -13,9 +11,9 @@ data class EditableZone(val content: Content) : Content()
 
 
 data class CssCompatibility(
-    val country: String,
-    val threshold: Number,
-    private val features: List<String>
+        val country: String,
+        val threshold: Number,
+        private val features: List<String>
 ) : Content() {
     private val result: CompatibilityStatusResult by lazy {
         val helperClient = createClient("http://localhost:5000/")
@@ -42,5 +40,25 @@ data class CssCompatibility(
             val browser = getBrowser(value.browser)
             table.add(feature, browser, value)
         }
+    }
+}
+
+// Code Editor
+
+data class CodeEditor(val code: String, val language: Language = Language.None, val finalCode: String) : Content() {
+
+    val asCode by lazy {
+        Code(finalCode, language)
+    }
+}
+
+data class ExternalCodeEditor(
+        private val language: Language,
+        private val externalCode: External,
+        private val externalFinalCode: External) :
+        Content() {
+
+    val codeEditor by lazy {
+        CodeEditor(this.externalCode.textContent, language, this.externalFinalCode.textContent)
     }
 }

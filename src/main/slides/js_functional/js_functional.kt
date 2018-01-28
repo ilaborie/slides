@@ -28,6 +28,8 @@ fun main(args: Array<String>) {
 fun jsFunctional() =
     presentation(title = "Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ?", key = "jsFunctional") {
         addScript("../scripts/navigation.js")
+        addScript("https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.1/min/vs/editor/editor.main.js")
+        addScript("../scripts/code-editor.js")
 
         part(title = "Introduction") {
             skipHeader = true
@@ -66,7 +68,8 @@ fun jsFunctional() =
         }
         part("Remaque sur la performance") {
             slideFromResource(title = "What")
-            slideFromResource(title = "Rules")
+            slideFromResource(title = "Rules-1")
+            slideFromResource(title = "Rules-2")
             slideFromResource(title = "WhenMatter")
         }
         part("Conclusion") {

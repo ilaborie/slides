@@ -4,6 +4,7 @@ package org.ilaborie.slides.dsl
 import org.ilaborie.slides.content.*
 import org.ilaborie.slides.content.web.CssCompatibility
 import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.ExternalCodeEditor
 import org.ilaborie.slides.content.web.StyleEditable
 import java.util.*
 
@@ -86,6 +87,16 @@ fun ContentContainer.htmlFromResource(resource: String) {
         ExternalHtmlContent(externalHtml = ExternalResource(resource))
     }
 }
+
+
+// Code
+fun ContentContainer.codeEditorFromResoures(initialResource: String, finalResource: String) {
+    add {
+        val language = Language.findForExtension(initialResource) ?: Language.None
+        ExternalCodeEditor(language, ExternalResource(initialResource), ExternalResource(finalResource))
+    }
+}
+
 
 // Image
 
@@ -209,8 +220,8 @@ fun ContentContainer.definitions(builder: MapContentContainer.() -> Unit) {
 // CSS
 
 fun ContentContainer.styleEditable(
-    code: String,
-    soluce: String = "$code-final"
+        code: String,
+        soluce: String = "$code-final"
 ) {
     add {
         StyleEditable(ExternalResource("$code.css"), ExternalResource("$soluce.css"))
@@ -224,18 +235,18 @@ fun ContentContainer.editableZone(htmlResource: String) {
 }
 
 fun ContentContainer.cssLiveCode(
-    code: String,
-    soluce: String = "$code-final",
-    playground: String = "$code.html"
+        code: String,
+        soluce: String = "$code-final",
+        playground: String = "$code.html"
 ) {
     styleEditable(code, soluce)
     editableZone(playground)
 }
 
 fun ContentContainer.cssCompatibility(
-    country: String = Locale.getDefault().country,
-    threshold: Number = 0.5f,
-    features: List<String>
+        country: String = Locale.getDefault().country,
+        threshold: Number = 0.5f,
+        features: List<String>
 ) {
     add {
         CssCompatibility(

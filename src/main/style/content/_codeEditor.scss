@@ -1,0 +1,112 @@
+
+.code-editor {
+  //background: #1e1e1e;
+  align-self: stretch;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1rem 2fr 1fr;
+  grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'console console';
+
+  &.hide-console {
+    grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'editor  editor ';
+
+    .console-panel {
+      display: none;
+    }
+  }
+
+  .initialCode, .finalCode {
+    display: none;
+  }
+
+  .toolbar {
+    grid-area: toolbar;
+    display: flex;
+    justify-content: space-around;
+    padding: .125rem;
+    background-color: #E6E6E6;
+
+    button {
+      padding: .5em 1em;
+      color: rgba(0, 0, 0, .8);
+      border: thin solid rgba(0, 0, 0, .5);
+      border-radius: .25em;
+      background-color: #E6E6E6;
+      outline-color: #E6E6E6;
+      text-decoration: none;
+      display: inline-block;
+      zoom: 1;
+      white-space: nowrap;
+      vertical-align: middle;
+      text-align: center;
+      cursor: pointer;
+      box-sizing: border-box;
+
+      &:active {
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, .15) inset, 0 0 6px rgba(0, 0, 0, .2) inset;
+      }
+      &:focus, &:hover {
+        background-image: linear-gradient(transparent, rgba(0, 0, 0, .05) 40%, rgba(0, 0, 0, .1))
+      }
+    }
+    .full-screen::before {
+      content: '↔️';
+    }
+    .toggle-console::before {
+      content: '🖥';
+    }
+    .reset::before {
+      content: '🛑';
+    }
+    .load-final::before {
+      content: '🔮';
+    }
+    .clear-console::before {
+      content: '🗑';
+    }
+    .run::before {
+      content: '🚀';
+    }
+  }
+
+  .editor-panel {
+    grid-area: editor;
+    background: #1e1e1e;
+    max-height: 100%;
+  }
+
+  .console-panel {
+    grid-area: console;
+    background: transparent;
+    color: #1e1e1e;
+    font-family: monospace;
+    white-space: pre;
+    max-height: 100%;
+    font-size: 20px;
+    position: relative;
+    border-bottom-left-radius: .125rem;
+    border-bottom-right-radius: .125rem;
+    box-shadow: inset 0 0 .25rem rgba(0, 0, 0, .25);
+
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      line-height: 1.2;
+      max-height: 100%;
+      overflow: auto;
+      padding-left: .25rem;
+      li {
+        border-bottom: solid thin rgba(0, 0, 0, .0625);
+
+        &::before {
+          content: '>';
+          margin-right: .5rem;
+        }
+      }
+    }
+  }
+
+}

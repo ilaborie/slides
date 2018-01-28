@@ -25,7 +25,6 @@ section article {
   justify-content: space-around;
   text-align: left;
   align-items: flex-start;
-  pointer-events: none;
 }
 
 // Cover
@@ -90,5 +89,15 @@ section.live-code {
     .editable {
       flex: 1 1 auto;
     }
+  }
+}
+
+// Full screen
+section article.full-screen {
+  grid-column: 1 / 4;
+  grid-row: 2 / 4;
+
+  &::after {
+    display: none;
   }
 }

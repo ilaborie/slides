@@ -21,10 +21,12 @@
 
     // listen events
     document.addEventListener('keydown', event => {
-        const {code} = event;
-        if (keys[code]) {
-            keys[code](event);
-            event.stopPropagation()
+        if (event.target.type !== 'textarea') {
+            const {code} = event;
+            if (keys[code]) {
+                keys[code](event);
+                event.stopPropagation()
+            }
         }
     });
 })();
