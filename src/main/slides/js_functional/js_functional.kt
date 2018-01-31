@@ -46,7 +46,9 @@ fun jsFunctional() =
             slideFromResource(title = "Static vs Dynamic")
         }
         part("Programmation fonctionnelle en JavaScript - Part I") {
-            slideFromResource(title = "Function")
+            slide(title = "Function") {
+                codeEditorFromResoures("/jsFunctional/function.ts", "/jsFunctional/function.final.ts")
+            }
             slideFromResource(title = "Pure Function")
             slideFromResource(title = "Immutable")
             slideFromResource(title = "Composition")

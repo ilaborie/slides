@@ -6,6 +6,7 @@ import {code} from './code-to-html';
 import {compatibility} from './compat';
 import {markdown} from './md-to-html';
 import {renderPdf} from './html-to-pdf';
+import {transpileToJS} from './transpile-to-js';
 
 const app = express();
 
@@ -66,6 +67,15 @@ app.post('/pdf', (req: Request, res: Response) => {
         .then(() => res.send('ok'));
 });
 
+// Markdown to HTML, with syntax highlighting
+app.post('/tojs', (req: Request, res: Response) => {
+    const language = req.query['language'];
+    console.log(`transform ${language} to JS`);
+    const body = req.body as string;
+    transpileToJS(body, language)
+        .then(js => res.send(js))
+        .catch(error => res.status(400).send(error));
+});
 
 // Run
 const port = 5000;

@@ -93,11 +93,22 @@ section.live-code {
 }
 
 // Full screen
-section article.full-screen {
-  grid-column: 1 / 4;
-  grid-row: 2 / 4;
+section.full-screen {
+  padding-top: 1.2rem;
 
-  &::after {
+  & > h1, & > h2, & > h3 {
+    display: none;
+  }
+  article {
+    max-height: 100vh;
+    grid-row: 1 / 4;
+
+    &.full-screen {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &::before, &::after {
     display: none;
   }
 }

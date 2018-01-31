@@ -34,7 +34,7 @@ fun demo() =
             roadmap()
         }
         part(title = "Code Editor") {
-            slide("Hello World") {
+            slide("Hello World", styleClass = setOf("full-screen")) {
                 codeEditorFromResoures("/demo/plop.ts", "/demo/plop-final.ts")
             }
         }

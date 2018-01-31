@@ -20,7 +20,7 @@
         <nav><a href="#part_component" class="part" title="Component">1</a>
 <a href="#roadmap" class="roadmap" title="Roadmap">2</a></nav>
 <nav><a href="#part_code_editor" class="part" title="Code Editor">3</a>
-<a href="#hello_world" class="" title="Hello World">4</a></nav>
+<a href="#hello_world" class="full-screen" title="Hello World">4</a></nav>
     </div>
     <main>
 
@@ -70,7 +70,7 @@
 
 
 <!-- Slide Hello World -->
-<section id="hello_world" class="">
+<section id="hello_world" class="full-screen">
     <a href="#part_code_editor" class="previous" aria-label="Précédant"></a>
     <h3>Hello World</h3>
     <article>
@@ -78,13 +78,18 @@
 <div class="code-editor" data-lang="typescript">
   <pre class="initialCode">console.log('Plop');</pre>
   <pre class="finalCode">console.log('Plop');
-console.log('Plop');</pre>
+console.log('Plop');
+
+const add = (a: number, b: number): number => a + b;
+
+add(13, 29);</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="toggle-console"></button>
   <button type="button" class="reset"></button>
   <button type="button" class="load-final"></button>
   <button type="button" class="clear-console"></button>
+  <button type="button" class="format"></button>
   <button type="button" class="run"></button>
   </div>
   <div class="editor-panel"></div>

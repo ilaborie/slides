@@ -42,7 +42,7 @@ require(['vs/editor/editor.main'], function () {
             value: code,
         });
 
-        return {parent, editor, consolePanel, code, finalCode};
+        return {parent, editor, consolePanel, language, code, finalCode};
     };
 
     // register actions
@@ -85,23 +85,51 @@ require(['vs/editor/editor.main'], function () {
                 logEntry.innerHTML = '';
             }
         },
+        format: {
+            label: 'Format',
+            keyBinding: '',
+            run: ({editor}) => () => {
+                const formatAction = editor.getAction('editor.action.formatDocument');
+                formatAction.run()
+            }
+        },
         run: {
             label: 'Run',
             keyBinding: '',
-            run: ({editor, consolePanel}) => () => {
+            run: ({editor, language, consolePanel}) => () => {
                 const logEntry = consolePanel.querySelector('ul');
-                const log = message => {
+                const log = (message, styleClass) => {
                     const li = document.createElement('li');
+                    if (styleClass) {
+                        li.setAttribute("class", styleClass);
+                    }
                     li.innerHTML = message;
                     logEntry.appendChild(li);
                     li.scrollIntoView();
                 };
-
                 const value = editor.getValue();
-                const hack = value.replace(/console\.log/g, 'log');
-
-                const result = eval(hack);
-                log('result', result);
+                const headers = new Headers();
+                headers.set('Content-Type', 'application/json');
+                fetch(`http://localhost:5000/tojs?language=${language}`, {headers, method: 'POST', body: value})
+                    .then(response => {
+                        if (response.ok) {
+                            return response.text();
+                        }
+                        return response.text()
+                            .then(error => Promise.reject(error))
+                    })
+                    .then(js => {
+                        const hack = js.replace(/console\.log/g, 'log');
+                        const result = eval(hack);
+                        if (result) {
+                            log(`result: ${result}`, 'result');
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        log(error, `error`);
+                    })
+                ;
             }
         }
     };
@@ -111,8 +139,9 @@ require(['vs/editor/editor.main'], function () {
             .forEach(key => {
                 const btn = params.parent.querySelector(`button.${key}`);
                 if (btn) {
+                    const {label, run} = actions[key];
+                    btn.setAttribute("title", label);
                     btn.addEventListener('click', () => {
-                        const {label, run} = actions[key];
                         console.log(label);
                         run(params)();
                     })
