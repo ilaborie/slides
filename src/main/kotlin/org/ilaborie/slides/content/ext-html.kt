@@ -242,7 +242,7 @@ fun Notice.renderAsHtml(): String = """
 // Editor
 
 fun CodeEditor.renderAsHtml(): String {
-    val buttons = listOf("full-screen", "toggle-console", "reset", "load-final", "clear-console", "format", "run")
+    val buttons = actions.map { it.key }
     return """
 <div class="code-editor" data-lang="$language">
   <pre class="initialCode">$code</pre>

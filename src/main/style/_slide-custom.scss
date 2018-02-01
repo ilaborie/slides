@@ -105,6 +105,11 @@ section.full-screen {
 
     &.full-screen {
       grid-column: 1 / 4;
+
+
+      .toolbar .full-screen::before {
+        content: '️';
+      }
     }
   }
 

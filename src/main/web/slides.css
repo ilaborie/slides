@@ -277,6 +277,8 @@ section.full-screen {
     grid-row: 1 / 4; }
     section.full-screen article.full-screen {
       grid-column: 1 / 4; }
+      section.full-screen article.full-screen .toolbar .full-screen::before {
+        content: '️'; }
   section.full-screen::before, section.full-screen::after {
     display: none; }
 
@@ -669,7 +671,8 @@ style[contenteditable=true] {
   .code-editor .editor-panel {
     grid-area: editor;
     background: #1e1e1e;
-    max-height: 100%; }
+    max-height: 100%;
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.5); }
   .code-editor .console-panel {
     grid-area: console;
     background: transparent;
@@ -677,7 +680,7 @@ style[contenteditable=true] {
     font-family: monospace;
     white-space: pre;
     max-height: 100%;
-    font-size: 20px;
+    font-size: 1rem;
     position: relative;
     border-bottom-left-radius: .125rem;
     border-bottom-right-radius: .125rem;
@@ -694,10 +697,19 @@ style[contenteditable=true] {
       .code-editor .console-panel ul li {
         border-bottom: solid thin rgba(0, 0, 0, 0.0625); }
         .code-editor .console-panel ul li::before {
-          content: '⟩';
+          content: '➽';
           color: darkcyan;
           font-weight: bold;
           margin-right: .25rem; }
+        .code-editor .console-panel ul li.info::before {
+          content: '𝚒';
+          color: blue; }
+        .code-editor .console-panel ul li.warn::before {
+          content: '⚠️';
+          color: orangered; }
+        .code-editor .console-panel ul li.error::before {
+          content: '️❗️';
+          color: #850a1f; }
         .code-editor .console-panel ul li.error {
           color: #850a1f; }
         .code-editor .console-panel ul li.result {

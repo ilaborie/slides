@@ -44,8 +44,22 @@ data class CssCompatibility(
 }
 
 // Code Editor
+sealed class CodeEditorAction(val key: String) {
+    companion object {
+        val defaultActions = listOf(ToggleFullScreen, ResetCode, LoadFinalCode, ClearConsole, FormatCode, RunCode)
+    }
+}
 
-data class CodeEditor(val code: String, val language: Language = Language.None, val finalCode: String) : Content() {
+object ToggleFullScreen : CodeEditorAction("full-screen")
+object ToggleConsole : CodeEditorAction("toggle-console")
+object ResetCode : CodeEditorAction("reset")
+object LoadFinalCode : CodeEditorAction("load-final")
+object ClearConsole : CodeEditorAction("clear-console")
+object FormatCode : CodeEditorAction("format")
+object RunCode : CodeEditorAction("run")
+
+data class CodeEditor(val code: String, val language: Language = Language.None, val finalCode: String,
+                      val actions: List<CodeEditorAction> = CodeEditorAction.defaultActions) : Content() {
 
     val asCode by lazy {
         Code(finalCode, language)

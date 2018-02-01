@@ -16,7 +16,7 @@ require(['vs/editor/editor.main'], function () {
     const defaultEditorOptions = {
         // automaticLayout: true,
         lineNumbers: false,
-        theme: 'vs-dark',
+        //theme: 'vs-dark',
         fontFamily: 'Fira Code, monospace',
         fontSize: 24,
         fontLigatures: true
@@ -98,7 +98,7 @@ require(['vs/editor/editor.main'], function () {
             keyBinding: '',
             run: ({editor, language, consolePanel}) => () => {
                 const logEntry = consolePanel.querySelector('ul');
-                const log = (message, styleClass) => {
+                const consoleLog = (message, styleClass) => {
                     const li = document.createElement('li');
                     if (styleClass) {
                         li.setAttribute("class", styleClass);
@@ -107,6 +107,23 @@ require(['vs/editor/editor.main'], function () {
                     logEntry.appendChild(li);
                     li.scrollIntoView();
                 };
+                const logWithStyle = style => function () {
+                    const message = Array.from(arguments)
+                        .map(elt => {
+                            switch (typeof elt) {
+                                case 'object':
+                                    return JSON.stringify(elt);
+                                default:
+                                    return `${elt}`;
+                            }
+                        }).join(' ');
+                    consoleLog(message, style);
+                };
+                const log = logWithStyle('log');
+                const info = logWithStyle('info');
+                const warn = logWithStyle('warn');
+                const error = logWithStyle('error');
+
                 const value = editor.getValue();
                 const headers = new Headers();
                 headers.set('Content-Type', 'application/json');
@@ -119,7 +136,10 @@ require(['vs/editor/editor.main'], function () {
                             .then(error => Promise.reject(error))
                     })
                     .then(js => {
-                        const hack = js.replace(/console\.log/g, 'log');
+                        const hack = js.replace(/console\.log/g, 'log')
+                            .replace(/console\.info/g, 'info')
+                            .replace(/console\.warn/g, 'warn')
+                            .replace(/console\.error/g, 'error');
                         const result = eval(hack);
                         if (result) {
                             log(`result: ${result}`, 'result');
