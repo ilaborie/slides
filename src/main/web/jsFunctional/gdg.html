@@ -52,17 +52,18 @@
 <a href="#part_ii___bilan" class="" title="Part II - bilan">28</a></nav>
 <nav><a href="#part_remaque_sur_la_performance" class="part" title="Remaque sur la performance">29</a>
 <a href="#what" class="" title="What">30</a>
-<a href="#rules" class="" title="Rules">31</a>
-<a href="#whenmatter" class="" title="WhenMatter">32</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">33</a>
-<a href="#_or___" class="" title="🦄 or 💩 ?">34</a>
-<a href="#bibliotheque" class="" title="Bibliothèque">35</a>
-<a href="#quote" class="hide-title" title="Quote">36</a>
-<a href="#values" class="" title="Values">37</a>
-<a href="#value_of_js" class="" title="Value of JS">38</a>
-<a href="#why_functional" class="" title="Why functional">39</a>
-<a href="#liens" class="" title="Liens">40</a>
-<a href="#questions" class="hide-title" title="Questions">41</a></nav>
+<a href="#rules_1" class="" title="Rules-1">31</a>
+<a href="#rules_2" class="" title="Rules-2">32</a>
+<a href="#whenmatter" class="" title="WhenMatter">33</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">34</a>
+<a href="#_or___" class="" title="🦄 or 💩 ?">35</a>
+<a href="#bibliotheque" class="" title="Bibliothèque">36</a>
+<a href="#quote" class="hide-title" title="Quote">37</a>
+<a href="#values" class="" title="Values">38</a>
+<a href="#value_of_js" class="" title="Value of JS">39</a>
+<a href="#why_functional" class="" title="Why functional">40</a>
+<a href="#liens" class="" title="Liens">41</a>
+<a href="#questions" class="hide-title" title="Questions">42</a></nav>
     </div>
     <main>
 
@@ -294,24 +295,24 @@ Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (vo
     <a href="#part_programmation_fonctionnelle_en_javascript___part_i" class="previous" aria-label="Précédant"></a>
     <h3>Function</h3>
     <article>
-        <h2 id="function-is-first-class-citizen">Function is First-class citizen</h2>
-<h3 id="basique">Basique</h3>
-<pre><code class="lang-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title">mult</span>(a, b) {
-    <span class="hljs-keyword">return</span> <span class="hljs-type">a</span> * b;
-}
-</code></pre>
-<pre><code class="lang-javascript"><span class="hljs-keyword">typeof</span> mult; <span class="hljs-comment">// "function"</span>
-</code></pre>
-<h3 id="anonymous">Anonymous</h3>
-<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> mult = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(a, b)</span> </span>{
-    <span class="hljs-keyword">return</span> a * b;
-}
-</code></pre>
-<h3 id="es2015">ES2015</h3>
-<pre><code class="lang-javascript">const mult = <span class="hljs-function"><span class="hljs-params">(a, b)</span> =&gt;</span> a * b;
-</code></pre>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> mult = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>) =&gt;</span> a * b;
-</code></pre>
+        
+<div class="code-editor" data-lang="typescript">
+  <h4>JavaScript Function</h4>
+  <pre class="initialCode">No resource: /jsFunctional/function.ts</pre>
+  <pre class="finalCode">No resource: /jsFunctional/function.final.ts</pre>
+  <div class="toolbar">
+  <button type="button" class="full-screen"></button>
+  <button type="button" class="reset"></button>
+  <button type="button" class="load-final"></button>
+  <button type="button" class="clear-console"></button>
+  <button type="button" class="format"></button>
+  <button type="button" class="run"></button>
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
 
     </article>
     <a href="#pure_function" class="next" aria-label="Suivant"></a>
@@ -717,35 +718,28 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 </ul>
 
     </article>
-    <a href="#rules" class="next" aria-label="Suivant"></a>
+    <a href="#rules_1" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Rules -->
-<section id="rules" class="">
+<!-- Slide Rules-1 -->
+<section id="rules_1" class="">
     <a href="#what" class="previous" aria-label="Précédant"></a>
-    <h3>Rules</h3>
+    <h3>Rules-1</h3>
     <article>
-        <ul>
-<li>on réfléchi aux bonnes structure de donnée</li>
-<li><p>on évite les IO (disque, résau), c&#39;est l&#39;occasion de faire de la FRP</p>
-</li>
-<li><p>le code doit être bien testé</p>
-</li>
-<li>on priviligie la lisibilité du code à une (hypothétique) optimisation de performance</li>
-<li>si besoin de meilleures performances (à définir), on définit le seuil désiré</li>
-<li>on effectue  des <strong>mesures</strong></li>
-<li>on suit l&#39;évolution de ces performances dans toute la durée de vie du projet</li>
-<li>on isole la zone à optimiser, idéalement la plus petite possible</li>
-<li>on commente, pour expliquer pourquoi on n&#39;a perdu de la lisibilité</li>
-<li>on effectue  des <strong>mesures</strong> </li>
-<li>mettre en cache n&#39;est pas toujours la bonne solution</li>
-<li><p>on effectue  des <strong>mesures</strong></p>
-</li>
-<li><p>Douter de toutes les mythes et légende</p>
-</li>
-<li>tout les leviers sont bon, y compris le langage</li>
-</ul>
+        <p>No resource: /jsFunctional/remaque_sur_la_performance/rules_1.md</p>
+
+    </article>
+    <a href="#rules_2" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Rules-2 -->
+<section id="rules_2" class="">
+    <a href="#rules_1" class="previous" aria-label="Précédant"></a>
+    <h3>Rules-2</h3>
+    <article>
+        <p>No resource: /jsFunctional/remaque_sur_la_performance/rules_2.md</p>
 
     </article>
     <a href="#whenmatter" class="next" aria-label="Suivant"></a>
@@ -754,7 +748,7 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 
 <!-- Slide WhenMatter -->
 <section id="whenmatter" class="">
-    <a href="#rules" class="previous" aria-label="Précédant"></a>
+    <a href="#rules_2" class="previous" aria-label="Précédant"></a>
     <h3>WhenMatter</h3>
     <article>
         <ul>
@@ -763,6 +757,7 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 <li>identifier le bottleneck</li>
 <li>amélioration</li>
 </ul>
+<p><a href="https://streams.spec.whatwg.org/">https://streams.spec.whatwg.org/</a></p>
 
     </article>
     <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
@@ -791,7 +786,8 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 </ul>
 <p>Mais encore insuffisant à nom gout: </p>
 <ul>
-<li><code>flatMap</code> 😭</li>
+<li><code>flatMap</code> 😭
+<a href="https://github.com/tc39/proposal-flatMap">Proposal for flatten and flatMap - Stage 3</a></li>
 <li>un lazy Array (comme les <code>Stream</code> Java)</li>
 </ul>
 
@@ -869,6 +865,17 @@ ecosysteme
 <li>plus évolutif
 *</li>
 </ul>
+<p>What Is Wrong With Mutability?</p>
+<ul>
+<li>Hard to reason (prone error)</li>
+<li>Hard to make concurrent or parallelize</li>
+</ul>
+<p>What Is Wrong With side-effect function?</p>
+<ul>
+<li>Hard to reason (prone error)</li>
+<li>Hard to make concurrent or parallelize</li>
+<li>Hard to test</li>
+</ul>
 
     </article>
     <a href="#liens" class="next" aria-label="Suivant"></a>
@@ -882,6 +889,7 @@ ecosysteme
     <article>
         <p>slides</p>
 <ul>
+<li><a href="https://github.com/tc39/proposals/blob/master/README.md">tc39 ECMAScript proposals</a></li>
 <li><a href="https://github.com/fantasyland/fantasy-land#apply">Fantasy Land Specification (aka &quot;Algebraic JavaScript Specification&quot;)</a></li>
 </ul>
 
@@ -902,5 +910,7 @@ ecosysteme
 
     </main>
     <script type="application/javascript" src="../scripts/navigation.js"></script>
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.1/min/vs/editor/editor.main.js"></script>
+<script type="application/javascript" src="../scripts/code-editor.js"></script>
 </body>
 </html>

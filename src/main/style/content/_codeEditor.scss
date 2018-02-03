@@ -1,12 +1,23 @@
+$log-default: darkcyan;
+$log-info: #181575;
+$log-warn: orangered;
+$log-error: #850a1f;
 
 .code-editor {
-  //background: #1e1e1e;
   align-self: stretch;
   height: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto 2fr 1fr;
-  grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'console console';
+  grid-template-rows: 1.2rem auto 2fr 1fr;
+  grid-template-areas: 'title title' 'toolbar toolbar' 'editor  editor ' 'console console';
+
+  h4 {
+    grid-area: title;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &.hide-console {
     grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'editor  editor ';
@@ -25,7 +36,6 @@
     display: flex;
     justify-content: space-around;
     padding: .125rem;
-    //background-color: #E6E6E6;
 
     button {
       font-size: .8rem;
@@ -33,7 +43,6 @@
       color: rgba(0, 0, 0, .8);
       border: thin solid rgba(0, 0, 0, .5);
       border-radius: .25em;
-      //background-color: #E6E6E6;
       outline-color: rgba(0, 0, 0, .5);
       text-decoration: none;
       display: inline-block;
@@ -116,25 +125,25 @@
         border-bottom: solid thin rgba(0, 0, 0, .0625);
 
         &::before {
+          color: $log-default;
           content: '➽';
-          color: darkcyan;
           font-weight: bold;
           margin-right: .25rem;
         }
         &.info::before {
           content: '𝚒';
-          color: blue;
+          color: $log-info;
         }
         &.warn::before {
           content: '⚠️';
-          color: orangered;
+          color: $log-warn;
         }
         &.error::before {
           content: '️❗️';
-          color: #850a1f;
+          color: $log-error;
         }
         &.error {
-          color: #850a1f;
+          color: $log-error;
         }
         &.result {
           font-weight: bold;

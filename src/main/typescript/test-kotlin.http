@@ -1,0 +1,35 @@
+
+
+POST https://try.kotlinlang.org/kotlinServer?type=run&runConf=java
+origin: https://try.kotlinlang.org
+accept-encoding: gzip, deflate, br
+accept-language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+x-requested-with: XMLHttpRequest
+cookie: _ga=GA1.3.1291204519.1497563178; _ga=GA1.2.1291204519.1497563178; _mkto_trk=id:426-QVD-114&token:_mch-kotlinlang.org-1497563177034-41715; JSESSIONID=AC47AFD315F70DFA5D3DCF4CB5D6D3B3; _gid=GA1.3.1290094110.1517650076; AWSALB=VuZG+Lg3vYU1VCcLNALfI0nZXoJrIhj8gjJe6yVPILUwJVFe092lVhTJmW26pjsjob7pz3z0cmFAIOiwk+Mw6G8R2KpbLoKsh2zdyRbxiolKSBWeuft1oQe/fk0v
+pragma: no-cache
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3336.5 Safari/537.36
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+accept: application/json, text/javascript, */*; q=0.01
+cache-control: no-cache
+authority: try.kotlinlang.org
+referer: https://try.kotlinlang.org/
+
+project=%7B%22id%22%3A%22%2FExamples%2FHello%2C%2520world!%2FSimplest%2520version%22%2C%22name%22%3A%22Simplest+version%22%2C%22args%22%3A%22%22%2C%22compilerVersion%22%3Anull%2C%22confType%22%3A%22java%22%2C%22originUrl%22%3A%22%2FExamples%2FHello%2C%2520world!%2FSimplest%2520version%22%2C%22files%22%3A%5B%7B%22name%22%3A%22Simplest+version.kt%22%2C%22text%22%3A%22%2F**%5Cn+*+We+declare+a+package-level+function+main+which+returns+Unit+and+takes%5Cn+*+an+Array+of+strings+as+a+parameter.+Note+that+semicolons+are+optional.%5Cn+*%2F%5Cn%5Cnfun+main(args%3A+Array%3CString%3E)+%7B%5Cn++++println(%5C%22Hello%2C+world!%5C%22)%5Cn%7D%22%2C%22publicId%22%3A%22%2FExamples%2FHello%2C%2520world!%2FSimplest%2520version%2FSimplest%2520version.kt%22%7D%5D%2C%22readOnlyFileNames%22%3A%5B%5D%7D
+
+{
+    "id":"/Examples/Hello,%20world!/Simplest%20version",
+    "name":"Simplest+version",
+    "args":"",
+    "compilerVersion":null,
+    "confType":"java",
+    "originUrl":"/Examples/Hello,%20world!/Simplest%20version",
+    "files": [ {
+            "name":"Simplest+version.kt",
+            "text":"/**\n+*+We+declare+a+package-level+function+main+which+returns+Unit+and+takes\n+*+an+Array+of+strings+as+a+parameter.+Note+that+semicolons+are+optional.\n+*/\n\nfun+main(args:+Array<String>)+{\n++++println(\"Hello,+world!\")\n}",
+            "publicId":"/Examples/Hello,%20world!/Simplest%20version/Simplest%20version.kt"
+        }],
+    "readOnlyFileNames":[]
+}"
+
+filename=Simplest+version.kt
+searchForMain=true

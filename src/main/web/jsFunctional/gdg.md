@@ -115,40 +115,9 @@ Haskell (1990), Scala (2004), ...
 
 
 
-
-## Function is First-class citizen
-
-### Basique
-
-```javascript
-function mult(a, b) {
-    return a * b;
-}
-```
-
-```javascript
-typeof mult; // "function"
-```
-
-### Anonymous
-
-```javascript
-var mult = function (a, b) {
-    return a * b;
-}
-```
-
-### ES2015
-
-```javascript
-const mult = (a, b) => a * b;
-```
-
 ```typescript
-const mult = (a: number, b: number) => a * b;
+No resource: /jsFunctional/function.final.ts
 ```
-
-
 
 
 
@@ -201,6 +170,9 @@ class List<T> {
     
 }
 ```
+
+
+
 
 ### High Order function
 
@@ -475,26 +447,9 @@ Some(1)
 
 
 
+No resource: /jsFunctional/remaque_sur_la_performance/rules_1.md
 
-
-* on réfléchi aux bonnes structure de donnée
-* on évite les IO (disque, résau), c'est l'occasion de faire de la FRP
-
-* le code doit être bien testé
-* on priviligie la lisibilité du code à une (hypothétique) optimisation de performance
-* si besoin de meilleures performances (à définir), on définit le seuil désiré
-* on effectue  des **mesures**
-* on suit l'évolution de ces performances dans toute la durée de vie du projet
-* on isole la zone à optimiser, idéalement la plus petite possible
-* on commente, pour expliquer pourquoi on n'a perdu de la lisibilité
-* on effectue  des **mesures** 
-* mettre en cache n'est pas toujours la bonne solution
-* on effectue  des **mesures**
-
-* Douter de toutes les mythes et légende
-* tout les leviers sont bon, y compris le langage
-
-
+No resource: /jsFunctional/remaque_sur_la_performance/rules_2.md
 
 
 
@@ -503,6 +458,8 @@ Some(1)
 * identifier le bottleneck
 * amélioration
 
+
+<https://streams.spec.whatwg.org/>
 
 
 
@@ -514,6 +471,7 @@ Some(1)
 Mais encore insuffisant à nom gout: 
 
 * `flatMap` 😭
+  [Proposal for flatten and flatMap - Stage 3](https://github.com/tc39/proposal-flatMap)
 * un lazy Array (comme les `Stream` Java)
 
 
@@ -552,6 +510,14 @@ ecosysteme
 
 
 
+What Is Wrong With Mutability?
+* Hard to reason (prone error)
+* Hard to make concurrent or parallelize
+
+What Is Wrong With side-effect function?
+* Hard to reason (prone error)
+* Hard to make concurrent or parallelize
+* Hard to test
 
 
 
@@ -561,7 +527,7 @@ ecosysteme
 
 slides
 
-
+* [tc39 ECMAScript proposals](https://github.com/tc39/proposals/blob/master/README.md)
 * [Fantasy Land Specification (aka "Algebraic JavaScript Specification")](https://github.com/fantasyland/fantasy-land#apply)
 
 ### Questions ? ###

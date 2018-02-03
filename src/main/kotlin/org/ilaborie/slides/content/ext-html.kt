@@ -245,6 +245,7 @@ fun CodeEditor.renderAsHtml(): String {
     val buttons = actions.map { it.key }
     return """
 <div class="code-editor" data-lang="$language">
+  <h4>${title}</h4>
   <pre class="initialCode">$code</pre>
   <pre class="finalCode">$finalCode</pre>
   <div class="toolbar">

@@ -268,19 +268,19 @@ section.live-code article {
   section.live-code article .editable {
     flex: 1 1 auto; }
 
-section.full-screen {
-  padding-top: 1.2rem; }
-  section.full-screen > h1, section.full-screen > h2, section.full-screen > h3 {
-    display: none; }
-  section.full-screen article {
-    max-height: 100vh;
-    grid-row: 1 / 4; }
-    section.full-screen article.full-screen {
-      grid-column: 1 / 4; }
-      section.full-screen article.full-screen .toolbar .full-screen::before {
-        content: '️'; }
-  section.full-screen::before, section.full-screen::after {
-    display: none; }
+section.full-screen > h1, section.full-screen > h2, section.full-screen > h3 {
+  display: none; }
+
+section.full-screen article {
+  max-height: 100vh;
+  grid-row: 1 / 4; }
+  section.full-screen article.full-screen {
+    grid-column: 1 / 4; }
+    section.full-screen article.full-screen .toolbar .full-screen::before {
+      content: '️'; }
+
+section.full-screen::before, section.full-screen::after {
+  display: none; }
 
 /*
 
@@ -616,8 +616,14 @@ style[contenteditable=true] {
   height: 100%;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto 2fr 1fr;
-  grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'console console'; }
+  grid-template-rows: 1.2rem auto 2fr 1fr;
+  grid-template-areas: 'title title' 'toolbar toolbar' 'editor  editor ' 'console console'; }
+  .code-editor h4 {
+    grid-area: title;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .code-editor.hide-console {
     grid-template-areas: 'toolbar toolbar' 'editor  editor ' 'editor  editor '; }
     .code-editor.hide-console .console-panel {
@@ -697,13 +703,13 @@ style[contenteditable=true] {
       .code-editor .console-panel ul li {
         border-bottom: solid thin rgba(0, 0, 0, 0.0625); }
         .code-editor .console-panel ul li::before {
-          content: '➽';
           color: darkcyan;
+          content: '➽';
           font-weight: bold;
           margin-right: .25rem; }
         .code-editor .console-panel ul li.info::before {
           content: '𝚒';
-          color: blue; }
+          color: #181575; }
         .code-editor .console-panel ul li.warn::before {
           content: '⚠️';
           color: orangered; }

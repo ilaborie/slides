@@ -2,10 +2,7 @@ package org.ilaborie.slides.dsl
 
 
 import org.ilaborie.slides.content.*
-import org.ilaborie.slides.content.web.CssCompatibility
-import org.ilaborie.slides.content.web.EditableZone
-import org.ilaborie.slides.content.web.ExternalCodeEditor
-import org.ilaborie.slides.content.web.StyleEditable
+import org.ilaborie.slides.content.web.*
 import java.util.*
 
 typealias IContentBuilder = () -> Content
@@ -90,10 +87,13 @@ fun ContentContainer.htmlFromResource(resource: String) {
 
 
 // Code
-fun ContentContainer.codeEditorFromResoures(initialResource: String, finalResource: String) {
+fun ContentContainer.codeEditorFromResources(
+        title: String,
+        initialResource: String,
+        finalResource: String,
+        actions: List<CodeEditorAction> = CodeEditorAction.defaultActions) {
     add {
-        val language = Language.findForExtension(initialResource) ?: Language.None
-        ExternalCodeEditor(language, ExternalResource(initialResource), ExternalResource(finalResource))
+        ExternalCodeEditor(title, ExternalResource(initialResource), ExternalResource(finalResource), actions)
     }
 }
 

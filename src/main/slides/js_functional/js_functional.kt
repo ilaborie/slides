@@ -47,7 +47,9 @@ fun jsFunctional() =
         }
         part("Programmation fonctionnelle en JavaScript - Part I") {
             slide(title = "Function") {
-                codeEditorFromResoures("/jsFunctional/function.ts", "/jsFunctional/function.final.ts")
+                codeEditorFromResources("JavaScript Function",
+                                        "/jsFunctional/function.ts",
+                                        "/jsFunctional/function.final.ts")
             }
             slideFromResource(title = "Pure Function")
             slideFromResource(title = "Immutable")

@@ -35,7 +35,7 @@ fun demo() =
         }
         part(title = "Code Editor") {
             slide("Hello World", styleClass = setOf("full-screen")) {
-                codeEditorFromResoures("/demo/plop.ts", "/demo/plop-final.ts")
+                codeEditorFromResources("Demo", "/demo/plop.ts", "/demo/plop-final.ts")
             }
         }
     }

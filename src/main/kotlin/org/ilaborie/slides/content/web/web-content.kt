@@ -46,6 +46,8 @@ data class CssCompatibility(
 // Code Editor
 sealed class CodeEditorAction(val key: String) {
     companion object {
+        val allActions =
+            listOf(ToggleFullScreen, ToggleConsole, ResetCode, LoadFinalCode, ClearConsole, FormatCode, RunCode)
         val defaultActions = listOf(ToggleFullScreen, ResetCode, LoadFinalCode, ClearConsole, FormatCode, RunCode)
     }
 }
@@ -58,8 +60,12 @@ object ClearConsole : CodeEditorAction("clear-console")
 object FormatCode : CodeEditorAction("format")
 object RunCode : CodeEditorAction("run")
 
-data class CodeEditor(val code: String, val language: Language = Language.None, val finalCode: String,
-                      val actions: List<CodeEditorAction> = CodeEditorAction.defaultActions) : Content() {
+data class CodeEditor(
+        val title: String,
+        val code: String,
+        val finalCode: String,
+        val language: Language = Language.None,
+        val actions: List<CodeEditorAction> = CodeEditorAction.defaultActions) : Content() {
 
     val asCode by lazy {
         Code(finalCode, language)
@@ -67,12 +73,14 @@ data class CodeEditor(val code: String, val language: Language = Language.None, 
 }
 
 data class ExternalCodeEditor(
-        private val language: Language,
+        private val title: String,
         private val externalCode: External,
-        private val externalFinalCode: External) :
+        private val externalFinalCode: External,
+        private val actions: List<CodeEditorAction> = CodeEditorAction.defaultActions) :
         Content() {
 
     val codeEditor by lazy {
-        CodeEditor(this.externalCode.textContent, language, this.externalFinalCode.textContent)
+        val language = Language.findForExtension(externalCode.fileName) ?: Language.None
+        CodeEditor(title, externalCode.textContent, externalFinalCode.textContent, language, actions)
     }
 }
