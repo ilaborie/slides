@@ -9,9 +9,18 @@ import org.ilaborie.slides.content.*
  * Presentation
  */
 fun presentation(
-    title: String,
-    key: String = title.normalize(),
-    b: PresentationBuilder.() -> Unit
+        title: String,
+        key: String = title.normalize(),
+        b: PresentationBuilder.() -> Unit
+): Presentation =
+    PresentationBuilder(title = HtmlContent(title), key = key)
+        .apply(b)
+        .invoke()
+
+fun presentation(
+        title: Content,
+        key: String,
+        b: PresentationBuilder.() -> Unit
 ): Presentation =
     PresentationBuilder(title = title, key = key)
         .apply(b)
@@ -19,13 +28,12 @@ fun presentation(
 
 typealias IPresentationBuilder = () -> Presentation
 
-class PresentationBuilder(private val key: String, title: String) : IPresentationBuilder {
+class PresentationBuilder(private val key: String, var title: Content) : IPresentationBuilder {
     private var groups = listOf<IPartBuilder>()
     private var scripts = listOf<String>()
-    var title: Content = HtmlContent(title)
 
     override fun invoke() = Presentation(
-        title = this.title,
+        title = title,
         id = key,
         slides = groups.map { it(key) },
         scripts = scripts
@@ -41,8 +49,10 @@ class PresentationBuilder(private val key: String, title: String) : IPresentatio
 
 }
 
-fun PresentationBuilder.part(title: String, function: PartBuilder.() -> Unit) {
-    addGroup(PartBuilder(title = title).apply(function))
+fun PresentationBuilder.part(title: String,
+                             key: String = title.normalize(),
+                             function: PartBuilder.() -> Unit) {
+    addGroup(PartBuilder(title = title, key = key).apply(function))
 }
 
         /**
@@ -50,10 +60,7 @@ fun PresentationBuilder.part(title: String, function: PartBuilder.() -> Unit) {
          */
 typealias IPartBuilder = (String) -> Group
 
-class PartBuilder(
-    private val title: String,
-    private val key: String = title.normalize()
-) : IPartBuilder {
+class PartBuilder(private val title: String, private val key: String) : IPartBuilder {
 
     private var slideBuilders = listOf<ISlideBuilder>()
     var skipHeader = false
@@ -81,10 +88,10 @@ fun PartBuilder.roadmap(title: String = "Roadmap") {
 
 
 fun PartBuilder.slide(
-    title: String?,
-    key: String? = title?.normalize(),
-    styleClass: Set<String> = setOf(),
-    b: ContentContainer.() -> Unit
+        title: String?,
+        key: String? = title?.normalize(),
+        styleClass: Set<String> = setOf(),
+        b: ContentContainer.() -> Unit
 ) {
 
     addSlide(SlideBuilder()
@@ -100,10 +107,10 @@ fun PartBuilder.slide(
 
 
 fun PartBuilder.slideFromResource(
-    title: String,
-    key: String = title.normalize(),
-    contentType: ContentType = MARKDOWN,
-    b: ISlideBuilder.() -> Unit = {}
+        title: String,
+        key: String = title.normalize(),
+        contentType: ContentType = MARKDOWN,
+        b: ISlideBuilder.() -> Unit = {}
 ) {
 
     addSlide(object : ISlideBuilder {

@@ -26,18 +26,20 @@ fun main(args: Array<String>) {
 }
 
 fun jsFunctional() =
-    presentation(title = "Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ?", key = "jsFunctional") {
+    presentation(title = "Programmation fonctionnelle en JavaScript :", key = "jsFunctional") {
         addScript("../scripts/navigation.js")
-        addScript("https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.1/min/vs/editor/editor.main.js")
+        addScript("../scripts/monaco-editor/min/vs/loader.js")
         addScript("../scripts/code-editor.js")
 
         part(title = "Introduction") {
             skipHeader = true
             slideFromResource(title = "Speaker", contentType = HTML)
-            slideFromResource(title = "Knowledge", contentType = MARKDOWN)
-            roadmap()
+            slideFromResource(title = "Knowledge", contentType = MARKDOWN) {
+                styleClass = setOf("hide-title")
+            }
+            roadmap(title = "🗺")
         }
-        part(title = "Langages fonctionnels") {
+        part(title = "Langages fonctionnels", key = "fun") {
             slideFromResource(title = "WarmUp")
             slideFromResource(title = "Fun")
             slideFromResource(title = "Flavour")
@@ -45,11 +47,11 @@ fun jsFunctional() =
             slideFromResource(title = "Rim")
             slideFromResource(title = "Static vs Dynamic")
         }
-        part("Programmation fonctionnelle en JavaScript - Part I") {
-            slide(title = "Function") {
-                codeEditorFromResources("JavaScript Function",
-                                        "/jsFunctional/function.ts",
-                                        "/jsFunctional/function.final.ts")
+        part("Programmation fonctionnelle en JS - Part I", key = "part1") {
+            slide(title = "Function", styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Functions en JavaScript",
+                                        "/jsFunctional/code/01-functions.ts",
+                                        "/jsFunctional/code/01-functions-final.ts")
             }
             slideFromResource(title = "Pure Function")
             slideFromResource(title = "Immutable")
@@ -61,7 +63,7 @@ fun jsFunctional() =
         part("Entracte") {
             slideFromResource(title = "PandaRoux", contentType = HTML)
         }
-        part("Programmation fonctionnelle en JavaScript - Part II") {
+        part("Programmation fonctionnelle en JS - Part II", key = "part2") {
             slideFromResource(title = "Jargon")
             slideFromResource(title = "Currification")
             slideFromResource(title = "Memoïsation")
@@ -70,10 +72,9 @@ fun jsFunctional() =
             slideFromResource(title = "Monads")
             slideFromResource(title = "Part II - bilan")
         }
-        part("Remaque sur la performance") {
+        part("Remaques sur la performance", key = "perfo") {
             slideFromResource(title = "What")
-            slideFromResource(title = "Rules-1")
-            slideFromResource(title = "Rules-2")
+            slideFromResource(title = "Rules")
             slideFromResource(title = "WhenMatter")
         }
         part("Conclusion") {

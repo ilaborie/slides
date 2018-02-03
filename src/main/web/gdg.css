@@ -31,9 +31,9 @@
   --navigationWidth: 10vw;
   --bgCounter: transparent;
   --fgCounter: var(--secondary);
-  --txtFooter: ' @ToulouseJS @ilaborie';
+  --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie';
   --bgFooter: #0095D5;
   --fgFooter: var(--secondary);
-  --logoFooter: url("./assets/bbl/BBL_light.png");
+  --logoFooter: url("http://www.gdgtoulouse.fr/img/logo_170.png");
   --bgCode: #2b2b2b;
   --fgCode: #bababa; }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ?</title>
+    <title>Programmation fonctionnelle en JavaScript :</title>
     <link rel="stylesheet" href="../slides.css">
     <link rel="stylesheet" href="../jsFunctional.css">
     <link rel="stylesheet" href="../gdg.css">
@@ -14,17 +14,17 @@
 </head>
 <body class="gdg jsFunctional">
     <div class="slides-nav hide-print" style="grid-template-columns : repeat(8, auto);">
-        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ?">0</a>
+        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript :">0</a>
         <strong>Introduction</strong>
 <strong>Langages fonctionnels</strong>
-<strong>Programmation fonctionnelle en JavaScript - Part I</strong>
+<strong>Programmation fonctionnelle en JS - Part I</strong>
 <strong>Entracte</strong>
-<strong>Programmation fonctionnelle en JavaScript - Part II</strong>
-<strong>Remaque sur la performance</strong>
+<strong>Programmation fonctionnelle en JS - Part II</strong>
+<strong>Remaques sur la performance</strong>
 <strong>Conclusion</strong>
         <nav><a href="#speaker" class="" title="Speaker">1</a>
-<a href="#knowledge" class="" title="Knowledge">2</a>
-<a href="#roadmap" class="roadmap" title="Roadmap">3</a></nav>
+<a href="#knowledge" class="hide-title" title="Knowledge">2</a>
+<a href="#roadmap" class="roadmap" title="🗺">3</a></nav>
 <nav><a href="#part_langages_fonctionnels" class="part" title="Langages fonctionnels">4</a>
 <a href="#warmup" class="" title="WarmUp">5</a>
 <a href="#fun" class="" title="Fun">6</a>
@@ -32,8 +32,8 @@
 <a href="#only_one" class="" title="Only one">8</a>
 <a href="#rim" class="" title="Rim">9</a>
 <a href="#static_vs_dynamic" class="" title="Static vs Dynamic">10</a></nav>
-<nav><a href="#part_programmation_fonctionnelle_en_javascript___part_i" class="part" title="Programmation fonctionnelle en JavaScript - Part I">11</a>
-<a href="#function" class="" title="Function">12</a>
+<nav><a href="#part_programmation_fonctionnelle_en_js___part_i" class="part" title="Programmation fonctionnelle en JS - Part I">11</a>
+<a href="#function" class="full-screen" title="Function">12</a>
 <a href="#pure_function" class="" title="Pure Function">13</a>
 <a href="#immutable" class="" title="Immutable">14</a>
 <a href="#composition" class="" title="Composition">15</a>
@@ -42,7 +42,7 @@
 <a href="#part_i___bilan" class="" title="Part I - bilan">18</a></nav>
 <nav><a href="#part_entracte" class="part" title="Entracte">19</a>
 <a href="#pandaroux" class="" title="PandaRoux">20</a></nav>
-<nav><a href="#part_programmation_fonctionnelle_en_javascript___part_ii" class="part" title="Programmation fonctionnelle en JavaScript - Part II">21</a>
+<nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">21</a>
 <a href="#jargon" class="" title="Jargon">22</a>
 <a href="#currification" class="" title="Currification">23</a>
 <a href="#memoisation" class="" title="Memoïsation">24</a>
@@ -50,27 +50,26 @@
 <a href="#pattern_matching" class="" title="Pattern Matching">26</a>
 <a href="#monads" class="" title="Monads">27</a>
 <a href="#part_ii___bilan" class="" title="Part II - bilan">28</a></nav>
-<nav><a href="#part_remaque_sur_la_performance" class="part" title="Remaque sur la performance">29</a>
+<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">29</a>
 <a href="#what" class="" title="What">30</a>
-<a href="#rules_1" class="" title="Rules-1">31</a>
-<a href="#rules_2" class="" title="Rules-2">32</a>
-<a href="#whenmatter" class="" title="WhenMatter">33</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">34</a>
-<a href="#_or___" class="" title="🦄 or 💩 ?">35</a>
-<a href="#bibliotheque" class="" title="Bibliothèque">36</a>
-<a href="#quote" class="hide-title" title="Quote">37</a>
-<a href="#values" class="" title="Values">38</a>
-<a href="#value_of_js" class="" title="Value of JS">39</a>
-<a href="#why_functional" class="" title="Why functional">40</a>
-<a href="#liens" class="" title="Liens">41</a>
-<a href="#questions" class="hide-title" title="Questions">42</a></nav>
+<a href="#rules" class="" title="Rules">31</a>
+<a href="#whenmatter" class="" title="WhenMatter">32</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">33</a>
+<a href="#_or___" class="" title="🦄 or 💩 ?">34</a>
+<a href="#bibliotheque" class="" title="Bibliothèque">35</a>
+<a href="#quote" class="hide-title" title="Quote">36</a>
+<a href="#values" class="" title="Values">37</a>
+<a href="#value_of_js" class="" title="Value of JS">38</a>
+<a href="#why_functional" class="" title="Why functional">39</a>
+<a href="#liens" class="" title="Liens">40</a>
+<a href="#questions" class="hide-title" title="Questions">41</a></nav>
     </div>
     <main>
 
-<!-- Slide Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ? -->
+<!-- Slide Programmation fonctionnelle en JavaScript : -->
 <section id="jsFunctional" class="cover">
     
-    <h1>Programmation fonctionnelle en JavaScript : 🦄 ou 💩 ?</h1>
+    <h1>Programmation fonctionnelle en JavaScript :</h1>
     <article>
         
     </article>
@@ -121,7 +120,7 @@
 
 
 <!-- Slide Knowledge -->
-<section id="knowledge" class="">
+<section id="knowledge" class="hide-title">
     <a href="#speaker" class="previous" aria-label="Précédant"></a>
     <h3>Knowledge</h3>
     <article>
@@ -139,16 +138,16 @@
 </section>
 
 
-<!-- Slide Roadmap -->
+<!-- Slide 🗺 -->
 <section id="roadmap" class="roadmap">
     <a href="#knowledge" class="previous" aria-label="Précédant"></a>
-    <h3>Roadmap</h3>
+    <h3>🗺</h3>
     <article>
         <ol><li>Langages fonctionnels</li>
-<li>Programmation fonctionnelle en JavaScript - Part I</li>
+<li>Programmation fonctionnelle en JS - Part I</li>
 <li>Entracte</li>
-<li>Programmation fonctionnelle en JavaScript - Part II</li>
-<li>Remaque sur la performance</li>
+<li>Programmation fonctionnelle en JS - Part II</li>
+<li>Remaques sur la performance</li>
 <li>Conclusion</li></ol>
     </article>
     <a href="#part_langages_fonctionnels" class="next" aria-label="Suivant"></a>
@@ -275,14 +274,14 @@ Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (vo
 <p>Haskell (1990), Scala (2004), ...</p>
 
     </article>
-    <a href="#part_programmation_fonctionnelle_en_javascript___part_i" class="next" aria-label="Suivant"></a>
+    <a href="#part_programmation_fonctionnelle_en_js___part_i" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Programmation fonctionnelle en JavaScript - Part I -->
-<section id="part_programmation_fonctionnelle_en_javascript___part_i" class="part">
+<!-- Slide Programmation fonctionnelle en JS - Part I -->
+<section id="part_programmation_fonctionnelle_en_js___part_i" class="part">
     <a href="#static_vs_dynamic" class="previous" aria-label="Précédant"></a>
-    <h2>Programmation fonctionnelle en JavaScript - Part I</h2>
+    <h2>Programmation fonctionnelle en JS - Part I</h2>
     <article>
         
     </article>
@@ -291,15 +290,70 @@ Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (vo
 
 
 <!-- Slide Function -->
-<section id="function" class="">
-    <a href="#part_programmation_fonctionnelle_en_javascript___part_i" class="previous" aria-label="Précédant"></a>
+<section id="function" class="full-screen">
+    <a href="#part_programmation_fonctionnelle_en_js___part_i" class="previous" aria-label="Précédant"></a>
     <h3>Function</h3>
     <article>
         
 <div class="code-editor" data-lang="typescript">
-  <h4>JavaScript Function</h4>
-  <pre class="initialCode">No resource: /jsFunctional/function.ts</pre>
-  <pre class="finalCode">No resource: /jsFunctional/function.final.ts</pre>
+  <h4>Functions en JavaScript</h4>
+  <pre class="initialCode">// Function is First-class citizen
+
+
+function mult(a, b) {
+    return a * b;
+}
+
+console.log(`Plop`);
+
+// variable
+// ES2015+
+// TypeScript
+
+// Anomynous
+
+(function() {
+    // scoped to the function
+})();
+
+</pre>
+  <pre class="finalCode">// Function is First-class citizen
+
+
+function mult(a, b) {
+    return a * b;
+}
+
+console.log(typeof mult); // function
+console.log(mult.name); // mult
+
+// Variable
+
+const mult2 = function(a, b) {
+    return a * b;
+};
+
+console.log(mult2.name); // mult2
+
+// ES2015+
+
+const mult3 = (a, b) => a * b;
+
+// TypeScript
+
+const mult4 = (a: number, b: number): number => a * b;
+
+const mult5: (a: number, b: number) => number =
+    (a, b) => a * b;
+
+
+// Anomynous
+
+(function() {
+    // scoped to the function
+})();
+
+</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -469,20 +523,19 @@ speakers
     <a href="#lisibilite" class="previous" aria-label="Précédant"></a>
     <h3>Part I - bilan</h3>
     <article>
-        <p>Les bases sont là !*</p>
-<ul>
-<li><code>function</code> first-class citizen</li>
-<li>immutable faisable</li>
+        <ul>
+<li><code>function</code> first-class citizen 💪</li>
+<li>immutable faisable ✍️</li>
+<li>eviter les effets de bord 💼<ul>
+<li>Boucles: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
+<li>les <code>var</code> ou <code>let</code> =&gt; utiliser <code>const</code></li>
+<li>les functions sans arguments, ou qui</li>
+<li>les mutations dans les objects comme <code>o.x = 5;</code> =&gt; utiliser <code>Object.assign</code> ou la déconstruction </li>
+<li>les mutations dans Array : <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code></li>
+<li>les mutations dans Map : <code>clear</code>, <code>delete</code>, <code>set</code></li>
+<li>les mutations dans Set : <code>add</code>, <code>clear</code>, <code>delete</code></li>
 </ul>
-<p>Avoid</p>
-<ul>
-<li>Loops: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
-<li>Variable declarations with var or let</li>
-<li>Void functions</li>
-<li>Object mutation (for example: o.x = 5;)</li>
-<li>Array mutator methods: <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code></li>
-<li>Map mutator methods: <code>clear</code>, <code>delete</code>, <code>set</code></li>
-<li>Set mutator methods: <code>add</code>, <code>clear</code>, <code>delete</code></li>
+</li>
 </ul>
 
     </article>
@@ -528,14 +581,14 @@ Ailurus fulgens
 
 
     </article>
-    <a href="#part_programmation_fonctionnelle_en_javascript___part_ii" class="next" aria-label="Suivant"></a>
+    <a href="#part_programmation_fonctionnelle_en_js___part_ii" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Programmation fonctionnelle en JavaScript - Part II -->
-<section id="part_programmation_fonctionnelle_en_javascript___part_ii" class="part">
+<!-- Slide Programmation fonctionnelle en JS - Part II -->
+<section id="part_programmation_fonctionnelle_en_js___part_ii" class="part">
     <a href="#pandaroux" class="previous" aria-label="Précédant"></a>
-    <h2>Programmation fonctionnelle en JavaScript - Part II</h2>
+    <h2>Programmation fonctionnelle en JS - Part II</h2>
     <article>
         
     </article>
@@ -545,7 +598,7 @@ Ailurus fulgens
 
 <!-- Slide Jargon -->
 <section id="jargon" class="">
-    <a href="#part_programmation_fonctionnelle_en_javascript___part_ii" class="previous" aria-label="Précédant"></a>
+    <a href="#part_programmation_fonctionnelle_en_js___part_ii" class="previous" aria-label="Précédant"></a>
     <h3>Jargon</h3>
     <article>
         <h3 id="functors">Functors</h3>
@@ -690,14 +743,14 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 </ul>
 
     </article>
-    <a href="#part_remaque_sur_la_performance" class="next" aria-label="Suivant"></a>
+    <a href="#part_remaques_sur_la_performance" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Remaque sur la performance -->
-<section id="part_remaque_sur_la_performance" class="part">
+<!-- Slide Remaques sur la performance -->
+<section id="part_remaques_sur_la_performance" class="part">
     <a href="#part_ii___bilan" class="previous" aria-label="Précédant"></a>
-    <h2>Remaque sur la performance</h2>
+    <h2>Remaques sur la performance</h2>
     <article>
         
     </article>
@@ -707,7 +760,7 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 
 <!-- Slide What -->
 <section id="what" class="">
-    <a href="#part_remaque_sur_la_performance" class="previous" aria-label="Précédant"></a>
+    <a href="#part_remaques_sur_la_performance" class="previous" aria-label="Précédant"></a>
     <h3>What</h3>
     <article>
         <h3 id="performance-en-quoi-">Performance en quoi ?</h3>
@@ -718,28 +771,28 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 </ul>
 
     </article>
-    <a href="#rules_1" class="next" aria-label="Suivant"></a>
+    <a href="#rules" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Rules-1 -->
-<section id="rules_1" class="">
+<!-- Slide Rules -->
+<section id="rules" class="">
     <a href="#what" class="previous" aria-label="Précédant"></a>
-    <h3>Rules-1</h3>
+    <h3>Rules</h3>
     <article>
-        <p>No resource: /jsFunctional/remaque_sur_la_performance/rules_1.md</p>
-
-    </article>
-    <a href="#rules_2" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Rules-2 -->
-<section id="rules_2" class="">
-    <a href="#rules_1" class="previous" aria-label="Précédant"></a>
-    <h3>Rules-2</h3>
-    <article>
-        <p>No resource: /jsFunctional/remaque_sur_la_performance/rules_2.md</p>
+        <blockquote>
+<p>Douter de toutes les mythes et légende</p>
+</blockquote>
+<ul>
+<li>on fait aux bonnes structures de données (Data oriented design)</li>
+<li>on évite les IO (disque, résau), c&#39;est l&#39;occasion de faire de la FRP</li>
+</ul>
+<ul>
+<li>le code doit être bien testé</li>
+<li>on priviligie la lisibilité du code à une (hypothétique) optimisation de performance</li>
+<li>mettre en cache n&#39;est pas toujours la bonne solution</li>
+<li></li>
+</ul>
 
     </article>
     <a href="#whenmatter" class="next" aria-label="Suivant"></a>
@@ -748,14 +801,20 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
 
 <!-- Slide WhenMatter -->
 <section id="whenmatter" class="">
-    <a href="#rules_2" class="previous" aria-label="Précédant"></a>
+    <a href="#rules" class="previous" aria-label="Précédant"></a>
     <h3>WhenMatter</h3>
     <article>
-        <ul>
-<li>quel est l&#39;objectif (mesurable) ?</li>
-<li>faire des mesures</li>
-<li>identifier le bottleneck</li>
-<li>amélioration</li>
+        <blockquote>
+<p>tout les leviers sont bon, y compris le langage</p>
+</blockquote>
+<ul>
+<li>si besoin de meilleures performances (à définir), on définit le seuil désiré</li>
+<li>on effectue  des <strong>mesures</strong></li>
+<li>on isole la zone à optimiser, idéalement la plus petite possible</li>
+<li><p>on commente, pour expliquer pourquoi on n&#39;a perdu de la lisibilité</p>
+</li>
+<li><p>on suit l&#39;évolution des performances dans toute la durée de vie du projet</p>
+</li>
 </ul>
 <p><a href="https://streams.spec.whatwg.org/">https://streams.spec.whatwg.org/</a></p>
 
@@ -890,7 +949,10 @@ ecosysteme
         <p>slides</p>
 <ul>
 <li><a href="https://github.com/tc39/proposals/blob/master/README.md">tc39 ECMAScript proposals</a></li>
-<li><a href="https://github.com/fantasyland/fantasy-land#apply">Fantasy Land Specification (aka &quot;Algebraic JavaScript Specification&quot;)</a></li>
+<li><p><a href="https://github.com/fantasyland/fantasy-land#apply">Fantasy Land Specification (aka &quot;Algebraic JavaScript Specification&quot;)</a></p>
+</li>
+<li><p>TODO eslint rules: immutable, pure, ...</p>
+</li>
 </ul>
 
     </article>
@@ -910,7 +972,7 @@ ecosysteme
 
     </main>
     <script type="application/javascript" src="../scripts/navigation.js"></script>
-<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.10.1/min/vs/editor/editor.main.js"></script>
+<script type="application/javascript" src="../scripts/monaco-editor/min/vs/loader.js"></script>
 <script type="application/javascript" src="../scripts/code-editor.js"></script>
 </body>
 </html>

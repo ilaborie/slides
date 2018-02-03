@@ -43,10 +43,10 @@
 Python, SML, Racket, Rust, Swift, Go, ...
 
 0. Langages fonctionnels
-1. Programmation fonctionnelle en JavaScript - Part I
+1. Programmation fonctionnelle en JS - Part I
 2. Entracte
-3. Programmation fonctionnelle en JavaScript - Part II
-4. Remaque sur la performance
+3. Programmation fonctionnelle en JS - Part II
+4. Remaques sur la performance
 5. Conclusion
 
 
@@ -116,7 +116,43 @@ Haskell (1990), Scala (2004), ...
 
 
 ```typescript
-No resource: /jsFunctional/function.final.ts
+// Function is First-class citizen
+
+
+function mult(a, b) {
+    return a * b;
+}
+
+console.log(typeof mult); // function
+console.log(mult.name); // mult
+
+// Variable
+
+const mult2 = function(a, b) {
+    return a * b;
+};
+
+console.log(mult2.name); // mult2
+
+// ES2015+
+
+const mult3 = (a, b) => a * b;
+
+// TypeScript
+
+const mult4 = (a: number, b: number): number => a * b;
+
+const mult5: (a: number, b: number) => number =
+    (a, b) => a * b;
+
+
+// Anomynous
+
+(function() {
+    // scoped to the function
+})();
+
+
 ```
 
 
@@ -260,22 +296,16 @@ speakers
     
 
 
-Les bases sont là !*
-
-* `function` first-class citizen
-* immutable faisable
-
-Avoid
-
-* Loops: `while`, `do...while`, `for`, `for...of`, `for...in`   
-* Variable declarations with var or let
-* Void functions
-* Object mutation (for example: o.x = 5;)
-* Array mutator methods: `copyWithin`, `fill`, `pop`, `push`, `reverse`, `shift`,`sort`, `splice`, `unshift`
-* Map mutator methods: `clear`, `delete`, `set`
-* Set mutator methods: `add`, `clear`, `delete`
-
-
+* `function` first-class citizen 💪
+* immutable faisable ✍️
+* eviter les effets de bord 💼
+ * Boucles: `while`, `do...while`, `for`, `for...of`, `for...in`   
+ * les `var` ou `let` => utiliser `const`
+ * les functions sans arguments, ou qui
+ * les mutations dans les objects comme `o.x = 5;` => utiliser `Object.assign` ou la déconstruction 
+ * les mutations dans Array : `copyWithin`, `fill`, `pop`, `push`, `reverse`, `shift`,`sort`, `splice`, `unshift`
+ * les mutations dans Map : `clear`, `delete`, `set`
+ * les mutations dans Set : `add`, `clear`, `delete`
 
 
 
@@ -447,16 +477,29 @@ Some(1)
 
 
 
-No resource: /jsFunctional/remaque_sur_la_performance/rules_1.md
 
-No resource: /jsFunctional/remaque_sur_la_performance/rules_2.md
+> Douter de toutes les mythes et légende
+
+* on fait aux bonnes structures de données (Data oriented design)
+* on évite les IO (disque, résau), c'est l'occasion de faire de la FRP
+
+
+* le code doit être bien testé
+* on priviligie la lisibilité du code à une (hypothétique) optimisation de performance
+* mettre en cache n'est pas toujours la bonne solution
+* 
 
 
 
-* quel est l'objectif (mesurable) ?
-* faire des mesures
-* identifier le bottleneck
-* amélioration
+
+> tout les leviers sont bon, y compris le langage
+
+* si besoin de meilleures performances (à définir), on définit le seuil désiré
+* on effectue  des **mesures**
+* on isole la zone à optimiser, idéalement la plus petite possible
+* on commente, pour expliquer pourquoi on n'a perdu de la lisibilité
+
+* on suit l'évolution des performances dans toute la durée de vie du projet
 
 
 <https://streams.spec.whatwg.org/>
@@ -529,5 +572,7 @@ slides
 
 * [tc39 ECMAScript proposals](https://github.com/tc39/proposals/blob/master/README.md)
 * [Fantasy Land Specification (aka "Algebraic JavaScript Specification")](https://github.com/fantasyland/fantasy-land#apply)
+
+* TODO eslint rules: immutable, pure, ...
 
 ### Questions ? ###
