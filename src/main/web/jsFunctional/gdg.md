@@ -31,16 +31,30 @@
 
 
 
+<div class="step">
+	<h4>Langages pratiqués</h4>
+	<ol>
+		<li>Java</li>
+		<li>JavaScript (TypeScript, CoffeeScript)</li>
+		<li>Kotlin, Scala</li>
+	</ol>
+</div>
 
-### Langages pratiqués 
 
-1. Java
-2. JavaScript (TypeScript, CoffeeScript)
-3. Kotlin, Scala
+<div class="step">
+	<h4>Notions dans</h4>
+	<ul>
+		<li>Go</li>
+		<li>Python</li>
+		<li>Racket</li>
+		<li>Rust</li>
+		<li>SML</li>
+		<li>Swift</li>
+		<li>...</li>
+	</ul>
+</div>
 
-### Notions dans
 
-Python, SML, Racket, Rust, Swift, Go, ...
 
 0. Langages fonctionnels
 1. Programmation fonctionnelle en JS - Part I
@@ -51,67 +65,125 @@ Python, SML, Racket, Rust, Swift, Go, ...
 
 
 
+<blockquote class="step">
+	<p>Fooling around with alternating current (AC) is just a waste of time. Nobody will use it, ever.</p>
+	<cite>Edison, 1889
+		<small>inventeur, scientifique, fondateur de General Electric</small>
+	</cite>
+</blockquote>
+
+<blockquote class="step">
+	<p>There is no reason anyone would want a computer in their home.</p>
+	<cite>Ken Olson, 1977
+		<small>cofondateur DEC</small>
+	</cite>
+</blockquote>
+
+<blockquote class="step">
+	<p>I predict the Internet will soon go spectacularly supernova and in 1996 catastrophically collapse.</p>
+	<cite>Robert Metcalfe, 1995
+		<small>inventeur ethernet, fondateur de 3com</small>
+	</cite>
+</blockquote>
 
 
-*
+<blockquote class="step">
+	<p>
+		<code>C</code> est un langage fonctionel
+	</p>
+</blockquote>
 
-> Fooling around with alternating current (AC) is just a waste of time. Nobody will use it, ever.
--- Edison, 1889
+<blockquote class="step">
+	<p>
+		<code>JavaScript</code> est un langage fonctionel
+	</p>
+</blockquote>
 
-*
+<blockquote class="step">
+	<p>
+		<code>Java</code> est un langage OO
+	</p>
+</blockquote>
 
-> There is no reason anyone would want a computer in their home.
--- Ken Olson, 1977
- 
-* 
-> I predict the Internet will soon go spectacularly supernova and in 1996 catastrophically collapse.
--- Robert Metcalfe, 1995
-
-
-* `C` est un langage fonctionel
-* `JavaScript` est un langage fonctionel
-* `Java` est un langage OO
-* `JQuery` est une monade
-
-
-### Paradigmes
-
-* programmation impérative
-* programmation orientée objet
-* programmation fonctionnelle
-* ...
-
-> On peut adopter donc un style de programmation fonctionnelle avec la plupart des langages.
-> Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (voir obligatoire)
+<blockquote class="step">
+	<p>
+		<code>JQuery</code> est une monade
+	</p>
+</blockquote>
 
 
+<div class="step">
+	<h3>Paradigmes</h3>
+	<ul>
+		<li>programmation impérative</li>
+		<li>programmation orientée objet</li>
+		<li>programmation fonctionnelle</li>
+		<li>...</li>
+	</ul>
+</div>
+
+<blockquote class="step">
+	<p>On peut adopter donc un style de programmation fonctionnelle avec la plupart des langages.
+		Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (voir obligatoire)</p>
+</blockquote>
 
 
-### C'est quoi un langage fonctionnel ?
 
-> Il n'y a q'un langage fonctionnel : le ƛ-calcul
+<header class="step">
+	<h4>
+		<small>Mais alors,</small>
+		c'est quoi un langage fonctionnel ?
+	</h4>
+</header>
+
+<blockquote class="step">
+	<p>Il n'y a q'un langage fonctionnel : <strong>le ƛ-calcul</strong></p>
+</blockquote>
+
+
+<figure class="step">
+	<img src="../assets/images/mad-scientist.svg" alt="Savant Fou">
+	<figcaption>Developpeur fonctionel</figcaption>
+</figure>
+
+<figure class="step">
+	<img src="../assets/images/kids.png" alt="Gamin">
+	<figcaption>Developpeur impératif ou OO</figcaption>
+</figure>
+
+
+<figure class="step">
+	<img src="../assets/images/peace-and-love.jpg" alt="Peace and Love">
+	<figcaption>Photo by Vasilios Muselimis on Unsplash</figcaption>
+</figure>
 
 
 
+<blockquote class="step">
+	<p>Programation fonctionnelle <code>⇏</code> Typage statique</p>
+</blockquote>
 
-developpeur fonctionnel => Devel
+<div class="step">
+	<h4>Typage dynamique</h4>
+	<ul>
+		<li>Lisp (1958)</li>
+		<li>Scheme (1975)</li>
+		<li>Racket (1994)</li>
+		<li>Clojure (2007)</li>
+		<li>...</li>
+	</ul>
+</div>
 
-
-(Haskell, normaux, humour, paresseux, lambda) 
-
-Programation fonctionnelle `!=` Typage statique
-
-### Dynamique
-
-Lisp (1958) 
-
-Racket (1994), Clojure (2007), ...
-
-### Statique
-
-ML (1973)
-
-Haskell (1990), Scala (2004), ...
+<div class="step">
+	<h4>Typage statique</h4>
+	<ul>
+		<li>ML (1973)</li>
+		<li>Haskell (1990)</li>
+		<li>OCaml (1996)</li>
+		<li>Scala (2004)</li>
+		<li>...</li>
+	</ul>
+</div>
 
 
 

@@ -282,6 +282,18 @@ section.full-screen article {
 section.full-screen::before, section.full-screen::after {
   display: none; }
 
+section.steps .step {
+  opacity: 0;
+  transition-duration: .2s;
+  transition-timing-function: ease-out;
+  transform: scale(0.5); }
+  section.steps .step.step-current {
+    opacity: 1;
+    transform: scale(1); }
+  section.steps .step.step-done {
+    opacity: .8;
+    transform: scale(1); }
+
 /*
 
 Darcula color scheme from the JetBrains family of IDEs

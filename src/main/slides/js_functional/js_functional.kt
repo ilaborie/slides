@@ -31,21 +31,33 @@ fun jsFunctional() =
         addScript("../scripts/monaco-editor/min/vs/loader.js")
         addScript("../scripts/code-editor.js")
 
-        part(title = "Introduction") {
+        part(title = "Introduction", key = "intro") {
             skipHeader = true
             slideFromResource(title = "Speaker", contentType = HTML)
-            slideFromResource(title = "Knowledge", contentType = MARKDOWN) {
-                styleClass = setOf("hide-title")
+            slideFromResource(title = "Knowledge", contentType =  HTML) {
+                styleClass = setOf("hide-title", "steps")
             }
-            roadmap(title = "🗺")
+            roadmap(title = "🗺 Plan")
         }
         part(title = "Langages fonctionnels", key = "fun") {
-            slideFromResource(title = "WarmUp")
-            slideFromResource(title = "Fun")
-            slideFromResource(title = "Flavour")
-            slideFromResource(title = "Only one")
-            slideFromResource(title = "Rim")
-            slideFromResource(title = "Static vs Dynamic")
+            slideFromResource(title = "WarmUp", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
+            slideFromResource(title = "Catharsis", key = "fun", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
+            slideFromResource(title = "Paradigmes", key = "flavour", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
+            slideFromResource(title = "One to rule them all", key = "only_one", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
+            slideFromResource(title = "Fellowship", key = "rim", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
+            slideFromResource(title = "Statique vs Dynamique", key = "static_vs_dynamic", contentType = HTML) {
+                styleClass = setOf("steps")
+            }
         }
         part("Programmation fonctionnelle en JS - Part I", key = "part1") {
             slide(title = "Function", styleClass = setOf("full-screen")) {

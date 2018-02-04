@@ -47,8 +47,8 @@ data class CssCompatibility(
 sealed class CodeEditorAction(val key: String) {
     companion object {
         val allActions =
-            listOf(ToggleFullScreen, ToggleConsole, ResetCode, LoadFinalCode, ClearConsole, FormatCode, RunCode)
-        val defaultActions = listOf(ToggleFullScreen, ResetCode, LoadFinalCode, ClearConsole, FormatCode, RunCode)
+            listOf(ToggleFullScreen, ToggleConsole, ResetCode, LoadFinalCode, FormatCode, ClearConsole, RunCode)
+        val defaultActions = listOf(ToggleFullScreen, ResetCode, LoadFinalCode, FormatCode, ClearConsole, RunCode)
     }
 }
 

@@ -79,5 +79,8 @@ main > section {
 style[contenteditable=true] {
   display: none; }
 
+section.steps .step {
+  opacity: 1; }
+
 .editable {
   z-index: 0; }

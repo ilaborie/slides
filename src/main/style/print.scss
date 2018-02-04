@@ -7,6 +7,7 @@
 .show-print {
   display: block;
 }
+
 .hide-print {
   display: none;
 }
@@ -28,13 +29,16 @@ main > section {
   page-break-before: always;
   page-break-after: always;
   page-break-inside: avoid;
-
   transform: none !important;
   opacity: 1;
 }
 
 style[contenteditable=true] {
   display: none;
+}
+
+section.steps .step {
+  opacity: 1;
 }
 
 .editable {

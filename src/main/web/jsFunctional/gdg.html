@@ -23,15 +23,15 @@
 <strong>Remaques sur la performance</strong>
 <strong>Conclusion</strong>
         <nav><a href="#speaker" class="" title="Speaker">1</a>
-<a href="#knowledge" class="hide-title" title="Knowledge">2</a>
-<a href="#roadmap" class="roadmap" title="🗺">3</a></nav>
+<a href="#knowledge" class="hide-title steps" title="Knowledge">2</a>
+<a href="#roadmap" class="roadmap" title="🗺 Plan">3</a></nav>
 <nav><a href="#part_langages_fonctionnels" class="part" title="Langages fonctionnels">4</a>
-<a href="#warmup" class="" title="WarmUp">5</a>
-<a href="#fun" class="" title="Fun">6</a>
-<a href="#flavour" class="" title="Flavour">7</a>
-<a href="#only_one" class="" title="Only one">8</a>
-<a href="#rim" class="" title="Rim">9</a>
-<a href="#static_vs_dynamic" class="" title="Static vs Dynamic">10</a></nav>
+<a href="#warmup" class="steps" title="WarmUp">5</a>
+<a href="#fun" class="steps" title="Catharsis">6</a>
+<a href="#flavour" class="steps" title="Paradigmes">7</a>
+<a href="#only_one" class="steps" title="One to rule them all">8</a>
+<a href="#rim" class="steps" title="Fellowship">9</a>
+<a href="#static_vs_dynamic" class="steps" title="Statique vs Dynamique">10</a></nav>
 <nav><a href="#part_programmation_fonctionnelle_en_js___part_i" class="part" title="Programmation fonctionnelle en JS - Part I">11</a>
 <a href="#function" class="full-screen" title="Function">12</a>
 <a href="#pure_function" class="" title="Pure Function">13</a>
@@ -120,28 +120,43 @@
 
 
 <!-- Slide Knowledge -->
-<section id="knowledge" class="hide-title">
+<section id="knowledge" class="hide-title steps">
     <a href="#speaker" class="previous" aria-label="Précédant"></a>
     <h3>Knowledge</h3>
     <article>
-        <h3 id="langages-pratiqu-s">Langages pratiqués</h3>
-<ol>
-<li>Java</li>
-<li>JavaScript (TypeScript, CoffeeScript)</li>
-<li>Kotlin, Scala</li>
-</ol>
-<h3 id="notions-dans">Notions dans</h3>
-<p>Python, SML, Racket, Rust, Swift, Go, ...</p>
+        <div class="step">
+	<h4>Langages pratiqués</h4>
+	<ol>
+		<li>Java</li>
+		<li>JavaScript (TypeScript, CoffeeScript)</li>
+		<li>Kotlin, Scala</li>
+	</ol>
+</div>
+
+
+<div class="step">
+	<h4>Notions dans</h4>
+	<ul>
+		<li>Go</li>
+		<li>Python</li>
+		<li>Racket</li>
+		<li>Rust</li>
+		<li>SML</li>
+		<li>Swift</li>
+		<li>...</li>
+	</ul>
+</div>
+
 
     </article>
     <a href="#roadmap" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide 🗺 -->
+<!-- Slide 🗺 Plan -->
 <section id="roadmap" class="roadmap">
     <a href="#knowledge" class="previous" aria-label="Précédant"></a>
-    <h3>🗺</h3>
+    <h3>🗺 Plan</h3>
     <article>
         <ol><li>Langages fonctionnels</li>
 <li>Programmation fonctionnelle en JS - Part I</li>
@@ -166,80 +181,110 @@
 
 
 <!-- Slide WarmUp -->
-<section id="warmup" class="">
+<section id="warmup" class="steps">
     <a href="#part_langages_fonctionnels" class="previous" aria-label="Précédant"></a>
     <h3>WarmUp</h3>
     <article>
-        <p>*</p>
-<blockquote>
-<p>Fooling around with alternating current (AC) is just a waste of time. Nobody will use it, ever.
--- Edison, 1889</p>
+        <blockquote class="step">
+	<p>Fooling around with alternating current (AC) is just a waste of time. Nobody will use it, ever.</p>
+	<cite>Edison, 1889
+		<small>inventeur, scientifique, fondateur de General Electric</small>
+	</cite>
 </blockquote>
-<p>*</p>
-<blockquote>
-<p>There is no reason anyone would want a computer in their home.
--- Ken Olson, 1977</p>
+
+<blockquote class="step">
+	<p>There is no reason anyone would want a computer in their home.</p>
+	<cite>Ken Olson, 1977
+		<small>cofondateur DEC</small>
+	</cite>
 </blockquote>
-<ul>
-<li><blockquote>
-<p>I predict the Internet will soon go spectacularly supernova and in 1996 catastrophically collapse.
--- Robert Metcalfe, 1995</p>
+
+<blockquote class="step">
+	<p>I predict the Internet will soon go spectacularly supernova and in 1996 catastrophically collapse.</p>
+	<cite>Robert Metcalfe, 1995
+		<small>inventeur ethernet, fondateur de 3com</small>
+	</cite>
 </blockquote>
-</li>
-</ul>
 
     </article>
     <a href="#fun" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Fun -->
-<section id="fun" class="">
+<!-- Slide Catharsis -->
+<section id="fun" class="steps">
     <a href="#warmup" class="previous" aria-label="Précédant"></a>
-    <h3>Fun</h3>
+    <h3>Catharsis</h3>
     <article>
-        <ul>
-<li><code>C</code> est un langage fonctionel</li>
-<li><code>JavaScript</code> est un langage fonctionel</li>
-<li><code>Java</code> est un langage OO</li>
-<li><code>JQuery</code> est une monade</li>
-</ul>
+        <blockquote class="step">
+	<p>
+		<code>C</code> est un langage fonctionel
+	</p>
+</blockquote>
+
+<blockquote class="step">
+	<p>
+		<code>JavaScript</code> est un langage fonctionel
+	</p>
+</blockquote>
+
+<blockquote class="step">
+	<p>
+		<code>Java</code> est un langage OO
+	</p>
+</blockquote>
+
+<blockquote class="step">
+	<p>
+		<code>JQuery</code> est une monade
+	</p>
+</blockquote>
 
     </article>
     <a href="#flavour" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Flavour -->
-<section id="flavour" class="">
+<!-- Slide Paradigmes -->
+<section id="flavour" class="steps">
     <a href="#fun" class="previous" aria-label="Précédant"></a>
-    <h3>Flavour</h3>
+    <h3>Paradigmes</h3>
     <article>
-        <h3 id="paradigmes">Paradigmes</h3>
-<ul>
-<li>programmation impérative</li>
-<li>programmation orientée objet</li>
-<li>programmation fonctionnelle</li>
-<li>...</li>
-</ul>
-<blockquote>
-<p>On peut adopter donc un style de programmation fonctionnelle avec la plupart des langages.
-Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (voir obligatoire)</p>
+        <div class="step">
+	<h3>Paradigmes</h3>
+	<ul>
+		<li>programmation impérative</li>
+		<li>programmation orientée objet</li>
+		<li>programmation fonctionnelle</li>
+		<li>...</li>
+	</ul>
+</div>
+
+<blockquote class="step">
+	<p>On peut adopter donc un style de programmation fonctionnelle avec la plupart des langages.
+		Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (voir obligatoire)</p>
 </blockquote>
+
 
     </article>
     <a href="#only_one" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Only one -->
-<section id="only_one" class="">
+<!-- Slide One to rule them all -->
+<section id="only_one" class="steps">
     <a href="#flavour" class="previous" aria-label="Précédant"></a>
-    <h3>Only one</h3>
+    <h3>One to rule them all</h3>
     <article>
-        <h3 id="c-est-quoi-un-langage-fonctionnel-">C&#39;est quoi un langage fonctionnel ?</h3>
-<blockquote>
-<p>Il n&#39;y a q&#39;un langage fonctionnel : le ƛ-calcul</p>
+        <header class="step">
+	<h4>
+		<small>Mais alors,</small>
+		c'est quoi un langage fonctionnel ?
+	</h4>
+</header>
+
+<blockquote class="step">
+	<p>Il n'y a q'un langage fonctionnel : <strong>le ƛ-calcul</strong></p>
 </blockquote>
 
     </article>
@@ -247,32 +292,63 @@ Les carcactéristiques des langages peuvent rendre cela plus ou moins facile (vo
 </section>
 
 
-<!-- Slide Rim -->
-<section id="rim" class="">
+<!-- Slide Fellowship -->
+<section id="rim" class="steps">
     <a href="#only_one" class="previous" aria-label="Précédant"></a>
-    <h3>Rim</h3>
+    <h3>Fellowship</h3>
     <article>
-        <p>developpeur fonctionnel =&gt; Devel</p>
-<p>(Haskell, normaux, humour, paresseux, lambda) </p>
+        <figure class="step">
+	<img src="../assets/images/mad-scientist.svg" alt="Savant Fou">
+	<figcaption>Developpeur fonctionel</figcaption>
+</figure>
+
+<figure class="step">
+	<img src="../assets/images/kids.png" alt="Gamin">
+	<figcaption>Developpeur impératif ou OO</figcaption>
+</figure>
+
+
+<figure class="step">
+	<img src="../assets/images/peace-and-love.jpg" alt="Peace and Love">
+	<figcaption>Photo by Vasilios Muselimis on Unsplash</figcaption>
+</figure>
+
 
     </article>
     <a href="#static_vs_dynamic" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Static vs Dynamic -->
-<section id="static_vs_dynamic" class="">
+<!-- Slide Statique vs Dynamique -->
+<section id="static_vs_dynamic" class="steps">
     <a href="#rim" class="previous" aria-label="Précédant"></a>
-    <h3>Static vs Dynamic</h3>
+    <h3>Statique vs Dynamique</h3>
     <article>
-        <p>Programation fonctionnelle <code>!=</code> Typage statique</p>
-<h3 id="dynamique">Dynamique</h3>
-<p>Lisp (1958) </p>
-<p>Racket (1994), Clojure (2007), ...</p>
-<h3 id="statique">Statique</h3>
-<p>ML (1973)</p>
-<p>Haskell (1990), Scala (2004), ...</p>
+        <blockquote class="step">
+	<p>Programation fonctionnelle <code>⇏</code> Typage statique</p>
+</blockquote>
 
+<div class="step">
+	<h4>Typage dynamique</h4>
+	<ul>
+		<li>Lisp (1958)</li>
+		<li>Scheme (1975)</li>
+		<li>Racket (1994)</li>
+		<li>Clojure (2007)</li>
+		<li>...</li>
+	</ul>
+</div>
+
+<div class="step">
+	<h4>Typage statique</h4>
+	<ul>
+		<li>ML (1973)</li>
+		<li>Haskell (1990)</li>
+		<li>OCaml (1996)</li>
+		<li>Scala (2004)</li>
+		<li>...</li>
+	</ul>
+</div>
     </article>
     <a href="#part_programmation_fonctionnelle_en_js___part_i" class="next" aria-label="Suivant"></a>
 </section>
@@ -358,8 +434,8 @@ const mult5: (a: number, b: number) => number =
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
   <button type="button" class="load-final"></button>
-  <button type="button" class="clear-console"></button>
   <button type="button" class="format"></button>
+  <button type="button" class="clear-console"></button>
   <button type="button" class="run"></button>
   </div>
   <div class="editor-panel"></div>
