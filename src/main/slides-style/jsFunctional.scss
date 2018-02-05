@@ -108,17 +108,32 @@
 }
 
 #warmup, #fun {
+  article {
+    align-items: center;
+  }
   blockquote {
     margin: .125rem;
 
     p {
       font-size: 1.25rem;
-      margin: .25em 0;
+      margin: .25em 0 .25em -2rem;
     }
     cite {
       font-size: 1rem;
     }
   }
+}
+
+#flavour article, #only_one article {
+  align-items: center;
+}
+#flavour article {
+  ul {
+    padding-left: 1rem;
+  }
+}
+#only_one article {
+
 }
 
 #rim article {

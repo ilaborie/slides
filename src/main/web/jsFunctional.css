@@ -69,13 +69,22 @@
   background-size: contain;
   background-repeat: no-repeat; }
 
+#warmup article, #fun article {
+  align-items: center; }
+
 #warmup blockquote, #fun blockquote {
   margin: .125rem; }
   #warmup blockquote p, #fun blockquote p {
     font-size: 1.25rem;
-    margin: .25em 0; }
+    margin: .25em 0 .25em -2rem; }
   #warmup blockquote cite, #fun blockquote cite {
     font-size: 1rem; }
+
+#flavour article, #only_one article {
+  align-items: center; }
+
+#flavour article ul {
+  padding-left: 1rem; }
 
 #rim article {
   align-items: center; }
