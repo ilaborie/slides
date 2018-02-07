@@ -197,8 +197,7 @@ main {
 
 section {
   transform: translateX(-100vmax);
-  transition: transform .6s ease-out, opacity .6s ease-out;
-  opacity: 0; }
+  transition: transform .6s ease-out, opacity .6s ease-out; }
 
 section:target {
   transform: translateX(0);

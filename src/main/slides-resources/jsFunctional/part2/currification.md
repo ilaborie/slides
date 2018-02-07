@@ -24,3 +24,12 @@ const multCurry2 = a => b => a * b;
 ```
 
 
+[Partial Application Syntax, stage 1](https://github.com/tc39/proposal-partial-application)
+
+```typescript
+const addOne = add(1, ?); // apply from the left
+const addTen = add(?, 10); // apply from the right
+const maxGreaterThanZero = Math.max(0, ...); // remaining arguments placeholder
+
+```
+Also usable with [The Pipeline Operator, stage 1](https://github.com/tc39/proposal-pipeline-operator)

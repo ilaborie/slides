@@ -1,0 +1,22 @@
+.overview {
+  z-index: -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+
+  h1 {
+    grid-column: 1 / 4;
+  }
+
+  a {
+    z-index: -1;
+    border-radius: .25rem;
+    border: thin solid var(--primary);
+    filter: blur(1rem);
+    transition-duration: .4s;
+    color: transparent;
+    &:hover {
+      filter: none;
+    }
+  }
+}

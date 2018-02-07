@@ -6,7 +6,7 @@ main {
 section {
   transform: translateX(-100vmax);
   transition: transform .6s ease-out, opacity .6s ease-out;
-  opacity: 0;
+  //opacity: 0;
 }
 
 section:target {

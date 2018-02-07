@@ -63,6 +63,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <main>
 ${body.joinToString(separator = "\n")}
     </main>
+
     ${this.scripts.joinToString(separator = "\n") {
         """<script type="application/javascript" src="$it"></script>"""
     }}
@@ -245,9 +246,9 @@ fun CodeEditor.renderAsHtml(): String {
     val buttons = actions.map { it.key }
     return """
 <div class="code-editor" data-lang="$language">
-  <h4>${title}</h4>
+  <h4>$title</h4>
   <pre class="initialCode">$code</pre>
-  <pre class="finalCode">$finalCode</pre>
+  <pre class="finalCode" data-lang="$language">$finalCode</pre>
   <div class="toolbar">
   ${buttons.joinToString("\n  ") { """<button type="button" class="$it"></button>""" }}
   </div>

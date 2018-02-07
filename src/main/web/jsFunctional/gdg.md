@@ -289,7 +289,8 @@ const compose = (g, f) => x => g(f(x))
   
 ```
 
-
+[Function Composition](https://github.com/isiahmeadows/function-composition-proposal)
+[Function.prototype.compose](https://github.com/simonstaton/Function.prototype.compose-TC39-Proposal)
 
 
 ⚠️ choisisons `n` comme un `number` `>` à `0`
@@ -447,6 +448,15 @@ const multCurry2 = a => b => a * b;
 ```
 
 
+[Partial Application Syntax, stage 1](https://github.com/tc39/proposal-partial-application)
+
+```typescript
+const addOne = add(1, ?); // apply from the left
+const addTen = add(?, 10); // apply from the right
+const maxGreaterThanZero = Math.max(0, ...); // remaining arguments placeholder
+
+```
+Also usable with [The Pipeline Operator, stage 1](https://github.com/tc39/proposal-pipeline-operator)
 
 
 
@@ -636,7 +646,7 @@ What Is Wrong With side-effect function?
 
 slides
 
-* [tc39 ECMAScript proposals](https://github.com/tc39/proposals/blob/master/README.md)
+* [tc39 ECMAScript proposals](https://github.com/tc39/proposals)
 * [Fantasy Land Specification (aka "Algebraic JavaScript Specification")](https://github.com/fantasyland/fantasy-land#apply)
 
 * TODO eslint rules: immutable, pure, ...

@@ -387,7 +387,7 @@ console.log(`Plop`);
 })();
 
 </pre>
-  <pre class="finalCode">// Function is First-class citizen
+  <pre class="finalCode" data-lang="typescript">// Function is First-class citizen
 
 
 function mult(a, b) {
@@ -509,6 +509,8 @@ console.log({sum});
 // compose: (Y =&gt; Z, X =&gt; Y) =&gt; X =&gt; Z
 const compose = (g, f) =&gt; x =&gt; g(f(x))
 </code></pre>
+<p><a href="https://github.com/isiahmeadows/function-composition-proposal">Function Composition</a>
+<a href="https://github.com/simonstaton/Function.prototype.compose-TC39-Proposal">Function.prototype.compose</a></p>
 
     </article>
     <a href="#recursion" class="next" aria-label="Suivant"></a>
@@ -708,6 +710,12 @@ Ailurus fulgens
 
 <span class="hljs-comment">// Idea: géné</span>
 </code></pre>
+<p><a href="https://github.com/tc39/proposal-partial-application">Partial Application Syntax, stage 1</a></p>
+<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> addOne = <span class="hljs-built_in">add</span>(<span class="hljs-number">1</span>, ?); <span class="hljs-comment">// apply from the left</span>
+<span class="hljs-keyword">const</span> addTen = <span class="hljs-built_in">add</span>(?, <span class="hljs-number">10</span>); <span class="hljs-comment">// apply from the right</span>
+<span class="hljs-keyword">const</span> maxGreaterThanZero = Math.<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, ...); <span class="hljs-comment">// remaining arguments placeholder</span>
+</code></pre>
+<p>Also usable with <a href="https://github.com/tc39/proposal-pipeline-operator">The Pipeline Operator, stage 1</a></p>
 
     </article>
     <a href="#memoisation" class="next" aria-label="Suivant"></a>
@@ -1018,7 +1026,7 @@ ecosysteme
     <article>
         <p>slides</p>
 <ul>
-<li><a href="https://github.com/tc39/proposals/blob/master/README.md">tc39 ECMAScript proposals</a></li>
+<li><a href="https://github.com/tc39/proposals">tc39 ECMAScript proposals</a></li>
 <li><p><a href="https://github.com/fantasyland/fantasy-land#apply">Fantasy Land Specification (aka &quot;Algebraic JavaScript Specification&quot;)</a></p>
 </li>
 <li><p>TODO eslint rules: immutable, pure, ...</p>
@@ -1041,6 +1049,7 @@ ecosysteme
 </section>
 
     </main>
+
     <script type="application/javascript" src="../scripts/navigation.js"></script>
 <script type="application/javascript" src="../scripts/monaco-editor/min/vs/loader.js"></script>
 <script type="application/javascript" src="../scripts/code-editor.js"></script>

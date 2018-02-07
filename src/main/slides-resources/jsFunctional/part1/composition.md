@@ -11,3 +11,5 @@ const compose = (g, f) => x => g(f(x))
   
 ```
 
+[Function Composition](https://github.com/isiahmeadows/function-composition-proposal)
+[Function.prototype.compose](https://github.com/simonstaton/Function.prototype.compose-TC39-Proposal)

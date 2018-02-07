@@ -49,4 +49,9 @@
             }
         }
     });
+
+    // Auto select first slide
+    // if (!location.hash) {
+    //     document.querySelector('.slides-nav .cover').click();
+    // }
 })();

@@ -45,7 +45,17 @@ require(['vs/editor/editor.main'], function () {
         return {parent, editor, consolePanel, language, code, finalCode};
     };
 
-    // register actions
+    // Output
+    const colorizeOutput = (params) => {
+        const finalNode = params.parent.querySelector('.finalCode');
+        monaco.editor.colorizeElement(finalNode, {})
+            .then(() => {
+                finalNode.classList.toggle("finalCode");
+            });
+        return params;
+    };
+
+    // actions
     const actions = {
         'full-screen': {
             label: 'Toggle Full Screen',
@@ -154,7 +164,57 @@ require(['vs/editor/editor.main'], function () {
         }
     };
 
-    const registerActions = params =>
+    // commands
+    let count = 0;
+    const editorActions = [
+        {
+            id: 'duplicate',
+            label: 'Duplicate',
+            keybindings: [
+                monaco.KeyMod.WinCtrl | monaco.KeyCode.KEY_D,
+                monaco.KeyMod.CtrlCmd | monaco.KeyCode.KEY_D],
+            run: (ed) => {
+                const position = ed.getPosition();
+                const {lineNumber, column} = position;
+                const selection = ed.getSelection();
+                let edit;
+                let endCursorState;
+                const id = {major: 1, minor: ++count};
+                if (selection.isEmpty()) {
+                    // duplicate line, insert on next line
+                    const range = new monaco.Range(lineNumber + 1, 0, lineNumber + 1, 0);
+                    const text = ed.getModel().getLineContent(lineNumber) + '\n';
+                    const endLine = text.length;
+                    // endCursorState = new monaco.Range(lineNumber + 1, endLine, lineNumber + 1, endLine);
+                    endCursorState = {
+                        selectionStartLineNumber: lineNumber + 1,
+                        positionLineNumber: lineNumber + 1,
+                        selectionStartColumn: column,
+                        positionColumn: column
+                    };
+                    edit = {id, range, text, forceMoveMarkers: true};
+                } else {
+                    // duplicate selection, insert on after the position
+                    const range = new monaco.Range(lineNumber, column, lineNumber, column);
+                    const text = ed.getModel().getValueInRange(selection);
+                    const offsetLine = selection.endLineNumber - selection.startLineNumber;
+                    const offsetCol = selection.endColumn - selection.startColumn;
+                    // FIXME
+                    endCursorState = {
+                        selectionStartLineNumber: lineNumber,
+                        positionLineNumber: lineNumber + offsetLine,
+                        selectionStartColumn: column,
+                        positionColumn: column + offsetCol
+                    };
+
+                    edit = {id, range, text, forceMoveMarkers: true};
+                }
+                console.info('duplicate', {edit});
+                ed.executeEdits("slide", [edit], [endCursorState]);
+            }
+        }
+    ];
+    const registerActions = params => {
         Object.keys(actions)
             .forEach(key => {
                 const btn = params.parent.querySelector(`button.${key}`);
@@ -167,12 +227,21 @@ require(['vs/editor/editor.main'], function () {
                     })
                 }
             });
+        return params;
+    };
+
+    const registerEditorActions = params => {
+        const {editor} = params;
+        editorActions.forEach(action => editor.addAction(action));
+        return params;
+    };
 
     Array.from(document.querySelectorAll('.code-editor'))
         .map(extractData)
         .map(createEditor)
+        .map(colorizeOutput)
         .map(registerActions)
-// TODO register command
+        .map(registerEditorActions)
     ;
 
 });
