@@ -14,6 +14,7 @@
     "style:koltinHandsOn": "node-sass src/main/slides-style/kotlinHandsOn.scss --output src/main/web/",
     "style:bbl": "node-sass src/main/slides-style/bbl.scss --output src/main/web/",
     "style:gdg": "node-sass src/main/slides-style/gdg.scss --output src/main/web/",
+    "style:breizhcamp": "node-sass src/main/slides-style/breizhcamp.scss --output src/main/web/",
     "style:devfest-tls": "node-sass src/main/slides-style/devfest-tls.scss --output src/main/web/",
     "style:devoxx-ma": "node-sass src/main/slides-style/devoxx-ma.scss --output src/main/web/",
     "start": "run-p -nl serve \"style:** -- --watch\"",

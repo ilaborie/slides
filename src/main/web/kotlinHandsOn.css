@@ -1,84 +1,5 @@
-@charset "UTF-8";
 .devoxx-ma.kotlinHandsOn {
   --txtFooter: '#DevoxxMa @EmmanuelVinas @dplaindoux #kotlin'; }
-
-@media print {
-  .slides-nav {
-    display: none; }
-  main section article .editable {
-    transform: scale(0.8);
-    margin-top: -1rem; }
-  #bordure_des_boutons button {
-    background: lightblue;
-    color: purple;
-    /*border: medium solid currentColor;*/
-    border: medium solid rgba(0, 0, 0, 0.42); }
-  #bordure_des_boutons button.danger {
-    background: salmon;
-    color: rebeccapurple; }
-  #le_diner_d_un_philosophe .table::before, #le_diner_d_un_philosophe .table::after {
-    color: gray;
-    font-size: 2rem;
-    content: '⋔';
-    transform: rotate(180deg); }
-  #triangle_avec_des_bordures div.top, #triangle_avec_des_bordures div.right, #triangle_avec_des_bordures div.bottom, #triangle_avec_des_bordures div.left {
-    border: 2em solid transparent;
-    display: inline-block;
-    box-shadow: 0 0 0 .1em red; }
-  #triangle_avec_des_bordures div.top {
-    border-top-color: cyan; }
-  #triangle_avec_des_bordures div.right {
-    border-right-color: purple; }
-  #triangle_avec_des_bordures div.bottom {
-    border-bottom-color: green; }
-  #triangle_avec_des_bordures div.left {
-    border-left-color: gold; }
-  #info_bulle .popover {
-    position: relative;
-    background: teal; }
-  #info_bulle .popover::before {
-    position: absolute;
-    z-index: -1;
-    content: '';
-    top: 1.25em;
-    left: 1em;
-    border: .8em solid transparent;
-    border-top-color: teal;
-    transform: skew(-30deg); }
-  #texte_de_chargement .loader {
-    display: inline-block;
-    white-space: pre;
-    height: 1.3em;
-    margin-top: -.3rem;
-    line-height: 1.5;
-    overflow: hidden; }
-  #texte_de_chargement .loader::before {
-    display: inline-table;
-    content: '⠋\a ⠙\a ⠹\a ⠸\a ⠼\a ⠴\a ⠦\a ⠧\a ⠇\a ⠏';
-    animation: spin 1s steps(10, end) infinite; }
-  @keyframes spin {
-    to {
-      transform: translateY(-15em); } }
-  #dessiner .editable svg path {
-    stroke: purple;
-    stroke-width: 1em;
-    fill: none;
-    stroke-dasharray: 4700;
-    stroke-dashoffset: 4700;
-    animation: draw 2s linear infinite; }
-  @keyframes draw {
-    to {
-      stroke-dashoffset: 0; } }
-  #usage_des_info_bulles .pop {
-    transform: scale(1) !important; }
-  #checkbox_hack .editable input[type=checkbox] + label::before {
-    content: 'Click if you like it'; }
-  #checkbox_hack .editable input[type=checkbox]:checked + label::before {
-    content: '💗💖💕'; }
-  #checkbox_hack fieldset input[type=checkbox] {
-    opacity: 0; }
-  #switch article pre.hljs {
-    display: block; } }
 
 .water-pouring-demo {
   background: rgba(255, 255, 255, 0.25);
@@ -182,10 +103,10 @@ input[type=number] {
 section article > pre.hljs {
   align-self: center; }
 
-#roadmap article .roadmap {
+#roadmap article .roadmap, #roadmap-bc article .roadmap {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr; }
-  #roadmap article .roadmap .init, #roadmap article .roadmap .exo, #roadmap article .roadmap .homework {
+  #roadmap article .roadmap .init, #roadmap article .roadmap .exo, #roadmap article .roadmap .homework, #roadmap-bc article .roadmap .init, #roadmap-bc article .roadmap .exo, #roadmap-bc article .roadmap .homework {
     padding: .5rem;
     position: relative;
     color: #fff;
@@ -194,26 +115,26 @@ section article > pre.hljs {
     display: flex;
     justify-content: center;
     align-items: center; }
-  #roadmap article .roadmap .init {
+  #roadmap article .roadmap .init, #roadmap-bc article .roadmap .init {
     background: green; }
-    #roadmap article .roadmap .init::before {
+    #roadmap article .roadmap .init::before, #roadmap-bc article .roadmap .init::before {
       content: '16h30'; }
-  #roadmap article .roadmap .exo {
+  #roadmap article .roadmap .exo, #roadmap-bc article .roadmap .exo {
     background: #e49400; }
-    #roadmap article .roadmap .exo::before {
+    #roadmap article .roadmap .exo::before, #roadmap-bc article .roadmap .exo::before {
       content: '16h50'; }
-    #roadmap article .roadmap .exo::after {
+    #roadmap article .roadmap .exo::after, #roadmap-bc article .roadmap .exo::after {
       content: '18h30'; }
-  #roadmap article .roadmap .homework {
+  #roadmap article .roadmap .homework, #roadmap-bc article .roadmap .homework {
     background: linear-gradient(to right, purple, purple 60%, transparent 100%);
     min-width: 5rem;
     margin-left: .5rem; }
-  #roadmap article .roadmap .init::before, #roadmap article .roadmap .exo::before {
+  #roadmap article .roadmap .init::before, #roadmap article .roadmap .exo::before, #roadmap-bc article .roadmap .init::before, #roadmap-bc article .roadmap .exo::before {
     position: absolute;
     top: -.8rem;
     left: -2.5ch;
     color: var(--primary); }
-  #roadmap article .roadmap .exo::after {
+  #roadmap article .roadmap .exo::after, #roadmap-bc article .roadmap .exo::after {
     position: absolute;
     top: -.8rem;
     right: -2.5ch;
@@ -284,6 +205,44 @@ section article > pre.hljs {
       align-self: center;
       grid-column: 1 / 3; }
 
+#speakers-bc {
+  background: #00b0f0;
+  color: #fff;
+  z-index: 2; }
+  #speakers-bc h3, #speakers-bc::before, #speakers-bc::after {
+    display: none; }
+  #speakers-bc article {
+    flex-direction: row;
+    grid-column: 1 / 4;
+    grid-row: 1 / 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr;
+    min-height: 100vh;
+    align-items: center; }
+    #speakers-bc article > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center; }
+      #speakers-bc article > div img.speakerRound {
+        width: 128px;
+        float: left;
+        margin-right: 20px;
+        margin-top: 22px;
+        border-radius: 100px;
+        overflow: hidden;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); }
+      #speakers-bc article > div h4, #speakers-bc article > div a {
+        align-self: initial; }
+      #speakers-bc article > div a {
+        font-size: 80%; }
+    #speakers-bc article > a {
+      grid-column: 1 / 3;
+      text-align: center;
+      justify-self: center;
+      border: none; }
+
 section.list-big {
   font-size: 1.3rem; }
 
@@ -309,9 +268,9 @@ section.list-big {
     #demo article .water-pouring-demo .main button {
       color: var(--primary); }
 
-#theiere_magique article {
+#theiere_magique article, #tonneau_magique article {
   align-items: center; }
-  #theiere_magique article img {
+  #theiere_magique article img, #tonneau_magique article img {
     height: 75vh; }
 
 section.operation article {

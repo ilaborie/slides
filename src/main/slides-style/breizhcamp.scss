@@ -1,0 +1,102 @@
+
+.breizhcamp {
+  --who: 'BreizhCamp !';
+  --blue: #4285f4;
+  --yellow: #f4b400;
+  --green: #0f9d58;
+  --red: #db4437;
+  --black: #000;
+  --white: #fff;
+  --g1: #263238;
+  --g2: #37424b;
+  --g3: #455a64;
+  --g4: #ebebeb;
+  --g5: #f7f7f7;
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+  --orange: #f36f21;
+  --fontColor: #333;
+
+  // Customization
+  --primary: #40383C;
+  --secondary: var(--white);
+
+  // Fonts
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: 'Permanent Marker', cursive;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: 'Permanent Marker', cursive;
+  --quoteFont: 'Just Another Hand', cursive;
+  --counterFont: 'Press Start 2P', fantasy;
+
+  // Navbar
+  --bgNavbar: var(--white);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+
+  // Slide
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgSlide: var(--primary);
+
+  // Slide Cover
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgCover: var(--primary);
+
+  // Slide Part
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgPart: var(--primary);
+
+  // Slide standard
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+
+  // Slide Navigation
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+
+  // Slide Counter
+  --bgCounter: transparend;
+  --fgCounter: var(--secondary);
+
+  // Slide Footer
+  --txtFooter: '@DevoxxMa @emmanuelVinas @ilaborie #Kotlin #🥂';
+  --logoFooter: url('./assets/breizhcamp/logo.png');
+  --bgFooter: var(--primary);
+  --fgFooter: var(--secondary);
+
+  // Code
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa;
+
+  // Honey
+  $bgSlideHoney1: hsl(49, 100%, 98%);
+  $bgSlideHoney2: hsla(36, 83%, 50%, .25);
+  $bgSlideHoney3: rgba(240, 166, 17, 0);
+
+  main section::after {
+    background-origin: unset;
+  }
+
+  $fgPattern: rgb(248, 247, 251);
+
+  main section {
+    background: radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney1 23.5%, $bgSlideHoney3 0) 21px 30px,
+    radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney2 24%, $bgSlideHoney3 0) 19px 30px,
+    linear-gradient($bgSlideHoney1 14%, $bgSlideHoney3 0, $bgSlideHoney3 85%, $bgSlideHoney1 0) 0 0,
+    linear-gradient(150deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
+    linear-gradient(30deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
+    linear-gradient(90deg, $bgSlideHoney2 2%, $bgSlideHoney1 0, $bgSlideHoney1 98%, $bgSlideHoney2 0%) 0 0 $bgSlideHoney1;
+    background-size: 40px 60px;
+  }
+
+  main section.part::before {
+    color: var(--primary);
+  }
+
+}
