@@ -15,7 +15,7 @@ require(['vs/editor/editor.main'], function () {
     // Editor options
     const defaultEditorOptions = {
         // automaticLayout: true,
-        lineNumbers: false,
+        lineNumbers: true,
         //theme: 'vs-dark',
         fontFamily: 'Fira Code, monospace',
         fontSize: 24,
@@ -184,8 +184,6 @@ require(['vs/editor/editor.main'], function () {
                     // duplicate line, insert on next line
                     const range = new monaco.Range(lineNumber + 1, 0, lineNumber + 1, 0);
                     const text = ed.getModel().getLineContent(lineNumber) + '\n';
-                    const endLine = text.length;
-                    // endCursorState = new monaco.Range(lineNumber + 1, endLine, lineNumber + 1, endLine);
                     endCursorState = {
                         selectionStartLineNumber: lineNumber + 1,
                         positionLineNumber: lineNumber + 1,
@@ -199,17 +197,15 @@ require(['vs/editor/editor.main'], function () {
                     const text = ed.getModel().getValueInRange(selection);
                     const offsetLine = selection.endLineNumber - selection.startLineNumber;
                     const offsetCol = selection.endColumn - selection.startColumn;
-                    // FIXME
                     endCursorState = {
                         selectionStartLineNumber: lineNumber,
                         positionLineNumber: lineNumber + offsetLine,
                         selectionStartColumn: column,
                         positionColumn: column + offsetCol
                     };
-
                     edit = {id, range, text, forceMoveMarkers: true};
                 }
-                console.info('duplicate', {edit});
+                // console.info('duplicate', {edit, position, endCursorState});
                 ed.executeEdits("slide", [edit], [endCursorState]);
             }
         }
