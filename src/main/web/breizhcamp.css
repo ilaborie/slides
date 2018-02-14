@@ -45,7 +45,7 @@
   --navigationWidth: 10vw;
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
-  --txtFooter: '@DevoxxMa @emmanuelVinas @ilaborie #Kotlin #🥂';
+  --txtFooter: '@breizhcamp @emmanuelVinas @ilaborie #Kotlin #🥂';
   --logoFooter: url("./assets/breizhcamp/logo.png");
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
@@ -58,3 +58,6 @@
     background-size: 40px 60px; }
   .breizhcamp main section.part::before {
     color: var(--primary); }
+  .breizhcamp main section::after {
+    background-origin: content-box;
+    padding-right: .25rem; }

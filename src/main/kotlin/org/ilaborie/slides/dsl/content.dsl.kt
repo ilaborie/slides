@@ -49,6 +49,10 @@ class ContentContainer : IContentContainer() {
 class ListContentContainer(private val f: (List<Content>) -> Content) : IContentContainer() {
     private var builders = listOf<IContentBuilder>()
 
+    fun add(content: IContentBuilder) {
+        builders += content
+    }
+
     override operator fun invoke(): Content =
         f(builders.map { it() })
 }
@@ -172,6 +176,12 @@ fun ContentContainer.quote(author: String? = null, cite: String? = null, builder
 // inline
 
 fun ContentContainer.html(builder: () -> String) {
+    add {
+        HtmlContent(builder())
+    }
+}
+
+fun ListContentContainer.html(builder: () -> String) {
     add {
         HtmlContent(builder())
     }

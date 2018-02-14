@@ -273,6 +273,10 @@ section.list-big {
   #theiere_magique article img, #tonneau_magique article img {
     height: 75vh; }
 
+#tonneau_magique article img {
+  border-radius: 5%;
+  box-shadow: 0 0 1rem black; }
+
 section.operation article {
   align-items: stretch; }
   section.operation article > div {

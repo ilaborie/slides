@@ -56,13 +56,8 @@
 		<a href="https://www.jetbrains.com/idea/download/">Download IntelliJ IDEA</a>
 	</li>
 	<li>
-		Configuration du plugin Kotlin<br>
-		<code>Tools | Kotlin | Configure Kotlin Plugin Updates</code><br>
-		<div class="capture">
-			<img src="../assets/devoxx-ma/update-kotlin-plugin.png" alt="Configure Kotlin Plugin Updates"><br>
-			Sélectionner <code>Early Access Preview 1.2</code><br>
-			Puis cliquer sur <code>Check for updates now</code>
-		</div>
+		Configuration éventuelle du plugin Kotlin<br>
+		<code>Tools | Kotlin | Configure Kotlin Plugin Updates</code>
 	</li>
 </ul>
 
@@ -73,7 +68,7 @@
 	</li>
 	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
 	<li>
-		<code>git checkout {branch}</code> avec la branche dans <code>[exo-server, exo-web, exo-mobile]</code>
+		<code>git checkout {branch}</code> avec la branche dans <code>exo-server</code>, <code>exo-web</code>, <code>exo-mobile</code>
 	</li>
 	<li><code>./gradlew clean assemble test</code></li>
 </ul>
@@ -143,21 +138,6 @@
 </div>
 
 <div>
-	<code>Empty</code>
-	<div class="glass-container">
-		<div class="glass"
-		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 75%, transparent 0px);"></div>
-		<span>3 / 4</span>
-	</div>
-	<span class="ope">➡️</span>
-	<div class="glass-container">
-		<div class="glass"
-		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 0%, transparent 0px);"></div>
-		<span>0 / 4</span>
-	</div>
-</div>
-
-<div>
 	<code>Pour</code>
 	<div class="glass-container">
 		<div class="glass"
@@ -186,21 +166,35 @@
 	</div>
 </div>
 
+<div>
+	<code>Empty</code>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 75%, transparent 0px);"></div>
+		<span>3 / 4</span>
+	</div>
+	<span class="ope">➡️</span>
+	<div class="glass-container">
+		<div class="glass"
+		     style="height: 4rem;background-image: linear-gradient(to top, #e2b65e 0%, transparent 0px);"></div>
+		<span>0 / 4</span>
+	</div>
+</div>
+
 <div class="water-pouring-demo"></div>
 
 
 
 ```kotlin
 fun main(args: Array<String>) {
-    println("Hello Devoxx Morocco !")
+    println("Hello BreizhCamp !")
 }
 
 
 ```
 *Tips*
-Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
-Ou copiez du code Java dans un fichier Kotlin
-
+* Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin
+* Ou copiez du code Java dans un fichier Kotlin
 
 ```kotlin
 data class Glass(val capacity: Int, val current: Int = 0) {
@@ -219,9 +213,8 @@ typealias State = List<Glass>
 
 ```
 *Info*
-En écrivant du Kotlin vous aurez plein de <code>fun</code> !
-Le <code>typealias</code> nécessite Kotlin 1.1.
-
+* En écrivant du Kotlin vous aurez plein de <code>fun</code> !
+* Le <code>typealias</code> nécessite Kotlin 1.1.
 
 ```kotlin
 sealed class Move
@@ -237,9 +230,8 @@ data class Pour(val from: Int, val to: Int) : Move() {
 }
 ```
 *Info*
-Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
-Le <code>sealed</code> nécessite Kotlin 1.1.
-
+* Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em>
+* Le <code>sealed</code> nécessite Kotlin 1.1.
 
 
 

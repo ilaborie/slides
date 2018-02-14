@@ -35,7 +35,7 @@ fun prezBreizhCamp2018() = presentation(title = "Kotlin par l'exemple", key = "k
         skipHeader = true
         slideFromResource(title = "Speakers", key = "speakers-bc", contentType = HTML)
         slideFromResource(title = "🗺 Roadmap", key="roadmap-bc", contentType = HTML)
-        slideFromResource(title = "Pré-requis - IDE", contentType = HTML)
+        slideFromResource(title = "Pré-requis - IDE", key="pre_requis___ide-bc", contentType = HTML)
         slideFromResource(title = "Pré-requis - Exercices", contentType = HTML)
         slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
@@ -45,15 +45,15 @@ fun prezBreizhCamp2018() = presentation(title = "Kotlin par l'exemple", key = "k
         slide(title = "Tonneau magique") {
             img(alt = "Tonneau magique", resource = "/kotlinHandsOn/water_pouring_problem/barrels.png")
         }
-        slideFromResource(title = "Verres", contentType = HTML) { styleClass + "operation" }
-        slideFromResource(title = "Remplir", contentType = HTML) { styleClass + "operation" }
-        slideFromResource(title = "Vider", contentType = HTML) { styleClass + "operation" }
-        slideFromResource(title = "Verser", contentType = HTML) { styleClass + "operation" }
+        slideFromResource(title = "Verres", contentType = HTML) { styleClass = setOf("operation") }
+        slideFromResource(title = "Remplir", contentType = HTML) { styleClass = setOf("operation") }
+        slideFromResource(title = "Verser", contentType = HTML) { styleClass = setOf("operation") }
+        slideFromResource(title = "Vider", contentType = HTML) { styleClass = setOf("operation") }
         slideFromResource(title = "Démo", contentType = HTML)
     }
     part("Pour démarrer") {
         slide("Hello World") {
-            codeFromResource("/kotlinHandsOn/hello-world.kt")
+            codeFromResource("/kotlinHandsOn/hello-world-bc.kt")
             notice(NoticeKind.Tips) {
                 ul {
                     html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
@@ -82,10 +82,10 @@ fun prezBreizhCamp2018() = presentation(title = "Kotlin par l'exemple", key = "k
     }
     part("Excercices") {
         slideFromResource(title = "Choisir son exercice")
-        slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass + "exo" }
-        slideFromResource(title = "Android") { styleClass + "exo" }
-        slideFromResource(title = "Navigateur avec KotlinJS") { styleClass + "exo" }
-        slideFromResource(title = "Freestyle") { styleClass + "exo" }
+        slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass = setOf("exo") }
+        slideFromResource(title = "Android") { styleClass = setOf("exo") }
+        slideFromResource(title = "Navigateur avec KotlinJS") { styleClass = setOf("exo") }
+        slideFromResource(title = "Freestyle") { styleClass = setOf("exo") }
         slideFromResource(title = "Liens")
     }
 }

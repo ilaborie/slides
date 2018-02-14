@@ -65,7 +65,7 @@
   --fgCounter: var(--secondary);
 
   // Slide Footer
-  --txtFooter: '@DevoxxMa @emmanuelVinas @ilaborie #Kotlin #🥂';
+  --txtFooter: '@breizhcamp @emmanuelVinas @ilaborie #Kotlin #🥂';
   --logoFooter: url('./assets/breizhcamp/logo.png');
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
@@ -97,6 +97,11 @@
 
   main section.part::before {
     color: var(--primary);
+  }
+
+  main section::after {
+    background-origin: content-box;
+    padding-right: .25rem;
   }
 
 }
