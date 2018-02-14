@@ -50,12 +50,13 @@
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
   --bgCode: #2b2b2b;
-  --fgCode: #bababa; }
+  --fgCode: #bababa;
+  background: radial-gradient(circle farthest-side at 0% 50%, #fffdf5 23.5%, rgba(240, 166, 17, 0) 0) 21px 30px, radial-gradient(circle farthest-side at 0% 50%, rgba(233, 149, 22, 0.25) 24%, rgba(240, 166, 17, 0) 0) 19px 30px, linear-gradient(#fffdf5 14%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 85%, #fffdf5 0) 0 0, linear-gradient(150deg, #fffdf5 24%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 76%, #fffdf5 0) 0 0, linear-gradient(30deg, #fffdf5 24%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 76%, #fffdf5 0) 0 0, linear-gradient(90deg, rgba(233, 149, 22, 0.25) 2%, #fffdf5 0, #fffdf5 98%, rgba(233, 149, 22, 0.25) 0%) 0 0 #fffdf5;
+  background-size: 40px 60px; }
   .breizhcamp main section::after {
     background-origin: unset; }
   .breizhcamp main section {
-    background: radial-gradient(circle farthest-side at 0% 50%, #fffdf5 23.5%, rgba(240, 166, 17, 0) 0) 21px 30px, radial-gradient(circle farthest-side at 0% 50%, rgba(233, 149, 22, 0.25) 24%, rgba(240, 166, 17, 0) 0) 19px 30px, linear-gradient(#fffdf5 14%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 85%, #fffdf5 0) 0 0, linear-gradient(150deg, #fffdf5 24%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 76%, #fffdf5 0) 0 0, linear-gradient(30deg, #fffdf5 24%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 26%, rgba(240, 166, 17, 0) 0, rgba(240, 166, 17, 0) 74%, rgba(233, 149, 22, 0.25) 0, rgba(233, 149, 22, 0.25) 76%, #fffdf5 0) 0 0, linear-gradient(90deg, rgba(233, 149, 22, 0.25) 2%, #fffdf5 0, #fffdf5 98%, rgba(233, 149, 22, 0.25) 0%) 0 0 #fffdf5;
-    background-size: 40px 60px; }
+    background: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%); }
   .breizhcamp main section.part::before {
     color: var(--primary); }
   .breizhcamp main section::after {

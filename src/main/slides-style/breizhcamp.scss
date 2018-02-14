@@ -74,25 +74,26 @@
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
 
-  // Honey
-  $bgSlideHoney1: hsl(49, 100%, 98%);
-  $bgSlideHoney2: hsla(36, 83%, 50%, .25);
-  $bgSlideHoney3: rgba(240, 166, 17, 0);
-
   main section::after {
     background-origin: unset;
   }
 
   $fgPattern: rgb(248, 247, 251);
 
+  // Honey
+  $bgSlideHoney1: hsl(49, 100%, 98%);
+  $bgSlideHoney2: hsla(36, 83%, 50%, .25);
+  $bgSlideHoney3: rgba(240, 166, 17, 0);
+  background: radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney1 23.5%, $bgSlideHoney3 0) 21px 30px,
+  radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney2 24%, $bgSlideHoney3 0) 19px 30px,
+  linear-gradient($bgSlideHoney1 14%, $bgSlideHoney3 0, $bgSlideHoney3 85%, $bgSlideHoney1 0) 0 0,
+  linear-gradient(150deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
+  linear-gradient(30deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
+  linear-gradient(90deg, $bgSlideHoney2 2%, $bgSlideHoney1 0, $bgSlideHoney1 98%, $bgSlideHoney2 0%) 0 0 $bgSlideHoney1;
+  background-size: 40px 60px;
+
   main section {
-    background: radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney1 23.5%, $bgSlideHoney3 0) 21px 30px,
-    radial-gradient(circle farthest-side at 0% 50%, $bgSlideHoney2 24%, $bgSlideHoney3 0) 19px 30px,
-    linear-gradient($bgSlideHoney1 14%, $bgSlideHoney3 0, $bgSlideHoney3 85%, $bgSlideHoney1 0) 0 0,
-    linear-gradient(150deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
-    linear-gradient(30deg, $bgSlideHoney1 24%, $bgSlideHoney2 0, $bgSlideHoney2 26%, $bgSlideHoney3 0, $bgSlideHoney3 74%, $bgSlideHoney2 0, $bgSlideHoney2 76%, $bgSlideHoney1 0) 0 0,
-    linear-gradient(90deg, $bgSlideHoney2 2%, $bgSlideHoney1 0, $bgSlideHoney1 98%, $bgSlideHoney2 0%) 0 0 $bgSlideHoney1;
-    background-size: 40px 60px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
   }
 
   main section.part::before {
