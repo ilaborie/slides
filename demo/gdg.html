@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo</title>
+    <link rel="stylesheet" href="../slides.css">
+    <link rel="stylesheet" href="../demo.css">
+    <link rel="stylesheet" href="../gdg.css">
+    <link rel="stylesheet" href="../print.css" media="print">
+    <link rel="icon" type="image/png" href="../assets/gdg/favicon.png" />
+</head>
+<body class="gdg demo">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(3, auto);">
+        <a href="#demo" class="cover" title="demo">0</a>
+        <strong>Component</strong>
+<strong>Code Editor</strong>
+        <nav><a href="#part_component" class="part" title="Component">1</a>
+<a href="#roadmap" class="roadmap" title="Roadmap">2</a></nav>
+<nav><a href="#part_code_editor" class="part" title="Code Editor">3</a>
+<a href="#hello_world" class="full-screen" title="Hello World">4</a></nav>
+    </div>
+    <main>
+
+<!-- Slide demo -->
+<section id="demo" class="cover">
+    
+    <h1>demo</h1>
+    <article>
+        
+    </article>
+    <a href="#part_component" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Component -->
+<section id="part_component" class="part">
+    <a href="#demo" class="previous" aria-label="Précédant"></a>
+    <h2>Component</h2>
+    <article>
+        
+    </article>
+    <a href="#roadmap" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Roadmap -->
+<section id="roadmap" class="roadmap">
+    <a href="#part_component" class="previous" aria-label="Précédant"></a>
+    <h3>Roadmap</h3>
+    <article>
+        <ol><li>Component</li>
+<li>Code Editor</li></ol>
+    </article>
+    <a href="#part_code_editor" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Code Editor -->
+<section id="part_code_editor" class="part">
+    <a href="#roadmap" class="previous" aria-label="Précédant"></a>
+    <h2>Code Editor</h2>
+    <article>
+        
+    </article>
+    <a href="#hello_world" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Hello World -->
+<section id="hello_world" class="full-screen">
+    <a href="#part_code_editor" class="previous" aria-label="Précédant"></a>
+    <h3>Hello World</h3>
+    <article>
+        
+<div class="code-editor" data-lang="typescript">
+  <h4>Demo</h4>
+  <pre class="initialCode">console.log('Plop');</pre>
+  <pre class="finalCode">console.log('Plop');
+console.log('Plop');
+
+const add = (a: number, b: number): number => a + b;
+
+add(13, 29);</pre>
+  <div class="toolbar">
+  <button type="button" class="full-screen"></button>
+  <button type="button" class="reset"></button>
+  <button type="button" class="load-final"></button>
+  <button type="button" class="clear-console"></button>
+  <button type="button" class="format"></button>
+  <button type="button" class="run"></button>
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
+
+    </article>
+    
+</section>
+
+    </main>
+    <script type="application/javascript" src="../scripts/navigation.js"></script>
+<script type="application/javascript" src="../scripts/monaco-editor/min/vs/loader.js"></script>
+<script type="application/javascript" src="../scripts/code-editor.js"></script>
+</body>
+</html>
