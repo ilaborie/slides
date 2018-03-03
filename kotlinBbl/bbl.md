@@ -61,9 +61,8 @@ fun main(args: Array<String>) {
 }
 ```
 *Tips*
-Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br>
-Ou copiez du code Java dans un fichier Kotlin
-
+* Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br>
+* Ou copiez du code Java dans un fichier Kotlin
 
 
 
@@ -230,11 +229,12 @@ fun State.move(move: Move): State =
 * Support officiel par Google
 * [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
 * [Kotlin Guide](https://android.github.io/kotlin-guides/)
+* [Kotlin extensions for Android](https://github.com/android/android-ktx)
 
 
-* Supporter officiellement depuis [Spring 5](https://spring.io/blog/2017/01/04/introducing-kotlin-support-in-spring-framework-5-0), SpringBoot 2
+* Supporter officiellement depuis [Spring 5](https://projects.spring.io/spring-framework/), [Spring Boot 2](https://projects.spring.io/spring-boot/)
+* [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html), [javalin](https://javalin.io/)
 * [Vert.x](http://vertx.io/docs/vertx-core/kotlin/)
-* [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html)
 * [KTor](http://ktor.io/)
 * ...
 
@@ -266,4 +266,4 @@ fun State.move(move: Move): State =
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
 
-### Question ? ###
+### Question(s) ? ###

@@ -48,7 +48,10 @@
   --bgFooter: var(--primary);
   --fgFooter: var(--secondary);
   --bgCode: #2b2b2b;
-  --fgCode: #bababa; }
+  --fgCode: #bababa;
+  --startAt: '16h30';
+  --exoAt: '16h50';
+  --endAt: '18h30'; }
   .devoxx-ma main section::after {
     background-origin: unset; }
   .devoxx-ma main section {

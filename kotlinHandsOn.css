@@ -118,13 +118,13 @@ section article > pre.hljs {
   #roadmap article .roadmap .init, #roadmap-bc article .roadmap .init {
     background: green; }
     #roadmap article .roadmap .init::before, #roadmap-bc article .roadmap .init::before {
-      content: '16h30'; }
+      content: var(--startAt); }
   #roadmap article .roadmap .exo, #roadmap-bc article .roadmap .exo {
     background: #e49400; }
     #roadmap article .roadmap .exo::before, #roadmap-bc article .roadmap .exo::before {
-      content: '16h50'; }
+      content: var(--exoAt); }
     #roadmap article .roadmap .exo::after, #roadmap-bc article .roadmap .exo::after {
-      content: '18h30'; }
+      content: var(--endAt); }
   #roadmap article .roadmap .homework, #roadmap-bc article .roadmap .homework {
     background: linear-gradient(to right, purple, purple 60%, transparent 100%);
     min-width: 5rem;
