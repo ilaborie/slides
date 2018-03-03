@@ -17,11 +17,11 @@
   --shadowNavbar: rgba(0, 0, 0, 0.2);
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgSlide: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%);
   --fgSlide: var(--primary);
-  --bgCover: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%);
   --fgCover: var(--primary);
-  --bgPart: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgPart: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%);
   --fgPart: var(--primary);
   --headerFontSize: 1.5rem;
   --bgHeader: var(--primary);

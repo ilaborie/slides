@@ -15,7 +15,9 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="github"]::before, &[href*="twitter"]::before, &[href*="jetbrains"]::before,
     &[href*="mozilla"]::before, &[href*="youtube"]::before, &[href*="kotlin"]::before,
-    &[href*="android"]::before, &[href*="springboot"]::before {
+    &[href*="android"]::before, &[href*="spring-framework"]::before, &[href*="spring-boot"]::before,
+    &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="javalin"]::before,
+    &[href*="vertx"]::before, &[href*="ktor"]::before  {
       content: '';
       width: 1em;
       height: 1em;
@@ -24,7 +26,10 @@ section article, section h1, section h2, section h3, section h4 {
       background-repeat: no-repeat;
       background-size: contain;
     }
-    &[href*="springboot"]::before {
+    &[href*="spring-framework"]::before {
+      background-image: url('./assets/brands/spring.svg');
+    }
+    &[href*="spring-boot"]::before {
       background-image: url('./assets/brands/springboot.svg');
     }
     &[href*="android"]::before {
@@ -53,6 +58,21 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="jetbrains"]::before {
       background-image: url('./assets/brands/intellij-idea.svg');
+    }
+    &[href*="docs.google"]::before {
+      background-image: url('./assets/brands/google-doc.png');
+    }
+    &[href*="sparktutorials"]::before {
+      background-image: url('./assets/brands/spark-java.png');
+    }
+    &[href*="javalin"]::before {
+      background-image: url('./assets/brands/javalin.png');
+    }
+    &[href*="vertx"]::before {
+      background-image: url('./assets/brands/vertx.png');
+    }
+    &[href*="ktor"]::before {
+      background-image: url('./assets/brands/ktor.png');
     }
 
     &[href*="frog"]::before {

@@ -18,7 +18,7 @@ const factorial2 = n =>
 ```typescript
 const factorial3 = (n, acc = 1) =>
     (n<=1) ? acc : factorial3(n - 1, acc * ); 
-```
+```gi
 
 [Support de la tail-rec](http://kangax.github.io/compat-table/es6/#test-proper_tail_calls_(tail_call_optimisation))
 
@@ -42,4 +42,8 @@ const b = n => {
 ```
 
 > Recursion is the GOTO of functional programming
--- Erik Meijer ("Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire", 1991) 
+-- Erik Meijer ("Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire", 1991)
+
+<https://babeljs.io/learn-es2015/#tail-calls>
+<https://kangax.github.io/compat-table/es6/> 
+<http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls>

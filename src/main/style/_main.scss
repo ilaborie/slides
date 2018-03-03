@@ -20,6 +20,10 @@
 html {
   font-size: var(--baseFontSize);
 }
+// TODO try https://codepen.io/AllThingsSmitty/pen/XKgOkR
+//:root {
+//  font-size: calc(1vw + 1vh + .5vmin);
+//}
 
 body {
   font-family: var(--fontBody);

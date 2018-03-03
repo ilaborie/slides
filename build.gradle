@@ -2,11 +2,13 @@ group 'org.ilaborie.slides'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlinVersion = '1.2.21'
-    ext.serializationVersion = '0.4'
+    ext.kotlinVersion = '1.2.30'
+    ext.serializationVersion = '0.4.1'
     ext.feignVersion = '9.5.1'
 
     repositories {
+        mavenLocal()
+        google()
         jcenter()
         mavenCentral()
         maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
@@ -22,6 +24,7 @@ apply plugin: 'kotlin'
 apply plugin: 'kotlinx-serialization'
 
 repositories {
+    google()
     jcenter()
     mavenCentral()
     maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }

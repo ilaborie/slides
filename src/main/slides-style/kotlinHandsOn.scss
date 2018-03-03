@@ -30,16 +30,16 @@ section article > pre.hljs {
       .init {
         background: green;
         &::before {
-          content: '16h30'
+          content: var(--startAt);
         }
       }
       .exo {
         background: #e49400;
         &::before {
-          content: '16h50'
+          content: var(--exoAt);
         }
         &::after {
-          content: '18h30'
+          content: var(--endAt);
         }
       }
       .homework {

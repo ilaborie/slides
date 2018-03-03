@@ -72,6 +72,11 @@
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
 
+  // Timing
+  --startAt: '16h30';
+  --exoAt: '16h50';
+  --endAt: '18h30';
+
   main section::after {
     background-origin: unset;
   }

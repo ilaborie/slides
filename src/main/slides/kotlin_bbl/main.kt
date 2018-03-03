@@ -76,7 +76,7 @@ fun kotlinBbl() = presentation(title = "", key = "kotlinBbl") {
         slideFromResource(title = "Pourquoi Kotlin")
         slideFromResource(title = "Liens")
         slide("Question", styleClass = setOf("hide-title")) {
-            header(3) { html { "Question ?" } }
+            header(3) { html { "Question(s) ?" } }
 
         }
     }

@@ -26,15 +26,15 @@
   // Slide
   --headerHeight: 3rem;
   --footerHeight: 2rem;
-  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
   --fgSlide: var(--primary);
 
   // Slide Cover
-  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
   --fgCover: var(--primary);
 
   // Slide Part
-  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%),;
   --fgPart: var(--primary);
 
   // Slide standard
