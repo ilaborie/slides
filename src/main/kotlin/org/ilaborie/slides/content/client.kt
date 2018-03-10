@@ -3,7 +3,7 @@ package org.ilaborie.slides.content
 import feign.Feign
 import feign.Param
 import feign.RequestLine
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 
 interface HelperClient {
 
@@ -12,9 +12,9 @@ interface HelperClient {
 
     @RequestLine("GET /compatibility?country={country}&threshold={threshold}&features={features}")
     fun compatibility(
-        @Param("country") country: String,
-        @Param("threshold") threshold: String,
-        @Param("features") features: String
+            @Param("country") country: String,
+            @Param("threshold") threshold: String,
+            @Param("features") features: String
     ): String
 
     @RequestLine("POST /markdown")
@@ -26,7 +26,7 @@ interface HelperClient {
 
 }
 
-val logger = Logger("HelperClient")
+val logger = KotlinLogging.logger("HelperClient")
 val cache = mutableMapOf<String, HelperClient>()
 fun createClient(url: String): HelperClient =
     cache.getOrPut(url) {

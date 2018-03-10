@@ -61,30 +61,25 @@
 	</li>
 </ul>
 
-<ul>
-	<li>
-		Récupérer la présentation<br>
-		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf">https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf</a>
-	</li>
+<ol>
 	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
 	<li>
 		<code>git checkout {branch}</code> avec la branche dans <code>exo-server</code>, <code>exo-web</code>, <code>exo-mobile</code>
 	</li>
-	<li><code>./gradlew clean assemble test</code></li>
-</ul>
+	<li><code>./gradlew clean assemble test</code> (les tests doivent être en erreurs)</li>
+	<li>
+		(Optionel) Récupérer la présentation :
+		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf">http://bit.ly/kotlin-lab</a>
+	</li>
+</ol>
 
 
-* Écrire du code plus sûr
-* Facilité la maintenance
-* Écrire plus rapidement
-* Résoudre de nouveaux problèmes
-* ...
-
-
-* Éviter les NPE, statiquement typé
-* Abordable, si on vient de Java
+* Démarrer en 2011 par [JetBrains](https://www.jetbrains.com/)
+* v1.0 en 2016, v1.1 et v1.2 en 2017
 * Expressif et pragmatique
+* Éviter les NPE, statiquement typé
 * Inspiré par Java, Scala, C#, Groovy, ...
+* Abordable, si on vient de Java
 * Cross-platform
 
 <img src="../assets/brands/java.svg" alt="JVM" class="jvm">

@@ -1,15 +1,12 @@
 package org.ilaborie.slides
 
-import org.ilaborie.logger.Level
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.*
 import org.ilaborie.slides.content.*
 import java.io.File
 import java.nio.charset.Charset
 
-val logger = Logger("PresExt").apply {
-    level = Level.DEBUG
-}
+val logger = KotlinLogging.logger("PresExt")
 
 fun <T> safe(dangerous: () -> T): T =
     try {
@@ -95,9 +92,9 @@ fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
             logger.trace { "Default content for $resource" }
 
             when (slide.contentType()) {
-                HTML -> ExternalHtmlContent(ExternalResource(resource))
+                HTML     -> ExternalHtmlContent(ExternalResource(resource))
                 MARKDOWN -> ExternalMarkdownContent(ExternalResource(resource))
-                else -> TODO()
+                else     -> TODO()
             }
         }
     }

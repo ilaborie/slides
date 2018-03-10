@@ -1,7 +1,7 @@
 package demo
 
 
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.dsl.*
 import org.ilaborie.slides.generateMissingExternals
@@ -10,7 +10,7 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    val logger = Logger("Demo")
+    val logger = KotlinLogging.logger("Demo")
 
     val demoPresentation = demo()
     val slidesDir = File("src/main/slides-resources/")

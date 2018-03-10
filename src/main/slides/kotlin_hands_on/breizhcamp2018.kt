@@ -1,6 +1,6 @@
 package kotlin_hands_on
 
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.buildAll
@@ -12,7 +12,7 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    val logger = Logger("Kotlin Hands on")
+    val logger = KotlinLogging.logger("Kotlin Hands on")
 
     val kotlinHandsOn = prezBreizhCamp2018()
 
@@ -34,10 +34,10 @@ fun prezBreizhCamp2018() = presentation(title = "Kotlin par l'exemple", key = "k
     part(title = "Introduction") {
         skipHeader = true
         slideFromResource(title = "Speakers", key = "speakers-bc", contentType = HTML)
-        slideFromResource(title = "🗺 Roadmap", key="roadmap-bc", contentType = HTML)
-        slideFromResource(title = "Pré-requis - IDE", key="pre_requis___ide-bc", contentType = HTML)
+        slideFromResource(title = "🗺 Roadmap", key = "roadmap-bc", contentType = HTML)
+        slideFromResource(title = "Pré-requis - IDE", key = "pre_requis___ide-bc", contentType = HTML)
         slideFromResource(title = "Pré-requis - Exercices", contentType = HTML)
-        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
+//        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
         slideFromResource(title = "Cible", contentType = HTML)
     }

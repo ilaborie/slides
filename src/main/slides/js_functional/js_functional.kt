@@ -1,8 +1,7 @@
 package js_functional
 
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
-import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.dsl.*
 import org.ilaborie.slides.generateMissingExternals
@@ -11,7 +10,7 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    val logger = Logger("JS Functional")
+    val logger = KotlinLogging.logger("JS Functional")
 
     val jsFunctional = jsFunctional()
     val slidesDir = File("src/main/slides-resources/")
@@ -34,7 +33,7 @@ fun jsFunctional() =
         part(title = "Introduction", key = "intro") {
             skipHeader = true
             slideFromResource(title = "Speaker", contentType = HTML)
-            slideFromResource(title = "Knowledge", contentType =  HTML) {
+            slideFromResource(title = "Knowledge", contentType = HTML) {
                 styleClass = setOf("hide-title", "steps")
             }
             roadmap(title = "🗺 Plan")

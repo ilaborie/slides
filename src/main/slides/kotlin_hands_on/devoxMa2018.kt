@@ -1,6 +1,6 @@
 package kotlin_hands_on
 
-import org.ilaborie.logger.Logger
+import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.ContentType.MARKDOWN
 import org.ilaborie.slides.buildAll
@@ -12,7 +12,7 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
-    val logger = Logger("Kotlin Hands on")
+    val logger = KotlinLogging.logger("Kotlin Hands on")
 
     val kotlinHandsOn = devoxMa2018()
 

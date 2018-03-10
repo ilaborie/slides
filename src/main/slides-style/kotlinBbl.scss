@@ -9,7 +9,7 @@ $bgSize2: $bgSize1 / 2;
 $bgSize3: $bgSize1 / 4;
 
 
-.kotlinBbl {
+body.kotlinBbl {
   --txtFooter: '#BrownBagLunch @ilaborie #kotlin';
 
   background:
@@ -22,6 +22,14 @@ $bgSize3: $bgSize1 / 4;
   background-color: $bgCol6;
   background-size: $bgSize1 $bgSize1;
 
+  //--fgHeader: #F88909;
+  --bgHeader: linear-gradient(to right, #0095D5 0%, #238AD9 30%, #557BDE 62%, #806EE3 100%);
+
+  section::after {
+    background:
+            url('./assets/bbl/BBL_light.png') no-repeat right,
+            linear-gradient(to right, #0095D5 0%, #238AD9 30%, #557BDE 62%, #806EE3 100%);
+  }
 }
 
 @import "./water-pouring";
