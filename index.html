@@ -13,11 +13,13 @@
 
 		main {
 			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(60ch, 1fr));
+			grid-auto-rows: minmax(20ch, auto);
 			grid-gap: 1rem;
-			grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
 		}
 
 		section {
+			display: inline-block;
 			margin: .5rem;
 			padding: .5rem;
 			border: thin solid rgba(0, 0, 0, .2);
@@ -30,7 +32,8 @@
 		}
 
 		article {
-			display: flex;
+			display: grid;
+			grid-template-columns: 1fr auto auto auto;
 			align-items: center;
 			justify-content: flex-start;
 			margin: .5rem;
@@ -57,9 +60,11 @@
 
 		a[class^='slide-']::before {
 			content: '⬇ ';
+			white-space: nowrap;
 		}
 
-		a.conf {
+		.conf {
+			text-align: left;
 		}
 
 		a.slide-html {
@@ -101,10 +106,16 @@
 			<a class="slide-html" href="kotlinHandsOn/devoxx-ma.html#kotlinHandsOn">HTML</a>
 			<a class="slide-pdf" href="kotlinHandsOn/devoxx-ma.pdf">PDF</a>
 		</article>
+		<article>
+			<a class="conf" href="http://www.breizhcamp.org/conference/programme/">@ Breizhcamp 2018</a>
+			<a class="slide-html" href="kotlinHandsOn/breizhcamp.html#kotlinHandsOn">HTML</a>
+			<a class="slide-pdf" href="kotlinHandsOn/breizhcamp.pdf">PDF</a>
+		</article>
 	</section>
 	<section>
 		<h2>BBL Kotlin</h2>
 		<article>
+			<span class="conf">BBL</span>
 			<a class="slide-html" href="kotlinBbl/bbl.html#kotlinBbl">HTML</a>
 			<a class="slide-pdf" href="kotlinBbl/bbl.pdf">PDF</a>
 		</article>

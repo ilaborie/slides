@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:5000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Slides</title>
+	<style>
+		body {
+			font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+		}
+
+		main {
+			display: grid;
+			grid-gap: 1rem;
+			grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+		}
+
+		section {
+			margin: .5rem;
+			padding: .5rem;
+			border: thin solid rgba(0, 0, 0, .2);
+			box-shadow: .125rem .125rem .25rem rgba(0, 0, 0, .2);
+			text-align: center;
+		}
+
+		section h2 {
+			margin: .5rem;
+		}
+
+		article {
+			display: grid;
+			grid-template-columns: 1fr auto auto auto;
+			align-items: center;
+			justify-content: flex-start;
+			margin: .5rem;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		a:hover {
+			text-decoration: underline wavy currentColor;
+		}
+
+		a[class^='slide-'] {
+			color: #fff;
+			background: #ccc;
+			border-radius: .25rem;
+			padding: .125rem .5rem;
+			font-weight: bold;
+			margin: .25rem .5rem;
+			word-break: keep-all;
+		}
+
+		a[class^='slide-']::before {
+			content: '⬇ ';
+		}
+
+		.conf {
+			text-align: left;
+			white-space: nowrap;
+		}
+
+		a.slide-html {
+			background: forestgreen;
+		}
+
+		a.slide-pdf {
+			background: firebrick;
+		}
+
+		a.slide-video {
+			background: indigo;
+		}
+	</style>
+</head>
+<body>
+
+<h1>Slides</h1>
+
+<main>
+	<section>
+		<h2>CSS is Awesome !</h2>
+		<article>
+			<a class="conf" href="https://devfesttoulouse.fr/schedule/day1?sessionId=1556">@ Devfest Toulouse 2017</a>
+			<a class="slide-html" href="http://localhost:5000/cssIsAwesome/devfest-tls.html#cssIsAwesome">HTML</a>
+			<a class="slide-pdf" href="http://localhost:5000/cssIsAwesome/devfest-tls.pdf">PDF</a>
+			<a class="slide-video" href="https://www.youtube.com/watch?v=fPObs60585w">YouTube</a>
+		</article>
+		<article>
+			<a class="conf" href="https://cfp.devoxx.ma/2017/talk/QXS-8539">@ Devoxx Morocco 2017</a>
+			<a class="slide-html" href="http://localhost:5000/cssIsAwesome/devoxx-ma.html#cssIsAwesome">HTML</a>
+			<a class="slide-pdf" href="http://localhost:5000/cssIsAwesome/devoxx-ma.pdf">PDF</a>
+		</article>
+	</section>
+	<section>
+		<h2>Kotlin par l'exemple</h2>
+		<article>
+			<a class="conf" href="https://cfp.devoxx.ma/2017/talk/GWR-8354/Kotlin_par_l&#39;exemple">@ Devoxx Morocco 2017</a>
+			<a class="slide-html" href="http://localhost:5000/kotlinHandsOn/devoxx-ma.html#kotlinHandsOn">HTML</a>
+			<a class="slide-pdf" href="http://localhost:5000/kotlinHandsOn/devoxx-ma.pdf">PDF</a>
+		</article>
+		<article>
+			<a class="conf" href="http://www.breizhcamp.org/conference/programme/">@ Breizhcamp 2018</a>
+			<a class="slide-html" href="http://localhost:5000/kotlinHandsOn/breizhcamp.html#kotlinHandsOn">HTML</a>
+			<a class="slide-pdf" href="http://localhost:5000/kotlinHandsOn/breizhcamp.pdf">PDF</a>
+		</article>
+	</section>
+	<section>
+		<h2>BBL Kotlin</h2>
+		<article>
+			<span class="conf">BBL</span>
+			<a class="slide-html" href="http://localhost:5000/kotlinBbl/bbl.html#kotlinBbl">HTML</a>
+			<a class="slide-pdf" href="http://localhost:5000/kotlinBbl/bbl.pdf">PDF</a>
+		</article>
+	</section>
+	<!--<section>-->
+	<!--<h2>JS Functional</h2>-->
+	<!--<article>-->
+	<!--<a class="slide-html" href="jsFunctional/gdg.html#jsFunctional">HTML</a>-->
+	<!--<a class="slide-pdf" href="jsFunctional/gdg.pdf">PDF</a>-->
+	<!--</article>-->
+	<!--</section>-->
+
+</main>
+
+</body></html>

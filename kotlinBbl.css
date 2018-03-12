@@ -1,9 +1,14 @@
 @charset "UTF-8";
-.kotlinBbl {
+body.kotlinBbl {
   --txtFooter: '#BrownBagLunch @ilaborie #kotlin';
   background: linear-gradient(27deg, #ebebeb 0.125rem, transparent 0.125rem) 0 0.125rem, linear-gradient(207deg, #ebebeb 0.125rem, transparent 0.125rem) 0.25rem 0, linear-gradient(27deg, #dedede 0.125rem, transparent 0.125rem) 0 0.25rem, linear-gradient(207deg, #dedede 0.125rem, transparent 0.125rem) 0.25rem 0.125rem, linear-gradient(90deg, #e3e3e3 0.25rem, transparent 0.25rem), linear-gradient(#e3e3e3 25%, #e6e6e6 25%, #e6e6e6 50%, transparent 50%, transparent 75%, #dbdbdb 75%, #dbdbdb);
   background-color: #ededed;
-  background-size: 0.5rem 0.5rem; }
+  background-size: 0.5rem 0.5rem;
+  --bgHeader: linear-gradient(to right, #0095D5 0%, #238AD9 30%, #557BDE 62%, #806EE3 100%); }
+  body.kotlinBbl section::after {
+    background: url("./assets/bbl/BBL_light.png") no-repeat right, linear-gradient(to right, #0095D5 0%, #238AD9 30%, #557BDE 62%, #806EE3 100%); 
+    background-origin: padding-box, border-box;
+  }
 
 .water-pouring-demo {
   background: rgba(255, 255, 255, 0.25);

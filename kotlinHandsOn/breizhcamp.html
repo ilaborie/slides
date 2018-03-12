@@ -23,27 +23,26 @@
 <a href="#roadmap-bc" class="" title="🗺 Roadmap">2</a>
 <a href="#pre_requis___ide-bc" class="" title="Pré-requis - IDE">3</a>
 <a href="#pre_requis___exercices" class="" title="Pré-requis - Exercices">4</a>
-<a href="#pourquoi_un_nouveau_langage__" class="" title="Pourquoi un nouveau langage ?">5</a>
-<a href="#caracteristiques_de_kotlin" class="" title="Caractéristiques de Kotlin">6</a>
-<a href="#cible" class="" title="Cible">7</a></nav>
-<nav><a href="#part_water_pouring_problem" class="part" title="Water Pouring Problem">8</a>
-<a href="#tonneau_magique" class="" title="Tonneau magique">9</a>
-<a href="#verres" class="operation" title="Verres">10</a>
-<a href="#remplir" class="operation" title="Remplir">11</a>
-<a href="#verser" class="operation" title="Verser">12</a>
-<a href="#vider" class="operation" title="Vider">13</a>
-<a href="#demo" class="" title="Démo">14</a></nav>
-<nav><a href="#part_pour_demarrer" class="part" title="Pour démarrer">15</a>
-<a href="#hello_world" class="" title="Hello World">16</a>
-<a href="#glass" class="" title="Glass">17</a>
-<a href="#moves" class="" title="Moves">18</a></nav>
-<nav><a href="#part_excercices" class="part" title="Excercices">19</a>
-<a href="#choisir_son_exercice" class="" title="Choisir son exercice">20</a>
-<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">21</a>
-<a href="#android" class="exo" title="Android">22</a>
-<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">23</a>
-<a href="#freestyle" class="exo" title="Freestyle">24</a>
-<a href="#liens" class="" title="Liens">25</a></nav>
+<a href="#caracteristiques_de_kotlin" class="" title="Caractéristiques de Kotlin">5</a>
+<a href="#cible" class="" title="Cible">6</a></nav>
+<nav><a href="#part_water_pouring_problem" class="part" title="Water Pouring Problem">7</a>
+<a href="#tonneau_magique" class="" title="Tonneau magique">8</a>
+<a href="#verres" class="operation" title="Verres">9</a>
+<a href="#remplir" class="operation" title="Remplir">10</a>
+<a href="#verser" class="operation" title="Verser">11</a>
+<a href="#vider" class="operation" title="Vider">12</a>
+<a href="#demo" class="" title="Démo">13</a></nav>
+<nav><a href="#part_pour_demarrer" class="part" title="Pour démarrer">14</a>
+<a href="#hello_world" class="" title="Hello World">15</a>
+<a href="#glass" class="" title="Glass">16</a>
+<a href="#moves" class="" title="Moves">17</a></nav>
+<nav><a href="#part_excercices" class="part" title="Excercices">18</a>
+<a href="#choisir_son_exercice" class="" title="Choisir son exercice">19</a>
+<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">20</a>
+<a href="#android" class="exo" title="Android">21</a>
+<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">22</a>
+<a href="#freestyle" class="exo" title="Freestyle">23</a>
+<a href="#liens" class="" title="Liens">24</a></nav>
     </div>
     <main>
 
@@ -153,35 +152,17 @@
     <a href="#pre_requis___ide-bc" class="previous" aria-label="Précédant"></a>
     <h3>Pré-requis - Exercices</h3>
     <article>
-        <ul>
-	<li>
-		Récupérer la présentation<br>
-		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf">https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf</a>
-	</li>
+        <ol>
 	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
 	<li>
-		<code>git checkout {branch}</code> avec la branche dans <code>exo-server</code>, <code>exo-web</code>, <code>exo-mobile</code>
+		<code>git checkout {branch}</code> avec la branche dans <code>exo-mobile</code>, <code>exo-server</code>, <code>exo-web</code>
 	</li>
-	<li><code>./gradlew clean assemble test</code></li>
-</ul>
-    </article>
-    <a href="#pourquoi_un_nouveau_langage__" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Pourquoi un nouveau langage ? -->
-<section id="pourquoi_un_nouveau_langage__" class="">
-    <a href="#pre_requis___exercices" class="previous" aria-label="Précédant"></a>
-    <h3>Pourquoi un nouveau langage ?</h3>
-    <article>
-        <ul>
-<li>Écrire du code plus sûr</li>
-<li>Facilité la maintenance</li>
-<li>Écrire plus rapidement</li>
-<li>Résoudre de nouveaux problèmes</li>
-<li>...</li>
-</ul>
-
+	<li><code>./gradlew clean assemble test</code> (les tests doivent être en erreurs)</li>
+	<li>
+		(Optionel) Récupérer la présentation :
+		<a href="https://ilaborie.github.io/slides/kotlinHandsOn/breizhcamp.pdf">http://bit.ly/kotlin-lab</a>
+	</li>
+</ol>
     </article>
     <a href="#caracteristiques_de_kotlin" class="next" aria-label="Suivant"></a>
 </section>
@@ -189,14 +170,16 @@
 
 <!-- Slide Caractéristiques de Kotlin -->
 <section id="caracteristiques_de_kotlin" class="">
-    <a href="#pourquoi_un_nouveau_langage__" class="previous" aria-label="Précédant"></a>
+    <a href="#pre_requis___exercices" class="previous" aria-label="Précédant"></a>
     <h3>Caractéristiques de Kotlin</h3>
     <article>
         <ul>
-<li>Éviter les NPE, statiquement typé</li>
-<li>Abordable, si on vient de Java</li>
+<li>Démarrer en 2011 par <a href="https://www.jetbrains.com/">JetBrains</a></li>
+<li>v1.0 en 2016, v1.1 et v1.2 en 2017</li>
 <li>Expressif et pragmatique</li>
+<li>Sûr: statiquement typé, null-safety</li>
 <li>Inspiré par Java, Scala, C#, Groovy, ...</li>
+<li>Abordable, si on vient de Java</li>
 <li>Cross-platform</li>
 </ul>
 
