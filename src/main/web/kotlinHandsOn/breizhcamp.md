@@ -64,7 +64,7 @@
 <ol>
 	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
 	<li>
-		<code>git checkout {branch}</code> avec la branche dans <code>exo-server</code>, <code>exo-web</code>, <code>exo-mobile</code>
+		<code>git checkout {branch}</code> avec la branche dans <code>exo-mobile</code>, <code>exo-server</code>, <code>exo-web</code>
 	</li>
 	<li><code>./gradlew clean assemble test</code> (les tests doivent être en erreurs)</li>
 	<li>
@@ -77,7 +77,7 @@
 * Démarrer en 2011 par [JetBrains](https://www.jetbrains.com/)
 * v1.0 en 2016, v1.1 et v1.2 en 2017
 * Expressif et pragmatique
-* Éviter les NPE, statiquement typé
+* Sûr: statiquement typé, null-safety
 * Inspiré par Java, Scala, C#, Groovy, ...
 * Abordable, si on vient de Java
 * Cross-platform
