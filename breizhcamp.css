@@ -60,6 +60,19 @@
     background-origin: unset; }
   .breizhcamp main section {
     background: radial-gradient(ellipse at center, transparent, transparent 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%); }
+  .breizhcamp #kotlinHandsOn h1 {
+    grid-area: 🌈;
+    margin: 0;
+    align-self: flex-end;
+    font-size: 4rem;
+    line-height: 1em;
+    padding-bottom: 1em; }
+  .breizhcamp #kotlinHandsOn article {
+    background: url(./assets/breizhcamp/b.png);
+    grid-row: 1 / 3;
+    background-size: auto 30vh;
+    background-repeat: no-repeat;
+    background-position: top center; }
   .breizhcamp main section.part::before {
     color: var(--primary); }
   .breizhcamp main section::after {
