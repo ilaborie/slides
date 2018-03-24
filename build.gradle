@@ -3,7 +3,7 @@ version '1.0-SNAPSHOT'
 
 buildscript {
     ext{
-        kotlinVersion = '1.2.30'
+        kotlinVersion = '1.2.31'
         serializationVersion = '0.4.2'
         feignVersion = '9.5.1'
         loggingVersion = '1.4.9'
