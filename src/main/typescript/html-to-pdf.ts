@@ -5,9 +5,9 @@ export function renderPdf(from: string, to: string): Promise<void> {
         waitUntil: 'networkidle0'
     };
 
-    // const wait = value => new Promise(resolve => {
-    //     setTimeout(() => resolve(value), 1000);
-    // });
+    const wait = value => new Promise(resolve => {
+        setTimeout(() => resolve(value), 1000);
+    });
 
     const pdfOptions: Partial<PDFOptions> = {
         path: to,
@@ -21,7 +21,7 @@ export function renderPdf(from: string, to: string): Promise<void> {
             .then(page => ({browser, page})))
         .then(({browser, page}) => page.goto(from, options)
             .then(() => ({browser, page})))
-        // .then(value => wait(value))
+        .then(value => wait(value))
         .then(({browser, page}) => page.pdf(pdfOptions)
             .then(() => browser))
         .then(browser => browser.close());
