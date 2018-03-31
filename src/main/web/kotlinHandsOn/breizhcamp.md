@@ -49,6 +49,19 @@
 	</div>
 </div>
 
+<div>
+    <span>🤩</span>
+    <p>Vous avez déjà une connexion internet correcte.</p>
+</div>
+<div>
+    <span>🤬</span>
+    <p>
+        Sinon utilisez le wifi
+        <code>Monkey</code> /
+        <code>bananaTree</code>.
+    </p>
+</div>
+
 <ul>
 	<li class="ide">
 		Installation de l'IDE<br>

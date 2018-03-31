@@ -103,10 +103,16 @@ input[type=number] {
 section article > pre.hljs {
   align-self: center; }
 
-#roadmap article .roadmap, #roadmap-bc article .roadmap {
+#roadmap article .roadmap,
+#roadmap-bc article .roadmap {
   display: grid;
   grid-template-columns: 1fr 6fr 1fr; }
-  #roadmap article .roadmap .init, #roadmap article .roadmap .exo, #roadmap article .roadmap .homework, #roadmap-bc article .roadmap .init, #roadmap-bc article .roadmap .exo, #roadmap-bc article .roadmap .homework {
+  #roadmap article .roadmap .init,
+  #roadmap article .roadmap .exo,
+  #roadmap article .roadmap .homework,
+  #roadmap-bc article .roadmap .init,
+  #roadmap-bc article .roadmap .exo,
+  #roadmap-bc article .roadmap .homework {
     padding: .5rem;
     position: relative;
     color: #fff;
@@ -115,40 +121,76 @@ section article > pre.hljs {
     display: flex;
     justify-content: center;
     align-items: center; }
-  #roadmap article .roadmap .init, #roadmap-bc article .roadmap .init {
+  #roadmap article .roadmap .init,
+  #roadmap-bc article .roadmap .init {
     background: green; }
-    #roadmap article .roadmap .init::before, #roadmap-bc article .roadmap .init::before {
+    #roadmap article .roadmap .init::before,
+    #roadmap-bc article .roadmap .init::before {
       content: var(--startAt); }
-  #roadmap article .roadmap .exo, #roadmap-bc article .roadmap .exo {
+  #roadmap article .roadmap .exo,
+  #roadmap-bc article .roadmap .exo {
     background: #e49400; }
-    #roadmap article .roadmap .exo::before, #roadmap-bc article .roadmap .exo::before {
+    #roadmap article .roadmap .exo::before,
+    #roadmap-bc article .roadmap .exo::before {
       content: var(--exoAt); }
-    #roadmap article .roadmap .exo::after, #roadmap-bc article .roadmap .exo::after {
+    #roadmap article .roadmap .exo::after,
+    #roadmap-bc article .roadmap .exo::after {
       content: var(--endAt); }
-  #roadmap article .roadmap .homework, #roadmap-bc article .roadmap .homework {
+  #roadmap article .roadmap .homework,
+  #roadmap-bc article .roadmap .homework {
     background: linear-gradient(to right, purple, purple 60%, transparent 100%);
     min-width: 5rem;
     margin-left: .5rem; }
-  #roadmap article .roadmap .init::before, #roadmap article .roadmap .exo::before, #roadmap-bc article .roadmap .init::before, #roadmap-bc article .roadmap .exo::before {
+  #roadmap article .roadmap .init::before,
+  #roadmap article .roadmap .exo::before,
+  #roadmap-bc article .roadmap .init::before,
+  #roadmap-bc article .roadmap .exo::before {
     position: absolute;
     top: -.8rem;
     left: -2.5ch;
     color: var(--primary); }
-  #roadmap article .roadmap .exo::after, #roadmap-bc article .roadmap .exo::after {
+  #roadmap article .roadmap .exo::after,
+  #roadmap-bc article .roadmap .exo::after {
     position: absolute;
     top: -.8rem;
     right: -2.5ch;
     color: var(--primary); }
 
-#pre_requis___ide article .wifi, #pre_requis___exercices article .wifi {
+#wifi article {
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row; }
+  #wifi article div {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    width: 33vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    #wifi article div span {
+      font-size: 4rem; }
+    #wifi article div p {
+      line-height: 2rem; }
+    #wifi article div code {
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: .25rem;
+      box-shadow: inset 0.25rem 0.25rem 2rem rgba(0, 0, 0, 0.3);
+      padding: .25rem; }
+
+#pre_requis___ide article .wifi,
+#pre_requis___exercices article .wifi {
   font-size: 1.2rem;
   align-self: stretch;
   text-align: center; }
 
-#pre_requis___ide article img, #pre_requis___exercices article img {
+#pre_requis___ide article img,
+#pre_requis___exercices article img {
   max-height: 3rem; }
 
-#pre_requis___ide article li code, #pre_requis___exercices article li code {
+#pre_requis___ide article li code,
+#pre_requis___exercices article li code {
   background: white;
   box-shadow: inset 0 0 0.25rem;
   padding: .125rem .5rem;
@@ -169,7 +211,8 @@ section article > pre.hljs {
       background: #00b0f0; }
     #speakers article .didier {
       background: #345678; }
-    #speakers article .emmanuel, #speakers article .didier {
+    #speakers article .emmanuel,
+    #speakers article .didier {
       height: 100vh;
       flex-grow: 1;
       display: flex;
@@ -177,7 +220,8 @@ section article > pre.hljs {
       justify-content: center;
       align-items: center;
       text-align: center; }
-      #speakers article .emmanuel img.speakerRound, #speakers article .didier img.speakerRound {
+      #speakers article .emmanuel img.speakerRound,
+      #speakers article .didier img.speakerRound {
         width: 128px;
         float: left;
         margin-right: 20px;
@@ -185,21 +229,31 @@ section article > pre.hljs {
         border-radius: 100px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); }
-      #speakers article .emmanuel a > img, #speakers article .emmanuel a > svg, #speakers article .didier a > img, #speakers article .didier a > svg {
+      #speakers article .emmanuel a > img,
+      #speakers article .emmanuel a > svg,
+      #speakers article .didier a > img,
+      #speakers article .didier a > svg {
         height: 25vh; }
-      #speakers article .emmanuel > *, #speakers article .didier > * {
+      #speakers article .emmanuel > *,
+      #speakers article .didier > * {
         align-self: center;
         text-align: center;
         white-space: nowrap; }
-      #speakers article .emmanuel h4, #speakers article .didier h4 {
+      #speakers article .emmanuel h4,
+      #speakers article .didier h4 {
         font-size: 1.25rem;
         font-weight: bold; }
-      #speakers article .emmanuel span, #speakers article .emmanuel a, #speakers article .didier span, #speakers article .didier a {
+      #speakers article .emmanuel span,
+      #speakers article .emmanuel a,
+      #speakers article .didier span,
+      #speakers article .didier a {
         grid-column: 2 / 3; }
-      #speakers article .emmanuel a, #speakers article .didier a {
+      #speakers article .emmanuel a,
+      #speakers article .didier a {
         font-size: .8rem;
         margin-top: .5rem; }
-        #speakers article .emmanuel a[href*="twitter"]::before, #speakers article .didier a[href*="twitter"]::before {
+        #speakers article .emmanuel a[href*="twitter"]::before,
+        #speakers article .didier a[href*="twitter"]::before {
           background-image: url("./assets/brands/twitter-white.svg"); }
     #speakers article > a {
       align-self: center;
@@ -233,7 +287,8 @@ section article > pre.hljs {
         border-radius: 100px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); }
-      #speakers-bc article > div h4, #speakers-bc article > div a {
+      #speakers-bc article > div h4,
+      #speakers-bc article > div a {
         align-self: initial; }
       #speakers-bc article > div a {
         font-size: 80%; }
@@ -268,9 +323,11 @@ section.list-big {
     #demo article .water-pouring-demo .main button {
       color: var(--primary); }
 
-#theiere_magique article, #tonneau_magique article {
+#theiere_magique article,
+#tonneau_magique article {
   align-items: center; }
-  #theiere_magique article img, #tonneau_magique article img {
+  #theiere_magique article img,
+  #tonneau_magique article img {
     height: 75vh; }
 
 #tonneau_magique article img {

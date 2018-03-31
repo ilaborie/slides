@@ -1,22 +1,22 @@
-
 .devoxx-ma.kotlinHandsOn {
   --txtFooter: '#DevoxxMa @EmmanuelVinas @dplaindoux #kotlin';
 }
 
 //@import "common/print";
 @import "./water-pouring";
-
-section article > pre.hljs {
+section article>pre.hljs {
   align-self: center;
 }
 
-#roadmap, #roadmap-bc {
+#roadmap,
+#roadmap-bc {
   article {
     .roadmap {
       display: grid;
       grid-template-columns: 1fr 6fr 1fr;
-
-      .init, .exo, .homework {
+      .init,
+      .exo,
+      .homework {
         padding: .5rem;
         position: relative;
         color: #fff;
@@ -26,7 +26,6 @@ section article > pre.hljs {
         justify-content: center;
         align-items: center;
       }
-
       .init {
         background: green;
         &::before {
@@ -47,8 +46,8 @@ section article > pre.hljs {
         min-width: 5rem;
         margin-left: .5rem;
       }
-
-      .init::before, .exo::before {
+      .init::before,
+      .exo::before {
         position: absolute;
         top: -.8rem;
         left: -2.5ch;
@@ -60,24 +59,50 @@ section article > pre.hljs {
         right: -2.5ch;
         color: var(--primary);
       }
-
     }
   }
 }
 
-#pre_requis___ide, #pre_requis___exercices {
-  article {
+#wifi article {
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  div {
+    text-align: center;
+    background: hsla(1, 100%, 100%, .5);
+    border-radius: 1rem;
+    font-size: 1.25rem;
+    width: 33vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+    span {
+      font-size: 4rem;
+    }
+    p {
+      line-height: 2rem;
+    }
+    code {
+      background: hsla(1, 100%, 100%, .5);
+      border-radius: .25rem;
+      box-shadow: inset .25rem .25rem 2rem  rgba(0, 0, 0, 0.3);
+      padding: .25rem;
+    }
+  }
+}
+
+#pre_requis___ide,
+#pre_requis___exercices {
+  article {
     .wifi {
       font-size: 1.2rem;
       align-self: stretch;
       text-align: center;
     }
-
     img {
       max-height: 3rem;
     }
-
     li code {
       background: rgba(255, 255, 255, 1);
       box-shadow: inset 0 0 0.25rem;
@@ -92,24 +117,21 @@ section article > pre.hljs {
 #speakers {
   color: #fff;
   z-index: 2;
-
   &::after {
     display: none;
   }
-
   article {
     flex-direction: row;
     grid-column: 1 / 4;
     grid-row: 1 / 4;
-
     .emmanuel {
       background: #00b0f0;
     }
     .didier {
       background: #345678;
     }
-
-    .emmanuel, .didier {
+    .emmanuel,
+    .didier {
       height: 100vh;
       flex-grow: 1;
       display: flex;
@@ -117,7 +139,6 @@ section article > pre.hljs {
       justify-content: center;
       align-items: center;
       text-align: center;
-
       img.speakerRound {
         width: 128px;
         float: left;
@@ -127,49 +148,47 @@ section article > pre.hljs {
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
       }
-
-      a > img, a > svg {
+      a>img,
+      a>svg {
         height: 25vh;
       }
-      & > * {
+      &>* {
         align-self: center;
         text-align: center;
         white-space: nowrap;
       }
-
       h4 {
         font-size: 1.25rem;
         font-weight: bold;
       }
-      span, a {
+      span,
+      a {
         grid-column: 2 / 3;
       }
       a {
         font-size: .8rem;
         margin-top: .5rem;
-
         &[href*="twitter"]::before {
           background-image: url('./assets/brands/twitter-white.svg');
         }
       }
     }
-    & > a {
+    &>a {
       align-self: center;
       grid-column: 1 / 3;
     }
   }
-
 }
 
 #speakers-bc {
   background: #00b0f0;
   color: #fff;
   z-index: 2;
-
-  h3, &::before, &::after {
+  h3,
+  &::before,
+  &::after {
     display: none;
   }
-
   article {
     flex-direction: row;
     grid-column: 1 / 4;
@@ -179,13 +198,11 @@ section article > pre.hljs {
     grid-template-rows: 2fr 1fr;
     min-height: 100vh;
     align-items: center;
-
-    & > div {
+    &>div {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-
       img.speakerRound {
         width: 128px;
         float: left;
@@ -195,20 +212,20 @@ section article > pre.hljs {
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
       }
-      h4, a {
+      h4,
+      a {
         align-self: initial;
       }
       a {
         font-size: 80%;
       }
     }
-    & > a {
+    &>a {
       grid-column: 1 / 3;
       text-align: center;
       justify-self: center;
       border: none;
     }
-
   }
 }
 
@@ -223,11 +240,9 @@ section.list-big {
     align-content: center;
     justify-items: center;
     grid-gap: .5rem;
-
     .jvm-android {
       grid-column: 1 / 3;
     }
-
     img {
       width: 12vw;
       align-self: end;
@@ -244,7 +259,6 @@ section.list-big {
         pointer-events: auto;
         overflow: auto;
         max-height: 75vh;
-
         button {
           color: var(--primary);
         }
@@ -253,7 +267,8 @@ section.list-big {
   }
 }
 
-#theiere_magique, #tonneau_magique {
+#theiere_magique,
+#tonneau_magique {
   article {
     align-items: center;
     img {
@@ -261,6 +276,7 @@ section.list-big {
     }
   }
 }
+
 #tonneau_magique {
   article img {
     border-radius: 5%;
@@ -271,7 +287,7 @@ section.list-big {
 section.operation {
   article {
     align-items: stretch;
-    & > div {
+    &>div {
       margin-top: -2rem;
       display: flex;
       font-weight: bold;
@@ -295,7 +311,6 @@ section.operation {
     grid-gap: 1rem;
     align-items: stretch;
     justify-content: stretch;
-
     p {
       background: hsla(1, 100%, 100%, .5);
       border: thin solid currentColor;
@@ -307,12 +322,10 @@ section.operation {
       align-items: stretch;
       text-align: center;
       transition: all .4s ease-in-out;
-
       &:hover {
         box-shadow: .125rem .125rem .125rem rgba(0, 0, 0, 0.5);
         transform: translateY(-0.03125rem);
       }
-
       a {
         align-self: center;
         font-weight: bold;
@@ -326,11 +339,9 @@ section.operation {
 }
 
 section.exo {
-
   article {
     font-size: .8rem;
     justify-content: center;
-
     h4 {
       margin-top: 1rem;
     }
