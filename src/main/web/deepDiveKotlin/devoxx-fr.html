@@ -1,0 +1,677 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Deep Dive Kotlin: du Hello World au Bytecode</title>
+    <link rel="stylesheet" href="../slides.css">
+    <link rel="stylesheet" href="../deepDiveKotlin.css">
+    <link rel="stylesheet" href="../devoxx-fr.css">
+    <link rel="stylesheet" href="../print.css" media="print">
+    <link rel="icon" type="image/png" href="../assets/devoxx-fr/favicon.png" />
+</head>
+<body class="devoxx-fr deepDiveKotlin">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(21, auto);">
+        <a href="#deepDiveKotlin" class="cover" title="Deep Dive Kotlin: du Hello World au Bytecode">0</a>
+        <strong>Introduction</strong>
+<strong>Qu'est-ce que le ByteCode Java ?</strong>
+<strong>Introduction Kotlin</strong>
+<strong>Les bases</strong>
+<strong>null-safety</strong>
+<strong>Fonction</strong>
+<strong>Lambda</strong>
+<strong>Class</strong>
+<strong>Types</strong>
+<strong>Extension de fonction</strong>
+<strong>Structure</strong>
+<strong>Pause</strong>
+<strong>ByteCode Android</strong>
+<strong>Collection</strong>
+<strong>Delegate</strong>
+<strong>Plus sur les fonctions</strong>
+<strong>Serialization</strong>
+<strong>Coroutines</strong>
+<strong>DSL</strong>
+<strong>Conclusion</strong>
+        <nav><a href="#speakers-bc" class="" title="Speakers">1</a>
+<a href="#roadmap-bc" class="" title="🗺 Roadmap">2</a></nav>
+<nav><a href="#part_qu_est_ce_que_le_bytecode_java__" class="part" title="Qu'est-ce que le ByteCode Java ?">3</a>
+<a href="#java_le_langage" class="" title="Java le langage">4</a>
+<a href="#compilons" class="" title="Compilons">5</a>
+<a href="#analysons" class="" title="Analysons">6</a>
+<a href="#decompilons" class="" title="Décompilons">7</a>
+<a href="#bilan" class="" title="Bilan">8</a></nav>
+<nav><a href="#part_introduction_kotlin" class="part" title="Introduction Kotlin">9</a>
+<a href="#historique" class="" title="Historique">10</a>
+<a href="#cible" class="" title="Cible">11</a>
+<a href="#helloworld" class="" title="HelloWorld">12</a>
+<a href="#helloworld_dump" class="" title="HelloWorld-dump">13</a>
+<a href="#helloworld_bytecode" class="" title="HelloWorld-bytecode">14</a>
+<a href="#helloworld_java" class="" title="HelloWorld-java">15</a>
+<a href="#intrinsics" class="" title="Intrinsics">16</a></nav>
+<nav><a href="#part_les_bases" class="part" title="Les bases">17</a>
+<a href="#val_var__number__string" class="" title="val/var, Number, String">18</a></nav>
+<nav><a href="#part_null_safety" class="part" title="null-safety">19</a>
+<a href="#elvis" class="" title="elvis">20</a></nav>
+<nav><a href="#part_fonction" class="part" title="Fonction">21</a>
+<a href="#function" class="" title="function">22</a></nav>
+<nav><a href="#part_lambda" class="part" title="Lambda">23</a>
+<a href="#lambda" class="" title="Lambda">24</a></nav>
+<nav><a href="#part_class" class="part" title="Class">25</a>
+<a href="#class" class="" title="Class">26</a></nav>
+<nav><a href="#part_types" class="part" title="Types">27</a>
+<a href="#hierarchie_des_types" class="" title="Hierarchie des types">28</a></nav>
+<nav><a href="#part_extension_de_fonction" class="part" title="Extension de fonction">29</a>
+<a href="#extension" class="" title="Extension">30</a></nav>
+<nav><a href="#part_structure" class="part" title="Structure">31</a>
+<a href="#structures" class="" title="Structures">32</a></nav>
+<nav><a href="#part_pause" class="part" title="Pause">33</a></nav>
+<nav><a href="#part_bytecode_android" class="part" title="ByteCode Android">34</a>
+<a href="#android_bytecode" class="" title="Android ByteCode">35</a></nav>
+<nav><a href="#part_collection" class="part" title="Collection">36</a>
+<a href="#collection" class="" title="Collection">37</a></nav>
+<nav><a href="#part_delegate" class="part" title="Delegate">38</a>
+<a href="#delegate" class="" title="Delegate">39</a></nav>
+<nav><a href="#part_plus_sur_les_fonctions" class="part" title="Plus sur les fonctions">40</a>
+<a href="#plus_sur_les_fonctions" class="" title="Plus sur les fonctions">41</a></nav>
+<nav><a href="#part_serialization" class="part" title="Serialization">42</a>
+<a href="#serialisation" class="" title="serialisation">43</a></nav>
+<nav><a href="#part_coroutines" class="part" title="Coroutines">44</a>
+<a href="#coroutines" class="" title="Coroutines">45</a></nav>
+<nav><a href="#part_dsl" class="part" title="DSL">46</a>
+<a href="#dsl" class="" title="DSL">47</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">48</a>
+<a href="#kotlin_vs_java" class="" title="Kotlin vs Java">49</a>
+<a href="#liens" class="" title="Liens">50</a></nav>
+    </div>
+    <main>
+
+<!-- Slide Deep Dive Kotlin: du Hello World au Bytecode -->
+<section id="deepDiveKotlin" class="cover">
+    
+    <h1>Deep Dive Kotlin: du Hello World au Bytecode</h1>
+    <article>
+        
+    </article>
+    <a href="#speakers-bc" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Speakers -->
+<section id="speakers-bc" class="">
+    <a href="#deepDiveKotlin" class="previous" aria-label="Précédant"></a>
+    <h3>Speakers</h3>
+    <article>
+        
+    </article>
+    <a href="#roadmap-bc" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide 🗺 Roadmap -->
+<section id="roadmap-bc" class="">
+    <a href="#speakers-bc" class="previous" aria-label="Précédant"></a>
+    <h3>🗺 Roadmap</h3>
+    <article>
+        
+    </article>
+    <a href="#part_qu_est_ce_que_le_bytecode_java__" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Qu'est-ce que le ByteCode Java ? -->
+<section id="part_qu_est_ce_que_le_bytecode_java__" class="part">
+    <a href="#roadmap-bc" class="previous" aria-label="Précédant"></a>
+    <h2>Qu'est-ce que le ByteCode Java ?</h2>
+    <article>
+        
+    </article>
+    <a href="#java_le_langage" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Java le langage -->
+<section id="java_le_langage" class="">
+    <a href="#part_qu_est_ce_que_le_bytecode_java__" class="previous" aria-label="Précédant"></a>
+    <h3>Java le langage</h3>
+    <article>
+        
+    </article>
+    <a href="#compilons" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Compilons -->
+<section id="compilons" class="">
+    <a href="#java_le_langage" class="previous" aria-label="Précédant"></a>
+    <h3>Compilons</h3>
+    <article>
+        
+    </article>
+    <a href="#analysons" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Analysons -->
+<section id="analysons" class="">
+    <a href="#compilons" class="previous" aria-label="Précédant"></a>
+    <h3>Analysons</h3>
+    <article>
+        
+    </article>
+    <a href="#decompilons" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Décompilons -->
+<section id="decompilons" class="">
+    <a href="#analysons" class="previous" aria-label="Précédant"></a>
+    <h3>Décompilons</h3>
+    <article>
+        
+    </article>
+    <a href="#bilan" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Bilan -->
+<section id="bilan" class="">
+    <a href="#decompilons" class="previous" aria-label="Précédant"></a>
+    <h3>Bilan</h3>
+    <article>
+        
+    </article>
+    <a href="#part_introduction_kotlin" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Introduction Kotlin -->
+<section id="part_introduction_kotlin" class="part">
+    <a href="#bilan" class="previous" aria-label="Précédant"></a>
+    <h2>Introduction Kotlin</h2>
+    <article>
+        
+    </article>
+    <a href="#historique" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Historique -->
+<section id="historique" class="">
+    <a href="#part_introduction_kotlin" class="previous" aria-label="Précédant"></a>
+    <h3>Historique</h3>
+    <article>
+        <ul>
+	<li>
+		<strong>2011</strong>
+		<p>Dévoilé par JetBrains</p>
+	</li>
+	<li>
+		<strong>2016:</strong>
+		<p><mark>v1.0</mark></p>
+		<p>Supporté par Spring Framework</p>
+	</li>
+	<li>
+		<strong>2017:</strong>
+		<p><mark>v1.1</mark>: coroutines, ...</p>
+		<p>Officiellement supportee par Google</p>
+		<p><mark>v1.2</mark>: multiplatform</p>
+	</li>
+	<li>
+		<strong>2018:</strong>
+		<p>Kotlin Native (external) 0.6</p>
+	</li>
+
+</ul>
+
+    </article>
+    <a href="#cible" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Cible -->
+<section id="cible" class="">
+    <a href="#historique" class="previous" aria-label="Précédant"></a>
+    <h3>Cible</h3>
+    <article>
+        
+    </article>
+    <a href="#helloworld" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide HelloWorld -->
+<section id="helloworld" class="">
+    <a href="#cible" class="previous" aria-label="Précédant"></a>
+    <h3>HelloWorld</h3>
+    <article>
+        
+    </article>
+    <a href="#helloworld_dump" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide HelloWorld-dump -->
+<section id="helloworld_dump" class="">
+    <a href="#helloworld" class="previous" aria-label="Précédant"></a>
+    <h3>HelloWorld-dump</h3>
+    <article>
+        
+    </article>
+    <a href="#helloworld_bytecode" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide HelloWorld-bytecode -->
+<section id="helloworld_bytecode" class="">
+    <a href="#helloworld_dump" class="previous" aria-label="Précédant"></a>
+    <h3>HelloWorld-bytecode</h3>
+    <article>
+        
+    </article>
+    <a href="#helloworld_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide HelloWorld-java -->
+<section id="helloworld_java" class="">
+    <a href="#helloworld_bytecode" class="previous" aria-label="Précédant"></a>
+    <h3>HelloWorld-java</h3>
+    <article>
+        
+    </article>
+    <a href="#intrinsics" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Intrinsics -->
+<section id="intrinsics" class="">
+    <a href="#helloworld_java" class="previous" aria-label="Précédant"></a>
+    <h3>Intrinsics</h3>
+    <article>
+        
+    </article>
+    <a href="#part_les_bases" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les bases -->
+<section id="part_les_bases" class="part">
+    <a href="#intrinsics" class="previous" aria-label="Précédant"></a>
+    <h2>Les bases</h2>
+    <article>
+        
+    </article>
+    <a href="#val_var__number__string" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide val/var, Number, String -->
+<section id="val_var__number__string" class="">
+    <a href="#part_les_bases" class="previous" aria-label="Précédant"></a>
+    <h3>val/var, Number, String</h3>
+    <article>
+        
+    </article>
+    <a href="#part_null_safety" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide null-safety -->
+<section id="part_null_safety" class="part">
+    <a href="#val_var__number__string" class="previous" aria-label="Précédant"></a>
+    <h2>null-safety</h2>
+    <article>
+        
+    </article>
+    <a href="#elvis" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide elvis -->
+<section id="elvis" class="">
+    <a href="#part_null_safety" class="previous" aria-label="Précédant"></a>
+    <h3>elvis</h3>
+    <article>
+        
+    </article>
+    <a href="#part_fonction" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Fonction -->
+<section id="part_fonction" class="part">
+    <a href="#elvis" class="previous" aria-label="Précédant"></a>
+    <h2>Fonction</h2>
+    <article>
+        
+    </article>
+    <a href="#function" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide function -->
+<section id="function" class="">
+    <a href="#part_fonction" class="previous" aria-label="Précédant"></a>
+    <h3>function</h3>
+    <article>
+        
+    </article>
+    <a href="#part_lambda" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Lambda -->
+<section id="part_lambda" class="part">
+    <a href="#function" class="previous" aria-label="Précédant"></a>
+    <h2>Lambda</h2>
+    <article>
+        
+    </article>
+    <a href="#lambda" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Lambda -->
+<section id="lambda" class="">
+    <a href="#part_lambda" class="previous" aria-label="Précédant"></a>
+    <h3>Lambda</h3>
+    <article>
+        
+    </article>
+    <a href="#part_class" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Class -->
+<section id="part_class" class="part">
+    <a href="#lambda" class="previous" aria-label="Précédant"></a>
+    <h2>Class</h2>
+    <article>
+        
+    </article>
+    <a href="#class" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Class -->
+<section id="class" class="">
+    <a href="#part_class" class="previous" aria-label="Précédant"></a>
+    <h3>Class</h3>
+    <article>
+        
+    </article>
+    <a href="#part_types" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Types -->
+<section id="part_types" class="part">
+    <a href="#class" class="previous" aria-label="Précédant"></a>
+    <h2>Types</h2>
+    <article>
+        
+    </article>
+    <a href="#hierarchie_des_types" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Hierarchie des types -->
+<section id="hierarchie_des_types" class="">
+    <a href="#part_types" class="previous" aria-label="Précédant"></a>
+    <h3>Hierarchie des types</h3>
+    <article>
+        
+    </article>
+    <a href="#part_extension_de_fonction" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Extension de fonction -->
+<section id="part_extension_de_fonction" class="part">
+    <a href="#hierarchie_des_types" class="previous" aria-label="Précédant"></a>
+    <h2>Extension de fonction</h2>
+    <article>
+        
+    </article>
+    <a href="#extension" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Extension -->
+<section id="extension" class="">
+    <a href="#part_extension_de_fonction" class="previous" aria-label="Précédant"></a>
+    <h3>Extension</h3>
+    <article>
+        
+    </article>
+    <a href="#part_structure" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Structure -->
+<section id="part_structure" class="part">
+    <a href="#extension" class="previous" aria-label="Précédant"></a>
+    <h2>Structure</h2>
+    <article>
+        
+    </article>
+    <a href="#structures" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Structures -->
+<section id="structures" class="">
+    <a href="#part_structure" class="previous" aria-label="Précédant"></a>
+    <h3>Structures</h3>
+    <article>
+        
+    </article>
+    <a href="#part_pause" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Pause -->
+<section id="part_pause" class="part">
+    <a href="#structures" class="previous" aria-label="Précédant"></a>
+    <h2>Pause</h2>
+    <article>
+        
+    </article>
+    <a href="#part_bytecode_android" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide ByteCode Android -->
+<section id="part_bytecode_android" class="part">
+    <a href="#part_pause" class="previous" aria-label="Précédant"></a>
+    <h2>ByteCode Android</h2>
+    <article>
+        
+    </article>
+    <a href="#android_bytecode" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Android ByteCode -->
+<section id="android_bytecode" class="">
+    <a href="#part_bytecode_android" class="previous" aria-label="Précédant"></a>
+    <h3>Android ByteCode</h3>
+    <article>
+        
+    </article>
+    <a href="#part_collection" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Collection -->
+<section id="part_collection" class="part">
+    <a href="#android_bytecode" class="previous" aria-label="Précédant"></a>
+    <h2>Collection</h2>
+    <article>
+        
+    </article>
+    <a href="#collection" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Collection -->
+<section id="collection" class="">
+    <a href="#part_collection" class="previous" aria-label="Précédant"></a>
+    <h3>Collection</h3>
+    <article>
+        
+    </article>
+    <a href="#part_delegate" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Delegate -->
+<section id="part_delegate" class="part">
+    <a href="#collection" class="previous" aria-label="Précédant"></a>
+    <h2>Delegate</h2>
+    <article>
+        
+    </article>
+    <a href="#delegate" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Delegate -->
+<section id="delegate" class="">
+    <a href="#part_delegate" class="previous" aria-label="Précédant"></a>
+    <h3>Delegate</h3>
+    <article>
+        
+    </article>
+    <a href="#part_plus_sur_les_fonctions" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Plus sur les fonctions -->
+<section id="part_plus_sur_les_fonctions" class="part">
+    <a href="#delegate" class="previous" aria-label="Précédant"></a>
+    <h2>Plus sur les fonctions</h2>
+    <article>
+        
+    </article>
+    <a href="#plus_sur_les_fonctions" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Plus sur les fonctions -->
+<section id="plus_sur_les_fonctions" class="">
+    <a href="#part_plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
+    <h3>Plus sur les fonctions</h3>
+    <article>
+        
+    </article>
+    <a href="#part_serialization" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Serialization -->
+<section id="part_serialization" class="part">
+    <a href="#plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
+    <h2>Serialization</h2>
+    <article>
+        
+    </article>
+    <a href="#serialisation" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide serialisation -->
+<section id="serialisation" class="">
+    <a href="#part_serialization" class="previous" aria-label="Précédant"></a>
+    <h3>serialisation</h3>
+    <article>
+        
+    </article>
+    <a href="#part_coroutines" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Coroutines -->
+<section id="part_coroutines" class="part">
+    <a href="#serialisation" class="previous" aria-label="Précédant"></a>
+    <h2>Coroutines</h2>
+    <article>
+        
+    </article>
+    <a href="#coroutines" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Coroutines -->
+<section id="coroutines" class="">
+    <a href="#part_coroutines" class="previous" aria-label="Précédant"></a>
+    <h3>Coroutines</h3>
+    <article>
+        
+    </article>
+    <a href="#part_dsl" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide DSL -->
+<section id="part_dsl" class="part">
+    <a href="#coroutines" class="previous" aria-label="Précédant"></a>
+    <h2>DSL</h2>
+    <article>
+        
+    </article>
+    <a href="#dsl" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide DSL -->
+<section id="dsl" class="">
+    <a href="#part_dsl" class="previous" aria-label="Précédant"></a>
+    <h3>DSL</h3>
+    <article>
+        
+    </article>
+    <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Conclusion -->
+<section id="part_conclusion" class="part">
+    <a href="#dsl" class="previous" aria-label="Précédant"></a>
+    <h2>Conclusion</h2>
+    <article>
+        
+    </article>
+    <a href="#kotlin_vs_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Kotlin vs Java -->
+<section id="kotlin_vs_java" class="">
+    <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
+    <h3>Kotlin vs Java</h3>
+    <article>
+        
+    </article>
+    <a href="#liens" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Liens -->
+<section id="liens" class="">
+    <a href="#kotlin_vs_java" class="previous" aria-label="Précédant"></a>
+    <h3>Liens</h3>
+    <article>
+        
+    </article>
+    
+</section>
+
+    </main>
+
+    <script type="application/javascript" src="../scripts/navigation.js"></script>
+</body>
+</html>

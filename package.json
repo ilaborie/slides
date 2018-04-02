@@ -17,6 +17,7 @@
     "style:breizhcamp": "node-sass src/main/slides-style/breizhcamp.scss --output src/main/web/",
     "style:devfest-tls": "node-sass src/main/slides-style/devfest-tls.scss --output src/main/web/",
     "style:devoxx-ma": "node-sass src/main/slides-style/devoxx-ma.scss --output src/main/web/",
+    "style:devoxx-fr": "node-sass src/main/slides-style/devoxx-fr.scss --output src/main/web/",
     "start": "run-p -nl serve \"style:** -- --watch\"",
     "publish": "gh-pages --dist src/main/web"
   },
