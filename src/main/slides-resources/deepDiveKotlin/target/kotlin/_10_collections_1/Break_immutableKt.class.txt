@@ -1,0 +1,427 @@
+Classfile /Users/igorlaborie/Documents/Workspaces/MonkeyPatch/DeepDiveKotlin_Hello2Bytecode/target/kotlin/_10_collections_1/Break_immutableKt.class
+  Last modified Apr 2, 2018; size 3503 bytes
+  MD5 checksum 9a6183a1026a4832bfe94594c0ac0ed2
+  Compiled from "break-immutable.kt"
+public final class _10_collections_1.Break_immutableKt
+  minor version: 0
+  major version: 50
+  flags: ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+Constant pool:
+    #1 = Utf8               _10_collections_1/Break_immutableKt
+    #2 = Class              #1            // _10_collections_1/Break_immutableKt
+    #3 = Utf8               java/lang/Object
+    #4 = Class              #3            // java/lang/Object
+    #5 = Utf8               main
+    #6 = Utf8               ([Ljava/lang/String;)V
+    #7 = Utf8               Lorg/jetbrains/annotations/NotNull;
+    #8 = Utf8               args
+    #9 = String             #8            // args
+   #10 = Utf8               kotlin/jvm/internal/Intrinsics
+   #11 = Class              #10           // kotlin/jvm/internal/Intrinsics
+   #12 = Utf8               checkParameterIsNotNull
+   #13 = Utf8               (Ljava/lang/Object;Ljava/lang/String;)V
+   #14 = NameAndType        #12:#13       // checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+   #15 = Methodref          #11.#14       // kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+   #16 = Utf8               kotlin/ranges/IntRange
+   #17 = Class              #16           // kotlin/ranges/IntRange
+   #18 = Utf8               <init>
+   #19 = Utf8               (II)V
+   #20 = NameAndType        #18:#19       // "<init>":(II)V
+   #21 = Methodref          #17.#20       // kotlin/ranges/IntRange."<init>":(II)V
+   #22 = Utf8               java/lang/Iterable
+   #23 = Class              #22           // java/lang/Iterable
+   #24 = Utf8               java/util/ArrayList
+   #25 = Class              #24           // java/util/ArrayList
+   #26 = Utf8               kotlin/collections/CollectionsKt
+   #27 = Class              #26           // kotlin/collections/CollectionsKt
+   #28 = Utf8               collectionSizeOrDefault
+   #29 = Utf8               (Ljava/lang/Iterable;I)I
+   #30 = NameAndType        #28:#29       // collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+   #31 = Methodref          #27.#30       // kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+   #32 = Utf8               (I)V
+   #33 = NameAndType        #18:#32       // "<init>":(I)V
+   #34 = Methodref          #25.#33       // java/util/ArrayList."<init>":(I)V
+   #35 = Utf8               java/util/Collection
+   #36 = Class              #35           // java/util/Collection
+   #37 = Utf8               iterator
+   #38 = Utf8               ()Ljava/util/Iterator;
+   #39 = NameAndType        #37:#38       // iterator:()Ljava/util/Iterator;
+   #40 = InterfaceMethodref #23.#39       // java/lang/Iterable.iterator:()Ljava/util/Iterator;
+   #41 = Utf8               java/util/Iterator
+   #42 = Class              #41           // java/util/Iterator
+   #43 = Utf8               hasNext
+   #44 = Utf8               ()Z
+   #45 = NameAndType        #43:#44       // hasNext:()Z
+   #46 = InterfaceMethodref #42.#45       // java/util/Iterator.hasNext:()Z
+   #47 = Utf8               kotlin/collections/IntIterator
+   #48 = Class              #47           // kotlin/collections/IntIterator
+   #49 = Utf8               nextInt
+   #50 = Utf8               ()I
+   #51 = NameAndType        #49:#50       // nextInt:()I
+   #52 = Methodref          #48.#51       // kotlin/collections/IntIterator.nextInt:()I
+   #53 = Utf8               astronomy/Moon
+   #54 = Class              #53           // astronomy/Moon
+   #55 = Utf8               java/lang/StringBuilder
+   #56 = Class              #55           // java/lang/StringBuilder
+   #57 = Utf8               ()V
+   #58 = NameAndType        #18:#57       // "<init>":()V
+   #59 = Methodref          #56.#58       // java/lang/StringBuilder."<init>":()V
+   #60 = Utf8               Moon #
+   #61 = String             #60           // Moon #
+   #62 = Utf8               append
+   #63 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #64 = NameAndType        #62:#63       // append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #65 = Methodref          #56.#64       // java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+   #66 = Utf8               (I)Ljava/lang/StringBuilder;
+   #67 = NameAndType        #62:#66       // append:(I)Ljava/lang/StringBuilder;
+   #68 = Methodref          #56.#67       // java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+   #69 = Utf8               toString
+   #70 = Utf8               ()Ljava/lang/String;
+   #71 = NameAndType        #69:#70       // toString:()Ljava/lang/String;
+   #72 = Methodref          #56.#71       // java/lang/StringBuilder.toString:()Ljava/lang/String;
+   #73 = Utf8               (Ljava/lang/String;)V
+   #74 = NameAndType        #18:#73       // "<init>":(Ljava/lang/String;)V
+   #75 = Methodref          #54.#74       // astronomy/Moon."<init>":(Ljava/lang/String;)V
+   #76 = Utf8               add
+   #77 = Utf8               (Ljava/lang/Object;)Z
+   #78 = NameAndType        #76:#77       // add:(Ljava/lang/Object;)Z
+   #79 = InterfaceMethodref #36.#78       // java/util/Collection.add:(Ljava/lang/Object;)Z
+   #80 = Utf8               java/util/List
+   #81 = Class              #80           // java/util/List
+   #82 = Utf8               toList
+   #83 = Utf8               (Ljava/lang/Iterable;)Ljava/util/List;
+   #84 = NameAndType        #82:#83       // toList:(Ljava/lang/Iterable;)Ljava/util/List;
+   #85 = Methodref          #27.#84       // kotlin/collections/CollectionsKt.toList:(Ljava/lang/Iterable;)Ljava/util/List;
+   #86 = Utf8               getClass
+   #87 = Utf8               ()Ljava/lang/Class;
+   #88 = NameAndType        #86:#87       // getClass:()Ljava/lang/Class;
+   #89 = Methodref          #4.#88        // java/lang/Object.getClass:()Ljava/lang/Class;
+   #90 = Utf8               java/lang/System
+   #91 = Class              #90           // java/lang/System
+   #92 = Utf8               out
+   #93 = Utf8               Ljava/io/PrintStream;
+   #94 = NameAndType        #92:#93       // out:Ljava/io/PrintStream;
+   #95 = Fieldref           #91.#94       // java/lang/System.out:Ljava/io/PrintStream;
+   #96 = Utf8               java/io/PrintStream
+   #97 = Class              #96           // java/io/PrintStream
+   #98 = Utf8               println
+   #99 = Utf8               (Ljava/lang/Object;)V
+  #100 = NameAndType        #98:#99       // println:(Ljava/lang/Object;)V
+  #101 = Methodref          #97.#100      // java/io/PrintStream.println:(Ljava/lang/Object;)V
+  #102 = Utf8               java/lang/Class
+  #103 = Class              #102          // java/lang/Class
+  #104 = Utf8               getMethods
+  #105 = Utf8               ()[Ljava/lang/reflect/Method;
+  #106 = NameAndType        #104:#105     // getMethods:()[Ljava/lang/reflect/Method;
+  #107 = Methodref          #103.#106     // java/lang/Class.getMethods:()[Ljava/lang/reflect/Method;
+  #108 = Utf8               moons.javaClass.methods
+  #109 = String             #108          // moons.javaClass.methods
+  #110 = Utf8               checkExpressionValueIsNotNull
+  #111 = NameAndType        #110:#13      // checkExpressionValueIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+  #112 = Methodref          #11.#111      // kotlin/jvm/internal/Intrinsics.checkExpressionValueIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+  #113 = Utf8               [Ljava/lang/Object;
+  #114 = Class              #113          // "[Ljava/lang/Object;"
+  #115 = Utf8               java/lang/reflect/Method
+  #116 = Class              #115          // java/lang/reflect/Method
+  #117 = Utf8               it
+  #118 = String             #117          // it
+  #119 = Utf8               getName
+  #120 = NameAndType        #119:#70      // getName:()Ljava/lang/String;
+  #121 = Methodref          #116.#120     // java/lang/reflect/Method.getName:()Ljava/lang/String;
+  #122 = String             #76           // add
+  #123 = Utf8               areEqual
+  #124 = Utf8               (Ljava/lang/Object;Ljava/lang/Object;)Z
+  #125 = NameAndType        #123:#124     // areEqual:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #126 = Methodref          #11.#125      // kotlin/jvm/internal/Intrinsics.areEqual:(Ljava/lang/Object;Ljava/lang/Object;)Z
+  #127 = Utf8               getParameterCount
+  #128 = NameAndType        #127:#50      // getParameterCount:()I
+  #129 = Methodref          #116.#128     // java/lang/reflect/Method.getParameterCount:()I
+  #130 = Utf8               XXX
+  #131 = String             #130          // XXX
+  #132 = Utf8               invoke
+  #133 = Utf8               (Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+  #134 = NameAndType        #132:#133     // invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+  #135 = Methodref          #116.#134     // java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+  #136 = Utf8               \n
+  #137 = String             #136          // \n
+  #138 = Utf8               java/lang/CharSequence
+  #139 = Class              #138          // java/lang/CharSequence
+  #140 = Utf8               joinToString$default
+  #141 = Utf8               (Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+  #142 = NameAndType        #140:#141     // joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+  #143 = Methodref          #27.#142      // kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+  #144 = Utf8               I
+  #145 = Utf8               $i$a$1$map
+  #146 = Utf8               item$iv$iv
+  #147 = Utf8               $receiver$iv$iv
+  #148 = Utf8               Ljava/lang/Iterable;
+  #149 = Utf8               destination$iv$iv
+  #150 = Utf8               Ljava/util/Collection;
+  #151 = Utf8               $i$f$mapTo
+  #152 = Utf8               $receiver$iv
+  #153 = Utf8               $i$f$map
+  #154 = Utf8               Ljava/lang/reflect/Method;
+  #155 = Utf8               $i$a$1$find
+  #156 = Utf8               moons
+  #157 = Utf8               Ljava/util/List;
+  #158 = Utf8               [Ljava/lang/String;
+  #159 = Class              #158          // "[Ljava/lang/String;"
+  #160 = Utf8               Lkotlin/Metadata;
+  #161 = Utf8               mv
+  #162 = Integer            1
+  #163 = Integer            9
+  #164 = Utf8               bv
+  #165 = Integer            0
+  #166 = Integer            2
+  #167 = Utf8               k
+  #168 = Utf8               d1
+  #169 = Utf8                \n \n\n \n\n\n  0200¢
+  #170 = Utf8               d2
+  #171 = Utf8
+  #172 = Utf8               break-immutable.kt
+  #173 = Utf8               Code
+  #174 = Utf8               LocalVariableTable
+  #175 = Utf8               LineNumberTable
+  #176 = Utf8               StackMapTable
+  #177 = Utf8               RuntimeInvisibleParameterAnnotations
+  #178 = Utf8               SourceFile
+  #179 = Utf8               SourceDebugExtension
+  #180 = Utf8               RuntimeVisibleAnnotations
+{
+  public static final void main(java.lang.String[]);
+    descriptor: ([Ljava/lang/String;)V
+    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+    Code:
+      stack=9, locals=13, args_size=1
+         0: aload_0
+         1: ldc           #9                  // String args
+         3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+         6: iconst_1
+         7: istore_2
+         8: new           #17                 // class kotlin/ranges/IntRange
+        11: dup
+        12: iload_2
+        13: bipush        9
+        15: invokespecial #21                 // Method kotlin/ranges/IntRange."<init>":(II)V
+        18: checkcast     #23                 // class java/lang/Iterable
+        21: astore_2
+        22: aload_2
+        23: astore_3
+        24: new           #25                 // class java/util/ArrayList
+        27: dup
+        28: aload_2
+        29: bipush        10
+        31: invokestatic  #31                 // Method kotlin/collections/CollectionsKt.collectionSizeOrDefault:(Ljava/lang/Iterable;I)I
+        34: invokespecial #34                 // Method java/util/ArrayList."<init>":(I)V
+        37: checkcast     #36                 // class java/util/Collection
+        40: astore        4
+        42: aload_3
+        43: invokeinterface #40,  1           // InterfaceMethod java/lang/Iterable.iterator:()Ljava/util/Iterator;
+        48: astore        5
+        50: aload         5
+        52: invokeinterface #46,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+        57: ifeq          120
+        60: aload         5
+        62: checkcast     #48                 // class kotlin/collections/IntIterator
+        65: invokevirtual #52                 // Method kotlin/collections/IntIterator.nextInt:()I
+        68: istore        6
+        70: aload         4
+        72: iload         6
+        74: istore        7
+        76: astore        11
+        78: new           #54                 // class astronomy/Moon
+        81: dup
+        82: new           #56                 // class java/lang/StringBuilder
+        85: dup
+        86: invokespecial #59                 // Method java/lang/StringBuilder."<init>":()V
+        89: ldc           #61                 // String Moon #
+        91: invokevirtual #65                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+        94: iload         7
+        96: invokevirtual #68                 // Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;
+        99: invokevirtual #72                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+       102: invokespecial #75                 // Method astronomy/Moon."<init>":(Ljava/lang/String;)V
+       105: astore        12
+       107: aload         11
+       109: aload         12
+       111: invokeinterface #79,  2           // InterfaceMethod java/util/Collection.add:(Ljava/lang/Object;)Z
+       116: pop
+       117: goto          50
+       120: aload         4
+       122: checkcast     #81                 // class java/util/List
+       125: checkcast     #23                 // class java/lang/Iterable
+       128: invokestatic  #85                 // Method kotlin/collections/CollectionsKt.toList:(Ljava/lang/Iterable;)Ljava/util/List;
+       131: astore_1
+       132: aload_1
+       133: invokevirtual #89                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       136: astore_2
+       137: getstatic     #95                 // Field java/lang/System.out:Ljava/io/PrintStream;
+       140: aload_2
+       141: invokevirtual #101                // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+       144: aload_1
+       145: invokevirtual #89                 // Method java/lang/Object.getClass:()Ljava/lang/Class;
+       148: invokevirtual #107                // Method java/lang/Class.getMethods:()[Ljava/lang/reflect/Method;
+       151: dup
+       152: ldc           #109                // String moons.javaClass.methods
+       154: invokestatic  #112                // Method kotlin/jvm/internal/Intrinsics.checkExpressionValueIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       157: checkcast     #114                // class "[Ljava/lang/Object;"
+       160: astore_2
+       161: aload_2
+       162: astore_3
+       163: aload_3
+       164: arraylength
+       165: istore        4
+       167: iconst_0
+       168: istore        5
+       170: iload         5
+       172: iload         4
+       174: if_icmpge     237
+       177: aload_3
+       178: iload         5
+       180: aaload
+       181: astore        6
+       183: aload         6
+       185: checkcast     #116                // class java/lang/reflect/Method
+       188: astore        7
+       190: aload         7
+       192: dup
+       193: ldc           #118                // String it
+       195: invokestatic  #112                // Method kotlin/jvm/internal/Intrinsics.checkExpressionValueIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       198: invokevirtual #121                // Method java/lang/reflect/Method.getName:()Ljava/lang/String;
+       201: ldc           #122                // String add
+       203: invokestatic  #126                // Method kotlin/jvm/internal/Intrinsics.areEqual:(Ljava/lang/Object;Ljava/lang/Object;)Z
+       206: ifeq          222
+       209: aload         7
+       211: invokevirtual #129                // Method java/lang/reflect/Method.getParameterCount:()I
+       214: iconst_1
+       215: if_icmpne     222
+       218: iconst_1
+       219: goto          223
+       222: iconst_0
+       223: ifeq          231
+       226: aload         6
+       228: goto          238
+       231: iinc          5, 1
+       234: goto          170
+       237: aconst_null
+       238: checkcast     #116                // class java/lang/reflect/Method
+       241: dup
+       242: ifnull        269
+       245: aload_1
+       246: iconst_1
+       247: anewarray     #4                  // class java/lang/Object
+       250: dup
+       251: iconst_0
+       252: new           #54                 // class astronomy/Moon
+       255: dup
+       256: ldc           #131                // String XXX
+       258: invokespecial #75                 // Method astronomy/Moon."<init>":(Ljava/lang/String;)V
+       261: aastore
+       262: invokevirtual #135                // Method java/lang/reflect/Method.invoke:(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+       265: pop
+       266: goto          270
+       269: pop
+       270: aload_1
+       271: checkcast     #23                 // class java/lang/Iterable
+       274: ldc           #137                // String \n
+       276: checkcast     #139                // class java/lang/CharSequence
+       279: aconst_null
+       280: aconst_null
+       281: iconst_0
+       282: aconst_null
+       283: aconst_null
+       284: bipush        62
+       286: aconst_null
+       287: invokestatic  #143                // Method kotlin/collections/CollectionsKt.joinToString$default:(Ljava/lang/Iterable;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Ljava/lang/CharSequence;ILjava/lang/CharSequence;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Ljava/lang/String;
+       290: astore_2
+       291: getstatic     #95                 // Field java/lang/System.out:Ljava/io/PrintStream;
+       294: aload_2
+       295: invokevirtual #101                // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+       298: return
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           78      27     7    it   I
+           78      27     8 $i$a$1$map   I
+           70      47     6 item$iv$iv   I
+           42      80     3 $receiver$iv$iv   Ljava/lang/Iterable;
+           42      80     4 destination$iv$iv   Ljava/util/Collection;
+           42      80     9 $i$f$mapTo   I
+           22     103     2 $receiver$iv   Ljava/lang/Iterable;
+           22     103    10 $i$f$map   I
+          190      33     7    it   Ljava/lang/reflect/Method;
+          190      33     8 $i$a$1$find   I
+          132     167     1 moons   Ljava/util/List;
+            0     299     0  args   [Ljava/lang/String;
+      LineNumberTable:
+        line 7: 6
+        line 18: 22
+        line 19: 42
+        line 20: 70
+        line 7: 78
+        line 19: 117
+        line 21: 120
+        line 7: 128
+        line 9: 132
+        line 11: 144
+        line 12: 144
+        line 13: 144
+        line 11: 144
+        line 12: 161
+        line 12: 190
+        line 12: 223
+        line 13: 245
+        line 15: 270
+        line 17: 298
+      StackMapTable: number_of_entries = 10
+        frame_type = 255 /* full_frame */
+          offset_delta = 50
+          locals = [ class "[Ljava/lang/String;", top, class java/lang/Iterable, class java/lang/Iterable, class java/util/Collection, class java/util/Iterator ]
+          stack = []
+        frame_type = 251 /* same_frame_extended */
+          offset_delta = 69
+        frame_type = 255 /* full_frame */
+          offset_delta = 49
+          locals = [ class "[Ljava/lang/String;", class java/util/List, class "[Ljava/lang/Object;", class "[Ljava/lang/Object;", int, int ]
+          stack = []
+        frame_type = 253 /* append */
+          offset_delta = 51
+          locals = [ class java/lang/Object, class java/lang/reflect/Method ]
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ int ]
+        frame_type = 7 /* same */
+        frame_type = 249 /* chop */
+          offset_delta = 5
+        frame_type = 64 /* same_locals_1_stack_item */
+          stack = [ class java/lang/Object ]
+        frame_type = 94 /* same_locals_1_stack_item */
+          stack = [ class java/lang/reflect/Method ]
+        frame_type = 0 /* same */
+    RuntimeInvisibleParameterAnnotations:
+      0:
+        0: #7()
+}
+SourceFile: "break-immutable.kt"
+SourceDebugExtension:
+  SMAP
+  break-immutable.kt
+  Kotlin
+  *S Kotlin
+  *F
+  + 1 break-immutable.kt
+  _10_collections_1/Break_immutableKt
+  + 2 _Collections.kt
+  kotlin/collections/CollectionsKt___CollectionsKt
+  *L
+  1#1,17:1
+  1230#2:18
+  1299#2,3:19
+  *E
+  *S KotlinDebug
+  *F
+  + 1 break-immutable.kt
+  _10_collections_1/Break_immutableKt
+  *L
+  7#1:18
+  7#1,3:19
+  *E
+RuntimeVisibleAnnotations:
+  0: #160(#161=[I#162,I#162,I#163],#164=[I#162,I#165,I#166],#167=I#166,#168=[s#169],#170=[s#5,s#171,s#8,s#171,s#171,s#6])

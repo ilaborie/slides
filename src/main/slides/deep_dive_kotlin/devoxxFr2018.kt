@@ -25,13 +25,13 @@ fun main(args: Array<String>) {
     kotlinHandsOn.buildAll(dist, "devoxx-fr")
 }
 
-fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World au Bytecode", key = "deepDiveKotlin") {
+fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World au ByteCode", key = "deepDiveKotlin") {
     addScript("../scripts/navigation.js")
 
     part(title = "Introduction") {
         skipHeader = true
-        slideFromResource(title = "Speakers", key = "speakers-bc", contentType = HTML)
-        slideFromResource(title = "🗺 Roadmap", key = "roadmap-bc", contentType = HTML)
+        slideFromResource(title = "Speakers", key = "speakers", contentType = HTML)
+        roadmap(title = "🗺 Roadmap")
     }
     part(title = "Qu'est-ce que le ByteCode Java ?", key = "bytecode") {
 
@@ -45,10 +45,18 @@ fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World 
         slideFromResource(title = "Historique", contentType = HTML)
         slideFromResource(title = "Cible")
 
-        slideFromResource(title = "HelloWorld")
-        slideFromResource(title = "HelloWorld-dump")
-        slideFromResource(title = "HelloWorld-bytecode")
-        slideFromResource(title = "HelloWorld-java")
+        slide(title = "HelloWorld") {
+            codeFromResource("/deepDiveKotlin/src/kotlin/_00_helloworld/HelloWorld.kt")
+        }
+        slide(title = "HelloWorld-dump") {
+            codeFromResource("/deepDiveKotlin/target/kotlin/_00_helloworld/HelloWorldKt.class.hex")
+        }
+        slide(title = "HelloWorld-bytecode") {
+            codeFromResource("/deepDiveKotlin/target/kotlin/_00_helloworld/HelloWorldKt.class.txt")
+        }
+        slide(title = "HelloWorld-java") {
+            codeFromResource("/deepDiveKotlin/target/kotlin/_00_helloworld/HelloWorldKt.java")
+        }
         slideFromResource(title = "Intrinsics")
     }
 

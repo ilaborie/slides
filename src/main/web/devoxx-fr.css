@@ -1,0 +1,69 @@
+.devoxx-fr {
+  --who: 'Devoxx !';
+  --blue: #4285f4;
+  --yellow: #edaf1f;
+  --green: #0f9d58;
+  --red: #db4437;
+  --black: #000;
+  --white: #fff;
+  --g1: #263238;
+  --g2: #37424b;
+  --g3: #455a64;
+  --g4: #ebebeb;
+  --g5: #f7f7f7;
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+  --orange: #f36f21;
+  --fontColor: #333;
+  --primary: #7f1111;
+  --secondary: #FF1c4c;
+  --tertiary: #FF1417;
+  --alt-accent: #DB1837;
+  --alt2: #cc0c0c;
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: 'Permanent Marker', cursive;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: 'Permanent Marker', cursive;
+  --quoteFont: 'Just Another Hand', cursive;
+  --counterFont: 'Press Start 2P', fantasy;
+  --bgNavbar: var(--white);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: linear-gradient(to top, var(--primary), var(--tertiary)), var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/devoxx-fr/bg.png'), var(--primary);
+  --fgCover: var(--white);
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--primary);
+  --fgPart: var(--white);
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+  --bgCounter: transparend;
+  --fgCounter: var(--white);
+  --txtFooter: '#DevoxxFR #Kotlin @emmanuelVinas @ilaborie';
+  --logoFooter: url('./assets/devoxx-fr/logo.png');
+  --bgFooter: var(--white);
+  --fgFooter: var(--primary);
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa; }
+  .devoxx-fr main section {
+    background-size: cover;
+    color: var(--white); }
+    .devoxx-fr main section h1 {
+      font-size: 2.5rem; }
+    .devoxx-fr main section h3 {
+      color: var(--white);
+      box-shadow: 0 0 0 0.1rem var(--yellow); }
+    .devoxx-fr main section::after {
+      color: var(--white);
+      background: url("./assets/devoxx-fr/logo.png") no-repeat right, url("./assets/devoxx-fr/bandeau_bas.png") no-repeat left;
+      background-size: contain, cover; }
+    .devoxx-fr main section.cover::after {
+      background: url("./assets/devoxx-fr/logo.png") no-repeat right;
+      background-size: contain; }
