@@ -20,14 +20,14 @@
   --tertiary: #FF1417;
   --alt-accent: #DB1837;
   --alt2: #cc0c0c;
-  --fontBody: system, system-ui, sans-serif;
-  --coverFont: 'Permanent Marker', cursive;
-  --titleFont: system, system-ui, sans-serif;
+  --fontBody: 'Open Sans', cursive, system-ui, sans-serif;
+  --coverFont: Montserrat, cursive;
+  --titleFont: Montserrat, cursive, system, system-ui, sans-serif;
   --codeFont: code, monospace;
   --footerFont: code, monospace;
-  --partFont: 'Permanent Marker', cursive;
+  --partFont: Montserrat, cursive;
   --quoteFont: 'Just Another Hand', cursive;
-  --counterFont: 'Press Start 2P', fantasy;
+  --counterFont: 'OCR A Std', fantasy;
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
   --shadowNavbar: rgba(0, 0, 0, .2);
@@ -67,3 +67,42 @@
     .devoxx-fr main section.cover::after {
       background: url("./assets/devoxx-fr/logo.png") no-repeat right;
       background-size: contain; }
+  .devoxx-fr main section.diagram {
+    background: url("./assets/devoxx-fr/diag.png");
+    background-size: cover; }
+  .devoxx-fr main section.code {
+    background: url("./assets/devoxx-fr/code.png");
+    background-size: cover; }
+    .devoxx-fr main section.code.java {
+      background: url("./assets/devoxx-fr/coffee.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.java pre {
+        max-width: 100%;
+        overflow: auto; }
+    .devoxx-fr main section.code.kotlin {
+      background: url("./assets/devoxx-fr/kotlin.png");
+      background-size: cover; }
+    .devoxx-fr main section.code.hex {
+      background: url("./assets/devoxx-fr/cpu.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.hex article > code {
+        padding: .25rem;
+        border-radius: .125rem;
+        background: var(--bgCode);
+        color: var(--fgCode);
+        white-space: pre;
+        overflow: auto;
+        font-size: .6rem;
+        width: 100%; }
+    .devoxx-fr main section.code.bytecode {
+      background: url("./assets/devoxx-fr/gears.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.bytecode article > code {
+        padding: .25rem;
+        border-radius: .125rem;
+        background: var(--bgCode);
+        color: var(--fgCode);
+        white-space: pre;
+        overflow: auto;
+        font-size: .6rem;
+        width: 100%; }

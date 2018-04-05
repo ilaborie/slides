@@ -36,7 +36,7 @@
 </a>
 
 
-0. Qu'est-ce que le ByteCode Java ?
+0. ByteCode Java ?
 1. Introduction Kotlin
 2. Les bases
 3. null-safety
@@ -44,7 +44,7 @@
 5. Lambda
 6. Class
 7. Types
-8. Extension de fonction
+8. Extensions de fonction
 9. Structure
 10. Pause
 11. ByteCode Android
@@ -58,14 +58,317 @@
 
 
 
+```java
+package _00_helloworld;
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+        System.out.println("Hello Devoxx");
+    }
+}
+```
+```shell
+javac HelloWorld.java
+```
+
+```shell
+hexdump -C HelloWorld.class
+```
+`00000000  ca fe ba be 00 00 00 34  00 1d 0a 00 06 00 0f 09  |.......4........|
+00000010  00 10 00 11 08 00 12 0a  00 13 00 14 07 00 15 07  |................|
+00000020  00 16 01 00 06 3c 69 6e  69 74 3e 01 00 03 28 29  |.....<init>...()|
+00000030  56 01 00 04 43 6f 64 65  01 00 0f 4c 69 6e 65 4e  |V...Code...LineN|
+00000040  75 6d 62 65 72 54 61 62  6c 65 01 00 04 6d 61 69  |umberTable...mai|
+00000050  6e 01 00 16 28 5b 4c 6a  61 76 61 2f 6c 61 6e 67  |n...([Ljava/lang|
+00000060  2f 53 74 72 69 6e 67 3b  29 56 01 00 0a 53 6f 75  |/String;)V...Sou|
+00000070  72 63 65 46 69 6c 65 01  00 0f 48 65 6c 6c 6f 57  |rceFile...HelloW|
+00000080  6f 72 6c 64 2e 6a 61 76  61 0c 00 07 00 08 07 00  |orld.java.......|
+00000090  17 0c 00 18 00 19 01 00  0c 48 65 6c 6c 6f 20 44  |.........Hello D|
+000000a0  65 76 6f 78 78 07 00 1a  0c 00 1b 00 1c 01 00 19  |evoxx...........|
+000000b0  5f 30 30 5f 68 65 6c 6c  6f 77 6f 72 6c 64 2f 48  |_00_helloworld/H|
+000000c0  65 6c 6c 6f 57 6f 72 6c  64 01 00 10 6a 61 76 61  |elloWorld...java|
+000000d0  2f 6c 61 6e 67 2f 4f 62  6a 65 63 74 01 00 10 6a  |/lang/Object...j|
+000000e0  61 76 61 2f 6c 61 6e 67  2f 53 79 73 74 65 6d 01  |ava/lang/System.|
+000000f0  00 03 6f 75 74 01 00 15  4c 6a 61 76 61 2f 69 6f  |..out...Ljava/io|
+00000100  2f 50 72 69 6e 74 53 74  72 65 61 6d 3b 01 00 13  |/PrintStream;...|
+00000110  6a 61 76 61 2f 69 6f 2f  50 72 69 6e 74 53 74 72  |java/io/PrintStr|
+00000120  65 61 6d 01 00 07 70 72  69 6e 74 6c 6e 01 00 15  |eam...println...|
+00000130  28 4c 6a 61 76 61 2f 6c  61 6e 67 2f 53 74 72 69  |(Ljava/lang/Stri|
+00000140  6e 67 3b 29 56 00 21 00  05 00 06 00 00 00 00 00  |ng;)V.!.........|
+00000150  02 00 01 00 07 00 08 00  01 00 09 00 00 00 1d 00  |................|
+00000160  01 00 01 00 00 00 05 2a  b7 00 01 b1 00 00 00 01  |.......*........|
+00000170  00 0a 00 00 00 06 00 01  00 00 00 03 00 09 00 0b  |................|
+00000180  00 0c 00 01 00 09 00 00  00 25 00 02 00 01 00 00  |.........%......|
+00000190  00 09 b2 00 02 12 03 b6  00 04 b1 00 00 00 01 00  |................|
+000001a0  0a 00 00 00 0a 00 02 00  00 00 06 00 08 00 07 00  |................|
+000001b0  01 00 0d 00 00 00 02 00  0e                       |.........|
+000001b9
+`
+
+```shell
+javap -c -v HelloWorld.class
+```
+`Compiled from "HelloWorld.java"
+public class _00_helloworld.HelloWorld {
+  public _00_helloworld.HelloWorld();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]);
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #3                  // String Hello Devoxx
+       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: return
+}
+`
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     viewBox="0 0 1832 1098" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ffffff-1-ffffff-1-s-0">
+            <stop offset="0%" style="stop-color:#ffffff"/>
+            <stop offset="100%" style="stop-color:#ffffff"/>
+        </linearGradient>
+    </defs>
+    <g transform="translate(0.5,0.5)">
+        <path d="M 16 16 L 16 15.61 L 56 15 L 96 18.67 L 136 14.27 L 176 16.93 L 216 16 L 216.24 16.24 L 239.77 39.77 L 263.53 63.53 L 288.55 88.55 L 311.83 111.83 L 336 136 L 336.99 136 L 338.77 176 L 338.58 216 L 334.85 256 L 338.31 296 L 334.54 336 L 337.74 376 L 336 416 L 336 414.06 L 296 414.55 L 256 418.77 L 216 415.16 L 176 417.44 L 136 415.72 L 96 413.66 L 56 418.17 L 16 416 L 16.83 416 L 13.55 376 L 14.79 336 L 14.6 296 L 17.92 256 L 14 216 L 18.38 176 L 18.84 136 L 18.36 96 L 15.81 56 L 16 16 L 16 16 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 216 16 L 215.16 16 L 215.44 40 L 215.74 64 L 216.69 88 L 215.4 112 L 216 136 L 216 136.5 L 240 136.16 L 264 136.85 L 288 135.77 L 312 135.99 L 336 136"
+              fill="none" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(103.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.java
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">.java
+                </text>
+            </switch>
+        </g>
+        <path d="M 656 682 L 656 683.38 L 696 680.81 L 736 679.79 L 776 684.24 L 816 684.3 L 856 682 L 856.17 682.17 L 880.07 706.07 L 904.58 730.58 L 927.59 753.59 L 952.11 778.11 L 976 802 L 973.14 802 L 977.38 842 L 974.31 882 L 977.08 922 L 978.29 962 L 978.85 1002 L 978.04 1042 L 976 1082 L 976 1083.56 L 936 1079.8 L 896 1081.72 L 856 1082.24 L 816 1080.34 L 776 1081.23 L 736 1079.65 L 696 1079.54 L 656 1082 L 654 1082 L 658.03 1042 L 656.87 1002 L 656.03 962 L 654.08 922 L 656.23 882 L 656.43 842 L 655.37 802 L 655.66 762 L 653.27 722 L 656 682 L 656 682 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 856 682 L 856.11 682 L 856.64 706 L 856.99 730 L 855.15 754 L 856.8 778 L 856 802 L 856 801.64 L 880 802.58 L 904 801.66 L 928 802.21 L 952 802.41 L 976 802"
+              fill="none" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(743.5,857.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.java
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">.java
+                </text>
+            </switch>
+        </g>
+        <path d="M 1496 16 L 1496 17.54 L 1536 15.02 L 1576 18.59 L 1616 15.78 L 1656 13.39 L 1696 16 L 1695.48 15.48 L 1720.43 40.43 L 1743.74 63.74 L 1767.38 87.38 L 1792.05 112.05 L 1816 136 L 1813.03 136 L 1818.59 176 L 1818.64 216 L 1817.36 256 L 1815.91 296 L 1818.74 336 L 1818.54 376 L 1816 416 L 1816 418.73 L 1776 413.91 L 1736 415.96 L 1696 413.63 L 1656 417.04 L 1616 413.89 L 1576 417.52 L 1536 414.66 L 1496 416 L 1495.58 416 L 1497.75 376 L 1496.9 336 L 1493.58 296 L 1494.02 256 L 1496.38 216 L 1495.43 176 L 1495.72 136 L 1497.95 96 L 1497.88 56 L 1496 16 L 1496 16 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1696 16 L 1695.66 16 L 1695.11 40 L 1696.08 64 L 1695.72 88 L 1695.4 112 L 1696 136 L 1696 136.96 L 1720 135.83 L 1744 135.11 L 1768 135.93 L 1792 135.97 L 1816 136"
+              fill="none" stroke="#9673a6" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(1567.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="44" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.class
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="22" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    .class
+                </text>
+            </switch>
+        </g>
+        <path d="M 536 176 L 536 175.09 L 576 173.36 L 616 177.34 L 656 178.15 L 696 177.95 L 736 175.78 L 776 174.37 L 816 177.02 L 856 175.92 L 896 178.76 L 936 176.67 L 976 173.08 L 1016 173.26 L 1056 173.33 L 1096 173.75 L 1136 173.82 L 1176 176 L 1176.02 176.05 L 1191.59 183.18 L 1208.24 192.48 L 1223.8 199.59 L 1239.56 207.12 L 1256 216 L 1256.27 216.54 L 1239.74 223.47 L 1223.98 231.97 L 1208.22 240.44 L 1192.28 248.56 L 1176 256 L 1176 258.31 L 1136 255.32 L 1096 258.76 L 1056 257.78 L 1016 255.02 L 976 254.51 L 936 258.26 L 896 256.93 L 856 258.54 L 816 258.54 L 776 255.74 L 736 258.12 L 696 257.93 L 656 256.21 L 616 257.09 L 576 255.39 L 536 256 L 536.02 256.05 L 552.12 248.23 L 567.7 239.41 L 584.21 232.43 L 600.38 224.77 L 616 216 L 615.71 215.43 L 600.19 208.38 L 584.03 200.06 L 568.18 192.37 L 552.24 184.48 L 536 176 Z Z"
+              fill="url(#mx-gradient-ffffff-1-ffffff-1-s-0)" stroke="#000000" stroke-width="12" stroke-linejoin="round"
+              stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(823.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">javac
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">javac
+                </text>
+            </switch>
+        </g>
+        <path d="M 1632 542 L 1632 542.52 L 1641.6 542.58 L 1651.2 541.88 L 1660.8 542.5 L 1670.4 542.82 L 1680 542 L 1681.64 542 L 1679.78 581.78 L 1679.47 621.56 L 1682.53 661.33 L 1682.31 701.11 L 1682.16 740.89 L 1678.17 780.67 L 1681.65 820.44 L 1682.74 860.22 L 1680 900 Q 1680 948 1632 948 L 1632 949.61 L 1591.5 948.07 L 1551 948.28 L 1510.5 950.18 L 1470 948.97 L 1429.5 949.49 L 1389 948.91 L 1348.5 947.08 L 1308 947.1 L 1267.5 948.85 L 1227 947.48 L 1186.5 948.19 L 1146 948 L 1146.18 948 L 1146.61 957.2 L 1146.53 966.4 L 1146.26 975.6 L 1145.97 984.8 L 1146 994 L 1146.42 994.5 L 1129.71 980.62 L 1112.14 965.68 L 1095.19 951.51 L 1079.17 938.44 L 1062 924 L 1061.74 923.69 L 1078.53 909.67 L 1096.11 896.61 L 1112.06 881.59 L 1129.35 868.18 L 1146 854 L 1146.39 854 L 1145.99 863.2 L 1146.02 872.4 L 1146.03 881.6 L 1145.59 890.8 L 1146 900 L 1146 898.96 L 1186.5 902.89 L 1227 902.45 L 1267.5 898.69 L 1308 898.99 L 1348.5 897.77 L 1389 900.11 L 1429.5 898.62 L 1470 902.19 L 1510.5 902.87 L 1551 902.07 L 1591.5 898.45 L 1632 900 L 1632.16 900 L 1632.14 860.22 L 1634.2 820.44 L 1632.33 780.67 L 1629.72 740.89 L 1631.47 701.11 L 1632.11 661.33 L 1631.72 621.56 L 1634.72 581.78 L 1632 542 Z Z"
+              fill="#ffffff" stroke="#000000" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="36 36" pointer-events="none"/>
+        <path d="M 1146 948 L 1146.85 948 L 1145.68 957.2 L 1146.76 966.4 L 1146.34 975.6 L 1145.4 984.8 L 1146 994 L 1145.63 993.55 L 1129.35 980.18 L 1112.58 966.21 L 1095.14 951.44 L 1078.47 937.6 L 1062 924 L 1061.52 923.43 L 1078.67 909.85 L 1095.17 895.49 L 1112.13 881.68 L 1129.4 868.24 L 1146 854 L 1146.36 854 L 1145.43 863.2 L 1146.79 872.4 L 1146.34 881.6 L 1145.98 890.8 L 1146 900"
+              fill="none" stroke="#000000" stroke-width="12" stroke-linejoin="flat" stroke-linecap="round"
+              stroke-miterlimit="4" stroke-dasharray="36 36" pointer-events="none"/>
+        <g transform="translate(1375.5,875.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="86" height="24"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 11px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">
+                            decompilation<br/>(fernflower)
+                            <br/>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="43" y="18" fill="#000000" text-anchor="middle" font-size="11px" font-family="Fira Code">
+                    decompilation&lt;br&gt;(fernflower)&lt;br&gt;
+                </text>
+            </switch>
+        </g>
+    </g>
+</svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+     viewBox="0 0 1832 1098" preserveAspectRatio="xMidYMid meet">
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="0%" y2="100%" id="mx-gradient-ffffff-1-ffffff-1-s-0">
+            <stop offset="0%" style="stop-color:#ffffff"/>
+            <stop offset="100%" style="stop-color:#ffffff"/>
+        </linearGradient>
+    </defs>
+    <g transform="translate(0.5,0.5)">
+        <path d="M 16 16 L 16 15.61 L 56 15 L 96 18.67 L 136 14.27 L 176 16.93 L 216 16 L 216.24 16.24 L 239.77 39.77 L 263.53 63.53 L 288.55 88.55 L 311.83 111.83 L 336 136 L 336.99 136 L 338.77 176 L 338.58 216 L 334.85 256 L 338.31 296 L 334.54 336 L 337.74 376 L 336 416 L 336 414.06 L 296 414.55 L 256 418.77 L 216 415.16 L 176 417.44 L 136 415.72 L 96 413.66 L 56 418.17 L 16 416 L 16.83 416 L 13.55 376 L 14.79 336 L 14.6 296 L 17.92 256 L 14 216 L 18.38 176 L 18.84 136 L 18.36 96 L 15.81 56 L 16 16 L 16 16 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 216 16 L 215.16 16 L 215.44 40 L 215.74 64 L 216.69 88 L 215.4 112 L 216 136 L 216 136.5 L 240 136.16 L 264 136.85 L 288 135.77 L 312 135.99 L 336 136"
+              fill="none" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(103.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.java
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">.java
+                </text>
+            </switch>
+        </g>
+        <path d="M 656 682 L 656 683.38 L 696 680.81 L 736 679.79 L 776 684.24 L 816 684.3 L 856 682 L 856.17 682.17 L 880.07 706.07 L 904.58 730.58 L 927.59 753.59 L 952.11 778.11 L 976 802 L 973.14 802 L 977.38 842 L 974.31 882 L 977.08 922 L 978.29 962 L 978.85 1002 L 978.04 1042 L 976 1082 L 976 1083.56 L 936 1079.8 L 896 1081.72 L 856 1082.24 L 816 1080.34 L 776 1081.23 L 736 1079.65 L 696 1079.54 L 656 1082 L 654 1082 L 658.03 1042 L 656.87 1002 L 656.03 962 L 654.08 922 L 656.23 882 L 656.43 842 L 655.37 802 L 655.66 762 L 653.27 722 L 656 682 L 656 682 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 856 682 L 856.11 682 L 856.64 706 L 856.99 730 L 855.15 754 L 856.8 778 L 856 802 L 856 801.64 L 880 802.58 L 904 801.66 L 928 802.21 L 952 802.41 L 976 802"
+              fill="none" stroke="#82b366" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(743.5,857.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.java
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">.java
+                </text>
+            </switch>
+        </g>
+        <path d="M 1496 16 L 1496 17.54 L 1536 15.02 L 1576 18.59 L 1616 15.78 L 1656 13.39 L 1696 16 L 1695.48 15.48 L 1720.43 40.43 L 1743.74 63.74 L 1767.38 87.38 L 1792.05 112.05 L 1816 136 L 1813.03 136 L 1818.59 176 L 1818.64 216 L 1817.36 256 L 1815.91 296 L 1818.74 336 L 1818.54 376 L 1816 416 L 1816 418.73 L 1776 413.91 L 1736 415.96 L 1696 413.63 L 1656 417.04 L 1616 413.89 L 1576 417.52 L 1536 414.66 L 1496 416 L 1495.58 416 L 1497.75 376 L 1496.9 336 L 1493.58 296 L 1494.02 256 L 1496.38 216 L 1495.43 176 L 1495.72 136 L 1497.95 96 L 1497.88 56 L 1496 16 L 1496 16 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 1696 16 L 1695.66 16 L 1695.11 40 L 1696.08 64 L 1695.72 88 L 1695.4 112 L 1696 136 L 1696 136.96 L 1720 135.83 L 1744 135.11 L 1768 135.93 L 1792 135.97 L 1816 136"
+              fill="none" stroke="#9673a6" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(1567.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="44" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 44px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">.class
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="22" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    .class
+                </text>
+            </switch>
+        </g>
+        <path d="M 536 176 L 536 175.09 L 576 173.36 L 616 177.34 L 656 178.15 L 696 177.95 L 736 175.78 L 776 174.37 L 816 177.02 L 856 175.92 L 896 178.76 L 936 176.67 L 976 173.08 L 1016 173.26 L 1056 173.33 L 1096 173.75 L 1136 173.82 L 1176 176 L 1176.02 176.05 L 1191.59 183.18 L 1208.24 192.48 L 1223.8 199.59 L 1239.56 207.12 L 1256 216 L 1256.27 216.54 L 1239.74 223.47 L 1223.98 231.97 L 1208.22 240.44 L 1192.28 248.56 L 1176 256 L 1176 258.31 L 1136 255.32 L 1096 258.76 L 1056 257.78 L 1016 255.02 L 976 254.51 L 936 258.26 L 896 256.93 L 856 258.54 L 816 258.54 L 776 255.74 L 736 258.12 L 696 257.93 L 656 256.21 L 616 257.09 L 576 255.39 L 536 256 L 536.02 256.05 L 552.12 248.23 L 567.7 239.41 L 584.21 232.43 L 600.38 224.77 L 616 216 L 615.71 215.43 L 600.19 208.38 L 584.03 200.06 L 568.18 192.37 L 552.24 184.48 L 536 176 Z Z"
+              fill="url(#mx-gradient-ffffff-1-ffffff-1-s-0)" stroke="#000000" stroke-width="12" stroke-linejoin="round"
+              stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(823.5,191.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="36" height="12"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; width: 37px; white-space: nowrap; word-wrap: normal; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">javac
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="18" y="12" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">javac
+                </text>
+            </switch>
+        </g>
+        <path d="M 1632 542 L 1632 542.52 L 1641.6 542.58 L 1651.2 541.88 L 1660.8 542.5 L 1670.4 542.82 L 1680 542 L 1681.64 542 L 1679.78 581.78 L 1679.47 621.56 L 1682.53 661.33 L 1682.31 701.11 L 1682.16 740.89 L 1678.17 780.67 L 1681.65 820.44 L 1682.74 860.22 L 1680 900 Q 1680 948 1632 948 L 1632 949.61 L 1591.5 948.07 L 1551 948.28 L 1510.5 950.18 L 1470 948.97 L 1429.5 949.49 L 1389 948.91 L 1348.5 947.08 L 1308 947.1 L 1267.5 948.85 L 1227 947.48 L 1186.5 948.19 L 1146 948 L 1146.18 948 L 1146.61 957.2 L 1146.53 966.4 L 1146.26 975.6 L 1145.97 984.8 L 1146 994 L 1146.42 994.5 L 1129.71 980.62 L 1112.14 965.68 L 1095.19 951.51 L 1079.17 938.44 L 1062 924 L 1061.74 923.69 L 1078.53 909.67 L 1096.11 896.61 L 1112.06 881.59 L 1129.35 868.18 L 1146 854 L 1146.39 854 L 1145.99 863.2 L 1146.02 872.4 L 1146.03 881.6 L 1145.59 890.8 L 1146 900 L 1146 898.96 L 1186.5 902.89 L 1227 902.45 L 1267.5 898.69 L 1308 898.99 L 1348.5 897.77 L 1389 900.11 L 1429.5 898.62 L 1470 902.19 L 1510.5 902.87 L 1551 902.07 L 1591.5 898.45 L 1632 900 L 1632.16 900 L 1632.14 860.22 L 1634.2 820.44 L 1632.33 780.67 L 1629.72 740.89 L 1631.47 701.11 L 1632.11 661.33 L 1631.72 621.56 L 1634.72 581.78 L 1632 542 Z Z"
+              fill="#ffffff" stroke="#000000" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="36 36" pointer-events="none"/>
+        <path d="M 1146 948 L 1146.85 948 L 1145.68 957.2 L 1146.76 966.4 L 1146.34 975.6 L 1145.4 984.8 L 1146 994 L 1145.63 993.55 L 1129.35 980.18 L 1112.58 966.21 L 1095.14 951.44 L 1078.47 937.6 L 1062 924 L 1061.52 923.43 L 1078.67 909.85 L 1095.17 895.49 L 1112.13 881.68 L 1129.4 868.24 L 1146 854 L 1146.36 854 L 1145.43 863.2 L 1146.79 872.4 L 1146.34 881.6 L 1145.98 890.8 L 1146 900"
+              fill="none" stroke="#000000" stroke-width="12" stroke-linejoin="flat" stroke-linecap="round"
+              stroke-miterlimit="4" stroke-dasharray="36 36" pointer-events="none"/>
+        <g transform="translate(1375.5,875.5)scale(4)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="86" height="24"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 11px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">
+                            decompilation<br/>(fernflower)
+                            <br/>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="43" y="18" fill="#000000" text-anchor="middle" font-size="11px" font-family="Fira Code">
+                    decompilation&lt;br&gt;(fernflower)&lt;br&gt;
+                </text>
+            </switch>
+        </g>
+    </g>
+</svg>
 
 
 
-
-
-
-
-
+* [Introduction to Java Bytecode](https://mahmoudanouti.wordpress.com/2018/03/20/introduction-to-java-bytecode/)
+* [Mastering Java Bytecode at the Core of the JVM](https://zeroturnaround.com/rebellabs/rebel-labs-report-mastering-java-bytecode-at-the-core-of-the-jvm/)
+* []()
 
 
 
@@ -83,7 +386,7 @@
 	<li>
 		<strong>2017:</strong>
 		<p><mark>v1.1</mark>: coroutines, ...</p>
-		<p>Officiellement supportee par Google</p>
+		<p>Officiellement supportée par Google</p>
 		<p><mark>v1.2</mark>: multiplatform</p>
 	</li>
 	<li>
@@ -94,7 +397,18 @@
 </ul>
 
 
+<img src="../assets/brands/java.svg" alt="JVM" class="jvm">
+<img src="../assets/brands/android.svg" alt="Android" class="android">
+<img src="../assets/brands/javascript.svg" alt="JavaScript" class="js">
+<img src="../assets/brands/LLVM.svg" alt="LLVM" class="native">
 
+<h4 class="jvm-android">JVM et Android</h4>
+<h4 class="js">JavaScript</h4>
+<h4 class="native">Native avec LLVM</h4>
+
+<div class="block" style="grid-column: 1 / 3; grid-row: 1/3"></div>
+<div class="block" style="grid-column: 3 / 4; grid-row: 1/3"></div>
+<div class="block" style="grid-column: 4 / 5; grid-row: 1/3"></div>
 
 ```kotlin
 package _00_helloworld
@@ -102,6 +416,9 @@ package _00_helloworld
 fun main(args: Array<String>) {
     println("Hello Devoxx")
 }
+```
+```shell
+kotlinc HelloWorld.kt
 ```
 
 `00000000  ca fe ba be 00 00 00 32  00 33 01 00 1b 5f 30 30  |.......2.3..._00|
@@ -171,104 +488,20 @@ fun main(args: Array<String>) {
 000003f3
 `
 
-`Classfile /Users/igorlaborie/Documents/Workspaces/MonkeyPatch/DeepDiveKotlin_Hello2Bytecode/target/kotlin/_00_helloworld/HelloWorldKt.class
-  Last modified Apr 2, 2018; size 1011 bytes
-  MD5 checksum 25f0f891578a47e5f81a3b5c1eb39386
-  Compiled from "HelloWorld.kt"
-public final class _00_helloworld.HelloWorldKt
-  minor version: 0
-  major version: 50
-  flags: ACC_PUBLIC, ACC_FINAL, ACC_SUPER
-Constant pool:
-   #1 = Utf8               _00_helloworld/HelloWorldKt
-   #2 = Class              #1             // _00_helloworld/HelloWorldKt
-   #3 = Utf8               java/lang/Object
-   #4 = Class              #3             // java/lang/Object
-   #5 = Utf8               main
-   #6 = Utf8               ([Ljava/lang/String;)V
-   #7 = Utf8               Lorg/jetbrains/annotations/NotNull;
-   #8 = Utf8               args
-   #9 = String             #8             // args
-  #10 = Utf8               kotlin/jvm/internal/Intrinsics
-  #11 = Class              #10            // kotlin/jvm/internal/Intrinsics
-  #12 = Utf8               checkParameterIsNotNull
-  #13 = Utf8               (Ljava/lang/Object;Ljava/lang/String;)V
-  #14 = NameAndType        #12:#13        // checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-  #15 = Methodref          #11.#14        // kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-  #16 = Utf8               Hello Devoxx
-  #17 = String             #16            // Hello Devoxx
-  #18 = Utf8               java/lang/System
-  #19 = Class              #18            // java/lang/System
-  #20 = Utf8               out
-  #21 = Utf8               Ljava/io/PrintStream;
-  #22 = NameAndType        #20:#21        // out:Ljava/io/PrintStream;
-  #23 = Fieldref           #19.#22        // java/lang/System.out:Ljava/io/PrintStream;
-  #24 = Utf8               java/io/PrintStream
-  #25 = Class              #24            // java/io/PrintStream
-  #26 = Utf8               println
-  #27 = Utf8               (Ljava/lang/Object;)V
-  #28 = NameAndType        #26:#27        // println:(Ljava/lang/Object;)V
-  #29 = Methodref          #25.#28        // java/io/PrintStream.println:(Ljava/lang/Object;)V
-  #30 = Utf8               [Ljava/lang/String;
-  #31 = Utf8               Lkotlin/Metadata;
-  #32 = Utf8               mv
-  #33 = Integer            1
-  #34 = Integer            9
-  #35 = Utf8               bv
-  #36 = Integer            0
-  #37 = Integer            2
-  #38 = Utf8               k
-  #39 = Utf8               d1
-  #40 = Utf8                \n \n\n \n\n\n  0200¢
-  #41 = Utf8               d2
-  #42 = Utf8
-  #43 = Utf8               HelloWorld.kt
-  #44 = Utf8               Code
-  #45 = Utf8               LocalVariableTable
-  #46 = Utf8               LineNumberTable
-  #47 = Utf8               RuntimeInvisibleParameterAnnotations
-  #48 = Utf8               SourceFile
-  #49 = Utf8               SourceDebugExtension
-  #50 = Utf8               RuntimeVisibleAnnotations
-{
+`Compiled from "HelloWorld.kt"
+public final class _00_helloworld.HelloWorldKt {
   public static final void main(java.lang.String[]);
-    descriptor: ([Ljava/lang/String;)V
-    flags: ACC_PUBLIC, ACC_STATIC, ACC_FINAL
     Code:
-      stack=2, locals=2, args_size=1
-         0: aload_0
-         1: ldc           #9                  // String args
-         3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-         6: ldc           #17                 // String Hello Devoxx
-         8: astore_1
-         9: getstatic     #23                 // Field java/lang/System.out:Ljava/io/PrintStream;
-        12: aload_1
-        13: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-        16: return
-      LocalVariableTable:
-        Start  Length  Slot  Name   Signature
-            0      17     0  args   [Ljava/lang/String;
-      LineNumberTable:
-        line 4: 6
-        line 5: 16
-    RuntimeInvisibleParameterAnnotations:
-      0:
-        0: #7()
+       0: aload_0
+       1: ldc           #9                  // String args
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: ldc           #17                 // String Hello Devoxx
+       8: astore_1
+       9: getstatic     #23                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      12: aload_1
+      13: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+      16: return
 }
-SourceFile: "HelloWorld.kt"
-SourceDebugExtension:
-  SMAP
-  HelloWorld.kt
-  Kotlin
-  *S Kotlin
-  *F
-  + 1 HelloWorld.kt
-  _00_helloworld/HelloWorldKt
-  *L
-  1#1,5:1
-  *E
-RuntimeVisibleAnnotations:
-  0: #31(#32=[I#33,I#33,I#34],#35=[I#33,I#36,I#37],#38=I#37,#39=[s#40],#41=[s#5,s#42,s#8,s#42,s#42,s#6])
 `
 
 ```java
@@ -294,6 +527,40 @@ public final class HelloWorldKt {
 }
 
 ```
+
+
+
+* Kotlin ajoute des contrôles
+* du coup on a besoin de JAR en plus
+
+| jar                |taille|
+|--------------------|------|
+| kotlin-runtime.jar | 921K |
+
+| kotlin-reflect.jar | 2.5M |
+
+
+* Performances ?
+
+
+<!--
+2,5M kotlin-reflect.jar
+921K kotlin-runtime.jar
+ 37K kotlin-script-runtime.jar
+  20K kotlin-source-sections-compiler-plugin.jar
+3,1K kotlin-stdlib-jdk7.jar
+ 13K kotlin-stdlib-jdk8.jar
+2,8K kotlin-stdlib-jre7.jar
+ 12K kotlin-stdlib-jre8.jar
+650K kotlin-stdlib-js.jar
+921K kotlin-stdlib.jar
+   19K kotlin-test-js.jar
+4,2K kotlin-test-junit.jar
+4,3K kotlin-test-testng.jar
+  28K kotlin-test.jar
+  24K noarg-compiler-plugin.jar
+  12K sam-with-receiver-compiler-plugin.jar
+-->
 
 
 

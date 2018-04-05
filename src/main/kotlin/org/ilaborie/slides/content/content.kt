@@ -76,7 +76,7 @@ enum class NoticeKind {
 
 // Lang
 enum class Language {
-    None, CSS, HTML, Java, Kotlin, TypeScript, JavaScript;
+    None, CSS, HTML, Java, Kotlin, TypeScript, JavaScript, Shell;
 
     override fun toString() = this.name.toLowerCase()
 
@@ -88,6 +88,7 @@ enum class Language {
             ext.endsWith("kt")   -> Kotlin
             ext.endsWith("ts")   -> TypeScript
             ext.endsWith("js")   -> JavaScript
+            ext.endsWith("sh")   -> Shell
             else                 -> null
         }
     }

@@ -295,84 +295,68 @@ section.steps .step {
 
 /*
 
-Intellij Idea-like styling (c) Vasily Polovnyov <vast@whiteants.net>
+Darcula color scheme from the JetBrains family of IDEs
 
 */
 .hljs {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
-  color: #000;
-  background: #fff; }
+  background: #2b2b2b; }
 
-.hljs-subst,
-.hljs-title {
-  font-weight: normal;
-  color: #000; }
+.hljs {
+  color: #bababa; }
 
-.hljs-comment,
-.hljs-quote {
-  color: #808080;
-  font-style: italic; }
+.hljs-strong,
+.hljs-emphasis {
+  color: #a8a8a2; }
 
-.hljs-meta {
-  color: #808000; }
-
-.hljs-tag {
-  background: #efefef; }
-
-.hljs-section,
-.hljs-name,
-.hljs-literal,
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-type,
-.hljs-selector-id,
-.hljs-selector-class {
-  font-weight: bold;
-  color: #000080; }
-
-.hljs-attribute,
-.hljs-number,
-.hljs-regexp,
-.hljs-link {
-  font-weight: bold;
-  color: #0000ff; }
-
-.hljs-number,
-.hljs-regexp,
-.hljs-link {
-  font-weight: normal; }
-
-.hljs-string {
-  color: #008000;
-  font-weight: bold; }
-
-.hljs-symbol,
 .hljs-bullet,
-.hljs-formula {
-  color: #000;
-  background: #d0eded;
-  font-style: italic; }
+.hljs-quote,
+.hljs-link,
+.hljs-number,
+.hljs-regexp,
+.hljs-literal {
+  color: #6896ba; }
 
-.hljs-doctag {
-  text-decoration: underline; }
-
-.hljs-variable,
-.hljs-template-variable {
-  color: #660e7a; }
-
-.hljs-addition {
-  background: #baeeba; }
-
-.hljs-deletion {
-  background: #ffc8bd; }
+.hljs-code,
+.hljs-selector-class {
+  color: #a6e22e; }
 
 .hljs-emphasis {
   font-style: italic; }
 
-.hljs-strong {
-  font-weight: bold; }
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-section,
+.hljs-attribute,
+.hljs-name,
+.hljs-variable {
+  color: #cb7832; }
+
+.hljs-params {
+  color: #b9b9b9; }
+
+.hljs-string {
+  color: #6a8759; }
+
+.hljs-subst,
+.hljs-type,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-symbol,
+.hljs-selector-id,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-addition {
+  color: #e0c46c; }
+
+.hljs-comment,
+.hljs-deletion,
+.hljs-meta {
+  color: #7f7f7f; }
 
 code, pre {
   font-family: var(--codeFont); }
