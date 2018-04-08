@@ -120,6 +120,21 @@
     background-size: cover;
   }
 
+  main section.bilan {
+    background: url('./assets/devoxx-fr/takeaway.png');
+    background-size: cover;
+  }
+
+  main section.details {
+    background: url('./assets/devoxx-fr/zoom.png');
+    background-size: cover;
+  }
+
+  main section.measure {
+    background: url('./assets/devoxx-fr/measure.png');
+    background-size: cover;
+  }
+
   main section.code {
     background: url('./assets/devoxx-fr/code.png');
     background-size: cover;
@@ -174,6 +189,12 @@
   section article > pre.hljs {
     align-self: center;
   }
+  section.contrast article {
+    background: rgba(0,0,0,.5);
+    padding: .5rem;
+    box-shadow: 0 0 5em 1em rgba(0,0,0,.5);
+    border-radius: 1rem;
+  }
 
   section article {
     ol, ul, dl {
@@ -205,16 +226,17 @@
   section article {
     table {
       background: hsla(0, 100%, 100%, .25);
-      border-radius: .25rem;
+      border-radius: .25em;
       border-collapse: collapse;
       border: medium solid transparent;
       th, td {
         margin: 0;
-        padding: .25rem;
-        border: thin solid currentColor;
+        padding: .25em;
+        border: thin solid rgba(0,0,0,.5);
       }
       th {
         border-bottom-width: medium;
+        border-bottom-color: white;
       }
 
     }

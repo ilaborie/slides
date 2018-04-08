@@ -1,4 +1,0 @@
-Compiled from "astronomy.kt"
-public interface astronomy.AstronomicalBody {
-  public abstract java.lang.String getName();
-}

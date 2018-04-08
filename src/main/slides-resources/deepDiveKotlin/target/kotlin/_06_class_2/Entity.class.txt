@@ -1,3 +1,0 @@
-Compiled from "typealias.kt"
-public interface _06_class_2.Entity {
-}

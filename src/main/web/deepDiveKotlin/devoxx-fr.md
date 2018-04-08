@@ -265,6 +265,8 @@ public class _00_helloworld.HelloWorld {
 * [Introduction to Java Bytecode](https://mahmoudanouti.wordpress.com/2018/03/20/introduction-to-java-bytecode/)
 * [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se10/html/index.html)
 * [The Java Virtual Machine Instruction Set ](https://docs.oracle.com/javase/specs/jvms/se10/html/jvms-6.html)
+* [asm](http://asm.ow2.org/)
+* [Byte Buddy](http://bytebuddy.net/#/)
 
 > Soyez curieux: regardez comment ça marche avec `javap -c`
 
@@ -427,47 +429,31 @@ public final class HelloWorldKt {
 ```
 
 
-
 * Kotlin ajoute des contrôles
 * du coup on a besoin de JAR en plus
 
-| jar                |taille|
-|--------------------|------|
-| kotlin-runtime.jar | 921K |
-| kotlin-reflect.jar | 2.5M |
-
+| jar                           |taille|
+|-------------------------------|------|
+| kotlin-stdlib-jdk7-1.2.31.jar | 3.1K |
+| kotlin-stdlib-jdk8-1.2.31.jar |  13K |
+| kotlin-stdlib-1.2.31.jar      | 919K |
+| kotlin-reflect-1.2.31.jar     | 2.5M |
+| spring-core-5.0.5.RELEASE.jar | 1.2M | 
+| jackson-databind-2.9.5.jar    | 1.3M | 
+| logback-classic-1.2.3.jar     | 284K | 
 
 * Performances ?
 
 
-<!--
-2,5M kotlin-reflect.jar
-921K kotlin-runtime.jar
- 37K kotlin-script-runtime.jar
-  20K kotlin-source-sections-compiler-plugin.jar
-3,1K kotlin-stdlib-jdk7.jar
- 13K kotlin-stdlib-jdk8.jar
-2,8K kotlin-stdlib-jre7.jar
- 12K kotlin-stdlib-jre8.jar
-650K kotlin-stdlib-js.jar
-921K kotlin-stdlib.jar
-   19K kotlin-test-js.jar
-4,2K kotlin-test-junit.jar
-4,3K kotlin-test-testng.jar
-  28K kotlin-test.jar
-  24K noarg-compiler-plugin.jar
-  12K sam-with-receiver-compiler-plugin.jar
--->
-
 
 * <https://github.com/JetBrains/kotlin-benchmarks>
 * [Kotlin Hidden Costs Benchmark](https://github.com/renatoathaydes/kotlin-hidden-costs-benchmark) 
-  * ⚠️ kotlin 1.3
+  * ⚠️ kotlin 1.1.3
   * [Part 1](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62)
   * [Part 2](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-2-324a4a50b70)
   * [Part 3](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-3-3bf6e0dbf0a4)
   * [Kotlin Hidden Costs - Benchmarks](https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks)
-  * [MaJ version kotlin, JMH](https://github.com/ilaborie/kotlin-hidden-costs-benchmark)
+  * [MàJ versions Kotlin, JMH](https://github.com/ilaborie/kotlin-hidden-costs-benchmark)
   
 
 
@@ -496,6 +482,129 @@ public final class HelloWorldKt {
   
 
 
+
+```kotlin
+var x: Int = 10
+val y: Int = 3
+x += 4
+// y += 4 <== 💣 Compilation Error
+
+println(x * y) // 42
+
+
+```
+
+```kotlin
+fun greeting(who: Someone) {
+    println("Hello $who!")
+    println("Hello ${who.firstName} ${who.lastName}!")
+}
+```
+
+```java
+package _01_basic;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\f\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\u001a\u000e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u0003"},
+   d2 = {"greeting", "", "who", "L_01_basic/Someone;"}
+)
+public final class String_templatesKt {
+   public static final void greeting(@NotNull Someone who) {
+      Intrinsics.checkParameterIsNotNull(who, "who");
+      String var1 = "Hello " + who + '!';
+      System.out.println(var1);
+      var1 = "Hello " + who.getFirstName() + ' ' + who.getLastName() + '!';
+      System.out.println(var1);
+   }
+}
+
+```
+
+`Compiled from "string-templates.kt"
+public final class _01_basic.String_templatesKt {
+  public static final void greeting(_01_basic.Someone);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String who
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: new           #17                 // class java/lang/StringBuilder
+       9: dup
+      10: invokespecial #21                 // Method java/lang/StringBuilder."<init>":()V
+      13: ldc           #23                 // String Hello
+      15: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      18: aload_0
+      19: invokevirtual #30                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+      22: bipush        33
+      24: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      27: invokevirtual #37                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      30: astore_1
+      31: getstatic     #43                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      34: aload_1
+      35: invokevirtual #49                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+      38: new           #17                 // class java/lang/StringBuilder
+      41: dup
+      42: invokespecial #21                 // Method java/lang/StringBuilder."<init>":()V
+      45: ldc           #23                 // String Hello
+      47: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      50: aload_0
+      51: invokevirtual #54                 // Method _01_basic/Someone.getFirstName:()Ljava/lang/String;
+      54: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: bipush        32
+      59: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      62: aload_0
+      63: invokevirtual #57                 // Method _01_basic/Someone.getLastName:()Ljava/lang/String;
+      66: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      69: bipush        33
+      71: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      74: invokevirtual #37                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      77: astore_1
+      78: getstatic     #43                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      81: aload_1
+      82: invokevirtual #49                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
+      85: return
+}
+`
+
+```kotlin
+val anInt = 42  // type inference: Int
+val aLong = 42L // type inference: Long
+var aDouble: Double? = null
+```
+
+```java
+package _01_basic;
+
+import kotlin.Metadata;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0006\n\u0000\n\u0002\u0010\u0002\u001a\u0006\u0010\u0000\u001a\u00020\u0001"},
+   d2 = {"tryNumeric", ""}
+)
+public final class NumericKt {
+   public static final void tryNumeric() {
+      int anInt = true;
+      long aLong = 42L;
+      Double aDouble = (Double)null;
+   }
+}
+
+```
+
+* plus de `;` <sup>*</sup>
+* 😍 String templating
+* 😘 plus de types primitifs (avant la compilation)
+* 🧐 inférence de types
+* on peut mélanger du code Java et Kotlin
 
 
 

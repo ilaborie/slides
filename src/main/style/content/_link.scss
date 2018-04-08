@@ -26,6 +26,9 @@ section article, section h1, section h2, section h3, section h4 {
       background-repeat: no-repeat;
       background-size: contain;
     }
+    &[href*="medium"]::before {
+      background-image: url('./assets/brands/medium.svg');
+    }
     &[href*="spring-framework"]::before {
       background-image: url('./assets/brands/spring.svg');
     }

@@ -251,11 +251,14 @@ section#speakers {
       justify-self: center;
       border: none; }
 
-section#roadmap article {
-  align-items: center; }
-  section#roadmap article ol {
-    column-count: 2;
-    column-gap: 5rem; }
+section#roadmap {
+  background: url("./assets/devoxx-fr/roadmap.png");
+  background-size: cover; }
+  section#roadmap article {
+    align-items: center; }
+    section#roadmap article ol {
+      column-count: 2;
+      column-gap: 5rem; }
 
 section.list-big {
   font-size: 1.3rem; }
@@ -263,14 +266,33 @@ section.list-big {
 section#bytecode-play {
   background: url("./assets/devoxx-fr/matrix.png");
   background-size: cover; }
-  section#bytecode-play article .catnip {
-    background: rgba(255, 255, 255, 0.75);
-    overflow: auto;
-    font-size: .5rem; }
-    section#bytecode-play article .catnip .frames {
-      background: transparent; }
-    section#bytecode-play article .catnip ul {
-      font-size: .5rem; }
+  section#bytecode-play article {
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem; }
+    section#bytecode-play article .catnip {
+      --primaryColor: white;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: .5rem;
+      overflow: auto;
+      font-size: .75rem;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif; }
+      section#bytecode-play article .catnip .frames {
+        background: transparent; }
+        section#bytecode-play article .catnip .frames button {
+          color: black;
+          transform: scale(2) translateX(-1.2em); }
+      section#bytecode-play article .catnip ul {
+        font-size: .5rem; }
+
+section#bytecode-links article blockquote p {
+  font-size: 1rem; }
+
+section#bilan_helloworld_kt article table {
+  align-self: center;
+  font-size: .75rem; }
+  section#bilan_helloworld_kt article table td {
+    font-family: var(--codeFont); }
 
 section#historique article strong {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
@@ -310,4 +332,7 @@ section#performance_helloworld_kt article pre {
   font-size: .5rem; }
 
 section#performance_helloworld_kt article table {
-  font-size: .75rem; }
+  font-size: .75rem;
+  align-self: center; }
+  section#performance_helloworld_kt article table td {
+    font-family: var(--codeFont); }

@@ -54,12 +54,15 @@ section#speakers {
   }
 }
 
-section#roadmap article {
-  align-items: center;
-  ol {
-    //font-size: .75rem;
-    column-count: 2;
-    column-gap: 5rem;
+section#roadmap {
+  background: url('./assets/devoxx-fr/roadmap.png');
+  background-size: cover;
+  article{
+    align-items: center;
+    ol {
+      column-count: 2;
+      column-gap: 5rem;
+    }
   }
 }
 
@@ -71,17 +74,46 @@ section#bytecode-play {
   background: url('./assets/devoxx-fr/matrix.png');
   background-size: cover;
   article {
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
     .catnip {
-      background: hsla(0, 100%, 100%, .75);
+      --primaryColor: white;
+      background: rgba(0, 0, 0, .5);
+      border-radius: .5rem;
       overflow: auto;
-      font-size: .5rem;
-
+      font-size: .75rem;
+      font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif;
       .frames {
         background: transparent;
+
+        button {
+          color: black;
+          transform: scale(2) translateX(-1.2em);
+        }
       }
 
       ul {
         font-size: .5rem;
+      }
+    }
+  }
+}
+
+section#bytecode-links {
+  article {
+    blockquote p {
+      font-size: 1rem;
+    }
+  }
+}
+section#bilan_helloworld_kt {
+  article {
+    table {
+      align-self: center;
+      font-size: .75rem;
+      td{
+        font-family: var(--codeFont);
       }
     }
   }
@@ -140,5 +172,10 @@ section#performance_helloworld_kt article {
   }
   table {
     font-size: .75rem;
+    align-self: center;
+
+    td{
+      font-family: var(--codeFont);
+    }
   }
 }

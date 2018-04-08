@@ -1,9 +1,0 @@
-Compiled from "corountines.kt"
-public final class _15_coroutines.CorountinesKt {
-  public static final void main(java.lang.String[]);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String args
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: return
-}

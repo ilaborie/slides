@@ -72,6 +72,15 @@
   .devoxx-fr main section.diagram {
     background: url("./assets/devoxx-fr/diag.png");
     background-size: cover; }
+  .devoxx-fr main section.bilan {
+    background: url("./assets/devoxx-fr/takeaway.png");
+    background-size: cover; }
+  .devoxx-fr main section.details {
+    background: url("./assets/devoxx-fr/zoom.png");
+    background-size: cover; }
+  .devoxx-fr main section.measure {
+    background: url("./assets/devoxx-fr/measure.png");
+    background-size: cover; }
   .devoxx-fr main section.code {
     background: url("./assets/devoxx-fr/code.png");
     background-size: cover; }
@@ -110,6 +119,11 @@
         width: 100%; }
   .devoxx-fr section article > pre.hljs {
     align-self: center; }
+  .devoxx-fr section.contrast article {
+    background: rgba(0, 0, 0, 0.5);
+    padding: .5rem;
+    box-shadow: 0 0 5em 1em rgba(0, 0, 0, 0.5);
+    border-radius: 1rem; }
   .devoxx-fr section article ol, .devoxx-fr section article ul, .devoxx-fr section article dl {
     line-height: 1.25;
     font-size: 1rem; }
@@ -126,12 +140,13 @@
     border-radius: .06125rem; }
   .devoxx-fr section article table {
     background: rgba(255, 255, 255, 0.25);
-    border-radius: .25rem;
+    border-radius: .25em;
     border-collapse: collapse;
     border: medium solid transparent; }
     .devoxx-fr section article table th, .devoxx-fr section article table td {
       margin: 0;
-      padding: .25rem;
-      border: thin solid currentColor; }
+      padding: .25em;
+      border: thin solid rgba(0, 0, 0, 0.5); }
     .devoxx-fr section article table th {
-      border-bottom-width: medium; }
+      border-bottom-width: medium;
+      border-bottom-color: white; }

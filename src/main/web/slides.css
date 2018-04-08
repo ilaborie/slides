@@ -386,6 +386,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain; }
+  section article a[href*="medium"]::before, section h1 a[href*="medium"]::before, section h2 a[href*="medium"]::before, section h3 a[href*="medium"]::before, section h4 a[href*="medium"]::before {
+    background-image: url("./assets/brands/medium.svg"); }
   section article a[href*="spring-framework"]::before, section h1 a[href*="spring-framework"]::before, section h2 a[href*="spring-framework"]::before, section h3 a[href*="spring-framework"]::before, section h4 a[href*="spring-framework"]::before {
     background-image: url("./assets/brands/spring.svg"); }
   section article a[href*="spring-boot"]::before, section h1 a[href*="spring-boot"]::before, section h2 a[href*="spring-boot"]::before, section h3 a[href*="spring-boot"]::before, section h4 a[href*="spring-boot"]::before {

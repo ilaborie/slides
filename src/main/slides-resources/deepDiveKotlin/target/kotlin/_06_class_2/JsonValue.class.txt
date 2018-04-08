@@ -1,8 +1,0 @@
-Compiled from "sealed.kt"
-public abstract class _06_class_2.JsonValue {
-  public _06_class_2.JsonValue(kotlin.jvm.internal.DefaultConstructorMarker);
-    Code:
-       0: aload_0
-       1: invokespecial #12                 // Method "<init>":()V
-       4: return
-}
