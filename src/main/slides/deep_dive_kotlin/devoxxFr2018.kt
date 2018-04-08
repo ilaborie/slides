@@ -4,7 +4,9 @@ import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.content.Language
 import org.ilaborie.slides.dsl.bash
+import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.part
 import org.ilaborie.slides.dsl.presentation
@@ -111,6 +113,9 @@ fun prezDevoxxFr2018() =
             slide(title = "numeric.java", styleClass = setOf("code", "java")) {
                 codeFromResource("/deepDiveKotlin/basic/NumericKt.java")
             }
+            slide(title = "ByteCode de numeric", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/basic/NumericKt.class.txt")
+            }
             slideFromResource(title = "C'est simple", key = "basic-bilan") { styleClass = setOf("bilan", "contrast") }
         }
 
@@ -119,7 +124,7 @@ fun prezDevoxxFr2018() =
             // TODO manu
         }
 
-        part(title = "Fonction") {
+        part(title = "Les fonctions", key = "fonction") {
             slide(title = "named-params.kt", styleClass = setOf("code", "kotlin")) {
                 codeFromResource("/deepDiveKotlin/fonction/named.kt")
             }
@@ -137,50 +142,128 @@ fun prezDevoxxFr2018() =
             }
             slideFromResource(title = HtmlContent("C'est <code>fun</code> !"), key = "fun-bilan")
             { styleClass = setOf("bilan", "contrast") }
-    }
-        part(title = "Lambda") {
-            slideFromResource(title = "Lambda")
         }
-        part(title = "Class") {
-            slideFromResource(title = "Class")
+
+        part(title = "Les lambdas", key = "lambda") {
+            slideFromResource(title = "Les lambdas", key = "lambda")
+            // TODO manu
         }
+
+        part(title = "Les classes", key = "class") {
+            slide(title = "Point.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/Point.kt")
+            }
+            slide(title = "Point.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/class/Point.java")
+            }
+            slide(title = "Point2.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/Point2.kt")
+            }
+            slide(title = "Point2.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/class/Point2.java")
+            }
+            slide(title = "Point3.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/Point3.kt")
+            }
+            slide(title = "Point3.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/class/Point3.java")
+            }
+            slide(title = "Point4.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/Point4.kt")
+            }
+            slide(title = "Point4.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/class/Point4.java")
+            }
+            // TODO manu
+            slide(title = "Héritage en Kotlin", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/inheritance.kt")
+            }
+            slideFromResource("Générics", key = "generics") { styleClass = setOf("details", "contrast") }
+            slide(HtmlContent("Projection <code>*</code>"), key = "star", styleClass = setOf("details")) {
+                code(Language.Kotlin) {
+                    "interface Function<in T, out U>"
+                }
+                code(Language.Kotlin) {
+                    "Function<*, String> // correspond à Function<in Nothing, String>"
+                }
+                code(Language.Kotlin) {
+                    "Function<Int, *> // correspond à Function<Int, out Any?>"
+                }
+                code(Language.Kotlin) {
+                    "Function<*, *> // correspond à Function<in Nothing, out Any?>"
+                }
+            }
+            slide(title = "Sealed", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/json.kt")
+            }
+            slide(title = "Alias en Kotlin", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/class/typealias.kt")
+            }
+            slide(title = "ByteCode d'alias", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/class/TypealiasKt.class.txt")
+            }
+
+            // TODO manu
+            slideFromResource(title = "Classe, le bilan", key = "class-bilan") {
+                styleClass = setOf("bilan", "contrast")
+            }
+        }
+
         part(title = "Types") {
             slideFromResource(title = "Hierarchie des types")
+            // FIXME
         }
+
         part(title = "Extensions de fonction") {
             slideFromResource(title = "Extension")
+            // TODO manu
         }
+
         part(title = "Structure") {
             slideFromResource(title = "Structures")
+            // FIXME
         }
 
         part(title = "Pause") {}
 
         part(title = "ByteCode Android", key = "android") {
+            // TODO manu
             slideFromResource(title = "Android ByteCode")
+            slideFromResource(title = "ProGuard")
         }
 
-        part(title = "Collection") {
+        part(title = "Les collections", key = "collection") {
             slideFromResource(title = "Collection")
+            // FIXME
+            // TODO manu
         }
-        part(title = "Delegate") {
+
+        part(title = "Les delegates", key = "delegate") {
             slideFromResource(title = "Delegate")
+            // TODO manu
         }
-        part(title = "Plus sur les fonctions") {
+
+        part(title = "En peu plus sur les fonctions") {
             slideFromResource(title = "Plus sur les fonctions")
+            // FIXME
         }
-        part(title = "Serialization") {
+
+        part(title = "kotlinx.serialization", key = "serialization") {
             slideFromResource(title = "serialisation")
+            // TODO manu
         }
-        part(title = "Coroutines") {
+
+        part(title = "Les coroutines", key = "courountines") {
             slideFromResource(title = "Coroutines")
-        }
-        part(title = "DSL") {
-            slideFromResource(title = "DSL")
+            // FIXME
         }
 
         part(title = "Conclusion") {
-            slideFromResource(title = "Kotlin vs Java")
-            slideFromResource(title = "Liens")
+            slideFromResource(title = "Android") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Serveur") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Web et Natif") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Kotlin vs Java") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Liens") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Q/A")
         }
     }

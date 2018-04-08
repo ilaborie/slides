@@ -119,6 +119,10 @@
     }
   }
 
+  blockquote p {
+    text-shadow: .0625rem .0625rem rgba(0, 0, 0, .5);
+  }
+
   main section.diagram {
     background: url('./assets/devoxx-fr/diag.png');
     background-size: cover;
