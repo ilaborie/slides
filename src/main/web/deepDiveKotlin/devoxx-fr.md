@@ -265,8 +265,10 @@ public class _00_helloworld.HelloWorld {
 * [Introduction to Java Bytecode](https://mahmoudanouti.wordpress.com/2018/03/20/introduction-to-java-bytecode/)
 * [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se10/html/index.html)
 * [The Java Virtual Machine Instruction Set ](https://docs.oracle.com/javase/specs/jvms/se10/html/jvms-6.html)
-* [asm](http://asm.ow2.org/)
+
+
 * [Byte Buddy](http://bytebuddy.net/#/)
+* [asm](http://asm.ow2.org/)
 
 > Soyez curieux: regardez comment ça marche avec `javap -c`
 
@@ -430,7 +432,7 @@ public final class HelloWorldKt {
 
 
 * Kotlin ajoute des contrôles
-* du coup on a besoin de JAR en plus
+* du coup on a besoin de JARs en plus
 
 | jar                           |taille|
 |-------------------------------|------|
@@ -614,7 +616,189 @@ public final class NumericKt {
 
 
 
+```kotlin
+fun buildString(prefix: String,
+                who: String,
+                enhanced: Boolean): String {
+    var msg = "$prefix $who"
+    if (enhanced) {
+        msg += '!'
+    }
+    return msg
+}
 
+fun greetings(): String =
+    buildString(enhanced = true, who = "Devoxx", prefix = "Hello")
+```
+
+```java
+package _03_fun;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\u001e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\u0006\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
+   d2 = {"buildString", "", "prefix", "who", "enhanced", "", "greetings"}
+)
+public final class NamedKt {
+   @NotNull
+   public static final String buildString(@NotNull String prefix, @NotNull String who, boolean enhanced) {
+      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
+      Intrinsics.checkParameterIsNotNull(who, "who");
+      String msg = "" + prefix + ' ' + who;
+      if (enhanced) {
+         msg = msg + '!';
+      }
+
+      return msg;
+   }
+
+   @NotNull
+   public static final String greetings() {
+      String var0 = "Hello";
+      String var1 = "Devoxx";
+      boolean var2 = true;
+      return buildString(var0, var1, var2);
+   }
+}
+
+```
+
+```kotlin
+fun buildString2(prefix: String = "Hello",
+                 who: String,
+                 enhanced: Boolean = true): String {
+    var msg = "$prefix $who"
+    if (enhanced) {
+        msg += '!'
+    }
+    return msg
+}
+
+fun greetings2(): String =
+    buildString2(who = "Devoxx")
+```
+
+```java
+package _03_fun;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\"\u0010\u0000\u001a\u00020\u00012\b\b\u0002\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
+   d2 = {"buildString2", "", "prefix", "who", "enhanced", "", "greetings2"}
+)
+public final class Default_valueKt {
+   @NotNull
+   public static final String buildString2(@NotNull String prefix, @NotNull String who, boolean enhanced) {
+      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
+      Intrinsics.checkParameterIsNotNull(who, "who");
+      String msg = "" + prefix + ' ' + who;
+      if (enhanced) {
+         msg = msg + '!';
+      }
+
+      return msg;
+   }
+
+   @NotNull
+   public static final String greetings2() {
+      return buildString2$default((String)null, "Devoxx", false, 5, (Object)null);
+   }
+}
+
+```
+
+`Compiled from "default-value.kt"
+public final class _03_fun.Default_valueKt {
+  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String prefix
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_1
+       7: ldc           #17                 // String who
+       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: new           #19                 // class java/lang/StringBuilder
+      15: dup
+      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      19: ldc           #25                 // String
+      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      24: aload_0
+      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      28: bipush        32
+      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      33: aload_1
+      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      40: astore_3
+      41: iload_2
+      42: ifeq          66
+      45: aload_3
+      46: new           #19                 // class java/lang/StringBuilder
+      49: dup
+      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      53: swap
+      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: bipush        33
+      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      65: astore_3
+      66: aload_3
+      67: areturn
+
+  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
+    Code:
+       0: iload_3
+       1: iconst_1
+       2: iand
+       3: ifeq          9
+       6: ldc           #46                 // String Hello
+       8: astore_0
+       9: iload_3
+      10: iconst_4
+      11: iand
+      12: ifeq          17
+      15: iconst_1
+      16: istore_2
+      17: aload_0
+      18: aload_1
+      19: iload_2
+      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+      23: areturn
+
+  public static final java.lang.String greetings2();
+    Code:
+       0: aconst_null
+       1: ldc           #51                 // String Devoxx
+       3: iconst_0
+       4: iconst_5
+       5: aconst_null
+       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+       9: areturn
+}
+`
+
+#### ✨ Conseils
+
+- Toujours typer le retour de vos fonctions
+  (sauf si c'est évident et une surcharge comme le `toString`)
+- Kotlin est plus expressif que Java => évitez de faire des fonctions trop longues
+- Sautez une ligne après le `=`
+
+#### Notes
+
+- le passage des arguments par nom, ne marche pas sur les appels de code Java
 
 
 

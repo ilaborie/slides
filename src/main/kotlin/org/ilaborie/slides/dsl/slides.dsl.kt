@@ -105,6 +105,24 @@ fun PartBuilder.slide(
                  })
 }
 
+fun PartBuilder.slide(
+        title: Content,
+        key: String? = title.renderAsString().normalize(),
+        styleClass: Set<String> = setOf(),
+        b: ContentContainer.() -> Unit
+) {
+
+    addSlide(SlideBuilder()
+                 .apply {
+                     this.id = key ?: ""
+                     this.title = title
+                     this.styleClass += styleClass
+                     val builder = ContentContainer()
+                     b(builder)
+                     this.content = builder()
+                 })
+}
+
 
 fun PartBuilder.slideFromResource(
         title: String,
@@ -125,6 +143,35 @@ fun PartBuilder.slideFromResource(
             return BasicSlide(
                 id = key,
                 title = HtmlContent(title),
+                content = content,
+                contentType = contentType,
+                styleClass = styleClass
+            )
+        }
+
+    }.apply(b))
+}
+
+
+fun PartBuilder.slideFromResource(
+        title: Content,
+        key: String = title.renderAsString().normalize(),
+        contentType: ContentType = MARKDOWN,
+        b: ISlideBuilder.() -> Unit = {}
+) {
+
+    addSlide(object : ISlideBuilder {
+        override var styleClass = setOf<String>()
+        override fun invoke(presentationKey: String, groupKey: String?): Slide {
+            val resource = if (groupKey == null) "/$presentationKey/$key" else "/$presentationKey/$groupKey/$key"
+            val content = when (contentType) {
+                MARKDOWN -> ExternalMarkdownContent(ExternalResource("$resource.md"))
+                HTML     -> ExternalHtmlContent(ExternalResource("$resource.html"))
+                else     -> throw IllegalStateException("Unsupported content type: $contentType")
+            }
+            return BasicSlide(
+                id = key,
+                title = title,
                 content = content,
                 contentType = contentType,
                 styleClass = styleClass

@@ -1,6 +1,6 @@
 
 * Kotlin ajoute des contrôles
-* du coup on a besoin de JAR en plus
+* du coup on a besoin de JARs en plus
 
 | jar                           |taille|
 |-------------------------------|------|

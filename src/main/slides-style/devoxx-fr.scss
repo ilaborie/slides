@@ -85,6 +85,10 @@
 
     h1 {
       font-size: 2.5rem;
+      text-shadow: .0625rem .0625rem rgba(0, 0, 0, .5);
+    }
+    h2 {
+      text-shadow: .0625rem .0625rem rgba(0, 0, 0, .5);
     }
 
     h3 {
@@ -110,7 +114,7 @@
   }
 
   main section article {
-    ol, ul, dl{
+    ol, ul, dl {
       line-height: 1.5;
     }
   }
@@ -139,14 +143,16 @@
     background: url('./assets/devoxx-fr/code.png');
     background-size: cover;
 
+
+    pre {
+      max-width: 100%;
+      overflow: auto;
+    }
+
     &.java {
       background: url('./assets/devoxx-fr/coffee.png');
       background-size: cover;
 
-      pre {
-        max-width: 100%;
-        overflow: auto;
-      }
     }
     &.kotlin {
       background: url('./assets/devoxx-fr/kotlin.png');
@@ -190,9 +196,9 @@
     align-self: center;
   }
   section.contrast article {
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     padding: .5rem;
-    box-shadow: 0 0 5em 1em rgba(0,0,0,.5);
+    box-shadow: 0 0 5em 1em rgba(0, 0, 0, .5);
     border-radius: 1rem;
   }
 
@@ -232,7 +238,7 @@
       th, td {
         margin: 0;
         padding: .25em;
-        border: thin solid rgba(0,0,0,.5);
+        border: thin solid rgba(0, 0, 0, .5);
       }
       th {
         border-bottom-width: medium;
@@ -241,6 +247,5 @@
 
     }
   }
-
 
 }

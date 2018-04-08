@@ -33,132 +33,154 @@ fun main(args: Array<String>) {
     kotlinHandsOn.buildAll(dist, "devoxx-fr")
 }
 
-fun prezDevoxxFr2018() = presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
-    addScript("../scripts/navigation.js")
-    addScript("../scripts/catnip.js")
-    addScript("../scripts/catnip-deepDiveKotlin.js")
+fun prezDevoxxFr2018() =
+    presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
+        addScript("../scripts/navigation.js")
+        addScript("../scripts/catnip.js")
+        addScript("../scripts/catnip-deepDiveKotlin.js")
 
-    part(title = "Introduction") {
-        skipHeader = true
-        slideFromResource(title = "Speakers", key = "speakers", contentType = HTML)
-        roadmap(title = "🗺 Roadmap")
-    }
+        part(title = "Introduction") {
+            skipHeader = true
+            slideFromResource(title = "Speakers", key = "speakers", contentType = HTML)
+            roadmap(title = "🗺 Roadmap")
+        }
 
-    part(title = "ByteCode Java ?", key = "bytecode") {
-        slide(title = "HelloWorld.java", key = "hw-java", styleClass = setOf("code", "java")) {
-            codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.java")
-            bash { "javac HelloWorld.java" }
+        part(title = "ByteCode Java ?", key = "bytecode") {
+            slide(title = "HelloWorld.java", key = "hw-java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.java")
+                bash { "javac HelloWorld.java" }
+            }
+            slide(title = "Java ByteCode binary", styleClass = setOf("code", "hex")) {
+                bash { "hexdump -C HelloWorld.class" }
+                codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.hex")
+            }
+            slide(title = "Explorons le ByteCode", styleClass = setOf("code", "bytecode")) {
+                bash { "javap -c HelloWorld.class" }
+                codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.txt")
+            }
+            slide(title = "Transpile", styleClass = setOf("diagram")) {
+                svg("/deepDiveKotlin/bytecode/javac.svg")
+            }
+            slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
+                styleClass = setOf("details", "contrast")
+            }
+            slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML)
+            slideFromResource(title = "Liens", key = "bytecode-links") { styleClass = setOf("bilan", "contrast") }
         }
-        slide(title = "Java ByteCode binary", styleClass = setOf("code", "hex")) {
-            bash { "hexdump -C HelloWorld.class" }
-            codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.hex")
-        }
-        slide(title = "Explorons le ByteCode", styleClass = setOf("code", "bytecode")) {
-            bash { "javap -c HelloWorld.class" }
-            codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.txt")
-        }
-        slide(title = "Transpile", styleClass = setOf("diagram")) {
-            svg("/deepDiveKotlin/bytecode/javac.svg")
-        }
-        slideFromResource(title = "À propos du ByteCode", key = "bytecode-details")  { styleClass = setOf("details", "contrast") }
-        slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML)
-        slideFromResource(title = "Liens", key = "bytecode-links") { styleClass = setOf("bilan", "contrast") }
-    }
 
-    part(title = "Introduction Kotlin") {
-        slideFromResource(title = "Historique", contentType = HTML)
-        slideFromResource(title = "Cibles", contentType = HTML)
+        part(title = "Introduction Kotlin") {
+            slideFromResource(title = "Historique", contentType = HTML)
+            slideFromResource(title = "Cibles", contentType = HTML)
 
-        slide(title = "HelloWorld.kt", key = "hw-kotlin", styleClass = setOf("code", "kotlin")) {
-            codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
-            bash { "kotlinc HelloWorld.kt" }
+            slide(title = "HelloWorld.kt", key = "hw-kotlin", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
+                bash { "kotlinc HelloWorld.kt" }
+            }
+            slide(title = "hexdump", styleClass = setOf("code", "hex")) {
+                codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.hex")
+            }
+            slide(title = "Java ByteCode", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.txt")
+            }
+            slide(title = "HelloWorld-java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.java")
+            }
+            slideFromResource(title = "Bilan HelloWorld.kt") { styleClass = setOf("bilan", "contrast") }
+            slideFromResource(title = "Performances ?", key = "performance") {
+                styleClass = setOf("measure", "contrast")
+            }
+            slideFromResource(title = "Performance HelloWorld.kt") { styleClass = setOf("bilan", "contrast") }
         }
-        slide(title = "hexdump", styleClass = setOf("code", "hex")) {
-            codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.hex")
-        }
-        slide(title = "Java ByteCode", styleClass = setOf("code", "bytecode")) {
-            codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.txt")
-        }
-        slide(title = "HelloWorld-java", styleClass = setOf("code", "java")) {
-            codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.java")
-        }
-        slideFromResource(title = "Bilan HelloWorld.kt")  { styleClass = setOf("bilan", "contrast") }
-        slideFromResource(title = "Performances ?", key = "performance") { styleClass = setOf("measure", "contrast") }
-        slideFromResource(title = "Performance HelloWorld.kt")  { styleClass = setOf("bilan", "contrast") }
-    }
 
-    part(title = "Les bases", key = "basic") {
-        slide(title = "val-var.kt", styleClass = setOf("code", "kotlin")) {
-            codeFromResource("/deepDiveKotlin/basic/val-var.kt")
+        part(title = "Les bases", key = "basic") {
+            slide(title = "val-var.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/basic/val-var.kt")
+            }
+            slide(title = "string-template.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/basic/string-template.kt")
+            }
+            slide(title = "string-template.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/basic/String_templatesKt.java")
+            }
+            slide(title = "ByteCode de string-template", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/basic/String_templatesKt.class.txt")
+            }
+            slide(title = "numeric.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/basic/numeric.kt")
+            }
+            slide(title = "numeric.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/basic/NumericKt.java")
+            }
+            slideFromResource(title = "C'est simple", key = "basic-bilan") { styleClass = setOf("bilan", "contrast") }
         }
-        slide(title = "string-template.kt", styleClass = setOf("code", "kotlin")) {
-            codeFromResource("/deepDiveKotlin/basic/string-template.kt")
+
+        part(title = "null-safety") {
+            slideFromResource(title = "elvis")
+            // TODO manu
         }
-        slide(title = "string-template.java", styleClass = setOf("code", "java")) {
-            codeFromResource("/deepDiveKotlin/basic/String_templatesKt.java")
+
+        part(title = "Fonction") {
+            slide(title = "named-params.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/fonction/named.kt")
+            }
+            slide(title = "named-params.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/fonction/NamedKt.java")
+            }
+            slide(title = "default-value.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/fonction/default-value.kt")
+            }
+            slide(title = "default-value.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/fonction/Default_valueKt.java")
+            }
+            slide(title = "ByteCode de default-value", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/fonction/Default_valueKt.class.txt")
+            }
+            slideFromResource(title = HtmlContent("C'est <code>fun</code> !"), key = "fun-bilan")
+            { styleClass = setOf("bilan", "contrast") }
+    }
+        part(title = "Lambda") {
+            slideFromResource(title = "Lambda")
         }
-        slide(title = "ByteCode string-template", styleClass = setOf("code", "bytecode")) {
-            codeFromResource("/deepDiveKotlin/basic/String_templatesKt.class.txt")
+        part(title = "Class") {
+            slideFromResource(title = "Class")
         }
-        slide(title = "numeric.kt", styleClass = setOf("code", "kotlin")) {
-            codeFromResource("/deepDiveKotlin/basic/numeric.kt")
+        part(title = "Types") {
+            slideFromResource(title = "Hierarchie des types")
         }
-        slide(title = "numeric.java", styleClass = setOf("code", "java")) {
-            codeFromResource("/deepDiveKotlin/basic/NumericKt.java")
+        part(title = "Extensions de fonction") {
+            slideFromResource(title = "Extension")
         }
-        slideFromResource(title = "C'est simple", key = "basic-bilan") { styleClass = setOf("bilan", "contrast") }
-    }
+        part(title = "Structure") {
+            slideFromResource(title = "Structures")
+        }
 
-    part(title = "null-safety") {
-        slideFromResource(title = "elvis")
-    }
+        part(title = "Pause") {}
 
-    part(title = "Fonction") {
-        slideFromResource(title = "function")
-    }
-    part(title = "Lambda") {
-        slideFromResource(title = "Lambda")
-    }
-    part(title = "Class") {
-        slideFromResource(title = "Class")
-    }
-    part(title = "Types") {
-        slideFromResource(title = "Hierarchie des types")
-    }
-    part(title = "Extensions de fonction") {
-        slideFromResource(title = "Extension")
-    }
-    part(title = "Structure") {
-        slideFromResource(title = "Structures")
-    }
+        part(title = "ByteCode Android", key = "android") {
+            slideFromResource(title = "Android ByteCode")
+        }
 
-    part(title = "Pause") {}
+        part(title = "Collection") {
+            slideFromResource(title = "Collection")
+        }
+        part(title = "Delegate") {
+            slideFromResource(title = "Delegate")
+        }
+        part(title = "Plus sur les fonctions") {
+            slideFromResource(title = "Plus sur les fonctions")
+        }
+        part(title = "Serialization") {
+            slideFromResource(title = "serialisation")
+        }
+        part(title = "Coroutines") {
+            slideFromResource(title = "Coroutines")
+        }
+        part(title = "DSL") {
+            slideFromResource(title = "DSL")
+        }
 
-    part(title = "ByteCode Android", key = "android") {
-        slideFromResource(title = "Android ByteCode")
+        part(title = "Conclusion") {
+            slideFromResource(title = "Kotlin vs Java")
+            slideFromResource(title = "Liens")
+        }
     }
-
-    part(title = "Collection") {
-        slideFromResource(title = "Collection")
-    }
-    part(title = "Delegate") {
-        slideFromResource(title = "Delegate")
-    }
-    part(title = "Plus sur les fonctions") {
-        slideFromResource(title = "Plus sur les fonctions")
-    }
-    part(title = "Serialization") {
-        slideFromResource(title = "serialisation")
-    }
-    part(title = "Coroutines") {
-        slideFromResource(title = "Coroutines")
-    }
-    part(title = "DSL") {
-        slideFromResource(title = "DSL")
-    }
-
-    part(title = "Conclusion") {
-        slideFromResource(title = "Kotlin vs Java")
-        slideFromResource(title = "Liens")
-    }
-}
