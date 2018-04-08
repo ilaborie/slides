@@ -1,25 +1,224 @@
-section article > pre.hljs {
-  align-self: center; }
+@charset "UTF-8";
+.catnip {
+  --primaryColor: teal;
+  --frameColor: #4c2b70; }
 
-section article ol, section article ul, section article dl {
-  line-height: 1.25;
-  font-size: 1rem; }
-  section article ol p, section article ul p, section article dl p {
-    margin: .25rem 0; }
+.catnip * {
+  margin: 0;
+  padding: 0;
+  color: var(--primaryColor); }
 
-.hljs.lang-shell {
-  background: black;
-  color: #2dc82d; }
-  .hljs.lang-shell code::before {
-    content: '$ '; }
+.catnip body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif; }
 
-#speakers {
+.catnip button {
+  padding: .125em .25em;
+  border-radius: .25em;
+  outline: none; }
+
+.catnip menu {
+  text-align: right; }
+
+.catnip details {
+  padding: .25em; }
+
+.catnip details summary {
+  cursor: pointer; }
+
+.catnip .constants {
+  display: grid;
+  grid-template-columns: 5ch 1fr 1fr;
+  grid-gap: .25em;
+  font-family: Fira Code; }
+
+.catnip .constants > * {
+  padding: .125em; }
+
+.catnip .constants .index {
+  text-align: right; }
+
+.catnip .constants .index:before {
+  content: "#"; }
+
+.catnip .frames {
+  background: #fff8dc; }
+
+.catnip .frames > div {
+  font-family: Fira Code, monospace;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: .5em; }
+
+.catnip .frames > div .frame {
+  margin: .5em 0; }
+
+.catnip .frame {
+  border: thin solid rgba(0, 0, 0, 0.5);
+  border-radius: .5em;
+  padding: .5em;
+  background-color: var(--frameColor);
+  --primaryColor: #fff;
+  box-shadow: 0.125em 0.125em 0.5em rgba(0, 0, 0, 0.5);
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: "header header" "code   stack" "locals locals";
+  opacity: .75;
+  filter: grayscale(0.8); }
+
+.catnip .frame.current {
+  opacity: 1;
+  filter: none; }
+
+.catnip .frame > header {
+  grid-area: header;
+  text-align: center;
+  font-weight: 700;
+  border-bottom: thin solid rgba(0, 0, 0, 0.5); }
+
+.catnip .frame > header:before {
+  content: "📦 "; }
+
+.catnip .frame ul.code {
+  grid-area: code;
+  margin: .25em; }
+
+.catnip .frame .stack {
+  grid-area: stack;
+  align-self: end; }
+
+.catnip .frame .locals, .catnip .frame .stack {
+  margin: .25em;
+  box-shadow: 0.06125em 0.06125em 0.25em rgba(0, 0, 0, 0.5); }
+
+.catnip .frame .locals {
+  grid-area: locals; }
+
+.catnip .code {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.2); }
+
+.catnip .code li {
+  margin: 0;
+  padding: 0;
+  display: flex; }
+
+.catnip .code li:before {
+  content: "➖ "; }
+
+.catnip .code li > * {
+  padding: .125em; }
+
+.catnip .code li .position {
+  width: 2ch;
+  text-align: right; }
+
+.catnip .code li .code {
+  font-weight: 700;
+  max-height: 25vh;
+  overflow: auto; }
+
+.catnip .code li .args {
+  margin-left: 1em;
+  flex-grow: 1;
+  text-align: right;
+  margin-right: .25em; }
+
+.catnip .code .selected {
+  background-color: var(--primaryColor); }
+
+.catnip .code .selected:before {
+  content: "🔜 "; }
+
+.catnip .code .selected > * {
+  --primaryColor: var(--frameColor); }
+
+.catnip .locals {
+  background: #47bd82;
+  border-radius: .25em;
+  color: #fff;
+  padding: .25em; }
+
+.catnip .locals header {
+  text-align: center; }
+
+.catnip .locals > div {
+  display: flex;
+  counter-reset: a -1; }
+
+.catnip .locals > div > div {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: medium solid currentColor;
+  flex-grow: 1;
+  text-align: center;
+  position: relative;
+  counter-increment: a; }
+
+.catnip .locals > div > div.empty:after {
+  content: "·"; }
+
+.catnip .locals > div > div:before {
+  position: absolute;
+  left: 0;
+  top: -2ch;
+  color: rgba(255, 255, 255, 0.75);
+  content: counter(a); }
+
+.catnip .locals > div > div + div {
+  margin-left: .125em; }
+
+.catnip .stack {
+  min-width: 0;
+  background: #4747bd;
+  color: #fff;
+  border-radius: .25em;
+  padding: .25em; }
+
+.catnip .stack header {
+  text-align: center; }
+
+.catnip .stack > div {
+  display: flex;
+  flex-direction: column-reverse;
+  border: thick solid currentColor;
+  border-top-left-radius: .125em;
+  border-top-right-radius: .125em;
+  border-top-width: 0; }
+
+.catnip .stack > div > div {
+  background-color: rgba(255, 255, 255, 0.2);
+  margin-top: .125em;
+  padding: .125em;
+  flex-grow: 1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.catnip .stack > div > div.empty:after {
+  content: "·"; }
+
+.catnip header .args {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: .125em;
+  border-radius: .125em;
+  margin-left: .5em; }
+
+.catnip header .args span + span:before {
+  content: ", "; }
+
+section#deepDiveKotlin h1 {
+  line-height: 1.5; }
+
+section#speakers {
   background: #00b0f0;
   color: #fff;
   z-index: 2; }
-  #speakers h3, #speakers::before, #speakers::after {
+  section#speakers h3, section#speakers::before, section#speakers::after {
     display: none; }
-  #speakers article {
+  section#speakers article {
     flex-direction: row;
     grid-column: 1 / 4;
     grid-row: 1 / 4;
@@ -28,12 +227,12 @@ section article ol, section article ul, section article dl {
     grid-template-rows: 2fr 1fr;
     min-height: 100vh;
     align-items: center; }
-    #speakers article > div {
+    section#speakers article > div {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center; }
-      #speakers article > div img.speakerRound {
+      section#speakers article > div img.speakerRound {
         width: 128px;
         float: left;
         margin-right: 20px;
@@ -41,23 +240,37 @@ section article ol, section article ul, section article dl {
         border-radius: 100px;
         overflow: hidden;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3); }
-      #speakers article > div h4,
-      #speakers article > div a {
+      section#speakers article > div h4,
+      section#speakers article > div a {
         align-self: initial; }
-      #speakers article > div a {
+      section#speakers article > div a {
         font-size: 80%; }
-    #speakers article > a {
+    section#speakers article > a {
       grid-column: 1 / 3;
       text-align: center;
       justify-self: center;
       border: none; }
 
-section#roadmap article ol {
-  column-count: 2;
-  column-gap: 5rem; }
+section#roadmap article {
+  align-items: center; }
+  section#roadmap article ol {
+    column-count: 2;
+    column-gap: 5rem; }
 
 section.list-big {
   font-size: 1.3rem; }
+
+section#bytecode-play {
+  background: url("./assets/devoxx-fr/matrix.png");
+  background-size: cover; }
+  section#bytecode-play article .catnip {
+    background: rgba(255, 255, 255, 0.75);
+    overflow: auto;
+    font-size: .5rem; }
+    section#bytecode-play article .catnip .frames {
+      background: transparent; }
+    section#bytecode-play article .catnip ul {
+      font-size: .5rem; }
 
 section#historique article strong {
   text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
@@ -66,24 +279,35 @@ section#historique article mark {
   padding: .125rem;
   border-radius: .125rem; }
 
-#cibles {
+section#cibles {
   background: url("./assets/devoxx-fr/target.png");
   background-size: cover; }
-  #cibles article {
+  section#cibles article {
     display: grid;
     grid-template-columns: 1fr 1fr 2fr 2fr;
     align-content: center;
     justify-items: center;
     grid-gap: .5rem; }
-    #cibles article .jvm-android {
+    section#cibles article .jvm-android {
       grid-column: 1 / 3; }
-    #cibles article img {
+    section#cibles article img {
       width: 12vw;
       align-self: end;
       filter: drop-shadow(0 0 0.1rem black); }
-    #cibles article h4 {
+    section#cibles article h4 {
       filter: drop-shadow(0 0 0.1rem black);
       border-radius: .5rem;
       display: flex;
       justify-content: center;
       align-items: center; }
+
+section#performance_helloworld_kt article blockquote p {
+  font-size: 1rem; }
+
+section#performance_helloworld_kt article pre {
+  display: none;
+  margin: .5rem 0;
+  font-size: .5rem; }
+
+section#performance_helloworld_kt article table {
+  font-size: .75rem; }

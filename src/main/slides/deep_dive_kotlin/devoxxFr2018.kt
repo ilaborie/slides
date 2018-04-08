@@ -3,6 +3,7 @@ package deep_dive_kotlin
 import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
+import org.ilaborie.slides.content.HtmlContent
 import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.part
@@ -32,8 +33,10 @@ fun main(args: Array<String>) {
     kotlinHandsOn.buildAll(dist, "devoxx-fr")
 }
 
-fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World au ByteCode", key = "deepDiveKotlin") {
+fun prezDevoxxFr2018() = presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
     addScript("../scripts/navigation.js")
+    addScript("../scripts/catnip.js")
+    addScript("../scripts/catnip-deepDiveKotlin.js")
 
     part(title = "Introduction") {
         skipHeader = true
@@ -50,16 +53,15 @@ fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World 
             codeFromResource("/deepDiveKotlin/target/java/_00_helloworld/HelloWorld.class.hex")
         }
         slide(title = "Explorons le ByteCode", styleClass = setOf("code", "bytecode")) {
-            bash { "javap -c -v HelloWorld.class" }
+            bash { "javap -c HelloWorld.class" }
             codeFromResource("/deepDiveKotlin/target/java/_00_helloworld/HelloWorld.class.txt")
         }
         slide(title = "Transpile", styleClass = setOf("diagram")) {
             svg("/deepDiveKotlin/bytecode/javac.svg")
         }
-        slide(title = "ByteCode Inter", styleClass = setOf("diagram")) {
-            svg("/deepDiveKotlin/bytecode/javac.svg")
-        }
-        slideFromResource(title = "Liens", key="bytecode-links")
+        slideFromResource(title = "À propos du ByteCode", key = "bytecode-details")
+        slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML)
+        slideFromResource(title = "Liens", key = "bytecode-links")
     }
 
     part(title = "Introduction Kotlin") {
@@ -80,6 +82,7 @@ fun prezDevoxxFr2018() = presentation(title = "Deep Dive Kotlin: du Hello World 
             codeFromResource("/deepDiveKotlin/target/kotlin/_00_helloworld/HelloWorldKt.java")
         }
         slideFromResource(title = "Bilan HelloWorld.kt")
+        slideFromResource(title = "Performance ?", key = "performance")
         slideFromResource(title = "Performance HelloWorld.kt")
     }
 

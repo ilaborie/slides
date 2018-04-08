@@ -156,8 +156,8 @@ section::after {
   content: var(--txtFooter);
   padding: .1rem .5rem; }
 
-section .previous,
-section .next {
+section a.previous,
+section a.next {
   height: 100%;
   width: 100%;
   display: flex;
@@ -166,30 +166,30 @@ section .next {
   color: transparent;
   text-decoration: none;
   outline: none; }
-  section .previous:hover,
-  section .next:hover {
+  section a.previous:hover,
+  section a.next:hover {
     color: var(--fgSlideNav);
     text-decoration: none; }
 
-section .previous::after,
-section .next::before {
+section a.previous::after,
+section a.next::before {
   content: ''; }
 
-section .previous::before,
-section .next::after {
+section a.previous::before,
+section a.next::after {
   content: '';
   font-size: 6rem;
   text-decoration: none;
   margin-top: calc(var(--headerHeight) / -2); }
 
-section .previous {
+section a.previous {
   cursor: w-resize; }
-  section .previous::before {
+  section a.previous::before {
     content: '‹'; }
 
-section .next {
+section a.next {
   cursor: e-resize; }
-  section .next::after {
+  section a.next::after {
     content: '›'; }
 
 main {

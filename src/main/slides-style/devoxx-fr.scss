@@ -33,7 +33,7 @@
   --codeFont: code, monospace;
   --footerFont: code, monospace;
   --partFont: Montserrat, cursive;
-  --quoteFont: 'Just Another Hand', cursive;
+  --quoteFont: 'Open Sans', 'Just Another Hand', cursive;
   //--counterFont: 'Press Start 2P', fantasy;
   --counterFont: 'OCR A Std', fantasy;
 
@@ -109,6 +109,12 @@
     //filter: hue-rotate(285deg);
   }
 
+  main section article {
+    ol, ul, dl{
+      line-height: 1.5;
+    }
+  }
+
   main section.diagram {
     background: url('./assets/devoxx-fr/diag.png');
     background-size: cover;
@@ -163,7 +169,56 @@
         }
       }
     }
-
   }
+
+  section article > pre.hljs {
+    align-self: center;
+  }
+
+  section article {
+    ol, ul, dl {
+      line-height: 1.25;
+      font-size: 1rem;
+
+      p {
+        margin: .25rem 0;
+      }
+    }
+  }
+
+  .hljs.lang-shell {
+    background: black;
+    color: #2dc82d;
+    code {
+      &::before {
+        content: '$ ';
+      }
+    }
+  }
+
+  li code, blockquote code {
+    background-color: hsla(0, 100%, 100%, .4);
+    padding: .06125rem;
+    border-radius: .06125rem;
+  }
+
+  section article {
+    table {
+      background: hsla(0, 100%, 100%, .25);
+      border-radius: .25rem;
+      border-collapse: collapse;
+      border: medium solid transparent;
+      th, td {
+        margin: 0;
+        padding: .25rem;
+        border: thin solid currentColor;
+      }
+      th {
+        border-bottom-width: medium;
+      }
+
+    }
+  }
+
 
 }

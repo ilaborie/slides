@@ -26,7 +26,7 @@
   --codeFont: code, monospace;
   --footerFont: code, monospace;
   --partFont: Montserrat, cursive;
-  --quoteFont: 'Just Another Hand', cursive;
+  --quoteFont: 'Open Sans', 'Just Another Hand', cursive;
   --counterFont: 'OCR A Std', fantasy;
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
@@ -67,6 +67,8 @@
     .devoxx-fr main section.cover::after {
       background: url("./assets/devoxx-fr/logo.png") no-repeat right;
       background-size: contain; }
+  .devoxx-fr main section article ol, .devoxx-fr main section article ul, .devoxx-fr main section article dl {
+    line-height: 1.5; }
   .devoxx-fr main section.diagram {
     background: url("./assets/devoxx-fr/diag.png");
     background-size: cover; }
@@ -106,3 +108,30 @@
         overflow: auto;
         font-size: .6rem;
         width: 100%; }
+  .devoxx-fr section article > pre.hljs {
+    align-self: center; }
+  .devoxx-fr section article ol, .devoxx-fr section article ul, .devoxx-fr section article dl {
+    line-height: 1.25;
+    font-size: 1rem; }
+    .devoxx-fr section article ol p, .devoxx-fr section article ul p, .devoxx-fr section article dl p {
+      margin: .25rem 0; }
+  .devoxx-fr .hljs.lang-shell {
+    background: black;
+    color: #2dc82d; }
+    .devoxx-fr .hljs.lang-shell code::before {
+      content: '$ '; }
+  .devoxx-fr li code, .devoxx-fr blockquote code {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: .06125rem;
+    border-radius: .06125rem; }
+  .devoxx-fr section article table {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: .25rem;
+    border-collapse: collapse;
+    border: medium solid transparent; }
+    .devoxx-fr section article table th, .devoxx-fr section article table td {
+      margin: 0;
+      padding: .25rem;
+      border: thin solid currentColor; }
+    .devoxx-fr section article table th {
+      border-bottom-width: medium; }

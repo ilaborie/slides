@@ -1,29 +1,11 @@
-section article > pre.hljs {
-  align-self: center;
+@import "catnip";
+
+
+section#deepDiveKotlin h1 {
+  line-height: 1.5;
 }
 
-section article {
-  ol, ul, dl {
-    line-height: 1.25;
-    font-size: 1rem;
-
-    p {
-      margin: .25rem 0;
-    }
-  }
-}
-
-.hljs.lang-shell {
-  background: black;
-  color: #2dc82d;
-  code {
-    &::before {
-      content: '$ ';
-    }
-  }
-}
-
-#speakers {
+section#speakers {
   background: #00b0f0;
   color: #fff;
   z-index: 2;
@@ -73,6 +55,7 @@ section article {
 }
 
 section#roadmap article {
+  align-items: center;
   ol {
     //font-size: .75rem;
     column-count: 2;
@@ -84,9 +67,29 @@ section.list-big {
   font-size: 1.3rem;
 }
 
+section#bytecode-play {
+  background: url('./assets/devoxx-fr/matrix.png');
+  background-size: cover;
+  article {
+    .catnip {
+      background: hsla(0, 100%, 100%, .75);
+      overflow: auto;
+      font-size: .5rem;
+
+      .frames {
+        background: transparent;
+      }
+
+      ul {
+        font-size: .5rem;
+      }
+    }
+  }
+}
+
 section#historique article {
   strong {
-    text-shadow: 1px 1px rgba(0,0,0,.5);
+    text-shadow: 1px 1px rgba(0, 0, 0, .5);
   }
   mark {
     padding: .125rem;
@@ -94,7 +97,7 @@ section#historique article {
   }
 }
 
-#cibles {
+section#cibles {
   background: url('./assets/devoxx-fr/target.png');
   background-size: cover;
   article {
@@ -123,5 +126,19 @@ section#historique article {
       justify-content: center;
       align-items: center;
     }
+  }
+}
+
+section#performance_helloworld_kt article {
+  blockquote p {
+    font-size: 1rem;
+  }
+  pre {
+    display: none;
+    margin: .5rem 0;
+    font-size: .5rem;
+  }
+  table {
+    font-size: .75rem;
   }
 }

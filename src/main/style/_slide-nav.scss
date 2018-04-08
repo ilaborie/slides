@@ -1,6 +1,6 @@
 // Slide navigation
-section .previous,
-section .next {
+section a.previous,
+section a.next {
   height: 100%;
   width: 100%;
   display: flex;
@@ -15,13 +15,13 @@ section .next {
   }
 }
 
-section .previous::after,
-section .next::before {
+section a.previous::after,
+section a.next::before {
   content: '';
 }
 
-section .previous::before,
-section .next::after {
+section a.previous::before,
+section a.next::after {
   content: '';
   font-size: 6rem;
   text-decoration: none;
@@ -29,7 +29,7 @@ section .next::after {
 }
 
 // Previous
-section .previous {
+section a.previous {
   cursor: w-resize;
   &::before {
     content: '‹';
@@ -37,7 +37,7 @@ section .previous {
 }
 
 // Next
-section .next {
+section a.next {
   cursor: e-resize;
   &::after {
     content: '›';
