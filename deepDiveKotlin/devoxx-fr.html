@@ -89,7 +89,7 @@
 <a href="#star" class="details" title="Projection *">52</a>
 <a href="#sealed" class="code kotlin" title="Sealed">53</a>
 <a href="#alias_en_kotlin" class="code kotlin" title="Alias en Kotlin">54</a>
-<a href="#alias_en_java" class="code java" title="Alias en Java">55</a>
+<a href="#bytecode_d_alias" class="code java" title="ByteCode d'alias">55</a>
 <a href="#class-bilan" class="bilan contrast" title="Classe, le bilan">56</a></nav>
 <nav><a href="#part_types" class="part" title="Types">57</a>
 <a href="#hierarchie_des_types" class="" title="Hierarchie des types">58</a></nav>
@@ -1712,24 +1712,23 @@ typealias EntityKey = Pair&lt;Id, Version&gt;
 <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span></span>: Map&lt;EntityKey, List&lt;Entity&gt;&gt; = emptyMap()
 </code></pre>
     </article>
-    <a href="#alias_en_java" class="next" aria-label="Suivant"></a>
+    <a href="#bytecode_d_alias" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Alias en Java -->
-<section id="alias_en_java" class="code java">
+<!-- Slide ByteCode d'alias -->
+<section id="bytecode_d_alias" class="code java">
     <a href="#alias_en_kotlin" class="previous" aria-label="Précédant"></a>
-    <h3>Alias en Java</h3>
+    <h3>ByteCode d'alias</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Entity</span></span>
-
-typealias Id = String
-typealias Version = <span class="hljs-built_in">Int</span>
-typealias EntityKey = Pair&lt;Id, Version&gt;
-
-<span class="hljs-comment">// fun getAllEntities(): Map&lt;Pair&lt;String, Int&gt;, List&lt;Entity&gt;&gt; = emptyMap()</span>
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span></span>: Map&lt;EntityKey, List&lt;Entity&gt;&gt; = emptyMap()
-</code></pre>
+        <code>Compiled from "typealias.kt"
+public final class _06_class_2.TypealiasKt {
+  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
+    Code:
+       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
+       3: areturn
+}
+</code>
     </article>
     <a href="#class-bilan" class="next" aria-label="Suivant"></a>
 </section>
@@ -1737,7 +1736,7 @@ typealias EntityKey = Pair&lt;Id, Version&gt;
 
 <!-- Slide Classe, le bilan -->
 <section id="class-bilan" class="bilan contrast">
-    <a href="#alias_en_java" class="previous" aria-label="Précédant"></a>
+    <a href="#bytecode_d_alias" class="previous" aria-label="Précédant"></a>
     <h3>Classe, le bilan</h3>
     <article>
         <ul>

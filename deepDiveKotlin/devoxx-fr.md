@@ -1095,17 +1095,14 @@ fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
 
 ```
 
-```kotlin
-interface Entity
-
-typealias Id = String
-typealias Version = Int
-typealias EntityKey = Pair<Id, Version>
-
-// fun getAllEntities(): Map<Pair<String, Int>, List<Entity>> = emptyMap()
-fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
-
-```
+`Compiled from "typealias.kt"
+public final class _06_class_2.TypealiasKt {
+  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
+    Code:
+       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
+       3: areturn
+}
+`
 
 
 * 🤔 Mais pourquoi on n'a pas ça en Java ?
