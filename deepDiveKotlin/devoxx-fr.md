@@ -40,9 +40,9 @@
 1. Introduction Kotlin
 2. Les bases
 3. null-safety
-4. Fonction
-5. Lambda
-6. Class
+4. Les fonctions
+5. Les lambdas
+6. Les classes
 7. Types
 8. Extensions de fonction
 9. Structure
@@ -436,10 +436,11 @@ public final class HelloWorldKt {
 
 | jar                           |taille|
 |-------------------------------|------|
+| kotlin-stdlib-1.2.31.jar      | 919K |
 | kotlin-stdlib-jdk7-1.2.31.jar | 3.1K |
 | kotlin-stdlib-jdk8-1.2.31.jar |  13K |
-| kotlin-stdlib-1.2.31.jar      | 919K |
 | kotlin-reflect-1.2.31.jar     | 2.5M |
+| guava-18.0.jar                | 2.2M | 
 | spring-core-5.0.5.RELEASE.jar | 1.2M | 
 | jackson-databind-2.9.5.jar    | 1.3M | 
 | logback-classic-1.2.3.jar     | 284K | 
@@ -601,6 +602,21 @@ public final class NumericKt {
 }
 
 ```
+
+`Compiled from "numeric.kt"
+public final class _01_basic.NumericKt {
+  public static final void tryNumeric();
+    Code:
+       0: bipush        42
+       2: istore_0
+       3: ldc2_w        #7                  // long 42l
+       6: lstore_1
+       7: aconst_null
+       8: checkcast     #10                 // class java/lang/Double
+      11: astore_3
+      12: return
+}
+`
 
 * plus de `;` <sup>*</sup>
 * 😍 String templating
@@ -795,10 +811,306 @@ public final class _03_fun.Default_valueKt {
   (sauf si c'est évident et une surcharge comme le `toString`)
 - Kotlin est plus expressif que Java => évitez de faire des fonctions trop longues
 - Sautez une ligne après le `=`
+- Utilisez le passage des arguments par nom quand ça lève des ambigüités
 
 #### Notes
 
-- le passage des arguments par nom, ne marche pas sur les appels de code Java
+- Le passage des arguments par nom, ne marche pas sur les appels de code Java
+ 
+
+
+
+
+
+
+
+```kotlin
+class Point(x: Int, y: Int) {
+    val x = x
+    var y = y
+}
+
+// val p1 = Point(2, 4)
+```
+
+```java
+package _06_class_1;
+
+import kotlin.Metadata;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 1,
+   d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"},
+   d2 = {"L_06_class_1/Point;", "", "x", "", "y", "(II)V", "getX", "()I", "getY", "setY", "(I)V"}
+)
+public final class Point {
+   private final int x;
+   private int y;
+
+   public final int getX() {
+      return this.x;
+   }
+
+   public final int getY() {
+      return this.y;
+   }
+
+   public final void setY(int var1) {
+      this.y = var1;
+   }
+
+   public Point(int x, int y) {
+      super();
+      this.x = x;
+      this.y = x;
+   }
+}
+
+```
+
+```kotlin
+class Point2(val x: Int, var y: Int)
+
+// val p2 = Point2(2, 4)
+```
+
+```java
+package _06_class_1;
+
+import kotlin.Metadata;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 1,
+   d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"},
+   d2 = {"L_06_class_1/Point2;", "", "x", "", "y", "(II)V", "getX", "()I", "getY", "setY", "(I)V"}
+)
+public final class Point2 {
+   private final int x;
+   private int y;
+
+   public final int getX() {
+      return this.x;
+   }
+
+   public final int getY() {
+      return this.y;
+   }
+
+   public final void setY(int var1) {
+      this.y = var1;
+   }
+
+   public Point2(int x, int y) {
+      super();
+      this.x = x;
+      this.y = y;
+   }
+}
+
+```
+
+```kotlin
+class Point3(val x: Int, val y: Int) {
+    constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
+}
+
+// val p3 = Point3(Pair(2, 4))
+
+```
+
+```java
+package _06_class_1;
+
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 1,
+   d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"},
+   d2 = {"L_06_class_1/Point3;", "", "pair", "Lkotlin/Pair;", "", "(Lkotlin/Pair;)V", "x", "y", "(II)V", "getX", "()I", "getY"}
+)
+public final class Point3 {
+   private final int x;
+   private final int y;
+
+   public final int getX() {
+      return this.x;
+   }
+
+   public final int getY() {
+      return this.y;
+   }
+
+   public Point3(int x, int y) {
+      super();
+      this.x = x;
+      this.y = y;
+   }
+
+   public Point3(@NotNull Pair pair) {
+      Intrinsics.checkParameterIsNotNull(pair, "pair");
+      this(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
+   }
+}
+
+```
+
+```kotlin
+class Point4(val x: Int, val y: Int) {
+    constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
+
+    init {
+        println("($x, $y)")
+    }
+}
+
+// val p4 = Point4(Pair(2, 4))
+```
+
+```java
+package _06_class_1;
+
+import kotlin.Metadata;
+import kotlin.Pair;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 1,
+   d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"},
+   d2 = {"L_06_class_1/Point4;", "", "pair", "Lkotlin/Pair;", "", "(Lkotlin/Pair;)V", "x", "y", "(II)V", "getX", "()I", "getY"}
+)
+public final class Point4 {
+   private final int x;
+   private final int y;
+
+   public final int getX() {
+      return this.x;
+   }
+
+   public final int getY() {
+      return this.y;
+   }
+
+   public Point4(int x, int y) {
+      super();
+      this.x = x;
+      this.y = y;
+      String var3 = "" + '(' + this.x + ", " + this.y + ')';
+      System.out.println(var3);
+   }
+
+   public Point4(@NotNull Pair pair) {
+      Intrinsics.checkParameterIsNotNull(pair, "pair");
+      this(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
+   }
+}
+
+```
+
+```kotlin
+open class Animal {
+    open fun talk(): String =
+        "???"
+}
+
+data class Cat(val name: String) : Animal() {
+    override fun talk(): String =
+        "Meow"
+}
+
+data class Dog(val name: String) : Animal() {
+    override fun talk(): String =
+        "Woof"
+}
+
+fun main(args: Array<String>) {
+    val pets: List<Animal> = listOf(Cat("Felix"), Dog("Rex"))
+
+    pets.forEach { pet -> println("$pet: ${pet.talk()}") } // 😱
+}
+
+// Cat(name=Felix): Meow
+// Dog(name=Rex): Woof
+
+```
+
+* Covariant (consome): `out`
+* Contravariant (produit): `in`
+
+
+* Borne supérieur :
+
+```kotlin
+fun <T : Comparable<T>> sort(list: List<T>): List<T>
+```
+
+⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
+
+* Les détails: <https://kotlinlang.org/docs/reference/generics.html>
+
+```kotlin
+interface Function<in T, out U>
+```
+```kotlin
+Function<*, String> // correspond à Function<in Nothing, String>
+```
+```kotlin
+Function<Int, *> // correspond à Function<Int, out Any?>
+```
+```kotlin
+Function<*, *> // correspond à Function<in Nothing, out Any?>
+```
+
+```kotlin
+sealed class JsonValue
+
+data class JsonObject(val attributes: Map<String, JsonValue>) : JsonValue()
+data class JsonArray(val values: List<JsonValue>) : JsonValue()
+data class JsonString(val value: String) : JsonValue()
+data class JsonNumber(val value: Number) : JsonValue()
+data class JsonBoolean(val value: Boolean) : JsonValue()
+object JsonNull : JsonValue()
+```
+
+```kotlin
+interface Entity
+
+typealias Id = String
+typealias Version = Int
+typealias EntityKey = Pair<Id, Version>
+
+// fun getAllEntities(): Map<Pair<String, Int>, List<Entity>> = emptyMap()
+fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
+
+```
+
+```kotlin
+interface Entity
+
+typealias Id = String
+typealias Version = Int
+typealias EntityKey = Pair<Id, Version>
+
+// fun getAllEntities(): Map<Pair<String, Int>, List<Entity>> = emptyMap()
+fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
+
+```
+
+
+* 🤔 Mais pourquoi on n'a pas ça en Java ?
+* Une seule classe par fichier n'est pas utile
+* 🤓 `sealed` permet de faire des types algébriques de données (Algebraic Data Type)
 
 
 
@@ -851,6 +1163,27 @@ public final class _03_fun.Default_valueKt {
 
 
 
+* Faible surchage
+* Support officiel par Google
+* [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
+* [Kotlin Guide](https://android.github.io/kotlin-guides/)
+* [Kotlin extensions for Android](https://github.com/android/android-ktx)
 
 
+* Supporter officiellement depuis [Spring 5](https://projects.spring.io/spring-framework/), [Spring Boot 2](https://projects.spring.io/spring-boot/)
+* [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html), [javalin](https://javalin.io/)
+* [Vert.x](http://vertx.io/docs/vertx-core/kotlin/)
+* [KTor](http://ktor.io/)
+* ...
+
+#### Web
+
+* Partager du code commun
+* [Use Kotlin with npm, webpack and react](https://blog.jetbrains.com/kotlin/2017/04/use-kotlin-with-npm-webpack-and-react/)
+
+#### Natif
+
+* Faire des applications sans JVM
+* Partager du code avec iOS
+* WebAssembly
 

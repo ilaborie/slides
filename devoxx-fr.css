@@ -72,6 +72,8 @@
       background-size: contain; }
   .devoxx-fr main section article ol, .devoxx-fr main section article ul, .devoxx-fr main section article dl {
     line-height: 1.5; }
+  .devoxx-fr blockquote p {
+    text-shadow: 0.0625rem 0.0625rem rgba(0, 0, 0, 0.5); }
   .devoxx-fr main section.diagram {
     background: url("./assets/devoxx-fr/diag.png");
     background-size: cover; }
