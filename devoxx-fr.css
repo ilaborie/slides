@@ -1,0 +1,152 @@
+.devoxx-fr {
+  --who: 'Devoxx !';
+  --blue: #4285f4;
+  --yellow: #edaf1f;
+  --green: #0f9d58;
+  --red: #db4437;
+  --black: #000;
+  --white: #fff;
+  --g1: #263238;
+  --g2: #37424b;
+  --g3: #455a64;
+  --g4: #ebebeb;
+  --g5: #f7f7f7;
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+  --orange: #f36f21;
+  --fontColor: #333;
+  --primary: #7f1111;
+  --secondary: #FF1c4c;
+  --tertiary: #FF1417;
+  --alt-accent: #DB1837;
+  --alt2: #cc0c0c;
+  --fontBody: 'Open Sans', cursive, system-ui, sans-serif;
+  --coverFont: Montserrat, cursive;
+  --titleFont: Montserrat, cursive, system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: Montserrat, cursive;
+  --quoteFont: 'Open Sans', 'Just Another Hand', cursive;
+  --counterFont: 'OCR A Std', fantasy;
+  --bgNavbar: var(--white);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: linear-gradient(to top, var(--primary), var(--tertiary)), var(--secondary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/devoxx-fr/bg.png'), var(--primary);
+  --fgCover: var(--white);
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--primary);
+  --fgPart: var(--white);
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+  --bgCounter: transparend;
+  --fgCounter: var(--white);
+  --txtFooter: '#DevoxxFR #Kotlin @emmanuelVinas @ilaborie';
+  --logoFooter: url('./assets/devoxx-fr/logo.png');
+  --bgFooter: var(--white);
+  --fgFooter: var(--primary);
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa; }
+  .devoxx-fr main section {
+    background-size: cover;
+    color: var(--white); }
+    .devoxx-fr main section h1 {
+      font-size: 2.5rem; }
+    .devoxx-fr main section h3 {
+      color: var(--white);
+      box-shadow: 0 0 0 0.1rem var(--yellow); }
+    .devoxx-fr main section::after {
+      color: var(--white);
+      background: url("./assets/devoxx-fr/logo.png") no-repeat right, url("./assets/devoxx-fr/bandeau_bas.png") no-repeat left;
+      background-size: contain, cover; }
+    .devoxx-fr main section.cover::after {
+      background: url("./assets/devoxx-fr/logo.png") no-repeat right;
+      background-size: contain; }
+  .devoxx-fr main section article ol, .devoxx-fr main section article ul, .devoxx-fr main section article dl {
+    line-height: 1.5; }
+  .devoxx-fr main section.diagram {
+    background: url("./assets/devoxx-fr/diag.png");
+    background-size: cover; }
+  .devoxx-fr main section.bilan {
+    background: url("./assets/devoxx-fr/takeaway.png");
+    background-size: cover; }
+  .devoxx-fr main section.details {
+    background: url("./assets/devoxx-fr/zoom.png");
+    background-size: cover; }
+  .devoxx-fr main section.measure {
+    background: url("./assets/devoxx-fr/measure.png");
+    background-size: cover; }
+  .devoxx-fr main section.code {
+    background: url("./assets/devoxx-fr/code.png");
+    background-size: cover; }
+    .devoxx-fr main section.code.java {
+      background: url("./assets/devoxx-fr/coffee.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.java pre {
+        max-width: 100%;
+        overflow: auto; }
+    .devoxx-fr main section.code.kotlin {
+      background: url("./assets/devoxx-fr/kotlin.png");
+      background-size: cover; }
+    .devoxx-fr main section.code.hex {
+      background: url("./assets/devoxx-fr/cpu.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.hex article > code {
+        padding: .25rem;
+        border-radius: .125rem;
+        background: var(--bgCode);
+        color: var(--fgCode);
+        white-space: pre;
+        overflow: auto;
+        font-size: .6rem;
+        width: 100%; }
+    .devoxx-fr main section.code.bytecode {
+      background: url("./assets/devoxx-fr/gears.png");
+      background-size: cover; }
+      .devoxx-fr main section.code.bytecode article > code {
+        padding: .25rem;
+        border-radius: .125rem;
+        background: var(--bgCode);
+        color: var(--fgCode);
+        white-space: pre;
+        overflow: auto;
+        font-size: .6rem;
+        width: 100%; }
+  .devoxx-fr section article > pre.hljs {
+    align-self: center; }
+  .devoxx-fr section.contrast article {
+    background: rgba(0, 0, 0, 0.5);
+    padding: .5rem;
+    box-shadow: 0 0 5em 1em rgba(0, 0, 0, 0.5);
+    border-radius: 1rem; }
+  .devoxx-fr section article ol, .devoxx-fr section article ul, .devoxx-fr section article dl {
+    line-height: 1.25;
+    font-size: 1rem; }
+    .devoxx-fr section article ol p, .devoxx-fr section article ul p, .devoxx-fr section article dl p {
+      margin: .25rem 0; }
+  .devoxx-fr .hljs.lang-shell {
+    background: black;
+    color: #2dc82d; }
+    .devoxx-fr .hljs.lang-shell code::before {
+      content: '$ '; }
+  .devoxx-fr li code, .devoxx-fr blockquote code {
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: .06125rem;
+    border-radius: .06125rem; }
+  .devoxx-fr section article table {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: .25em;
+    border-collapse: collapse;
+    border: medium solid transparent; }
+    .devoxx-fr section article table th, .devoxx-fr section article table td {
+      margin: 0;
+      padding: .25em;
+      border: thin solid rgba(0, 0, 0, 0.5); }
+    .devoxx-fr section article table th {
+      border-bottom-width: medium;
+      border-bottom-color: white; }
