@@ -43,18 +43,17 @@
 4. Les fonctions
 5. Les lambdas
 6. Les classes
-7. Types
+7. Les types
 8. Extensions de fonction
-9. Structure
-10. Pause
-11. ByteCode Android
-12. Collection
-13. Delegate
-14. Plus sur les fonctions
-15. Serialization
-16. Coroutines
-17. DSL
-18. Conclusion
+9. Pause
+10. ByteCode Android
+11. Autres structures
+12. Les collections
+13. Les delegates
+14. Un peu plus sur les fonctions
+15. kotlinx.serialization
+16. Les coroutines
+17. Conclusion
 
 
 
@@ -628,6 +627,9 @@ public final class _01_basic.NumericKt {
 
 
 
+> I call it my billion-dollar mistake. It was the invention of the <code>null</code> reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a <code>null</code> reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.
+[Null References: The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)
+
 
 
 
@@ -813,7 +815,7 @@ public final class _03_fun.Default_valueKt {
 - Sautez une ligne après le `=`
 - Utilisez le passage des arguments par nom quand ça lève des ambigüités
 
-#### Notes
+#### 📝 Notes
 
 - Le passage des arguments par nom, ne marche pas sur les appels de code Java
  
@@ -1154,12 +1156,6 @@ public final class _06_class_2.TypealiasKt {
 
 
 
-
-
-
-
-
-
 * Faible surchage
 * Support officiel par Google
 * [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
@@ -1173,7 +1169,7 @@ public final class _06_class_2.TypealiasKt {
 * [KTor](http://ktor.io/)
 * ...
 
-#### Web
+#### 🕸 Web
 
 * Partager du code commun
 * [Use Kotlin with npm, webpack and react](https://blog.jetbrains.com/kotlin/2017/04/use-kotlin-with-npm-webpack-and-react/)
@@ -1184,3 +1180,26 @@ public final class _06_class_2.TypealiasKt {
 * Partager du code avec iOS
 * WebAssembly
 
+
+* JVM : 💎
+* Déjà mature
+* Code plus expressif, plus sûr, plus simple
+* Interopérable avec Java
+* Outillage (editeur, gradle, maven)
+* Ecosystème et communauté
+
+> Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.
+
+
+* [Référence](http://kotlinlang.org/docs/reference/)
+* [https://kotlin.link/](https://kotlin.link/)
+* [Blog](https://blog.jetbrains.com/kotlin/)
+* [Forum](https://discuss.kotlinlang.org/), [Slack](https://kotlinslack.herokuapp.com/)
+* [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+
+
+
+# Questions ?
+
+_Pensez au votes et aux retours_

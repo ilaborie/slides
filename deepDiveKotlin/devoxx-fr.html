@@ -13,7 +13,7 @@
     <link rel="icon" type="image/png" href="../assets/devoxx-fr/favicon.png" />
 </head>
 <body class="devoxx-fr deepDiveKotlin">
-    <div class="slides-nav hide-print" style="grid-template-columns : repeat(21, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(20, auto);">
         <a href="#deepDiveKotlin" class="cover" title="Deep Dive Kotlin : du Hello World au ByteCode">0</a>
         <strong>Introduction</strong>
 <strong>ByteCode Java ?</strong>
@@ -23,17 +23,16 @@
 <strong>Les fonctions</strong>
 <strong>Les lambdas</strong>
 <strong>Les classes</strong>
-<strong>Types</strong>
+<strong>Les types</strong>
 <strong>Extensions de fonction</strong>
-<strong>Structure</strong>
 <strong>Pause</strong>
 <strong>ByteCode Android</strong>
-<strong>Collection</strong>
-<strong>Delegate</strong>
-<strong>Plus sur les fonctions</strong>
-<strong>Serialization</strong>
-<strong>Coroutines</strong>
-<strong>DSL</strong>
+<strong>Autres structures</strong>
+<strong>Les collections</strong>
+<strong>Les delegates</strong>
+<strong>Un peu plus sur les fonctions</strong>
+<strong>kotlinx.serialization</strong>
+<strong>Les coroutines</strong>
 <strong>Conclusion</strong>
         <nav><a href="#speakers" class="" title="Speakers">1</a>
 <a href="#roadmap" class="roadmap" title="🗺 Roadmap">2</a></nav>
@@ -65,60 +64,60 @@
 <a href="#bytecode_de_numeric" class="code bytecode" title="ByteCode de numeric">28</a>
 <a href="#basic-bilan" class="bilan contrast" title="C'est simple">29</a></nav>
 <nav><a href="#part_null_safety" class="part" title="null-safety">30</a>
-<a href="#elvis" class="" title="elvis">31</a></nav>
-<nav><a href="#part_les_fonctions" class="part" title="Les fonctions">32</a>
-<a href="#named_params_kt" class="code kotlin" title="named-params.kt">33</a>
-<a href="#named_params_java" class="code java" title="named-params.java">34</a>
-<a href="#default_value_kt" class="code kotlin" title="default-value.kt">35</a>
-<a href="#default_value_java" class="code java" title="default-value.java">36</a>
-<a href="#bytecode_de_default_value" class="code bytecode" title="ByteCode de default-value">37</a>
-<a href="#fun-bilan" class="bilan contrast" title="C'est fun !">38</a></nav>
-<nav><a href="#part_les_lambdas" class="part" title="Les lambdas">39</a>
-<a href="#lambda" class="" title="Les lambdas">40</a></nav>
-<nav><a href="#part_les_classes" class="part" title="Les classes">41</a>
-<a href="#point_kt" class="code kotlin" title="Point.kt">42</a>
-<a href="#point_java" class="code java" title="Point.java">43</a>
-<a href="#point2_kt" class="code kotlin" title="Point2.kt">44</a>
-<a href="#point2_java" class="code java" title="Point2.java">45</a>
-<a href="#point3_kt" class="code kotlin" title="Point3.kt">46</a>
-<a href="#point3_java" class="code java" title="Point3.java">47</a>
-<a href="#point4_kt" class="code kotlin" title="Point4.kt">48</a>
-<a href="#point4_java" class="code java" title="Point4.java">49</a>
-<a href="#heritage_en_kotlin" class="code kotlin" title="Héritage en Kotlin">50</a>
-<a href="#generics" class="details contrast" title="Générics">51</a>
-<a href="#star" class="details" title="Projection *">52</a>
-<a href="#sealed" class="code kotlin" title="Sealed">53</a>
-<a href="#alias_en_kotlin" class="code kotlin" title="Alias en Kotlin">54</a>
-<a href="#bytecode_d_alias" class="code bytecode" title="ByteCode d'alias">55</a>
-<a href="#class-bilan" class="bilan contrast" title="Classe, le bilan">56</a></nav>
-<nav><a href="#part_types" class="part" title="Types">57</a>
-<a href="#hierarchie_des_types" class="" title="Hierarchie des types">58</a></nav>
-<nav><a href="#part_extensions_de_fonction" class="part" title="Extensions de fonction">59</a>
-<a href="#extension" class="" title="Extension">60</a></nav>
-<nav><a href="#part_structure" class="part" title="Structure">61</a>
-<a href="#structures" class="" title="Structures">62</a></nav>
-<nav><a href="#part_pause" class="part" title="Pause">63</a></nav>
-<nav><a href="#part_bytecode_android" class="part" title="ByteCode Android">64</a>
-<a href="#android_bytecode" class="" title="Android ByteCode">65</a>
-<a href="#proguard" class="" title="ProGuard">66</a></nav>
-<nav><a href="#part_collection" class="part" title="Collection">67</a>
-<a href="#collection" class="" title="Collection">68</a></nav>
-<nav><a href="#part_delegate" class="part" title="Delegate">69</a>
-<a href="#delegate" class="" title="Delegate">70</a></nav>
-<nav><a href="#part_plus_sur_les_fonctions" class="part" title="Plus sur les fonctions">71</a>
-<a href="#plus_sur_les_fonctions" class="" title="Plus sur les fonctions">72</a></nav>
-<nav><a href="#part_serialization" class="part" title="Serialization">73</a>
-<a href="#serialisation" class="" title="serialisation">74</a></nav>
-<nav><a href="#part_coroutines" class="part" title="Coroutines">75</a>
-<a href="#coroutines" class="" title="Coroutines">76</a></nav>
-<nav><a href="#part_dsl" class="part" title="DSL">77</a>
-<a href="#dsl" class="" title="DSL">78</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">79</a>
-<a href="#kotlin_vs_java" class="" title="Kotlin vs Java">80</a>
-<a href="#android" class="details contrast" title="Android">81</a>
-<a href="#serveur" class="details contrast" title="Serveur">82</a>
-<a href="#web_et_natif" class="details contrast" title="Web et Natif">83</a>
-<a href="#liens" class="" title="Liens">84</a></nav>
+<a href="#c_est_nul" class="contrast" title="C'est nul">31</a>
+<a href="#elvis" class="" title="elvis">32</a></nav>
+<nav><a href="#part_les_fonctions" class="part" title="Les fonctions">33</a>
+<a href="#named_params_kt" class="code kotlin" title="named-params.kt">34</a>
+<a href="#named_params_java" class="code java" title="named-params.java">35</a>
+<a href="#default_value_kt" class="code kotlin" title="default-value.kt">36</a>
+<a href="#default_value_java" class="code java" title="default-value.java">37</a>
+<a href="#bytecode_de_default_value" class="code bytecode" title="ByteCode de default-value">38</a>
+<a href="#fun-bilan" class="bilan contrast" title="C'est fun !">39</a></nav>
+<nav><a href="#part_les_lambdas" class="part" title="Les lambdas">40</a>
+<a href="#lambda" class="" title="Les lambdas">41</a></nav>
+<nav><a href="#part_les_classes" class="part" title="Les classes">42</a>
+<a href="#point_kt" class="code kotlin" title="Point.kt">43</a>
+<a href="#point_java" class="code java" title="Point.java">44</a>
+<a href="#point2_kt" class="code kotlin" title="Point2.kt">45</a>
+<a href="#point2_java" class="code java" title="Point2.java">46</a>
+<a href="#point3_kt" class="code kotlin" title="Point3.kt">47</a>
+<a href="#point3_java" class="code java" title="Point3.java">48</a>
+<a href="#point4_kt" class="code kotlin" title="Point4.kt">49</a>
+<a href="#point4_java" class="code java" title="Point4.java">50</a>
+<a href="#heritage_en_kotlin" class="code kotlin" title="Héritage en Kotlin">51</a>
+<a href="#generics" class="details contrast" title="Générics">52</a>
+<a href="#star" class="details" title="Projection *">53</a>
+<a href="#sealed" class="code kotlin" title="Sealed">54</a>
+<a href="#alias_en_kotlin" class="code kotlin" title="Alias en Kotlin">55</a>
+<a href="#bytecode_d_alias" class="code bytecode" title="ByteCode d'alias">56</a>
+<a href="#class-bilan" class="bilan contrast" title="Classe, le bilan">57</a></nav>
+<nav><a href="#part_les_types" class="part" title="Les types">58</a>
+<a href="#hierarchie_des_types" class="" title="Hierarchie des types">59</a></nav>
+<nav><a href="#part_extensions_de_fonction" class="part" title="Extensions de fonction">60</a>
+<a href="#extension" class="" title="Extension">61</a></nav>
+<nav><a href="#part_pause" class="part" title="Pause">62</a></nav>
+<nav><a href="#part_bytecode_android" class="part" title="ByteCode Android">63</a>
+<a href="#android_bytecode" class="" title="Android ByteCode">64</a>
+<a href="#proguard" class="" title="ProGuard">65</a></nav>
+<nav><a href="#part_autres_structures" class="part" title="Autres structures">66</a>
+<a href="#structures" class="" title="Structures">67</a></nav>
+<nav><a href="#part_les_collections" class="part" title="Les collections">68</a>
+<a href="#collection" class="" title="Collection">69</a></nav>
+<nav><a href="#part_les_delegates" class="part" title="Les delegates">70</a>
+<a href="#delegate" class="" title="Delegate">71</a></nav>
+<nav><a href="#part_un_peu_plus_sur_les_fonctions" class="part" title="Un peu plus sur les fonctions">72</a>
+<a href="#plus_sur_les_fonctions" class="" title="Plus sur les fonctions">73</a></nav>
+<nav><a href="#part_kotlinx_serialization" class="part" title="kotlinx.serialization">74</a>
+<a href="#serialisation" class="" title="serialisation">75</a></nav>
+<nav><a href="#part_les_coroutines" class="part" title="Les coroutines">76</a>
+<a href="#coroutines" class="" title="Coroutines">77</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">78</a>
+<a href="#android" class="details contrast" title="Android">79</a>
+<a href="#serveur" class="details contrast" title="Serveur">80</a>
+<a href="#web_et_natif" class="details contrast" title="Web et Natif">81</a>
+<a href="#kotlin_vs_java" class="bilan contrast" title="Kotlin vs Java">82</a>
+<a href="#liens" class="details contrast" title="Liens">83</a>
+<a href="#merci" class="" title="Merci">84</a></nav>
     </div>
     <main>
 
@@ -192,17 +191,16 @@
 <li>Les fonctions</li>
 <li>Les lambdas</li>
 <li>Les classes</li>
-<li>Types</li>
+<li>Les types</li>
 <li>Extensions de fonction</li>
-<li>Structure</li>
 <li>Pause</li>
 <li>ByteCode Android</li>
-<li>Collection</li>
-<li>Delegate</li>
-<li>Plus sur les fonctions</li>
-<li>Serialization</li>
-<li>Coroutines</li>
-<li>DSL</li>
+<li>Autres structures</li>
+<li>Les collections</li>
+<li>Les delegates</li>
+<li>Un peu plus sur les fonctions</li>
+<li>kotlinx.serialization</li>
+<li>Les coroutines</li>
 <li>Conclusion</li></ol>
     </article>
     <a href="#part_bytecode_java__" class="next" aria-label="Suivant"></a>
@@ -1065,13 +1063,30 @@ public final class _01_basic.NumericKt {
     <article>
         
     </article>
+    <a href="#c_est_nul" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide C'est nul -->
+<section id="c_est_nul" class="contrast">
+    <a href="#part_null_safety" class="previous" aria-label="Précédant"></a>
+    <h3>C'est nul</h3>
+    <article>
+        
+<blockquote>
+    <p>I call it my billion-dollar mistake. It was the invention of the <code>null</code> reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a <code>null</code> reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.</p>
+    <footer>--Tony Hoare (C.A.R. Hoare)</footer>
+</blockquote>
+
+<a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare">Null References: The Billion Dollar Mistake</a>
+    </article>
     <a href="#elvis" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide elvis -->
 <section id="elvis" class="">
-    <a href="#part_null_safety" class="previous" aria-label="Précédant"></a>
+    <a href="#c_est_nul" class="previous" aria-label="Précédant"></a>
     <h3>elvis</h3>
     <article>
         
@@ -1314,7 +1329,7 @@ public final class _03_fun.Default_valueKt {
 <li>Sautez une ligne après le <code>=</code></li>
 <li>Utilisez le passage des arguments par nom quand ça lève des ambigüités</li>
 </ul>
-<h4 id="notes">Notes</h4>
+<h4 id="-notes">📝 Notes</h4>
 <ul>
 <li>Le passage des arguments par nom, ne marche pas sur les appels de code Java</li>
 </ul>
@@ -1746,14 +1761,14 @@ public final class _06_class_2.TypealiasKt {
 </ul>
 
     </article>
-    <a href="#part_types" class="next" aria-label="Suivant"></a>
+    <a href="#part_les_types" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Types -->
-<section id="part_types" class="part">
+<!-- Slide Les types -->
+<section id="part_les_types" class="part">
     <a href="#class-bilan" class="previous" aria-label="Précédant"></a>
-    <h2>Types</h2>
+    <h2>Les types</h2>
     <article>
         
     </article>
@@ -1763,7 +1778,7 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Hierarchie des types -->
 <section id="hierarchie_des_types" class="">
-    <a href="#part_types" class="previous" aria-label="Précédant"></a>
+    <a href="#part_les_types" class="previous" aria-label="Précédant"></a>
     <h3>Hierarchie des types</h3>
     <article>
         
@@ -1790,35 +1805,13 @@ public final class _06_class_2.TypealiasKt {
     <article>
         
     </article>
-    <a href="#part_structure" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Structure -->
-<section id="part_structure" class="part">
-    <a href="#extension" class="previous" aria-label="Précédant"></a>
-    <h2>Structure</h2>
-    <article>
-        
-    </article>
-    <a href="#structures" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Structures -->
-<section id="structures" class="">
-    <a href="#part_structure" class="previous" aria-label="Précédant"></a>
-    <h3>Structures</h3>
-    <article>
-        
-    </article>
     <a href="#part_pause" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Pause -->
 <section id="part_pause" class="part">
-    <a href="#structures" class="previous" aria-label="Précédant"></a>
+    <a href="#extension" class="previous" aria-label="Précédant"></a>
     <h2>Pause</h2>
     <article>
         
@@ -1856,14 +1849,36 @@ public final class _06_class_2.TypealiasKt {
     <article>
         
     </article>
-    <a href="#part_collection" class="next" aria-label="Suivant"></a>
+    <a href="#part_autres_structures" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Collection -->
-<section id="part_collection" class="part">
+<!-- Slide Autres structures -->
+<section id="part_autres_structures" class="part">
     <a href="#proguard" class="previous" aria-label="Précédant"></a>
-    <h2>Collection</h2>
+    <h2>Autres structures</h2>
+    <article>
+        
+    </article>
+    <a href="#structures" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Structures -->
+<section id="structures" class="">
+    <a href="#part_autres_structures" class="previous" aria-label="Précédant"></a>
+    <h3>Structures</h3>
+    <article>
+        
+    </article>
+    <a href="#part_les_collections" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les collections -->
+<section id="part_les_collections" class="part">
+    <a href="#structures" class="previous" aria-label="Précédant"></a>
+    <h2>Les collections</h2>
     <article>
         
     </article>
@@ -1873,19 +1888,19 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Collection -->
 <section id="collection" class="">
-    <a href="#part_collection" class="previous" aria-label="Précédant"></a>
+    <a href="#part_les_collections" class="previous" aria-label="Précédant"></a>
     <h3>Collection</h3>
     <article>
         
     </article>
-    <a href="#part_delegate" class="next" aria-label="Suivant"></a>
+    <a href="#part_les_delegates" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Delegate -->
-<section id="part_delegate" class="part">
+<!-- Slide Les delegates -->
+<section id="part_les_delegates" class="part">
     <a href="#collection" class="previous" aria-label="Précédant"></a>
-    <h2>Delegate</h2>
+    <h2>Les delegates</h2>
     <article>
         
     </article>
@@ -1895,19 +1910,19 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Delegate -->
 <section id="delegate" class="">
-    <a href="#part_delegate" class="previous" aria-label="Précédant"></a>
+    <a href="#part_les_delegates" class="previous" aria-label="Précédant"></a>
     <h3>Delegate</h3>
     <article>
         
     </article>
-    <a href="#part_plus_sur_les_fonctions" class="next" aria-label="Suivant"></a>
+    <a href="#part_un_peu_plus_sur_les_fonctions" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Plus sur les fonctions -->
-<section id="part_plus_sur_les_fonctions" class="part">
+<!-- Slide Un peu plus sur les fonctions -->
+<section id="part_un_peu_plus_sur_les_fonctions" class="part">
     <a href="#delegate" class="previous" aria-label="Précédant"></a>
-    <h2>Plus sur les fonctions</h2>
+    <h2>Un peu plus sur les fonctions</h2>
     <article>
         
     </article>
@@ -1917,19 +1932,19 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Plus sur les fonctions -->
 <section id="plus_sur_les_fonctions" class="">
-    <a href="#part_plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
+    <a href="#part_un_peu_plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
     <h3>Plus sur les fonctions</h3>
     <article>
         
     </article>
-    <a href="#part_serialization" class="next" aria-label="Suivant"></a>
+    <a href="#part_kotlinx_serialization" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Serialization -->
-<section id="part_serialization" class="part">
+<!-- Slide kotlinx.serialization -->
+<section id="part_kotlinx_serialization" class="part">
     <a href="#plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
-    <h2>Serialization</h2>
+    <h2>kotlinx.serialization</h2>
     <article>
         
     </article>
@@ -1939,19 +1954,19 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide serialisation -->
 <section id="serialisation" class="">
-    <a href="#part_serialization" class="previous" aria-label="Précédant"></a>
+    <a href="#part_kotlinx_serialization" class="previous" aria-label="Précédant"></a>
     <h3>serialisation</h3>
     <article>
         
     </article>
-    <a href="#part_coroutines" class="next" aria-label="Suivant"></a>
+    <a href="#part_les_coroutines" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Coroutines -->
-<section id="part_coroutines" class="part">
+<!-- Slide Les coroutines -->
+<section id="part_les_coroutines" class="part">
     <a href="#serialisation" class="previous" aria-label="Précédant"></a>
-    <h2>Coroutines</h2>
+    <h2>Les coroutines</h2>
     <article>
         
     </article>
@@ -1961,30 +1976,8 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Coroutines -->
 <section id="coroutines" class="">
-    <a href="#part_coroutines" class="previous" aria-label="Précédant"></a>
+    <a href="#part_les_coroutines" class="previous" aria-label="Précédant"></a>
     <h3>Coroutines</h3>
-    <article>
-        
-    </article>
-    <a href="#part_dsl" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide DSL -->
-<section id="part_dsl" class="part">
-    <a href="#coroutines" class="previous" aria-label="Précédant"></a>
-    <h2>DSL</h2>
-    <article>
-        
-    </article>
-    <a href="#dsl" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide DSL -->
-<section id="dsl" class="">
-    <a href="#part_dsl" class="previous" aria-label="Précédant"></a>
-    <h3>DSL</h3>
     <article>
         
     </article>
@@ -1994,19 +1987,8 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Conclusion -->
 <section id="part_conclusion" class="part">
-    <a href="#dsl" class="previous" aria-label="Précédant"></a>
+    <a href="#coroutines" class="previous" aria-label="Précédant"></a>
     <h2>Conclusion</h2>
-    <article>
-        
-    </article>
-    <a href="#kotlin_vs_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Kotlin vs Java -->
-<section id="kotlin_vs_java" class="">
-    <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
-    <h3>Kotlin vs Java</h3>
     <article>
         
     </article>
@@ -2016,7 +1998,7 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Android -->
 <section id="android" class="details contrast">
-    <a href="#kotlin_vs_java" class="previous" aria-label="Précédant"></a>
+    <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
     <h3>Android</h3>
     <article>
         <ul>
@@ -2055,7 +2037,7 @@ public final class _06_class_2.TypealiasKt {
     <a href="#serveur" class="previous" aria-label="Précédant"></a>
     <h3>Web et Natif</h3>
     <article>
-        <h4 id="web">Web</h4>
+        <h4 id="-web">🕸 Web</h4>
 <ul>
 <li>Partager du code commun</li>
 <li><a href="https://blog.jetbrains.com/kotlin/2017/04/use-kotlin-with-npm-webpack-and-react/">Use Kotlin with npm, webpack and react</a></li>
@@ -2068,16 +2050,59 @@ public final class _06_class_2.TypealiasKt {
 </ul>
 
     </article>
+    <a href="#kotlin_vs_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Kotlin vs Java -->
+<section id="kotlin_vs_java" class="bilan contrast">
+    <a href="#web_et_natif" class="previous" aria-label="Précédant"></a>
+    <h3>Kotlin vs Java</h3>
+    <article>
+        <ul>
+<li>JVM : 💎</li>
+<li>Déjà mature</li>
+<li>Code plus expressif, plus sûr, plus simple</li>
+<li>Interopérable avec Java</li>
+<li>Outillage (editeur, gradle, maven)</li>
+<li>Ecosystème et communauté</li>
+</ul>
+<blockquote>
+<p>Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.</p>
+</blockquote>
+
+    </article>
     <a href="#liens" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Liens -->
-<section id="liens" class="">
-    <a href="#web_et_natif" class="previous" aria-label="Précédant"></a>
+<section id="liens" class="details contrast">
+    <a href="#kotlin_vs_java" class="previous" aria-label="Précédant"></a>
     <h3>Liens</h3>
     <article>
-        
+        <ul>
+<li><a href="http://kotlinlang.org/docs/reference/">Référence</a></li>
+<li><a href="https://kotlin.link/">https://kotlin.link/</a></li>
+<li><a href="https://blog.jetbrains.com/kotlin/">Blog</a></li>
+<li><a href="https://discuss.kotlinlang.org/">Forum</a>, <a href="https://kotlinslack.herokuapp.com/">Slack</a></li>
+<li><a href="https://kotlinlang.org/docs/tutorials/koans.html">Koans</a></li>
+<li><a href="https://github.com/MonkeyPatchIo/KotlinByExample">Kotlin by example</a></li>
+</ul>
+
+    </article>
+    <a href="#merci" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Merci -->
+<section id="merci" class="">
+    <a href="#liens" class="previous" aria-label="Précédant"></a>
+    <h3>Merci</h3>
+    <article>
+        <h1 id="questions-">Questions ?</h1>
+<p><em>Pensez au votes et aux retours</em></p>
+
     </article>
     
 </section>
