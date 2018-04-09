@@ -348,11 +348,11 @@ section#performance_helloworld_kt article table {
   section#performance_helloworld_kt article table td {
     font-family: var(--codeFont); }
 
-section#quote {
+section#c_est_nul {
   background: url("./assets/devoxx-fr/mistake.png");
   background-size: cover; }
-  section#quote article blockquote p {
-    font-size: .8rem; }
+  section#c_est_nul article blockquote p {
+    font-size: .85rem; }
 
 section#part_pause {
   background: url("./assets/devoxx-fr/break.png");

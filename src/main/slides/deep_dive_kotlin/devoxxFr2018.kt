@@ -225,7 +225,7 @@ fun prezDevoxxFr2018() =
             // FIXME
         }
 
-        part(title = "Extensions de fonction") {
+        part(title = "Extensions de fonctions", key = "extensions_de_fonction") {
             slideFromResource(title = "Extension")
             // TODO manu
         }
@@ -238,15 +238,62 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "ProGuard")
         }
 
-
         part(title = "Autres structures", key = "structure") {
-            slideFromResource(title = "Structures")
-            // FIXME
+            slide(title = "if-then-else.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/if-then-else.kt")
+            }
+            slide(title = "for.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/for.kt")
+            }
+            slide(title = "for.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/structure/ForKt.java")
+            }
+            slide(title = "ByteCode du for", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/structure/ForKt.class.txt")
+            }
+            slide(title = "while-do.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/while-do.kt")
+            }
+            slide(title = "when.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/when.kt")
+            }
+            slide(title = "for-factorial.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/for-factorial.kt")
+            }
+            slide(title = "ByteCode factoriel avec for", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/structure/For_factorialKt.class.txt")
+            }
+            slide(title = "rec-factorial.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/rec-factorial.kt")
+            }
+            slide(title = "ByteCode factoriel avec recursivité", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/structure/Rec_factorialKt.class.txt")
+            }
+            slide(title = "tailrec-factorial.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/structure/tailrec-factorial.kt")
+            }
+            slide(title = "ByteCode factoriel avec recursivité terminal 1/2", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/structure/Tailrec_factorialKt.class.txt")
+            }
+            slide(title = "ByteCode factoriel avec recursivité terminal 2/2", styleClass = setOf("code", "bytecode")) {
+                codeFromResource("/deepDiveKotlin/structure/Tailrec_factorialKt${'$'}tailRecFactorial$1.class.txt")
+            }
+            slideFromResource(title = "Performances sur factorials") { styleClass = setOf("measure", "contrast") }
+            slideFromResource(title = "Bilan structures", key = "bilan-structures")
         }
+
         part(title = "Les collections", key = "collection") {
-            slideFromResource(title = "Collection")
-            // FIXME
+            slide(title = "api.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/collection/api.kt")
+            }
+            slide(title = "immutable-mutable.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/collection/immutable-mutable.kt")
+            }
+            slide(title = "break-immutable.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/collection/break-immutable.kt")
+            }
             // TODO manu
+            slideFromResource(title = "Bilan collection", key = "collection")
         }
 
         part(title = "Les delegates", key = "delegate") {
@@ -255,28 +302,37 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Un peu plus sur les fonctions", key = "plus_sur_les_fonctions") {
+            slide(title = "inline.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/inline.kt")
+            }
+            slide(title = "Logger.java", styleClass = setOf("code", "java")) {
+                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/Logger.java")
+            }
+            slide(title = "reified.kt", styleClass = setOf("code", "kotlin")) {
+                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
+            }
             slideFromResource(title = "Plus sur les fonctions")
-            // FIXME
         }
 
-        part(title = "kotlinx.serialization", key = "serialization") {
-            slideFromResource(title = "serialisation")
-            // TODO manu
-        }
-
-        part(title = "Les coroutines", key = "coroutines") {
-            slideFromResource(title = "Coroutines")
-            // FIXME
-        }
+//        part(title = "kotlinx.serialization", key = "serialization") {
+//            slideFromResource(title = "serialisation")
+//            // TODO manu
+//        }
+//
+//        part(title = "Les coroutines", key = "coroutines") {
+//            slideFromResource(title = "Coroutines")
+//            // FIXME
+//        }
 
         part(title = "Conclusion") {
-            slideFromResource(title = "Android") { styleClass = setOf("details", "contrast") }
-            slideFromResource(title = "Serveur") { styleClass = setOf("details", "contrast") }
-            slideFromResource(title = "Web et Natif") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Android") { styleClass = setOf("contrast") }
+            slideFromResource(title = "Serveur") { styleClass = setOf("contrast") }
+            slideFromResource(title = "Web et Natif") { styleClass = setOf("contrast") }
             slideFromResource(title = "Kotlin vs Java", key = "kotlin_vs_java") {
-                styleClass = setOf("bilan", "contrast")
+                styleClass = setOf("contrast")
             }
-            slideFromResource(title = "Liens") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Liens") { styleClass = setOf("contrast") }
+            slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast") }
             slideFromResource(title = "Merci")
         }
     }

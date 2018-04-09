@@ -44,16 +44,14 @@
 5. Les lambdas
 6. Les classes
 7. Les types
-8. Extensions de fonction
+8. Extensions de fonctions
 9. Pause
 10. ByteCode Android
 11. Autres structures
 12. Les collections
 13. Les delegates
 14. Un peu plus sur les fonctions
-15. kotlinx.serialization
-16. Les coroutines
-17. Conclusion
+15. Conclusion
 
 
 
@@ -1118,6 +1116,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 
+* 🤝 le `TODO()` est l'ami du TDD
 
 
 
@@ -1133,6 +1132,339 @@ public final class _06_class_2.TypealiasKt {
 
 
 
+```kotlin
+fun handleAstronomicalBody(body: AstronomicalBody) {
+    val message = if (body is Planet && body.name == "Earth") {
+        "Welcome Earth"
+    } else {
+        "Welcome martian"
+    }
+
+    println(message)
+}
+```
+
+```kotlin
+fun main(args: Array<String>) {
+    for (body in SolarSystem.bodies) { // 🤢
+        print(body)
+    }
+}
+```
+
+```java
+package _09_structures;
+
+import astronomy.AstronomicalBody;
+import astronomy.SolarSystem;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005"},
+   d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V"}
+)
+public final class ForKt {
+   public static final void main(@NotNull String[] args) {
+      Intrinsics.checkParameterIsNotNull(args, "args");
+      Iterator var2 = SolarSystem.INSTANCE.getBodies().iterator();
+
+      while(var2.hasNext()) {
+         AstronomicalBody body = (AstronomicalBody)var2.next();
+         System.out.print(body);
+      }
+
+   }
+}
+
+```
+
+`Compiled from "for.kt"
+public final class _09_structures.ForKt {
+  public static final void main(java.lang.String[]);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String args
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: getstatic     #21                 // Field astronomy/SolarSystem.INSTANCE:Lastronomy/SolarSystem;
+       9: invokevirtual #25                 // Method astronomy/SolarSystem.getBodies:()Ljava/util/Collection;
+      12: invokeinterface #31,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
+      17: astore_2
+      18: aload_2
+      19: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      24: ifeq          47
+      27: aload_2
+      28: invokeinterface #41,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      33: checkcast     #43                 // class astronomy/AstronomicalBody
+      36: astore_1
+      37: getstatic     #49                 // Field java/lang/System.out:Ljava/io/PrintStream;
+      40: aload_1
+      41: invokevirtual #55                 // Method java/io/PrintStream.print:(Ljava/lang/Object;)V
+      44: goto          18
+      47: return
+}
+`
+
+```kotlin
+while (x > 0) {
+    x--
+}
+
+do {
+    val y = retrieveData()
+} while (y != null) // y is visible here!
+
+```
+
+```kotlin
+for (body in SolarSystem.bodies) { // 🤢
+
+    val message = when (body) {
+        is Planet -> "Planet ${body.name}"
+        is Star   -> "Star ${body.name}"
+        else      -> null
+    }
+
+    if (message != null) {
+        println(message)
+    }
+}
+```
+
+```kotlin
+// Note: assert(n >= 0)
+fun forFactorial(n: Int): Int { // 🤢
+    var acc = 1
+    for (i in 1..n) {
+        acc *= i
+    }
+    return acc
+}
+```
+
+`Compiled from "for-factorial.kt"
+public final class _09_structures.recusion.For_factorialKt {
+  public static final int forFactorial(int);
+    Code:
+       0: iconst_1
+       1: istore_1
+       2: iconst_1
+       3: istore_2
+       4: iload_0
+       5: istore_3
+       6: iload_2
+       7: iload_3
+       8: if_icmpgt     26
+      11: iload_1
+      12: iload_2
+      13: imul
+      14: istore_1
+      15: iload_2
+      16: iload_3
+      17: if_icmpeq     26
+      20: iinc          2, 1
+      23: goto          11
+      26: iload_1
+      27: ireturn
+}
+`
+
+```kotlin
+// Note: assert(n >= 0)
+fun recFactorial(n: Int): Int =
+    if (n < 1) 1 else n * recFactorial(n - 1)
+
+
+```
+
+`Compiled from "rec-factorial.kt"
+public final class _09_structures.recusion.Rec_factorialKt {
+  public static final int recFactorial(int);
+    Code:
+       0: iload_0
+       1: iconst_1
+       2: if_icmpge     9
+       5: iconst_1
+       6: goto          17
+       9: iload_0
+      10: iload_0
+      11: iconst_1
+      12: isub
+      13: invokestatic  #8                  // Method recFactorial:(I)I
+      16: imul
+      17: ireturn
+}
+`
+
+```kotlin
+// Note: assert(n >= 0)
+fun tailRecFactorial(n: Int): Int {
+
+    tailrec fun aux(n: Int, acc: Int): Int =
+        if (n < 1) 1 else aux(n - 1, acc * n)
+
+    return aux(n, 1)
+}
+
+
+
+```
+
+`Compiled from "tailrec-factorial.kt"
+public final class _09_structures.recusion.Tailrec_factorialKt {
+  public static final int tailRecFactorial(int);
+    Code:
+       0: getstatic     #12                 // Field _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;
+       3: astore_1
+       4: aload_1
+       5: iload_0
+       6: iconst_1
+       7: invokevirtual #16                 // Method _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.invoke:(II)I
+      10: ireturn
+}
+`
+
+`Compiled from "tailrec-factorial.kt"
+final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 extends kotlin.jvm.internal.Lambda implements kotlin.jvm.functions.Function2<java.lang.Integer, java.lang.Integer, java.lang.Integer> {
+  public static final _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 INSTANCE;
+
+  public java.lang.Object invoke(java.lang.Object, java.lang.Object);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast     #11                 // class java/lang/Number
+       5: invokevirtual #15                 // Method java/lang/Number.intValue:()I
+       8: aload_2
+       9: checkcast     #11                 // class java/lang/Number
+      12: invokevirtual #15                 // Method java/lang/Number.intValue:()I
+      15: invokevirtual #18                 // Method invoke:(II)I
+      18: invokestatic  #24                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+      21: areturn
+
+  public final int invoke(int, int);
+    Code:
+       0: iload_1
+       1: iconst_1
+       2: if_icmpge     9
+       5: iconst_1
+       6: goto          25
+       9: aload_0
+      10: checkcast     #2                  // class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1
+      13: pop
+      14: iload_1
+      15: iconst_1
+      16: isub
+      17: iload_2
+      18: iload_1
+      19: imul
+      20: istore_2
+      21: istore_1
+      22: goto          0
+      25: ireturn
+
+  _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1();
+    Code:
+       0: aload_0
+       1: iconst_2
+       2: invokespecial #34                 // Method kotlin/jvm/internal/Lambda."<init>":(I)V
+       5: return
+
+  static {};
+    Code:
+       0: new           #2                  // class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1
+       3: dup
+       4: invokespecial #57                 // Method "<init>":()V
+       7: putstatic     #59                 // Field INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;
+      10: return
+}
+`
+
+
+
+> Ne croyez pas les benchmarks, faites les vous-même !
+
+<https://github.com/MonkeyPatchIo/kotlin-perf>
+
+Test de `10!`
+
+|Benchmark                          | Mode  | Cnt |         Score |          Error | Units |
+|-----------------------------------|-------|-----|---------------|----------------|-------|
+|MyBenchmark.factorialJava          | thrpt | 200 | 274141213.561 | ± 28963758.069 | ops/s |
+|MyBenchmark.factorialKotlinFor     | thrpt | 200 | 267717955.205 | ±  8457315.205 | ops/s |
+|MyBenchmark.factorialKotlinRec     | thrpt | 200 |  56270660.700 | ±  2453418.383 | ops/s |
+|MyBenchmark.factorialKotlinTailRec | thrpt | 200 | 341898899.761 | ± 11456349.191 | ops/s |
+
+
+
+
+* Il y a aussi des `break` et `continue`, label pour les boucles
+* `when` peut être utiliser avec
+  * des constantes,
+  * plusieurs valeurs séparées par `,`
+  * une expression
+  * avec `is` et un type (avec un 'smart cast')
+
+
+#### ✨ Tips
+
+- privilégier les `when` si vous avez plus de 2 cas
+- si vous faites des fonctions recursives, faites les `tailrec`
+
+
+
+```kotlin
+val s = SolarSystem.bodies
+    .filterIsInstance<Planet>()
+    .flatMap { planet -> planet.moons }
+    .filterNot { it.name.startsWith("S/") }
+    .sortedBy { it.name }
+//        .fold("") { acc, moon ->
+//            (if (acc == "") "" else "$acc,\n") + moon.name
+//        }
+    .joinToString(",\n") { it.name }
+
+println(s)
+```
+
+```kotlin
+fun main(args: Array<String>) {
+
+    val earthMoon = listOf(Moon("moon"))
+    val add = earthMoon + Moon("moon 2")
+
+    println("earthMoon: $earthMoon")
+    println("add: $add")
+    println("reference equality: ${earthMoon === add}")
+
+    println("\n")
+    val earthMoon2 = mutableListOf(Moon("moon"))
+    val add2 = earthMoon2.add(Moon("moon 2"))
+
+    println("earthMoon2: $earthMoon2")
+    println("add2: $add2")
+}
+
+
+```
+
+```kotlin
+fun main(args: Array<String>) {
+    val moons = (1..9).map { Moon("Moon #$it") }.toList()
+
+    println(moons.javaClass)
+
+    moons.javaClass.methods
+        .find { it.name == "add" && it.parameterCount == 1 }
+        ?.invoke(moons, Moon("XXX"))
+
+    println(moons.joinToString("\n"))
+}
+```
 
 
 
@@ -1142,16 +1474,142 @@ public final class _06_class_2.TypealiasKt {
 
 
 
+```kotlin
+import java.time.Instant
+
+class Logger(private val name: String) {
+    private enum class Level { TRACE, DEBUG, INFO, WARN, ERROR, FATAL }
+    private val level = Level.INFO
+
+    fun info(message: () -> String) {
+        log(Level.INFO, message)
+    }
+
+    private inline fun log(lvl: Level, message: () -> String) { // inline
+        if (level >= lvl) {
+            println("[${level.name}] $name - ${message()}")
+        }
+    }
+}
+
+fun main(args: Array<String>) {
+    val logger = Logger("Main")
+
+    logger.info { "Time: ${Instant.now()}" }
+}
+```
+
+```java
+package _13_advanced_function;
+
+import kotlin.Metadata;
+import kotlin.jvm.functions.Function0;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 1,
+   d1 = {"\u0000&\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\u0018\u00002\u00020\u0001:\u0001\rB\r\u0012\u0006\u0010\u0002\u001a\u00020\u0003¢\u0006\u0002\u0010\u0004J\u0014\u0010\u0007\u001a\u00020\b2\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00030\nJ\u001f\u0010\u000b\u001a\u00020\b2\u0006\u0010\f\u001a\u00020\u00062\f\u0010\t\u001a\b\u0012\u0004\u0012\u00020\u00030\nH\u0082\bR\u000e\u0010\u0005\u001a\u00020\u0006X\u0082\u0004¢\u0006\u0002\n\u0000R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004¢\u0006\u0002\n\u0000"},
+   d2 = {"L_13_advanced_function/Logger;", "", "name", "", "(Ljava/lang/String;)V", "level", "L_13_advanced_function/Logger$Level;", "info", "", "message", "Lkotlin/Function0;", "log", "lvl", "Level"}
+)
+public final class Logger {
+   private final Logger.Level level;
+   private final String name;
+
+   public final void info(@NotNull Function0 message) {
+      Intrinsics.checkParameterIsNotNull(message, "message");
+      Logger.Level lvl$iv = Logger.Level.INFO;
+      if (access$getLevel$p(this).compareTo((Enum)lvl$iv) >= 0) {
+         String var4 = '[' + access$getLevel$p(this).name() + "] " + access$getName$p(this) + " - " + (String)message.invoke();
+         System.out.println(var4);
+      }
+
+   }
+
+   private final void log(Logger.Level lvl, Function0 message) {
+      if (access$getLevel$p(this).compareTo((Enum)lvl) >= 0) {
+         String var4 = '[' + access$getLevel$p(this).name() + "] " + access$getName$p(this) + " - " + (String)message.invoke();
+         System.out.println(var4);
+      }
+
+   }
+
+   public Logger(@NotNull String name) {
+      Intrinsics.checkParameterIsNotNull(name, "name");
+      super();
+      this.name = name;
+      this.level = Logger.Level.INFO;
+   }
+
+   // $FF: synthetic method
+   @NotNull
+   public static final Logger.Level access$getLevel$p(Logger $this) {
+      return $this.level;
+   }
+
+   // $FF: synthetic method
+   @NotNull
+   public static final String access$getName$p(Logger $this) {
+      return $this.name;
+   }
+
+   @Metadata(
+      mv = {1, 1, 9},
+      bv = {1, 0, 2},
+      k = 1,
+      d1 = {"\u0000\f\n\u0002\u0018\u0002\n\u0002\u0010\u0010\n\u0002\b\u0007\b\u0082\u0001\u0018\u00002\b\u0012\u0004\u0012\u00020\u00000\u0001B\u0007\b\u0002¢\u0006\u0002\u0010\u0002j\u0002\b\u0003j\u0002\b\u0004j\u0002\b\u0005j\u0002\b\u0006j\u0002\b\u0007j\u0002\b\b"},
+      d2 = {"L_13_advanced_function/Logger$Level;", "", "(Ljava/lang/String;I)V", "TRACE", "DEBUG", "INFO", "WARN", "ERROR", "FATAL"}
+   )
+   private static enum Level {
+      TRACE,
+      DEBUG,
+      INFO,
+      WARN,
+      ERROR,
+      FATAL;
+
+      protected Level() {
+      }
+   }
+}
+
+```
+
+```kotlin
+class Pojo {
+    var name: String? = null
+    override fun toString() = "Pojo $name"
+}
+
+object JavaBeanBuilder {
+    fun <T> createBean(clazz: Class<T>): T =
+        clazz.newInstance()
+    inline fun <reified T> createBean(): T =
+        createBean(T::class.java)
+}
+
+fun main(args: Array<String>) {
+    val p1 = Pojo()
+    p1.name = "Plop1"
+    println(p1)
+
+    val p2 = JavaBeanBuilder.createBean<Pojo>()
+    p2.name = "Plop2"
+    println(p2)
+}
+```
+
+#### Cas d'utilisation du `reified`
+
+* pour créer des extensions kotlin des fonctions Java qui utilisent des `Class<T>`  
 
 
+#### Cas d'utilisation des `inline`, `noinline`
 
-
-
-
-
-
-
-
+* quand on utilise `reified` 
+* quand on sait se qu'on fait, <https://kotlinlang.org/docs/reference/inline-functions.html>
 
 
 
@@ -1197,6 +1655,8 @@ public final class _06_class_2.TypealiasKt {
 * [Forum](https://discuss.kotlinlang.org/), [Slack](https://kotlinslack.herokuapp.com/)
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+
+
 
 
 
