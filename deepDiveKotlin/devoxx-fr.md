@@ -1385,12 +1385,9 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 `
 
 
-
 > Ne croyez pas les benchmarks, faites les vous-même !
 
 <https://github.com/MonkeyPatchIo/kotlin-perf>
-
-Test de `10!`
 
 |Benchmark                          | Mode  | Cnt |         Score |          Error | Units |
 |-----------------------------------|-------|-----|---------------|----------------|-------|
@@ -1420,7 +1417,7 @@ Test de `10!`
 ```kotlin
 val s = SolarSystem.bodies
     .filterIsInstance<Planet>()
-    .flatMap { planet -> planet.moons }
+    .flatMap { planet -> planet.moons } // 😻
     .filterNot { it.name.startsWith("S/") }
     .sortedBy { it.name }
 //        .fold("") { acc, moon ->
@@ -1437,35 +1434,47 @@ fun main(args: Array<String>) {
     val earthMoon = listOf(Moon("moon"))
     val add = earthMoon + Moon("moon 2")
 
-    println("earthMoon: $earthMoon")
-    println("add: $add")
-    println("reference equality: ${earthMoon === add}")
+    println("earthMoon: $earthMoon") // earthMoon: [Moon(name=moon)]
+    println("add: $add")             // add: [Moon(name=moon), Moon(name=moon 2)]
+    println("reference equality: ${earthMoon === add}") //reference equality: false
 
     println("\n")
     val earthMoon2 = mutableListOf(Moon("moon"))
     val add2 = earthMoon2.add(Moon("moon 2"))
 
-    println("earthMoon2: $earthMoon2")
-    println("add2: $add2")
+    println("earthMoon2: $earthMoon2") // earthMoon2: [Moon(name=moon), Moon(name=moon 2)]
+    println("add2: $add2")             // add2: true
 }
-
-
 ```
 
 ```kotlin
 fun main(args: Array<String>) {
     val moons = (1..9).map { Moon("Moon #$it") }.toList()
 
-    println(moons.javaClass)
+    println(moons.javaClass) // class java.util.ArrayList
 
     moons.javaClass.methods
         .find { it.name == "add" && it.parameterCount == 1 }
         ?.invoke(moons, Moon("XXX"))
 
     println(moons.joinToString("\n"))
+    // Moon(name=Moon #1)
+    // Moon(name=Moon #2)
+    // Moon(name=Moon #3)
+    // Moon(name=Moon #4)
+    // Moon(name=Moon #5)
+    // Moon(name=Moon #6)
+    // Moon(name=Moon #7)
+    // Moon(name=Moon #8)
+    // Moon(name=Moon #9)
+    // Moon(name=XXX)
 }
+
 ```
 
+
+- Super on a de l'immutabilité, des `map`, `flatMap`, `fold`, `aggregate`...
+- Mais ça reste des collections Java
 
 
 
@@ -1657,6 +1666,13 @@ fun main(args: Array<String>) {
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
 
 
+
+* [KotlinTest](https://github.com/kotlintest/kotlintest)
+* [Javalin](https://github.com/tipsy/javalin)
+* [RxKotlin](https://github.com/ReactiveX/RxKotlin)
+* [⋀rrow](http://arrow-kt.io/)
+* [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+* ...
 
 
 
