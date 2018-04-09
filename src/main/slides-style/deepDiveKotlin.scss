@@ -1,5 +1,11 @@
 @import "catnip";
 
+.slides-nav {
+  strong, nav {
+    font-size: .25rem;
+  }
+}
+
 section#deepDiveKotlin h1 {
   line-height: 1.5;
 }
@@ -221,9 +227,40 @@ section#part_pause {
   }
 }
 
+section#performances_sur_10_ {
+  article {
+    blockquote p {
+      font-size: 1rem;
+    }
+    table {
+      font-size: .6rem;
+      align-self: center;
+
+      td {
+        font-family: var(--codeFont);
+
+        &:nth-child(n + 3) {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
 section#android {
   background: url('./assets/devoxx-fr/android.png');
   background-size: cover;
+
+  h3::before {
+    background-image: url('./assets/brands/android.svg');
+    content: ' ';
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 }
 
 section#serveur {
@@ -248,6 +285,11 @@ section#kotlin_vs_java {
 
 section#liens {
   background: url('./assets/devoxx-fr/links.png');
+  background-size: cover;
+}
+
+section#bibliotheques {
+  background: url('./assets/devoxx-fr/library.png');
   background-size: cover;
 }
 

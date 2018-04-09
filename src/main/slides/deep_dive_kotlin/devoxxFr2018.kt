@@ -278,8 +278,8 @@ fun prezDevoxxFr2018() =
             slide(title = "ByteCode factoriel avec recursivité terminal 2/2", styleClass = setOf("code", "bytecode")) {
                 codeFromResource("/deepDiveKotlin/structure/Tailrec_factorialKt${'$'}tailRecFactorial$1.class.txt")
             }
-            slideFromResource(title = "Performances sur factorials") { styleClass = setOf("measure", "contrast") }
-            slideFromResource(title = "Bilan structures", key = "bilan-structures")
+            slideFromResource(title = "Performances sur 10!") { styleClass = setOf("measure", "contrast") }
+            slideFromResource(title = "Bilan structures", key = "bilan-structures") { styleClass = setOf("details", "contrast") }
         }
 
         part(title = "Les collections", key = "collection") {
@@ -311,7 +311,7 @@ fun prezDevoxxFr2018() =
             slide(title = "reified.kt", styleClass = setOf("code", "kotlin")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
             }
-            slideFromResource(title = "Plus sur les fonctions")
+            slideFromResource(title = "Plus sur les fonctions") { styleClass = setOf("details", "contrast") }
         }
 
 //        part(title = "kotlinx.serialization", key = "serialization") {
@@ -333,6 +333,6 @@ fun prezDevoxxFr2018() =
             }
             slideFromResource(title = "Liens") { styleClass = setOf("contrast") }
             slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast") }
-            slideFromResource(title = "Merci")
+            slideFromResource(title = "Merci") { styleClass = setOf("contrast") }
         }
     }

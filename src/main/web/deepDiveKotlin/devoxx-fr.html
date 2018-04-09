@@ -111,8 +111,8 @@
 <a href="#tailrec_factorial_kt" class="code kotlin" title="tailrec-factorial.kt">77</a>
 <a href="#bytecode_factoriel_avec_recursivite_terminal_1_2" class="code bytecode" title="ByteCode factoriel avec recursivité terminal 1/2">78</a>
 <a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="code bytecode" title="ByteCode factoriel avec recursivité terminal 2/2">79</a>
-<a href="#performances_sur_factorials" class="measure contrast" title="Performances sur factorials">80</a>
-<a href="#bilan-structures" class="" title="Bilan structures">81</a></nav>
+<a href="#performances_sur_10_" class="measure contrast" title="Performances sur 10!">80</a>
+<a href="#bilan-structures" class="details contrast" title="Bilan structures">81</a></nav>
 <nav><a href="#part_les_collections" class="part" title="Les collections">82</a>
 <a href="#api_kt" class="code kotlin" title="api.kt">83</a>
 <a href="#immutable_mutable_kt" class="code kotlin" title="immutable-mutable.kt">84</a>
@@ -124,7 +124,7 @@
 <a href="#inline_kt" class="code kotlin" title="inline.kt">90</a>
 <a href="#logger_java" class="code java" title="Logger.java">91</a>
 <a href="#reified_kt" class="code kotlin" title="reified.kt">92</a>
-<a href="#plus_sur_les_fonctions" class="" title="Plus sur les fonctions">93</a></nav>
+<a href="#plus_sur_les_fonctions" class="details contrast" title="Plus sur les fonctions">93</a></nav>
 <nav><a href="#part_conclusion" class="part" title="Conclusion">94</a>
 <a href="#android" class="contrast" title="Android">95</a>
 <a href="#serveur" class="contrast" title="Serveur">96</a>
@@ -132,7 +132,7 @@
 <a href="#kotlin_vs_java" class="contrast" title="Kotlin vs Java">98</a>
 <a href="#liens" class="contrast" title="Liens">99</a>
 <a href="#bibliotheques" class="contrast" title="Bibliothèques">100</a>
-<a href="#merci" class="" title="Merci">101</a></nav>
+<a href="#merci" class="contrast" title="Merci">101</a></nav>
     </div>
     <main>
 
@@ -2229,20 +2229,19 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 }
 </code>
     </article>
-    <a href="#performances_sur_factorials" class="next" aria-label="Suivant"></a>
+    <a href="#performances_sur_10_" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Performances sur factorials -->
-<section id="performances_sur_factorials" class="measure contrast">
+<!-- Slide Performances sur 10! -->
+<section id="performances_sur_10_" class="measure contrast">
     <a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="previous" aria-label="Précédant"></a>
-    <h3>Performances sur factorials</h3>
+    <h3>Performances sur 10!</h3>
     <article>
         <blockquote>
 <p>Ne croyez pas les benchmarks, faites les vous-même !</p>
 </blockquote>
 <p><a href="https://github.com/MonkeyPatchIo/kotlin-perf">https://github.com/MonkeyPatchIo/kotlin-perf</a></p>
-<p>Test de <code>10!</code></p>
 <table>
 <thead>
 <tr>
@@ -2296,8 +2295,8 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 
 <!-- Slide Bilan structures -->
-<section id="bilan-structures" class="">
-    <a href="#performances_sur_factorials" class="previous" aria-label="Précédant"></a>
+<section id="bilan-structures" class="details contrast">
+    <a href="#performances_sur_10_" class="previous" aria-label="Précédant"></a>
     <h3>Bilan structures</h3>
     <article>
         <ul>
@@ -2339,7 +2338,7 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
     <article>
         <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">val</span> s = SolarSystem.bodies
     .filterIsInstance&lt;Planet&gt;()
-    .flatMap { planet -&gt; planet.moons }
+    .flatMap { planet -&gt; planet.moons } <span class="hljs-comment">// 😻</span>
     .filterNot { it.name.startsWith(<span class="hljs-string">"S/"</span>) }
     .sortedBy { it.name }
 <span class="hljs-comment">//        .fold("") { acc, moon -&gt;</span>
@@ -2363,19 +2362,17 @@ println(s)</code></pre>
     <span class="hljs-keyword">val</span> earthMoon = listOf(Moon(<span class="hljs-string">"moon"</span>))
     <span class="hljs-keyword">val</span> add = earthMoon + Moon(<span class="hljs-string">"moon 2"</span>)
 
-    println(<span class="hljs-string">"earthMoon: <span class="hljs-variable">$earthMoon</span>"</span>)
-    println(<span class="hljs-string">"add: <span class="hljs-variable">$add</span>"</span>)
-    println(<span class="hljs-string">"reference equality: <span class="hljs-subst">${earthMoon === add}</span>"</span>)
+    println(<span class="hljs-string">"earthMoon: <span class="hljs-variable">$earthMoon</span>"</span>) <span class="hljs-comment">// earthMoon: [Moon(name=moon)]</span>
+    println(<span class="hljs-string">"add: <span class="hljs-variable">$add</span>"</span>)             <span class="hljs-comment">// add: [Moon(name=moon), Moon(name=moon 2)]</span>
+    println(<span class="hljs-string">"reference equality: <span class="hljs-subst">${earthMoon === add}</span>"</span>) <span class="hljs-comment">//reference equality: false</span>
 
     println(<span class="hljs-string">"\n"</span>)
     <span class="hljs-keyword">val</span> earthMoon2 = mutableListOf(Moon(<span class="hljs-string">"moon"</span>))
     <span class="hljs-keyword">val</span> add2 = earthMoon2.add(Moon(<span class="hljs-string">"moon 2"</span>))
 
-    println(<span class="hljs-string">"earthMoon2: <span class="hljs-variable">$earthMoon2</span>"</span>)
-    println(<span class="hljs-string">"add2: <span class="hljs-variable">$add2</span>"</span>)
-}
-
-</code></pre>
+    println(<span class="hljs-string">"earthMoon2: <span class="hljs-variable">$earthMoon2</span>"</span>) <span class="hljs-comment">// earthMoon2: [Moon(name=moon), Moon(name=moon 2)]</span>
+    println(<span class="hljs-string">"add2: <span class="hljs-variable">$add2</span>"</span>)             <span class="hljs-comment">// add2: true</span>
+}</code></pre>
     </article>
     <a href="#break_immutable_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -2389,14 +2386,25 @@ println(s)</code></pre>
         <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
     <span class="hljs-keyword">val</span> moons = (<span class="hljs-number">1.</span><span class="hljs-number">.9</span>).map { Moon(<span class="hljs-string">"Moon #<span class="hljs-variable">$it</span>"</span>) }.toList()
 
-    println(moons.javaClass)
+    println(moons.javaClass) <span class="hljs-comment">// class java.util.ArrayList</span>
 
     moons.javaClass.methods
         .find { it.name == <span class="hljs-string">"add"</span> &amp;&amp; it.parameterCount == <span class="hljs-number">1</span> }
         ?.invoke(moons, Moon(<span class="hljs-string">"XXX"</span>))
 
     println(moons.joinToString(<span class="hljs-string">"\n"</span>))
-}</code></pre>
+    <span class="hljs-comment">// Moon(name=Moon #1)</span>
+    <span class="hljs-comment">// Moon(name=Moon #2)</span>
+    <span class="hljs-comment">// Moon(name=Moon #3)</span>
+    <span class="hljs-comment">// Moon(name=Moon #4)</span>
+    <span class="hljs-comment">// Moon(name=Moon #5)</span>
+    <span class="hljs-comment">// Moon(name=Moon #6)</span>
+    <span class="hljs-comment">// Moon(name=Moon #7)</span>
+    <span class="hljs-comment">// Moon(name=Moon #8)</span>
+    <span class="hljs-comment">// Moon(name=Moon #9)</span>
+    <span class="hljs-comment">// Moon(name=XXX)</span>
+}
+</code></pre>
     </article>
     <a href="#collection" class="next" aria-label="Suivant"></a>
 </section>
@@ -2407,7 +2415,11 @@ println(s)</code></pre>
     <a href="#break_immutable_kt" class="previous" aria-label="Précédant"></a>
     <h3>Bilan collection</h3>
     <article>
-        
+        <ul>
+<li>Super on a de l&#39;immutabilité, des <code>map</code>, <code>flatMap</code>, <code>fold</code>, <code>aggregate</code>...</li>
+<li>Mais ça reste des collections Java</li>
+</ul>
+
     </article>
     <a href="#part_les_delegates" class="next" aria-label="Suivant"></a>
 </section>
@@ -2595,7 +2607,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Plus sur les fonctions -->
-<section id="plus_sur_les_fonctions" class="">
+<section id="plus_sur_les_fonctions" class="details contrast">
     <a href="#reified_kt" class="previous" aria-label="Précédant"></a>
     <h3>Plus sur les fonctions</h3>
     <article>
@@ -2729,14 +2741,22 @@ fun main(args: Array&lt;String&gt;) {
     <a href="#liens" class="previous" aria-label="Précédant"></a>
     <h3>Bibliothèques</h3>
     <article>
-        
+        <ul>
+<li><a href="https://github.com/kotlintest/kotlintest">KotlinTest</a></li>
+<li><a href="https://github.com/tipsy/javalin">Javalin</a></li>
+<li><a href="https://github.com/ReactiveX/RxKotlin">RxKotlin</a></li>
+<li><a href="http://arrow-kt.io/">⋀rrow</a></li>
+<li><a href="https://github.com/Kotlin/kotlinx.serialization">kotlinx.serialization</a></li>
+<li>...</li>
+</ul>
+
     </article>
     <a href="#merci" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Merci -->
-<section id="merci" class="">
+<section id="merci" class="contrast">
     <a href="#bibliotheques" class="previous" aria-label="Précédant"></a>
     <h3>Merci</h3>
     <article>

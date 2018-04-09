@@ -1,6 +1,6 @@
 val s = SolarSystem.bodies
     .filterIsInstance<Planet>()
-    .flatMap { planet -> planet.moons }
+    .flatMap { planet -> planet.moons } // 😻
     .filterNot { it.name.startsWith("S/") }
     .sortedBy { it.name }
 //        .fold("") { acc, moon ->
