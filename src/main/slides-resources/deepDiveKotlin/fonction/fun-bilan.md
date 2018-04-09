@@ -6,7 +6,7 @@
 - Sautez une ligne après le `=`
 - Utilisez le passage des arguments par nom quand ça lève des ambigüités
 
-#### Notes
+#### 📝 Notes
 
 - Le passage des arguments par nom, ne marche pas sur les appels de code Java
  

@@ -95,7 +95,7 @@ section#bytecode-play {
       font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, Segoe WPC, Segoe UI, HelveticaNeue-Light, Ubuntu, Droid Sans, sans-serif;
 
       .constants {
-        font-size: .0625em;
+        font-size: .75em;
       }
 
       .frames {
@@ -193,4 +193,65 @@ section#performance_helloworld_kt article {
       font-family: var(--codeFont);
     }
   }
+}
+
+section#quote {
+  background: url('./assets/devoxx-fr/mistake.png');
+  background-size: cover;
+  article {
+    blockquote p {
+      font-size: .8rem;
+    }
+  }
+}
+
+section#part_pause {
+  background: url('./assets/devoxx-fr/break.png');
+  background-size: cover;
+
+  h2 {
+    color: rgba(0, 0, 0, .5);
+    text-shadow: none;
+    font-size: 6rem;
+
+    &::before {
+      content: '⏸ ';
+      color: white;
+    }
+  }
+}
+
+section#android {
+  background: url('./assets/devoxx-fr/android.png');
+  background-size: cover;
+}
+
+section#serveur {
+  background: url('./assets/devoxx-fr/server.png');
+  background-size: cover;
+}
+
+section#web_et_natif {
+  background: url('./assets/devoxx-fr/natif.png');
+  background-size: cover;
+}
+
+section#kotlin_vs_java {
+  background: url('./assets/devoxx-fr/dino.png');
+  background-size: cover;
+  article {
+    blockquote p {
+      font-size: 1rem;
+    }
+  }
+}
+
+section#liens {
+  background: url('./assets/devoxx-fr/links.png');
+  background-size: cover;
+}
+
+section#merci {
+  background: url('./assets/devoxx-fr/thanks.png');
+  background-size: cover;
 }

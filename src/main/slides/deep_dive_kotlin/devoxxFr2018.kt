@@ -8,8 +8,11 @@ import org.ilaborie.slides.content.Language
 import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
+import org.ilaborie.slides.dsl.html
+import org.ilaborie.slides.dsl.linkText
 import org.ilaborie.slides.dsl.part
 import org.ilaborie.slides.dsl.presentation
+import org.ilaborie.slides.dsl.quote
 import org.ilaborie.slides.dsl.roadmap
 import org.ilaborie.slides.dsl.slide
 import org.ilaborie.slides.dsl.slideFromResource
@@ -120,6 +123,14 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "null-safety") {
+            slide(title = "C'est nul", styleClass = setOf("contrast")) {
+                quote(author = "Tony Hoare (C.A.R. Hoare)") {
+                    html {
+                        "I call it my billion-dollar mistake. It was the invention of the <code>null</code> reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a <code>null</code> reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years."
+                    }
+                }
+                linkText("https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare") { "Null References: The Billion Dollar Mistake" }
+            }
             slideFromResource(title = "elvis")
             // TODO manu
         }
@@ -209,7 +220,7 @@ fun prezDevoxxFr2018() =
             }
         }
 
-        part(title = "Types") {
+        part(title = "Les types", key = "types") {
             slideFromResource(title = "Hierarchie des types")
             // FIXME
         }
@@ -217,11 +228,6 @@ fun prezDevoxxFr2018() =
         part(title = "Extensions de fonction") {
             slideFromResource(title = "Extension")
             // TODO manu
-        }
-
-        part(title = "Structure") {
-            slideFromResource(title = "Structures")
-            // FIXME
         }
 
         part(title = "Pause") {}
@@ -232,6 +238,11 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "ProGuard")
         }
 
+
+        part(title = "Autres structures", key = "structure") {
+            slideFromResource(title = "Structures")
+            // FIXME
+        }
         part(title = "Les collections", key = "collection") {
             slideFromResource(title = "Collection")
             // FIXME
@@ -243,7 +254,7 @@ fun prezDevoxxFr2018() =
             // TODO manu
         }
 
-        part(title = "En peu plus sur les fonctions") {
+        part(title = "Un peu plus sur les fonctions", key = "plus_sur_les_fonctions") {
             slideFromResource(title = "Plus sur les fonctions")
             // FIXME
         }
@@ -253,7 +264,7 @@ fun prezDevoxxFr2018() =
             // TODO manu
         }
 
-        part(title = "Les coroutines", key = "courountines") {
+        part(title = "Les coroutines", key = "coroutines") {
             slideFromResource(title = "Coroutines")
             // FIXME
         }
@@ -262,8 +273,10 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "Android") { styleClass = setOf("details", "contrast") }
             slideFromResource(title = "Serveur") { styleClass = setOf("details", "contrast") }
             slideFromResource(title = "Web et Natif") { styleClass = setOf("details", "contrast") }
-            slideFromResource(title = "Kotlin vs Java") { styleClass = setOf("details", "contrast") }
+            slideFromResource(title = "Kotlin vs Java", key = "kotlin_vs_java") {
+                styleClass = setOf("bilan", "contrast")
+            }
             slideFromResource(title = "Liens") { styleClass = setOf("details", "contrast") }
-            slideFromResource(title = "Q/A")
+            slideFromResource(title = "Merci")
         }
     }
