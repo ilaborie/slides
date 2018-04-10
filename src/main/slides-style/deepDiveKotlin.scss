@@ -296,4 +296,7 @@ section#bibliotheques {
 section#merci {
   background: url('./assets/devoxx-fr/thanks.png');
   background-size: cover;
+  h1 {
+    margin: 5rem 0;
+  }
 }

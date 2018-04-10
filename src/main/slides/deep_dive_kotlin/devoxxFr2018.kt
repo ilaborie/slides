@@ -221,8 +221,15 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Les types", key = "types") {
-            slideFromResource(title = "Hierarchie des types")
-            // FIXME
+            slide(title = "Types basiques", styleClass = setOf("diagram")) {
+                svg("/deepDiveKotlin/types/KotlinBaseTypes.svg")
+            }
+            slide(title = "Types basiques nullable", styleClass = setOf("diagram")) {
+                svg("/deepDiveKotlin/types/KotlinBaseTypes_.svg")
+            }
+            slideFromResource(title = "Hierarchie des types"){
+                styleClass = setOf("bilan", "contrast")
+            }
         }
 
         part(title = "Extensions de fonctions", key = "extensions_de_fonction") {
