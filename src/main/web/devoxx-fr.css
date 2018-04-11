@@ -143,11 +143,26 @@
     border-radius: .25rem;
     padding: .25rem;
     tab-size: 2;
-    min-width: 100%; }
+    min-width: 100%;
+    position: relative; }
+    .devoxx-fr pre[class*="lang-"]:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .125em;
+      font-size: 75%;
+      border-radius: .25em;
+      background: #999;
+      color: #2d2d2d; }
   .devoxx-fr pre.lang-bash {
     color: #2dc82d; }
     .devoxx-fr pre.lang-bash code::before {
-      content: '$ '; }
+      content: '$ ';
+      opacity: .5; }
+  .devoxx-fr pre.lang-kotlin:after {
+    content: 'Kotlin'; }
+  .devoxx-fr pre.lang-java:after {
+    content: 'Java'; }
   .devoxx-fr li code, .devoxx-fr blockquote code {
     background-color: rgba(255, 255, 255, 0.4);
     padding: .06125rem;

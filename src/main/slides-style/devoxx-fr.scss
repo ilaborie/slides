@@ -217,6 +217,7 @@
     }
   }
 
+  // Code lang
   pre[class*="lang-"]{
     background: #2d2d2d;
     font-family: var(--codeFont);
@@ -227,6 +228,18 @@
     padding: .25rem;
     tab-size: 2;
     min-width: 100%;
+    position: relative;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .125em;
+      font-size: 75%;
+      border-radius: .25em;
+      background: #999;
+      color: #2d2d2d;
+    }
   }
 
   pre.lang-bash {
@@ -234,10 +247,18 @@
     code {
       &::before {
         content: '$ ';
+        opacity: .5;
       }
     }
   }
+  pre.lang-kotlin:after {
+    content: 'Kotlin';
+  }
+  pre.lang-java:after {
+    content: 'Java';
+  }
 
+  //
 
   li code, blockquote code {
     background-color: hsla(0, 100%, 100%, .4);
