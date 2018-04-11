@@ -213,6 +213,14 @@ section#billion_dollar_mistake {
   }
 }
 
+section#generics, section#star {
+  article {
+    pre::after {
+      display: none;
+    }
+  }
+}
+
 section#part_pause {
   background: url('./assets/devoxx-fr/break.png');
   background-size: cover;

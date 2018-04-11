@@ -147,16 +147,17 @@
     background: url('./assets/devoxx-fr/code.png');
     background-size: cover;
 
-
-    pre {
-      max-width: 100%;
-      overflow: auto;
+    article {
+      justify-content: center;
+      pre {
+        max-width: 100%;
+        overflow: auto;
+      }
     }
 
     &.java {
       background: url('./assets/devoxx-fr/coffee.png');
       background-size: cover;
-
     }
     &.kotlin {
       background: url('./assets/devoxx-fr/kotlin.png');
@@ -167,6 +168,7 @@
       background-size: cover;
       article {
         & > code {
+          box-sizing: border-box;
           padding: .25rem;
           border-radius: .125rem;
           background: var(--bgCode);
@@ -183,6 +185,7 @@
       background-size: cover;
       article {
         & > code {
+          box-sizing: border-box;
           padding: .25rem;
           border-radius: .125rem;
           background: var(--bgCode);
@@ -196,7 +199,7 @@
     }
   }
 
-  section article > pre.hljs {
+  section article > pre[class*="lang-"] {
     align-self: center;
   }
   section.contrast article {
@@ -218,7 +221,7 @@
   }
 
   // Code lang
-  pre[class*="lang-"]{
+  pre[class*="lang-"] {
     background: #2d2d2d;
     font-family: var(--codeFont);
     overflow: visible;
@@ -229,6 +232,7 @@
     tab-size: 2;
     min-width: 100%;
     position: relative;
+    box-sizing: border-box;
 
     &:after {
       position: absolute;
@@ -237,8 +241,16 @@
       padding: .125em;
       font-size: 75%;
       border-radius: .25em;
-      background: #999;
+      //background-color: #eee;
+      //box-shadow: 0 0 0 .25em #eee;
       color: #2d2d2d;
+      width: 1rem;
+      height: 1rem;
+      margin: .25em;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
     }
   }
 
@@ -247,15 +259,19 @@
     code {
       &::before {
         content: '$ ';
-        opacity: .5;
+        color: #999;
       }
     }
   }
   pre.lang-kotlin:after {
-    content: 'Kotlin';
+    content: '';
+    background-image: url('./assets/brands/kotlin.svg');
   }
   pre.lang-java:after {
-    content: 'Java';
+    content: '';
+    background-color: #eee;
+    box-shadow: 0 0 0 .25em #eee;
+    background-image: url('./assets/brands/java.svg');
   }
 
   //

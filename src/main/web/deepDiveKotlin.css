@@ -459,6 +459,9 @@ section#billion_dollar_mistake {
   section#billion_dollar_mistake article blockquote p {
     font-size: .85rem; }
 
+section#generics article pre::after, section#star article pre::after {
+  display: none; }
+
 section#part_pause {
   background: url("./assets/devoxx-fr/break.png");
   background-size: cover; }

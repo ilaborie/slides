@@ -1,10 +1,9 @@
 import * as marked from 'marked';
-import {highlightAuto} from 'highlight.js';
 import {createInterface} from 'readline';
 
-marked.setOptions({
-    highlight: code => highlightAuto(code).value
-});
+// marked.setOptions({
+//     highlight: code => highlightAuto(code).value
+// });
 
 export function markdown(md: string): Promise<string> {
     return new Promise((resolve, reject) => {

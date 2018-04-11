@@ -85,6 +85,7 @@ enum class Language {
             ext.endsWith("css")  -> CSS
             ext.endsWith("html") -> HTML
             ext.endsWith("java") -> Java
+            ext.endsWith("class.txt") -> Java
             ext.endsWith("kt")   -> Kotlin
             ext.endsWith("ts")   -> TypeScript
             ext.endsWith("js")   -> JavaScript

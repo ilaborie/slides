@@ -291,22 +291,22 @@
     <h3>Explorons le ByteCode</h3>
     <article>
         <pre class="lang-bash"><code class="lang-bash">javap -c HelloWorld.class</code></pre>
-<code>Compiled from "HelloWorld.java"
-public class _00_helloworld.HelloWorld {
-  public _00_helloworld.HelloWorld();
-    Code:
-       0: aload_0
-       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
-       4: return
+<pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"HelloWorld.java"</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">_00_helloworld<span class="token punctuation">.</span>HelloWorld</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> _00_helloworld<span class="token punctuation">.</span><span class="token function">HelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment">// Method java/lang/Object."&lt;init>":()V</span>
+       <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
 
-  public static void main(java.lang.String[]);
-    Code:
-       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
-       3: ldc           #3                  // String Hello Devoxx
-       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
-       8: return
-}
-</code>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> getstatic     #<span class="token number">2</span>                  <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+       <span class="token number">3</span><span class="token operator">:</span> ldc           #<span class="token number">3</span>                  <span class="token comment">// String Hello Devoxx</span>
+       <span class="token number">5</span><span class="token operator">:</span> invokevirtual #<span class="token number">4</span>                  <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+       <span class="token number">8</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#transpile" class="next" aria-label="Suivant"></a>
 </section>
@@ -661,21 +661,21 @@ public class _00_helloworld.HelloWorld {
     <a href="#hexdump" class="previous" aria-label="Précédant"></a>
     <h3>Java ByteCode</h3>
     <article>
-        <code>Compiled from "HelloWorld.kt"
-public final class _00_helloworld.HelloWorldKt {
-  public static final void main(java.lang.String[]);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String args
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: ldc           #17                 // String Hello Devoxx
-       8: astore_1
-       9: getstatic     #23                 // Field java/lang/System.out:Ljava/io/PrintStream;
-      12: aload_1
-      13: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-      16: return
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"HelloWorld.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_00_helloworld<span class="token punctuation">.</span>HelloWorldKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> ldc           #<span class="token number">9</span>                  <span class="token comment">// String args</span>
+       <span class="token number">3</span><span class="token operator">:</span> invokestatic  #<span class="token number">15</span>                 <span class="token comment">// Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span>
+       <span class="token number">6</span><span class="token operator">:</span> ldc           #<span class="token number">17</span>                 <span class="token comment">// String Hello Devoxx</span>
+       <span class="token number">8</span><span class="token operator">:</span> astore_1
+       <span class="token number">9</span><span class="token operator">:</span> getstatic     #<span class="token number">23</span>                 <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+      <span class="token number">12</span><span class="token operator">:</span> aload_1
+      <span class="token number">13</span><span class="token operator">:</span> invokevirtual #<span class="token number">29</span>                 <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/Object;)V</span>
+      <span class="token number">16</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#helloworld_java" class="next" aria-label="Suivant"></a>
 </section>
@@ -781,15 +781,15 @@ public final class _00_helloworld.HelloWorldKt {
 <p>Ne croyez pas les benchmarks, faites les vous-même !</p>
 </blockquote>
 <p><a href="https://github.com/MonkeyPatchIo/kotlin-perf">https://github.com/MonkeyPatchIo/kotlin-perf</a></p>
-<pre><code><span class="hljs-meta">#</span><span class="bash"> VM version: JDK 9, VM 9+181</span>
-<span class="hljs-meta">#</span><span class="bash"> VM invoker: /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/bin/java</span>
-<span class="hljs-meta">#</span><span class="bash"> VM options: &lt;none&gt;</span>
-<span class="hljs-meta">#</span><span class="bash"> Warmup: 20 iterations, 1 s each</span>
-<span class="hljs-meta">#</span><span class="bash"> Measurement: 20 iterations, 1 s each</span>
-<span class="hljs-meta">#</span><span class="bash"> Timeout: 10 min per iteration</span>
-<span class="hljs-meta">#</span><span class="bash"> Threads: 1 thread, will synchronize iterations</span>
-<span class="hljs-meta">#</span><span class="bash"> Benchmark mode: Throughput, ops/time</span>
-<span class="hljs-meta">#</span><span class="bash"> Benchmark: io.monkeypatch.talks.MyBenchmark.testJava</span>
+<pre><code># VM version: JDK 9, VM 9+181
+# VM invoker: /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/bin/java
+# VM options: &lt;none&gt;
+# Warmup: 20 iterations, 1 s each
+# Measurement: 20 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: io.monkeypatch.talks.MyBenchmark.testJava
 </code></pre><table>
 <thead>
 <tr>
@@ -907,50 +907,50 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
     <a href="#string_template_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode de string-template</h3>
     <article>
-        <code>Compiled from "string-templates.kt"
-public final class _01_basic.String_templatesKt {
-  public static final void greeting(_01_basic.Someone);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String who
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: new           #17                 // class java/lang/StringBuilder
-       9: dup
-      10: invokespecial #21                 // Method java/lang/StringBuilder."<init>":()V
-      13: ldc           #23                 // String Hello
-      15: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      18: aload_0
-      19: invokevirtual #30                 // Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-      22: bipush        33
-      24: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      27: invokevirtual #37                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      30: astore_1
-      31: getstatic     #43                 // Field java/lang/System.out:Ljava/io/PrintStream;
-      34: aload_1
-      35: invokevirtual #49                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-      38: new           #17                 // class java/lang/StringBuilder
-      41: dup
-      42: invokespecial #21                 // Method java/lang/StringBuilder."<init>":()V
-      45: ldc           #23                 // String Hello
-      47: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      50: aload_0
-      51: invokevirtual #54                 // Method _01_basic/Someone.getFirstName:()Ljava/lang/String;
-      54: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      57: bipush        32
-      59: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      62: aload_0
-      63: invokevirtual #57                 // Method _01_basic/Someone.getLastName:()Ljava/lang/String;
-      66: invokevirtual #27                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      69: bipush        33
-      71: invokevirtual #33                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      74: invokevirtual #37                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      77: astore_1
-      78: getstatic     #43                 // Field java/lang/System.out:Ljava/io/PrintStream;
-      81: aload_1
-      82: invokevirtual #49                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
-      85: return
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"string-templates.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_01_basic<span class="token punctuation">.</span>String_templatesKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">greeting</span><span class="token punctuation">(</span>_01_basic<span class="token punctuation">.</span>Someone<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> ldc           #<span class="token number">9</span>                  <span class="token comment">// String who</span>
+       <span class="token number">3</span><span class="token operator">:</span> invokestatic  #<span class="token number">15</span>                 <span class="token comment">// Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span>
+       <span class="token number">6</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">17</span>                 <span class="token comment">// class java/lang/StringBuilder</span>
+       <span class="token number">9</span><span class="token operator">:</span> dup
+      <span class="token number">10</span><span class="token operator">:</span> invokespecial #<span class="token number">21</span>                 <span class="token comment">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+      <span class="token number">13</span><span class="token operator">:</span> ldc           #<span class="token number">23</span>                 <span class="token comment">// String Hello</span>
+      <span class="token number">15</span><span class="token operator">:</span> invokevirtual #<span class="token number">27</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">18</span><span class="token operator">:</span> aload_0
+      <span class="token number">19</span><span class="token operator">:</span> invokevirtual #<span class="token number">30</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/Object;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">22</span><span class="token operator">:</span> bipush        <span class="token number">33</span>
+      <span class="token number">24</span><span class="token operator">:</span> invokevirtual #<span class="token number">33</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;</span>
+      <span class="token number">27</span><span class="token operator">:</span> invokevirtual #<span class="token number">37</span>                 <span class="token comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+      <span class="token number">30</span><span class="token operator">:</span> astore_1
+      <span class="token number">31</span><span class="token operator">:</span> getstatic     #<span class="token number">43</span>                 <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+      <span class="token number">34</span><span class="token operator">:</span> aload_1
+      <span class="token number">35</span><span class="token operator">:</span> invokevirtual #<span class="token number">49</span>                 <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/Object;)V</span>
+      <span class="token number">38</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">17</span>                 <span class="token comment">// class java/lang/StringBuilder</span>
+      <span class="token number">41</span><span class="token operator">:</span> dup
+      <span class="token number">42</span><span class="token operator">:</span> invokespecial #<span class="token number">21</span>                 <span class="token comment">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+      <span class="token number">45</span><span class="token operator">:</span> ldc           #<span class="token number">23</span>                 <span class="token comment">// String Hello</span>
+      <span class="token number">47</span><span class="token operator">:</span> invokevirtual #<span class="token number">27</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">50</span><span class="token operator">:</span> aload_0
+      <span class="token number">51</span><span class="token operator">:</span> invokevirtual #<span class="token number">54</span>                 <span class="token comment">// Method _01_basic/Someone.getFirstName:()Ljava/lang/String;</span>
+      <span class="token number">54</span><span class="token operator">:</span> invokevirtual #<span class="token number">27</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">57</span><span class="token operator">:</span> bipush        <span class="token number">32</span>
+      <span class="token number">59</span><span class="token operator">:</span> invokevirtual #<span class="token number">33</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;</span>
+      <span class="token number">62</span><span class="token operator">:</span> aload_0
+      <span class="token number">63</span><span class="token operator">:</span> invokevirtual #<span class="token number">57</span>                 <span class="token comment">// Method _01_basic/Someone.getLastName:()Ljava/lang/String;</span>
+      <span class="token number">66</span><span class="token operator">:</span> invokevirtual #<span class="token number">27</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">69</span><span class="token operator">:</span> bipush        <span class="token number">33</span>
+      <span class="token number">71</span><span class="token operator">:</span> invokevirtual #<span class="token number">33</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;</span>
+      <span class="token number">74</span><span class="token operator">:</span> invokevirtual #<span class="token number">37</span>                 <span class="token comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+      <span class="token number">77</span><span class="token operator">:</span> astore_1
+      <span class="token number">78</span><span class="token operator">:</span> getstatic     #<span class="token number">43</span>                 <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+      <span class="token number">81</span><span class="token operator">:</span> aload_1
+      <span class="token number">82</span><span class="token operator">:</span> invokevirtual #<span class="token number">49</span>                 <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/Object;)V</span>
+      <span class="token number">85</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#numeric_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -1003,20 +1003,20 @@ public final class _01_basic.String_templatesKt {
     <a href="#numeric_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode de numeric</h3>
     <article>
-        <code>Compiled from "numeric.kt"
-public final class _01_basic.NumericKt {
-  public static final void tryNumeric();
-    Code:
-       0: bipush        42
-       2: istore_0
-       3: ldc2_w        #7                  // long 42l
-       6: lstore_1
-       7: aconst_null
-       8: checkcast     #10                 // class java/lang/Double
-      11: astore_3
-      12: return
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"numeric.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_01_basic<span class="token punctuation">.</span>NumericKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">tryNumeric</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> bipush        <span class="token number">42</span>
+       <span class="token number">2</span><span class="token operator">:</span> istore_0
+       <span class="token number">3</span><span class="token operator">:</span> ldc2_w        #<span class="token number">7</span>                  <span class="token comment">// long 42l</span>
+       <span class="token number">6</span><span class="token operator">:</span> lstore_1
+       <span class="token number">7</span><span class="token operator">:</span> aconst_null
+       <span class="token number">8</span><span class="token operator">:</span> checkcast     #<span class="token number">10</span>                 <span class="token comment">// class java/lang/Double</span>
+      <span class="token number">11</span><span class="token operator">:</span> astore_3
+      <span class="token number">12</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#basic-bilan" class="next" aria-label="Suivant"></a>
 </section>
@@ -2283,75 +2283,75 @@ public final class _01_basic.NumericKt {
     <a href="#default_value_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode de default-value</h3>
     <article>
-        <code>Compiled from "default-value.kt"
-public final class _03_fun.Default_valueKt {
-  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String prefix
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: aload_1
-       7: ldc           #17                 // String who
-       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-      12: new           #19                 // class java/lang/StringBuilder
-      15: dup
-      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      19: ldc           #25                 // String
-      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      24: aload_0
-      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      28: bipush        32
-      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      33: aload_1
-      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      40: astore_3
-      41: iload_2
-      42: ifeq          66
-      45: aload_3
-      46: new           #19                 // class java/lang/StringBuilder
-      49: dup
-      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      53: swap
-      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      57: bipush        33
-      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      65: astore_3
-      66: aload_3
-      67: areturn
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"default-value.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_03_fun<span class="token punctuation">.</span>Default_valueKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String <span class="token function">buildString2</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> ldc           #<span class="token number">9</span>                  <span class="token comment">// String prefix</span>
+       <span class="token number">3</span><span class="token operator">:</span> invokestatic  #<span class="token number">15</span>                 <span class="token comment">// Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span>
+       <span class="token number">6</span><span class="token operator">:</span> aload_1
+       <span class="token number">7</span><span class="token operator">:</span> ldc           #<span class="token number">17</span>                 <span class="token comment">// String who</span>
+       <span class="token number">9</span><span class="token operator">:</span> invokestatic  #<span class="token number">15</span>                 <span class="token comment">// Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span>
+      <span class="token number">12</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">19</span>                 <span class="token comment">// class java/lang/StringBuilder</span>
+      <span class="token number">15</span><span class="token operator">:</span> dup
+      <span class="token number">16</span><span class="token operator">:</span> invokespecial #<span class="token number">23</span>                 <span class="token comment">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+      <span class="token number">19</span><span class="token operator">:</span> ldc           #<span class="token number">25</span>                 <span class="token comment">// String</span>
+      <span class="token number">21</span><span class="token operator">:</span> invokevirtual #<span class="token number">29</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">24</span><span class="token operator">:</span> aload_0
+      <span class="token number">25</span><span class="token operator">:</span> invokevirtual #<span class="token number">29</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">28</span><span class="token operator">:</span> bipush        <span class="token number">32</span>
+      <span class="token number">30</span><span class="token operator">:</span> invokevirtual #<span class="token number">32</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;</span>
+      <span class="token number">33</span><span class="token operator">:</span> aload_1
+      <span class="token number">34</span><span class="token operator">:</span> invokevirtual #<span class="token number">29</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">37</span><span class="token operator">:</span> invokevirtual #<span class="token number">36</span>                 <span class="token comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+      <span class="token number">40</span><span class="token operator">:</span> astore_3
+      <span class="token number">41</span><span class="token operator">:</span> iload_2
+      <span class="token number">42</span><span class="token operator">:</span> ifeq          <span class="token number">66</span>
+      <span class="token number">45</span><span class="token operator">:</span> aload_3
+      <span class="token number">46</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">19</span>                 <span class="token comment">// class java/lang/StringBuilder</span>
+      <span class="token number">49</span><span class="token operator">:</span> dup
+      <span class="token number">50</span><span class="token operator">:</span> invokespecial #<span class="token number">23</span>                 <span class="token comment">// Method java/lang/StringBuilder."&lt;init>":()V</span>
+      <span class="token number">53</span><span class="token operator">:</span> swap
+      <span class="token number">54</span><span class="token operator">:</span> invokevirtual #<span class="token number">29</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span>
+      <span class="token number">57</span><span class="token operator">:</span> bipush        <span class="token number">33</span>
+      <span class="token number">59</span><span class="token operator">:</span> invokevirtual #<span class="token number">32</span>                 <span class="token comment">// Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;</span>
+      <span class="token number">62</span><span class="token operator">:</span> invokevirtual #<span class="token number">36</span>                 <span class="token comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span>
+      <span class="token number">65</span><span class="token operator">:</span> astore_3
+      <span class="token number">66</span><span class="token operator">:</span> aload_3
+      <span class="token number">67</span><span class="token operator">:</span> areturn
 
-  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
-    Code:
-       0: iload_3
-       1: iconst_1
-       2: iand
-       3: ifeq          9
-       6: ldc           #46                 // String Hello
-       8: astore_0
-       9: iload_3
-      10: iconst_4
-      11: iand
-      12: ifeq          17
-      15: iconst_1
-      16: istore_2
-      17: aload_0
-      18: aload_1
-      19: iload_2
-      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-      23: areturn
+  <span class="token keyword">public</span> <span class="token keyword">static</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String buildString2$<span class="token keyword">default</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span> <span class="token keyword">boolean</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Object<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> iload_3
+       <span class="token number">1</span><span class="token operator">:</span> iconst_1
+       <span class="token number">2</span><span class="token operator">:</span> iand
+       <span class="token number">3</span><span class="token operator">:</span> ifeq          <span class="token number">9</span>
+       <span class="token number">6</span><span class="token operator">:</span> ldc           #<span class="token number">46</span>                 <span class="token comment">// String Hello</span>
+       <span class="token number">8</span><span class="token operator">:</span> astore_0
+       <span class="token number">9</span><span class="token operator">:</span> iload_3
+      <span class="token number">10</span><span class="token operator">:</span> iconst_4
+      <span class="token number">11</span><span class="token operator">:</span> iand
+      <span class="token number">12</span><span class="token operator">:</span> ifeq          <span class="token number">17</span>
+      <span class="token number">15</span><span class="token operator">:</span> iconst_1
+      <span class="token number">16</span><span class="token operator">:</span> istore_2
+      <span class="token number">17</span><span class="token operator">:</span> aload_0
+      <span class="token number">18</span><span class="token operator">:</span> aload_1
+      <span class="token number">19</span><span class="token operator">:</span> iload_2
+      <span class="token number">20</span><span class="token operator">:</span> invokestatic  #<span class="token number">48</span>                 <span class="token comment">// Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;</span>
+      <span class="token number">23</span><span class="token operator">:</span> areturn
 
-  public static final java.lang.String greetings2();
-    Code:
-       0: aconst_null
-       1: ldc           #51                 // String Devoxx
-       3: iconst_0
-       4: iconst_5
-       5: aconst_null
-       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
-       9: areturn
-}
-</code>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String <span class="token function">greetings2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aconst_null
+       <span class="token number">1</span><span class="token operator">:</span> ldc           #<span class="token number">51</span>                 <span class="token comment">// String Devoxx</span>
+       <span class="token number">3</span><span class="token operator">:</span> iconst_0
+       <span class="token number">4</span><span class="token operator">:</span> iconst_5
+       <span class="token number">5</span><span class="token operator">:</span> aconst_null
+       <span class="token number">6</span><span class="token operator">:</span> invokestatic  #<span class="token number">53</span>                 <span class="token comment">// Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;</span>
+       <span class="token number">9</span><span class="token operator">:</span> areturn
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#fun-bilan" class="next" aria-label="Suivant"></a>
 </section>
@@ -2527,14 +2527,14 @@ public final class _03_fun.Default_valueKt {
     <a href="#alias_en_kotlin" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode d'alias</h3>
     <article>
-        <code>Compiled from "typealias.kt"
-public final class _06_class_2.TypealiasKt {
-  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
-    Code:
-       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
-       3: areturn
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"typealias.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_06_class_2<span class="token punctuation">.</span>TypealiasKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Map<span class="token operator">&lt;</span>kotlin<span class="token punctuation">.</span>Pair<span class="token operator">&lt;</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Integer<span class="token operator">></span><span class="token punctuation">,</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token operator">&lt;</span>_06_class_2<span class="token punctuation">.</span>Entity<span class="token operator">>></span> <span class="token function">getAllEntities</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> invokestatic  #<span class="token number">12</span>                 <span class="token comment">// Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;</span>
+       <span class="token number">3</span><span class="token operator">:</span> areturn
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#class-bilan" class="next" aria-label="Suivant"></a>
 </section>
@@ -2711,31 +2711,31 @@ public final class _06_class_2.TypealiasKt {
     <a href="#for_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode du for</h3>
     <article>
-        <code>Compiled from "for.kt"
-public final class _09_structures.ForKt {
-  public static final void main(java.lang.String[]);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String args
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: getstatic     #21                 // Field astronomy/SolarSystem.INSTANCE:Lastronomy/SolarSystem;
-       9: invokevirtual #25                 // Method astronomy/SolarSystem.getBodies:()Ljava/util/Collection;
-      12: invokeinterface #31,  1           // InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;
-      17: astore_2
-      18: aload_2
-      19: invokeinterface #37,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
-      24: ifeq          47
-      27: aload_2
-      28: invokeinterface #41,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
-      33: checkcast     #43                 // class astronomy/AstronomicalBody
-      36: astore_1
-      37: getstatic     #49                 // Field java/lang/System.out:Ljava/io/PrintStream;
-      40: aload_1
-      41: invokevirtual #55                 // Method java/io/PrintStream.print:(Ljava/lang/Object;)V
-      44: goto          18
-      47: return
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"for.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_09_structures<span class="token punctuation">.</span>ForKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> ldc           #<span class="token number">9</span>                  <span class="token comment">// String args</span>
+       <span class="token number">3</span><span class="token operator">:</span> invokestatic  #<span class="token number">15</span>                 <span class="token comment">// Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V</span>
+       <span class="token number">6</span><span class="token operator">:</span> getstatic     #<span class="token number">21</span>                 <span class="token comment">// Field astronomy/SolarSystem.INSTANCE:Lastronomy/SolarSystem;</span>
+       <span class="token number">9</span><span class="token operator">:</span> invokevirtual #<span class="token number">25</span>                 <span class="token comment">// Method astronomy/SolarSystem.getBodies:()Ljava/util/Collection;</span>
+      <span class="token number">12</span><span class="token operator">:</span> invokeinterface #<span class="token number">31</span><span class="token punctuation">,</span>  <span class="token number">1</span>           <span class="token comment">// InterfaceMethod java/util/Collection.iterator:()Ljava/util/Iterator;</span>
+      <span class="token number">17</span><span class="token operator">:</span> astore_2
+      <span class="token number">18</span><span class="token operator">:</span> aload_2
+      <span class="token number">19</span><span class="token operator">:</span> invokeinterface #<span class="token number">37</span><span class="token punctuation">,</span>  <span class="token number">1</span>           <span class="token comment">// InterfaceMethod java/util/Iterator.hasNext:()Z</span>
+      <span class="token number">24</span><span class="token operator">:</span> ifeq          <span class="token number">47</span>
+      <span class="token number">27</span><span class="token operator">:</span> aload_2
+      <span class="token number">28</span><span class="token operator">:</span> invokeinterface #<span class="token number">41</span><span class="token punctuation">,</span>  <span class="token number">1</span>           <span class="token comment">// InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;</span>
+      <span class="token number">33</span><span class="token operator">:</span> checkcast     #<span class="token number">43</span>                 <span class="token comment">// class astronomy/AstronomicalBody</span>
+      <span class="token number">36</span><span class="token operator">:</span> astore_1
+      <span class="token number">37</span><span class="token operator">:</span> getstatic     #<span class="token number">49</span>                 <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+      <span class="token number">40</span><span class="token operator">:</span> aload_1
+      <span class="token number">41</span><span class="token operator">:</span> invokevirtual #<span class="token number">55</span>                 <span class="token comment">// Method java/io/PrintStream.print:(Ljava/lang/Object;)V</span>
+      <span class="token number">44</span><span class="token operator">:</span> <span class="token keyword">goto</span>          <span class="token number">18</span>
+      <span class="token number">47</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#while_do_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -2804,32 +2804,32 @@ public final class _09_structures.ForKt {
     <a href="#for_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec for</h3>
     <article>
-        <code>Compiled from "for-factorial.kt"
-public final class _09_structures.recusion.For_factorialKt {
-  public static final int forFactorial(int);
-    Code:
-       0: iconst_1
-       1: istore_1
-       2: iconst_1
-       3: istore_2
-       4: iload_0
-       5: istore_3
-       6: iload_2
-       7: iload_3
-       8: if_icmpgt     26
-      11: iload_1
-      12: iload_2
-      13: imul
-      14: istore_1
-      15: iload_2
-      16: iload_3
-      17: if_icmpeq     26
-      20: iinc          2, 1
-      23: goto          11
-      26: iload_1
-      27: ireturn
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"for-factorial.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>For_factorialKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">forFactorial</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> iconst_1
+       <span class="token number">1</span><span class="token operator">:</span> istore_1
+       <span class="token number">2</span><span class="token operator">:</span> iconst_1
+       <span class="token number">3</span><span class="token operator">:</span> istore_2
+       <span class="token number">4</span><span class="token operator">:</span> iload_0
+       <span class="token number">5</span><span class="token operator">:</span> istore_3
+       <span class="token number">6</span><span class="token operator">:</span> iload_2
+       <span class="token number">7</span><span class="token operator">:</span> iload_3
+       <span class="token number">8</span><span class="token operator">:</span> if_icmpgt     <span class="token number">26</span>
+      <span class="token number">11</span><span class="token operator">:</span> iload_1
+      <span class="token number">12</span><span class="token operator">:</span> iload_2
+      <span class="token number">13</span><span class="token operator">:</span> imul
+      <span class="token number">14</span><span class="token operator">:</span> istore_1
+      <span class="token number">15</span><span class="token operator">:</span> iload_2
+      <span class="token number">16</span><span class="token operator">:</span> iload_3
+      <span class="token number">17</span><span class="token operator">:</span> if_icmpeq     <span class="token number">26</span>
+      <span class="token number">20</span><span class="token operator">:</span> iinc          <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span>
+      <span class="token number">23</span><span class="token operator">:</span> <span class="token keyword">goto</span>          <span class="token number">11</span>
+      <span class="token number">26</span><span class="token operator">:</span> iload_1
+      <span class="token number">27</span><span class="token operator">:</span> ireturn
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#rec_factorial_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -2855,24 +2855,24 @@ public final class _09_structures.recusion.For_factorialKt {
     <a href="#rec_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité</h3>
     <article>
-        <code>Compiled from "rec-factorial.kt"
-public final class _09_structures.recusion.Rec_factorialKt {
-  public static final int recFactorial(int);
-    Code:
-       0: iload_0
-       1: iconst_1
-       2: if_icmpge     9
-       5: iconst_1
-       6: goto          17
-       9: iload_0
-      10: iload_0
-      11: iconst_1
-      12: isub
-      13: invokestatic  #8                  // Method recFactorial:(I)I
-      16: imul
-      17: ireturn
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"rec-factorial.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>Rec_factorialKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">recFactorial</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> iload_0
+       <span class="token number">1</span><span class="token operator">:</span> iconst_1
+       <span class="token number">2</span><span class="token operator">:</span> if_icmpge     <span class="token number">9</span>
+       <span class="token number">5</span><span class="token operator">:</span> iconst_1
+       <span class="token number">6</span><span class="token operator">:</span> <span class="token keyword">goto</span>          <span class="token number">17</span>
+       <span class="token number">9</span><span class="token operator">:</span> iload_0
+      <span class="token number">10</span><span class="token operator">:</span> iload_0
+      <span class="token number">11</span><span class="token operator">:</span> iconst_1
+      <span class="token number">12</span><span class="token operator">:</span> isub
+      <span class="token number">13</span><span class="token operator">:</span> invokestatic  #<span class="token number">8</span>                  <span class="token comment">// Method recFactorial:(I)I</span>
+      <span class="token number">16</span><span class="token operator">:</span> imul
+      <span class="token number">17</span><span class="token operator">:</span> ireturn
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#tailrec_factorial_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -2904,19 +2904,19 @@ public final class _09_structures.recusion.Rec_factorialKt {
     <a href="#tailrec_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité terminal 1/2</h3>
     <article>
-        <code>Compiled from "tailrec-factorial.kt"
-public final class _09_structures.recusion.Tailrec_factorialKt {
-  public static final int tailRecFactorial(int);
-    Code:
-       0: getstatic     #12                 // Field _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;
-       3: astore_1
-       4: aload_1
-       5: iload_0
-       6: iconst_1
-       7: invokevirtual #16                 // Method _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.invoke:(II)I
-      10: ireturn
-}
-</code>
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"tailrec-factorial.kt"</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>Tailrec_factorialKt</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">tailRecFactorial</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> getstatic     #<span class="token number">12</span>                 <span class="token comment">// Field _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;</span>
+       <span class="token number">3</span><span class="token operator">:</span> astore_1
+       <span class="token number">4</span><span class="token operator">:</span> aload_1
+       <span class="token number">5</span><span class="token operator">:</span> iload_0
+       <span class="token number">6</span><span class="token operator">:</span> iconst_1
+       <span class="token number">7</span><span class="token operator">:</span> invokevirtual #<span class="token number">16</span>                 <span class="token comment">// Method _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.invoke:(II)I</span>
+      <span class="token number">10</span><span class="token operator">:</span> ireturn
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="next" aria-label="Suivant"></a>
 </section>
@@ -2927,60 +2927,60 @@ public final class _09_structures.recusion.Tailrec_factorialKt {
     <a href="#bytecode_factoriel_avec_recursivite_terminal_1_2" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité terminal 2/2</h3>
     <article>
-        <code>Compiled from "tailrec-factorial.kt"
-final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 extends kotlin.jvm.internal.Lambda implements kotlin.jvm.functions.Function2<java.lang.Integer, java.lang.Integer, java.lang.Integer> {
-  public static final _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 INSTANCE;
+        <pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"tailrec-factorial.kt"</span>
+<span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">_09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>Tailrec_factorialKt</span>$tailRecFactorial$<span class="token number">1</span> <span class="token keyword">extends</span> <span class="token class-name">kotlin<span class="token punctuation">.</span>jvm<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>Lambda</span> <span class="token keyword">implements</span> <span class="token class-name">kotlin<span class="token punctuation">.</span>jvm<span class="token punctuation">.</span>functions<span class="token punctuation">.</span>Function2</span><span class="token operator">&lt;</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Integer<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Integer<span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> _09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>Tailrec_factorialKt$tailRecFactorial$<span class="token number">1</span> INSTANCE<span class="token punctuation">;</span>
 
-  public java.lang.Object invoke(java.lang.Object, java.lang.Object);
-    Code:
-       0: aload_0
-       1: aload_1
-       2: checkcast     #11                 // class java/lang/Number
-       5: invokevirtual #15                 // Method java/lang/Number.intValue:()I
-       8: aload_2
-       9: checkcast     #11                 // class java/lang/Number
-      12: invokevirtual #15                 // Method java/lang/Number.intValue:()I
-      15: invokevirtual #18                 // Method invoke:(II)I
-      18: invokestatic  #24                 // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
-      21: areturn
+  <span class="token keyword">public</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Object <span class="token function">invoke</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Object<span class="token punctuation">,</span> java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>Object<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> aload_1
+       <span class="token number">2</span><span class="token operator">:</span> checkcast     #<span class="token number">11</span>                 <span class="token comment">// class java/lang/Number</span>
+       <span class="token number">5</span><span class="token operator">:</span> invokevirtual #<span class="token number">15</span>                 <span class="token comment">// Method java/lang/Number.intValue:()I</span>
+       <span class="token number">8</span><span class="token operator">:</span> aload_2
+       <span class="token number">9</span><span class="token operator">:</span> checkcast     #<span class="token number">11</span>                 <span class="token comment">// class java/lang/Number</span>
+      <span class="token number">12</span><span class="token operator">:</span> invokevirtual #<span class="token number">15</span>                 <span class="token comment">// Method java/lang/Number.intValue:()I</span>
+      <span class="token number">15</span><span class="token operator">:</span> invokevirtual #<span class="token number">18</span>                 <span class="token comment">// Method invoke:(II)I</span>
+      <span class="token number">18</span><span class="token operator">:</span> invokestatic  #<span class="token number">24</span>                 <span class="token comment">// Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;</span>
+      <span class="token number">21</span><span class="token operator">:</span> areturn
 
-  public final int invoke(int, int);
-    Code:
-       0: iload_1
-       1: iconst_1
-       2: if_icmpge     9
-       5: iconst_1
-       6: goto          25
-       9: aload_0
-      10: checkcast     #2                  // class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1
-      13: pop
-      14: iload_1
-      15: iconst_1
-      16: isub
-      17: iload_2
-      18: iload_1
-      19: imul
-      20: istore_2
-      21: istore_1
-      22: goto          0
-      25: ireturn
+  <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">int</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> iload_1
+       <span class="token number">1</span><span class="token operator">:</span> iconst_1
+       <span class="token number">2</span><span class="token operator">:</span> if_icmpge     <span class="token number">9</span>
+       <span class="token number">5</span><span class="token operator">:</span> iconst_1
+       <span class="token number">6</span><span class="token operator">:</span> <span class="token keyword">goto</span>          <span class="token number">25</span>
+       <span class="token number">9</span><span class="token operator">:</span> aload_0
+      <span class="token number">10</span><span class="token operator">:</span> checkcast     #<span class="token number">2</span>                  <span class="token comment">// class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1</span>
+      <span class="token number">13</span><span class="token operator">:</span> pop
+      <span class="token number">14</span><span class="token operator">:</span> iload_1
+      <span class="token number">15</span><span class="token operator">:</span> iconst_1
+      <span class="token number">16</span><span class="token operator">:</span> isub
+      <span class="token number">17</span><span class="token operator">:</span> iload_2
+      <span class="token number">18</span><span class="token operator">:</span> iload_1
+      <span class="token number">19</span><span class="token operator">:</span> imul
+      <span class="token number">20</span><span class="token operator">:</span> istore_2
+      <span class="token number">21</span><span class="token operator">:</span> istore_1
+      <span class="token number">22</span><span class="token operator">:</span> <span class="token keyword">goto</span>          <span class="token number">0</span>
+      <span class="token number">25</span><span class="token operator">:</span> ireturn
 
-  _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1();
-    Code:
-       0: aload_0
-       1: iconst_2
-       2: invokespecial #34                 // Method kotlin/jvm/internal/Lambda."<init>":(I)V
-       5: return
+  _09_structures<span class="token punctuation">.</span>recusion<span class="token punctuation">.</span>Tailrec_factorialKt$tailRecFactorial$<span class="token function">1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> iconst_2
+       <span class="token number">2</span><span class="token operator">:</span> invokespecial #<span class="token number">34</span>                 <span class="token comment">// Method kotlin/jvm/internal/Lambda."&lt;init>":(I)V</span>
+       <span class="token number">5</span><span class="token operator">:</span> <span class="token keyword">return</span>
 
-  static {};
-    Code:
-       0: new           #2                  // class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1
-       3: dup
-       4: invokespecial #57                 // Method "<init>":()V
-       7: putstatic     #59                 // Field INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;
-      10: return
-}
-</code>
+  <span class="token keyword">static</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> <span class="token keyword">new</span>           #<span class="token number">2</span>                  <span class="token comment">// class _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1</span>
+       <span class="token number">3</span><span class="token operator">:</span> dup
+       <span class="token number">4</span><span class="token operator">:</span> invokespecial #<span class="token number">57</span>                 <span class="token comment">// Method "&lt;init>":()V</span>
+       <span class="token number">7</span><span class="token operator">:</span> putstatic     #<span class="token number">59</span>                 <span class="token comment">// Field INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;</span>
+      <span class="token number">10</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#performances_sur_10_" class="next" aria-label="Suivant"></a>
 </section>
@@ -3062,12 +3062,13 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 </ul>
 </li>
 </ul>
-<h4 id="-tips">✨ Tips</h4>
-<ul>
-<li>privilégier les <code>when</code> si vous avez plus de 2 cas</li>
-<li>si vous faites des fonctions recursives, faites les <code>tailrec</code></li>
-</ul>
-
+<div>
+    <h4 id="-tips">✨ Tips</h4>
+    <ul>
+        <li>privilégier les <code>when</code> si vous avez plus de 2 cas</li>
+        <li>si vous faites des fonctions recursives, faites les <code>tailrec</code></li>
+    </ul>
+</div>
     </article>
     <a href="#part_les_collections" class="next" aria-label="Suivant"></a>
 </section>
