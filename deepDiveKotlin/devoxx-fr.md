@@ -65,11 +65,11 @@ public class HelloWorld {
     }
 }
 ```
-```shell
+```bash
 javac HelloWorld.java
 ```
 
-```shell
+```bash
 hexdump -C HelloWorld.class
 ```
 `00000000  ca fe ba be 00 00 00 34  00 1d 0a 00 06 00 0f 09  |.......4........|
@@ -103,10 +103,11 @@ hexdump -C HelloWorld.class
 000001b9
 `
 
-```shell
+```bash
 javap -c HelloWorld.class
 ```
-`Compiled from "HelloWorld.java"
+```java
+Compiled from "HelloWorld.java"
 public class _00_helloworld.HelloWorld {
   public _00_helloworld.HelloWorld();
     Code:
@@ -121,7 +122,8 @@ public class _00_helloworld.HelloWorld {
        5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
        8: return
 }
-`
+
+```
 
 
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -316,7 +318,7 @@ fun main(args: Array<String>) {
     println("Hello Devoxx")
 }
 ```
-```shell
+```bash
 kotlinc HelloWorld.kt
 ```
 
@@ -387,7 +389,8 @@ kotlinc HelloWorld.kt
 000003f3
 `
 
-`Compiled from "HelloWorld.kt"
+```java
+Compiled from "HelloWorld.kt"
 public final class _00_helloworld.HelloWorldKt {
   public static final void main(java.lang.String[]);
     Code:
@@ -401,7 +404,8 @@ public final class _00_helloworld.HelloWorldKt {
       13: invokevirtual #29                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
       16: return
 }
-`
+
+```
 
 ```java
 package _00_helloworld;
@@ -516,7 +520,8 @@ public final class String_templatesKt {
 
 ```
 
-`Compiled from "string-templates.kt"
+```java
+Compiled from "string-templates.kt"
 public final class _01_basic.String_templatesKt {
   public static final void greeting(_01_basic.Someone);
     Code:
@@ -559,7 +564,8 @@ public final class _01_basic.String_templatesKt {
       82: invokevirtual #49                 // Method java/io/PrintStream.println:(Ljava/lang/Object;)V
       85: return
 }
-`
+
+```
 
 ```kotlin
 val anInt = 42  // type inference: Int
@@ -589,7 +595,8 @@ public final class NumericKt {
 
 ```
 
-`Compiled from "numeric.kt"
+```java
+Compiled from "numeric.kt"
 public final class _01_basic.NumericKt {
   public static final void tryNumeric();
     Code:
@@ -602,7 +609,8 @@ public final class _01_basic.NumericKt {
       11: astore_3
       12: return
 }
-`
+
+```
 
 * plus de `;` <sup>*</sup>
 * 😍 String templating
@@ -1629,7 +1637,6 @@ fun main(args: Array<String>) {
 ```
 
 
-
 * 🤝 le `TODO()` est l'ami du TDD
 
 
@@ -1737,7 +1744,8 @@ public final class Default_valueKt {
 
 ```
 
-`Compiled from "default-value.kt"
+```java
+Compiled from "default-value.kt"
 public final class _03_fun.Default_valueKt {
   public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
     Code:
@@ -1805,7 +1813,8 @@ public final class _03_fun.Default_valueKt {
        6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
        9: areturn
 }
-`
+
+```
 
 #### ✨ Conseils
 
@@ -1854,19 +1863,18 @@ fun main(args: Array<String>) {
 }
 ```
 
-* Covariant (consome): `out`
-* Contravariant (produit): `in`
+* ⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
+* Covariant (consome): `out`, en java `? extends T`
+* Contravariant (produit): `in`, en java `? super T`
 
 
-* Borne supérieur :
+<div>
+    <h4>Borne supérieur</h4>
+    <pre class="lang-kotlin"><code><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T <span class="token operator">:</span> Comparable<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token operator">&gt;</span> <span class="token function">sort</span><span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span></code></pre>
+</div>
 
-```kotlin
-fun <T : Comparable<T>> sort(list: List<T>): List<T>
-```
 
-⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
-
-* Les détails: <https://kotlinlang.org/docs/reference/generics.html>
+Les détails: <https://kotlinlang.org/docs/reference/generics.html>
 
 ```kotlin
 interface Function<in T, out U>
@@ -1904,14 +1912,16 @@ fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
 
 ```
 
-`Compiled from "typealias.kt"
+```java
+Compiled from "typealias.kt"
 public final class _06_class_2.TypealiasKt {
   public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
     Code:
        0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
        3: areturn
 }
-`
+
+```
 
 
 * 🤔 Mais pourquoi on n'a pas ça en Java ?
@@ -1987,7 +1997,8 @@ public final class ForKt {
 
 ```
 
-`Compiled from "for.kt"
+```java
+Compiled from "for.kt"
 public final class _09_structures.ForKt {
   public static final void main(java.lang.String[]);
     Code:
@@ -2011,7 +2022,8 @@ public final class _09_structures.ForKt {
       44: goto          18
       47: return
 }
-`
+
+```
 
 ```kotlin
 while (x > 0) {
@@ -2050,7 +2062,8 @@ fun forFactorial(n: Int): Int { // 🤢
 }
 ```
 
-`Compiled from "for-factorial.kt"
+```java
+Compiled from "for-factorial.kt"
 public final class _09_structures.recusion.For_factorialKt {
   public static final int forFactorial(int);
     Code:
@@ -2075,7 +2088,8 @@ public final class _09_structures.recusion.For_factorialKt {
       26: iload_1
       27: ireturn
 }
-`
+
+```
 
 ```kotlin
 // Note: assert(n >= 0)
@@ -2085,7 +2099,8 @@ fun recFactorial(n: Int): Int =
 
 ```
 
-`Compiled from "rec-factorial.kt"
+```java
+Compiled from "rec-factorial.kt"
 public final class _09_structures.recusion.Rec_factorialKt {
   public static final int recFactorial(int);
     Code:
@@ -2102,7 +2117,8 @@ public final class _09_structures.recusion.Rec_factorialKt {
       16: imul
       17: ireturn
 }
-`
+
+```
 
 ```kotlin
 // Note: assert(n >= 0)
@@ -2118,7 +2134,8 @@ fun tailRecFactorial(n: Int): Int {
 
 ```
 
-`Compiled from "tailrec-factorial.kt"
+```java
+Compiled from "tailrec-factorial.kt"
 public final class _09_structures.recusion.Tailrec_factorialKt {
   public static final int tailRecFactorial(int);
     Code:
@@ -2130,9 +2147,11 @@ public final class _09_structures.recusion.Tailrec_factorialKt {
        7: invokevirtual #16                 // Method _09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1.invoke:(II)I
       10: ireturn
 }
-`
 
-`Compiled from "tailrec-factorial.kt"
+```
+
+```java
+Compiled from "tailrec-factorial.kt"
 final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 extends kotlin.jvm.internal.Lambda implements kotlin.jvm.functions.Function2<java.lang.Integer, java.lang.Integer, java.lang.Integer> {
   public static final _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 INSTANCE;
 
@@ -2185,7 +2204,8 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
        7: putstatic     #59                 // Field INSTANCE:L_09_structures/recusion/Tailrec_factorialKt$tailRecFactorial$1;
       10: return
 }
-`
+
+```
 
 
 > Ne croyez pas les benchmarks, faites les vous-même !
@@ -2210,10 +2230,13 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
   * avec `is` et un type (avec un 'smart cast')
 
 
-#### ✨ Tips
-
-- privilégier les `when` si vous avez plus de 2 cas
-- si vous faites des fonctions recursives, faites les `tailrec`
+<div>
+    <h4 id="-tips">✨ Tips</h4>
+    <ul>
+        <li>privilégier les <code>when</code> si vous avez plus de 2 cas</li>
+        <li>si vous faites des fonctions recursives, faites les <code>tailrec</code></li>
+    </ul>
+</div>
 
 
 

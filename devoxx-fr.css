@@ -89,9 +89,11 @@
   .devoxx-fr main section.code {
     background: url("./assets/devoxx-fr/code.png");
     background-size: cover; }
-    .devoxx-fr main section.code pre {
-      max-width: 100%;
-      overflow: auto; }
+    .devoxx-fr main section.code article {
+      justify-content: center; }
+      .devoxx-fr main section.code article pre {
+        max-width: 100%;
+        overflow: auto; }
     .devoxx-fr main section.code.java {
       background: url("./assets/devoxx-fr/coffee.png");
       background-size: cover; }
@@ -102,6 +104,7 @@
       background: url("./assets/devoxx-fr/cpu.png");
       background-size: cover; }
       .devoxx-fr main section.code.hex article > code {
+        box-sizing: border-box;
         padding: .25rem;
         border-radius: .125rem;
         background: var(--bgCode);
@@ -114,6 +117,7 @@
       background: url("./assets/devoxx-fr/gears.png");
       background-size: cover; }
       .devoxx-fr main section.code.bytecode article > code {
+        box-sizing: border-box;
         padding: .25rem;
         border-radius: .125rem;
         background: var(--bgCode);
@@ -122,7 +126,7 @@
         overflow: auto;
         font-size: .6rem;
         width: 100%; }
-  .devoxx-fr section article > pre.hljs {
+  .devoxx-fr section article > pre[class*="lang-"] {
     align-self: center; }
   .devoxx-fr section.contrast article {
     background: rgba(0, 0, 0, 0.5);
@@ -134,11 +138,46 @@
     font-size: 1rem; }
     .devoxx-fr section article ol p, .devoxx-fr section article ul p, .devoxx-fr section article dl p {
       margin: .25rem 0; }
-  .devoxx-fr .hljs.lang-shell {
-    background: black;
+  .devoxx-fr pre[class*="lang-"] {
+    background: #2d2d2d;
+    font-family: var(--codeFont);
+    overflow: visible;
+    font-size: .75rem;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.75);
+    border-radius: .25rem;
+    padding: .25rem;
+    tab-size: 2;
+    min-width: 100%;
+    position: relative;
+    box-sizing: border-box; }
+    .devoxx-fr pre[class*="lang-"]:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .125em;
+      font-size: 75%;
+      border-radius: .25em;
+      color: #2d2d2d;
+      width: 1rem;
+      height: 1rem;
+      margin: .25em;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain; }
+  .devoxx-fr pre.lang-bash {
     color: #2dc82d; }
-    .devoxx-fr .hljs.lang-shell code::before {
-      content: '$ '; }
+    .devoxx-fr pre.lang-bash code::before {
+      content: '$ ';
+      color: #999; }
+  .devoxx-fr pre.lang-kotlin:after {
+    content: '';
+    background-image: url("./assets/brands/kotlin.svg"); }
+  .devoxx-fr pre.lang-java:after {
+    content: '';
+    background-color: #eee;
+    box-shadow: 0 0 0 .25em #eee;
+    background-image: url("./assets/brands/java.svg"); }
   .devoxx-fr li code, .devoxx-fr blockquote code {
     background-color: rgba(255, 255, 255, 0.4);
     padding: .06125rem;
