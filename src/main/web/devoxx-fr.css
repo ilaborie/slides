@@ -134,10 +134,19 @@
     font-size: 1rem; }
     .devoxx-fr section article ol p, .devoxx-fr section article ul p, .devoxx-fr section article dl p {
       margin: .25rem 0; }
-  .devoxx-fr .hljs.lang-shell {
-    background: black;
+  .devoxx-fr pre[class*="lang-"] {
+    background: #2d2d2d;
+    font-family: var(--codeFont);
+    overflow: visible;
+    font-size: .75rem;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.75);
+    border-radius: .25rem;
+    padding: .25rem;
+    tab-size: 2;
+    min-width: 100%; }
+  .devoxx-fr pre.lang-bash {
     color: #2dc82d; }
-    .devoxx-fr .hljs.lang-shell code::before {
+    .devoxx-fr pre.lang-bash code::before {
       content: '$ '; }
   .devoxx-fr li code, .devoxx-fr blockquote code {
     background-color: rgba(255, 255, 255, 0.4);

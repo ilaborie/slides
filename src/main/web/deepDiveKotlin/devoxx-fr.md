@@ -65,11 +65,11 @@ public class HelloWorld {
     }
 }
 ```
-```shell
+```bash
 javac HelloWorld.java
 ```
 
-```shell
+```bash
 hexdump -C HelloWorld.class
 ```
 `00000000  ca fe ba be 00 00 00 34  00 1d 0a 00 06 00 0f 09  |.......4........|
@@ -103,7 +103,7 @@ hexdump -C HelloWorld.class
 000001b9
 `
 
-```shell
+```bash
 javap -c HelloWorld.class
 ```
 `Compiled from "HelloWorld.java"
@@ -316,7 +316,7 @@ fun main(args: Array<String>) {
     println("Hello Devoxx")
 }
 ```
-```shell
+```bash
 kotlinc HelloWorld.kt
 ```
 
@@ -1629,7 +1629,6 @@ fun main(args: Array<String>) {
 ```
 
 
-
 * 🤝 le `TODO()` est l'ami du TDD
 
 
@@ -1854,19 +1853,18 @@ fun main(args: Array<String>) {
 }
 ```
 
-* Covariant (consome): `out`
-* Contravariant (produit): `in`
+* ⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
+* Covariant (consome): `out`, en java `? extends T`
+* Contravariant (produit): `in`, en java `? super T`
 
 
-* Borne supérieur :
+<div>
+    <h4>Borne supérieur</h4>
+    <pre class="lang-kotlin"><code><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T <span class="token operator">:</span> Comparable<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token operator">&gt;</span> <span class="token function">sort</span><span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span></code></pre>
+</div>
 
-```kotlin
-fun <T : Comparable<T>> sort(list: List<T>): List<T>
-```
 
-⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
-
-* Les détails: <https://kotlinlang.org/docs/reference/generics.html>
+Les détails: <https://kotlinlang.org/docs/reference/generics.html>
 
 ```kotlin
 interface Function<in T, out U>

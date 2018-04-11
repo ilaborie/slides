@@ -75,7 +75,7 @@ fun ContentContainer.code(language: Language = Language.None, codeBuilder: () ->
 }
 
 fun ContentContainer.bash(codeBuilder: () -> String) {
-    add { Code(language = Language.Shell, code = codeBuilder()) }
+    add { Code(language = Language.Bash, code = codeBuilder()) }
 }
 
 fun ContentContainer.codeFromResource(resource: String) {

@@ -136,7 +136,7 @@ fun StyleEditable.renderAsHtml() =
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"
-    else          -> """<pre class="hljs lang-$language"><code>${getFormattedCode(language, code)}</code></pre>"""
+    else          -> """<pre class="lang-$language"><code class="lang-$language">${getFormattedCode(language, code)}</code></pre>"""
 }
 
 private val codeCache = mutableMapOf<Pair<Language, String>, String>()

@@ -1,18 +1,11 @@
 package deep_dive_kotlin
 
 import mu.KotlinLogging
-import org.ilaborie.slides.BasicSlide
 import org.ilaborie.slides.ContentType.HTML
-import org.ilaborie.slides.PartTitleSlide
-import org.ilaborie.slides.Presentation
-import org.ilaborie.slides.RoadMapSlide
 import org.ilaborie.slides.buildAll
 import org.ilaborie.slides.content.Emphasis
 import org.ilaborie.slides.content.HtmlContent
 import org.ilaborie.slides.content.Language
-import org.ilaborie.slides.content.renderAsMarkdown
-import org.ilaborie.slides.content.renderAsString
-import org.ilaborie.slides.content.titleAsString
 import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
@@ -126,7 +119,9 @@ fun prezDevoxxFr2018() =
             }
             slideFromResource(title = "Cibles", contentType = HTML) { styleClass = setOf("manu") }
 
-            slide(title = "HelloWorld.kt", key = "hw-kotlin", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+            slide(title = "HelloWorld.kt",
+                  key = "hw-kotlin",
+                  styleClass = setOf("code", "kotlin", "manu", "live-code")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
                 bash { "kotlinc HelloWorld.kt" }
             }
