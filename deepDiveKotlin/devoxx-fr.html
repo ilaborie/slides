@@ -20,10 +20,10 @@
 <strong>Introduction Kotlin</strong>
 <strong>Les bases</strong>
 <strong>null-safety</strong>
+<strong>Les types</strong>
 <strong>Les fonctions</strong>
 <strong>Les lambdas</strong>
 <strong>Les classes</strong>
-<strong>Les types</strong>
 <strong>Extensions de fonctions</strong>
 <strong>Pause</strong>
 <strong>ByteCode Android</strong>
@@ -32,109 +32,101 @@
 <strong>Les delegates</strong>
 <strong>Un peu plus sur les fonctions</strong>
 <strong>Conclusion</strong>
-        <nav><a href="#speakers" class="" title="Speakers">1</a>
+        <nav><a href="#speakers" class="manu igor" title="Speakers">1</a>
 <a href="#roadmap" class="roadmap" title="🗺 Roadmap">2</a></nav>
 <nav><a href="#part_bytecode_java__" class="part" title="ByteCode Java ?">3</a>
-<a href="#hw-java" class="code java" title="HelloWorld.java">4</a>
-<a href="#java_bytecode_binary" class="code hex" title="Java ByteCode binary">5</a>
-<a href="#explorons_le_bytecode" class="code bytecode" title="Explorons le ByteCode">6</a>
-<a href="#transpile" class="diagram" title="Transpile">7</a>
-<a href="#bytecode-details" class="details contrast" title="À propos du ByteCode">8</a>
+<a href="#hw-java" class="code java igor live-code" title="HelloWorld.java">4</a>
+<a href="#java_bytecode_binary" class="code hex igor live-code" title="Java ByteCode binary">5</a>
+<a href="#explorons_le_bytecode" class="code bytecode igor live-code" title="Explorons le ByteCode">6</a>
+<a href="#transpile" class="diagram igor" title="Transpile">7</a>
+<a href="#bytecode-details" class="details contrast igor" title="À propos du ByteCode">8</a>
 <a href="#bytecode-play" class="" title="Jouons un peu">9</a>
-<a href="#bytecode-links" class="bilan contrast" title="Liens">10</a></nav>
+<a href="#bytecode-links" class="bilan contrast igor" title="Liens">10</a></nav>
 <nav><a href="#part_introduction_kotlin" class="part" title="Introduction Kotlin">11</a>
-<a href="#historique" class="" title="Historique">12</a>
-<a href="#cibles" class="" title="Cibles">13</a>
-<a href="#hw-kotlin" class="code kotlin" title="HelloWorld.kt">14</a>
-<a href="#hexdump" class="code hex" title="hexdump">15</a>
-<a href="#java_bytecode" class="code bytecode" title="Java ByteCode">16</a>
-<a href="#helloworld_java" class="code java" title="HelloWorld-java">17</a>
-<a href="#bilan_helloworld_kt" class="bilan contrast" title="Bilan HelloWorld.kt">18</a>
-<a href="#performance" class="measure contrast" title="Performances ?">19</a>
-<a href="#performance_helloworld_kt" class="bilan contrast" title="Performance HelloWorld.kt">20</a></nav>
-<nav><a href="#part_les_bases" class="part" title="Les bases">21</a>
-<a href="#val_var_kt" class="code kotlin" title="val-var.kt">22</a>
-<a href="#string_template_kt" class="code kotlin" title="string-template.kt">23</a>
-<a href="#string_template_java" class="code java" title="string-template.java">24</a>
-<a href="#bytecode_de_string_template" class="code bytecode" title="ByteCode de string-template">25</a>
-<a href="#numeric_kt" class="code kotlin" title="numeric.kt">26</a>
-<a href="#numeric_java" class="code java" title="numeric.java">27</a>
-<a href="#bytecode_de_numeric" class="code bytecode" title="ByteCode de numeric">28</a>
-<a href="#basic-bilan" class="bilan contrast" title="C'est simple">29</a></nav>
-<nav><a href="#part_null_safety" class="part" title="null-safety">30</a>
-<a href="#c_est_nul" class="contrast" title="C'est nul">31</a>
-<a href="#elvis" class="" title="elvis">32</a></nav>
-<nav><a href="#part_les_fonctions" class="part" title="Les fonctions">33</a>
-<a href="#named_params_kt" class="code kotlin" title="named-params.kt">34</a>
-<a href="#named_params_java" class="code java" title="named-params.java">35</a>
-<a href="#default_value_kt" class="code kotlin" title="default-value.kt">36</a>
-<a href="#default_value_java" class="code java" title="default-value.java">37</a>
-<a href="#bytecode_de_default_value" class="code bytecode" title="ByteCode de default-value">38</a>
-<a href="#fun-bilan" class="bilan contrast" title="C'est fun !">39</a></nav>
-<nav><a href="#part_les_lambdas" class="part" title="Les lambdas">40</a>
-<a href="#lambda" class="" title="Les lambdas">41</a></nav>
-<nav><a href="#part_les_classes" class="part" title="Les classes">42</a>
-<a href="#point_kt" class="code kotlin" title="Point.kt">43</a>
-<a href="#point_java" class="code java" title="Point.java">44</a>
-<a href="#point2_kt" class="code kotlin" title="Point2.kt">45</a>
-<a href="#point2_java" class="code java" title="Point2.java">46</a>
-<a href="#point3_kt" class="code kotlin" title="Point3.kt">47</a>
-<a href="#point3_java" class="code java" title="Point3.java">48</a>
-<a href="#point4_kt" class="code kotlin" title="Point4.kt">49</a>
-<a href="#point4_java" class="code java" title="Point4.java">50</a>
-<a href="#heritage_en_kotlin" class="code kotlin" title="Héritage en Kotlin">51</a>
-<a href="#generics" class="details contrast" title="Générics">52</a>
-<a href="#star" class="details" title="Projection *">53</a>
-<a href="#sealed" class="code kotlin" title="Sealed">54</a>
-<a href="#alias_en_kotlin" class="code kotlin" title="Alias en Kotlin">55</a>
-<a href="#bytecode_d_alias" class="code bytecode" title="ByteCode d'alias">56</a>
-<a href="#class-bilan" class="bilan contrast" title="Classe, le bilan">57</a></nav>
-<nav><a href="#part_les_types" class="part" title="Les types">58</a>
-<a href="#types_basiques" class="diagram" title="Types basiques">59</a>
-<a href="#types_basiques_nullable" class="diagram" title="Types basiques nullable">60</a>
-<a href="#hierarchie_des_types" class="bilan contrast" title="Hierarchie des types">61</a></nav>
-<nav><a href="#part_extensions_de_fonctions" class="part" title="Extensions de fonctions">62</a>
-<a href="#extension" class="" title="Extension">63</a></nav>
-<nav><a href="#part_pause" class="part" title="Pause">64</a></nav>
-<nav><a href="#part_bytecode_android" class="part" title="ByteCode Android">65</a>
-<a href="#android_bytecode" class="" title="Android ByteCode">66</a>
-<a href="#proguard" class="" title="ProGuard">67</a></nav>
-<nav><a href="#part_autres_structures" class="part" title="Autres structures">68</a>
-<a href="#if_then_else_kt" class="code kotlin" title="if-then-else.kt">69</a>
-<a href="#for_kt" class="code kotlin" title="for.kt">70</a>
-<a href="#for_java" class="code java" title="for.java">71</a>
-<a href="#bytecode_du_for" class="code bytecode" title="ByteCode du for">72</a>
-<a href="#while_do_kt" class="code kotlin" title="while-do.kt">73</a>
-<a href="#when_kt" class="code kotlin" title="when.kt">74</a>
-<a href="#for_factorial_kt" class="code kotlin" title="for-factorial.kt">75</a>
-<a href="#bytecode_factoriel_avec_for" class="code bytecode" title="ByteCode factoriel avec for">76</a>
-<a href="#rec_factorial_kt" class="code kotlin" title="rec-factorial.kt">77</a>
-<a href="#bytecode_factoriel_avec_recursivite" class="code bytecode" title="ByteCode factoriel avec recursivité">78</a>
-<a href="#tailrec_factorial_kt" class="code kotlin" title="tailrec-factorial.kt">79</a>
-<a href="#bytecode_factoriel_avec_recursivite_terminal_1_2" class="code bytecode" title="ByteCode factoriel avec recursivité terminal 1/2">80</a>
-<a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="code bytecode" title="ByteCode factoriel avec recursivité terminal 2/2">81</a>
-<a href="#performances_sur_10_" class="measure contrast" title="Performances sur 10!">82</a>
-<a href="#bilan-structures" class="details contrast" title="Bilan structures">83</a></nav>
-<nav><a href="#part_les_collections" class="part" title="Les collections">84</a>
-<a href="#api_kt" class="code kotlin" title="api.kt">85</a>
-<a href="#immutable_mutable_kt" class="code kotlin" title="immutable-mutable.kt">86</a>
-<a href="#break_immutable_kt" class="code kotlin" title="break-immutable.kt">87</a>
-<a href="#collection" class="" title="Bilan collection">88</a></nav>
-<nav><a href="#part_les_delegates" class="part" title="Les delegates">89</a>
-<a href="#delegate" class="" title="Delegate">90</a></nav>
-<nav><a href="#part_un_peu_plus_sur_les_fonctions" class="part" title="Un peu plus sur les fonctions">91</a>
-<a href="#inline_kt" class="code kotlin" title="inline.kt">92</a>
-<a href="#logger_java" class="code java" title="Logger.java">93</a>
-<a href="#reified_kt" class="code kotlin" title="reified.kt">94</a>
-<a href="#plus_sur_les_fonctions" class="details contrast" title="Plus sur les fonctions">95</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">96</a>
-<a href="#android" class="contrast" title="Android">97</a>
-<a href="#serveur" class="contrast" title="Serveur">98</a>
-<a href="#web_et_natif" class="contrast" title="Web et Natif">99</a>
-<a href="#kotlin_vs_java" class="contrast" title="Kotlin vs Java">100</a>
-<a href="#liens" class="contrast" title="Liens">101</a>
-<a href="#bibliotheques" class="contrast" title="Bibliothèques">102</a>
-<a href="#merci" class="contrast" title="Merci">103</a></nav>
+<a href="#historique" class="manu" title="Historique">12</a>
+<a href="#cibles" class="manu" title="Cibles">13</a>
+<a href="#hw-kotlin" class="code kotlin manu live-code" title="HelloWorld.kt">14</a>
+<a href="#hexdump" class="code hex manu" title="hexdump">15</a>
+<a href="#java_bytecode" class="code bytecode manu" title="Java ByteCode">16</a>
+<a href="#helloworld_java" class="code java manu" title="HelloWorld-java">17</a>
+<a href="#bilan_helloworld_kt" class="bilan contrast manu" title="Bilan HelloWorld.kt">18</a>
+<a href="#performance_helloworld_kt" class="bilan contrast igor" title="Performance HelloWorld.kt">19</a></nav>
+<nav><a href="#part_les_bases" class="part" title="Les bases">20</a>
+<a href="#val_var_kt" class="code kotlin igor" title="val-var.kt">21</a>
+<a href="#string_template_kt" class="code kotlin igor" title="string-template.kt">22</a>
+<a href="#string_template_java" class="code java igor" title="string-template.java">23</a>
+<a href="#bytecode_de_string_template" class="code bytecode igor" title="ByteCode de string-template">24</a>
+<a href="#numeric_kt" class="code kotlin igor" title="numeric.kt">25</a>
+<a href="#numeric_java" class="code java igor" title="numeric.java">26</a>
+<a href="#bytecode_de_numeric" class="code bytecode igor" title="ByteCode de numeric">27</a>
+<a href="#basic-bilan" class="bilan contrast igor" title="C'est simple">28</a></nav>
+<nav><a href="#part_null_safety" class="part" title="null-safety">29</a>
+<a href="#billion_dollar_mistake" class="contrast manu" title="billion-dollar mistake">30</a>
+<a href="#elvis" class="manu" title="elvis">31</a></nav>
+<nav><a href="#part_les_types" class="part" title="Les types">32</a>
+<a href="#types_basiques" class="diagram igor" title="Types basiques">33</a>
+<a href="#types_basiques_nullable" class="diagram igor" title="Types basiques nullable">34</a>
+<a href="#todo_kt" class="code kotlin igor play" title="todo.kt">35</a>
+<a href="#hierarchie_des_types" class="bilan contrast igor" title="Hierarchie des types">36</a></nav>
+<nav><a href="#part_les_fonctions" class="part" title="Les fonctions">37</a>
+<a href="#named_params_kt" class="code kotlin igor" title="named-params.kt">38</a>
+<a href="#named_params_java" class="code java igor" title="named-params.java">39</a>
+<a href="#default_value_kt" class="code kotlin igor" title="default-value.kt">40</a>
+<a href="#default_value_java" class="code java igor" title="default-value.java">41</a>
+<a href="#bytecode_de_default_value" class="code bytecode igor" title="ByteCode de default-value">42</a>
+<a href="#fun-bilan" class="bilan contrast igor" title="C'est fun !">43</a></nav>
+<nav><a href="#part_les_lambdas" class="part" title="Les lambdas">44</a>
+<a href="#lambda" class="manu" title="Les lambdas">45</a></nav>
+<nav><a href="#part_les_classes" class="part" title="Les classes">46</a>
+<a href="#heritage_en_kotlin" class="code kotlin igor live-code" title="Héritage en Kotlin">47</a>
+<a href="#generics" class="details contrast igor" title="Générics">48</a>
+<a href="#star" class="details igor" title="Projection *">49</a>
+<a href="#sealed" class="code kotlin igor" title="Sealed">50</a>
+<a href="#alias_en_kotlin" class="code kotlin igor" title="Alias en Kotlin">51</a>
+<a href="#bytecode_d_alias" class="code bytecode igor" title="ByteCode d'alias">52</a>
+<a href="#class-bilan" class="bilan contrast manu igor" title="Classe, le bilan">53</a></nav>
+<nav><a href="#part_extensions_de_fonctions" class="part" title="Extensions de fonctions">54</a>
+<a href="#extension" class="manu" title="Extension">55</a></nav>
+<nav><a href="#part_pause" class="part" title="Pause">56</a></nav>
+<nav><a href="#part_bytecode_android" class="part" title="ByteCode Android">57</a>
+<a href="#android_bytecode" class="manu" title="Android ByteCode">58</a>
+<a href="#proguard" class="manu" title="ProGuard">59</a></nav>
+<nav><a href="#part_autres_structures" class="part" title="Autres structures">60</a>
+<a href="#if_then_else_kt" class="code kotlin igor" title="if-then-else.kt">61</a>
+<a href="#for_kt" class="code kotlin igor" title="for.kt">62</a>
+<a href="#for_java" class="code java igor" title="for.java">63</a>
+<a href="#bytecode_du_for" class="code bytecode igor" title="ByteCode du for">64</a>
+<a href="#while_do_kt" class="code kotlin igor" title="while-do.kt">65</a>
+<a href="#when_kt" class="code kotlin igor" title="when.kt">66</a>
+<a href="#for_factorial_kt" class="code kotlin igor" title="for-factorial.kt">67</a>
+<a href="#bytecode_factoriel_avec_for" class="code bytecode igor" title="ByteCode factoriel avec for">68</a>
+<a href="#rec_factorial_kt" class="code kotlin igor" title="rec-factorial.kt">69</a>
+<a href="#bytecode_factoriel_avec_recursivite" class="code bytecode igor" title="ByteCode factoriel avec recursivité">70</a>
+<a href="#tailrec_factorial_kt" class="code kotlin igor" title="tailrec-factorial.kt">71</a>
+<a href="#bytecode_factoriel_avec_recursivite_terminal_1_2" class="code bytecode igor" title="ByteCode factoriel avec recursivité terminal 1/2">72</a>
+<a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="code bytecode igor" title="ByteCode factoriel avec recursivité terminal 2/2">73</a>
+<a href="#performances_sur_10_" class="measure contrast igor" title="Performances sur 10!">74</a>
+<a href="#bilan-structures" class="details contrast igor" title="Bilan structures">75</a></nav>
+<nav><a href="#part_les_collections" class="part" title="Les collections">76</a>
+<a href="#api_kt" class="code kotlin igor live-code" title="api.kt">77</a>
+<a href="#immutable_mutable_kt" class="code kotlin igor play" title="immutable-mutable.kt">78</a>
+<a href="#break_immutable_kt" class="code kotlin igor play" title="break-immutable.kt">79</a>
+<a href="#collection" class="details contrast igor manu" title="Bilan collection">80</a></nav>
+<nav><a href="#part_les_delegates" class="part" title="Les delegates">81</a>
+<a href="#delegate" class="manu" title="Delegate">82</a></nav>
+<nav><a href="#part_un_peu_plus_sur_les_fonctions" class="part" title="Un peu plus sur les fonctions">83</a>
+<a href="#inline_kt" class="code kotlin igor" title="inline.kt">84</a>
+<a href="#logger_java" class="code java igor" title="Logger.java">85</a>
+<a href="#reified_kt" class="code kotlin igor" title="reified.kt">86</a>
+<a href="#plus_sur_les_fonctions" class="details contrast igor" title="Plus sur les fonctions">87</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">88</a>
+<a href="#android" class="contrast manu" title="Android">89</a>
+<a href="#serveur" class="contrast igor" title="Serveur">90</a>
+<a href="#web_et_natif" class="contrast igor manu" title="Web et Natif">91</a>
+<a href="#kotlin_vs_java" class="contrast manu igor" title="Kotlin vs Java">92</a>
+<a href="#liens" class="contrast manu igor" title="Liens">93</a>
+<a href="#bibliotheques" class="contrast manu igor" title="Bibliothèques">94</a>
+<a href="#merci" class="contrast manu igor" title="Merci">95</a></nav>
     </div>
     <main>
 
@@ -150,7 +142,7 @@
 
 
 <!-- Slide Speakers -->
-<section id="speakers" class="">
+<section id="speakers" class="manu igor">
     <a href="#deepDiveKotlin" class="previous" aria-label="Précédant"></a>
     <h3>Speakers</h3>
     <article>
@@ -205,10 +197,10 @@
 <li>Introduction Kotlin</li>
 <li>Les bases</li>
 <li>null-safety</li>
+<li>Les types</li>
 <li>Les fonctions</li>
 <li>Les lambdas</li>
 <li>Les classes</li>
-<li>Les types</li>
 <li>Extensions de fonctions</li>
 <li>Pause</li>
 <li>ByteCode Android</li>
@@ -234,7 +226,7 @@
 
 
 <!-- Slide HelloWorld.java -->
-<section id="hw-java" class="code java">
+<section id="hw-java" class="code java igor live-code">
     <a href="#part_bytecode_java__" class="previous" aria-label="Précédant"></a>
     <h3>HelloWorld.java</h3>
     <article>
@@ -253,7 +245,7 @@
 
 
 <!-- Slide Java ByteCode binary -->
-<section id="java_bytecode_binary" class="code hex">
+<section id="java_bytecode_binary" class="code hex igor live-code">
     <a href="#hw-java" class="previous" aria-label="Précédant"></a>
     <h3>Java ByteCode binary</h3>
     <article>
@@ -294,7 +286,7 @@
 
 
 <!-- Slide Explorons le ByteCode -->
-<section id="explorons_le_bytecode" class="code bytecode">
+<section id="explorons_le_bytecode" class="code bytecode igor live-code">
     <a href="#java_bytecode_binary" class="previous" aria-label="Précédant"></a>
     <h3>Explorons le ByteCode</h3>
     <article>
@@ -321,7 +313,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide Transpile -->
-<section id="transpile" class="diagram">
+<section id="transpile" class="diagram igor">
     <a href="#explorons_le_bytecode" class="previous" aria-label="Précédant"></a>
     <h3>Transpile</h3>
     <article>
@@ -449,7 +441,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide À propos du ByteCode -->
-<section id="bytecode-details" class="details contrast">
+<section id="bytecode-details" class="details contrast igor">
     <a href="#transpile" class="previous" aria-label="Précédant"></a>
     <h3>À propos du ByteCode</h3>
     <article>
@@ -483,7 +475,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide Liens -->
-<section id="bytecode-links" class="bilan contrast">
+<section id="bytecode-links" class="bilan contrast igor">
     <a href="#bytecode-play" class="previous" aria-label="Précédant"></a>
     <h3>Liens</h3>
     <article>
@@ -518,7 +510,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide Historique -->
-<section id="historique" class="">
+<section id="historique" class="manu">
     <a href="#part_introduction_kotlin" class="previous" aria-label="Précédant"></a>
     <h3>Historique</h3>
     <article>
@@ -551,7 +543,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide Cibles -->
-<section id="cibles" class="">
+<section id="cibles" class="manu">
     <a href="#historique" class="previous" aria-label="Précédant"></a>
     <h3>Cibles</h3>
     <article>
@@ -573,7 +565,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide HelloWorld.kt -->
-<section id="hw-kotlin" class="code kotlin">
+<section id="hw-kotlin" class="code kotlin manu live-code">
     <a href="#cibles" class="previous" aria-label="Précédant"></a>
     <h3>HelloWorld.kt</h3>
     <article>
@@ -589,7 +581,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide hexdump -->
-<section id="hexdump" class="code hex">
+<section id="hexdump" class="code hex manu">
     <a href="#hw-kotlin" class="previous" aria-label="Précédant"></a>
     <h3>hexdump</h3>
     <article>
@@ -665,7 +657,7 @@ public class _00_helloworld.HelloWorld {
 
 
 <!-- Slide Java ByteCode -->
-<section id="java_bytecode" class="code bytecode">
+<section id="java_bytecode" class="code bytecode manu">
     <a href="#hexdump" class="previous" aria-label="Précédant"></a>
     <h3>Java ByteCode</h3>
     <article>
@@ -690,7 +682,7 @@ public final class _00_helloworld.HelloWorldKt {
 
 
 <!-- Slide HelloWorld-java -->
-<section id="helloworld_java" class="code java">
+<section id="helloworld_java" class="code java manu">
     <a href="#java_bytecode" class="previous" aria-label="Précédant"></a>
     <h3>HelloWorld-java</h3>
     <article>
@@ -721,7 +713,7 @@ public final class _00_helloworld.HelloWorldKt {
 
 
 <!-- Slide Bilan HelloWorld.kt -->
-<section id="bilan_helloworld_kt" class="bilan contrast">
+<section id="bilan_helloworld_kt" class="bilan contrast manu">
     <a href="#helloworld_java" class="previous" aria-label="Précédant"></a>
     <h3>Bilan HelloWorld.kt</h3>
     <article>
@@ -758,16 +750,16 @@ public final class _00_helloworld.HelloWorldKt {
 <td>2.2M</td>
 </tr>
 <tr>
+<td>lombok-1.16.18.jar</td>
+<td>1.4M</td>
+</tr>
+<tr>
 <td>spring-core-5.0.5.RELEASE.jar</td>
 <td>1.2M</td>
 </tr>
 <tr>
 <td>jackson-databind-2.9.5.jar</td>
 <td>1.3M</td>
-</tr>
-<tr>
-<td>logback-classic-1.2.3.jar</td>
-<td>284K</td>
 </tr>
 </tbody>
 </table>
@@ -776,36 +768,13 @@ public final class _00_helloworld.HelloWorldKt {
 </ul>
 
     </article>
-    <a href="#performance" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Performances ? -->
-<section id="performance" class="measure contrast">
-    <a href="#bilan_helloworld_kt" class="previous" aria-label="Précédant"></a>
-    <h3>Performances ?</h3>
-    <article>
-        <ul>
-<li><a href="https://github.com/JetBrains/kotlin-benchmarks">https://github.com/JetBrains/kotlin-benchmarks</a></li>
-<li><a href="https://github.com/renatoathaydes/kotlin-hidden-costs-benchmark">Kotlin Hidden Costs Benchmark</a> <ul>
-<li>⚠️ kotlin 1.1.3</li>
-<li><a href="https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62">Part 1</a></li>
-<li><a href="https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-2-324a4a50b70">Part 2</a></li>
-<li><a href="https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-3-3bf6e0dbf0a4">Part 3</a></li>
-<li><a href="https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks">Kotlin Hidden Costs - Benchmarks</a></li>
-<li><a href="https://github.com/ilaborie/kotlin-hidden-costs-benchmark">MàJ versions Kotlin, JMH</a></li>
-</ul>
-</li>
-</ul>
-
-    </article>
     <a href="#performance_helloworld_kt" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Performance HelloWorld.kt -->
-<section id="performance_helloworld_kt" class="bilan contrast">
-    <a href="#performance" class="previous" aria-label="Précédant"></a>
+<section id="performance_helloworld_kt" class="bilan contrast igor">
+    <a href="#bilan_helloworld_kt" class="previous" aria-label="Précédant"></a>
     <h3>Performance HelloWorld.kt</h3>
     <article>
         <blockquote>
@@ -869,7 +838,7 @@ public final class _00_helloworld.HelloWorldKt {
 
 
 <!-- Slide val-var.kt -->
-<section id="val_var_kt" class="code kotlin">
+<section id="val_var_kt" class="code kotlin igor">
     <a href="#part_les_bases" class="previous" aria-label="Précédant"></a>
     <h3>val-var.kt</h3>
     <article>
@@ -887,7 +856,7 @@ println(x * y) <span class="hljs-comment">// 42</span>
 
 
 <!-- Slide string-template.kt -->
-<section id="string_template_kt" class="code kotlin">
+<section id="string_template_kt" class="code kotlin igor">
     <a href="#val_var_kt" class="previous" aria-label="Précédant"></a>
     <h3>string-template.kt</h3>
     <article>
@@ -901,7 +870,7 @@ println(x * y) <span class="hljs-comment">// 42</span>
 
 
 <!-- Slide string-template.java -->
-<section id="string_template_java" class="code java">
+<section id="string_template_java" class="code java igor">
     <a href="#string_template_kt" class="previous" aria-label="Précédant"></a>
     <h3>string-template.java</h3>
     <article>
@@ -934,7 +903,7 @@ println(x * y) <span class="hljs-comment">// 42</span>
 
 
 <!-- Slide ByteCode de string-template -->
-<section id="bytecode_de_string_template" class="code bytecode">
+<section id="bytecode_de_string_template" class="code bytecode igor">
     <a href="#string_template_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode de string-template</h3>
     <article>
@@ -988,7 +957,7 @@ public final class _01_basic.String_templatesKt {
 
 
 <!-- Slide numeric.kt -->
-<section id="numeric_kt" class="code kotlin">
+<section id="numeric_kt" class="code kotlin igor">
     <a href="#bytecode_de_string_template" class="previous" aria-label="Précédant"></a>
     <h3>numeric.kt</h3>
     <article>
@@ -1001,7 +970,7 @@ public final class _01_basic.String_templatesKt {
 
 
 <!-- Slide numeric.java -->
-<section id="numeric_java" class="code java">
+<section id="numeric_java" class="code java igor">
     <a href="#numeric_kt" class="previous" aria-label="Précédant"></a>
     <h3>numeric.java</h3>
     <article>
@@ -1030,7 +999,7 @@ public final class _01_basic.String_templatesKt {
 
 
 <!-- Slide ByteCode de numeric -->
-<section id="bytecode_de_numeric" class="code bytecode">
+<section id="bytecode_de_numeric" class="code bytecode igor">
     <a href="#numeric_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode de numeric</h3>
     <article>
@@ -1054,7 +1023,7 @@ public final class _01_basic.NumericKt {
 
 
 <!-- Slide C'est simple -->
-<section id="basic-bilan" class="bilan contrast">
+<section id="basic-bilan" class="bilan contrast igor">
     <a href="#bytecode_de_numeric" class="previous" aria-label="Précédant"></a>
     <h3>C'est simple</h3>
     <article>
@@ -1078,14 +1047,14 @@ public final class _01_basic.NumericKt {
     <article>
         
     </article>
-    <a href="#c_est_nul" class="next" aria-label="Suivant"></a>
+    <a href="#billion_dollar_mistake" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide C'est nul -->
-<section id="c_est_nul" class="contrast">
+<!-- Slide billion-dollar mistake -->
+<section id="billion_dollar_mistake" class="contrast manu">
     <a href="#part_null_safety" class="previous" aria-label="Précédant"></a>
-    <h3>C'est nul</h3>
+    <h3><em>billion-dollar mistake</em></h3>
     <article>
         
 <blockquote>
@@ -1100,681 +1069,11 @@ public final class _01_basic.NumericKt {
 
 
 <!-- Slide elvis -->
-<section id="elvis" class="">
-    <a href="#c_est_nul" class="previous" aria-label="Précédant"></a>
+<section id="elvis" class="manu">
+    <a href="#billion_dollar_mistake" class="previous" aria-label="Précédant"></a>
     <h3>elvis</h3>
     <article>
         
-    </article>
-    <a href="#part_les_fonctions" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Les fonctions -->
-<section id="part_les_fonctions" class="part">
-    <a href="#elvis" class="previous" aria-label="Précédant"></a>
-    <h2>Les fonctions</h2>
-    <article>
-        
-    </article>
-    <a href="#named_params_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide named-params.kt -->
-<section id="named_params_kt" class="code kotlin">
-    <a href="#part_les_fonctions" class="previous" aria-label="Précédant"></a>
-    <h3>named-params.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">buildString</span><span class="hljs-params">(prefix: <span class="hljs-type">String</span>,
-                who: <span class="hljs-type">String</span>,
-                enhanced: <span class="hljs-type">Boolean</span>)</span></span>: String {
-    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">"<span class="hljs-variable">$prefix</span> <span class="hljs-variable">$who</span>"</span>
-    <span class="hljs-keyword">if</span> (enhanced) {
-        msg += <span class="hljs-string">'!'</span>
-    }
-    <span class="hljs-keyword">return</span> msg
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">greetings</span><span class="hljs-params">()</span></span>: String =
-    buildString(enhanced = <span class="hljs-literal">true</span>, who = <span class="hljs-string">"Devoxx"</span>, prefix = <span class="hljs-string">"Hello"</span>)</code></pre>
-    </article>
-    <a href="#named_params_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide named-params.java -->
-<section id="named_params_java" class="code java">
-    <a href="#named_params_kt" class="previous" aria-label="Précédant"></a>
-    <h3>named-params.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _03_fun;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
-<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">2</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\u001e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\u0006\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"</span>},
-   d2 = {<span class="hljs-string">"buildString"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"prefix"</span>, <span class="hljs-string">"who"</span>, <span class="hljs-string">"enhanced"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"greetings"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NamedKt</span> </span>{
-   <span class="hljs-meta">@NotNull</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">buildString</span><span class="hljs-params">(@NotNull String prefix, @NotNull String who, <span class="hljs-keyword">boolean</span> enhanced)</span> </span>{
-      Intrinsics.checkParameterIsNotNull(prefix, <span class="hljs-string">"prefix"</span>);
-      Intrinsics.checkParameterIsNotNull(who, <span class="hljs-string">"who"</span>);
-      String msg = <span class="hljs-string">""</span> + prefix + <span class="hljs-string">' '</span> + who;
-      <span class="hljs-keyword">if</span> (enhanced) {
-         msg = msg + <span class="hljs-string">'!'</span>;
-      }
-
-      <span class="hljs-keyword">return</span> msg;
-   }
-
-   <span class="hljs-meta">@NotNull</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">greetings</span><span class="hljs-params">()</span> </span>{
-      String var0 = <span class="hljs-string">"Hello"</span>;
-      String var1 = <span class="hljs-string">"Devoxx"</span>;
-      <span class="hljs-keyword">boolean</span> var2 = <span class="hljs-keyword">true</span>;
-      <span class="hljs-keyword">return</span> buildString(var0, var1, var2);
-   }
-}
-</code></pre>
-    </article>
-    <a href="#default_value_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide default-value.kt -->
-<section id="default_value_kt" class="code kotlin">
-    <a href="#named_params_java" class="previous" aria-label="Précédant"></a>
-    <h3>default-value.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">buildString2</span><span class="hljs-params">(prefix: <span class="hljs-type">String</span> = <span class="hljs-string">"Hello"</span>,
-                 who: <span class="hljs-type">String</span>,
-                 enhanced: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span>)</span></span>: String {
-    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">"<span class="hljs-variable">$prefix</span> <span class="hljs-variable">$who</span>"</span>
-    <span class="hljs-keyword">if</span> (enhanced) {
-        msg += <span class="hljs-string">'!'</span>
-    }
-    <span class="hljs-keyword">return</span> msg
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">greetings2</span><span class="hljs-params">()</span></span>: String =
-    buildString2(who = <span class="hljs-string">"Devoxx"</span>)</code></pre>
-    </article>
-    <a href="#default_value_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide default-value.java -->
-<section id="default_value_java" class="code java">
-    <a href="#default_value_kt" class="previous" aria-label="Précédant"></a>
-    <h3>default-value.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _03_fun;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
-<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">2</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\"\u0010\u0000\u001a\u00020\u00012\b\b\u0002\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"</span>},
-   d2 = {<span class="hljs-string">"buildString2"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"prefix"</span>, <span class="hljs-string">"who"</span>, <span class="hljs-string">"enhanced"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"greetings2"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Default_valueKt</span> </span>{
-   <span class="hljs-meta">@NotNull</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">buildString2</span><span class="hljs-params">(@NotNull String prefix, @NotNull String who, <span class="hljs-keyword">boolean</span> enhanced)</span> </span>{
-      Intrinsics.checkParameterIsNotNull(prefix, <span class="hljs-string">"prefix"</span>);
-      Intrinsics.checkParameterIsNotNull(who, <span class="hljs-string">"who"</span>);
-      String msg = <span class="hljs-string">""</span> + prefix + <span class="hljs-string">' '</span> + who;
-      <span class="hljs-keyword">if</span> (enhanced) {
-         msg = msg + <span class="hljs-string">'!'</span>;
-      }
-
-      <span class="hljs-keyword">return</span> msg;
-   }
-
-   <span class="hljs-meta">@NotNull</span>
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">greetings2</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> buildString2$<span class="hljs-keyword">default</span>((String)<span class="hljs-keyword">null</span>, <span class="hljs-string">"Devoxx"</span>, <span class="hljs-keyword">false</span>, <span class="hljs-number">5</span>, (Object)<span class="hljs-keyword">null</span>);
-   }
-}
-</code></pre>
-    </article>
-    <a href="#bytecode_de_default_value" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide ByteCode de default-value -->
-<section id="bytecode_de_default_value" class="code bytecode">
-    <a href="#default_value_java" class="previous" aria-label="Précédant"></a>
-    <h3>ByteCode de default-value</h3>
-    <article>
-        <code>Compiled from "default-value.kt"
-public final class _03_fun.Default_valueKt {
-  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String prefix
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: aload_1
-       7: ldc           #17                 // String who
-       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-      12: new           #19                 // class java/lang/StringBuilder
-      15: dup
-      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      19: ldc           #25                 // String
-      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      24: aload_0
-      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      28: bipush        32
-      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      33: aload_1
-      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      40: astore_3
-      41: iload_2
-      42: ifeq          66
-      45: aload_3
-      46: new           #19                 // class java/lang/StringBuilder
-      49: dup
-      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      53: swap
-      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      57: bipush        33
-      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      65: astore_3
-      66: aload_3
-      67: areturn
-
-  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
-    Code:
-       0: iload_3
-       1: iconst_1
-       2: iand
-       3: ifeq          9
-       6: ldc           #46                 // String Hello
-       8: astore_0
-       9: iload_3
-      10: iconst_4
-      11: iand
-      12: ifeq          17
-      15: iconst_1
-      16: istore_2
-      17: aload_0
-      18: aload_1
-      19: iload_2
-      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-      23: areturn
-
-  public static final java.lang.String greetings2();
-    Code:
-       0: aconst_null
-       1: ldc           #51                 // String Devoxx
-       3: iconst_0
-       4: iconst_5
-       5: aconst_null
-       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
-       9: areturn
-}
-</code>
-    </article>
-    <a href="#fun-bilan" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide C'est fun ! -->
-<section id="fun-bilan" class="bilan contrast">
-    <a href="#bytecode_de_default_value" class="previous" aria-label="Précédant"></a>
-    <h3>C'est <code>fun</code> !</h3>
-    <article>
-        <h4 id="-conseils">✨ Conseils</h4>
-<ul>
-<li>Toujours typer le retour de vos fonctions
-(sauf si c&#39;est évident et une surcharge comme le <code>toString</code>)</li>
-<li>Kotlin est plus expressif que Java =&gt; évitez de faire des fonctions trop longues</li>
-<li>Sautez une ligne après le <code>=</code></li>
-<li>Utilisez le passage des arguments par nom quand ça lève des ambigüités</li>
-</ul>
-<h4 id="-notes">📝 Notes</h4>
-<ul>
-<li>Le passage des arguments par nom, ne marche pas sur les appels de code Java</li>
-</ul>
-
-    </article>
-    <a href="#part_les_lambdas" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Les lambdas -->
-<section id="part_les_lambdas" class="part">
-    <a href="#fun-bilan" class="previous" aria-label="Précédant"></a>
-    <h2>Les lambdas</h2>
-    <article>
-        
-    </article>
-    <a href="#lambda" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Les lambdas -->
-<section id="lambda" class="">
-    <a href="#part_les_lambdas" class="previous" aria-label="Précédant"></a>
-    <h3>Les lambdas</h3>
-    <article>
-        
-    </article>
-    <a href="#part_les_classes" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Les classes -->
-<section id="part_les_classes" class="part">
-    <a href="#lambda" class="previous" aria-label="Précédant"></a>
-    <h2>Les classes</h2>
-    <article>
-        
-    </article>
-    <a href="#point_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point.kt -->
-<section id="point_kt" class="code kotlin">
-    <a href="#part_les_classes" class="previous" aria-label="Précédant"></a>
-    <h3>Point.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span></span>(x: <span class="hljs-built_in">Int</span>, y: <span class="hljs-built_in">Int</span>) {
-    <span class="hljs-keyword">val</span> x = x
-    <span class="hljs-keyword">var</span> y = y
-}
-
-<span class="hljs-comment">// val p1 = Point(2, 4)</span></code></pre>
-    </article>
-    <a href="#point_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point.java -->
-<section id="point_java" class="code java">
-    <a href="#point_kt" class="previous" aria-label="Précédant"></a>
-    <h3>Point.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _06_class_1;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">1</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"</span>},
-   d2 = {<span class="hljs-string">"L_06_class_1/Point;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"x"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"y"</span>, <span class="hljs-string">"(II)V"</span>, <span class="hljs-string">"getX"</span>, <span class="hljs-string">"()I"</span>, <span class="hljs-string">"getY"</span>, <span class="hljs-string">"setY"</span>, <span class="hljs-string">"(I)V"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> </span>{
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> x;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> y;
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.y;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setY</span><span class="hljs-params">(<span class="hljs-keyword">int</span> var1)</span> </span>{
-      <span class="hljs-keyword">this</span>.y = var1;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
-      <span class="hljs-keyword">super</span>();
-      <span class="hljs-keyword">this</span>.x = x;
-      <span class="hljs-keyword">this</span>.y = x;
-   }
-}
-</code></pre>
-    </article>
-    <a href="#point2_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point2.kt -->
-<section id="point2_kt" class="code kotlin">
-    <a href="#point_java" class="previous" aria-label="Précédant"></a>
-    <h3>Point2.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point2</span></span>(<span class="hljs-keyword">val</span> x: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">var</span> y: <span class="hljs-built_in">Int</span>)
-
-<span class="hljs-comment">// val p2 = Point2(2, 4)</span></code></pre>
-    </article>
-    <a href="#point2_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point2.java -->
-<section id="point2_java" class="code java">
-    <a href="#point2_kt" class="previous" aria-label="Précédant"></a>
-    <h3>Point2.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _06_class_1;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">1</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"</span>},
-   d2 = {<span class="hljs-string">"L_06_class_1/Point2;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"x"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"y"</span>, <span class="hljs-string">"(II)V"</span>, <span class="hljs-string">"getX"</span>, <span class="hljs-string">"()I"</span>, <span class="hljs-string">"getY"</span>, <span class="hljs-string">"setY"</span>, <span class="hljs-string">"(I)V"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point2</span> </span>{
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> x;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> y;
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.y;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setY</span><span class="hljs-params">(<span class="hljs-keyword">int</span> var1)</span> </span>{
-      <span class="hljs-keyword">this</span>.y = var1;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point2</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
-      <span class="hljs-keyword">super</span>();
-      <span class="hljs-keyword">this</span>.x = x;
-      <span class="hljs-keyword">this</span>.y = y;
-   }
-}
-</code></pre>
-    </article>
-    <a href="#point3_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point3.kt -->
-<section id="point3_kt" class="code kotlin">
-    <a href="#point2_java" class="previous" aria-label="Précédant"></a>
-    <h3>Point3.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point3</span></span>(<span class="hljs-keyword">val</span> x: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> y: <span class="hljs-built_in">Int</span>) {
-    <span class="hljs-keyword">constructor</span>(pair: Pair&lt;<span class="hljs-built_in">Int</span>, <span class="hljs-built_in">Int</span>&gt;) : <span class="hljs-keyword">this</span>(pair.first, pair.second)
-}
-
-<span class="hljs-comment">// val p3 = Point3(Pair(2, 4))</span>
-</code></pre>
-    </article>
-    <a href="#point3_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point3.java -->
-<section id="point3_java" class="code java">
-    <a href="#point3_kt" class="previous" aria-label="Précédant"></a>
-    <h3>Point3.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _06_class_1;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-<span class="hljs-keyword">import</span> kotlin.Pair;
-<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
-<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">1</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"</span>},
-   d2 = {<span class="hljs-string">"L_06_class_1/Point3;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"pair"</span>, <span class="hljs-string">"Lkotlin/Pair;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"(Lkotlin/Pair;)V"</span>, <span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>, <span class="hljs-string">"(II)V"</span>, <span class="hljs-string">"getX"</span>, <span class="hljs-string">"()I"</span>, <span class="hljs-string">"getY"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point3</span> </span>{
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> x;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> y;
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.y;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point3</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
-      <span class="hljs-keyword">super</span>();
-      <span class="hljs-keyword">this</span>.x = x;
-      <span class="hljs-keyword">this</span>.y = y;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point3</span><span class="hljs-params">(@NotNull Pair pair)</span> </span>{
-      Intrinsics.checkParameterIsNotNull(pair, <span class="hljs-string">"pair"</span>);
-      <span class="hljs-keyword">this</span>(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
-   }
-}
-</code></pre>
-    </article>
-    <a href="#point4_kt" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point4.kt -->
-<section id="point4_kt" class="code kotlin">
-    <a href="#point3_java" class="previous" aria-label="Précédant"></a>
-    <h3>Point4.kt</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point4</span></span>(<span class="hljs-keyword">val</span> x: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> y: <span class="hljs-built_in">Int</span>) {
-    <span class="hljs-keyword">constructor</span>(pair: Pair&lt;<span class="hljs-built_in">Int</span>, <span class="hljs-built_in">Int</span>&gt;) : <span class="hljs-keyword">this</span>(pair.first, pair.second)
-
-    init {
-        println(<span class="hljs-string">"(<span class="hljs-variable">$x</span>, <span class="hljs-variable">$y</span>)"</span>)
-    }
-}
-
-<span class="hljs-comment">// val p4 = Point4(Pair(2, 4))</span></code></pre>
-    </article>
-    <a href="#point4_java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Point4.java -->
-<section id="point4_java" class="code java">
-    <a href="#point4_kt" class="previous" aria-label="Précédant"></a>
-    <h3>Point4.java</h3>
-    <article>
-        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _06_class_1;
-
-<span class="hljs-keyword">import</span> kotlin.Metadata;
-<span class="hljs-keyword">import</span> kotlin.Pair;
-<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
-<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
-
-<span class="hljs-meta">@Metadata</span>(
-   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
-   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
-   k = <span class="hljs-number">1</span>,
-   d1 = {<span class="hljs-string">"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"</span>},
-   d2 = {<span class="hljs-string">"L_06_class_1/Point4;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"pair"</span>, <span class="hljs-string">"Lkotlin/Pair;"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"(Lkotlin/Pair;)V"</span>, <span class="hljs-string">"x"</span>, <span class="hljs-string">"y"</span>, <span class="hljs-string">"(II)V"</span>, <span class="hljs-string">"getX"</span>, <span class="hljs-string">"()I"</span>, <span class="hljs-string">"getY"</span>}
-)
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point4</span> </span>{
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> x;
-   <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> y;
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getX</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.x;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getY</span><span class="hljs-params">()</span> </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.y;
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point4</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span> </span>{
-      <span class="hljs-keyword">super</span>();
-      <span class="hljs-keyword">this</span>.x = x;
-      <span class="hljs-keyword">this</span>.y = y;
-      String var3 = <span class="hljs-string">""</span> + <span class="hljs-string">'('</span> + <span class="hljs-keyword">this</span>.x + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.y + <span class="hljs-string">')'</span>;
-      System.out.println(var3);
-   }
-
-   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Point4</span><span class="hljs-params">(@NotNull Pair pair)</span> </span>{
-      Intrinsics.checkParameterIsNotNull(pair, <span class="hljs-string">"pair"</span>);
-      <span class="hljs-keyword">this</span>(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
-   }
-}
-</code></pre>
-    </article>
-    <a href="#heritage_en_kotlin" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Héritage en Kotlin -->
-<section id="heritage_en_kotlin" class="code kotlin">
-    <a href="#point4_java" class="previous" aria-label="Précédant"></a>
-    <h3>Héritage en Kotlin</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">open</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{
-    <span class="hljs-keyword">open</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String =
-        <span class="hljs-string">"???"</span>
-}
-
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span></span>(<span class="hljs-keyword">val</span> name: String) : Animal() {
-    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String =
-        <span class="hljs-string">"Meow"</span>
-}
-
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span></span>(<span class="hljs-keyword">val</span> name: String) : Animal() {
-    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String =
-        <span class="hljs-string">"Woof"</span>
-}
-
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    <span class="hljs-keyword">val</span> pets: List&lt;Animal&gt; = listOf(Cat(<span class="hljs-string">"Felix"</span>), Dog(<span class="hljs-string">"Rex"</span>))
-
-    pets.forEach { pet -&gt; println(<span class="hljs-string">"<span class="hljs-variable">$pet</span>: <span class="hljs-subst">${pet.talk()}</span>"</span>) } <span class="hljs-comment">// 😱</span>
-}
-
-<span class="hljs-comment">// Cat(name=Felix): Meow</span>
-<span class="hljs-comment">// Dog(name=Rex): Woof</span>
-</code></pre>
-    </article>
-    <a href="#generics" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Générics -->
-<section id="generics" class="details contrast">
-    <a href="#heritage_en_kotlin" class="previous" aria-label="Précédant"></a>
-    <h3>Générics</h3>
-    <article>
-        <ul>
-<li>Covariant (consome): <code>out</code></li>
-<li>Contravariant (produit): <code>in</code></li>
-</ul>
-<ul>
-<li>Borne supérieur :</li>
-</ul>
-<pre><code class="lang-kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T : Comparable&lt;T&gt;</span>&gt; <span class="hljs-title">sort</span><span class="hljs-params">(list: <span class="hljs-type">List</span>&lt;<span class="hljs-type">T</span>&gt;)</span></span>: List&lt;T&gt;
-</code></pre>
-<p>⚠️ Les contrôles de types générics ne sont fait qu&#39;au moment de la compilation</p>
-<ul>
-<li>Les détails: <a href="https://kotlinlang.org/docs/reference/generics.html">https://kotlinlang.org/docs/reference/generics.html</a></li>
-</ul>
-
-    </article>
-    <a href="#star" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Projection * -->
-<section id="star" class="details">
-    <a href="#generics" class="previous" aria-label="Précédant"></a>
-    <h3>Projection <code>*</code></h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Function</span>&lt;<span class="hljs-type">in T, out U</span>&gt;</span></code></pre>
-<pre class="hljs lang-kotlin"><code>Function&lt;*, String&gt; <span class="hljs-comment">// correspond à Function&lt;in Nothing, String&gt;</span></code></pre>
-<pre class="hljs lang-kotlin"><code>Function&lt;<span class="hljs-built_in">Int</span>, *&gt; <span class="hljs-comment">// correspond à Function&lt;Int, out Any?&gt;</span></code></pre>
-<pre class="hljs lang-kotlin"><code>Function&lt;*, *&gt; <span class="hljs-comment">// correspond à Function&lt;in Nothing, out Any?&gt;</span></code></pre>
-    </article>
-    <a href="#sealed" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Sealed -->
-<section id="sealed" class="code kotlin">
-    <a href="#star" class="previous" aria-label="Précédant"></a>
-    <h3>Sealed</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonValue</span></span>
-
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonObject</span></span>(<span class="hljs-keyword">val</span> attributes: Map&lt;String, JsonValue&gt;) : JsonValue()
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonArray</span></span>(<span class="hljs-keyword">val</span> values: List&lt;JsonValue&gt;) : JsonValue()
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonString</span></span>(<span class="hljs-keyword">val</span> value: String) : JsonValue()
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonNumber</span></span>(<span class="hljs-keyword">val</span> value: Number) : JsonValue()
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonBoolean</span></span>(<span class="hljs-keyword">val</span> value: <span class="hljs-built_in">Boolean</span>) : JsonValue()
-<span class="hljs-keyword">object</span> JsonNull : JsonValue()</code></pre>
-    </article>
-    <a href="#alias_en_kotlin" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Alias en Kotlin -->
-<section id="alias_en_kotlin" class="code kotlin">
-    <a href="#sealed" class="previous" aria-label="Précédant"></a>
-    <h3>Alias en Kotlin</h3>
-    <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Entity</span></span>
-
-typealias Id = String
-typealias Version = <span class="hljs-built_in">Int</span>
-typealias EntityKey = Pair&lt;Id, Version&gt;
-
-<span class="hljs-comment">// fun getAllEntities(): Map&lt;Pair&lt;String, Int&gt;, List&lt;Entity&gt;&gt; = emptyMap()</span>
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span></span>: Map&lt;EntityKey, List&lt;Entity&gt;&gt; = emptyMap()
-</code></pre>
-    </article>
-    <a href="#bytecode_d_alias" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide ByteCode d'alias -->
-<section id="bytecode_d_alias" class="code bytecode">
-    <a href="#alias_en_kotlin" class="previous" aria-label="Précédant"></a>
-    <h3>ByteCode d'alias</h3>
-    <article>
-        <code>Compiled from "typealias.kt"
-public final class _06_class_2.TypealiasKt {
-  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
-    Code:
-       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
-       3: areturn
-}
-</code>
-    </article>
-    <a href="#class-bilan" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Classe, le bilan -->
-<section id="class-bilan" class="bilan contrast">
-    <a href="#bytecode_d_alias" class="previous" aria-label="Précédant"></a>
-    <h3>Classe, le bilan</h3>
-    <article>
-        <ul>
-<li>🤔 Mais pourquoi on n&#39;a pas ça en Java ?</li>
-<li>Une seule classe par fichier n&#39;est pas utile</li>
-<li>🤓 <code>sealed</code> permet de faire des types algébriques de données (Algebraic Data Type)</li>
-</ul>
-
     </article>
     <a href="#part_les_types" class="next" aria-label="Suivant"></a>
 </section>
@@ -1782,7 +1081,7 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Les types -->
 <section id="part_les_types" class="part">
-    <a href="#class-bilan" class="previous" aria-label="Précédant"></a>
+    <a href="#elvis" class="previous" aria-label="Précédant"></a>
     <h2>Les types</h2>
     <article>
         
@@ -1792,7 +1091,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide Types basiques -->
-<section id="types_basiques" class="diagram">
+<section id="types_basiques" class="diagram igor">
     <a href="#part_les_types" class="previous" aria-label="Précédant"></a>
     <h3>Types basiques</h3>
     <article>
@@ -2287,7 +1586,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide Types basiques nullable -->
-<section id="types_basiques_nullable" class="diagram">
+<section id="types_basiques_nullable" class="diagram igor">
     <a href="#types_basiques" class="previous" aria-label="Précédant"></a>
     <h3>Types basiques nullable</h3>
     <article>
@@ -2803,17 +2102,454 @@ public final class _06_class_2.TypealiasKt {
     </g>
 </svg>
     </article>
+    <a href="#todo_kt" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide todo.kt -->
+<section id="todo_kt" class="code kotlin igor play">
+    <a href="#types_basiques_nullable" class="previous" aria-label="Précédant"></a>
+    <h3>todo.kt</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code>fun `is P = NP`(): Boolean =
+    TODO()
+
+fun main(args: Array&lt;String&gt;) {
+    println("P = NP is ${`is P = NP`()}")
+}</code></pre>
+    </article>
     <a href="#hierarchie_des_types" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Hierarchie des types -->
-<section id="hierarchie_des_types" class="bilan contrast">
-    <a href="#types_basiques_nullable" class="previous" aria-label="Précédant"></a>
+<section id="hierarchie_des_types" class="bilan contrast igor">
+    <a href="#todo_kt" class="previous" aria-label="Précédant"></a>
     <h3>Hierarchie des types</h3>
     <article>
         <ul>
 <li>🤝 le <code>TODO()</code> est l&#39;ami du TDD</li>
+</ul>
+
+    </article>
+    <a href="#part_les_fonctions" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les fonctions -->
+<section id="part_les_fonctions" class="part">
+    <a href="#hierarchie_des_types" class="previous" aria-label="Précédant"></a>
+    <h2>Les fonctions</h2>
+    <article>
+        
+    </article>
+    <a href="#named_params_kt" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide named-params.kt -->
+<section id="named_params_kt" class="code kotlin igor">
+    <a href="#part_les_fonctions" class="previous" aria-label="Précédant"></a>
+    <h3>named-params.kt</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">buildString</span><span class="hljs-params">(prefix: <span class="hljs-type">String</span>,
+                who: <span class="hljs-type">String</span>,
+                enhanced: <span class="hljs-type">Boolean</span>)</span></span>: String {
+    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">"<span class="hljs-variable">$prefix</span> <span class="hljs-variable">$who</span>"</span>
+    <span class="hljs-keyword">if</span> (enhanced) {
+        msg += <span class="hljs-string">'!'</span>
+    }
+    <span class="hljs-keyword">return</span> msg
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">greetings</span><span class="hljs-params">()</span></span>: String =
+    buildString(enhanced = <span class="hljs-literal">true</span>, who = <span class="hljs-string">"Devoxx"</span>, prefix = <span class="hljs-string">"Hello"</span>)</code></pre>
+    </article>
+    <a href="#named_params_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide named-params.java -->
+<section id="named_params_java" class="code java igor">
+    <a href="#named_params_kt" class="previous" aria-label="Précédant"></a>
+    <h3>named-params.java</h3>
+    <article>
+        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _03_fun;
+
+<span class="hljs-keyword">import</span> kotlin.Metadata;
+<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
+<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
+
+<span class="hljs-meta">@Metadata</span>(
+   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
+   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
+   k = <span class="hljs-number">2</span>,
+   d1 = {<span class="hljs-string">"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\u001e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\u0006\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"</span>},
+   d2 = {<span class="hljs-string">"buildString"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"prefix"</span>, <span class="hljs-string">"who"</span>, <span class="hljs-string">"enhanced"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"greetings"</span>}
+)
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NamedKt</span> </span>{
+   <span class="hljs-meta">@NotNull</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">buildString</span><span class="hljs-params">(@NotNull String prefix, @NotNull String who, <span class="hljs-keyword">boolean</span> enhanced)</span> </span>{
+      Intrinsics.checkParameterIsNotNull(prefix, <span class="hljs-string">"prefix"</span>);
+      Intrinsics.checkParameterIsNotNull(who, <span class="hljs-string">"who"</span>);
+      String msg = <span class="hljs-string">""</span> + prefix + <span class="hljs-string">' '</span> + who;
+      <span class="hljs-keyword">if</span> (enhanced) {
+         msg = msg + <span class="hljs-string">'!'</span>;
+      }
+
+      <span class="hljs-keyword">return</span> msg;
+   }
+
+   <span class="hljs-meta">@NotNull</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">greetings</span><span class="hljs-params">()</span> </span>{
+      String var0 = <span class="hljs-string">"Hello"</span>;
+      String var1 = <span class="hljs-string">"Devoxx"</span>;
+      <span class="hljs-keyword">boolean</span> var2 = <span class="hljs-keyword">true</span>;
+      <span class="hljs-keyword">return</span> buildString(var0, var1, var2);
+   }
+}
+</code></pre>
+    </article>
+    <a href="#default_value_kt" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide default-value.kt -->
+<section id="default_value_kt" class="code kotlin igor">
+    <a href="#named_params_java" class="previous" aria-label="Précédant"></a>
+    <h3>default-value.kt</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">buildString2</span><span class="hljs-params">(prefix: <span class="hljs-type">String</span> = <span class="hljs-string">"Hello"</span>,
+                 who: <span class="hljs-type">String</span>,
+                 enhanced: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span>)</span></span>: String {
+    <span class="hljs-keyword">var</span> msg = <span class="hljs-string">"<span class="hljs-variable">$prefix</span> <span class="hljs-variable">$who</span>"</span>
+    <span class="hljs-keyword">if</span> (enhanced) {
+        msg += <span class="hljs-string">'!'</span>
+    }
+    <span class="hljs-keyword">return</span> msg
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">greetings2</span><span class="hljs-params">()</span></span>: String =
+    buildString2(who = <span class="hljs-string">"Devoxx"</span>)</code></pre>
+    </article>
+    <a href="#default_value_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide default-value.java -->
+<section id="default_value_java" class="code java igor">
+    <a href="#default_value_kt" class="previous" aria-label="Précédant"></a>
+    <h3>default-value.java</h3>
+    <article>
+        <pre class="hljs lang-java"><code><span class="hljs-keyword">package</span> _03_fun;
+
+<span class="hljs-keyword">import</span> kotlin.Metadata;
+<span class="hljs-keyword">import</span> kotlin.jvm.internal.Intrinsics;
+<span class="hljs-keyword">import</span> org.jetbrains.annotations.NotNull;
+
+<span class="hljs-meta">@Metadata</span>(
+   mv = {<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">9</span>},
+   bv = {<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>},
+   k = <span class="hljs-number">2</span>,
+   d1 = {<span class="hljs-string">"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\"\u0010\u0000\u001a\u00020\u00012\b\b\u0002\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"</span>},
+   d2 = {<span class="hljs-string">"buildString2"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"prefix"</span>, <span class="hljs-string">"who"</span>, <span class="hljs-string">"enhanced"</span>, <span class="hljs-string">""</span>, <span class="hljs-string">"greetings2"</span>}
+)
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Default_valueKt</span> </span>{
+   <span class="hljs-meta">@NotNull</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">buildString2</span><span class="hljs-params">(@NotNull String prefix, @NotNull String who, <span class="hljs-keyword">boolean</span> enhanced)</span> </span>{
+      Intrinsics.checkParameterIsNotNull(prefix, <span class="hljs-string">"prefix"</span>);
+      Intrinsics.checkParameterIsNotNull(who, <span class="hljs-string">"who"</span>);
+      String msg = <span class="hljs-string">""</span> + prefix + <span class="hljs-string">' '</span> + who;
+      <span class="hljs-keyword">if</span> (enhanced) {
+         msg = msg + <span class="hljs-string">'!'</span>;
+      }
+
+      <span class="hljs-keyword">return</span> msg;
+   }
+
+   <span class="hljs-meta">@NotNull</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> String <span class="hljs-title">greetings2</span><span class="hljs-params">()</span> </span>{
+      <span class="hljs-keyword">return</span> buildString2$<span class="hljs-keyword">default</span>((String)<span class="hljs-keyword">null</span>, <span class="hljs-string">"Devoxx"</span>, <span class="hljs-keyword">false</span>, <span class="hljs-number">5</span>, (Object)<span class="hljs-keyword">null</span>);
+   }
+}
+</code></pre>
+    </article>
+    <a href="#bytecode_de_default_value" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide ByteCode de default-value -->
+<section id="bytecode_de_default_value" class="code bytecode igor">
+    <a href="#default_value_java" class="previous" aria-label="Précédant"></a>
+    <h3>ByteCode de default-value</h3>
+    <article>
+        <code>Compiled from "default-value.kt"
+public final class _03_fun.Default_valueKt {
+  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String prefix
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_1
+       7: ldc           #17                 // String who
+       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: new           #19                 // class java/lang/StringBuilder
+      15: dup
+      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      19: ldc           #25                 // String
+      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      24: aload_0
+      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      28: bipush        32
+      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      33: aload_1
+      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      40: astore_3
+      41: iload_2
+      42: ifeq          66
+      45: aload_3
+      46: new           #19                 // class java/lang/StringBuilder
+      49: dup
+      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      53: swap
+      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: bipush        33
+      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      65: astore_3
+      66: aload_3
+      67: areturn
+
+  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
+    Code:
+       0: iload_3
+       1: iconst_1
+       2: iand
+       3: ifeq          9
+       6: ldc           #46                 // String Hello
+       8: astore_0
+       9: iload_3
+      10: iconst_4
+      11: iand
+      12: ifeq          17
+      15: iconst_1
+      16: istore_2
+      17: aload_0
+      18: aload_1
+      19: iload_2
+      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+      23: areturn
+
+  public static final java.lang.String greetings2();
+    Code:
+       0: aconst_null
+       1: ldc           #51                 // String Devoxx
+       3: iconst_0
+       4: iconst_5
+       5: aconst_null
+       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+       9: areturn
+}
+</code>
+    </article>
+    <a href="#fun-bilan" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide C'est fun ! -->
+<section id="fun-bilan" class="bilan contrast igor">
+    <a href="#bytecode_de_default_value" class="previous" aria-label="Précédant"></a>
+    <h3>C'est <code>fun</code> !</h3>
+    <article>
+        <h4 id="-conseils">✨ Conseils</h4>
+<ul>
+<li>Toujours typer le retour de vos fonctions
+(sauf si c&#39;est évident et une surcharge comme le <code>toString</code>)</li>
+<li>Kotlin est plus expressif que Java =&gt; évitez de faire des fonctions trop longues</li>
+<li>Sautez une ligne après le <code>=</code></li>
+<li>Utilisez le passage des arguments par nom quand ça lève des ambigüités</li>
+</ul>
+<h4 id="-notes">📝 Notes</h4>
+<ul>
+<li>Le passage des arguments par nom, ne marche pas sur les appels de code Java</li>
+</ul>
+
+    </article>
+    <a href="#part_les_lambdas" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les lambdas -->
+<section id="part_les_lambdas" class="part">
+    <a href="#fun-bilan" class="previous" aria-label="Précédant"></a>
+    <h2>Les lambdas</h2>
+    <article>
+        
+    </article>
+    <a href="#lambda" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les lambdas -->
+<section id="lambda" class="manu">
+    <a href="#part_les_lambdas" class="previous" aria-label="Précédant"></a>
+    <h3>Les lambdas</h3>
+    <article>
+        
+    </article>
+    <a href="#part_les_classes" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Les classes -->
+<section id="part_les_classes" class="part">
+    <a href="#lambda" class="previous" aria-label="Précédant"></a>
+    <h2>Les classes</h2>
+    <article>
+        
+    </article>
+    <a href="#heritage_en_kotlin" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Héritage en Kotlin -->
+<section id="heritage_en_kotlin" class="code kotlin igor live-code">
+    <a href="#part_les_classes" class="previous" aria-label="Précédant"></a>
+    <h3>Héritage en Kotlin</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">open</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Animal</span> </span>{ <span class="hljs-comment">// need open</span>
+    <span class="hljs-keyword">open</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String =
+        <span class="hljs-string">"???"</span>
+}
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cat</span></span>(<span class="hljs-keyword">val</span> name: String) : Animal() {
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String = <span class="hljs-comment">// need override</span>
+        <span class="hljs-string">"Meow"</span>
+}
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Dog</span></span>(<span class="hljs-keyword">val</span> name: String) : Animal() {
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">talk</span><span class="hljs-params">()</span></span>: String =  <span class="hljs-comment">// need override</span>
+        <span class="hljs-string">"Woof"</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
+    <span class="hljs-keyword">val</span> pets: List&lt;Animal&gt; = listOf(Cat(<span class="hljs-string">"Felix"</span>), Dog(<span class="hljs-string">"Rex"</span>))
+
+    <span class="hljs-comment">// 😱</span>
+    pets.forEach { pet -&gt;
+        println(<span class="hljs-string">"<span class="hljs-variable">$pet</span>: <span class="hljs-subst">${pet.talk()}</span>"</span>)
+    }
+    <span class="hljs-comment">// Cat(name=Felix): Meow</span>
+    <span class="hljs-comment">// Dog(name=Rex): Woof</span>
+}</code></pre>
+    </article>
+    <a href="#generics" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Générics -->
+<section id="generics" class="details contrast igor">
+    <a href="#heritage_en_kotlin" class="previous" aria-label="Précédant"></a>
+    <h3>Générics</h3>
+    <article>
+        <ul>
+<li>Covariant (consome): <code>out</code></li>
+<li>Contravariant (produit): <code>in</code></li>
+</ul>
+<ul>
+<li>Borne supérieur :</li>
+</ul>
+<pre><code class="lang-kotlin"><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-type">&lt;T : Comparable&lt;T&gt;</span>&gt; <span class="hljs-title">sort</span><span class="hljs-params">(list: <span class="hljs-type">List</span>&lt;<span class="hljs-type">T</span>&gt;)</span></span>: List&lt;T&gt;
+</code></pre>
+<p>⚠️ Les contrôles de types générics ne sont fait qu&#39;au moment de la compilation</p>
+<ul>
+<li>Les détails: <a href="https://kotlinlang.org/docs/reference/generics.html">https://kotlinlang.org/docs/reference/generics.html</a></li>
+</ul>
+
+    </article>
+    <a href="#star" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Projection * -->
+<section id="star" class="details igor">
+    <a href="#generics" class="previous" aria-label="Précédant"></a>
+    <h3>Projection <code>*</code></h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Function</span>&lt;<span class="hljs-type">in T, out U</span>&gt;</span></code></pre>
+<pre class="hljs lang-kotlin"><code>Function&lt;*, String&gt; <span class="hljs-comment">// correspond à Function&lt;in Nothing, String&gt;</span></code></pre>
+<pre class="hljs lang-kotlin"><code>Function&lt;<span class="hljs-built_in">Int</span>, *&gt; <span class="hljs-comment">// correspond à Function&lt;Int, out Any?&gt;</span></code></pre>
+<pre class="hljs lang-kotlin"><code>Function&lt;*, *&gt; <span class="hljs-comment">// correspond à Function&lt;in Nothing, out Any?&gt;</span></code></pre>
+    </article>
+    <a href="#sealed" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Sealed -->
+<section id="sealed" class="code kotlin igor">
+    <a href="#star" class="previous" aria-label="Précédant"></a>
+    <h3>Sealed</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonValue</span></span>
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonObject</span></span>(<span class="hljs-keyword">val</span> attributes: Map&lt;String, JsonValue&gt;) : JsonValue()
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonArray</span></span>(<span class="hljs-keyword">val</span> values: List&lt;JsonValue&gt;) : JsonValue()
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonString</span></span>(<span class="hljs-keyword">val</span> value: String) : JsonValue()
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonNumber</span></span>(<span class="hljs-keyword">val</span> value: Number) : JsonValue()
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonBoolean</span></span>(<span class="hljs-keyword">val</span> value: <span class="hljs-built_in">Boolean</span>) : JsonValue()
+<span class="hljs-keyword">object</span> JsonNull : JsonValue()</code></pre>
+    </article>
+    <a href="#alias_en_kotlin" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Alias en Kotlin -->
+<section id="alias_en_kotlin" class="code kotlin igor">
+    <a href="#sealed" class="previous" aria-label="Précédant"></a>
+    <h3>Alias en Kotlin</h3>
+    <article>
+        <pre class="hljs lang-kotlin"><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Entity</span></span>
+
+typealias Id = String
+typealias Version = <span class="hljs-built_in">Int</span>
+typealias EntityKey = Pair&lt;Id, Version&gt;
+
+<span class="hljs-comment">// fun getAllEntities(): Map&lt;Pair&lt;String, Int&gt;, List&lt;Entity&gt;&gt; = emptyMap()</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span></span>: Map&lt;EntityKey, List&lt;Entity&gt;&gt; = emptyMap()
+</code></pre>
+    </article>
+    <a href="#bytecode_d_alias" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide ByteCode d'alias -->
+<section id="bytecode_d_alias" class="code bytecode igor">
+    <a href="#alias_en_kotlin" class="previous" aria-label="Précédant"></a>
+    <h3>ByteCode d'alias</h3>
+    <article>
+        <code>Compiled from "typealias.kt"
+public final class _06_class_2.TypealiasKt {
+  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
+    Code:
+       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
+       3: areturn
+}
+</code>
+    </article>
+    <a href="#class-bilan" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Classe, le bilan -->
+<section id="class-bilan" class="bilan contrast manu igor">
+    <a href="#bytecode_d_alias" class="previous" aria-label="Précédant"></a>
+    <h3>Classe, le bilan</h3>
+    <article>
+        <ul>
+<li>🤔 Mais pourquoi on n&#39;a pas ça en Java ?</li>
+<li>Une seule classe par fichier n&#39;est pas utile</li>
+<li>🤓 <code>sealed</code> permet de faire des types algébriques de données (Algebraic Data Type)</li>
 </ul>
 
     </article>
@@ -2823,7 +2559,7 @@ public final class _06_class_2.TypealiasKt {
 
 <!-- Slide Extensions de fonctions -->
 <section id="part_extensions_de_fonctions" class="part">
-    <a href="#hierarchie_des_types" class="previous" aria-label="Précédant"></a>
+    <a href="#class-bilan" class="previous" aria-label="Précédant"></a>
     <h2>Extensions de fonctions</h2>
     <article>
         
@@ -2833,7 +2569,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide Extension -->
-<section id="extension" class="">
+<section id="extension" class="manu">
     <a href="#part_extensions_de_fonctions" class="previous" aria-label="Précédant"></a>
     <h3>Extension</h3>
     <article>
@@ -2866,7 +2602,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide Android ByteCode -->
-<section id="android_bytecode" class="">
+<section id="android_bytecode" class="manu">
     <a href="#part_bytecode_android" class="previous" aria-label="Précédant"></a>
     <h3>Android ByteCode</h3>
     <article>
@@ -2877,7 +2613,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide ProGuard -->
-<section id="proguard" class="">
+<section id="proguard" class="manu">
     <a href="#android_bytecode" class="previous" aria-label="Précédant"></a>
     <h3>ProGuard</h3>
     <article>
@@ -2899,7 +2635,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide if-then-else.kt -->
-<section id="if_then_else_kt" class="code kotlin">
+<section id="if_then_else_kt" class="code kotlin igor">
     <a href="#part_autres_structures" class="previous" aria-label="Précédant"></a>
     <h3>if-then-else.kt</h3>
     <article>
@@ -2918,7 +2654,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide for.kt -->
-<section id="for_kt" class="code kotlin">
+<section id="for_kt" class="code kotlin igor">
     <a href="#if_then_else_kt" class="previous" aria-label="Précédant"></a>
     <h3>for.kt</h3>
     <article>
@@ -2933,7 +2669,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide for.java -->
-<section id="for_java" class="code java">
+<section id="for_java" class="code java igor">
     <a href="#for_kt" class="previous" aria-label="Précédant"></a>
     <h3>for.java</h3>
     <article>
@@ -2972,7 +2708,7 @@ public final class _06_class_2.TypealiasKt {
 
 
 <!-- Slide ByteCode du for -->
-<section id="bytecode_du_for" class="code bytecode">
+<section id="bytecode_du_for" class="code bytecode igor">
     <a href="#for_java" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode du for</h3>
     <article>
@@ -3007,7 +2743,7 @@ public final class _09_structures.ForKt {
 
 
 <!-- Slide while-do.kt -->
-<section id="while_do_kt" class="code kotlin">
+<section id="while_do_kt" class="code kotlin igor">
     <a href="#bytecode_du_for" class="previous" aria-label="Précédant"></a>
     <h3>while-do.kt</h3>
     <article>
@@ -3025,7 +2761,7 @@ public final class _09_structures.ForKt {
 
 
 <!-- Slide when.kt -->
-<section id="when_kt" class="code kotlin">
+<section id="when_kt" class="code kotlin igor">
     <a href="#while_do_kt" class="previous" aria-label="Précédant"></a>
     <h3>when.kt</h3>
     <article>
@@ -3047,7 +2783,7 @@ public final class _09_structures.ForKt {
 
 
 <!-- Slide for-factorial.kt -->
-<section id="for_factorial_kt" class="code kotlin">
+<section id="for_factorial_kt" class="code kotlin igor">
     <a href="#when_kt" class="previous" aria-label="Précédant"></a>
     <h3>for-factorial.kt</h3>
     <article>
@@ -3065,7 +2801,7 @@ public final class _09_structures.ForKt {
 
 
 <!-- Slide ByteCode factoriel avec for -->
-<section id="bytecode_factoriel_avec_for" class="code bytecode">
+<section id="bytecode_factoriel_avec_for" class="code bytecode igor">
     <a href="#for_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec for</h3>
     <article>
@@ -3101,7 +2837,7 @@ public final class _09_structures.recusion.For_factorialKt {
 
 
 <!-- Slide rec-factorial.kt -->
-<section id="rec_factorial_kt" class="code kotlin">
+<section id="rec_factorial_kt" class="code kotlin igor">
     <a href="#bytecode_factoriel_avec_for" class="previous" aria-label="Précédant"></a>
     <h3>rec-factorial.kt</h3>
     <article>
@@ -3116,7 +2852,7 @@ public final class _09_structures.recusion.For_factorialKt {
 
 
 <!-- Slide ByteCode factoriel avec recursivité -->
-<section id="bytecode_factoriel_avec_recursivite" class="code bytecode">
+<section id="bytecode_factoriel_avec_recursivite" class="code bytecode igor">
     <a href="#rec_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité</h3>
     <article>
@@ -3144,7 +2880,7 @@ public final class _09_structures.recusion.Rec_factorialKt {
 
 
 <!-- Slide tailrec-factorial.kt -->
-<section id="tailrec_factorial_kt" class="code kotlin">
+<section id="tailrec_factorial_kt" class="code kotlin igor">
     <a href="#bytecode_factoriel_avec_recursivite" class="previous" aria-label="Précédant"></a>
     <h3>tailrec-factorial.kt</h3>
     <article>
@@ -3165,7 +2901,7 @@ public final class _09_structures.recusion.Rec_factorialKt {
 
 
 <!-- Slide ByteCode factoriel avec recursivité terminal 1/2 -->
-<section id="bytecode_factoriel_avec_recursivite_terminal_1_2" class="code bytecode">
+<section id="bytecode_factoriel_avec_recursivite_terminal_1_2" class="code bytecode igor">
     <a href="#tailrec_factorial_kt" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité terminal 1/2</h3>
     <article>
@@ -3188,7 +2924,7 @@ public final class _09_structures.recusion.Tailrec_factorialKt {
 
 
 <!-- Slide ByteCode factoriel avec recursivité terminal 2/2 -->
-<section id="bytecode_factoriel_avec_recursivite_terminal_2_2" class="code bytecode">
+<section id="bytecode_factoriel_avec_recursivite_terminal_2_2" class="code bytecode igor">
     <a href="#bytecode_factoriel_avec_recursivite_terminal_1_2" class="previous" aria-label="Précédant"></a>
     <h3>ByteCode factoriel avec recursivité terminal 2/2</h3>
     <article>
@@ -3252,7 +2988,7 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 
 <!-- Slide Performances sur 10! -->
-<section id="performances_sur_10_" class="measure contrast">
+<section id="performances_sur_10_" class="measure contrast igor">
     <a href="#bytecode_factoriel_avec_recursivite_terminal_2_2" class="previous" aria-label="Précédant"></a>
     <h3>Performances sur 10!</h3>
     <article>
@@ -3313,7 +3049,7 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 
 <!-- Slide Bilan structures -->
-<section id="bilan-structures" class="details contrast">
+<section id="bilan-structures" class="details contrast igor">
     <a href="#performances_sur_10_" class="previous" aria-label="Précédant"></a>
     <h3>Bilan structures</h3>
     <article>
@@ -3350,7 +3086,7 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 
 <!-- Slide api.kt -->
-<section id="api_kt" class="code kotlin">
+<section id="api_kt" class="code kotlin igor live-code">
     <a href="#part_les_collections" class="previous" aria-label="Précédant"></a>
     <h3>api.kt</h3>
     <article>
@@ -3371,7 +3107,7 @@ println(s)</code></pre>
 
 
 <!-- Slide immutable-mutable.kt -->
-<section id="immutable_mutable_kt" class="code kotlin">
+<section id="immutable_mutable_kt" class="code kotlin igor play">
     <a href="#api_kt" class="previous" aria-label="Précédant"></a>
     <h3>immutable-mutable.kt</h3>
     <article>
@@ -3397,7 +3133,7 @@ println(s)</code></pre>
 
 
 <!-- Slide break-immutable.kt -->
-<section id="break_immutable_kt" class="code kotlin">
+<section id="break_immutable_kt" class="code kotlin igor play">
     <a href="#immutable_mutable_kt" class="previous" aria-label="Précédant"></a>
     <h3>break-immutable.kt</h3>
     <article>
@@ -3429,7 +3165,7 @@ println(s)</code></pre>
 
 
 <!-- Slide Bilan collection -->
-<section id="collection" class="">
+<section id="collection" class="details contrast igor manu">
     <a href="#break_immutable_kt" class="previous" aria-label="Précédant"></a>
     <h3>Bilan collection</h3>
     <article>
@@ -3455,7 +3191,7 @@ println(s)</code></pre>
 
 
 <!-- Slide Delegate -->
-<section id="delegate" class="">
+<section id="delegate" class="manu">
     <a href="#part_les_delegates" class="previous" aria-label="Précédant"></a>
     <h3>Delegate</h3>
     <article>
@@ -3477,7 +3213,7 @@ println(s)</code></pre>
 
 
 <!-- Slide inline.kt -->
-<section id="inline_kt" class="code kotlin">
+<section id="inline_kt" class="code kotlin igor">
     <a href="#part_un_peu_plus_sur_les_fonctions" class="previous" aria-label="Précédant"></a>
     <h3>inline.kt</h3>
     <article>
@@ -3509,7 +3245,7 @@ println(s)</code></pre>
 
 
 <!-- Slide Logger.java -->
-<section id="logger_java" class="code java">
+<section id="logger_java" class="code java igor">
     <a href="#inline_kt" class="previous" aria-label="Précédant"></a>
     <h3>Logger.java</h3>
     <article>
@@ -3594,7 +3330,7 @@ println(s)</code></pre>
 
 
 <!-- Slide reified.kt -->
-<section id="reified_kt" class="code kotlin">
+<section id="reified_kt" class="code kotlin igor">
     <a href="#logger_java" class="previous" aria-label="Précédant"></a>
     <h3>reified.kt</h3>
     <article>
@@ -3625,7 +3361,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Plus sur les fonctions -->
-<section id="plus_sur_les_fonctions" class="details contrast">
+<section id="plus_sur_les_fonctions" class="details contrast igor">
     <a href="#reified_kt" class="previous" aria-label="Précédant"></a>
     <h3>Plus sur les fonctions</h3>
     <article>
@@ -3656,7 +3392,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Android -->
-<section id="android" class="contrast">
+<section id="android" class="contrast manu">
     <a href="#part_conclusion" class="previous" aria-label="Précédant"></a>
     <h3>Android</h3>
     <article>
@@ -3674,7 +3410,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Serveur -->
-<section id="serveur" class="contrast">
+<section id="serveur" class="contrast igor">
     <a href="#android" class="previous" aria-label="Précédant"></a>
     <h3>Serveur</h3>
     <article>
@@ -3692,7 +3428,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Web et Natif -->
-<section id="web_et_natif" class="contrast">
+<section id="web_et_natif" class="contrast igor manu">
     <a href="#serveur" class="previous" aria-label="Précédant"></a>
     <h3>Web et Natif</h3>
     <article>
@@ -3714,7 +3450,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Kotlin vs Java -->
-<section id="kotlin_vs_java" class="contrast">
+<section id="kotlin_vs_java" class="contrast manu igor">
     <a href="#web_et_natif" class="previous" aria-label="Précédant"></a>
     <h3>Kotlin vs Java</h3>
     <article>
@@ -3736,15 +3472,15 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Liens -->
-<section id="liens" class="contrast">
+<section id="liens" class="contrast manu igor">
     <a href="#kotlin_vs_java" class="previous" aria-label="Précédant"></a>
     <h3>Liens</h3>
     <article>
         <ul>
 <li><a href="http://kotlinlang.org/docs/reference/">Référence</a></li>
-<li><a href="https://kotlin.link/">https://kotlin.link/</a></li>
 <li><a href="https://blog.jetbrains.com/kotlin/">Blog</a></li>
-<li><a href="https://discuss.kotlinlang.org/">Forum</a>, <a href="https://kotlinslack.herokuapp.com/">Slack</a></li>
+<li><a href="https://discuss.kotlinlang.org/">Forum</a></li>
+<li><a href="https://kotlinslack.herokuapp.com/">Slack</a></li>
 <li><a href="https://kotlinlang.org/docs/tutorials/koans.html">Koans</a></li>
 <li><a href="https://github.com/MonkeyPatchIo/KotlinByExample">Kotlin by example</a></li>
 </ul>
@@ -3755,17 +3491,20 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Bibliothèques -->
-<section id="bibliotheques" class="contrast">
+<section id="bibliotheques" class="contrast manu igor">
     <a href="#liens" class="previous" aria-label="Précédant"></a>
     <h3>Bibliothèques</h3>
     <article>
         <ul>
+<li><a href="https://github.com/Kotlin/kotlinx.serialization">kotlinx.serialization</a></li>
+<li><a href="https://github.com/Kotlin/kotlinx.coroutines">kotlinx.coroutines</a></li>
 <li><a href="https://github.com/kotlintest/kotlintest">KotlinTest</a></li>
 <li><a href="https://github.com/tipsy/javalin">Javalin</a></li>
 <li><a href="https://github.com/ReactiveX/RxKotlin">RxKotlin</a></li>
-<li><a href="http://arrow-kt.io/">⋀rrow</a></li>
-<li><a href="https://github.com/Kotlin/kotlinx.serialization">kotlinx.serialization</a></li>
-<li>...</li>
+<li><p><a href="http://arrow-kt.io/">⋀rrow</a></p>
+</li>
+<li><p><a href="https://kotlin.link/">Kotlin is Awesome</a></p>
+</li>
 </ul>
 
     </article>
@@ -3774,7 +3513,7 @@ fun main(args: Array&lt;String&gt;) {
 
 
 <!-- Slide Merci -->
-<section id="merci" class="contrast">
+<section id="merci" class="contrast manu igor">
     <a href="#bibliotheques" class="previous" aria-label="Précédant"></a>
     <h3>Merci</h3>
     <article>
