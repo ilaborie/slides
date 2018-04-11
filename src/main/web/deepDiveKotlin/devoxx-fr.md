@@ -40,10 +40,10 @@
 1. Introduction Kotlin
 2. Les bases
 3. null-safety
-4. Les fonctions
-5. Les lambdas
-6. Les classes
-7. Les types
+4. Les types
+5. Les fonctions
+6. Les lambdas
+7. Les classes
 8. Extensions de fonctions
 9. Pause
 10. ByteCode Android
@@ -437,24 +437,13 @@ public final class HelloWorldKt {
 | kotlin-stdlib-jdk7-1.2.31.jar | 3.1K |
 | kotlin-stdlib-jdk8-1.2.31.jar |  13K |
 | kotlin-reflect-1.2.31.jar     | 2.5M |
-| guava-18.0.jar                | 2.2M | 
+| guava-18.0.jar                | 2.2M |
+| lombok-1.16.18.jar            | 1.4M | 
 | spring-core-5.0.5.RELEASE.jar | 1.2M | 
 | jackson-databind-2.9.5.jar    | 1.3M | 
-| logback-classic-1.2.3.jar     | 284K | 
+ 
 
 * Performances ?
-
-
-
-* <https://github.com/JetBrains/kotlin-benchmarks>
-* [Kotlin Hidden Costs Benchmark](https://github.com/renatoathaydes/kotlin-hidden-costs-benchmark) 
-  * ⚠️ kotlin 1.1.3
-  * [Part 1](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-1-fbb9935d9b62)
-  * [Part 2](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-2-324a4a50b70)
-  * [Part 3](https://medium.com/@BladeCoder/exploring-kotlins-hidden-costs-part-3-3bf6e0dbf0a4)
-  * [Kotlin Hidden Costs - Benchmarks](https://sites.google.com/a/athaydes.com/renato-athaydes/posts/kotlinshiddencosts-benchmarks)
-  * [MàJ versions Kotlin, JMH](https://github.com/ilaborie/kotlin-hidden-costs-benchmark)
-  
 
 
 
@@ -627,488 +616,6 @@ public final class _01_basic.NumericKt {
 
 > I call it my billion-dollar mistake. It was the invention of the <code>null</code> reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a <code>null</code> reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years.
 [Null References: The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)
-
-
-
-
-
-```kotlin
-fun buildString(prefix: String,
-                who: String,
-                enhanced: Boolean): String {
-    var msg = "$prefix $who"
-    if (enhanced) {
-        msg += '!'
-    }
-    return msg
-}
-
-fun greetings(): String =
-    buildString(enhanced = true, who = "Devoxx", prefix = "Hello")
-```
-
-```java
-package _03_fun;
-
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 2,
-   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\u001e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\u0006\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
-   d2 = {"buildString", "", "prefix", "who", "enhanced", "", "greetings"}
-)
-public final class NamedKt {
-   @NotNull
-   public static final String buildString(@NotNull String prefix, @NotNull String who, boolean enhanced) {
-      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
-      Intrinsics.checkParameterIsNotNull(who, "who");
-      String msg = "" + prefix + ' ' + who;
-      if (enhanced) {
-         msg = msg + '!';
-      }
-
-      return msg;
-   }
-
-   @NotNull
-   public static final String greetings() {
-      String var0 = "Hello";
-      String var1 = "Devoxx";
-      boolean var2 = true;
-      return buildString(var0, var1, var2);
-   }
-}
-
-```
-
-```kotlin
-fun buildString2(prefix: String = "Hello",
-                 who: String,
-                 enhanced: Boolean = true): String {
-    var msg = "$prefix $who"
-    if (enhanced) {
-        msg += '!'
-    }
-    return msg
-}
-
-fun greetings2(): String =
-    buildString2(who = "Devoxx")
-```
-
-```java
-package _03_fun;
-
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 2,
-   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\"\u0010\u0000\u001a\u00020\u00012\b\b\u0002\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
-   d2 = {"buildString2", "", "prefix", "who", "enhanced", "", "greetings2"}
-)
-public final class Default_valueKt {
-   @NotNull
-   public static final String buildString2(@NotNull String prefix, @NotNull String who, boolean enhanced) {
-      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
-      Intrinsics.checkParameterIsNotNull(who, "who");
-      String msg = "" + prefix + ' ' + who;
-      if (enhanced) {
-         msg = msg + '!';
-      }
-
-      return msg;
-   }
-
-   @NotNull
-   public static final String greetings2() {
-      return buildString2$default((String)null, "Devoxx", false, 5, (Object)null);
-   }
-}
-
-```
-
-`Compiled from "default-value.kt"
-public final class _03_fun.Default_valueKt {
-  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
-    Code:
-       0: aload_0
-       1: ldc           #9                  // String prefix
-       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-       6: aload_1
-       7: ldc           #17                 // String who
-       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
-      12: new           #19                 // class java/lang/StringBuilder
-      15: dup
-      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      19: ldc           #25                 // String
-      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      24: aload_0
-      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      28: bipush        32
-      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      33: aload_1
-      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      40: astore_3
-      41: iload_2
-      42: ifeq          66
-      45: aload_3
-      46: new           #19                 // class java/lang/StringBuilder
-      49: dup
-      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
-      53: swap
-      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      57: bipush        33
-      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
-      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
-      65: astore_3
-      66: aload_3
-      67: areturn
-
-  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
-    Code:
-       0: iload_3
-       1: iconst_1
-       2: iand
-       3: ifeq          9
-       6: ldc           #46                 // String Hello
-       8: astore_0
-       9: iload_3
-      10: iconst_4
-      11: iand
-      12: ifeq          17
-      15: iconst_1
-      16: istore_2
-      17: aload_0
-      18: aload_1
-      19: iload_2
-      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
-      23: areturn
-
-  public static final java.lang.String greetings2();
-    Code:
-       0: aconst_null
-       1: ldc           #51                 // String Devoxx
-       3: iconst_0
-       4: iconst_5
-       5: aconst_null
-       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
-       9: areturn
-}
-`
-
-#### ✨ Conseils
-
-- Toujours typer le retour de vos fonctions
-  (sauf si c'est évident et une surcharge comme le `toString`)
-- Kotlin est plus expressif que Java => évitez de faire des fonctions trop longues
-- Sautez une ligne après le `=`
-- Utilisez le passage des arguments par nom quand ça lève des ambigüités
-
-#### 📝 Notes
-
-- Le passage des arguments par nom, ne marche pas sur les appels de code Java
- 
-
-
-
-
-
-
-
-```kotlin
-class Point(x: Int, y: Int) {
-    val x = x
-    var y = y
-}
-
-// val p1 = Point(2, 4)
-```
-
-```java
-package _06_class_1;
-
-import kotlin.Metadata;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 1,
-   d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"},
-   d2 = {"L_06_class_1/Point;", "", "x", "", "y", "(II)V", "getX", "()I", "getY", "setY", "(I)V"}
-)
-public final class Point {
-   private final int x;
-   private int y;
-
-   public final int getX() {
-      return this.x;
-   }
-
-   public final int getY() {
-      return this.y;
-   }
-
-   public final void setY(int var1) {
-      this.y = var1;
-   }
-
-   public Point(int x, int y) {
-      super();
-      this.x = x;
-      this.y = x;
-   }
-}
-
-```
-
-```kotlin
-class Point2(val x: Int, var y: Int)
-
-// val p2 = Point2(2, 4)
-```
-
-```java
-package _06_class_1;
-
-import kotlin.Metadata;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 1,
-   d1 = {"\u0000\u0012\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u0015\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0003¢\u0006\u0002\u0010\u0005R\u0011\u0010\u0002\u001a\u00020\u0003¢\u0006\b\n\u0000\u001a\u0004\b\u0006\u0010\u0007R\u001a\u0010\u0004\u001a\u00020\u0003X\u0086\u000e¢\u0006\u000e\n\u0000\u001a\u0004\b\b\u0010\u0007\"\u0004\b\t\u0010\n"},
-   d2 = {"L_06_class_1/Point2;", "", "x", "", "y", "(II)V", "getX", "()I", "getY", "setY", "(I)V"}
-)
-public final class Point2 {
-   private final int x;
-   private int y;
-
-   public final int getX() {
-      return this.x;
-   }
-
-   public final int getY() {
-      return this.y;
-   }
-
-   public final void setY(int var1) {
-      this.y = var1;
-   }
-
-   public Point2(int x, int y) {
-      super();
-      this.x = x;
-      this.y = y;
-   }
-}
-
-```
-
-```kotlin
-class Point3(val x: Int, val y: Int) {
-    constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
-}
-
-// val p3 = Point3(Pair(2, 4))
-
-```
-
-```java
-package _06_class_1;
-
-import kotlin.Metadata;
-import kotlin.Pair;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 1,
-   d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"},
-   d2 = {"L_06_class_1/Point3;", "", "pair", "Lkotlin/Pair;", "", "(Lkotlin/Pair;)V", "x", "y", "(II)V", "getX", "()I", "getY"}
-)
-public final class Point3 {
-   private final int x;
-   private final int y;
-
-   public final int getX() {
-      return this.x;
-   }
-
-   public final int getY() {
-      return this.y;
-   }
-
-   public Point3(int x, int y) {
-      super();
-      this.x = x;
-      this.y = y;
-   }
-
-   public Point3(@NotNull Pair pair) {
-      Intrinsics.checkParameterIsNotNull(pair, "pair");
-      this(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
-   }
-}
-
-```
-
-```kotlin
-class Point4(val x: Int, val y: Int) {
-    constructor(pair: Pair<Int, Int>) : this(pair.first, pair.second)
-
-    init {
-        println("($x, $y)")
-    }
-}
-
-// val p4 = Point4(Pair(2, 4))
-```
-
-```java
-package _06_class_1;
-
-import kotlin.Metadata;
-import kotlin.Pair;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 1,
-   d1 = {"\u0000\u0016\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\u00020\u0001B\u001b\b\u0016\u0012\u0012\u0010\u0002\u001a\u000e\u0012\u0004\u0012\u00020\u0004\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005B\u0015\u0012\u0006\u0010\u0006\u001a\u00020\u0004\u0012\u0006\u0010\u0007\u001a\u00020\u0004¢\u0006\u0002\u0010\bR\u0011\u0010\u0006\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\t\u0010\nR\u0011\u0010\u0007\u001a\u00020\u0004¢\u0006\b\n\u0000\u001a\u0004\b\u000b\u0010\n"},
-   d2 = {"L_06_class_1/Point4;", "", "pair", "Lkotlin/Pair;", "", "(Lkotlin/Pair;)V", "x", "y", "(II)V", "getX", "()I", "getY"}
-)
-public final class Point4 {
-   private final int x;
-   private final int y;
-
-   public final int getX() {
-      return this.x;
-   }
-
-   public final int getY() {
-      return this.y;
-   }
-
-   public Point4(int x, int y) {
-      super();
-      this.x = x;
-      this.y = y;
-      String var3 = "" + '(' + this.x + ", " + this.y + ')';
-      System.out.println(var3);
-   }
-
-   public Point4(@NotNull Pair pair) {
-      Intrinsics.checkParameterIsNotNull(pair, "pair");
-      this(((Number)pair.getFirst()).intValue(), ((Number)pair.getSecond()).intValue());
-   }
-}
-
-```
-
-```kotlin
-open class Animal {
-    open fun talk(): String =
-        "???"
-}
-
-data class Cat(val name: String) : Animal() {
-    override fun talk(): String =
-        "Meow"
-}
-
-data class Dog(val name: String) : Animal() {
-    override fun talk(): String =
-        "Woof"
-}
-
-fun main(args: Array<String>) {
-    val pets: List<Animal> = listOf(Cat("Felix"), Dog("Rex"))
-
-    pets.forEach { pet -> println("$pet: ${pet.talk()}") } // 😱
-}
-
-// Cat(name=Felix): Meow
-// Dog(name=Rex): Woof
-
-```
-
-* Covariant (consome): `out`
-* Contravariant (produit): `in`
-
-
-* Borne supérieur :
-
-```kotlin
-fun <T : Comparable<T>> sort(list: List<T>): List<T>
-```
-
-⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
-
-* Les détails: <https://kotlinlang.org/docs/reference/generics.html>
-
-```kotlin
-interface Function<in T, out U>
-```
-```kotlin
-Function<*, String> // correspond à Function<in Nothing, String>
-```
-```kotlin
-Function<Int, *> // correspond à Function<Int, out Any?>
-```
-```kotlin
-Function<*, *> // correspond à Function<in Nothing, out Any?>
-```
-
-```kotlin
-sealed class JsonValue
-
-data class JsonObject(val attributes: Map<String, JsonValue>) : JsonValue()
-data class JsonArray(val values: List<JsonValue>) : JsonValue()
-data class JsonString(val value: String) : JsonValue()
-data class JsonNumber(val value: Number) : JsonValue()
-data class JsonBoolean(val value: Boolean) : JsonValue()
-object JsonNull : JsonValue()
-```
-
-```kotlin
-interface Entity
-
-typealias Id = String
-typealias Version = Int
-typealias EntityKey = Pair<Id, Version>
-
-// fun getAllEntities(): Map<Pair<String, Int>, List<Entity>> = emptyMap()
-fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
-
-```
-
-`Compiled from "typealias.kt"
-public final class _06_class_2.TypealiasKt {
-  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
-    Code:
-       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
-       3: areturn
-}
-`
-
-
-* 🤔 Mais pourquoi on n'a pas ça en Java ?
-* Une seule classe par fichier n'est pas utile
-* 🤓 `sealed` permet de faire des types algébriques de données (Algebraic Data Type)
-
 
 
 
@@ -2112,9 +1619,307 @@ public final class _06_class_2.TypealiasKt {
     </g>
 </svg>
 
+```kotlin
+fun `is P = NP`(): Boolean =
+    TODO()
+
+fun main(args: Array<String>) {
+    println("P = NP is ${`is P = NP`()}")
+}
+```
+
 
 
 * 🤝 le `TODO()` est l'ami du TDD
+
+
+
+```kotlin
+fun buildString(prefix: String,
+                who: String,
+                enhanced: Boolean): String {
+    var msg = "$prefix $who"
+    if (enhanced) {
+        msg += '!'
+    }
+    return msg
+}
+
+fun greetings(): String =
+    buildString(enhanced = true, who = "Devoxx", prefix = "Hello")
+```
+
+```java
+package _03_fun;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\u001e\u0010\u0000\u001a\u00020\u00012\u0006\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\u0006\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
+   d2 = {"buildString", "", "prefix", "who", "enhanced", "", "greetings"}
+)
+public final class NamedKt {
+   @NotNull
+   public static final String buildString(@NotNull String prefix, @NotNull String who, boolean enhanced) {
+      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
+      Intrinsics.checkParameterIsNotNull(who, "who");
+      String msg = "" + prefix + ' ' + who;
+      if (enhanced) {
+         msg = msg + '!';
+      }
+
+      return msg;
+   }
+
+   @NotNull
+   public static final String greetings() {
+      String var0 = "Hello";
+      String var1 = "Devoxx";
+      boolean var2 = true;
+      return buildString(var0, var1, var2);
+   }
+}
+
+```
+
+```kotlin
+fun buildString2(prefix: String = "Hello",
+                 who: String,
+                 enhanced: Boolean = true): String {
+    var msg = "$prefix $who"
+    if (enhanced) {
+        msg += '!'
+    }
+    return msg
+}
+
+fun greetings2(): String =
+    buildString2(who = "Devoxx")
+```
+
+```java
+package _03_fun;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+   mv = {1, 1, 9},
+   bv = {1, 0, 2},
+   k = 2,
+   d1 = {"\u0000\u0010\n\u0000\n\u0002\u0010\u000e\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\u001a\"\u0010\u0000\u001a\u00020\u00012\b\b\u0002\u0010\u0002\u001a\u00020\u00012\u0006\u0010\u0003\u001a\u00020\u00012\b\b\u0002\u0010\u0004\u001a\u00020\u0005\u001a\u0006\u0010\u0006\u001a\u00020\u0001"},
+   d2 = {"buildString2", "", "prefix", "who", "enhanced", "", "greetings2"}
+)
+public final class Default_valueKt {
+   @NotNull
+   public static final String buildString2(@NotNull String prefix, @NotNull String who, boolean enhanced) {
+      Intrinsics.checkParameterIsNotNull(prefix, "prefix");
+      Intrinsics.checkParameterIsNotNull(who, "who");
+      String msg = "" + prefix + ' ' + who;
+      if (enhanced) {
+         msg = msg + '!';
+      }
+
+      return msg;
+   }
+
+   @NotNull
+   public static final String greetings2() {
+      return buildString2$default((String)null, "Devoxx", false, 5, (Object)null);
+   }
+}
+
+```
+
+`Compiled from "default-value.kt"
+public final class _03_fun.Default_valueKt {
+  public static final java.lang.String buildString2(java.lang.String, java.lang.String, boolean);
+    Code:
+       0: aload_0
+       1: ldc           #9                  // String prefix
+       3: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+       6: aload_1
+       7: ldc           #17                 // String who
+       9: invokestatic  #15                 // Method kotlin/jvm/internal/Intrinsics.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V
+      12: new           #19                 // class java/lang/StringBuilder
+      15: dup
+      16: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      19: ldc           #25                 // String
+      21: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      24: aload_0
+      25: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      28: bipush        32
+      30: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      33: aload_1
+      34: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      37: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      40: astore_3
+      41: iload_2
+      42: ifeq          66
+      45: aload_3
+      46: new           #19                 // class java/lang/StringBuilder
+      49: dup
+      50: invokespecial #23                 // Method java/lang/StringBuilder."<init>":()V
+      53: swap
+      54: invokevirtual #29                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      57: bipush        33
+      59: invokevirtual #32                 // Method java/lang/StringBuilder.append:(C)Ljava/lang/StringBuilder;
+      62: invokevirtual #36                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+      65: astore_3
+      66: aload_3
+      67: areturn
+
+  public static java.lang.String buildString2$default(java.lang.String, java.lang.String, boolean, int, java.lang.Object);
+    Code:
+       0: iload_3
+       1: iconst_1
+       2: iand
+       3: ifeq          9
+       6: ldc           #46                 // String Hello
+       8: astore_0
+       9: iload_3
+      10: iconst_4
+      11: iand
+      12: ifeq          17
+      15: iconst_1
+      16: istore_2
+      17: aload_0
+      18: aload_1
+      19: iload_2
+      20: invokestatic  #48                 // Method buildString2:(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;
+      23: areturn
+
+  public static final java.lang.String greetings2();
+    Code:
+       0: aconst_null
+       1: ldc           #51                 // String Devoxx
+       3: iconst_0
+       4: iconst_5
+       5: aconst_null
+       6: invokestatic  #53                 // Method buildString2$default:(Ljava/lang/String;Ljava/lang/String;ZILjava/lang/Object;)Ljava/lang/String;
+       9: areturn
+}
+`
+
+#### ✨ Conseils
+
+- Toujours typer le retour de vos fonctions
+  (sauf si c'est évident et une surcharge comme le `toString`)
+- Kotlin est plus expressif que Java => évitez de faire des fonctions trop longues
+- Sautez une ligne après le `=`
+- Utilisez le passage des arguments par nom quand ça lève des ambigüités
+
+#### 📝 Notes
+
+- Le passage des arguments par nom, ne marche pas sur les appels de code Java
+ 
+
+
+
+
+
+
+
+```kotlin
+open class Animal { // need open
+    open fun talk(): String =
+        "???"
+}
+
+data class Cat(val name: String) : Animal() {
+    override fun talk(): String = // need override
+        "Meow"
+}
+
+data class Dog(val name: String) : Animal() {
+    override fun talk(): String =  // need override
+        "Woof"
+}
+
+fun main(args: Array<String>) {
+    val pets: List<Animal> = listOf(Cat("Felix"), Dog("Rex"))
+
+    // 😱
+    pets.forEach { pet ->
+        println("$pet: ${pet.talk()}")
+    }
+    // Cat(name=Felix): Meow
+    // Dog(name=Rex): Woof
+}
+```
+
+* Covariant (consome): `out`
+* Contravariant (produit): `in`
+
+
+* Borne supérieur :
+
+```kotlin
+fun <T : Comparable<T>> sort(list: List<T>): List<T>
+```
+
+⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
+
+* Les détails: <https://kotlinlang.org/docs/reference/generics.html>
+
+```kotlin
+interface Function<in T, out U>
+```
+```kotlin
+Function<*, String> // correspond à Function<in Nothing, String>
+```
+```kotlin
+Function<Int, *> // correspond à Function<Int, out Any?>
+```
+```kotlin
+Function<*, *> // correspond à Function<in Nothing, out Any?>
+```
+
+```kotlin
+sealed class JsonValue
+
+data class JsonObject(val attributes: Map<String, JsonValue>) : JsonValue()
+data class JsonArray(val values: List<JsonValue>) : JsonValue()
+data class JsonString(val value: String) : JsonValue()
+data class JsonNumber(val value: Number) : JsonValue()
+data class JsonBoolean(val value: Boolean) : JsonValue()
+object JsonNull : JsonValue()
+```
+
+```kotlin
+interface Entity
+
+typealias Id = String
+typealias Version = Int
+typealias EntityKey = Pair<Id, Version>
+
+// fun getAllEntities(): Map<Pair<String, Int>, List<Entity>> = emptyMap()
+fun getAllEntities(): Map<EntityKey, List<Entity>> = emptyMap()
+
+```
+
+`Compiled from "typealias.kt"
+public final class _06_class_2.TypealiasKt {
+  public static final java.util.Map<kotlin.Pair<java.lang.String, java.lang.Integer>, java.util.List<_06_class_2.Entity>> getAllEntities();
+    Code:
+       0: invokestatic  #12                 // Method kotlin/collections/MapsKt.emptyMap:()Ljava/util/Map;
+       3: areturn
+}
+`
+
+
+* 🤔 Mais pourquoi on n'a pas ça en Java ?
+* Une seule classe par fichier n'est pas utile
+* 🤓 `sealed` permet de faire des types algébriques de données (Algebraic Data Type)
+
+
+
 
 
 
@@ -2657,20 +2462,22 @@ fun main(args: Array<String>) {
 
 
 * [Référence](http://kotlinlang.org/docs/reference/)
-* [https://kotlin.link/](https://kotlin.link/)
 * [Blog](https://blog.jetbrains.com/kotlin/)
-* [Forum](https://discuss.kotlinlang.org/), [Slack](https://kotlinslack.herokuapp.com/)
+* [Forum](https://discuss.kotlinlang.org/)
+* [Slack](https://kotlinslack.herokuapp.com/)
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
 
 
 
+* [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+* [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines)
 * [KotlinTest](https://github.com/kotlintest/kotlintest)
 * [Javalin](https://github.com/tipsy/javalin)
 * [RxKotlin](https://github.com/ReactiveX/RxKotlin)
 * [⋀rrow](http://arrow-kt.io/)
-* [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
-* ...
+
+* [Kotlin is Awesome](https://kotlin.link/)
 
 
 

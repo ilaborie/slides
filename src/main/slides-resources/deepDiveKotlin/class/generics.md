@@ -4,9 +4,9 @@
 
 * Borne supérieur :
 
-```kotlin
+<pre> 
 fun <T : Comparable<T>> sort(list: List<T>): List<T>
-```
+<pre>
 
 ⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
 

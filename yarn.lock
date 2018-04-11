@@ -57,8 +57,8 @@
     "@types/express" "*"
 
 "@types/node@*", "@types/node@^9.0.0":
-  version "9.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.2.tgz#e49ac1adb458835e95ca6487bc20f916b37aff23"
+  version "9.6.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.3.tgz#f5fd440f8a9867b65ae76d442e269622a1db00b5"
 
 "@types/puppeteer@^1.0.0":
   version "1.2.1"
@@ -221,8 +221,8 @@ aws-sign2@~0.7.0:
   resolved "https://registry.yarnpkg.com/aws-sign2/-/aws-sign2-0.7.0.tgz#b46e890934a9591f2d2f6f86d7e6a9f1b3fe76a8"
 
 aws4@^1.2.1, aws4@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.7.0.tgz#d4d0e9b9dbfca77bf08eeb0a8a471550fe39e289"
 
 balanced-match@^1.0.0:
   version "1.0.0"

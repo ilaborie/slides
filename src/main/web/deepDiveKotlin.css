@@ -351,10 +351,10 @@ section#performance_helloworld_kt article table {
   section#performance_helloworld_kt article table td {
     font-family: var(--codeFont); }
 
-section#c_est_nul {
+section#billion_dollar_mistake {
   background: url("./assets/devoxx-fr/mistake.png");
   background-size: cover; }
-  section#c_est_nul article blockquote p {
+  section#billion_dollar_mistake article blockquote p {
     font-size: .85rem; }
 
 section#part_pause {
