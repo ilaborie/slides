@@ -100,8 +100,8 @@ fun prezDevoxxFr2018() =
                 bash { "javap -c HelloWorld.class" }
                 codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.txt")
             }
-            slide(title = "Transpile", styleClass = setOf("diagram", "igor")) {
-                svg("/deepDiveKotlin/bytecode/javac.svg")
+            slide(title = "javac", styleClass = setOf("diagram", "igor")) {
+                svg("/deepDiveKotlin/bytecode/Compile Java.svg")
             }
             slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
                 styleClass = setOf("details", "contrast", "igor")
@@ -124,6 +124,9 @@ fun prezDevoxxFr2018() =
                   styleClass = setOf("code", "kotlin", "manu", "live-code")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
                 bash { "kotlinc HelloWorld.kt" }
+            }
+            slide(title = "kotlinc", styleClass = setOf("diagram", "manu")) {
+                svg("/deepDiveKotlin/introduction_kotlin/Compile Kotlin.svg")
             }
             slide(title = "hexdump", styleClass = setOf("code", "hex", "manu")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.hex")
@@ -266,8 +269,11 @@ fun prezDevoxxFr2018() =
 
         part(title = "ByteCode Android", key = "android") {
             // TODO manu
-            slideFromResource(title = "Android ByteCode") { styleClass = setOf("manu") }
-            slideFromResource(title = "ProGuard") { styleClass = setOf("manu") }
+            slide(title = "Compilation pour Android", key="compile-android", styleClass = setOf("diagram", "manu")) {
+                svg("/deepDiveKotlin/android/Compile Android.svg")
+            }
+//            slideFromResource(title = "Android ByteCode") { styleClass = setOf("manu") }
+//            slideFromResource(title = "ProGuard") { styleClass = setOf("manu") }
         }
 
         part(title = "Autres structures", key = "structure") {

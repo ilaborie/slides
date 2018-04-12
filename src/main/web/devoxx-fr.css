@@ -94,6 +94,8 @@
       .devoxx-fr main section.code article pre {
         max-width: 100%;
         overflow: auto; }
+        .devoxx-fr main section.code article pre.lang-bash {
+          overflow: initial; }
     .devoxx-fr main section.code.java {
       background: url("./assets/devoxx-fr/coffee.png");
       background-size: cover; }
@@ -116,16 +118,8 @@
     .devoxx-fr main section.code.bytecode {
       background: url("./assets/devoxx-fr/gears.png");
       background-size: cover; }
-      .devoxx-fr main section.code.bytecode article > code {
-        box-sizing: border-box;
-        padding: .25rem;
-        border-radius: .125rem;
-        background: var(--bgCode);
-        color: var(--fgCode);
-        white-space: pre;
-        overflow: auto;
-        font-size: .6rem;
-        width: 100%; }
+      .devoxx-fr main section.code.bytecode article pre.lang-java::after {
+        display: none; }
   .devoxx-fr section article > pre[class*="lang-"] {
     align-self: center; }
   .devoxx-fr section.contrast article {
@@ -189,7 +183,7 @@
     border: medium solid transparent; }
     .devoxx-fr section article table th, .devoxx-fr section article table td {
       margin: 0;
-      padding: .25em;
+      padding: .125em .25em;
       border: thin solid rgba(0, 0, 0, 0.5); }
     .devoxx-fr section article table th {
       border-bottom-width: medium;

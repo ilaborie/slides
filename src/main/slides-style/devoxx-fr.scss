@@ -152,6 +152,10 @@
       pre {
         max-width: 100%;
         overflow: auto;
+
+        &.lang-bash {
+          overflow: initial;
+        }
       }
     }
 
@@ -183,18 +187,8 @@
     &.bytecode {
       background: url('./assets/devoxx-fr/gears.png');
       background-size: cover;
-      article {
-        & > code {
-          box-sizing: border-box;
-          padding: .25rem;
-          border-radius: .125rem;
-          background: var(--bgCode);
-          color: var(--fgCode);
-          white-space: pre;
-          overflow: auto;
-          font-size: .6rem;
-          width: 100%;
-        }
+      article pre.lang-java::after {
+        display: none;
       }
     }
   }
@@ -290,7 +284,7 @@
       border: medium solid transparent;
       th, td {
         margin: 0;
-        padding: .25em;
+        padding: .125em .25em;
         border: thin solid rgba(0, 0, 0, .5);
       }
       th {
