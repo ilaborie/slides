@@ -293,71 +293,6 @@ section.steps .step {
     opacity: .8;
     transform: scale(1); }
 
-/*
-
-Darcula color scheme from the JetBrains family of IDEs
-
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #2b2b2b; }
-
-.hljs {
-  color: #bababa; }
-
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2; }
-
-.hljs-bullet,
-.hljs-quote,
-.hljs-link,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal {
-  color: #6896ba; }
-
-.hljs-code,
-.hljs-selector-class {
-  color: #a6e22e; }
-
-.hljs-emphasis {
-  font-style: italic; }
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-section,
-.hljs-attribute,
-.hljs-name,
-.hljs-variable {
-  color: #cb7832; }
-
-.hljs-params {
-  color: #b9b9b9; }
-
-.hljs-string {
-  color: #6a8759; }
-
-.hljs-subst,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-symbol,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-template-tag,
-.hljs-template-variable,
-.hljs-addition {
-  color: #e0c46c; }
-
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-  color: #7f7f7f; }
-
 code, pre {
   font-family: var(--codeFont); }
 
@@ -378,7 +313,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); }
   section article a::before, section h1 a::before, section h2 a::before, section h3 a::before, section h4 a::before {
     content: '➼ '; }
-  section article a[href*="github"]::before, section article a[href*="twitter"]::before, section article a[href*="jetbrains"]::before, section article a[href*="mozilla"]::before, section article a[href*="youtube"]::before, section article a[href*="kotlin"]::before, section article a[href*="android"]::before, section article a[href*="spring-framework"]::before, section article a[href*="spring-boot"]::before, section article a[href*="docs.google"]::before, section article a[href*="sparktutorials"]::before, section article a[href*="javalin"]::before, section article a[href*="vertx"]::before, section article a[href*="ktor"]::before, section h1 a[href*="github"]::before, section h1 a[href*="twitter"]::before, section h1 a[href*="jetbrains"]::before, section h1 a[href*="mozilla"]::before, section h1 a[href*="youtube"]::before, section h1 a[href*="kotlin"]::before, section h1 a[href*="android"]::before, section h1 a[href*="spring-framework"]::before, section h1 a[href*="spring-boot"]::before, section h1 a[href*="docs.google"]::before, section h1 a[href*="sparktutorials"]::before, section h1 a[href*="javalin"]::before, section h1 a[href*="vertx"]::before, section h1 a[href*="ktor"]::before, section h2 a[href*="github"]::before, section h2 a[href*="twitter"]::before, section h2 a[href*="jetbrains"]::before, section h2 a[href*="mozilla"]::before, section h2 a[href*="youtube"]::before, section h2 a[href*="kotlin"]::before, section h2 a[href*="android"]::before, section h2 a[href*="spring-framework"]::before, section h2 a[href*="spring-boot"]::before, section h2 a[href*="docs.google"]::before, section h2 a[href*="sparktutorials"]::before, section h2 a[href*="javalin"]::before, section h2 a[href*="vertx"]::before, section h2 a[href*="ktor"]::before, section h3 a[href*="github"]::before, section h3 a[href*="twitter"]::before, section h3 a[href*="jetbrains"]::before, section h3 a[href*="mozilla"]::before, section h3 a[href*="youtube"]::before, section h3 a[href*="kotlin"]::before, section h3 a[href*="android"]::before, section h3 a[href*="spring-framework"]::before, section h3 a[href*="spring-boot"]::before, section h3 a[href*="docs.google"]::before, section h3 a[href*="sparktutorials"]::before, section h3 a[href*="javalin"]::before, section h3 a[href*="vertx"]::before, section h3 a[href*="ktor"]::before, section h4 a[href*="github"]::before, section h4 a[href*="twitter"]::before, section h4 a[href*="jetbrains"]::before, section h4 a[href*="mozilla"]::before, section h4 a[href*="youtube"]::before, section h4 a[href*="kotlin"]::before, section h4 a[href*="android"]::before, section h4 a[href*="spring-framework"]::before, section h4 a[href*="spring-boot"]::before, section h4 a[href*="docs.google"]::before, section h4 a[href*="sparktutorials"]::before, section h4 a[href*="javalin"]::before, section h4 a[href*="vertx"]::before, section h4 a[href*="ktor"]::before {
+  section article a[href*="github"]::before, section article a[href*="twitter"]::before, section article a[href*="jetbrains"]::before, section article a[href*="mozilla"]::before, section article a[href*="youtube"]::before, section article a[href*="kotlin"]::before, section article a[href*="android"]::before, section article a[href*="spring-framework"]::before, section article a[href*="spring-boot"]::before, section article a[href*="docs.google"]::before, section article a[href*="sparktutorials"]::before, section article a[href*="javalin"]::before, section article a[href*="vertx"]::before, section article a[href*="ktor"]::before, section article a[href*="stackoverflow"]::before, section h1 a[href*="github"]::before, section h1 a[href*="twitter"]::before, section h1 a[href*="jetbrains"]::before, section h1 a[href*="mozilla"]::before, section h1 a[href*="youtube"]::before, section h1 a[href*="kotlin"]::before, section h1 a[href*="android"]::before, section h1 a[href*="spring-framework"]::before, section h1 a[href*="spring-boot"]::before, section h1 a[href*="docs.google"]::before, section h1 a[href*="sparktutorials"]::before, section h1 a[href*="javalin"]::before, section h1 a[href*="vertx"]::before, section h1 a[href*="ktor"]::before, section h1 a[href*="stackoverflow"]::before, section h2 a[href*="github"]::before, section h2 a[href*="twitter"]::before, section h2 a[href*="jetbrains"]::before, section h2 a[href*="mozilla"]::before, section h2 a[href*="youtube"]::before, section h2 a[href*="kotlin"]::before, section h2 a[href*="android"]::before, section h2 a[href*="spring-framework"]::before, section h2 a[href*="spring-boot"]::before, section h2 a[href*="docs.google"]::before, section h2 a[href*="sparktutorials"]::before, section h2 a[href*="javalin"]::before, section h2 a[href*="vertx"]::before, section h2 a[href*="ktor"]::before, section h2 a[href*="stackoverflow"]::before, section h3 a[href*="github"]::before, section h3 a[href*="twitter"]::before, section h3 a[href*="jetbrains"]::before, section h3 a[href*="mozilla"]::before, section h3 a[href*="youtube"]::before, section h3 a[href*="kotlin"]::before, section h3 a[href*="android"]::before, section h3 a[href*="spring-framework"]::before, section h3 a[href*="spring-boot"]::before, section h3 a[href*="docs.google"]::before, section h3 a[href*="sparktutorials"]::before, section h3 a[href*="javalin"]::before, section h3 a[href*="vertx"]::before, section h3 a[href*="ktor"]::before, section h3 a[href*="stackoverflow"]::before, section h4 a[href*="github"]::before, section h4 a[href*="twitter"]::before, section h4 a[href*="jetbrains"]::before, section h4 a[href*="mozilla"]::before, section h4 a[href*="youtube"]::before, section h4 a[href*="kotlin"]::before, section h4 a[href*="android"]::before, section h4 a[href*="spring-framework"]::before, section h4 a[href*="spring-boot"]::before, section h4 a[href*="docs.google"]::before, section h4 a[href*="sparktutorials"]::before, section h4 a[href*="javalin"]::before, section h4 a[href*="vertx"]::before, section h4 a[href*="ktor"]::before, section h4 a[href*="stackoverflow"]::before {
     content: '';
     width: 1em;
     height: 1em;
@@ -386,6 +321,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain; }
+  section article a[href*="stackoverflow"]::before, section h1 a[href*="stackoverflow"]::before, section h2 a[href*="stackoverflow"]::before, section h3 a[href*="stackoverflow"]::before, section h4 a[href*="stackoverflow"]::before {
+    background-image: url("./assets/brands/stackoverflow.svg"); }
   section article a[href*="medium"]::before, section h1 a[href*="medium"]::before, section h2 a[href*="medium"]::before, section h3 a[href*="medium"]::before, section h4 a[href*="medium"]::before {
     background-image: url("./assets/brands/medium.svg"); }
   section article a[href*="spring-framework"]::before, section h1 a[href*="spring-framework"]::before, section h2 a[href*="spring-framework"]::before, section h3 a[href*="spring-framework"]::before, section h4 a[href*="spring-framework"]::before {

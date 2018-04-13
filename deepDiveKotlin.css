@@ -314,6 +314,30 @@ pre[class*="language-"] {
 .slides-nav strong, .slides-nav nav {
   font-size: .25rem; }
 
+section.code.live-code article, section.code.play article {
+  position: relative; }
+  section.code.live-code article > *, section.code.play article > * {
+    filter: blur(8px); }
+  section.code.live-code article::after, section.code.play article::after {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: 6rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 100%;
+    filter: drop-shadow(0 0 1rem white); }
+
+section.code.live-code article::after {
+  content: '✏️'; }
+
+section.code.play article::after {
+  content: '⚙️'; }
+
 section#deepDiveKotlin h1 {
   line-height: 1.5; }
 
@@ -368,6 +392,7 @@ section#roadmap {
     border-radius: 1rem;
     align-items: center; }
     section#roadmap article ol {
+      padding-left: 2rem;
       column-count: 2;
       column-gap: 5rem;
       text-shadow: 0.0625em 0.0625em rgba(0, 0, 0, 0.5); }
@@ -484,6 +509,17 @@ section#performances_sur_10_ article table {
     section#performances_sur_10_ article table td:nth-child(n + 3) {
       text-align: right; }
 
+section#performance_des_sequences article blockquote p {
+  font-size: 1rem; }
+
+section#performance_des_sequences article table {
+  font-size: .6rem;
+  align-self: center; }
+  section#performance_des_sequences article table td {
+    font-family: var(--codeFont); }
+    section#performance_des_sequences article table td:nth-child(n + 3) {
+      text-align: right; }
+
 section#android {
   background: url("./assets/devoxx-fr/android.png");
   background-size: cover; }
@@ -504,6 +540,19 @@ section#serveur {
 section#web_et_natif {
   background: url("./assets/devoxx-fr/natif.png");
   background-size: cover; }
+
+section#trends {
+  background: url("./assets/devoxx-fr/stock-exchange.png");
+  background-size: cover; }
+  section#trends article {
+    justify-content: space-around; }
+    section#trends article svg {
+      background: rgba(255, 255, 255, 0.75);
+      border-radius: 1rem; }
+      section#trends article svg .axis-label {
+        font-size: .25rem; }
+    section#trends article a {
+      align-self: center; }
 
 section#kotlin_vs_java {
   background: url("./assets/devoxx-fr/dino.png");
