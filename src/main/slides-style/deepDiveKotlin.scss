@@ -1,11 +1,41 @@
 @import "catnip";
-
 @import "../../../node_modules/prismjs/themes/prism-tomorrow";
 
 .slides-nav {
   strong, nav {
     font-size: .25rem;
   }
+}
+
+section.code.live-code, section.code.play {
+  article {
+    position: relative;
+    & > * {
+      filter: blur(8px);
+    }
+    &::after {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+      font-size: 6rem;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 100%;
+      filter: drop-shadow(0 0 1rem white);
+    }
+  }
+}
+
+section.code.live-code article::after {
+  content: '✏️';
+}
+
+section.code.play article::after {
+  content: '⚙️';
 }
 
 section#deepDiveKotlin h1 {
@@ -74,6 +104,7 @@ section#roadmap {
     border-radius: 1rem;
     align-items: center;
     ol {
+      padding-left: 2rem;
       column-count: 2;
       column-gap: 5rem;
       text-shadow: .0625em .0625em rgba(0, 0, 0, .5);;
@@ -257,6 +288,26 @@ section#performances_sur_10_ {
   }
 }
 
+section#performance_des_sequences {
+  article {
+    blockquote p {
+      font-size: 1rem;
+    }
+    table {
+      font-size: .6rem;
+      align-self: center;
+
+      td {
+        font-family: var(--codeFont);
+
+        &:nth-child(n + 3) {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
+
 section#android {
   background: url('./assets/devoxx-fr/android.png');
   background-size: cover;
@@ -281,6 +332,24 @@ section#serveur {
 section#web_et_natif {
   background: url('./assets/devoxx-fr/natif.png');
   background-size: cover;
+}
+
+section#trends {
+  background: url('./assets/devoxx-fr/stock-exchange.png');
+  background-size: cover;
+  article {
+    justify-content: space-around;
+    svg {
+      background: hsla(0, 100%, 100%, .75);
+      border-radius: 1rem;
+      .axis-label {
+        font-size: .25rem;
+      }
+    }
+    a {
+      align-self: center;
+    }
+  }
 }
 
 section#kotlin_vs_java {

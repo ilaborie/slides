@@ -17,7 +17,7 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="mozilla"]::before, &[href*="youtube"]::before, &[href*="kotlin"]::before,
     &[href*="android"]::before, &[href*="spring-framework"]::before, &[href*="spring-boot"]::before,
     &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="javalin"]::before,
-    &[href*="vertx"]::before, &[href*="ktor"]::before  {
+    &[href*="vertx"]::before, &[href*="ktor"]::before, &[href*="stackoverflow"]::before  {
       content: '';
       width: 1em;
       height: 1em;
@@ -25,6 +25,9 @@ section article, section h1, section h2, section h3, section h4 {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: contain;
+    }
+    &[href*="stackoverflow"]::before {
+      background-image: url('./assets/brands/stackoverflow.svg');
     }
     &[href*="medium"]::before {
       background-image: url('./assets/brands/medium.svg');
