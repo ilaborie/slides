@@ -435,7 +435,7 @@ section#bilan_helloworld_kt article table {
   section#bilan_helloworld_kt article table td {
     font-family: var(--codeFont); }
 
-section#historique article {
+section#historique {
   background: url("./assets/devoxx-fr/historic.png");
   background-size: cover; }
   section#historique article strong {
@@ -543,18 +543,18 @@ section#web_et_natif {
   background: url("./assets/devoxx-fr/natif.png");
   background-size: cover; }
 
-section#trends {
+section#tendance {
   background: url("./assets/devoxx-fr/stock-exchange.png");
   background-size: cover; }
-  section#trends article {
+  section#tendance article {
     justify-content: space-around; }
-    section#trends article svg {
+    section#tendance article svg {
       max-height: 66vh;
       background: rgba(255, 255, 255, 0.75);
       border-radius: 1rem; }
-      section#trends article svg .axis-label {
+      section#tendance article svg .axis-label {
         font-size: .25rem; }
-    section#trends article a {
+    section#tendance article a {
       align-self: center; }
 
 section#kotlin_vs_java {

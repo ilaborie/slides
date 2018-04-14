@@ -10,7 +10,8 @@ fun main(args: Array<String>) {
     val ultimateQuestionOfLife: Int by lazy {
         DeepThought.answer()
     }
-    println("The Ultimate Question of Life, the Universe and Everything ?")
+    println("The Ultimate Question of Life, " +
+                    "the Universe and Everything ?")
     print("Answer: ")
     println(ultimateQuestionOfLife)
 }

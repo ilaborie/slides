@@ -173,15 +173,17 @@ section#bilan_helloworld_kt {
   }
 }
 
-section#historique article {
+section#historique {
   background: url('./assets/devoxx-fr/historic.png');
   background-size: cover;
-  strong {
-    text-shadow: 1px 1px rgba(0, 0, 0, .5);
-  }
-  mark {
-    padding: .125rem;
-    border-radius: .125rem;
+  article {
+    strong {
+      text-shadow: 1px 1px rgba(0, 0, 0, .5);
+    }
+    mark {
+      padding: .125rem;
+      border-radius: .125rem;
+    }
   }
 }
 
@@ -271,7 +273,6 @@ section#part_pause {
 }
 
 section#smali {
-
 }
 
 section#performances_sur_10_ {
@@ -340,7 +341,7 @@ section#web_et_natif {
   background-size: cover;
 }
 
-section#trends {
+section#tendance {
   background: url('./assets/devoxx-fr/stock-exchange.png');
   background-size: cover;
   article {

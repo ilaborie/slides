@@ -317,14 +317,14 @@ fun prezDevoxxFr2018() =
             slide(title = "Dalvik EXecutable format", styleClass = setOf("code", "hex", "manu", "live-code")) {
                 linkText("https://source.android.com/devices/tech/dalvik/dex-format") { "Dalvik Executable format " }
                 bash { """java -jar ./scripts/lib/d8.jar --release \
-                    |    --output ./target/android/dex \
-                    |    ./target/android/hello.jar""".trimMargin() }
+                    |       --output ./target/android/dex \
+                    |       ./target/android/hello.jar""".trimMargin() }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.txt")
             }
             slide(title = "smali", styleClass = setOf("code", "smali", "manu", "live-code")) {
                 bash { """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
-                    |    ./target/android/dex/classes.dex -f \
-                    |    -o ./target/android/smali""".trimMargin() }
+                    |     ./target/android/dex/classes.dex -f \
+                    |     -o ./target/android/smali""".trimMargin() }
                 codeFromResource("/deepDiveKotlin/android/HelloWorldKt.smali")
             }
         }
