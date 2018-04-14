@@ -438,11 +438,82 @@ section#bilan_helloworld_kt article table {
 section#historique {
   background: url("./assets/devoxx-fr/historic.png");
   background-size: cover; }
-  section#historique article strong {
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
-  section#historique article mark {
+  section#historique article ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
     padding: .125rem;
-    border-radius: .125rem; }
+    width: 100%; }
+    section#historique article ul li {
+      position: relative;
+      height: 2rem;
+      display: flex;
+      align-items: center; }
+      section#historique article ul li strong {
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        text-align: center; }
+      section#historique article ul li div {
+        display: inline-block;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: .5rem;
+        padding: 0 0.5rem;
+        font-size: .5rem;
+        transform: rotate(-20deg); }
+        section#historique article ul li div mark {
+          padding: 0 .125rem;
+          border-radius: .125rem; }
+    section#historique article ul li:nth-child(2n) {
+      flex-grow: 1; }
+    section#historique article ul li.start, section#historique article ul li.sep, section#historique article ul li.end {
+      border: 1rem solid transparent;
+      display: inline-block;
+      height: 0; }
+    section#historique article ul li.start {
+      border-color: darkslategray;
+      border-left-color: transparent; }
+    section#historique article ul li:nth-child(2) {
+      background: darkslategray; }
+      section#historique article ul li:nth-child(2) div {
+        top: -2.3rem;
+        left: 0.5rem;
+        width: 5rem; }
+    section#historique article ul li:nth-child(3) {
+      background: darkmagenta;
+      border-left-color: darkslategray; }
+    section#historique article ul li:nth-child(4) {
+      background: darkmagenta; }
+      section#historique article ul li:nth-child(4) div {
+        bottom: -4rem;
+        left: -4rem;
+        width: 5rem; }
+    section#historique article ul li:nth-child(5) {
+      background: darkslateblue;
+      border-left-color: darkmagenta; }
+    section#historique article ul li:nth-child(6) {
+      background: darkslateblue; }
+      section#historique article ul li:nth-child(6) div {
+        top: -5rem;
+        left: -0.75rem;
+        width: 9rem; }
+    section#historique article ul li:nth-child(7) {
+      background: teal;
+      border-left-color: darkslateblue; }
+    section#historique article ul li:nth-child(8) {
+      background: teal; }
+      section#historique article ul li:nth-child(8) div {
+        bottom: -2.9rem;
+        left: -3.5rem;
+        width: 4rem; }
+    section#historique article ul li:nth-child(9) {
+      background: forestgreen;
+      border-left-color: teal; }
+    section#historique article ul li:nth-child(10) {
+      background: forestgreen; }
+    section#historique article ul li.end {
+      border-color: transparent;
+      border-left-color: forestgreen; }
 
 section#cibles {
   background: url("./assets/devoxx-fr/target.png");
