@@ -325,7 +325,7 @@ fun prezDevoxxFr2018() =
             slide(title = "dexdump", styleClass = setOf("code", "hex", "manu")) {
 
                 bash { """~/.android-sdk/build-tools/23.0.1/dexdump -d \
-                    |      ./target/android/dex/classes.dex |
+                    |      ./target/android/dex/classes.dex \
                     |      > ./target/android/dex/classes.dex.dump""".trimMargin() }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.dump")
             }

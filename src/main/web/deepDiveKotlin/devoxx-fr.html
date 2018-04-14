@@ -3868,43 +3868,43 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
     <h3>dexdump</h3>
     <article>
         <pre class="lang-bash"><code class="lang-bash">~/.android-sdk/build-tools/23.0.1/dexdump -d \
-      ./target/android/dex/classes.dex <span class="token operator">|</span>
+      ./target/android/dex/classes.dex \
       <span class="token operator">></span> ./target/android/dex/classes.dex.dump</code></pre>
-<code>Processing './target/android/dex/classes.dex'...
-Opened './target/android/dex/classes.dex', DEX version '035'
-Class #0            -
-  Class descriptor  : 'L_00_helloworld/HelloWorldKt;'
-  Access flags      : 0x0011 (PUBLIC FINAL)
-  Superclass        : 'Ljava/lang/Object;'
-  Interfaces        -
-  Static fields     -
-  Instance fields   -
-  Direct methods    -
-    #0              : (in L_00_helloworld/HelloWorldKt;)
-      name          : 'main'
-      type          : '([Ljava/lang/String;)V'
-      access        : 0x0019 (PUBLIC STATIC FINAL)
-      code          -
-      registers     : 2
-      ins           : 1
-      outs          : 2
-      insns size    : 13 16-bit code units
-020494:                                        |[020494] _00_helloworld.HelloWorldKt.main:([Ljava/lang/String;)V
-0204a4: 1a00 1310                              |0000: const-string v0, "args" // string@1013
-0204a8: 7120 a811 0100                         |0002: invoke-static {v1, v0}, Lkotlin/jvm/internal/Intrinsics;.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V // method@11a8
-0204ae: 1a01 0808                              |0005: const-string v1, "Hello Devoxx" // string@0808
-0204b2: 6200 0c00                              |0007: sget-object v0, Ljava/lang/System;.out:Ljava/io/PrintStream; // field@000c
-0204b6: 6e20 3f00 1000                         |0009: invoke-virtual {v0, v1}, Ljava/io/PrintStream;.println:(Ljava/lang/Object;)V // method@003f
-0204bc: 0e00                                   |000c: return-void
-      catches       : (none)
-      positions     : 
-        0x0007 line=4
-      locals        : 
+<pre class="lang-java"><code class="lang-java">Processing <span class="token string">'./target/android/dex/classes.dex'</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+Opened <span class="token string">'./target/android/dex/classes.dex'</span><span class="token punctuation">,</span> DEX version <span class="token string">'035'</span>
+Class #<span class="token number">0</span>            <span class="token operator">-</span>
+  Class <span class="token class-name">descriptor</span>  <span class="token operator">:</span> <span class="token string">'L_00_helloworld/HelloWorldKt;'</span>
+  Access flags      <span class="token operator">:</span> <span class="token number">0x0011</span> <span class="token punctuation">(</span>PUBLIC FINAL<span class="token punctuation">)</span>
+  Superclass        <span class="token operator">:</span> <span class="token string">'Ljava/lang/Object;'</span>
+  Interfaces        <span class="token operator">-</span>
+  Static fields     <span class="token operator">-</span>
+  Instance fields   <span class="token operator">-</span>
+  Direct methods    <span class="token operator">-</span>
+    #<span class="token number">0</span>              <span class="token operator">:</span> <span class="token punctuation">(</span>in L_00_helloworld<span class="token operator">/</span>HelloWorldKt<span class="token punctuation">;</span><span class="token punctuation">)</span>
+      name          <span class="token operator">:</span> <span class="token string">'main'</span>
+      type          <span class="token operator">:</span> <span class="token string">'([Ljava/lang/String;)V'</span>
+      access        <span class="token operator">:</span> <span class="token number">0x0019</span> <span class="token punctuation">(</span>PUBLIC STATIC FINAL<span class="token punctuation">)</span>
+      code          <span class="token operator">-</span>
+      registers     <span class="token operator">:</span> <span class="token number">2</span>
+      ins           <span class="token operator">:</span> <span class="token number">1</span>
+      outs          <span class="token operator">:</span> <span class="token number">2</span>
+      insns size    <span class="token operator">:</span> <span class="token number">13</span> <span class="token number">16</span><span class="token operator">-</span>bit code units
+<span class="token number">020494</span><span class="token operator">:</span>                                        <span class="token operator">|</span><span class="token punctuation">[</span><span class="token number">020494</span><span class="token punctuation">]</span> _00_helloworld<span class="token punctuation">.</span>HelloWorldKt<span class="token punctuation">.</span>main<span class="token operator">:</span><span class="token punctuation">(</span><span class="token punctuation">[</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V
+<span class="token number">0204</span>a4<span class="token operator">:</span> <span class="token number">1</span>a00 <span class="token number">1310</span>                              <span class="token operator">|</span><span class="token number">0000</span><span class="token operator">:</span> <span class="token keyword">const</span><span class="token operator">-</span>string v0<span class="token punctuation">,</span> <span class="token string">"args"</span> <span class="token comment">// string@1013</span>
+<span class="token number">0204</span>a8<span class="token operator">:</span> <span class="token number">7120</span> a811 <span class="token number">0100</span>                         <span class="token operator">|</span><span class="token number">0002</span><span class="token operator">:</span> invoke<span class="token operator">-</span><span class="token keyword">static</span> <span class="token punctuation">{</span>v1<span class="token punctuation">,</span> v0<span class="token punctuation">}</span><span class="token punctuation">,</span> Lkotlin<span class="token operator">/</span>jvm<span class="token operator">/</span>internal<span class="token operator">/</span>Intrinsics<span class="token punctuation">;</span><span class="token punctuation">.</span>checkParameterIsNotNull<span class="token operator">:</span><span class="token punctuation">(</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>Object<span class="token punctuation">;</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>String<span class="token punctuation">;</span><span class="token punctuation">)</span>V <span class="token comment">// method@11a8</span>
+<span class="token number">0204</span>ae<span class="token operator">:</span> <span class="token number">1</span>a01 <span class="token number">0808</span>                              <span class="token operator">|</span><span class="token number">0005</span><span class="token operator">:</span> <span class="token keyword">const</span><span class="token operator">-</span>string v1<span class="token punctuation">,</span> <span class="token string">"Hello Devoxx"</span> <span class="token comment">// string@0808</span>
+<span class="token number">0204</span>b2<span class="token operator">:</span> <span class="token number">6200</span> <span class="token number">0</span>c00                              <span class="token operator">|</span><span class="token number">0007</span><span class="token operator">:</span> sget<span class="token operator">-</span>object v0<span class="token punctuation">,</span> Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>System<span class="token punctuation">;</span><span class="token punctuation">.</span>out<span class="token operator">:</span>Ljava<span class="token operator">/</span>io<span class="token operator">/</span>PrintStream<span class="token punctuation">;</span> <span class="token comment">// field@000c</span>
+<span class="token number">0204</span>b6<span class="token operator">:</span> <span class="token number">6e20</span> <span class="token number">3f</span><span class="token number">00</span> <span class="token number">1000</span>                         <span class="token operator">|</span><span class="token number">0009</span><span class="token operator">:</span> invoke<span class="token operator">-</span>virtual <span class="token punctuation">{</span>v0<span class="token punctuation">,</span> v1<span class="token punctuation">}</span><span class="token punctuation">,</span> Ljava<span class="token operator">/</span>io<span class="token operator">/</span>PrintStream<span class="token punctuation">;</span><span class="token punctuation">.</span>println<span class="token operator">:</span><span class="token punctuation">(</span>Ljava<span class="token operator">/</span>lang<span class="token operator">/</span>Object<span class="token punctuation">;</span><span class="token punctuation">)</span>V <span class="token comment">// method@003f</span>
+<span class="token number">0204</span>bc<span class="token operator">:</span> <span class="token number">0e00</span>                                   <span class="token operator">|</span><span class="token number">000</span>c<span class="token operator">:</span> <span class="token keyword">return</span><span class="token operator">-</span><span class="token keyword">void</span>
+      catches       <span class="token operator">:</span> <span class="token punctuation">(</span>none<span class="token punctuation">)</span>
+      positions     <span class="token operator">:</span> 
+        <span class="token number">0x0007</span> line<span class="token operator">=</span><span class="token number">4</span>
+      locals        <span class="token operator">:</span> 
 
-  Virtual methods   -
-  source_file_idx   : 2057 (HelloWorld.kt)
-...
-</code>
+  Virtual methods   <span class="token operator">-</span>
+  source_file_idx   <span class="token operator">:</span> <span class="token number">2057</span> <span class="token punctuation">(</span>HelloWorld<span class="token punctuation">.</span>kt<span class="token punctuation">)</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
     </article>
     <a href="#smali" class="next" aria-label="Suivant"></a>
 </section>
