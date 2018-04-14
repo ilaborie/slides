@@ -177,13 +177,107 @@ section#historique {
   background: url('./assets/devoxx-fr/historic.png');
   background-size: cover;
   article {
-    strong {
-      text-shadow: 1px 1px rgba(0, 0, 0, .5);
-    }
-    mark {
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
       padding: .125rem;
-      border-radius: .125rem;
+      width: 100%;
+      li {
+        position: relative;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+
+        strong {
+          text-shadow: 1px 1px rgba(0, 0, 0, .5);
+          display: inline-block;
+          text-align: center;
+        }
+
+        div {
+          display: inline-block;
+          position: absolute;
+          background: rgba(0, 0, 0, 0.8);
+          border-radius: .5rem;
+          padding: 0 0.5rem;
+          font-size: .5rem;
+          transform: rotate(-20deg);
+          mark {
+            padding: 0 .125rem;
+            border-radius: .125rem;
+          }
+        }
+      }
+      li:nth-child(2n) {
+        flex-grow: 1;
+      }
+      li.start, li.sep, li.end {
+        border: 1rem solid transparent;
+        display: inline-block;
+        height: 0;
+      }
+      li.start {
+        border-color: darkslategray;
+        border-left-color: transparent;
+      }
+      li:nth-child(2) {
+        background: darkslategray;
+        div {
+          top: -2.3rem;
+          left: 0.5rem;
+          width: 5rem;
+        }
+      }
+      li:nth-child(3) {
+        background: darkmagenta;
+        border-left-color: darkslategray;
+      }
+      li:nth-child(4) {
+        background: darkmagenta;
+        div {
+          bottom: -4rem;
+          left: -4rem;
+          width: 5rem;
+        }
+      }
+      li:nth-child(5) {
+        background: darkslateblue;
+        border-left-color: darkmagenta;
+      }
+      li:nth-child(6) {
+        background: darkslateblue;
+        div {
+          top: -5rem;
+          left: -0.75rem;
+          width: 9rem;
+        }
+      }
+      li:nth-child(7) {
+        background: teal;
+        border-left-color: darkslateblue;
+      }
+      li:nth-child(8) {
+        background: teal;
+        div {
+          bottom: -2.9rem;
+          left: -3.5rem;
+          width: 4rem;
+        }
+      }
+      li:nth-child(9) {
+        background: forestgreen;
+        border-left-color: teal;
+      }
+      li:nth-child(10) {
+        background: forestgreen;
+      }
+      li.end {
+        border-color: transparent;
+        border-left-color: forestgreen;
+      }
     }
+
   }
 }
 
