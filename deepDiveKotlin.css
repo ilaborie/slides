@@ -435,12 +435,14 @@ section#bilan_helloworld_kt article table {
   section#bilan_helloworld_kt article table td {
     font-family: var(--codeFont); }
 
-section#historique article strong {
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
-
-section#historique article mark {
-  padding: .125rem;
-  border-radius: .125rem; }
+section#historique article {
+  background: url("./assets/devoxx-fr/historic.png");
+  background-size: cover; }
+  section#historique article strong {
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
+  section#historique article mark {
+    padding: .125rem;
+    border-radius: .125rem; }
 
 section#cibles {
   background: url("./assets/devoxx-fr/target.png");
@@ -509,15 +511,15 @@ section#performances_sur_10_ article table {
     section#performances_sur_10_ article table td:nth-child(n + 3) {
       text-align: right; }
 
-section#performance_des_sequences article blockquote p {
+section#performance_des_sequences article blockquote p, section#performance_des_sequences2 article blockquote p {
   font-size: 1rem; }
 
-section#performance_des_sequences article table {
+section#performance_des_sequences article table, section#performance_des_sequences2 article table {
   font-size: .6rem;
   align-self: center; }
-  section#performance_des_sequences article table td {
+  section#performance_des_sequences article table td, section#performance_des_sequences2 article table td {
     font-family: var(--codeFont); }
-    section#performance_des_sequences article table td:nth-child(n + 3) {
+    section#performance_des_sequences article table td:nth-child(n + 3), section#performance_des_sequences2 article table td:nth-child(n + 3) {
       text-align: right; }
 
 section#android {
@@ -547,6 +549,7 @@ section#trends {
   section#trends article {
     justify-content: space-around; }
     section#trends article svg {
+      max-height: 66vh;
       background: rgba(255, 255, 255, 0.75);
       border-radius: 1rem; }
       section#trends article svg .axis-label {
