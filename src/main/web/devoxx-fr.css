@@ -104,10 +104,10 @@
     .devoxx-fr main section.code.kotlin {
       background: url("./assets/devoxx-fr/kotlin.png");
       background-size: cover; }
-    .devoxx-fr main section.code.hex {
+    .devoxx-fr main section.code.hex, .devoxx-fr main section.code.smali {
       background: url("./assets/devoxx-fr/cpu.png");
       background-size: cover; }
-      .devoxx-fr main section.code.hex article > code {
+      .devoxx-fr main section.code.hex article > code, .devoxx-fr main section.code.smali article > code {
         box-sizing: border-box;
         padding: .25rem;
         border-radius: .125rem;

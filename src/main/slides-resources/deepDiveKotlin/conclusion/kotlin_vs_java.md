@@ -4,5 +4,7 @@
 * 🤝 Interopérable avec Java
 * 👍 Outillage (editeur, gradle, maven)
 * 👍 Ecosystème et communauté
+* 🚀 Évolution rapide
+* 🐣 Code multiplatform 
 
 > Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.

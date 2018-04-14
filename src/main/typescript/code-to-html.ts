@@ -6,7 +6,7 @@ loadLanguages(['kotlin', 'bash', 'java']);
 
 // HACK
 
-Prism.languages['kotlin']['keyword']['pattern'] = /(^|[^.])\b(?:abstract|annotation|as|break|by|catch|class|companion|const|constructor|continue|crossinline|data|do|else|enum|final|finally|for|fun|get|if|import|in|init|inline|inner|interface|internal|is|lateinit|noinline|null|object|open|out|override|package|private|protected|public|reified|return|sealed|set|super|tailrec|this|throw|to|try|typealias|val|var|when|where|while)\b/;
+Prism.languages['kotlin']['keyword']['pattern'] = /(^|[^.])\b(?:abstract|annotation|as|break|by|catch|class|companion|const|constructor|continue|crossinline|data|do|else|enum|final|finally|for|fun|get|if|import|in|init|inline|inner|interface|internal|is|lateinit|noinline|null|object|open|out|override|package|private|operator|protected|public|reified|return|sealed|set|super|tailrec|this|throw|to|try|typealias|val|var|when|where|while)\b/;
 
 
 export function code(lang: string, code: string): Promise<string> {

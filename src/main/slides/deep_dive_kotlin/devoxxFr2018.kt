@@ -126,7 +126,7 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Introduction Kotlin") {
-            slideFromResource(title = historiqueTitle, contentType = HTML) {
+            slideFromResource(title = "Historique", contentType = HTML) {
                 // FIXME Igor
                 styleClass = setOf("manu", "contrast")
             }
@@ -314,14 +314,18 @@ fun prezDevoxxFr2018() =
             slide(title = "Compilation pour Android", key = "compile-android", styleClass = setOf("diagram", "manu")) {
                 svg("/deepDiveKotlin/android/Compile Android.svg")
             }
-            slide(title = "Dex", styleClass = setOf("code", "hex", "manu", "live-code")) {
+            slide(title = "Dalvik EXecutable format", styleClass = setOf("code", "hex", "manu", "live-code")) {
                 linkText("https://source.android.com/devices/tech/dalvik/dex-format") { "Dalvik Executable format " }
-                bash { "hexdump -C HelloWorld.dex" } // TODO
-                codeFromResource("/deepDiveKotlin/android/HelloWorld.class.hex")
+                bash { """java -jar ./scripts/lib/d8.jar --release \
+                    |    --output ./target/android/dex \
+                    |    ./target/android/hello.jar""".trimMargin() }
+                codeFromResource("/deepDiveKotlin/android/classes.dex.txt")
             }
             slide(title = "smali", styleClass = setOf("code", "smali", "manu", "live-code")) {
-                bash { "cat HelloWorld.smali" } // TODO
-                codeFromResource("/deepDiveKotlin/android/HelloWorld.smali")
+                bash { """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
+                    |    ./target/android/dex/classes.dex -f \
+                    |    -o ./target/android/smali""".trimMargin() }
+                codeFromResource("/deepDiveKotlin/android/HelloWorldKt.smali")
             }
         }
 
@@ -417,17 +421,19 @@ fun prezDevoxxFr2018() =
             slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/delegate.kt")
             }
-            slide(title = "observable.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
-                codeFromResource("/deepDiveKotlin/delegate/observables.kt")
-            }
             slide(title = "lazy.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/lazy.kt")
+            }
+            slide(title = "observable.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+                codeFromResource("/deepDiveKotlin/delegate/observables.kt")
             }
             slide(title = "lateinit.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/lateinit.kt")
             }
             // TODO manu
-            slideFromResource(title = "Delegate") { styleClass = setOf("manu") }
+            slideFromResource(title = "Delegate") {
+                styleClass = setOf("details", "contrast", "manu")
+            }
         }
 
         part(title = "Un peu plus sur les fonctions", key = "plus_sur_les_fonctions") {
@@ -454,7 +460,7 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "Bilan", key = "bilan-other") {
                 styleClass = setOf("contrast", "manu", "igor")
             }
-            slide(title = "trends", styleClass = setOf("contrast", "trends", "igor", "manu")) {
+            slide(title = "Tendance", styleClass = setOf("contrast", "trends", "igor", "manu")) {
                 svg("/deepDiveKotlin/conclusion/trends.svg")
                 linkText("https://insights.stackoverflow.com/trends?tags=kotlin%2Cscala%2Cgroovy%2Cclojure") {
                     "Stackoverflow insights"

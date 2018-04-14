@@ -7,5 +7,6 @@ fun main(args: Array<String>) {
 }
 
 class MyDelegateClass : ReadOnlyProperty<Nothing?, String> {
-    override operator fun getValue(thisRef: Nothing?, property: KProperty<*>) = "p"
+    override operator fun getValue(thisRef: Nothing?,
+                                   property: KProperty<*>) = "p"
 }
