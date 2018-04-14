@@ -563,7 +563,7 @@ section#kotlin_vs_java {
   section#kotlin_vs_java article blockquote p {
     font-size: 1rem; }
 
-section#liens {
+section#liens, section#liens_presentation {
   background: url("./assets/devoxx-fr/links.png");
   background-size: cover; }
 
