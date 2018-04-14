@@ -1,25 +1,17 @@
-open class Animal { // need open
-    open fun talk(): String =
-        "???"
+open class SmallBody {
+    open fun sizeRange(): IntRange = 0..10
 }
 
-data class Cat(val name: String) : Animal() {
-    override fun talk(): String = // need override
-        "Meow"
-}
+data class Comet(val name: String) : SmallBody()
 
-data class Dog(val name: String) : Animal() {
-    override fun talk(): String =  // need override
-        "Woof"
+data class Asteroid(val name: String) : SmallBody() {
+    override fun sizeRange(): IntRange = 0..4
 }
 
 fun main(args: Array<String>) {
-    val pets: List<Animal> = listOf(Cat("Felix"), Dog("Rex"))
+    val bodies = listOf(Comet("Halley"), Asteroid("Adeona"))
 
-    // 😱
-    pets.forEach { pet ->
-        println("$pet: ${pet.talk()}")
+    bodies.forEach { body ->
+        println("$body: ${body.sizeRange()}")
     }
-    // Cat(name=Felix): Meow
-    // Dog(name=Rex): Woof
 }

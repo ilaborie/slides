@@ -485,25 +485,25 @@ section#historique {
     section#historique article ul li:nth-child(4) {
       background: darkmagenta; }
       section#historique article ul li:nth-child(4) div {
-        bottom: -4rem;
+        bottom: -3.8rem;
         left: -4rem;
-        width: 5rem; }
+        width: 4.5rem; }
     section#historique article ul li:nth-child(5) {
       background: darkslateblue;
       border-left-color: darkmagenta; }
     section#historique article ul li:nth-child(6) {
       background: darkslateblue; }
       section#historique article ul li:nth-child(6) div {
-        top: -5rem;
+        top: -4.5rem;
         left: -0.75rem;
-        width: 9rem; }
+        width: 7rem; }
     section#historique article ul li:nth-child(7) {
       background: teal;
       border-left-color: darkslateblue; }
     section#historique article ul li:nth-child(8) {
       background: teal; }
       section#historique article ul li:nth-child(8) div {
-        bottom: -2.9rem;
+        bottom: -3rem;
         left: -3.5rem;
         width: 4rem; }
     section#historique article ul li:nth-child(9) {
