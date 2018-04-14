@@ -174,6 +174,46 @@ var FindDecorations = /** @class */ (function () {
             }
         });
     };
+    FindDecorations.prototype.matchBeforePosition = function (position) {
+        if (this._decorations.length === 0) {
+            return null;
+        }
+        for (var i = this._decorations.length - 1; i >= 0; i--) {
+            var decorationId = this._decorations[i];
+            var r = this._editor.getModel().getDecorationRange(decorationId);
+            if (!r || r.endLineNumber > position.lineNumber) {
+                continue;
+            }
+            if (r.endLineNumber < position.lineNumber) {
+                return r;
+            }
+            if (r.endColumn > position.column) {
+                continue;
+            }
+            return r;
+        }
+        return this._editor.getModel().getDecorationRange(this._decorations[this._decorations.length - 1]);
+    };
+    FindDecorations.prototype.matchAfterPosition = function (position) {
+        if (this._decorations.length === 0) {
+            return null;
+        }
+        for (var i = 0, len = this._decorations.length; i < len; i++) {
+            var decorationId = this._decorations[i];
+            var r = this._editor.getModel().getDecorationRange(decorationId);
+            if (!r || r.startLineNumber < position.lineNumber) {
+                continue;
+            }
+            if (r.startLineNumber > position.lineNumber) {
+                return r;
+            }
+            if (r.startColumn < position.column) {
+                continue;
+            }
+            return r;
+        }
+        return this._editor.getModel().getDecorationRange(this._decorations[0]);
+    };
     FindDecorations.prototype._allDecorations = function () {
         var result = [];
         result = result.concat(this._decorations);

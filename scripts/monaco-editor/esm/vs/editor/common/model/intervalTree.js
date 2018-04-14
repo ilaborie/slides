@@ -10,9 +10,10 @@
  * The class name sort order must match the severity order. Highest severity last.
  */
 export var ClassName = {
-    EditorInfoDecoration: 'squiggly-a-info',
-    EditorWarningDecoration: 'squiggly-b-warning',
-    EditorErrorDecoration: 'squiggly-c-error'
+    EditorHintDecoration: 'squiggly-a-hint',
+    EditorInfoDecoration: 'squiggly-b-info',
+    EditorWarningDecoration: 'squiggly-c-warning',
+    EditorErrorDecoration: 'squiggly-d-error'
 };
 export function getNodeColor(node) {
     return ((node.metadata & 1 /* ColorMask */) >>> 0 /* ColorOffset */);

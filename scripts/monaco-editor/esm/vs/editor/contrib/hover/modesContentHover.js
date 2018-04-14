@@ -133,8 +133,9 @@ var ModesContentComputer = /** @class */ (function () {
 }());
 var ModesContentHoverWidget = /** @class */ (function (_super) {
     __extends(ModesContentHoverWidget, _super);
-    function ModesContentHoverWidget(editor, markdownRenderner) {
+    function ModesContentHoverWidget(editor, markdownRenderner, _themeService) {
         var _this = _super.call(this, ModesContentHoverWidget.ID, editor) || this;
+        _this._themeService = _themeService;
         _this.renderDisposable = EmptyDisposable;
         _this.toDispose = [];
         _this._computer = new ModesContentComputer(_this._editor);
@@ -245,6 +246,7 @@ var ModesContentHoverWidget = /** @class */ (function (_super) {
         // update column from which to show
         var renderColumn = Number.MAX_VALUE, highlightRange = messages[0].range, fragment = document.createDocumentFragment(), isEmptyHoverContent = true;
         var containColorPicker = false;
+        var markdownDisposeable;
         messages.forEach(function (msg) {
             if (!msg.range) {
                 return;
@@ -256,7 +258,8 @@ var ModesContentHoverWidget = /** @class */ (function (_super) {
                     .filter(function (contents) { return !isEmptyMarkdownString(contents); })
                     .forEach(function (contents) {
                     var renderedContents = _this._markdownRenderer.render(contents);
-                    fragment.appendChild($('div.hover-row', null, renderedContents));
+                    markdownDisposeable = renderedContents;
+                    fragment.appendChild($('div.hover-row', null, renderedContents.element));
                     isEmptyHoverContent = false;
                 });
             }
@@ -270,7 +273,7 @@ var ModesContentHoverWidget = /** @class */ (function (_super) {
                 var colorInfo = { range: msg.range, color: msg.color };
                 // create blank olor picker model and widget first to ensure it's positioned correctly.
                 var model_1 = new ColorPickerModel(color_1, [], 0);
-                var widget_1 = new ColorPickerWidget(fragment, model_1, _this._editor.getConfiguration().pixelRatio);
+                var widget_1 = new ColorPickerWidget(fragment, model_1, _this._editor.getConfiguration().pixelRatio, _this._themeService);
                 getColorPresentations(editorModel_1, colorInfo, msg.provider).then(function (colorPresentations) {
                     model_1.colorPresentations = colorPresentations;
                     var originalText = _this._editor.getModel().getValueInRange(msg.range);
@@ -317,7 +320,7 @@ var ModesContentHoverWidget = /** @class */ (function (_super) {
                     _this.showAt(new Position(renderRange.startLineNumber, renderColumn), _this._shouldFocus);
                     _this.updateContents(fragment);
                     _this._colorPicker.layout();
-                    _this.renderDisposable = combinedDisposable([colorListener, colorChangeListener, widget_1]);
+                    _this.renderDisposable = combinedDisposable([colorListener, colorChangeListener, widget_1, markdownDisposeable]);
                 });
             }
         });

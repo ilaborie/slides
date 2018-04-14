@@ -375,8 +375,7 @@ var BaseEditorSimpleWorker = /** @class */ (function () {
             return TPromise.as(methods);
         }
         return new TPromise(function (c, e) {
-            // Use the global require to be sure to get the global config
-            self.require([moduleId], function (foreignModule) {
+            require([moduleId], function (foreignModule) {
                 _this._foreignModule = foreignModule.create(ctx, createData);
                 var methods = [];
                 for (var prop in _this._foreignModule) {

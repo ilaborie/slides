@@ -34,12 +34,15 @@ export function asWinJsPromise(callback) {
     return new TPromise(function (resolve, reject, progress) {
         var item = callback(source.token);
         if (item instanceof TPromise) {
+            always(item, function () { return source.dispose(); });
             item.then(resolve, reject, progress);
         }
         else if (isPromiseLike(item)) {
+            always(item, function () { return source.dispose(); });
             item.then(resolve, reject);
         }
         else {
+            source.dispose();
             resolve(item);
         }
     }, function () {
@@ -290,37 +293,40 @@ export { ShallowCancelThenPromise };
 export function timeout(n) {
     return new Promise(function (resolve) { return setTimeout(resolve, n); });
 }
-/**
- * Returns a new promise that joins the provided promise. Upon completion of
- * the provided promise the provided function will always be called. This
- * method is comparable to a try-finally code block.
- * @param promise a promise
- * @param f a function that will be call in the success and error case.
- */
-export function always(promise, f) {
-    return new TPromise(function (c, e, p) {
-        promise.done(function (result) {
-            try {
-                f(result);
-            }
-            catch (e1) {
-                errors.onUnexpectedError(e1);
-            }
-            c(result);
-        }, function (err) {
-            try {
-                f(err);
-            }
-            catch (e1) {
-                errors.onUnexpectedError(e1);
-            }
-            e(err);
-        }, function (progress) {
-            p(progress);
+function isWinJSPromise(candidate) {
+    return TPromise.is(candidate) && typeof candidate.done === 'function';
+}
+export function always(winjsPromiseOrPromiseLike, f) {
+    if (isWinJSPromise(winjsPromiseOrPromiseLike)) {
+        return new TPromise(function (c, e, p) {
+            winjsPromiseOrPromiseLike.done(function (result) {
+                try {
+                    f(result);
+                }
+                catch (e1) {
+                    errors.onUnexpectedError(e1);
+                }
+                c(result);
+            }, function (err) {
+                try {
+                    f(err);
+                }
+                catch (e1) {
+                    errors.onUnexpectedError(e1);
+                }
+                e(err);
+            }, function (progress) {
+                p(progress);
+            });
+        }, function () {
+            winjsPromiseOrPromiseLike.cancel();
         });
-    }, function () {
-        promise.cancel();
-    });
+    }
+    else {
+        // simple
+        winjsPromiseOrPromiseLike.then(function (_) { return f(); }, function (_) { return f(); });
+        return winjsPromiseOrPromiseLike;
+    }
 }
 /**
  * Runs the provided list of promise factories in sequential order. The returned

@@ -58,7 +58,7 @@ var CopyLinesUpAction = /** @class */ (function (_super) {
             alias: 'Copy Line Up',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 512 /* Alt */ | 1024 /* Shift */ | 16 /* UpArrow */,
                 linux: { primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 1024 /* Shift */ | 16 /* UpArrow */ }
             }
@@ -75,7 +75,7 @@ var CopyLinesDownAction = /** @class */ (function (_super) {
             alias: 'Copy Line Down',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 512 /* Alt */ | 1024 /* Shift */ | 18 /* DownArrow */,
                 linux: { primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 1024 /* Shift */ | 18 /* DownArrow */ }
             }
@@ -113,7 +113,7 @@ var MoveLinesUpAction = /** @class */ (function (_super) {
             alias: 'Move Line Up',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 512 /* Alt */ | 16 /* UpArrow */,
                 linux: { primary: 512 /* Alt */ | 16 /* UpArrow */ }
             }
@@ -130,7 +130,7 @@ var MoveLinesDownAction = /** @class */ (function (_super) {
             alias: 'Move Line Down',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 512 /* Alt */ | 18 /* DownArrow */,
                 linux: { primary: 512 /* Alt */ | 18 /* DownArrow */ }
             }
@@ -199,7 +199,7 @@ var TrimTrailingWhitespaceAction = /** @class */ (function (_super) {
             alias: 'Trim Trailing Whitespace',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 54 /* KEY_X */)
             }
         }) || this;
@@ -272,7 +272,7 @@ var DeleteLinesAction = /** @class */ (function (_super) {
             alias: 'Delete Line',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 41 /* KEY_K */
             }
         }) || this;
@@ -298,7 +298,7 @@ var IndentLinesAction = /** @class */ (function (_super) {
             alias: 'Indent Line',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 89 /* US_CLOSE_SQUARE_BRACKET */
             }
         }) || this;
@@ -320,7 +320,7 @@ var OutdentLinesAction = /** @class */ (function (_super) {
             alias: 'Outdent Line',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 87 /* US_OPEN_SQUARE_BRACKET */
             }
         }) || this;
@@ -339,7 +339,7 @@ var InsertLineBeforeAction = /** @class */ (function (_super) {
             alias: 'Insert Line Above',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 3 /* Enter */
             }
         }) || this;
@@ -360,7 +360,7 @@ var InsertLineAfterAction = /** @class */ (function (_super) {
             alias: 'Insert Line Below',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 3 /* Enter */
             }
         }) || this;
@@ -414,7 +414,7 @@ var DeleteAllLeftAction = /** @class */ (function (_super) {
             alias: 'Delete All Left',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: null,
                 mac: { primary: 2048 /* CtrlCmd */ | 1 /* Backspace */ }
             }
@@ -463,7 +463,7 @@ var DeleteAllRightAction = /** @class */ (function (_super) {
             alias: 'Delete All Right',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: null,
                 mac: { primary: 256 /* WinCtrl */ | 41 /* KEY_K */, secondary: [2048 /* CtrlCmd */ | 20 /* Delete */] }
             }
@@ -516,7 +516,7 @@ var JoinLinesAction = /** @class */ (function (_super) {
             alias: 'Join Lines',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 0,
                 mac: { primary: 256 /* WinCtrl */ | 40 /* KEY_J */ }
             }

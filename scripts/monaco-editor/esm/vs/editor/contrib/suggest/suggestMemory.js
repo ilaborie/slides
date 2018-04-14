@@ -184,7 +184,9 @@ var SuggestMemories = /** @class */ (function () {
         this._strategy = mode === 'recentlyUsedByPrefix' ? new PrefixMemory() : mode === 'recentlyUsed' ? new LRUMemory() : new NoMemory();
         try {
             var raw = this._storageService.get(this._storagePrefix + "/" + this._mode, StorageScope.WORKSPACE);
-            this._strategy.fromJSON(JSON.parse(raw));
+            if (raw) {
+                this._strategy.fromJSON(JSON.parse(raw));
+            }
         }
         catch (e) {
             // things can go wrong with JSON...

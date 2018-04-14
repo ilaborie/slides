@@ -22,7 +22,6 @@ import { ViewLineOptions, DomReadingContext, ViewLine } from './viewLine.js';
 import { Configuration } from '../../config/configuration.js';
 import { LineVisibleRanges } from '../../../common/view/renderingContext.js';
 import { ViewPart, PartFingerprints } from '../../view/viewPart.js';
-import * as viewEvents from '../../../common/view/viewEvents.js';
 var LastRenderedData = /** @class */ (function () {
     function LastRenderedData() {
         this._currentVisibleRange = new Range(1, 1, 1, 1);

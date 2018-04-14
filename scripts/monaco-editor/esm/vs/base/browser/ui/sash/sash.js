@@ -123,7 +123,14 @@ var Sash = /** @class */ (function () {
         this.$e.addClass('active');
         this._onDidStart.fire(startEvent);
         var $window = $(window);
-        var containerCSSClass = this.getOrientation() + "-cursor-container" + (isMacintosh ? '-mac' : '');
+        // fix https://github.com/Microsoft/vscode/issues/21675
+        var globalStyle = DOM.createStyleSheet(this.$e.getHTMLElement());
+        if (this.orientation === Orientation.HORIZONTAL) {
+            globalStyle.innerHTML = "* { cursor: " + (isMacintosh ? 'row-resize' : 'ns-resize') + "; }";
+        }
+        else {
+            globalStyle.innerHTML = "* { cursor: " + (isMacintosh ? 'col-resize' : 'ew-resize') + "; }";
+        }
         $window.on('mousemove', function (e) {
             DOM.EventHelper.stop(e, false);
             var mouseMoveEvent = new StandardMouseEvent(e);
@@ -137,16 +144,15 @@ var Sash = /** @class */ (function () {
             _this._onDidChange.fire(event);
         }).once('mouseup', function (e) {
             DOM.EventHelper.stop(e, false);
+            _this.$e.getHTMLElement().removeChild(globalStyle);
             _this.$e.removeClass('active');
             _this._onDidEnd.fire();
             $window.off('mousemove');
-            document.body.classList.remove(containerCSSClass);
             var iframes = $(DOM.getElementsByTagName('iframe'));
             if (iframes) {
                 iframes.style('pointer-events', 'auto');
             }
         });
-        document.body.classList.add(containerCSSClass);
     };
     Sash.prototype.onTouchStart = function (event) {
         var _this = this;

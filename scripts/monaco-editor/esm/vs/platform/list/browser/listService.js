@@ -13,6 +13,14 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,23 +30,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import { List, isSelectionRangeChangeEvent, isSelectionSingleChangeEvent } from '../../../base/browser/ui/list/listWidget.js';
+import { List, isSelectionRangeChangeEvent, isSelectionSingleChangeEvent, DefaultStyleController } from '../../../base/browser/ui/list/listWidget.js';
 import { createDecorator, IInstantiationService } from '../../instantiation/common/instantiation.js';
 import { toDisposable, combinedDisposable, dispose, Disposable } from '../../../base/common/lifecycle.js';
 import { IContextKeyService, RawContextKey, ContextKeyExpr } from '../../contextkey/common/contextkey.js';
 import { PagedList } from '../../../base/browser/ui/list/listPaging.js';
 import { Tree } from '../../../base/parts/tree/browser/treeImpl.js';
-import { attachListStyler } from '../../theme/common/styler.js';
+import { attachListStyler, defaultListStyles, computeStyles } from '../../theme/common/styler.js';
 import { IThemeService } from '../../theme/common/themeService.js';
 import { InputFocusedContextKey } from '../../workbench/common/contextkeys.js';
 import { IConfigurationService } from '../../configuration/common/configuration.js';
-import { mixin } from '../../../base/common/objects.js';
 import { localize } from '../../../nls.js';
 import { Registry } from '../../registry/common/platform.js';
 import { Extensions as ConfigurationExtensions } from '../../configuration/common/configurationRegistry.js';
-import { DefaultController, OpenMode, ClickBehavior } from '../../../base/parts/tree/browser/treeDefaults.js';
+import { DefaultController, OpenMode, ClickBehavior, DefaultTreestyler } from '../../../base/parts/tree/browser/treeDefaults.js';
 import { isUndefinedOrNull } from '../../../base/common/types.js';
 import { Emitter } from '../../../base/common/event.js';
+import { createStyleSheet } from '../../../base/browser/dom.js';
+import { ScrollbarVisibility } from '../../../base/common/scrollable.js';
 export var IListService = createDecorator('listService');
 var ListService = /** @class */ (function () {
     function ListService(contextKeyService) {
@@ -66,7 +75,13 @@ var ListService = /** @class */ (function () {
         }
         var result = combinedDisposable([
             widget.onDidFocus(function () { return _this._lastFocusedWidget = widget; }),
-            toDisposable(function () { return _this.lists.splice(_this.lists.indexOf(registeredList), 1); })
+            toDisposable(function () { return _this.lists.splice(_this.lists.indexOf(registeredList), 1); }),
+            widget.onDidDispose(function () {
+                _this.lists = _this.lists.filter(function (l) { return l !== registeredList; });
+                if (_this._lastFocusedWidget === widget) {
+                    _this._lastFocusedWidget = undefined;
+                }
+            })
         ]);
         return result;
     };
@@ -91,6 +106,7 @@ function createScopedContextKeyService(contextKeyService, widget) {
 }
 export var multiSelectModifierSettingKey = 'workbench.list.multiSelectModifier';
 export var openModeSettingKey = 'workbench.list.openMode';
+export var horizontalScrollingKey = 'workbench.tree.horizontalScrolling';
 function useAltAsMultipleSelectionModifier(configurationService) {
     return configurationService.getValue(multiSelectModifierSettingKey) === 'alt';
 }
@@ -139,16 +155,33 @@ function handleListControllers(options, configurationService) {
     options.openController = new WorkbenchOpenController(configurationService, options.openController);
     return options;
 }
+var sharedListStyleSheet;
+function getSharedListStyleSheet() {
+    if (!sharedListStyleSheet) {
+        sharedListStyleSheet = createStyleSheet();
+    }
+    return sharedListStyleSheet;
+}
+var sharedTreeStyleSheet;
+function getSharedTreeStyleSheet() {
+    if (!sharedTreeStyleSheet) {
+        sharedTreeStyleSheet = createStyleSheet();
+    }
+    return sharedTreeStyleSheet;
+}
 function handleTreeController(configuration, instantiationService) {
     if (!configuration.controller) {
         configuration.controller = instantiationService.createInstance(WorkbenchTreeController, {});
+    }
+    if (!configuration.styler) {
+        configuration.styler = new DefaultTreestyler(getSharedTreeStyleSheet());
     }
     return configuration;
 }
 var WorkbenchList = /** @class */ (function (_super) {
     __extends(WorkbenchList, _super);
     function WorkbenchList(container, delegate, renderers, options, contextKeyService, listService, themeService, configurationService) {
-        var _this = _super.call(this, container, delegate, renderers, mixin(handleListControllers(options, configurationService), { keyboardSupport: false, selectOnMouseDown: true }, false)) || this;
+        var _this = _super.call(this, container, delegate, renderers, __assign({ keyboardSupport: false, selectOnMouseDown: true, styleController: new DefaultStyleController(getSharedListStyleSheet()) }, computeStyles(themeService.getTheme(), defaultListStyles), handleListControllers(options, configurationService))) || this;
         _this.configurationService = configurationService;
         _this.contextKeyService = createScopedContextKeyService(contextKeyService, _this);
         _this.listDoubleSelection = WorkbenchListDoubleSelection.bindTo(_this.contextKeyService);
@@ -167,13 +200,6 @@ var WorkbenchList = /** @class */ (function (_super) {
         _this.registerListeners();
         return _this;
     }
-    Object.defineProperty(WorkbenchList.prototype, "useAltAsMultipleSelectionModifier", {
-        get: function () {
-            return this._useAltAsMultipleSelectionModifier;
-        },
-        enumerable: true,
-        configurable: true
-    });
     WorkbenchList.prototype.registerListeners = function () {
         var _this = this;
         this.disposables.push(this.configurationService.onDidChangeConfiguration(function (e) {
@@ -182,6 +208,13 @@ var WorkbenchList = /** @class */ (function (_super) {
             }
         }));
     };
+    Object.defineProperty(WorkbenchList.prototype, "useAltAsMultipleSelectionModifier", {
+        get: function () {
+            return this._useAltAsMultipleSelectionModifier;
+        },
+        enumerable: true,
+        configurable: true
+    });
     WorkbenchList = __decorate([
         __param(4, IContextKeyService),
         __param(5, IListService),
@@ -194,7 +227,7 @@ export { WorkbenchList };
 var WorkbenchPagedList = /** @class */ (function (_super) {
     __extends(WorkbenchPagedList, _super);
     function WorkbenchPagedList(container, delegate, renderers, options, contextKeyService, listService, themeService, configurationService) {
-        var _this = _super.call(this, container, delegate, renderers, mixin(handleListControllers(options, configurationService), { keyboardSupport: false, selectOnMouseDown: true }, false)) || this;
+        var _this = _super.call(this, container, delegate, renderers, __assign({ keyboardSupport: false, selectOnMouseDown: true, styleController: new DefaultStyleController(getSharedListStyleSheet()) }, computeStyles(themeService.getTheme(), defaultListStyles), handleListControllers(options, configurationService))) || this;
         _this.configurationService = configurationService;
         _this.disposables = [];
         _this.contextKeyService = createScopedContextKeyService(contextKeyService, _this);
@@ -207,13 +240,6 @@ var WorkbenchPagedList = /** @class */ (function (_super) {
         _this.registerListeners();
         return _this;
     }
-    Object.defineProperty(WorkbenchPagedList.prototype, "useAltAsMultipleSelectionModifier", {
-        get: function () {
-            return this._useAltAsMultipleSelectionModifier;
-        },
-        enumerable: true,
-        configurable: true
-    });
     WorkbenchPagedList.prototype.registerListeners = function () {
         var _this = this;
         this.disposables.push(this.configurationService.onDidChangeConfiguration(function (e) {
@@ -222,7 +248,15 @@ var WorkbenchPagedList = /** @class */ (function (_super) {
             }
         }));
     };
+    Object.defineProperty(WorkbenchPagedList.prototype, "useAltAsMultipleSelectionModifier", {
+        get: function () {
+            return this._useAltAsMultipleSelectionModifier;
+        },
+        enumerable: true,
+        configurable: true
+    });
     WorkbenchPagedList.prototype.dispose = function () {
+        _super.prototype.dispose.call(this);
         this.disposables = dispose(this.disposables);
     };
     WorkbenchPagedList = __decorate([
@@ -237,8 +271,11 @@ export { WorkbenchPagedList };
 var WorkbenchTree = /** @class */ (function (_super) {
     __extends(WorkbenchTree, _super);
     function WorkbenchTree(container, configuration, options, contextKeyService, listService, themeService, instantiationService, configurationService) {
-        var _this = _super.call(this, container, handleTreeController(configuration, instantiationService), mixin(options, { keyboardSupport: false }, false)) || this;
-        _this.configurationService = configurationService;
+        var _this = this;
+        var config = handleTreeController(configuration, instantiationService);
+        var horizontalScrollMode = configurationService.getValue(horizontalScrollingKey) ? ScrollbarVisibility.Auto : ScrollbarVisibility.Hidden;
+        var opts = __assign({ horizontalScrollMode: horizontalScrollMode, keyboardSupport: false }, computeStyles(themeService.getTheme(), defaultListStyles), options);
+        _this = _super.call(this, container, config, opts) || this;
         _this.disposables = [];
         _this.contextKeyService = createScopedContextKeyService(contextKeyService, _this);
         _this.listDoubleSelection = WorkbenchListDoubleSelection.bindTo(_this.contextKeyService);
@@ -246,7 +283,19 @@ var WorkbenchTree = /** @class */ (function (_super) {
         _this._openOnSingleClick = useSingleClickToOpen(configurationService);
         _this._useAltAsMultipleSelectionModifier = useAltAsMultipleSelectionModifier(configurationService);
         _this.disposables.push(_this.contextKeyService, listService.register(_this), attachListStyler(_this, themeService));
-        _this.registerListeners();
+        _this.disposables.push(_this.onDidChangeSelection(function () {
+            var selection = _this.getSelection();
+            _this.listDoubleSelection.set(selection && selection.length === 2);
+            _this.listMultiSelection.set(selection && selection.length > 1);
+        }));
+        _this.disposables.push(configurationService.onDidChangeConfiguration(function (e) {
+            if (e.affectsConfiguration(openModeSettingKey)) {
+                _this._openOnSingleClick = useSingleClickToOpen(configurationService);
+            }
+            if (e.affectsConfiguration(multiSelectModifierSettingKey)) {
+                _this._useAltAsMultipleSelectionModifier = useAltAsMultipleSelectionModifier(configurationService);
+            }
+        }));
         return _this;
     }
     Object.defineProperty(WorkbenchTree.prototype, "openOnSingleClick", {
@@ -263,23 +312,8 @@ var WorkbenchTree = /** @class */ (function (_super) {
         enumerable: true,
         configurable: true
     });
-    WorkbenchTree.prototype.registerListeners = function () {
-        var _this = this;
-        this.disposables.push(this.onDidChangeSelection(function () {
-            var selection = _this.getSelection();
-            _this.listDoubleSelection.set(selection && selection.length === 2);
-            _this.listMultiSelection.set(selection && selection.length > 1);
-        }));
-        this.disposables.push(this.configurationService.onDidChangeConfiguration(function (e) {
-            if (e.affectsConfiguration(openModeSettingKey)) {
-                _this._openOnSingleClick = useSingleClickToOpen(_this.configurationService);
-            }
-            if (e.affectsConfiguration(multiSelectModifierSettingKey)) {
-                _this._useAltAsMultipleSelectionModifier = useAltAsMultipleSelectionModifier(_this.configurationService);
-            }
-        }));
-    };
     WorkbenchTree.prototype.dispose = function () {
+        _super.prototype.dispose.call(this);
         this.disposables = dispose(this.disposables);
     };
     WorkbenchTree = __decorate([
@@ -408,8 +442,8 @@ configurationRegistry.registerConfiguration({
     'order': 7,
     'title': localize('workbenchConfigurationTitle', "Workbench"),
     'type': 'object',
-    'properties': {
-        'workbench.list.multiSelectModifier': {
+    'properties': (_a = {},
+        _a[multiSelectModifierSettingKey] = {
             'type': 'string',
             'enum': ['ctrlCmd', 'alt'],
             'enumDescriptions': [
@@ -425,7 +459,7 @@ configurationRegistry.registerConfiguration({
                 ]
             }, "The modifier to be used to add an item in trees and lists to a multi-selection with the mouse (for example in the explorer, open editors and scm view). `ctrlCmd` maps to `Control` on Windows and Linux and to `Command` on macOS. The 'Open to Side' mouse gestures - if supported - will adapt such that they do not conflict with the multiselect modifier.")
         },
-        'workbench.list.openMode': {
+        _a[openModeSettingKey] = {
             'type': 'string',
             'enum': ['singleClick', 'doubleClick'],
             'enumDescriptions': [
@@ -437,6 +471,12 @@ configurationRegistry.registerConfiguration({
                 key: 'openModeModifier',
                 comment: ['`singleClick` and `doubleClick` refers to a value the setting can take and should not be localized.']
             }, "Controls how to open items in trees and lists using the mouse (if supported). Set to `singleClick` to open items with a single mouse click and `doubleClick` to only open via mouse double click. For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. ")
-        }
-    }
+        },
+        _a[horizontalScrollingKey] = {
+            'type': 'boolean',
+            'default': false,
+            'description': localize('horizontalScrolling setting', "Controls whether trees support horizontal scrolling in the workbench.")
+        },
+        _a)
 });
+var _a;

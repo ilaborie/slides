@@ -27,6 +27,9 @@ export function memoize(target, key, descriptor) {
     if (typeof descriptor.value === 'function') {
         fnKey = 'value';
         fn = descriptor.value;
+        if (fn.length !== 0) {
+            console.warn('Memoize should only be used in functions with zero parameters');
+        }
     }
     else if (typeof descriptor.get === 'function') {
         fnKey = 'get';
@@ -52,9 +55,10 @@ export function memoize(target, key, descriptor) {
         return this[memoizeKey];
     };
 }
-export function debounce(delay) {
+export function debounce(delay, reducer, initialValueProvider) {
     return createDecorator(function (fn, key) {
         var timerKey = "$debounce$" + key;
+        var result = initialValueProvider ? initialValueProvider() : void 0;
         return function () {
             var _this = this;
             var args = [];
@@ -62,7 +66,14 @@ export function debounce(delay) {
                 args[_i] = arguments[_i];
             }
             clearTimeout(this[timerKey]);
-            this[timerKey] = setTimeout(function () { return fn.apply(_this, args); }, delay);
+            if (reducer) {
+                result = reducer.apply(void 0, [result].concat(args));
+                args = [result];
+            }
+            this[timerKey] = setTimeout(function () {
+                fn.apply(_this, args);
+                result = initialValueProvider ? initialValueProvider() : void 0;
+            }, delay);
         };
     });
 }

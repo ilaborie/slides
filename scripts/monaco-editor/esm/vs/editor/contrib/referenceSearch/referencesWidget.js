@@ -22,6 +22,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 import './media/referencesWidget.css';
 import * as nls from '../../../nls.js';
 import { onUnexpectedError } from '../../../base/common/errors.js';
@@ -40,7 +75,6 @@ import { FileLabel } from '../../../base/browser/ui/iconLabel/iconLabel.js';
 import { optional } from '../../../platform/instantiation/common/instantiation.js';
 import { IWorkspaceContextService } from '../../../platform/workspace/common/workspace.js';
 import { Range } from '../../common/core/range.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { TextModel, ModelDecorationOptions } from '../../common/model/textModel.js';
 import { EmbeddedCodeEditorWidget } from '../../browser/widget/embeddedCodeEditorWidget.js';
 import { PeekViewWidget } from './peekViewWidget.js';
@@ -48,7 +82,7 @@ import { FileReferences, OneReference, ReferencesModel } from './referencesModel
 import { ITextModelService } from '../../common/services/resolverService.js';
 import { registerColor, activeContrastBorder, contrastBorder } from '../../../platform/theme/common/colorRegistry.js';
 import { registerThemingParticipant, IThemeService } from '../../../platform/theme/common/themeService.js';
-import { attachListStyler, attachBadgeStyler } from '../../../platform/theme/common/styler.js';
+import { attachBadgeStyler } from '../../../platform/theme/common/styler.js';
 import { IEnvironmentService } from '../../../platform/environment/common/environment.js';
 import URI from '../../../base/common/uri.js';
 import { TrackedRangeStickiness } from '../../common/model.js';
@@ -499,19 +533,19 @@ export var ctxReferenceWidgetSearchTreeFocused = new RawContextKey('referenceSea
  */
 var ReferenceWidget = /** @class */ (function (_super) {
     __extends(ReferenceWidget, _super);
-    function ReferenceWidget(editor, layoutData, _textModelResolverService, _contextService, _themeService, _instantiationService, _environmentService) {
+    function ReferenceWidget(editor, _defaultTreeKeyboardSupport, layoutData, _textModelResolverService, _contextService, themeService, _instantiationService, _environmentService) {
         var _this = _super.call(this, editor, { showFrame: false, showArrow: true, isResizeable: true, isAccessible: true }) || this;
+        _this._defaultTreeKeyboardSupport = _defaultTreeKeyboardSupport;
         _this.layoutData = layoutData;
         _this._textModelResolverService = _textModelResolverService;
         _this._contextService = _contextService;
-        _this._themeService = _themeService;
         _this._instantiationService = _instantiationService;
         _this._environmentService = _environmentService;
         _this._disposeOnNewModel = [];
         _this._callOnDispose = [];
         _this._onDidSelectReference = new Emitter();
-        _this._applyTheme(_themeService.getTheme());
-        _this._callOnDispose.push(_themeService.onThemeChange(_this._applyTheme.bind(_this)));
+        _this._applyTheme(themeService.getTheme());
+        _this._callOnDispose.push(themeService.onThemeChange(_this._applyTheme.bind(_this)));
         _this.create();
         return _this;
     }
@@ -543,7 +577,7 @@ var ReferenceWidget = /** @class */ (function (_super) {
         _super.prototype.show.call(this, where, this.layoutData.heightInLines || 18);
     };
     ReferenceWidget.prototype.focus = function () {
-        this._tree.DOMFocus();
+        this._tree.domFocus();
     };
     ReferenceWidget.prototype._onTitleClick = function (e) {
         if (this._preview && this._preview.getModel()) {
@@ -595,7 +629,7 @@ var ReferenceWidget = /** @class */ (function (_super) {
         });
         // tree
         container.div({ 'class': 'ref-tree inline' }, function (div) {
-            var controller = _this._instantiationService.createInstance(Controller, { clickBehavior: ClickBehavior.ON_MOUSE_UP /* our controller already deals with this */ });
+            var controller = _this._instantiationService.createInstance(Controller, { keyboardSupport: _this._defaultTreeKeyboardSupport, clickBehavior: ClickBehavior.ON_MOUSE_UP /* our controller already deals with this */ });
             _this._callOnDispose.push(controller);
             var config = {
                 dataSource: _this._instantiationService.createInstance(DataSource),
@@ -608,13 +642,12 @@ var ReferenceWidget = /** @class */ (function (_super) {
                 ariaLabel: nls.localize('treeAriaLabel', "References")
             };
             _this._tree = _this._instantiationService.createInstance(WorkbenchTree, div.getHTMLElement(), config, options);
-            _this._callOnDispose.push(attachListStyler(_this._tree, _this._themeService));
             ctxReferenceWidgetSearchTreeFocused.bindTo(_this._tree.contextKeyService);
             // listen on selection and focus
             var onEvent = function (element, kind) {
                 if (element instanceof OneReference) {
                     if (kind === 'show') {
-                        _this._revealReference(element);
+                        _this._revealReference(element, false);
                     }
                     _this._onDidSelectReference.fire({ element: element, kind: kind, source: 'tree' });
                 }
@@ -659,7 +692,7 @@ var ReferenceWidget = /** @class */ (function (_super) {
     };
     ReferenceWidget.prototype.setSelection = function (selection) {
         var _this = this;
-        return this._revealReference(selection).then(function () {
+        return this._revealReference(selection, true).then(function () {
             // show in tree
             _this._tree.setSelection([selection]);
             _this._tree.setFocus(selection);
@@ -720,39 +753,52 @@ var ReferenceWidget = /** @class */ (function (_super) {
         }
         return undefined;
     };
-    ReferenceWidget.prototype._revealReference = function (reference) {
-        var _this = this;
-        // Update widget header
-        if (reference.uri.scheme !== Schemas.inMemory) {
-            this.setTitle(reference.name, getPathLabel(reference.directory, this._contextService, this._environmentService));
-        }
-        else {
-            this.setTitle(nls.localize('peekView.alternateTitle', "References"));
-        }
-        var promise = this._textModelResolverService.createModelReference(reference.uri);
-        return TPromise.join([promise, this._tree.reveal(reference)]).then(function (values) {
-            var ref = values[0];
-            if (!_this._model) {
-                ref.dispose();
-                // disposed
-                return;
-            }
-            dispose(_this._previewModelReference);
-            // show in editor
-            var model = ref.object;
-            if (model) {
-                _this._previewModelReference = ref;
-                var isSameModel = (_this._preview.getModel() === model.textEditorModel);
-                _this._preview.setModel(model.textEditorModel);
-                var sel = Range.lift(reference.range).collapseToStart();
-                _this._preview.setSelection(sel);
-                _this._preview.revealRangeInCenter(sel, isSameModel ? 0 /* Smooth */ : 1 /* Immediate */);
-            }
-            else {
-                _this._preview.setModel(_this._previewNotAvailableMessage);
-                ref.dispose();
-            }
-        }, onUnexpectedError);
+    ReferenceWidget.prototype._revealReference = function (reference, revealParent) {
+        return __awaiter(this, void 0, TPromise, function () {
+            var _this = this;
+            var promise;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        // Update widget header
+                        if (reference.uri.scheme !== Schemas.inMemory) {
+                            this.setTitle(reference.name, getPathLabel(reference.directory, this._contextService, this._environmentService));
+                        }
+                        else {
+                            this.setTitle(nls.localize('peekView.alternateTitle', "References"));
+                        }
+                        promise = this._textModelResolverService.createModelReference(reference.uri);
+                        if (!revealParent) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this._tree.reveal(reference.parent)];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2: return [2 /*return*/, TPromise.join([promise, this._tree.reveal(reference)]).then(function (values) {
+                            var ref = values[0];
+                            if (!_this._model) {
+                                ref.dispose();
+                                // disposed
+                                return;
+                            }
+                            dispose(_this._previewModelReference);
+                            // show in editor
+                            var model = ref.object;
+                            if (model) {
+                                _this._previewModelReference = ref;
+                                var isSameModel = (_this._preview.getModel() === model.textEditorModel);
+                                _this._preview.setModel(model.textEditorModel);
+                                var sel = Range.lift(reference.range).collapseToStart();
+                                _this._preview.setSelection(sel);
+                                _this._preview.revealRangeInCenter(sel, isSameModel ? 0 /* Smooth */ : 1 /* Immediate */);
+                            }
+                            else {
+                                _this._preview.setModel(_this._previewNotAvailableMessage);
+                                ref.dispose();
+                            }
+                        }, onUnexpectedError)];
+                }
+            });
+        });
     };
     return ReferenceWidget;
 }(PeekViewWidget));

@@ -15,7 +15,7 @@ var css_done = 'done';
 var css_active = 'active';
 var css_infinite = 'infinite';
 var css_discrete = 'discrete';
-var css_progress_container = 'progress-container';
+var css_progress_container = 'monaco-progress-container';
 var css_progress_bit = 'progress-bit';
 var defaultOpts = {
     progressBarBackground: Color.fromHex('#0E70C0')

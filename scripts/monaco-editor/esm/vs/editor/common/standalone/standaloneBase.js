@@ -23,6 +23,13 @@ export var Severity;
     Severity[Severity["Warning"] = 2] = "Warning";
     Severity[Severity["Error"] = 3] = "Error";
 })(Severity || (Severity = {}));
+export var MarkerSeverity;
+(function (MarkerSeverity) {
+    MarkerSeverity[MarkerSeverity["Hint"] = 1] = "Hint";
+    MarkerSeverity[MarkerSeverity["Info"] = 2] = "Info";
+    MarkerSeverity[MarkerSeverity["Warning"] = 4] = "Warning";
+    MarkerSeverity[MarkerSeverity["Error"] = 8] = "Error";
+})(MarkerSeverity || (MarkerSeverity = {}));
 // --------------------------------------------
 // This is repeated here so it can be exported
 // because TS inlines const enums
@@ -238,6 +245,7 @@ export function createMonacoBaseAPI() {
         Selection: Selection,
         SelectionDirection: SelectionDirection,
         Severity: Severity,
+        MarkerSeverity: MarkerSeverity,
         Promise: TPromise,
         Uri: URI,
         Token: Token

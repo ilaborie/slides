@@ -4,8 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import { Position } from '../../core/position.js';
+import { Range } from '../../core/range.js';
 import { leftest, righttest, updateTreeMetadata, rbDelete, fixInsert, SENTINEL, TreeNode } from './rbTreeBase.js';
+import { isValidMatch, Searcher, createFindMatch } from '../textModelSearch.js';
+import { FindMatch } from '../../model.js';
 // const lfRegex = new RegExp(/\r\n|\r|\n/g);
+export var AverageBufferSize = 65535;
 export function createUintArray(arr) {
     var r;
     if (arr[arr.length - 1] < 65536) {
@@ -120,21 +124,21 @@ export { StringBuffer };
 var PieceTreeSnapshot = /** @class */ (function () {
     function PieceTreeSnapshot(tree, BOM) {
         var _this = this;
-        this._nodes = [];
+        this._pieces = [];
         this._tree = tree;
         this._BOM = BOM;
         this._index = 0;
         if (tree.root !== SENTINEL) {
             tree.iterate(tree.root, function (node) {
                 if (node !== SENTINEL) {
-                    _this._nodes.push(node);
+                    _this._pieces.push(node.piece);
                 }
                 return true;
             });
         }
     }
     PieceTreeSnapshot.prototype.read = function () {
-        if (this._nodes.length === 0) {
+        if (this._pieces.length === 0) {
             if (this._index === 0) {
                 this._index++;
                 return this._BOM;
@@ -143,13 +147,13 @@ var PieceTreeSnapshot = /** @class */ (function () {
                 return null;
             }
         }
-        if (this._index > this._nodes.length - 1) {
+        if (this._index > this._pieces.length - 1) {
             return null;
         }
         if (this._index === 0) {
-            return this._BOM + this._tree.getNodeContent(this._nodes[this._index++]);
+            return this._BOM + this._tree.getPieceContent(this._pieces[this._index++]);
         }
-        return this._tree.getNodeContent(this._nodes[this._index++]);
+        return this._tree.getPieceContent(this._pieces[this._index++]);
     };
     return PieceTreeSnapshot;
 }());
@@ -236,7 +240,7 @@ var PieceTreeBase = /** @class */ (function () {
     };
     PieceTreeBase.prototype.normalizeEOL = function (eol) {
         var _this = this;
-        var averageBufferSize = 65536;
+        var averageBufferSize = AverageBufferSize;
         var min = averageBufferSize - Math.floor(averageBufferSize / 3);
         var max = min * 2;
         var tempChunk = '';
@@ -354,13 +358,25 @@ var PieceTreeBase = /** @class */ (function () {
         }
         return new Position(1, 1);
     };
-    PieceTreeBase.prototype.getValueInRange = function (range) {
+    PieceTreeBase.prototype.getValueInRange = function (range, eol) {
         if (range.startLineNumber === range.endLineNumber && range.startColumn === range.endColumn) {
             return '';
         }
         var startPosition = this.nodeAt2(range.startLineNumber, range.startColumn);
         var endPosition = this.nodeAt2(range.endLineNumber, range.endColumn);
-        return this.getValueInRange2(startPosition, endPosition);
+        var value = this.getValueInRange2(startPosition, endPosition);
+        if (eol) {
+            if (eol !== this._EOL || !this._EOLNormalized) {
+                return value.replace(/\r\n|\r|\n/g, eol);
+            }
+            if (eol === this.getEOL() && this._EOLNormalized) {
+                if (eol === '\r\n') {
+                }
+                return value;
+            }
+            return value.replace(/\r\n|\r|\n/g, eol);
+        }
+        return value;
     };
     PieceTreeBase.prototype.getValueInRange2 = function (startPosition, endPosition) {
         if (startPosition.node === endPosition.node) {
@@ -417,7 +433,7 @@ var PieceTreeBase = /** @class */ (function () {
         var nodePos = this.nodeAt2(lineNumber, index + 1);
         var buffer = this._buffers[nodePos.node.piece.bufferIndex];
         var startOffset = this.offsetInBuffer(nodePos.node.piece.bufferIndex, nodePos.node.piece.start);
-        var targetOffset = startOffset + index;
+        var targetOffset = startOffset + nodePos.remainder;
         return buffer.buffer.charCodeAt(targetOffset);
     };
     PieceTreeBase.prototype.getLineLength = function (lineNumber) {
@@ -426,6 +442,127 @@ var PieceTreeBase = /** @class */ (function () {
             return this.getLength() - startOffset;
         }
         return this.getOffsetAt(lineNumber + 1, 1) - this.getOffsetAt(lineNumber, 1) - this._EOLLength;
+    };
+    PieceTreeBase.prototype.findMatchesInNode = function (node, searcher, startLineNumber, startColumn, startCursor, endCursor, searchData, captureMatches, limitResultCount, resultLen, result) {
+        var buffer = this._buffers[node.piece.bufferIndex];
+        var startOffsetInBuffer = this.offsetInBuffer(node.piece.bufferIndex, node.piece.start);
+        var start = this.offsetInBuffer(node.piece.bufferIndex, startCursor);
+        var end = this.offsetInBuffer(node.piece.bufferIndex, endCursor);
+        var m;
+        // Reset regex to search from the beginning
+        searcher.reset(start);
+        var ret = { line: 0, column: 0 };
+        do {
+            m = searcher.next(buffer.buffer);
+            if (m) {
+                if (m.index >= end) {
+                    return resultLen;
+                }
+                this.positionInBuffer(node, m.index - startOffsetInBuffer, ret);
+                var lineFeedCnt = this.getLineFeedCnt(node.piece.bufferIndex, startCursor, ret);
+                var retStartColumn = ret.line === startCursor.line ? ret.column - startCursor.column + startColumn : ret.column + 1;
+                var retEndColumn = retStartColumn + m[0].length;
+                result[resultLen++] = createFindMatch(new Range(startLineNumber + lineFeedCnt, retStartColumn, startLineNumber + lineFeedCnt, retEndColumn), m, captureMatches);
+                if (m.index + m[0].length >= end) {
+                    return resultLen;
+                }
+                if (resultLen >= limitResultCount) {
+                    return resultLen;
+                }
+            }
+        } while (m);
+        return resultLen;
+    };
+    PieceTreeBase.prototype.findMatchesLineByLine = function (searchRange, searchData, captureMatches, limitResultCount) {
+        var result = [];
+        var resultLen = 0;
+        var searcher = new Searcher(searchData.wordSeparators, searchData.regex);
+        var startPostion = this.nodeAt2(searchRange.startLineNumber, searchRange.startColumn);
+        if (startPostion === null) {
+            return [];
+        }
+        var endPosition = this.nodeAt2(searchRange.endLineNumber, searchRange.endColumn);
+        if (endPosition === null) {
+            return [];
+        }
+        var start = this.positionInBuffer(startPostion.node, startPostion.remainder);
+        var end = this.positionInBuffer(endPosition.node, endPosition.remainder);
+        if (startPostion.node === endPosition.node) {
+            this.findMatchesInNode(startPostion.node, searcher, searchRange.startLineNumber, searchRange.startColumn, start, end, searchData, captureMatches, limitResultCount, resultLen, result);
+            return result;
+        }
+        var startLineNumber = searchRange.startLineNumber;
+        var currentNode = startPostion.node;
+        while (currentNode !== endPosition.node) {
+            var lineBreakCnt = this.getLineFeedCnt(currentNode.piece.bufferIndex, start, currentNode.piece.end);
+            if (lineBreakCnt >= 1) {
+                // last line break position
+                var lineStarts = this._buffers[currentNode.piece.bufferIndex].lineStarts;
+                var startOffsetInBuffer = this.offsetInBuffer(currentNode.piece.bufferIndex, currentNode.piece.start);
+                var nextLineStartOffset = lineStarts[start.line + lineBreakCnt];
+                var startColumn_1 = startLineNumber === searchRange.startLineNumber ? searchRange.startColumn : 1;
+                resultLen = this.findMatchesInNode(currentNode, searcher, startLineNumber, startColumn_1, start, this.positionInBuffer(currentNode, nextLineStartOffset - startOffsetInBuffer), searchData, captureMatches, limitResultCount, resultLen, result);
+                if (resultLen >= limitResultCount) {
+                    return result;
+                }
+                startLineNumber += lineBreakCnt;
+            }
+            var startColumn_2 = startLineNumber === searchRange.startLineNumber ? searchRange.startColumn - 1 : 0;
+            // search for the remaining content
+            if (startLineNumber === searchRange.endLineNumber) {
+                var text = this.getLineContent(startLineNumber).substring(startColumn_2, searchRange.endColumn - 1);
+                resultLen = this._findMatchesInLine(searchData, searcher, text, searchRange.endLineNumber, startColumn_2, resultLen, result, captureMatches, limitResultCount);
+                return result;
+            }
+            resultLen = this._findMatchesInLine(searchData, searcher, this.getLineContent(startLineNumber).substr(startColumn_2), startLineNumber, startColumn_2, resultLen, result, captureMatches, limitResultCount);
+            if (resultLen >= limitResultCount) {
+                return result;
+            }
+            startLineNumber++;
+            startPostion = this.nodeAt2(startLineNumber, 1);
+            currentNode = startPostion.node;
+            start = this.positionInBuffer(startPostion.node, startPostion.remainder);
+        }
+        if (startLineNumber === searchRange.endLineNumber) {
+            var startColumn_3 = startLineNumber === searchRange.startLineNumber ? searchRange.startColumn - 1 : 0;
+            var text = this.getLineContent(startLineNumber).substring(startColumn_3, searchRange.endColumn - 1);
+            resultLen = this._findMatchesInLine(searchData, searcher, text, searchRange.endLineNumber, startColumn_3, resultLen, result, captureMatches, limitResultCount);
+            return result;
+        }
+        var startColumn = startLineNumber === searchRange.startLineNumber ? searchRange.startColumn : 1;
+        resultLen = this.findMatchesInNode(endPosition.node, searcher, startLineNumber, startColumn, start, end, searchData, captureMatches, limitResultCount, resultLen, result);
+        return result;
+    };
+    PieceTreeBase.prototype._findMatchesInLine = function (searchData, searcher, text, lineNumber, deltaOffset, resultLen, result, captureMatches, limitResultCount) {
+        var wordSeparators = searchData.wordSeparators;
+        if (!captureMatches && searchData.simpleSearch) {
+            var searchString = searchData.simpleSearch;
+            var searchStringLen = searchString.length;
+            var textLength = text.length;
+            var lastMatchIndex = -searchStringLen;
+            while ((lastMatchIndex = text.indexOf(searchString, lastMatchIndex + searchStringLen)) !== -1) {
+                if (!wordSeparators || isValidMatch(wordSeparators, text, textLength, lastMatchIndex, searchStringLen)) {
+                    result[resultLen++] = new FindMatch(new Range(lineNumber, lastMatchIndex + 1 + deltaOffset, lineNumber, lastMatchIndex + 1 + searchStringLen + deltaOffset), null);
+                    if (resultLen >= limitResultCount) {
+                        return resultLen;
+                    }
+                }
+            }
+            return resultLen;
+        }
+        var m;
+        // Reset regex to search from the beginning
+        searcher.reset(0);
+        do {
+            m = searcher.next(text);
+            if (m) {
+                result[resultLen++] = createFindMatch(new Range(lineNumber, m.index + 1 + deltaOffset, lineNumber, m.index + 1 + m[0].length + deltaOffset), m, captureMatches);
+                if (resultLen >= limitResultCount) {
+                    return resultLen;
+                }
+            }
+        } while (m);
+        return resultLen;
     };
     // #endregion
     // #region Piece Table
@@ -442,7 +579,8 @@ var PieceTreeBase = /** @class */ (function () {
             if (node.piece.bufferIndex === 0 &&
                 piece.end.line === this._lastChangeBufferPos.line &&
                 piece.end.column === this._lastChangeBufferPos.column &&
-                (nodeStartOffset + piece.length === offset)) {
+                (nodeStartOffset + piece.length === offset) &&
+                value.length < AverageBufferSize) {
                 // changed buffer
                 this.appendToNode(node, value);
                 this.computeBufferMetadata();
@@ -460,9 +598,7 @@ var PieceTreeBase = /** @class */ (function () {
                     var headOfRight = this.nodeCharCodeAt(node, remainder);
                     if (headOfRight === 10 /** \n */) {
                         var newStart = { line: newRightPiece.start.line + 1, column: 0 };
-                        newRightPiece.start = newStart;
-                        newRightPiece.length -= 1;
-                        newRightPiece.lineFeedCnt = this.getLineFeedCnt(newRightPiece.bufferIndex, newRightPiece.start, newRightPiece.end);
+                        newRightPiece = new Piece(newRightPiece.bufferIndex, newStart, newRightPiece.end, this.getLineFeedCnt(newRightPiece.bufferIndex, newStart, newRightPiece.end), newRightPiece.length - 1);
                         value += '\n';
                     }
                 }
@@ -484,11 +620,14 @@ var PieceTreeBase = /** @class */ (function () {
                 else {
                     this.deleteNodeTail(node, insertPosInBuffer);
                 }
-                var newPiece = this.createNewPiece(value);
+                var newPieces = this.createNewPieces(value);
                 if (newRightPiece.length > 0) {
                     this.rbInsertRight(node, newRightPiece);
                 }
-                this.rbInsertRight(node, newPiece);
+                var tmpNode = node;
+                for (var k = 0; k < newPieces.length; k++) {
+                    tmpNode = this.rbInsertRight(tmpNode, newPieces[k]);
+                }
                 this.deleteNodes(nodesToDel);
             }
             else {
@@ -497,8 +636,11 @@ var PieceTreeBase = /** @class */ (function () {
         }
         else {
             // insert new node
-            var piece = this.createNewPiece(value);
-            this.rbInsertLeft(null, piece);
+            var pieces = this.createNewPieces(value);
+            var node = this.rbInsertLeft(null, pieces[0]);
+            for (var k = 1; k < pieces.length; k++) {
+                node = this.rbInsertRight(node, pieces[k]);
+            }
         }
         // todo, this is too brutal. Total line feed count should be updated the same way as lf_left.
         this.computeBufferMetadata();
@@ -571,17 +713,19 @@ var PieceTreeBase = /** @class */ (function () {
             // move `\n` to new node.
             var piece = node.piece;
             var newStart = { line: piece.start.line + 1, column: 0 };
-            piece.start = newStart;
-            piece.lineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, piece.end);
-            piece.length -= 1;
+            var nPiece = new Piece(piece.bufferIndex, newStart, piece.end, this.getLineFeedCnt(piece.bufferIndex, newStart, piece.end), piece.length - 1);
+            node.piece = nPiece;
             value += '\n';
             updateTreeMetadata(this, node, -1, -1);
             if (node.piece.length === 0) {
                 nodesToDel.push(node);
             }
         }
-        var newPiece = this.createNewPiece(value);
-        var newNode = this.rbInsertLeft(node, newPiece);
+        var newPieces = this.createNewPieces(value);
+        var newNode = this.rbInsertLeft(node, newPieces[newPieces.length - 1]);
+        for (var k = newPieces.length - 2; k >= 0; k--) {
+            newNode = this.rbInsertLeft(newNode, newPieces[k]);
+        }
         this.validateCRLFWithPrevNode(newNode);
         this.deleteNodes(nodesToDel);
     };
@@ -591,11 +735,15 @@ var PieceTreeBase = /** @class */ (function () {
             // move \n to the new node.
             value += '\n';
         }
-        var newPiece = this.createNewPiece(value);
-        var newNode = this.rbInsertRight(node, newPiece);
+        var newPieces = this.createNewPieces(value);
+        var newNode = this.rbInsertRight(node, newPieces[0]);
+        var tmpNode = newNode;
+        for (var k = 1; k < newPieces.length; k++) {
+            tmpNode = this.rbInsertRight(tmpNode, newPieces[k]);
+        }
         this.validateCRLFWithPrevNode(newNode);
     };
-    PieceTreeBase.prototype.positionInBuffer = function (node, remainder) {
+    PieceTreeBase.prototype.positionInBuffer = function (node, remainder, ret) {
         var piece = node.piece;
         var bufferIndex = node.piece.bufferIndex;
         var lineStarts = this._buffers[bufferIndex].lineStarts;
@@ -623,6 +771,11 @@ var PieceTreeBase = /** @class */ (function () {
             else {
                 break;
             }
+        }
+        if (ret) {
+            ret.line = mid;
+            ret.column = offset - midStart;
+            return null;
         }
         return {
             line: mid,
@@ -665,7 +818,32 @@ var PieceTreeBase = /** @class */ (function () {
             rbDelete(this, nodes[i]);
         }
     };
-    PieceTreeBase.prototype.createNewPiece = function (text) {
+    PieceTreeBase.prototype.createNewPieces = function (text) {
+        if (text.length > AverageBufferSize) {
+            // the content is large, operations like substring, charCode becomes slow
+            // so here we split it into smaller chunks, just like what we did for CR/LF normalization
+            var newPieces = [];
+            while (text.length > AverageBufferSize) {
+                var lastChar = text.charCodeAt(AverageBufferSize - 1);
+                var splitText = void 0;
+                if (lastChar === 13 /* CarriageReturn */ || (lastChar >= 0xd800 && lastChar <= 0xdbff)) {
+                    // last character is \r or a high surrogate => keep it back
+                    splitText = text.substring(0, AverageBufferSize - 1);
+                    text = text.substring(AverageBufferSize - 1);
+                }
+                else {
+                    splitText = text.substring(0, AverageBufferSize);
+                    text = text.substring(AverageBufferSize);
+                }
+                var lineStarts_1 = createLineStartsFast(splitText);
+                newPieces.push(new Piece(this._buffers.length, /* buffer index */ { line: 0, column: 0 }, { line: lineStarts_1.length - 1, column: splitText.length - lineStarts_1[lineStarts_1.length - 1] }, lineStarts_1.length - 1, splitText.length));
+                this._buffers.push(new StringBuffer(splitText, lineStarts_1));
+            }
+            var lineStarts_2 = createLineStartsFast(text);
+            newPieces.push(new Piece(this._buffers.length, /* buffer index */ { line: 0, column: 0 }, { line: lineStarts_2.length - 1, column: text.length - lineStarts_2[lineStarts_2.length - 1] }, lineStarts_2.length - 1, text.length));
+            this._buffers.push(new StringBuffer(text, lineStarts_2));
+            return newPieces;
+        }
         var startOffset = this._buffers[0].buffer.length;
         var lineStarts = createLineStartsFast(text, false);
         var start = this._lastChangeBufferPos;
@@ -696,9 +874,9 @@ var PieceTreeBase = /** @class */ (function () {
         var endIndex = this._buffers[0].lineStarts.length - 1;
         var endColumn = endOffset - this._buffers[0].lineStarts[endIndex];
         var endPos = { line: endIndex, column: endColumn };
-        var newPiece = new Piece(0, start, endPos, this.getLineFeedCnt(0, start, endPos), endOffset - startOffset);
+        var newPiece = new Piece(0, /** todo */ start, endPos, this.getLineFeedCnt(0, start, endPos), endOffset - startOffset);
         this._lastChangeBufferPos = endPos;
-        return newPiece;
+        return [newPiece];
     };
     PieceTreeBase.prototype.getLinesRawContent = function () {
         return this.getContentOfSubTree(this.root);
@@ -819,24 +997,26 @@ var PieceTreeBase = /** @class */ (function () {
         var piece = node.piece;
         var originalLFCnt = piece.lineFeedCnt;
         var originalEndOffset = this.offsetInBuffer(piece.bufferIndex, piece.end);
-        piece.end = pos;
-        var newEndOffset = this.offsetInBuffer(piece.bufferIndex, piece.end);
-        piece.lineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, piece.end);
-        var lf_delta = piece.lineFeedCnt - originalLFCnt;
+        var newEnd = pos;
+        var newEndOffset = this.offsetInBuffer(piece.bufferIndex, newEnd);
+        var newLineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, newEnd);
+        var lf_delta = newLineFeedCnt - originalLFCnt;
         var size_delta = newEndOffset - originalEndOffset;
-        piece.length += size_delta;
+        var newLength = piece.length + size_delta;
+        node.piece = new Piece(piece.bufferIndex, piece.start, newEnd, newLineFeedCnt, newLength);
         updateTreeMetadata(this, node, size_delta, lf_delta);
     };
     PieceTreeBase.prototype.deleteNodeHead = function (node, pos) {
         var piece = node.piece;
         var originalLFCnt = piece.lineFeedCnt;
         var originalStartOffset = this.offsetInBuffer(piece.bufferIndex, piece.start);
-        piece.start = pos;
-        piece.lineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, piece.end);
-        var newStartOffset = this.offsetInBuffer(piece.bufferIndex, piece.start);
-        var lf_delta = piece.lineFeedCnt - originalLFCnt;
+        var newStart = pos;
+        var newLineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, newStart, piece.end);
+        var newStartOffset = this.offsetInBuffer(piece.bufferIndex, newStart);
+        var lf_delta = newLineFeedCnt - originalLFCnt;
         var size_delta = originalStartOffset - newStartOffset;
-        piece.length += size_delta;
+        var newLength = piece.length + size_delta;
+        node.piece = new Piece(piece.bufferIndex, newStart, piece.end, newLineFeedCnt, newLength);
         updateTreeMetadata(this, node, size_delta, lf_delta);
     };
     PieceTreeBase.prototype.shrinkNode = function (node, start, end) {
@@ -846,12 +1026,11 @@ var PieceTreeBase = /** @class */ (function () {
         // old piece, originalStartPos, start
         var oldLength = piece.length;
         var oldLFCnt = piece.lineFeedCnt;
-        piece.end = start;
-        piece.lineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, piece.end);
+        var newEnd = start;
+        var newLineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, newEnd);
         var newLength = this.offsetInBuffer(piece.bufferIndex, start) - this.offsetInBuffer(piece.bufferIndex, originalStartPos);
-        var newLFCnt = piece.lineFeedCnt;
-        piece.length = newLength;
-        updateTreeMetadata(this, node, newLength - oldLength, newLFCnt - oldLFCnt);
+        node.piece = new Piece(piece.bufferIndex, piece.start, newEnd, newLineFeedCnt, newLength);
+        updateTreeMetadata(this, node, newLength - oldLength, newLineFeedCnt - oldLFCnt);
         // new right piece, end, originalEndPos
         var newPiece = new Piece(piece.bufferIndex, end, originalEndPos, this.getLineFeedCnt(piece.bufferIndex, end, originalEndPos), this.offsetInBuffer(piece.bufferIndex, originalEndPos) - this.offsetInBuffer(piece.bufferIndex, end));
         var newNode = this.rbInsertRight(node, newPiece);
@@ -877,14 +1056,13 @@ var PieceTreeBase = /** @class */ (function () {
         this._buffers[0].lineStarts = this._buffers[0].lineStarts.concat(lineStarts.slice(1));
         var endIndex = this._buffers[0].lineStarts.length - 1;
         var endColumn = this._buffers[0].buffer.length - this._buffers[0].lineStarts[endIndex];
-        var endPos = { line: endIndex, column: endColumn };
-        node.piece.end = endPos;
-        node.piece.length += value.length;
+        var newEnd = { line: endIndex, column: endColumn };
+        var newLength = node.piece.length + value.length;
         var oldLineFeedCnt = node.piece.lineFeedCnt;
-        var newLineFeedCnt = this.getLineFeedCnt(0, node.piece.start, endPos);
-        node.piece.lineFeedCnt = newLineFeedCnt;
+        var newLineFeedCnt = this.getLineFeedCnt(0, node.piece.start, newEnd);
         var lf_delta = newLineFeedCnt - oldLineFeedCnt;
-        this._lastChangeBufferPos = endPos;
+        node.piece = new Piece(node.piece.bufferIndex, node.piece.start, newEnd, newLineFeedCnt, newLength);
+        this._lastChangeBufferPos = newEnd;
         updateTreeMetadata(this, node, value.length, lf_delta);
     };
     PieceTreeBase.prototype.nodeAt = function (offset) {
@@ -1062,35 +1240,34 @@ var PieceTreeBase = /** @class */ (function () {
         var nodesToDel = [];
         // update node
         var lineStarts = this._buffers[prev.piece.bufferIndex].lineStarts;
+        var newEnd;
         if (prev.piece.end.column === 0) {
             // it means, last line ends with \r, not \r\n
-            var newEnd = { line: prev.piece.end.line - 1, column: lineStarts[prev.piece.end.line] - lineStarts[prev.piece.end.line - 1] - 1 };
-            prev.piece.end = newEnd;
+            newEnd = { line: prev.piece.end.line - 1, column: lineStarts[prev.piece.end.line] - lineStarts[prev.piece.end.line - 1] - 1 };
         }
         else {
             // \r\n
-            var newEnd = { line: prev.piece.end.line, column: prev.piece.end.column - 1 };
-            prev.piece.end = newEnd;
+            newEnd = { line: prev.piece.end.line, column: prev.piece.end.column - 1 };
         }
-        prev.piece.length -= 1;
-        prev.piece.lineFeedCnt -= 1;
+        var prevNewLength = prev.piece.length - 1;
+        var prevNewLFCnt = prev.piece.lineFeedCnt - 1;
+        prev.piece = new Piece(prev.piece.bufferIndex, prev.piece.start, newEnd, prevNewLFCnt, prevNewLength);
         updateTreeMetadata(this, prev, -1, -1);
         if (prev.piece.length === 0) {
             nodesToDel.push(prev);
         }
         // update nextNode
         var newStart = { line: next.piece.start.line + 1, column: 0 };
-        next.piece.start = newStart;
-        next.piece.length -= 1;
-        next.piece.lineFeedCnt = this.getLineFeedCnt(next.piece.bufferIndex, next.piece.start, next.piece.end);
-        // }
+        var newLength = next.piece.length - 1;
+        var newLineFeedCnt = this.getLineFeedCnt(next.piece.bufferIndex, newStart, next.piece.end);
+        next.piece = new Piece(next.piece.bufferIndex, newStart, next.piece.end, newLineFeedCnt, newLength);
         updateTreeMetadata(this, next, -1, -1);
         if (next.piece.length === 0) {
             nodesToDel.push(next);
         }
         // create new piece which contains \r\n
-        var piece = this.createNewPiece('\r\n');
-        this.rbInsertRight(prev, piece);
+        var pieces = this.createNewPieces('\r\n');
+        this.rbInsertRight(prev, pieces[0]);
         // delete empty nodes
         for (var i = 0; i < nodesToDel.length; i++) {
             rbDelete(this, nodesToDel[i]);
@@ -1108,9 +1285,9 @@ var PieceTreeBase = /** @class */ (function () {
                 else {
                     var piece = nextNode.piece;
                     var newStart = { line: piece.start.line + 1, column: 0 };
-                    piece.start = newStart;
-                    piece.length -= 1;
-                    piece.lineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, piece.start, piece.end);
+                    var newLength = piece.length - 1;
+                    var newLineFeedCnt = this.getLineFeedCnt(piece.bufferIndex, newStart, piece.end);
+                    nextNode.piece = new Piece(piece.bufferIndex, newStart, piece.end, newLineFeedCnt, newLength);
                     updateTreeMetadata(this, nextNode, -1, -1);
                 }
                 return true;
@@ -1141,6 +1318,13 @@ var PieceTreeBase = /** @class */ (function () {
         var startOffset = this.offsetInBuffer(piece.bufferIndex, piece.start);
         var endOffset = this.offsetInBuffer(piece.bufferIndex, piece.end);
         currentContent = buffer.buffer.substring(startOffset, endOffset);
+        return currentContent;
+    };
+    PieceTreeBase.prototype.getPieceContent = function (piece) {
+        var buffer = this._buffers[piece.bufferIndex];
+        var startOffset = this.offsetInBuffer(piece.bufferIndex, piece.start);
+        var endOffset = this.offsetInBuffer(piece.bufferIndex, piece.end);
+        var currentContent = buffer.buffer.substring(startOffset, endOffset);
         return currentContent;
     };
     /**

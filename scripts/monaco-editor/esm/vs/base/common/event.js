@@ -8,12 +8,11 @@ import { TPromise } from './winjs.base.js';
 import { once as onceFn } from './functional.js';
 import { onUnexpectedError } from './errors.js';
 import { LinkedList } from './linkedList.js';
-var Event;
+export var Event;
 (function (Event) {
     var _disposable = { dispose: function () { } };
     Event.None = function () { return _disposable; };
 })(Event || (Event = {}));
-export default Event;
 /**
  * The Emitter can be used to expose an Event to the public
  * to fire it from the insides.
@@ -355,6 +354,9 @@ var ChainableEvent = /** @class */ (function () {
     ChainableEvent.prototype.filter = function (fn) {
         return new ChainableEvent(filterEvent(this._event, fn));
     };
+    ChainableEvent.prototype.latch = function () {
+        return new ChainableEvent(latch(this._event));
+    };
     ChainableEvent.prototype.on = function (listener, thisArgs, disposables) {
         return this._event(listener, thisArgs, disposables);
     };
@@ -487,4 +489,14 @@ export function fromNodeEventEmitter(emitter, eventName, map) {
     var onLastListenerRemove = function () { return emitter.removeListener(eventName, fn); };
     var result = new Emitter({ onFirstListenerAdd: onFirstListenerAdd, onLastListenerRemove: onLastListenerRemove });
     return result.event;
+}
+export function latch(event) {
+    var firstCall = true;
+    var cache;
+    return filterEvent(event, function (value) {
+        var shouldEmit = firstCall || value !== cache;
+        firstCall = false;
+        cache = value;
+        return shouldEmit;
+    });
 }

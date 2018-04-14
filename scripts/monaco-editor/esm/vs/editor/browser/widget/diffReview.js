@@ -18,7 +18,6 @@ import * as nls from '../../../nls.js';
 import { Disposable } from '../../../base/common/lifecycle.js';
 import * as dom from '../../../base/browser/dom.js';
 import { createFastDomNode } from '../../../base/browser/fastDomNode.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { renderViewLine2 as renderViewLine, RenderLineInput } from '../../common/viewLayout/viewLineRenderer.js';
 import { LineTokens } from '../../common/core/lineTokens.js';
 import { Configuration } from '../config/configuration.js';

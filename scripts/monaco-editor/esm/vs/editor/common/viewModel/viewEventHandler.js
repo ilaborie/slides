@@ -13,7 +13,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-import * as viewEvents from '../view/viewEvents.js';
 import { Disposable } from '../../../base/common/lifecycle.js';
 var ViewEventHandler = /** @class */ (function (_super) {
     __extends(ViewEventHandler, _super);

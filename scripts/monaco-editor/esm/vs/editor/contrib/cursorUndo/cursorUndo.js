@@ -100,7 +100,7 @@ var CursorUndo = /** @class */ (function (_super) {
             id: 'cursorUndo',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 51 /* KEY_U */
             }
         }) || this;

@@ -35,5 +35,6 @@ export var ProgressLocation;
     ProgressLocation[ProgressLocation["Scm"] = 3] = "Scm";
     ProgressLocation[ProgressLocation["Extensions"] = 5] = "Extensions";
     ProgressLocation[ProgressLocation["Window"] = 10] = "Window";
+    ProgressLocation[ProgressLocation["Notification"] = 15] = "Notification";
 })(ProgressLocation || (ProgressLocation = {}));
 export var IProgressService2 = createDecorator('progressService2');

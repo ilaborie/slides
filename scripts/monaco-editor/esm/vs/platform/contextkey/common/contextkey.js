@@ -103,8 +103,9 @@ var ContextKeyExpr = /** @class */ (function () {
             return null;
         }
         var value = serializedValue.slice(start + 1, end);
+        var caseIgnoreFlag = serializedValue[end + 1] === 'i' ? 'i' : '';
         try {
-            return new RegExp(value);
+            return new RegExp(value, caseIgnoreFlag);
         }
         catch (e) {
             console.warn("bad regexp-value '" + serializedValue + "', parse error: " + e);
@@ -360,7 +361,7 @@ var ContextKeyRegexExpr = /** @class */ (function () {
         return this;
     };
     ContextKeyRegexExpr.prototype.serialize = function () {
-        return this.key + " =~ /" + (this.regexp ? this.regexp.source : '<invalid>') + "/";
+        return this.key + " =~ /" + (this.regexp ? this.regexp.source : '<invalid>') + "/" + (this.regexp.ignoreCase ? 'i' : '');
     };
     ContextKeyRegexExpr.prototype.keys = function () {
         return [this.key];

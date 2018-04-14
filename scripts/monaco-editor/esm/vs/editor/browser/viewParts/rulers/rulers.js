@@ -18,7 +18,6 @@ import { createFastDomNode } from '../../../../base/browser/fastDomNode.js';
 import { ViewPart } from '../../view/viewPart.js';
 import { registerThemingParticipant } from '../../../../platform/theme/common/themeService.js';
 import { editorRuler } from '../../../common/view/editorColorRegistry.js';
-import * as dom from '../../../../base/browser/dom.js';
 var Rulers = /** @class */ (function (_super) {
     __extends(Rulers, _super);
     function Rulers(context) {
@@ -59,7 +58,7 @@ var Rulers = /** @class */ (function (_super) {
             return;
         }
         if (currentCount < desiredCount) {
-            var rulerWidth = dom.computeScreenAwareSize(1);
+            var rulerWidth = this._context.model.getTabSize();
             var addCount = desiredCount - currentCount;
             while (addCount > 0) {
                 var node = createFastDomNode(document.createElement('div'));
@@ -92,6 +91,6 @@ export { Rulers };
 registerThemingParticipant(function (theme, collector) {
     var rulerColor = theme.getColor(editorRuler);
     if (rulerColor) {
-        collector.addRule(".monaco-editor .view-ruler { background-color: " + rulerColor + "; }");
+        collector.addRule(".monaco-editor .view-ruler { box-shadow: 1px 0 0 0 " + rulerColor + " inset; }");
     }
 });

@@ -1,6 +1,6 @@
 /*!-----------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
- * Version: 0.11.6(304bb33e6e20d081d487cd807add896acf64c9b9)
+ * Version: 0.12.0(160c7612faa359c4f196a0f3292a0f2752a1daf5)
  * Released under the MIT license
  * https://github.com/Microsoft/vscode/blob/master/LICENSE.txt
  *-----------------------------------------------------------*/
@@ -163,6 +163,9 @@ define("vs/editor/editor.main.nls", {
 		"Controls how the editor should render the current line highlight, possibilities are 'none', 'gutter', 'line', and 'all'.",
 		"Controls if the editor shows code lenses",
 		"Controls whether the editor has code folding enabled",
+		"If available, use a langauge specific folding strategy, otherwise falls back to the indentation based strategy.",
+		"Always use the indentation based folding strategy",
+		"Controls the way folding ranges are computed. 'auto' picks uses a language specific folding strategy, if available. 'indentation' forces that the indentation based folding strategy is used.",
 		"Controls whether the fold controls on the gutter are automatically hidden.",
 		"Highlight matching brackets when one of them is selected.",
 		"Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.",
@@ -207,6 +210,8 @@ define("vs/editor/editor.main.nls", {
 		"Color of the editor indentation guides.",
 		"Color of editor line numbers.",
 		"Color of editor active line number",
+		"Id is deprecated. Use 'editorLineNumber.activeForeground' instead.",
+		"Color of editor active line number",
 		"Color of the editor rulers.",
 		"Foreground color of editor code lenses",
 		"Background color behind matching brackets",
@@ -219,7 +224,9 @@ define("vs/editor/editor.main.nls", {
 		"Border color of warning squigglies in the editor.",
 		"Foreground color of info squigglies in the editor.",
 		"Border color of info squigglies in the editor.",
-		"Overview ruler marker color for range highlights.",
+		"Foreground color of hint squigglies in the editor.",
+		"Border color of hint squigglies in the editor.",
+		"Overview ruler marker color for range highlights. The color must not be opaque to not hide underlying decorations.",
 		"Overview ruler marker color for errors.",
 		"Overview ruler marker color for warnings.",
 		"Overview ruler marker color for infos."
@@ -321,9 +328,11 @@ define("vs/editor/editor.main.nls", {
 		"Click to show {0} definitions."
 	],
 	"vs/editor/contrib/gotoError/gotoError": [
-		"({0}/{1})",
 		"Go to Next Problem (Error, Warning, Info)",
-		"Go to Previous Problem (Error, Warning, Info)",
+		"Go to Previous Problem (Error, Warning, Info)"
+	],
+	"vs/editor/contrib/gotoError/gotoErrorWidget": [
+		"({0}/{1})",
 		"Editor marker navigation widget error color.",
 		"Editor marker navigation widget warning color.",
 		"Editor marker navigation widget info color.",
@@ -364,7 +373,9 @@ define("vs/editor/editor.main.nls", {
 		"Ctrl + click to follow link",
 		"Cmd + click to execute command",
 		"Ctrl + click to execute command",
+		"Option + click to follow link",
 		"Alt + click to follow link",
+		"Option + click to execute command",
 		"Alt + click to execute command",
 		"Failed to open this link because it is not well-formed: {0}",
 		"Failed to open this link because its target is missing.",
@@ -447,6 +458,46 @@ define("vs/editor/editor.main.nls", {
 		"Expand Select",
 		"Shrink Select"
 	],
+	"vs/editor/contrib/snippet/snippetVariables": [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+		"Sun",
+		"Mon",
+		"Tue",
+		"Wed",
+		"Thu",
+		"Fri",
+		"Sat",
+		"January",
+		"February",
+		"March",
+		"April",
+		"May",
+		"June",
+		"July",
+		"August",
+		"September",
+		"October",
+		"November",
+		"December",
+		"Jan",
+		"Feb",
+		"Mar",
+		"Apr",
+		"May",
+		"Jun",
+		"Jul",
+		"Aug",
+		"Sep",
+		"Oct",
+		"Nov",
+		"Dec"
+	],
 	"vs/editor/contrib/suggest/suggestController": [
 		"Accepting '{0}' did insert the following text: {1}",
 		"Trigger Suggest"
@@ -475,8 +526,8 @@ define("vs/editor/editor.main.nls", {
 		"Background color of a symbol during write-access, like writing to a variable. The color must not be opaque to not hide underlying decorations.",
 		"Border color of a symbol during read-access, like reading a variable.",
 		"Border color of a symbol during write-access, like writing to a variable.",
-		"Overview ruler marker color for symbol highlights.",
-		"Overview ruler marker color for write-access symbol highlights.",
+		"Overview ruler marker color for symbol highlights. The color must not be opaque to not hide underlying decorations.",
+		"Overview ruler marker color for write-access symbol highlights. The color must not be opaque to not hide underlying decorations.",
 		"Go to Next Symbol Highlight",
 		"Go to Previous Symbol Highlight"
 	],
@@ -553,6 +604,10 @@ define("vs/editor/editor.main.nls", {
 		"Cannot register '{0}'. This matches property pattern '\\\\[.*\\\\]$' for describing language specific editor settings. Use 'configurationDefaults' contribution.",
 		"Cannot register '{0}'. This property is already registered."
 	],
+	"vs/platform/dialogs/common/dialogs": [
+		"...1 additional file not shown",
+		"...{0} additional files not shown"
+	],
 	"vs/platform/keybinding/common/abstractKeybindingService": [
 		"({0}) was pressed. Waiting for second key of chord...",
 		"The key combination ({0}, {1}) is not a command."
@@ -564,7 +619,13 @@ define("vs/editor/editor.main.nls", {
 		"The modifier to be used to add an item in trees and lists to a multi-selection with the mouse (for example in the explorer, open editors and scm view). `ctrlCmd` maps to `Control` on Windows and Linux and to `Command` on macOS. The 'Open to Side' mouse gestures - if supported - will adapt such that they do not conflict with the multiselect modifier.",
 		"Opens items on mouse single click.",
 		"Open items on mouse double click.",
-		"Controls how to open items in trees and lists using the mouse (if supported). Set to `singleClick` to open items with a single mouse click and `doubleClick` to only open via mouse double click. For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. "
+		"Controls how to open items in trees and lists using the mouse (if supported). Set to `singleClick` to open items with a single mouse click and `doubleClick` to only open via mouse double click. For parents with children in trees, this setting will control if a single click expands the parent or a double click. Note that some trees and lists might choose to ignore this setting if it is not applicable. ",
+		"Controls whether trees support horizontal scrolling in the workbench."
+	],
+	"vs/platform/markers/common/markers": [
+		"Error",
+		"Warning",
+		"Info"
 	],
 	"vs/platform/theme/common/colorRegistry": [
 		"Colors used in the workbench.",
@@ -605,7 +666,6 @@ define("vs/editor/editor.main.nls", {
 		"List/Tree background color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.",
 		"List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.",
 		"List/Tree background color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.",
-		"List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not.",
 		"List/Tree background when hovering over items using the mouse.",
 		"List/Tree foreground when hovering over items using the mouse.",
 		"List/Tree drag and drop background when moving items around using the mouse.",
@@ -656,8 +716,8 @@ define("vs/editor/editor.main.nls", {
 		"Current overview ruler foreground for inline merge-conflicts.",
 		"Incoming overview ruler foreground for inline merge-conflicts.",
 		"Common ancestor overview ruler foreground for inline merge-conflicts.",
-		"Overview ruler marker color for find matches.",
-		"Overview ruler marker color for selection highlights."
+		"Overview ruler marker color for find matches. The color must not be opaque to not hide underlying decorations.",
+		"Overview ruler marker color for selection highlights. The color must not be opaque to not hide underlying decorations."
 	],
 	"vs/platform/workspaces/common/workspaces": [
 		"Code Workspace",

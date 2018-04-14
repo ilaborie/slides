@@ -245,19 +245,19 @@ var InputBox = /** @class */ (function (_super) {
         return !!this.validation && !this.validation(this.value);
     };
     InputBox.prototype.validate = function () {
-        var result = null;
+        var errorMsg = null;
         if (this.validation) {
-            result = this.validation(this.value);
-            if (!result) {
+            errorMsg = this.validation(this.value);
+            if (errorMsg) {
+                this.inputElement.setAttribute('aria-invalid', 'true');
+                this.showMessage(errorMsg);
+            }
+            else if (this.inputElement.hasAttribute('aria-invalid')) {
                 this.inputElement.removeAttribute('aria-invalid');
                 this.hideMessage();
             }
-            else {
-                this.inputElement.setAttribute('aria-invalid', 'true');
-                this.showMessage(result);
-            }
         }
-        return !result;
+        return !errorMsg;
     };
     InputBox.prototype.stylesForType = function (type) {
         switch (type) {

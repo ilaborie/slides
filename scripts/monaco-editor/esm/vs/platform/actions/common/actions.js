@@ -52,6 +52,7 @@ var MenuId = /** @class */ (function () {
     MenuId.ViewTitle = new MenuId();
     MenuId.ViewItemContext = new MenuId();
     MenuId.TouchBarContext = new MenuId();
+    MenuId.SearchContext = new MenuId();
     return MenuId;
 }());
 export { MenuId };

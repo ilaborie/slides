@@ -18,7 +18,6 @@ import { StrictResourceMap } from '../../../base/common/map.js';
 import * as arrays from '../../../base/common/arrays.js';
 import * as types from '../../../base/common/types.js';
 import * as objects from '../../../base/common/objects.js';
-import URI from '../../../base/common/uri.js';
 import { OVERRIDE_PROPERTY_PATTERN } from './configurationRegistry.js';
 import { overrideIdentifierFromKey, addToValueTree, toValuesTree, getConfigurationValue, getDefaultValues, getConfigurationKeys, removeFromValueTree, toOverrides } from './configuration.js';
 var ConfigurationModel = /** @class */ (function () {
@@ -98,7 +97,7 @@ var ConfigurationModel = /** @class */ (function () {
                     this_1.mergeContents(override.contents, otherOverride.contents);
                 }
                 else {
-                    overrides.push(otherOverride);
+                    overrides.push(objects.deepClone(otherOverride));
                 }
             };
             var this_1 = this;
@@ -296,17 +295,19 @@ var ConfigurationModelParser = /** @class */ (function () {
 }());
 export { ConfigurationModelParser };
 var Configuration = /** @class */ (function () {
-    function Configuration(_defaultConfiguration, _userConfiguration, _workspaceConfiguration, _folderConfigurations, _memoryConfiguration, _memoryConfigurationByResource) {
+    function Configuration(_defaultConfiguration, _userConfiguration, _workspaceConfiguration, _folderConfigurations, _memoryConfiguration, _memoryConfigurationByResource, _freeze) {
         if (_workspaceConfiguration === void 0) { _workspaceConfiguration = new ConfigurationModel(); }
         if (_folderConfigurations === void 0) { _folderConfigurations = new StrictResourceMap(); }
         if (_memoryConfiguration === void 0) { _memoryConfiguration = new ConfigurationModel(); }
         if (_memoryConfigurationByResource === void 0) { _memoryConfigurationByResource = new StrictResourceMap(); }
+        if (_freeze === void 0) { _freeze = true; }
         this._defaultConfiguration = _defaultConfiguration;
         this._userConfiguration = _userConfiguration;
         this._workspaceConfiguration = _workspaceConfiguration;
         this._folderConfigurations = _folderConfigurations;
         this._memoryConfiguration = _memoryConfiguration;
         this._memoryConfigurationByResource = _memoryConfigurationByResource;
+        this._freeze = _freeze;
         this._workspaceConsolidatedConfiguration = null;
         this._foldersConsolidatedConfigurations = new StrictResourceMap();
     }
@@ -431,7 +432,10 @@ var Configuration = /** @class */ (function () {
     };
     Configuration.prototype.getWorkspaceConsolidatedConfiguration = function () {
         if (!this._workspaceConsolidatedConfiguration) {
-            this._workspaceConsolidatedConfiguration = this._defaultConfiguration.merge(this._userConfiguration).merge(this._workspaceConfiguration).merge(this._memoryConfiguration).freeze();
+            this._workspaceConsolidatedConfiguration = this._defaultConfiguration.merge(this._userConfiguration, this._workspaceConfiguration, this._memoryConfiguration);
+            if (this._freeze) {
+                this._workspaceConfiguration = this._workspaceConfiguration.freeze();
+            }
         }
         return this._workspaceConsolidatedConfiguration;
     };
@@ -441,7 +445,10 @@ var Configuration = /** @class */ (function () {
             var workspaceConsolidateConfiguration = this.getWorkspaceConsolidatedConfiguration();
             var folderConfiguration = this._folderConfigurations.get(folder);
             if (folderConfiguration) {
-                folderConsolidatedConfiguration = workspaceConsolidateConfiguration.merge(folderConfiguration).freeze();
+                folderConsolidatedConfiguration = workspaceConsolidateConfiguration.merge(folderConfiguration);
+                if (this._freeze) {
+                    folderConsolidatedConfiguration = folderConsolidatedConfiguration.freeze();
+                }
                 this._foldersConsolidatedConfigurations.set(folder, folderConsolidatedConfiguration);
             }
             else {
@@ -502,19 +509,6 @@ var Configuration = /** @class */ (function () {
             addKeys(this.folders.get(resource).keys);
         }
         return all;
-    };
-    Configuration.parse = function (data) {
-        var defaultConfiguration = Configuration.parseConfigurationModel(data.defaults);
-        var userConfiguration = Configuration.parseConfigurationModel(data.user);
-        var workspaceConfiguration = Configuration.parseConfigurationModel(data.workspace);
-        var folders = Object.keys(data.folders).reduce(function (result, key) {
-            result.set(URI.parse(key), Configuration.parseConfigurationModel(data.folders[key]));
-            return result;
-        }, new StrictResourceMap());
-        return new Configuration(defaultConfiguration, userConfiguration, workspaceConfiguration, folders);
-    };
-    Configuration.parseConfigurationModel = function (model) {
-        return new ConfigurationModel(model.contents, model.keys, model.overrides).freeze();
     };
     return Configuration;
 }());

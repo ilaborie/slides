@@ -38,7 +38,7 @@ var InsertCursorAbove = /** @class */ (function (_super) {
             alias: 'Add Cursor Above',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 16 /* UpArrow */,
                 linux: {
                     primary: 1024 /* Shift */ | 512 /* Alt */ | 16 /* UpArrow */,
@@ -69,7 +69,7 @@ var InsertCursorBelow = /** @class */ (function (_super) {
             alias: 'Add Cursor Below',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 18 /* DownArrow */,
                 linux: {
                     primary: 1024 /* Shift */ | 512 /* Alt */ | 18 /* DownArrow */,
@@ -100,7 +100,7 @@ var InsertCursorAtEndOfEachLineSelected = /** @class */ (function (_super) {
             alias: 'Add Cursors to Line Ends',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 512 /* Alt */ | 39 /* KEY_I */
             }
         }) || this;
@@ -556,7 +556,7 @@ var CompatChangeAll = /** @class */ (function (_super) {
             alias: 'Change All Occurrences',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 60 /* F2 */
             },
             menuOpts: {

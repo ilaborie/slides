@@ -8,7 +8,6 @@ import { dispose } from '../../../base/common/lifecycle.js';
 import { isMacintosh } from '../../../base/common/platform.js';
 import { MouseTargetType } from '../../browser/editorBrowser.js';
 import { registerEditorContribution } from '../../browser/editorExtensions.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { Position } from '../../common/core/position.js';
 import { Range } from '../../common/core/range.js';
 import { Selection } from '../../common/core/selection.js';

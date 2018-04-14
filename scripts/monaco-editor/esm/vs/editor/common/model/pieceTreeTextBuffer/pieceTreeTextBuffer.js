@@ -60,8 +60,7 @@ var PieceTreeTextBuffer = /** @class */ (function () {
             return '';
         }
         var lineEnding = this._getEndOfLine(eol);
-        var text = this._pieceTree.getValueInRange(range);
-        return text.replace(/\r\n|\r|\n/g, lineEnding);
+        return this._pieceTree.getValueInRange(range, lineEnding);
     };
     PieceTreeTextBuffer.prototype.getValueLengthInRange = function (range, eol) {
         if (eol === void 0) { eol = EndOfLinePreference.TextDefined; }
@@ -194,12 +193,14 @@ var PieceTreeTextBuffer = /** @class */ (function () {
             var op = operations[i];
             var reverseRange = reverseRanges[i];
             reverseOperations[i] = {
+                sortIndex: op.sortIndex,
                 identifier: op.identifier,
                 range: reverseRange,
                 text: this.getValueInRange(op.range),
                 forceMoveMarkers: op.forceMoveMarkers
             };
         }
+        reverseOperations.sort(function (a, b) { return a.sortIndex - b.sortIndex; });
         this._mightContainRTL = mightContainRTL;
         this._mightContainNonBasicASCII = mightContainNonBasicASCII;
         var contentChanges = this._doApplyEdits(operations);
@@ -225,9 +226,9 @@ var PieceTreeTextBuffer = /** @class */ (function () {
         return new ApplyEditsResult(reverseOperations, contentChanges, trimAutoWhitespaceLineNumbers);
     };
     /**
- * Transform operations such that they represent the same logic edit,
- * but that they also do not cause OOM crashes.
- */
+     * Transform operations such that they represent the same logic edit,
+     * but that they also do not cause OOM crashes.
+     */
     PieceTreeTextBuffer.prototype._reduceOperations = function (operations) {
         if (operations.length < 1000) {
             // We know from empirical testing that a thousand edits work fine regardless of their shape.
@@ -329,6 +330,9 @@ var PieceTreeTextBuffer = /** @class */ (function () {
             });
         }
         return contentChanges;
+    };
+    PieceTreeTextBuffer.prototype.findMatchesLineByLine = function (searchRange, searchData, captureMatches, limitResultCount) {
+        return this._pieceTree.findMatchesLineByLine(searchRange, searchData, captureMatches, limitResultCount);
     };
     // #endregion
     // #region helper

@@ -10,7 +10,7 @@ import { Emitter } from '../../../base/common/event.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
 import { SuggestRegistry, SuggestTriggerKind } from '../../common/modes.js';
-import { Position } from '../../common/core/position.js';
+import { Selection } from '../../common/core/selection.js';
 import { provideSuggestionItems, getSuggestionComparator } from './suggest.js';
 import { CompletionModel } from './completionModel.js';
 import { CursorChangeReason } from '../../common/controller/cursorEvents.js';
@@ -61,7 +61,7 @@ var SuggestModel = /** @class */ (function () {
         this._requestPromise = null;
         this._completionModel = null;
         this._context = null;
-        this._currentPosition = this._editor.getPosition() || new Position(1, 1);
+        this._currentSelection = this._editor.getSelection() || new Selection(1, 1, 1, 1);
         // wire up various listeners
         this._toDispose.push(this._editor.onDidChangeModel(function () {
             _this._updateTriggerCharacters();
@@ -182,8 +182,8 @@ var SuggestModel = /** @class */ (function () {
     };
     SuggestModel.prototype._onCursorChange = function (e) {
         var _this = this;
-        var prevPosition = this._currentPosition;
-        this._currentPosition = this._editor.getPosition();
+        var prevSelection = this._currentSelection;
+        this._currentSelection = this._editor.getSelection();
         if (!e.selection.isEmpty()
             || e.reason !== CursorChangeReason.NotSet
             || (e.source !== 'keyboard' && e.source !== 'deleteLeft')) {
@@ -205,7 +205,8 @@ var SuggestModel = /** @class */ (function () {
             // trigger 24x7 IntelliSense when idle, enabled, when cursor
             // moved RIGHT, and when at a good position
             if (this._editor.getConfiguration().contribInfo.quickSuggestions !== false
-                && prevPosition.isBefore(this._currentPosition)) {
+                && (prevSelection.containsRange(this._currentSelection)
+                    || prevSelection.getEndPosition().isBeforeOrEqual(this._currentSelection.getPosition()))) {
                 this.cancel();
                 this._triggerAutoSuggestPromise = TPromise.timeout(this._quickSuggestDelay);
                 this._triggerAutoSuggestPromise.then(function () {
@@ -315,6 +316,11 @@ var SuggestModel = /** @class */ (function () {
         }
         if (ctx.lineNumber !== this._context.lineNumber) {
             // e.g. happens when pressing Enter while IntelliSense is computed
+            this.cancel();
+            return;
+        }
+        if (ctx.leadingWord.startColumn < this._context.leadingWord.startColumn) {
+            // happens when the current word gets outdented
             this.cancel();
             return;
         }

@@ -72,7 +72,7 @@ var TriggerParameterHintsAction = /** @class */ (function (_super) {
             alias: 'Trigger Parameter Hints',
             precondition: EditorContextKeys.hasSignatureHelpProvider,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 10 /* Space */
             }
         }) || this;
@@ -96,7 +96,7 @@ registerEditorCommand(new ParameterHintsCommand({
     handler: function (x) { return x.cancel(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.editorTextFocus,
         primary: 9 /* Escape */,
         secondary: [1024 /* Shift */ | 9 /* Escape */]
     }
@@ -107,7 +107,7 @@ registerEditorCommand(new ParameterHintsCommand({
     handler: function (x) { return x.previous(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.editorTextFocus,
         primary: 16 /* UpArrow */,
         secondary: [512 /* Alt */ | 16 /* UpArrow */],
         mac: { primary: 16 /* UpArrow */, secondary: [512 /* Alt */ | 16 /* UpArrow */, 256 /* WinCtrl */ | 46 /* KEY_P */] }
@@ -119,7 +119,7 @@ registerEditorCommand(new ParameterHintsCommand({
     handler: function (x) { return x.next(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.editorTextFocus,
         primary: 18 /* DownArrow */,
         secondary: [512 /* Alt */ | 18 /* DownArrow */],
         mac: { primary: 18 /* DownArrow */, secondary: [512 /* Alt */ | 18 /* DownArrow */, 256 /* WinCtrl */ | 44 /* KEY_N */] }

@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { escape } from '../../../common/strings.js';
-export function render(text) {
+export function renderOcticons(text) {
     return escape(text);
 }
 var OcticonLabel = /** @class */ (function () {
@@ -12,7 +12,7 @@ var OcticonLabel = /** @class */ (function () {
     }
     Object.defineProperty(OcticonLabel.prototype, "text", {
         set: function (text) {
-            this._container.innerHTML = render(text || '');
+            this._container.innerHTML = renderOcticons(text || '');
         },
         enumerable: true,
         configurable: true

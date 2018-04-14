@@ -28,6 +28,7 @@ import { createFastDomNode } from '../../../base/browser/fastDomNode.js';
 import { PartFingerprints, ViewPart } from '../view/viewPart.js';
 import { Margin } from '../viewParts/margin/margin.js';
 import { LineNumbersOverlay } from '../viewParts/lineNumbers/lineNumbers.js';
+import { getMapForWordSeparators } from '../../common/controller/wordCharacterClassifier.js';
 var VisibleTextAreaData = /** @class */ (function () {
     function VisibleTextAreaData(top, left, width) {
         this.top = top;
@@ -143,16 +144,17 @@ var TextAreaHandler = /** @class */ (function (_super) {
                 if (_this._accessibilitySupport === 1 /* Disabled */) {
                     // We know for a fact that a screen reader is not attached
                     // On OSX, we write the character before the cursor to allow for "long-press" composition
+                    // Also on OSX, we write the word before the cursor to allow for the Accessibility Keyboard to give good hints
                     if (platform.isMacintosh) {
                         var selection = _this._selections[0];
                         if (selection.isEmpty()) {
                             var position = selection.getStartPosition();
-                            if (position.column > 1) {
-                                var lineContent = _this._context.model.getLineContent(position.lineNumber);
-                                var charBefore = lineContent.charAt(position.column - 2);
-                                if (!strings.isHighSurrogate(charBefore.charCodeAt(0))) {
-                                    return new TextAreaState(charBefore, 1, 1, position, position);
-                                }
+                            var textBefore = _this._getWordBeforePosition(position);
+                            if (textBefore.length === 0) {
+                                textBefore = _this._getCharacterBeforePosition(position);
+                            }
+                            if (textBefore.length > 0) {
+                                return new TextAreaState(textBefore, textBefore.length, textBefore.length, position, position);
                             }
                         }
                     }
@@ -237,6 +239,32 @@ var TextAreaHandler = /** @class */ (function (_super) {
     }
     TextAreaHandler.prototype.dispose = function () {
         _super.prototype.dispose.call(this);
+    };
+    TextAreaHandler.prototype._getWordBeforePosition = function (position) {
+        var lineContent = this._context.model.getLineContent(position.lineNumber);
+        var wordSeparators = getMapForWordSeparators(this._context.configuration.editor.wordSeparators);
+        var column = position.column;
+        var distance = 0;
+        while (column > 1) {
+            var charCode = lineContent.charCodeAt(column - 2);
+            var charClass = wordSeparators.get(charCode);
+            if (charClass !== 0 /* Regular */ || distance > 50) {
+                return lineContent.substring(column - 1, position.column - 1);
+            }
+            distance++;
+            column--;
+        }
+        return lineContent.substring(0, position.column - 1);
+    };
+    TextAreaHandler.prototype._getCharacterBeforePosition = function (position) {
+        if (position.column > 1) {
+            var lineContent = this._context.model.getLineContent(position.lineNumber);
+            var charBefore = lineContent.charAt(position.column - 2);
+            if (!strings.isHighSurrogate(charBefore.charCodeAt(0))) {
+                return charBefore;
+            }
+        }
+        return '';
     };
     // --- begin event handlers
     TextAreaHandler.prototype.onConfigurationChanged = function (e) {

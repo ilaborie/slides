@@ -9,29 +9,47 @@ import { EditOperation } from '../../common/core/editOperation.js';
 var EditOperationsCommand = /** @class */ (function () {
     function EditOperationsCommand(edits, initialSelection) {
         this._initialSelection = initialSelection;
-        this._edits = [];
-        this._newEol = undefined;
+        this._edits = edits;
+    }
+    EditOperationsCommand._handleEolEdits = function (editor, edits) {
+        var newEol = undefined;
+        var singleEdits = [];
         for (var _i = 0, edits_1 = edits; _i < edits_1.length; _i++) {
             var edit = edits_1[_i];
             if (typeof edit.eol === 'number') {
-                this._newEol = edit.eol;
+                newEol = edit.eol;
             }
             if (edit.range && typeof edit.text === 'string') {
-                this._edits.push(edit);
+                singleEdits.push(edit);
             }
         }
-    }
-    EditOperationsCommand.execute = function (editor, edits, asCommand) {
-        var cmd = new EditOperationsCommand(edits, editor.getSelection());
-        if (typeof cmd._newEol === 'number') {
-            editor.getModel().setEOL(cmd._newEol);
+        if (typeof newEol === 'number') {
+            editor.getModel().setEOL(newEol);
         }
+        return singleEdits;
+    };
+    EditOperationsCommand.executeAsCommand = function (editor, _edits) {
+        var edits = this._handleEolEdits(editor, _edits);
+        var cmd = new EditOperationsCommand(edits, editor.getSelection());
         editor.pushUndoStop();
-        if (!asCommand) {
-            editor.executeEdits('formatEditsCommand', cmd._edits.map(function (edit) { return EditOperation.replace(Range.lift(edit.range), edit.text); }));
+        editor.executeCommand('formatEditsCommand', cmd);
+        editor.pushUndoStop();
+    };
+    EditOperationsCommand.isFullModelReplaceEdit = function (editor, edit) {
+        var model = editor.getModel();
+        var editRange = model.validateRange(edit.range);
+        var fullModelRange = model.getFullModelRange();
+        return fullModelRange.equalsRange(editRange);
+    };
+    EditOperationsCommand.execute = function (editor, _edits) {
+        var edits = this._handleEolEdits(editor, _edits);
+        editor.pushUndoStop();
+        if (edits.length === 1 && EditOperationsCommand.isFullModelReplaceEdit(editor, edits[0])) {
+            // We use replace semantics and hope that markers stay put...
+            editor.executeEdits('formatEditsCommand', edits.map(function (edit) { return EditOperation.replace(Range.lift(edit.range), edit.text); }));
         }
         else {
-            editor.executeCommand('formatEditsCommand', cmd);
+            editor.executeEdits('formatEditsCommand', edits.map(function (edit) { return EditOperation.replaceMove(Range.lift(edit.range), edit.text); }));
         }
         editor.pushUndoStop();
     };

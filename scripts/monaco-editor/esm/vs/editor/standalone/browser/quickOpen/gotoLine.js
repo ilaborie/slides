@@ -17,7 +17,6 @@ import './gotoLine.css';
 import * as nls from '../../../../nls.js';
 import { QuickOpenEntry, QuickOpenModel } from '../../../../base/parts/quickopen/browser/quickOpenModel.js';
 import { Mode } from '../../../../base/parts/quickopen/common/quickOpen.js';
-import * as editorCommon from '../../../common/editorCommon.js';
 import { EditorContextKeys } from '../../../common/editorContextKeys.js';
 import { isCodeEditor } from '../../../browser/editorBrowser.js';
 import { BaseEditorQuickOpenAction } from './editorQuickOpen.js';

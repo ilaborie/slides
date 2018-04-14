@@ -3,13 +3,12 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import { RunOnceScheduler } from '../../../base/common/async.js';
+import { RunOnceScheduler, TimeoutTimer } from '../../../base/common/async.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { ReplacePattern, parseReplaceString } from './replacePattern.js';
 import { ReplaceCommand, ReplaceCommandThatPreservesSelection } from '../../common/commands/replaceCommand.js';
 import { Position } from '../../common/core/position.js';
 import { Range } from '../../common/core/range.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { FindDecorations } from './findDecorations.js';
 import { ReplaceAllCommand } from './replaceAllCommand.js';
 import { Selection } from '../../common/core/selection.js';
@@ -21,6 +20,7 @@ export var CONTEXT_FIND_WIDGET_VISIBLE = new RawContextKey('findWidgetVisible', 
 export var CONTEXT_FIND_WIDGET_NOT_VISIBLE = CONTEXT_FIND_WIDGET_VISIBLE.toNegated();
 // Keep ContextKey use of 'Focussed' to not break when clauses
 export var CONTEXT_FIND_INPUT_FOCUSED = new RawContextKey('findInputFocussed', false);
+export var CONTEXT_REPLACE_INPUT_FOCUSED = new RawContextKey('replaceInputFocussed', false);
 export var ToggleCaseSensitiveKeybinding = {
     primary: 512 /* Alt */ | 33 /* KEY_C */,
     mac: { primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 33 /* KEY_C */ }
@@ -63,6 +63,7 @@ export var FIND_IDS = {
     ShowNextFindTermAction: 'find.history.showNext'
 };
 export var MATCHES_LIMIT = 19999;
+var RESEARCH_DELAY = 240;
 var FindModelBoundToEditorModel = /** @class */ (function () {
     function FindModelBoundToEditorModel(editor, state) {
         var _this = this;
@@ -70,6 +71,7 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
         this._state = state;
         this._toDispose = [];
         this._isDisposed = false;
+        this._startSearchingTimer = new TimeoutTimer();
         this._decorations = new FindDecorations(editor);
         this._toDispose.push(this._decorations);
         this._updateDecorationsScheduler = new RunOnceScheduler(function () { return _this.research(false); }, 100);
@@ -98,9 +100,11 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
     }
     FindModelBoundToEditorModel.prototype.dispose = function () {
         this._isDisposed = true;
+        dispose(this._startSearchingTimer);
         this._toDispose = dispose(this._toDispose);
     };
     FindModelBoundToEditorModel.prototype._onStateChanged = function (e) {
+        var _this = this;
         if (this._isDisposed) {
             // The find model is disposed during a find state changed event
             return;
@@ -110,11 +114,25 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
             return;
         }
         if (e.searchString || e.isReplaceRevealed || e.isRegex || e.wholeWord || e.matchCase || e.searchScope) {
-            if (e.searchScope) {
-                this.research(e.moveCursor, this._state.searchScope);
+            var model = this._editor.getModel();
+            if (model.isTooLargeForHavingARichMode()) {
+                this._startSearchingTimer.cancel();
+                this._startSearchingTimer.setIfNotSet(function () {
+                    if (e.searchScope) {
+                        _this.research(e.moveCursor, _this._state.searchScope);
+                    }
+                    else {
+                        _this.research(e.moveCursor);
+                    }
+                }, RESEARCH_DELAY);
             }
             else {
-                this.research(e.moveCursor);
+                if (e.searchScope) {
+                    this.research(e.moveCursor, this._state.searchScope);
+                }
+                else {
+                    this.research(e.moveCursor);
+                }
             }
         }
     };
@@ -167,8 +185,38 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
         this._editor.setSelection(match);
         this._editor.revealRangeInCenterIfOutsideViewport(match, 0 /* Smooth */);
     };
+    FindModelBoundToEditorModel.prototype._prevSearchPosition = function (before) {
+        var isUsingLineStops = this._state.isRegex && (this._state.searchString.indexOf('^') >= 0
+            || this._state.searchString.indexOf('$') >= 0);
+        var lineNumber = before.lineNumber, column = before.column;
+        var model = this._editor.getModel();
+        if (isUsingLineStops || column === 1) {
+            if (lineNumber === 1) {
+                lineNumber = model.getLineCount();
+            }
+            else {
+                lineNumber--;
+            }
+            column = model.getLineMaxColumn(lineNumber);
+        }
+        else {
+            column--;
+        }
+        return new Position(lineNumber, column);
+    };
     FindModelBoundToEditorModel.prototype._moveToPrevMatch = function (before, isRecursed) {
         if (isRecursed === void 0) { isRecursed = false; }
+        if (this._decorations.getCount() < MATCHES_LIMIT) {
+            var prevMatchRange = this._decorations.matchBeforePosition(before);
+            if (prevMatchRange && prevMatchRange.isEmpty() && prevMatchRange.getStartPosition().equals(before)) {
+                before = this._prevSearchPosition(before);
+                prevMatchRange = this._decorations.matchBeforePosition(before);
+            }
+            if (prevMatchRange) {
+                this._setCurrentFindMatch(prevMatchRange);
+            }
+            return;
+        }
         if (this._cannotFind()) {
             return;
         }
@@ -188,21 +236,7 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
         var prevMatch = model.findPreviousMatch(this._state.searchString, position, this._state.isRegex, this._state.matchCase, this._state.wholeWord ? this._editor.getConfiguration().wordSeparators : null, false);
         if (prevMatch && prevMatch.range.isEmpty() && prevMatch.range.getStartPosition().equals(position)) {
             // Looks like we're stuck at this position, unacceptable!
-            var isUsingLineStops = this._state.isRegex && (this._state.searchString.indexOf('^') >= 0
-                || this._state.searchString.indexOf('$') >= 0);
-            if (isUsingLineStops || column === 1) {
-                if (lineNumber === 1) {
-                    lineNumber = model.getLineCount();
-                }
-                else {
-                    lineNumber--;
-                }
-                column = model.getLineMaxColumn(lineNumber);
-            }
-            else {
-                column--;
-            }
-            position = new Position(lineNumber, column);
+            position = this._prevSearchPosition(position);
             prevMatch = model.findPreviousMatch(this._state.searchString, position, this._state.isRegex, this._state.matchCase, this._state.wholeWord ? this._editor.getConfiguration().wordSeparators : null, false);
         }
         if (!prevMatch) {
@@ -217,7 +251,38 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
     FindModelBoundToEditorModel.prototype.moveToPrevMatch = function () {
         this._moveToPrevMatch(this._editor.getSelection().getStartPosition());
     };
+    FindModelBoundToEditorModel.prototype._nextSearchPosition = function (after) {
+        var isUsingLineStops = this._state.isRegex && (this._state.searchString.indexOf('^') >= 0
+            || this._state.searchString.indexOf('$') >= 0);
+        var lineNumber = after.lineNumber, column = after.column;
+        var model = this._editor.getModel();
+        if (isUsingLineStops || column === model.getLineMaxColumn(lineNumber)) {
+            if (lineNumber === model.getLineCount()) {
+                lineNumber = 1;
+            }
+            else {
+                lineNumber++;
+            }
+            column = 1;
+        }
+        else {
+            column++;
+        }
+        return new Position(lineNumber, column);
+    };
     FindModelBoundToEditorModel.prototype._moveToNextMatch = function (after) {
+        if (this._decorations.getCount() < MATCHES_LIMIT) {
+            var nextMatchRange = this._decorations.matchAfterPosition(after);
+            if (nextMatchRange && nextMatchRange.isEmpty() && nextMatchRange.getStartPosition().equals(after)) {
+                // Looks like we're stuck at this position, unacceptable!
+                after = this._nextSearchPosition(after);
+                nextMatchRange = this._decorations.matchAfterPosition(after);
+            }
+            if (nextMatchRange) {
+                this._setCurrentFindMatch(nextMatchRange);
+            }
+            return;
+        }
         var nextMatch = this._getNextMatch(after, false, true);
         if (nextMatch) {
             this._setCurrentFindMatch(nextMatch.range);
@@ -244,21 +309,7 @@ var FindModelBoundToEditorModel = /** @class */ (function () {
         var nextMatch = model.findNextMatch(this._state.searchString, position, this._state.isRegex, this._state.matchCase, this._state.wholeWord ? this._editor.getConfiguration().wordSeparators : null, captureMatches);
         if (forceMove && nextMatch && nextMatch.range.isEmpty() && nextMatch.range.getStartPosition().equals(position)) {
             // Looks like we're stuck at this position, unacceptable!
-            var isUsingLineStops = this._state.isRegex && (this._state.searchString.indexOf('^') >= 0
-                || this._state.searchString.indexOf('$') >= 0);
-            if (isUsingLineStops || column === model.getLineMaxColumn(lineNumber)) {
-                if (lineNumber === model.getLineCount()) {
-                    lineNumber = 1;
-                }
-                else {
-                    lineNumber++;
-                }
-                column = 1;
-            }
-            else {
-                column++;
-            }
-            position = new Position(lineNumber, column);
+            position = this._nextSearchPosition(position);
             nextMatch = model.findNextMatch(this._state.searchString, position, this._state.isRegex, this._state.matchCase, this._state.wholeWord ? this._editor.getConfiguration().wordSeparators : null, captureMatches);
         }
         if (!nextMatch) {

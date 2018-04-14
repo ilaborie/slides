@@ -3,19 +3,24 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import { focusBorder, inputBackground, inputForeground, selectForeground, selectBackground, selectListBackground, selectBorder, inputBorder, foreground, editorBackground, contrastBorder, inputActiveOptionBorder, listFocusBackground, listFocusForeground, listActiveSelectionBackground, listActiveSelectionForeground, listInactiveSelectionForeground, listInactiveSelectionBackground, listInactiveFocusForeground, listInactiveFocusBackground, listHoverBackground, listHoverForeground, listDropBackground, pickerGroupBorder, pickerGroupForeground, widgetShadow, inputValidationInfoBorder, inputValidationInfoBackground, inputValidationWarningBorder, inputValidationWarningBackground, inputValidationErrorBorder, inputValidationErrorBackground, activeContrastBorder, buttonForeground, buttonBackground, buttonHoverBackground, lighten, badgeBackground, badgeForeground, progressBarBackground } from './colorRegistry.js';
-export function attachStyler(themeService, optionsMapping, widgetOrCallback) {
-    function applyStyles(theme) {
-        var styles = Object.create(null);
-        for (var key in optionsMapping) {
-            var value = optionsMapping[key];
-            if (typeof value === 'string') {
-                styles[key] = theme.getColor(value);
-            }
-            else if (typeof value === 'function') {
-                styles[key] = value(theme);
-            }
+import { focusBorder, inputBackground, inputForeground, selectForeground, selectBackground, selectListBackground, selectBorder, inputBorder, foreground, editorBackground, contrastBorder, inputActiveOptionBorder, listFocusBackground, listFocusForeground, listActiveSelectionBackground, listActiveSelectionForeground, listInactiveSelectionForeground, listInactiveSelectionBackground, listInactiveFocusBackground, listHoverBackground, listHoverForeground, listDropBackground, pickerGroupBorder, pickerGroupForeground, widgetShadow, inputValidationInfoBorder, inputValidationInfoBackground, inputValidationWarningBorder, inputValidationWarningBackground, inputValidationErrorBorder, inputValidationErrorBackground, activeContrastBorder, buttonForeground, buttonBackground, buttonHoverBackground, lighten, badgeBackground, badgeForeground, progressBarBackground } from './colorRegistry.js';
+import { mixin } from '../../../base/common/objects.js';
+export function computeStyles(theme, styleMap) {
+    var styles = Object.create(null);
+    for (var key in styleMap) {
+        var value = styleMap[key];
+        if (typeof value === 'string') {
+            styles[key] = theme.getColor(value);
         }
+        else if (typeof value === 'function') {
+            styles[key] = value(theme);
+        }
+    }
+    return styles;
+}
+export function attachStyler(themeService, styleMap, widgetOrCallback) {
+    function applyStyles(theme) {
+        var styles = computeStyles(themeService.getTheme(), styleMap);
         if (typeof widgetOrCallback === 'function') {
             widgetOrCallback(styles);
         }
@@ -107,7 +112,6 @@ export function attachQuickOpenStyler(widget, themeService, style) {
         listInactiveSelectionBackground: (style && style.listInactiveSelectionBackground) || listInactiveSelectionBackground,
         listInactiveSelectionForeground: (style && style.listInactiveSelectionForeground) || listInactiveSelectionForeground,
         listInactiveFocusBackground: (style && style.listInactiveFocusBackground) || listInactiveFocusBackground,
-        listInactiveFocusForeground: (style && style.listInactiveFocusForeground) || listInactiveFocusForeground,
         listHoverBackground: (style && style.listHoverBackground) || listHoverBackground,
         listHoverForeground: (style && style.listHoverForeground) || listHoverForeground,
         listDropBackground: (style && style.listDropBackground) || listDropBackground,
@@ -116,27 +120,26 @@ export function attachQuickOpenStyler(widget, themeService, style) {
         listHoverOutline: (style && style.listHoverOutline) || activeContrastBorder
     }, widget);
 }
-export function attachListStyler(widget, themeService, style) {
-    return attachStyler(themeService, {
-        listFocusBackground: (style && style.listFocusBackground) || listFocusBackground,
-        listFocusForeground: (style && style.listFocusForeground) || listFocusForeground,
-        listActiveSelectionBackground: (style && style.listActiveSelectionBackground) || lighten(listActiveSelectionBackground, 0.1),
-        listActiveSelectionForeground: (style && style.listActiveSelectionForeground) || listActiveSelectionForeground,
-        listFocusAndSelectionBackground: style && style.listFocusAndSelectionBackground || listActiveSelectionBackground,
-        listFocusAndSelectionForeground: (style && style.listFocusAndSelectionForeground) || listActiveSelectionForeground,
-        listInactiveSelectionBackground: (style && style.listInactiveSelectionBackground) || listInactiveSelectionBackground,
-        listInactiveSelectionForeground: (style && style.listInactiveSelectionForeground) || listInactiveSelectionForeground,
-        listInactiveFocusBackground: (style && style.listInactiveFocusBackground) || listInactiveFocusBackground,
-        listInactiveFocusForeground: (style && style.listInactiveFocusForeground) || listInactiveFocusForeground,
-        listHoverBackground: (style && style.listHoverBackground) || listHoverBackground,
-        listHoverForeground: (style && style.listHoverForeground) || listHoverForeground,
-        listDropBackground: (style && style.listDropBackground) || listDropBackground,
-        listFocusOutline: (style && style.listFocusOutline) || activeContrastBorder,
-        listSelectionOutline: (style && style.listSelectionOutline) || activeContrastBorder,
-        listHoverOutline: (style && style.listHoverOutline) || activeContrastBorder,
-        listInactiveFocusOutline: style && style.listInactiveFocusOutline // not defined by default, only opt-in
-    }, widget);
+export function attachListStyler(widget, themeService, overrides) {
+    return attachStyler(themeService, mixin(overrides || Object.create(null), defaultListStyles, false), widget);
 }
+export var defaultListStyles = {
+    listFocusBackground: listFocusBackground,
+    listFocusForeground: listFocusForeground,
+    listActiveSelectionBackground: lighten(listActiveSelectionBackground, 0.1),
+    listActiveSelectionForeground: listActiveSelectionForeground,
+    listFocusAndSelectionBackground: listActiveSelectionBackground,
+    listFocusAndSelectionForeground: listActiveSelectionForeground,
+    listInactiveSelectionBackground: listInactiveSelectionBackground,
+    listInactiveSelectionForeground: listInactiveSelectionForeground,
+    listInactiveFocusBackground: listInactiveFocusBackground,
+    listHoverBackground: listHoverBackground,
+    listHoverForeground: listHoverForeground,
+    listDropBackground: listDropBackground,
+    listFocusOutline: activeContrastBorder,
+    listSelectionOutline: activeContrastBorder,
+    listHoverOutline: activeContrastBorder
+};
 export function attachButtonStyler(widget, themeService, style) {
     return attachStyler(themeService, {
         buttonForeground: (style && style.buttonForeground) || buttonForeground,

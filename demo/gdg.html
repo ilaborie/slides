@@ -78,7 +78,7 @@
 <div class="code-editor" data-lang="typescript">
   <h4>Demo</h4>
   <pre class="initialCode">console.log('Plop');</pre>
-  <pre class="finalCode">console.log('Plop');
+  <pre class="finalCode" data-lang="typescript">console.log('Plop');
 console.log('Plop');
 
 const add = (a: number, b: number): number => a + b;
@@ -88,8 +88,8 @@ add(13, 29);</pre>
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
   <button type="button" class="load-final"></button>
-  <button type="button" class="clear-console"></button>
   <button type="button" class="format"></button>
+  <button type="button" class="clear-console"></button>
   <button type="button" class="run"></button>
   </div>
   <div class="editor-panel"></div>
@@ -103,6 +103,7 @@ add(13, 29);</pre>
 </section>
 
     </main>
+
     <script type="application/javascript" src="../scripts/navigation.js"></script>
 <script type="application/javascript" src="../scripts/monaco-editor/min/vs/loader.js"></script>
 <script type="application/javascript" src="../scripts/code-editor.js"></script>

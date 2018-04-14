@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import * as modes from '../modes.js';
 export function createScopedLineTokens(context, offset) {
     var tokenCount = context.getCount();
     var tokenIndex = context.findTokenIndexAtOffset(offset);

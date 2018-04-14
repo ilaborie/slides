@@ -5,6 +5,7 @@
 'use strict';
 import { Emitter } from '../../../base/common/event.js';
 import { score } from './languageSelector.js';
+import { shouldSynchronizeModel } from '../services/modelService.js';
 var LanguageFeatureRegistry = /** @class */ (function () {
     function LanguageFeatureRegistry() {
         this._clock = 0;
@@ -47,7 +48,7 @@ var LanguageFeatureRegistry = /** @class */ (function () {
         return this.all(model).length > 0;
     };
     LanguageFeatureRegistry.prototype.all = function (model) {
-        if (!model || model.isTooLargeForHavingARichMode()) {
+        if (!model) {
             return [];
         }
         this._updateScores(model);
@@ -83,7 +84,7 @@ var LanguageFeatureRegistry = /** @class */ (function () {
         return result;
     };
     LanguageFeatureRegistry.prototype._orderedForEach = function (model, callback) {
-        if (!model || model.isTooLargeForHavingARichMode()) {
+        if (!model) {
             return;
         }
         this._updateScores(model);
@@ -108,7 +109,7 @@ var LanguageFeatureRegistry = /** @class */ (function () {
         this._lastCandidate = candidate;
         for (var _i = 0, _a = this._entries; _i < _a.length; _i++) {
             var entry = _a[_i];
-            entry._score = score(entry.selector, model.uri, model.getLanguageIdentifier().language);
+            entry._score = score(entry.selector, model.uri, model.getLanguageIdentifier().language, shouldSynchronizeModel(model));
         }
         // needs sorting
         this._entries.sort(LanguageFeatureRegistry._compareByScoreAndTime);

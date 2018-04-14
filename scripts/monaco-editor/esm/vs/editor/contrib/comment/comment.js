@@ -52,7 +52,7 @@ var ToggleCommentLineAction = /** @class */ (function (_super) {
             alias: 'Toggle Line Comment',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 85 /* US_SLASH */
             }
         }) || this;
@@ -68,7 +68,7 @@ var AddLineCommentAction = /** @class */ (function (_super) {
             alias: 'Add Line Comment',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 33 /* KEY_C */)
             }
         }) || this;
@@ -84,7 +84,7 @@ var RemoveLineCommentAction = /** @class */ (function (_super) {
             alias: 'Remove Line Comment',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 51 /* KEY_U */)
             }
         }) || this;
@@ -100,7 +100,7 @@ var BlockCommentAction = /** @class */ (function (_super) {
             alias: 'Toggle Block Comment',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 512 /* Alt */ | 31 /* KEY_A */,
                 linux: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 31 /* KEY_A */ }
             }

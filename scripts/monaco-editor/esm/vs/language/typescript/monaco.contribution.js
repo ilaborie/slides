@@ -60,7 +60,7 @@ var LanguageServiceDefaultsImpl = /** @class */ (function () {
         this._diagnosticsOptions = options || Object.create(null);
         this._onDidChange.fire(this);
     };
-    LanguageServiceDefaultsImpl.prototype.setMaximunWorkerIdleTime = function (value) {
+    LanguageServiceDefaultsImpl.prototype.setMaximumWorkerIdleTime = function (value) {
         // doesn't fire an event since no
         // worker restart is required here
         this._workerMaxIdleTime = value;

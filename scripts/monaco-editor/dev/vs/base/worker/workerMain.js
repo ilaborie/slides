@@ -1,6 +1,6 @@
 /*!-----------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
- * Version: 0.11.6(304bb33e6e20d081d487cd807add896acf64c9b9)
+ * Version: 0.12.0(160c7612faa359c4f196a0f3292a0f2752a1daf5)
  * Released under the MIT license
  * https://github.com/Microsoft/vscode/blob/master/LICENSE.txt
  *-----------------------------------------------------------*/
@@ -3421,6 +3421,22 @@ define(__m[5/*vs/base/common/platform*/], __M([1/*require*/,0/*exports*/]), func
     exports.translationsConfigFile = _translationsConfigFile;
     var _globals = (typeof self === 'object' ? self : typeof global === 'object' ? global : {});
     exports.globals = _globals;
+    var _setImmediate = null;
+    function setImmediate(callback) {
+        if (_setImmediate === null) {
+            if (exports.globals.setImmediate) {
+                _setImmediate = exports.globals.setImmediate.bind(exports.globals);
+            }
+            else if (typeof process !== 'undefined' && typeof process.nextTick === 'function') {
+                _setImmediate = process.nextTick.bind(process);
+            }
+            else {
+                _setImmediate = exports.globals.setTimeout.bind(exports.globals);
+            }
+        }
+        return _setImmediate(callback);
+    }
+    exports.setImmediate = setImmediate;
     var OperatingSystem;
     (function (OperatingSystem) {
         OperatingSystem[OperatingSystem["Windows"] = 1] = "Windows";
@@ -4729,6 +4745,9 @@ define(__m[16/*vs/base/common/strings*/], __M([1/*require*/,0/*exports*/,15/*vs/
         if (haystack.length < needle.length) {
             return false;
         }
+        if (haystack === needle) {
+            return true;
+        }
         for (var i = 0; i < needle.length; i++) {
             if (haystack[i] !== needle[i]) {
                 return false;
@@ -4975,14 +4994,14 @@ define(__m[16/*vs/base/common/strings*/], __M([1/*require*/,0/*exports*/,15/*vs/
         }
         return true;
     }
-    function beginsWithIgnoreCase(str, candidate) {
+    function startsWithIgnoreCase(str, candidate) {
         var candidateLength = candidate.length;
         if (candidate.length > str.length) {
             return false;
         }
         return doEqualsIgnoreCase(str, candidate, candidateLength);
     }
-    exports.beginsWithIgnoreCase = beginsWithIgnoreCase;
+    exports.startsWithIgnoreCase = startsWithIgnoreCase;
     /**
      * @returns the length of the common prefix of the two strings.
      */
@@ -7554,8 +7573,7 @@ define(__m[9/*vs/base/common/event*/], __M([1/*require*/,0/*exports*/,10/*vs/bas
     (function (Event) {
         var _disposable = { dispose: function () { } };
         Event.None = function () { return _disposable; };
-    })(Event || (Event = {}));
-    exports.default = Event;
+    })(Event = exports.Event || (exports.Event = {}));
     /**
      * The Emitter can be used to expose an Event to the public
      * to fire it from the insides.
@@ -7906,6 +7924,9 @@ define(__m[9/*vs/base/common/event*/], __M([1/*require*/,0/*exports*/,10/*vs/bas
         ChainableEvent.prototype.filter = function (fn) {
             return new ChainableEvent(filterEvent(this._event, fn));
         };
+        ChainableEvent.prototype.latch = function () {
+            return new ChainableEvent(latch(this._event));
+        };
         ChainableEvent.prototype.on = function (listener, thisArgs, disposables) {
             return this._event(listener, thisArgs, disposables);
         };
@@ -8044,6 +8065,17 @@ define(__m[9/*vs/base/common/event*/], __M([1/*require*/,0/*exports*/,10/*vs/bas
         return result.event;
     }
     exports.fromNodeEventEmitter = fromNodeEventEmitter;
+    function latch(event) {
+        var firstCall = true;
+        var cache;
+        return filterEvent(event, function (value) {
+            var shouldEmit = firstCall || value !== cache;
+            firstCall = false;
+            cache = value;
+            return shouldEmit;
+        });
+    }
+    exports.latch = latch;
 });
 
 /*---------------------------------------------------------------------------------------------
@@ -8061,7 +8093,7 @@ define(__m[11/*vs/base/common/cancellation*/], __M([1/*require*/,0/*exports*/,9/
     (function (CancellationToken) {
         CancellationToken.None = Object.freeze({
             isCancellationRequested: false,
-            onCancellationRequested: event_1.default.None
+            onCancellationRequested: event_1.Event.None
         });
         CancellationToken.Cancelled = Object.freeze({
             isCancellationRequested: true,
@@ -8077,7 +8109,7 @@ define(__m[11/*vs/base/common/cancellation*/], __M([1/*require*/,0/*exports*/,9/
                 this._isCancelled = true;
                 if (this._emitter) {
                     this._emitter.fire(undefined);
-                    this._emitter = undefined;
+                    this.dispose();
                 }
             }
         };
@@ -8101,6 +8133,12 @@ define(__m[11/*vs/base/common/cancellation*/], __M([1/*require*/,0/*exports*/,9/
             enumerable: true,
             configurable: true
         });
+        MutableToken.prototype.dispose = function () {
+            if (this._emitter) {
+                this._emitter.dispose();
+                this._emitter = undefined;
+            }
+        };
         return MutableToken;
     }());
     var CancellationTokenSource = /** @class */ (function () {
@@ -8131,7 +8169,14 @@ define(__m[11/*vs/base/common/cancellation*/], __M([1/*require*/,0/*exports*/,9/
             }
         };
         CancellationTokenSource.prototype.dispose = function () {
-            this.cancel();
+            if (!this._token) {
+                // ensure to initialize with an empty token if we had none
+                this._token = CancellationToken.None;
+            }
+            else if (this._token instanceof MutableToken) {
+                // actually dispose
+                this._token.dispose();
+            }
         };
         return CancellationTokenSource;
     }());
@@ -8173,12 +8218,15 @@ define(__m[14/*vs/base/common/async*/], __M([1/*require*/,0/*exports*/,4/*vs/bas
         return new winjs_base_1.TPromise(function (resolve, reject, progress) {
             var item = callback(source.token);
             if (item instanceof winjs_base_1.TPromise) {
+                always(item, function () { return source.dispose(); });
                 item.then(resolve, reject, progress);
             }
             else if (isThenable(item)) {
+                always(item, function () { return source.dispose(); });
                 item.then(resolve, reject);
             }
             else {
+                source.dispose();
                 resolve(item);
             }
         }, function () {
@@ -8432,37 +8480,40 @@ define(__m[14/*vs/base/common/async*/], __M([1/*require*/,0/*exports*/,4/*vs/bas
         return new winjs_base_1.Promise(function (resolve) { return setTimeout(resolve, n); });
     }
     exports.timeout = timeout;
-    /**
-     * Returns a new promise that joins the provided promise. Upon completion of
-     * the provided promise the provided function will always be called. This
-     * method is comparable to a try-finally code block.
-     * @param promise a promise
-     * @param f a function that will be call in the success and error case.
-     */
-    function always(promise, f) {
-        return new winjs_base_1.TPromise(function (c, e, p) {
-            promise.done(function (result) {
-                try {
-                    f(result);
-                }
-                catch (e1) {
-                    errors.onUnexpectedError(e1);
-                }
-                c(result);
-            }, function (err) {
-                try {
-                    f(err);
-                }
-                catch (e1) {
-                    errors.onUnexpectedError(e1);
-                }
-                e(err);
-            }, function (progress) {
-                p(progress);
+    function isWinJSPromise(candidate) {
+        return winjs_base_1.TPromise.is(candidate) && typeof candidate.done === 'function';
+    }
+    function always(winjsPromiseOrThenable, f) {
+        if (isWinJSPromise(winjsPromiseOrThenable)) {
+            return new winjs_base_1.TPromise(function (c, e, p) {
+                winjsPromiseOrThenable.done(function (result) {
+                    try {
+                        f(result);
+                    }
+                    catch (e1) {
+                        errors.onUnexpectedError(e1);
+                    }
+                    c(result);
+                }, function (err) {
+                    try {
+                        f(err);
+                    }
+                    catch (e1) {
+                        errors.onUnexpectedError(e1);
+                    }
+                    e(err);
+                }, function (progress) {
+                    p(progress);
+                });
+            }, function () {
+                winjsPromiseOrThenable.cancel();
             });
-        }, function () {
-            promise.cancel();
-        });
+        }
+        else {
+            // simple
+            winjsPromiseOrThenable.then(function (_) { return f(); }, function (_) { return f(); });
+            return winjsPromiseOrThenable;
+        }
     }
     exports.always = always;
     /**
@@ -8852,7 +8903,7 @@ define(__m[30/*vs/base/common/worker/simpleWorker*/], __M([1/*require*/,0/*expor
             catch (e) {
                 // nothing
             }
-            if (!message.vsWorker) {
+            if (!message || !message.vsWorker) {
                 return;
             }
             if (this._workerId !== -1 && message.vsWorker !== this._workerId) {
@@ -10761,6 +10812,13 @@ define(__m[28/*vs/editor/common/standalone/standaloneBase*/], __M([1/*require*/,
         Severity[Severity["Warning"] = 2] = "Warning";
         Severity[Severity["Error"] = 3] = "Error";
     })(Severity = exports.Severity || (exports.Severity = {}));
+    var MarkerSeverity;
+    (function (MarkerSeverity) {
+        MarkerSeverity[MarkerSeverity["Hint"] = 1] = "Hint";
+        MarkerSeverity[MarkerSeverity["Info"] = 2] = "Info";
+        MarkerSeverity[MarkerSeverity["Warning"] = 4] = "Warning";
+        MarkerSeverity[MarkerSeverity["Error"] = 8] = "Error";
+    })(MarkerSeverity = exports.MarkerSeverity || (exports.MarkerSeverity = {}));
     // --------------------------------------------
     // This is repeated here so it can be exported
     // because TS inlines const enums
@@ -10976,6 +11034,7 @@ define(__m[28/*vs/editor/common/standalone/standaloneBase*/], __M([1/*require*/,
             Selection: selection_1.Selection,
             SelectionDirection: selection_1.SelectionDirection,
             Severity: Severity,
+            MarkerSeverity: MarkerSeverity,
             Promise: winjs_base_1.TPromise,
             Uri: uri_1.default,
             Token: token_1.Token
@@ -11672,8 +11731,7 @@ define(__m[31/*vs/editor/common/services/editorSimpleWorker*/], __M([1/*require*
                 return winjs_base_1.TPromise.as(methods);
             }
             return new winjs_base_1.TPromise(function (c, e) {
-                // Use the global require to be sure to get the global config
-                self.require([moduleId], function (foreignModule) {
+                require([moduleId], function (foreignModule) {
                     _this._foreignModule = foreignModule.create(ctx, createData);
                     var methods = [];
                     for (var prop in _this._foreignModule) {
@@ -11758,6 +11816,7 @@ define(__m[31/*vs/editor/common/services/editorSimpleWorker*/], __M([1/*require*
     }
 });
 
+"use strict";
 /*---------------------------------------------------------------------------------------------
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.

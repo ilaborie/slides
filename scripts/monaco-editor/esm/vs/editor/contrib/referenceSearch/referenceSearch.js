@@ -75,7 +75,7 @@ var ReferenceAction = /** @class */ (function (_super) {
             alias: 'Find All References',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasReferenceProvider, PeekContext.notInPeekEditor, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 70 /* F12 */
             },
             menuOpts: {
@@ -174,6 +174,50 @@ function withController(accessor, fn) {
     }
     fn(controller);
 }
+KeybindingsRegistry.registerCommandAndKeybindingRule({
+    id: 'goToNextReference',
+    weight: KeybindingsRegistry.WEIGHT.workbenchContrib(50),
+    primary: 62 /* F4 */,
+    when: ctxReferenceSearchVisible,
+    handler: function (accessor) {
+        withController(accessor, function (controller) {
+            controller.goToNextOrPreviousReference(true);
+        });
+    }
+});
+KeybindingsRegistry.registerCommandAndKeybindingRule({
+    id: 'goToNextReferenceFromEmbeddedEditor',
+    weight: KeybindingsRegistry.WEIGHT.editorContrib(50),
+    primary: 62 /* F4 */,
+    when: PeekContext.inPeekEditor,
+    handler: function (accessor) {
+        withController(accessor, function (controller) {
+            controller.goToNextOrPreviousReference(true);
+        });
+    }
+});
+KeybindingsRegistry.registerCommandAndKeybindingRule({
+    id: 'goToPreviousReference',
+    weight: KeybindingsRegistry.WEIGHT.workbenchContrib(50),
+    primary: 1024 /* Shift */ | 62 /* F4 */,
+    when: ctxReferenceSearchVisible,
+    handler: function (accessor) {
+        withController(accessor, function (controller) {
+            controller.goToNextOrPreviousReference(false);
+        });
+    }
+});
+KeybindingsRegistry.registerCommandAndKeybindingRule({
+    id: 'goToPreviousReferenceFromEmbeddedEditor',
+    weight: KeybindingsRegistry.WEIGHT.editorContrib(50),
+    primary: 1024 /* Shift */ | 62 /* F4 */,
+    when: PeekContext.inPeekEditor,
+    handler: function (accessor) {
+        withController(accessor, function (controller) {
+            controller.goToNextOrPreviousReference(false);
+        });
+    }
+});
 KeybindingsRegistry.registerCommandAndKeybindingRule({
     id: 'closeReferenceSearch',
     weight: KeybindingsRegistry.WEIGHT.workbenchContrib(50),

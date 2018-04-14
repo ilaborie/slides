@@ -70,7 +70,7 @@ var SimpleWorkerProtocol = /** @class */ (function () {
         catch (e) {
             // nothing
         }
-        if (!message.vsWorker) {
+        if (!message || !message.vsWorker) {
             return;
         }
         if (this._workerId !== -1 && message.vsWorker !== this._workerId) {

@@ -36,7 +36,7 @@ function _matchesPrefix(ignoreCase, word, wordToMatchAgainst) {
     }
     var matches;
     if (ignoreCase) {
-        matches = strings.beginsWithIgnoreCase(wordToMatchAgainst, word);
+        matches = strings.startsWithIgnoreCase(wordToMatchAgainst, word);
     }
     else {
         matches = wordToMatchAgainst.indexOf(word) === 0;

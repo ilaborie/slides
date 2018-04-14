@@ -22,7 +22,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-import * as editorCommon from '../../../common/editorCommon.js';
 import { QuickOpenEditorWidget } from './quickOpenEditorWidget.js';
 import { registerEditorContribution, EditorAction } from '../../../browser/editorExtensions.js';
 import { IThemeService } from '../../../../platform/theme/common/themeService.js';

@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import { match as matchGlobPattern } from '../../../base/common/glob.js'; // TODO@Alex
-export function score(selector, candidateUri, candidateLanguage) {
+export function score(selector, candidateUri, candidateLanguage, candidateIsSynchronized) {
     if (Array.isArray(selector)) {
         // array -> take max individual value
         var ret = 0;
         for (var _i = 0, selector_1 = selector; _i < selector_1.length; _i++) {
             var filter = selector_1[_i];
-            var value = score(filter, candidateUri, candidateLanguage);
+            var value = score(filter, candidateUri, candidateLanguage, candidateIsSynchronized);
             if (value === 10) {
                 return value; // already at the highest
             }
@@ -21,6 +21,9 @@ export function score(selector, candidateUri, candidateLanguage) {
         return ret;
     }
     else if (typeof selector === 'string') {
+        if (!candidateIsSynchronized) {
+            return 0;
+        }
         // short-hand notion, desugars to
         // 'fooLang' -> [{ language: 'fooLang', scheme: 'file' }, { language: 'fooLang', scheme: 'untitled' }]
         // '*' -> { language: '*', scheme: '*' }
@@ -36,7 +39,10 @@ export function score(selector, candidateUri, candidateLanguage) {
     }
     else if (selector) {
         // filter -> select accordingly, use defaults for scheme
-        var language = selector.language, pattern = selector.pattern, scheme = selector.scheme;
+        var language = selector.language, pattern = selector.pattern, scheme = selector.scheme, hasAccessToAllModels = selector.hasAccessToAllModels;
+        if (!candidateIsSynchronized && !hasAccessToAllModels) {
+            return 0;
+        }
         var ret = 0;
         if (scheme) {
             if (scheme === candidateUri.scheme) {

@@ -20,6 +20,7 @@ var CountBadge = /** @class */ (function () {
         this.badgeForeground = this.options.badgeForeground;
         this.badgeBorder = this.options.badgeBorder;
         this.element = append(container, $('.monaco-count-badge'));
+        this.countFormat = this.options.countFormat || '{0}';
         this.titleFormat = this.options.titleFormat || '';
         this.setCount(this.options.count || 0);
     }
@@ -27,12 +28,16 @@ var CountBadge = /** @class */ (function () {
         this.count = count;
         this.render();
     };
+    CountBadge.prototype.setCountFormat = function (countFormat) {
+        this.countFormat = countFormat;
+        this.render();
+    };
     CountBadge.prototype.setTitleFormat = function (titleFormat) {
         this.titleFormat = titleFormat;
         this.render();
     };
     CountBadge.prototype.render = function () {
-        this.element.textContent = '' + this.count;
+        this.element.textContent = format(this.countFormat, this.count);
         this.element.title = format(this.titleFormat, this.count);
         this.applyStyles();
     };

@@ -106,6 +106,14 @@ var TypeOperations = /** @class */ (function () {
         if (multicursorText && multicursorText.length === selections.length) {
             return multicursorText;
         }
+        // Remove trailing \n if present
+        if (text.charCodeAt(text.length - 1) === 10 /* LineFeed */) {
+            text = text.substr(0, text.length - 1);
+        }
+        var lines = text.split(/\r\n|\r|\n/);
+        if (lines.length === selections.length) {
+            return lines;
+        }
         return null;
     };
     TypeOperations.paste = function (config, model, selections, text, pasteOnNewLine, multicursorText) {

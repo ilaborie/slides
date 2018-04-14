@@ -80,35 +80,31 @@ var LanguagesRegistry = /** @class */ (function () {
     LanguagesRegistry.prototype._mergeLanguage = function (resolvedLanguage, lang) {
         var langId = lang.id;
         var primaryMime = null;
-        if (typeof lang.mimetypes !== 'undefined' && Array.isArray(lang.mimetypes)) {
-            for (var i = 0; i < lang.mimetypes.length; i++) {
-                if (!primaryMime) {
-                    primaryMime = lang.mimetypes[i];
-                }
-                resolvedLanguage.mimetypes.push(lang.mimetypes[i]);
-            }
+        if (Array.isArray(lang.mimetypes) && lang.mimetypes.length > 0) {
+            (_a = resolvedLanguage.mimetypes).push.apply(_a, lang.mimetypes);
+            primaryMime = lang.mimetypes[0];
         }
         if (!primaryMime) {
             primaryMime = "text/x-" + langId;
             resolvedLanguage.mimetypes.push(primaryMime);
         }
         if (Array.isArray(lang.extensions)) {
-            for (var _i = 0, _a = lang.extensions; _i < _a.length; _i++) {
-                var extension = _a[_i];
+            for (var _i = 0, _b = lang.extensions; _i < _b.length; _i++) {
+                var extension = _b[_i];
                 mime.registerTextMime({ id: langId, mime: primaryMime, extension: extension }, this._warnOnOverwrite);
                 resolvedLanguage.extensions.push(extension);
             }
         }
         if (Array.isArray(lang.filenames)) {
-            for (var _b = 0, _c = lang.filenames; _b < _c.length; _b++) {
-                var filename = _c[_b];
+            for (var _c = 0, _d = lang.filenames; _c < _d.length; _c++) {
+                var filename = _d[_c];
                 mime.registerTextMime({ id: langId, mime: primaryMime, filename: filename }, this._warnOnOverwrite);
                 resolvedLanguage.filenames.push(filename);
             }
         }
         if (Array.isArray(lang.filenamePatterns)) {
-            for (var _d = 0, _e = lang.filenamePatterns; _d < _e.length; _d++) {
-                var filenamePattern = _e[_d];
+            for (var _e = 0, _f = lang.filenamePatterns; _e < _f.length; _e++) {
+                var filenamePattern = _f[_e];
                 mime.registerTextMime({ id: langId, mime: primaryMime, filepattern: filenamePattern }, this._warnOnOverwrite);
             }
         }
@@ -160,6 +156,7 @@ var LanguagesRegistry = /** @class */ (function () {
         if (typeof lang.configuration === 'string') {
             resolvedLanguage.configurationFiles.push(lang.configuration);
         }
+        var _a;
     };
     LanguagesRegistry.prototype.isRegisteredMode = function (mimetypeOrModeId) {
         // Is this a known mime type ?

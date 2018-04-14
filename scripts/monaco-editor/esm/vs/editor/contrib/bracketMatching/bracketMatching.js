@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 import './bracketMatching.css';
 import * as nls from '../../../nls.js';
 import { Disposable } from '../../../base/common/lifecycle.js';
-import { Range } from '../../common/core/range.js';
 import { Position } from '../../common/core/position.js';
 import { Selection } from '../../common/core/selection.js';
 import { RunOnceScheduler } from '../../../base/common/async.js';
@@ -37,7 +36,7 @@ var JumpToBracketAction = /** @class */ (function (_super) {
             alias: 'Go to Bracket',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 88 /* US_BACKSLASH */
             }
         }) || this;
@@ -155,36 +154,39 @@ var BracketMatchingController = /** @class */ (function (_super) {
         if (!model) {
             return;
         }
-        var selection = this._editor.getSelection();
-        if (!selection.isEmpty()) {
-            return;
-        }
-        var position = selection.getStartPosition();
-        var brackets = model.matchBracket(position);
-        var openBracket = null;
-        var closeBracket = null;
-        if (!brackets) {
-            var nextBracket = model.findNextBracket(position);
-            if (nextBracket && nextBracket.range) {
-                brackets = model.matchBracket(nextBracket.range.getStartPosition());
+        var newSelections = [];
+        this._editor.getSelections().forEach(function (selection) {
+            var position = selection.getStartPosition();
+            var brackets = model.matchBracket(position);
+            var openBracket = null;
+            var closeBracket = null;
+            if (!brackets) {
+                var nextBracket = model.findNextBracket(position);
+                if (nextBracket && nextBracket.range) {
+                    brackets = model.matchBracket(nextBracket.range.getStartPosition());
+                }
             }
-        }
-        if (brackets) {
-            if (brackets[0].startLineNumber === brackets[1].startLineNumber) {
-                openBracket = brackets[1].startColumn < brackets[0].startColumn ?
-                    brackets[1].getStartPosition() : brackets[0].getStartPosition();
-                closeBracket = brackets[1].startColumn < brackets[0].startColumn ?
-                    brackets[0].getEndPosition() : brackets[1].getEndPosition();
+            if (brackets) {
+                if (brackets[0].startLineNumber === brackets[1].startLineNumber) {
+                    openBracket = brackets[1].startColumn < brackets[0].startColumn ?
+                        brackets[1].getStartPosition() : brackets[0].getStartPosition();
+                    closeBracket = brackets[1].startColumn < brackets[0].startColumn ?
+                        brackets[0].getEndPosition() : brackets[1].getEndPosition();
+                }
+                else {
+                    openBracket = brackets[1].startLineNumber < brackets[0].startLineNumber ?
+                        brackets[1].getStartPosition() : brackets[0].getStartPosition();
+                    closeBracket = brackets[1].startLineNumber < brackets[0].startLineNumber ?
+                        brackets[0].getEndPosition() : brackets[1].getEndPosition();
+                }
             }
-            else {
-                openBracket = brackets[1].startLineNumber < brackets[0].startLineNumber ?
-                    brackets[1].getStartPosition() : brackets[0].getStartPosition();
-                closeBracket = brackets[1].startLineNumber < brackets[0].startLineNumber ?
-                    brackets[0].getEndPosition() : brackets[1].getEndPosition();
+            if (openBracket && closeBracket) {
+                newSelections.push(new Selection(openBracket.lineNumber, openBracket.column, closeBracket.lineNumber, closeBracket.column));
             }
-        }
-        if (openBracket && closeBracket) {
-            this._editor.setSelection(new Range(openBracket.lineNumber, openBracket.column, closeBracket.lineNumber, closeBracket.column));
+        });
+        if (newSelections.length > 0) {
+            this._editor.setSelections(newSelections);
+            this._editor.revealRange(newSelections[0]);
         }
     };
     BracketMatchingController.prototype._updateBrackets = function () {

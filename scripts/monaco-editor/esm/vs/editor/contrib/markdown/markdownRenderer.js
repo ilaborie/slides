@@ -20,26 +20,30 @@ import { onUnexpectedError } from '../../../base/common/errors.js';
 import { tokenizeToString } from '../../common/modes/textToHtmlTokenizer.js';
 import { optional } from '../../../platform/instantiation/common/instantiation.js';
 import { Emitter } from '../../../base/common/event.js';
+import { dispose } from '../../../base/common/lifecycle.js';
 var MarkdownRenderer = /** @class */ (function () {
-    function MarkdownRenderer(editor, _modeService, _openerService) {
+    function MarkdownRenderer(_editor, _modeService, _openerService) {
         if (_openerService === void 0) { _openerService = NullOpenerService; }
-        var _this = this;
+        this._editor = _editor;
         this._modeService = _modeService;
         this._openerService = _openerService;
         this._onDidRenderCodeBlock = new Emitter();
         this.onDidRenderCodeBlock = this._onDidRenderCodeBlock.event;
-        this._options = {
+    }
+    MarkdownRenderer.prototype.getOptions = function (disposeables) {
+        var _this = this;
+        return {
             codeBlockRenderer: function (languageAlias, value) {
                 // In markdown,
                 // it is possible that we stumble upon language aliases (e.g.js instead of javascript)
                 // it is possible no alias is given in which case we fall back to the current editor lang
                 var modeId = languageAlias
                     ? _this._modeService.getModeIdForLanguageName(languageAlias)
-                    : editor.getModel().getLanguageIdentifier().language;
+                    : _this._editor.getModel().getLanguageIdentifier().language;
                 return _this._modeService.getOrCreateMode(modeId).then(function (_) {
                     return tokenizeToString(value, modeId);
                 }).then(function (code) {
-                    return "<span style=\"font-family: " + editor.getConfiguration().fontInfo.fontFamily + "\">" + code + "</span>";
+                    return "<span style=\"font-family: " + _this._editor.getConfiguration().fontInfo.fontFamily + "\">" + code + "</span>";
                 });
             },
             codeBlockRenderCallback: function () { return _this._onDidRenderCodeBlock.fire(); },
@@ -47,15 +51,23 @@ var MarkdownRenderer = /** @class */ (function () {
                 callback: function (content) {
                     _this._openerService.open(URI.parse(content)).then(void 0, onUnexpectedError);
                 },
-                disposeables: [] // TODO
+                disposeables: disposeables
             }
         };
-    }
+    };
     MarkdownRenderer.prototype.render = function (markdown) {
+        var disposeables = [];
+        var element;
         if (!markdown) {
-            return document.createElement('span');
+            element = document.createElement('span');
         }
-        return renderMarkdown(markdown, this._options);
+        else {
+            element = renderMarkdown(markdown, this.getOptions(disposeables));
+        }
+        return {
+            element: element,
+            dispose: function () { return dispose(disposeables); }
+        };
     };
     MarkdownRenderer = __decorate([
         __param(1, IModeService),

@@ -159,7 +159,9 @@ var Renderer = /** @class */ (function () {
         }
     };
     Renderer.prototype.disposeTemplate = function (templateData) {
-        templateData.highlightedLabel.dispose();
+        if (templateData.highlightedLabel) {
+            templateData.highlightedLabel.dispose();
+        }
         templateData.disposables = dispose(templateData.disposables);
     };
     return Renderer;
@@ -199,6 +201,7 @@ var SuggestionDetails = /** @class */ (function () {
     });
     SuggestionDetails.prototype.render = function (item) {
         var _this = this;
+        this.renderDisposeable = dispose(this.renderDisposeable);
         if (!item || !canExpandCompletionItem(item)) {
             this.type.textContent = '';
             this.docs.textContent = '';
@@ -214,7 +217,9 @@ var SuggestionDetails = /** @class */ (function () {
         else {
             addClass(this.docs, 'markdown-docs');
             this.docs.innerHTML = '';
-            this.docs.appendChild(this.markdownRenderer.render(item.suggestion.documentation));
+            var renderedContents = this.markdownRenderer.render(item.suggestion.documentation);
+            this.renderDisposeable = renderedContents;
+            this.docs.appendChild(renderedContents.element);
         }
         if (item.suggestion.detail) {
             this.type.innerText = item.suggestion.detail;
@@ -278,6 +283,7 @@ var SuggestionDetails = /** @class */ (function () {
     };
     SuggestionDetails.prototype.dispose = function () {
         this.disposables = dispose(this.disposables);
+        this.renderDisposeable = dispose(this.renderDisposeable);
     };
     return SuggestionDetails;
 }());
@@ -324,7 +330,8 @@ var SuggestWidget = /** @class */ (function () {
         this.list = new List(this.listElement, this, [renderer], {
             useShadows: false,
             selectOnMouseDown: true,
-            focusOnMouseDown: false
+            focusOnMouseDown: false,
+            openController: { shouldOpen: function () { return false; } }
         });
         this.toDispose = [
             attachListStyler(this.list, themeService, {
@@ -459,6 +466,11 @@ var SuggestWidget = /** @class */ (function () {
         this.list.reveal(index);
         this.currentSuggestionDetails = item.resolve()
             .then(function () {
+            // item can have extra information, so re-render
+            _this.ignoreFocusEvents = true;
+            _this.list.splice(index, 1, [item]);
+            _this.list.setFocus([index]);
+            _this.ignoreFocusEvents = false;
             if (_this.expandDocsSettingFromStorage()) {
                 _this.showDetails();
             }
@@ -482,6 +494,7 @@ var SuggestWidget = /** @class */ (function () {
             case 0 /* Hidden */:
                 hide(this.messageElement, this.details.element, this.listElement);
                 this.hide();
+                this.listHeight = 0;
                 if (stateChanged) {
                     this.list.splice(0, this.list.length);
                 }
@@ -516,9 +529,6 @@ var SuggestWidget = /** @class */ (function () {
                 this.show();
                 this._ariaAlert(this.details.getAriaLabel());
                 break;
-        }
-        if (stateChanged && this.state !== 0 /* Hidden */) {
-            this.editor.layoutContentWidget(this);
         }
     };
     SuggestWidget.prototype.showTriggered = function (auto) {
@@ -561,7 +571,7 @@ var SuggestWidget = /** @class */ (function () {
             stats['wasAutomaticallyTriggered'] = !!isAuto;
             /* __GDPR__
                 "suggestWidget" : {
-                    "wasAutomaticallyTriggered" : { "classification": "SystemMetaData", "purpose": "FeatureInsight" },
+                    "wasAutomaticallyTriggered" : { "classification": "SystemMetaData", "purpose": "FeatureInsight", "isMeasurement": true },
                     "${include}": [
                         "${ICompletionStats}",
                         "${EditorTelemetryData}"
@@ -747,7 +757,11 @@ var SuggestWidget = /** @class */ (function () {
     };
     SuggestWidget.prototype.show = function () {
         var _this = this;
-        this.updateListHeight();
+        var newHeight = this.updateListHeight();
+        if (newHeight !== this.listHeight) {
+            this.editor.layoutContentWidget(this);
+            this.listHeight = newHeight;
+        }
         this.suggestWidgetVisible.set(true);
         this.showTimeout = TPromise.timeout(100).then(function () {
             addClass(_this.element, 'visible');
@@ -791,6 +805,7 @@ var SuggestWidget = /** @class */ (function () {
         this.element.style.lineHeight = this.unfocusedHeight + "px";
         this.listElement.style.height = height + "px";
         this.list.layout(height);
+        return height;
     };
     SuggestWidget.prototype.adjustDocsPosition = function () {
         var lineHeight = this.editor.getConfiguration().fontInfo.lineHeight;

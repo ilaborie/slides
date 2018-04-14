@@ -5,3 +5,6 @@
 'use strict';
 import { createDecorator } from '../../../platform/instantiation/common/instantiation.js';
 export var IModelService = createDecorator('modelService');
+export function shouldSynchronizeModel(model) {
+    return (!model.isTooLargeForHavingARichMode() && !model.isForSimpleWidget);
+}
