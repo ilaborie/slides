@@ -199,7 +199,7 @@ fun prezDevoxxFr2018() =
             slide(title = "null-safety.java", styleClass = setOf("code", "java", "manu")) {
                 codeFromResource("/deepDiveKotlin/null_safety/NullSafetyKt.java")
             }
-            slideFromResource(title = "elvis") { styleClass = setOf("bilan", "contrast", "manu") }
+            slideFromResource(title ="Bilan null-safety", key = "elvis") { styleClass = setOf("bilan", "contrast", "manu") }
         }
 
         part(title = "Les types", key = "types") {

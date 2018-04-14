@@ -1,6 +1,6 @@
 * ⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
-* Covariant (consome): `out`, en java `? extends T`
-* Contravariant (produit): `in`, en java `? super T`
+* Covariant: `out`, en java `? extends T`
+* Contravariant: `in`, en java `? super T`
 
 
 <div>

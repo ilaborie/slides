@@ -3,7 +3,7 @@ fun apply(x: Int, y: Int, operation: (Int, Int) -> Int): Int =
     operation(x, y)
 
 // Declare function
-fun sumf(x: Int, y: Int) =
+fun sumf(x: Int, y: Int) : Int =
     x + y
 
 // call apply with function reference

@@ -1,5 +1,5 @@
 fun main(args: Array<String>) {
-    val aPair = Pair("Earth", "Moon")
+    val aPair = "Earth" to "Moon" // ~  Pair("Earth", "Moon")
     val (planet, moon) = aPair
 
     val aTriple = Triple("Voyager 1", 1977, listOf("Jupiter", "Saturn"))

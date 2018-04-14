@@ -1,3 +1,3 @@
 
-* plus de `NullPointerException`
+* 🙌 plus de `NullPointerException`
 * ⚠️ quand on appel du Java
