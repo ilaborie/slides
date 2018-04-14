@@ -314,12 +314,20 @@ fun prezDevoxxFr2018() =
             slide(title = "Compilation pour Android", key = "compile-android", styleClass = setOf("diagram", "manu")) {
                 svg("/deepDiveKotlin/android/Compile Android.svg")
             }
-            slide(title = "Dalvik EXecutable format", styleClass = setOf("code", "hex", "manu", "live-code")) {
+            slide(title = "Dalvik EXecutable format", styleClass = setOf("code", "hex", "manu")) {
                 linkText("https://source.android.com/devices/tech/dalvik/dex-format") { "Dalvik Executable format " }
                 bash { """java -jar ./scripts/lib/d8.jar --release \
-                    |       --output ./target/android/dex \
-                    |       ./target/android/hello.jar""".trimMargin() }
+                    |            --output ./target/android/dex \
+                    |            ./target/android/hello.jar""".trimMargin() }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.txt")
+            }
+
+            slide(title = "dexdump", styleClass = setOf("code", "hex", "manu")) {
+
+                bash { """~/.android-sdk/build-tools/23.0.1/dexdump -d \
+                    |      ./target/android/dex/classes.dex |
+                    |      > ./target/android/dex/classes.dex.dump""".trimMargin() }
+                codeFromResource("/deepDiveKotlin/android/classes.dex.dump")
             }
             slide(title = "smali", styleClass = setOf("code", "smali", "manu", "live-code")) {
                 bash { """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
@@ -400,6 +408,9 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "Performance des sequences 2/2", key = "performance_des_sequences2") {
                 styleClass = setOf("measure", "contrast", "manu")
             }
+            slide(title = "timed-sequence.kt", styleClass = setOf("code", "play", "kotlin", "manu")) {
+                codeFromResource("/deepDiveKotlin/collection/timed-sequence.kt")
+            }
             slide(title = "ranges.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/collection/ranges.kt")
             }
@@ -421,16 +432,15 @@ fun prezDevoxxFr2018() =
             slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/delegate.kt")
             }
-            slide(title = "lazy.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+            slide(title = "lazy.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
                 codeFromResource("/deepDiveKotlin/delegate/lazy.kt")
             }
             slide(title = "observable.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/observables.kt")
             }
-            slide(title = "lateinit.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+            slide(title = "lateinit.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/delegate/lateinit.kt")
             }
-            // TODO manu
             slideFromResource(title = "Delegate") {
                 styleClass = setOf("details", "contrast", "manu")
             }
@@ -443,7 +453,7 @@ fun prezDevoxxFr2018() =
             slide(title = "Logger.java", styleClass = setOf("code", "java", "igor")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/Logger.java")
             }
-            slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor")) {
+            slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
             }
             slideFromResource(title = "Plus sur les fonctions", contentType = HTML) {

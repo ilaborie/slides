@@ -4,8 +4,10 @@ class Pojo {
 }
 
 object JavaBeanBuilder {
+
     fun <T> createBean(clazz: Class<T>): T =
         clazz.newInstance()
+
     inline fun <reified T> createBean(): T =
         createBean(T::class.java)
 }
