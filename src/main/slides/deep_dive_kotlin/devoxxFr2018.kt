@@ -329,7 +329,7 @@ fun prezDevoxxFr2018() =
                     |      > ./target/android/dex/classes.dex.dump""".trimMargin() }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.dump")
             }
-            slide(title = "smali", styleClass = setOf("code", "smali", "manu", "live-code")) {
+            slide(title = "smali", styleClass = setOf("code", "smali", "manu")) {
                 bash { """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
                     |     ./target/android/dex/classes.dex -f \
                     |     -o ./target/android/smali""".trimMargin() }
@@ -387,6 +387,12 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Les collections", key = "collection") {
+            slide(title = "Collections", styleClass = setOf("diagram", "igor")) {
+                svg("/deepDiveKotlin/collection/Collection.svg")
+            }
+            slide(title = "Les Maps", styleClass = setOf("diagram", "igor")) {
+                svg("/deepDiveKotlin/collection/Map.svg")
+            }
             slide(title = "api.kt", styleClass = setOf("code", "kotlin", "igor", "live-code")) {
                 codeFromResource("/deepDiveKotlin/collection/api.kt")
             }
@@ -468,7 +474,7 @@ fun prezDevoxxFr2018() =
                 styleClass = setOf("contrast", "igor", "manu")
             }
             slideFromResource(title = "Bilan", key = "bilan-other") {
-                styleClass = setOf("contrast", "manu", "igor")
+                styleClass = setOf("details", "contrast", "igor", "manu")
             }
             slide(title = "Tendance", styleClass = setOf("contrast", "trends", "igor", "manu")) {
                 svg("/deepDiveKotlin/conclusion/trends.svg")
