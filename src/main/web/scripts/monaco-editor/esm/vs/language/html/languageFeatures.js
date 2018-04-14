@@ -71,12 +71,12 @@ var DiagnostcsAdapter = /** @class */ (function () {
 export { DiagnostcsAdapter };
 function toSeverity(lsSeverity) {
     switch (lsSeverity) {
-        case ls.DiagnosticSeverity.Error: return monaco.Severity.Error;
-        case ls.DiagnosticSeverity.Warning: return monaco.Severity.Warning;
-        case ls.DiagnosticSeverity.Information:
-        case ls.DiagnosticSeverity.Hint:
+        case ls.DiagnosticSeverity.Error: return monaco.MarkerSeverity.Error;
+        case ls.DiagnosticSeverity.Warning: return monaco.MarkerSeverity.Warning;
+        case ls.DiagnosticSeverity.Information: return monaco.MarkerSeverity.Info;
+        case ls.DiagnosticSeverity.Hint: return monaco.MarkerSeverity.Hint;
         default:
-            return monaco.Severity.Info;
+            return monaco.MarkerSeverity.Info;
     }
 }
 function toDiagnostics(resource, diag) {
@@ -183,7 +183,7 @@ function toCompletionItem(entry) {
 }
 function fromMarkdownString(entry) {
     return {
-        kind: (typeof entry === 'string' ? ls.MarkupKind.PlainText : ls.MarkupKind.PlainText),
+        kind: (typeof entry === 'string' ? ls.MarkupKind.PlainText : ls.MarkupKind.Markdown),
         value: (typeof entry === 'string' ? entry : entry.value)
     };
 }
@@ -276,7 +276,7 @@ function toMarkdownString(entry) {
             value: entry.value
         };
     }
-    return { value: '```' + entry.value + '\n' + entry.value + '\n```\n' };
+    return { value: '```' + entry.language + '\n' + entry.value + '\n```\n' };
 }
 function toMarkedStringArray(contents) {
     if (!contents) {

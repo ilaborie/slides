@@ -184,7 +184,7 @@ var GoToDefinitionAction = /** @class */ (function (_super) {
             alias: 'Go to Definition',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasDefinitionProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: goToDeclarationKb
             },
             menuOpts: {
@@ -206,7 +206,7 @@ var OpenDefinitionToSideAction = /** @class */ (function (_super) {
             alias: 'Open Definition to the Side',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasDefinitionProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, goToDeclarationKb)
             }
         }) || this;
@@ -224,7 +224,7 @@ var PeekDefinitionAction = /** @class */ (function (_super) {
             alias: 'Peek Definition',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasDefinitionProvider, PeekContext.notInPeekEditor, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 512 /* Alt */ | 70 /* F12 */,
                 linux: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 68 /* F10 */ }
             },
@@ -265,7 +265,7 @@ var GoToImplementationAction = /** @class */ (function (_super) {
             alias: 'Go to Implementation',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasImplementationProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 70 /* F12 */
             }
         }) || this;
@@ -283,7 +283,7 @@ var PeekImplementationAction = /** @class */ (function (_super) {
             alias: 'Peek Implementation',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasImplementationProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 70 /* F12 */
             }
         }) || this;
@@ -320,7 +320,7 @@ var GoToTypeDefintionAction = /** @class */ (function (_super) {
             alias: 'Go to Type Definition',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasTypeDefinitionProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 0
             },
             menuOpts: {
@@ -342,7 +342,7 @@ var PeekTypeDefinitionAction = /** @class */ (function (_super) {
             alias: 'Peek Type Definition',
             precondition: ContextKeyExpr.and(EditorContextKeys.hasTypeDefinitionProvider, EditorContextKeys.isInEmbeddedEditor.toNegated()),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 0
             }
         }) || this;

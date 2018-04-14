@@ -14,7 +14,6 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 import './renameInputField.css';
 import { localize } from '../../../nls.js';
-import { canceled } from '../../../base/common/errors.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
 import { Range } from '../../common/core/range.js';
@@ -99,9 +98,9 @@ var RenameInputField = /** @class */ (function () {
             this._currentAcceptInput();
         }
     };
-    RenameInputField.prototype.cancelInput = function () {
+    RenameInputField.prototype.cancelInput = function (focusEditor) {
         if (this._currentCancelInput) {
-            this._currentCancelInput();
+            this._currentCancelInput(focusEditor);
         }
     };
     RenameInputField.prototype.getInput = function (where, value, selectionStart, selectionEnd) {
@@ -116,32 +115,34 @@ var RenameInputField = /** @class */ (function () {
             dispose(disposeOnDone);
             _this._hide();
         };
-        return new TPromise(function (c, e) {
-            _this._currentCancelInput = function () {
+        return new TPromise(function (resolve) {
+            _this._currentCancelInput = function (focusEditor) {
                 _this._currentAcceptInput = null;
                 _this._currentCancelInput = null;
-                e(canceled());
+                resolve(focusEditor);
                 return true;
             };
             _this._currentAcceptInput = function () {
                 if (_this._inputField.value.trim().length === 0 || _this._inputField.value === value) {
                     // empty or whitespace only or not changed
-                    _this.cancelInput();
+                    _this.cancelInput(true);
                     return;
                 }
                 _this._currentAcceptInput = null;
                 _this._currentCancelInput = null;
-                c(_this._inputField.value);
+                resolve(_this._inputField.value);
             };
             var onCursorChanged = function () {
                 if (!Range.containsPosition(where, _this._editor.getPosition())) {
-                    _this.cancelInput();
+                    _this.cancelInput(true);
                 }
             };
             disposeOnDone.push(_this._editor.onDidChangeCursorSelection(onCursorChanged));
-            disposeOnDone.push(_this._editor.onDidBlurEditor(function () { return _this.cancelInput(); }));
+            disposeOnDone.push(_this._editor.onDidBlurEditor(function () { return _this.cancelInput(false); }));
             _this._show();
-        }, this._currentCancelInput).then(function (newValue) {
+        }, function () {
+            _this._currentCancelInput(true);
+        }).then(function (newValue) {
             always();
             return newValue;
         }, function (err) {

@@ -27,7 +27,7 @@ import * as DOM from '../../dom.js';
 import * as platform from '../../../common/platform.js';
 import { Gesture } from '../../touch.js';
 import { StandardKeyboardEvent } from '../../keyboardEvent.js';
-import Event, { Emitter, EventBufferer, chain, mapEvent, anyEvent } from '../../../common/event.js';
+import { Event, Emitter, EventBufferer, chain, mapEvent, anyEvent } from '../../../common/event.js';
 import { domEvent } from '../../event.js';
 import { ListView } from './listView.js';
 import { Color } from '../../../common/color.js';
@@ -132,7 +132,7 @@ var Trait = /** @class */ (function () {
     Trait.prototype.splice = function (start, deleteCount, elements) {
         var diff = elements.length - deleteCount;
         var end = start + deleteCount;
-        var indexes = this.indexes.filter(function (i) { return i < start; }).concat(elements.reduce(function (r, hasTrait, i) { return hasTrait ? r.concat([i + start]) : r; }, []), this.indexes.filter(function (i) { return i >= end; }).map(function (i) { return i + diff; }));
+        var indexes = this.indexes.filter(function (i) { return i < start; }).concat(elements.map(function (hasTrait, i) { return hasTrait ? i + start : -1; }).filter(function (i) { return i !== -1; }), this.indexes.filter(function (i) { return i >= end; }).map(function (i) { return i + diff; }));
         this.renderer.splice(start, deleteCount, elements.length);
         this.set(indexes);
     };
@@ -492,6 +492,71 @@ var MouseController = /** @class */ (function () {
     ], MouseController.prototype, "onContextMenu", null);
     return MouseController;
 }());
+var DefaultStyleController = /** @class */ (function () {
+    function DefaultStyleController(styleElement, selectorSuffix) {
+        this.styleElement = styleElement;
+        this.selectorSuffix = selectorSuffix;
+    }
+    DefaultStyleController.prototype.style = function (styles) {
+        var suffix = this.selectorSuffix ? "." + this.selectorSuffix : '';
+        var content = [];
+        if (styles.listFocusBackground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.focused { background-color: " + styles.listFocusBackground + "; }");
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.focused:hover { background-color: " + styles.listFocusBackground + "; }"); // overwrite :hover style in this case!
+        }
+        if (styles.listFocusForeground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.focused { color: " + styles.listFocusForeground + "; }");
+        }
+        if (styles.listActiveSelectionBackground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.selected { background-color: " + styles.listActiveSelectionBackground + "; }");
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.selected:hover { background-color: " + styles.listActiveSelectionBackground + "; }"); // overwrite :hover style in this case!
+        }
+        if (styles.listActiveSelectionForeground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.selected { color: " + styles.listActiveSelectionForeground + "; }");
+        }
+        if (styles.listFocusAndSelectionBackground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.selected.focused { background-color: " + styles.listFocusAndSelectionBackground + "; }");
+        }
+        if (styles.listFocusAndSelectionForeground) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.selected.focused { color: " + styles.listFocusAndSelectionForeground + "; }");
+        }
+        if (styles.listInactiveFocusBackground) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row.focused { background-color:  " + styles.listInactiveFocusBackground + "; }");
+            content.push(".monaco-list" + suffix + " .monaco-list-row.focused:hover { background-color:  " + styles.listInactiveFocusBackground + "; }"); // overwrite :hover style in this case!
+        }
+        if (styles.listInactiveSelectionBackground) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row.selected { background-color:  " + styles.listInactiveSelectionBackground + "; }");
+            content.push(".monaco-list" + suffix + " .monaco-list-row.selected:hover { background-color:  " + styles.listInactiveSelectionBackground + "; }"); // overwrite :hover style in this case!
+        }
+        if (styles.listInactiveSelectionForeground) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row.selected { color: " + styles.listInactiveSelectionForeground + "; }");
+        }
+        if (styles.listHoverBackground) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row:hover { background-color:  " + styles.listHoverBackground + "; }");
+        }
+        if (styles.listHoverForeground) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row:hover { color:  " + styles.listHoverForeground + "; }");
+        }
+        if (styles.listSelectionOutline) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row.selected { outline: 1px dotted " + styles.listSelectionOutline + "; outline-offset: -1px; }");
+        }
+        if (styles.listFocusOutline) {
+            content.push(".monaco-list" + suffix + ":focus .monaco-list-row.focused { outline: 1px solid " + styles.listFocusOutline + "; outline-offset: -1px; }");
+        }
+        if (styles.listInactiveFocusOutline) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row.focused { outline: 1px dotted " + styles.listInactiveFocusOutline + "; outline-offset: -1px; }");
+        }
+        if (styles.listHoverOutline) {
+            content.push(".monaco-list" + suffix + " .monaco-list-row:hover { outline: 1px dashed " + styles.listHoverOutline + "; outline-offset: -1px; }");
+        }
+        var newStyles = content.join('\n');
+        if (newStyles !== this.styleElement.innerHTML) {
+            this.styleElement.innerHTML = newStyles;
+        }
+    };
+    return DefaultStyleController;
+}());
+export { DefaultStyleController };
 var defaultStyles = {
     listFocusBackground: Color.fromHex('#073655'),
     listActiveSelectionBackground: Color.fromHex('#0E639C'),
@@ -609,7 +674,7 @@ var PipelineRenderer = /** @class */ (function () {
         var i = 0;
         for (var _i = 0, _a = this.renderers; _i < _a.length; _i++) {
             var renderer = _a[_i];
-            renderer.disposeTemplate(templateData[i]);
+            renderer.disposeTemplate(templateData[i++]);
         }
     };
     return PipelineRenderer;
@@ -622,6 +687,7 @@ var List = /** @class */ (function () {
         this.eventBufferer = new EventBufferer();
         this.onContextMenu = Event.None;
         this._onOpen = new Emitter();
+        this.onOpen = this._onOpen.event;
         this._onPin = new Emitter();
         this._onDidDispose = new Emitter();
         this.focus = new FocusTrait(function (i) { return _this.getElementDomId(i); });
@@ -633,6 +699,10 @@ var List = /** @class */ (function () {
         DOM.addClass(this.view.domNode, this.idPrefix);
         this.view.domNode.tabIndex = 0;
         this.styleElement = DOM.createStyleSheet(this.view.domNode);
+        this.styleController = options.styleController;
+        if (!this.styleController) {
+            this.styleController = new DefaultStyleController(this.styleElement, this.idPrefix);
+        }
         this.spliceable = new CombinedSpliceable([
             new TraitSpliceable(this.focus, this.view, options.identityProvider),
             new TraitSpliceable(this.selection, this.view, options.identityProvider),
@@ -670,13 +740,6 @@ var List = /** @class */ (function () {
         get: function () {
             var _this = this;
             return mapEvent(this.eventBufferer.wrapEvent(this.selection.onChange), function (e) { return _this.toListEvent(e); });
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(List.prototype, "onOpen", {
-        get: function () {
-            return this._onOpen.event;
         },
         enumerable: true,
         configurable: true
@@ -996,57 +1059,7 @@ var List = /** @class */ (function () {
         this._onPin.fire(indexes);
     };
     List.prototype.style = function (styles) {
-        var content = [];
-        if (styles.listFocusBackground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.focused { background-color: " + styles.listFocusBackground + "; }");
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.focused:hover { background-color: " + styles.listFocusBackground + "; }"); // overwrite :hover style in this case!
-        }
-        if (styles.listFocusForeground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.focused { color: " + styles.listFocusForeground + "; }");
-        }
-        if (styles.listActiveSelectionBackground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.selected { background-color: " + styles.listActiveSelectionBackground + "; }");
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.selected:hover { background-color: " + styles.listActiveSelectionBackground + "; }"); // overwrite :hover style in this case!
-        }
-        if (styles.listActiveSelectionForeground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.selected { color: " + styles.listActiveSelectionForeground + "; }");
-        }
-        if (styles.listFocusAndSelectionBackground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.selected.focused { background-color: " + styles.listFocusAndSelectionBackground + "; }");
-        }
-        if (styles.listFocusAndSelectionForeground) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.selected.focused { color: " + styles.listFocusAndSelectionForeground + "; }");
-        }
-        if (styles.listInactiveFocusBackground) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.focused { background-color:  " + styles.listInactiveFocusBackground + "; }");
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.focused:hover { background-color:  " + styles.listInactiveFocusBackground + "; }"); // overwrite :hover style in this case!
-        }
-        if (styles.listInactiveSelectionBackground) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.selected { background-color:  " + styles.listInactiveSelectionBackground + "; }");
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.selected:hover { background-color:  " + styles.listInactiveSelectionBackground + "; }"); // overwrite :hover style in this case!
-        }
-        if (styles.listInactiveSelectionForeground) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.selected { color: " + styles.listInactiveSelectionForeground + "; }");
-        }
-        if (styles.listHoverBackground) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row:hover { background-color:  " + styles.listHoverBackground + "; }");
-        }
-        if (styles.listHoverForeground) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row:hover { color:  " + styles.listHoverForeground + "; }");
-        }
-        if (styles.listSelectionOutline) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.selected { outline: 1px dotted " + styles.listSelectionOutline + "; outline-offset: -1px; }");
-        }
-        if (styles.listFocusOutline) {
-            content.push(".monaco-list." + this.idPrefix + ":focus .monaco-list-row.focused { outline: 1px solid " + styles.listFocusOutline + "; outline-offset: -1px; }");
-        }
-        if (styles.listInactiveFocusOutline) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row.focused { outline: 1px dotted " + styles.listInactiveFocusOutline + "; outline-offset: -1px; }");
-        }
-        if (styles.listHoverOutline) {
-            content.push(".monaco-list." + this.idPrefix + " .monaco-list-row:hover { outline: 1px dashed " + styles.listHoverOutline + "; outline-offset: -1px; }");
-        }
-        this.styleElement.innerHTML = content.join('\n');
+        this.styleController.style(styles);
     };
     List.prototype.toListEvent = function (_a) {
         var _this = this;
@@ -1081,9 +1094,6 @@ var List = /** @class */ (function () {
     __decorate([
         memoize
     ], List.prototype, "onSelectionChange", null);
-    __decorate([
-        memoize
-    ], List.prototype, "onOpen", null);
     __decorate([
         memoize
     ], List.prototype, "onPin", null);

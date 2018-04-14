@@ -23,7 +23,6 @@ import { USLayoutResolvedKeybinding } from '../../../platform/keybinding/common/
 import { KeybindingResolver } from '../../../platform/keybinding/common/keybindingResolver.js';
 import { KeybindingSource } from '../../../platform/keybinding/common/keybinding.js';
 import { WorkbenchState, WorkspaceFolder } from '../../../platform/workspace/common/workspace.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { isCodeEditor } from '../../browser/editorBrowser.js';
 import { Emitter } from '../../../base/common/event.js';
 import { Configuration, DefaultConfigurationModel, ConfigurationModel } from '../../../platform/configuration/common/configurationModels.js';
@@ -194,27 +193,30 @@ var SimpleProgressService = /** @class */ (function () {
     return SimpleProgressService;
 }());
 export { SimpleProgressService };
-var SimpleConfirmationService = /** @class */ (function () {
-    function SimpleConfirmationService() {
+var SimpleDialogService = /** @class */ (function () {
+    function SimpleDialogService() {
     }
-    SimpleConfirmationService.prototype.confirm = function (confirmation) {
-        var messageText = confirmation.message;
-        if (confirmation.detail) {
-            messageText = messageText + '\n\n' + confirmation.detail;
-        }
-        return TPromise.wrap(window.confirm(messageText));
-    };
-    SimpleConfirmationService.prototype.confirmWithCheckbox = function (confirmation) {
-        return this.confirm(confirmation).then(function (confirmed) {
+    SimpleDialogService.prototype.confirm = function (confirmation) {
+        return this.doConfirm(confirmation).then(function (confirmed) {
             return {
                 confirmed: confirmed,
                 checkboxChecked: false // unsupported
             };
         });
     };
-    return SimpleConfirmationService;
+    SimpleDialogService.prototype.doConfirm = function (confirmation) {
+        var messageText = confirmation.message;
+        if (confirmation.detail) {
+            messageText = messageText + '\n\n' + confirmation.detail;
+        }
+        return TPromise.wrap(window.confirm(messageText));
+    };
+    SimpleDialogService.prototype.show = function (severity, message, buttons, options) {
+        return TPromise.as(0);
+    };
+    return SimpleDialogService;
 }());
-export { SimpleConfirmationService };
+export { SimpleDialogService };
 var SimpleNotificationService = /** @class */ (function () {
     function SimpleNotificationService() {
     }
@@ -240,6 +242,9 @@ var SimpleNotificationService = /** @class */ (function () {
                 break;
         }
         return SimpleNotificationService.NO_OP;
+    };
+    SimpleNotificationService.prototype.prompt = function (severity, message, choices) {
+        return TPromise.as(0);
     };
     SimpleNotificationService.NO_OP = new NoOpNotification();
     return SimpleNotificationService;

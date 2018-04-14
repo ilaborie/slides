@@ -285,7 +285,7 @@ var Cursor = /** @class */ (function (_super) {
     };
     Cursor.prototype._interpretCommandResult = function (cursorState) {
         if (!cursorState || cursorState.length === 0) {
-            return;
+            cursorState = this._cursors.readSelectionFromMarkers();
         }
         this._columnSelectData = null;
         this._cursors.setSelections(cursorState);

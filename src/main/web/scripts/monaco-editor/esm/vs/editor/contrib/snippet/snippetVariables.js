@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
+import * as nls from '../../../nls.js';
 import { basename, dirname } from '../../../base/common/paths.js';
 import { Text } from './snippetParser.js';
 import { getLeadingWhitespace, commonPrefixLength, isFalsyOrWhitespace, pad } from '../../../base/common/strings.js';
@@ -14,6 +15,10 @@ export var KnownSnippetVariableNames = Object.freeze({
     'CURRENT_HOUR': true,
     'CURRENT_MINUTE': true,
     'CURRENT_SECOND': true,
+    'CURRENT_DAY_NAME': true,
+    'CURRENT_DAY_NAME_SHORT': true,
+    'CURRENT_MONTH_NAME': true,
+    'CURRENT_MONTH_NAME_SHORT': true,
     'SELECTION': true,
     'CLIPBOARD': true,
     'TM_SELECTED_TEXT': true,
@@ -181,8 +186,24 @@ var TimeBasedVariableResolver = /** @class */ (function () {
         else if (name === 'CURRENT_SECOND') {
             return pad(new Date().getSeconds().valueOf(), 2);
         }
+        else if (name === 'CURRENT_DAY_NAME') {
+            return TimeBasedVariableResolver.dayNames[new Date().getDay()];
+        }
+        else if (name === 'CURRENT_DAY_NAME_SHORT') {
+            return TimeBasedVariableResolver.dayNamesShort[new Date().getDay()];
+        }
+        else if (name === 'CURRENT_MONTH_NAME') {
+            return TimeBasedVariableResolver.monthNames[new Date().getMonth()];
+        }
+        else if (name === 'CURRENT_MONTH_NAME_SHORT') {
+            return TimeBasedVariableResolver.monthNamesShort[new Date().getMonth()];
+        }
         return undefined;
     };
+    TimeBasedVariableResolver.dayNames = [nls.localize('Sunday', "Sunday"), nls.localize('Monday', "Monday"), nls.localize('Tuesday', "Tuesday"), nls.localize('Wednesday', "Wednesday"), nls.localize('Thursday', "Thursday"), nls.localize('Friday', "Friday"), nls.localize('Saturday', "Saturday")];
+    TimeBasedVariableResolver.dayNamesShort = [nls.localize('SundayShort', "Sun"), nls.localize('MondayShort', "Mon"), nls.localize('TuesdayShort', "Tue"), nls.localize('WednesdayShort', "Wed"), nls.localize('ThursdayShort', "Thu"), nls.localize('FridayShort', "Fri"), nls.localize('SaturdayShort', "Sat")];
+    TimeBasedVariableResolver.monthNames = [nls.localize('January', "January"), nls.localize('February', "February"), nls.localize('March', "March"), nls.localize('April', "April"), nls.localize('May', "May"), nls.localize('June', "June"), nls.localize('July', "July"), nls.localize('August', "August"), nls.localize('September', "September"), nls.localize('October', "October"), nls.localize('November', "November"), nls.localize('December', "December")];
+    TimeBasedVariableResolver.monthNamesShort = [nls.localize('JanuaryShort', "Jan"), nls.localize('FebruaryShort', "Feb"), nls.localize('MarchShort', "Mar"), nls.localize('AprilShort', "Apr"), nls.localize('MayShort', "May"), nls.localize('JuneShort', "Jun"), nls.localize('JulyShort', "Jul"), nls.localize('AugustShort', "Aug"), nls.localize('SeptemberShort', "Sep"), nls.localize('OctoberShort', "Oct"), nls.localize('NovemberShort', "Nov"), nls.localize('DecemberShort', "Dec")];
     return TimeBasedVariableResolver;
 }());
 export { TimeBasedVariableResolver };

@@ -37,27 +37,9 @@ import { guessIndentation } from './indentationGuesser.js';
 import { EDITOR_MODEL_DEFAULTS } from '../config/editorOptions.js';
 import { TextModelSearch, SearchParams } from './textModelSearch.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
-import { LinesTextBufferBuilder } from './linesTextBuffer/linesTextBufferBuilder.js';
 import { PieceTreeTextBufferBuilder } from './pieceTreeTextBuffer/pieceTreeTextBufferBuilder.js';
-import { ChunksTextBufferBuilder } from './chunksTextBuffer/chunksTextBufferBuilder.js';
-export var TextBufferType;
-(function (TextBufferType) {
-    TextBufferType[TextBufferType["LinesArray"] = 0] = "LinesArray";
-    TextBufferType[TextBufferType["PieceTree"] = 1] = "PieceTree";
-    TextBufferType[TextBufferType["Chunks"] = 2] = "Chunks";
-})(TextBufferType || (TextBufferType = {}));
-// Here is the master switch for the text buffer implementation:
-export var OPTIONS = {
-    TEXT_BUFFER_IMPLEMENTATION: TextBufferType.PieceTree
-};
 function createTextBufferBuilder() {
-    if (OPTIONS.TEXT_BUFFER_IMPLEMENTATION === TextBufferType.PieceTree) {
-        return new PieceTreeTextBufferBuilder();
-    }
-    if (OPTIONS.TEXT_BUFFER_IMPLEMENTATION === TextBufferType.Chunks) {
-        return new ChunksTextBufferBuilder();
-    }
-    return new LinesTextBufferBuilder();
+    return new PieceTreeTextBufferBuilder();
 }
 export function createTextBufferFactory(text) {
     var builder = createTextBufferBuilder();
@@ -170,6 +152,7 @@ var TextModel = /** @class */ (function (_super) {
         // Generate a new unique model id
         MODEL_ID++;
         _this.id = '$model' + MODEL_ID;
+        _this.isForSimpleWidget = creationOptions.isForSimpleWidget;
         if (typeof associatedResource === 'undefined' || associatedResource === null) {
             _this._associatedResource = URI.parse('inmemory://model/' + MODEL_ID);
         }
@@ -247,11 +230,14 @@ var TextModel = /** @class */ (function (_super) {
             defaultEOL: options.defaultEOL
         });
     };
+    TextModel.prototype.onDidChangeRawContentFast = function (listener) {
+        return this._eventEmitter.fastEvent(function (e) { return listener(e.rawContentChangedEvent); });
+    };
     TextModel.prototype.onDidChangeRawContent = function (listener) {
-        return this._eventEmitter.event(function (e) { return listener(e.rawContentChangedEvent); });
+        return this._eventEmitter.slowEvent(function (e) { return listener(e.rawContentChangedEvent); });
     };
     TextModel.prototype.onDidChangeContent = function (listener) {
-        return this._eventEmitter.event(function (e) { return listener(e.contentChangedEvent); });
+        return this._eventEmitter.slowEvent(function (e) { return listener(e.contentChangedEvent); });
     };
     TextModel.prototype.dispose = function () {
         this._isDisposing = true;
@@ -401,6 +387,9 @@ var TextModel = /** @class */ (function (_super) {
     };
     TextModel.prototype.isAttachedToEditor = function () {
         return this._attachedEditorCount > 0;
+    };
+    TextModel.prototype.getAttachedEditorCount = function () {
+        return this._attachedEditorCount;
     };
     TextModel.prototype.isTooLargeForHavingARichMode = function () {
         return this._shouldSimplifyMode;
@@ -705,6 +694,34 @@ var TextModel = /** @class */ (function (_super) {
     /**
      * @param strict Do NOT allow a position inside a high-low surrogate pair
      */
+    TextModel.prototype._isValidPosition = function (lineNumber, column, strict) {
+        if (lineNumber < 1) {
+            return false;
+        }
+        var lineCount = this._buffer.getLineCount();
+        if (lineNumber > lineCount) {
+            return false;
+        }
+        if (column < 1) {
+            return false;
+        }
+        var maxColumn = this.getLineMaxColumn(lineNumber);
+        if (column > maxColumn) {
+            return false;
+        }
+        if (strict) {
+            if (column > 1) {
+                var charCodeBefore = this._buffer.getLineCharCode(lineNumber, column - 2);
+                if (strings.isHighSurrogate(charCodeBefore)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    };
+    /**
+     * @param strict Do NOT allow a position inside a high-low surrogate pair
+     */
     TextModel.prototype._validatePosition = function (_lineNumber, _column, strict) {
         var lineNumber = Math.floor(typeof _lineNumber === 'number' ? _lineNumber : 1);
         var column = Math.floor(typeof _column === 'number' ? _column : 1);
@@ -735,10 +752,48 @@ var TextModel = /** @class */ (function (_super) {
     };
     TextModel.prototype.validatePosition = function (position) {
         this._assertNotDisposed();
+        // Avoid object allocation and cover most likely case
+        if (position instanceof Position) {
+            if (this._isValidPosition(position.lineNumber, position.column, true)) {
+                return position;
+            }
+        }
         return this._validatePosition(position.lineNumber, position.column, true);
+    };
+    /**
+     * @param strict Do NOT allow a range to have its boundaries inside a high-low surrogate pair
+     */
+    TextModel.prototype._isValidRange = function (range, strict) {
+        var startLineNumber = range.startLineNumber;
+        var startColumn = range.startColumn;
+        var endLineNumber = range.endLineNumber;
+        var endColumn = range.endColumn;
+        if (!this._isValidPosition(startLineNumber, startColumn, false)) {
+            return false;
+        }
+        if (!this._isValidPosition(endLineNumber, endColumn, false)) {
+            return false;
+        }
+        if (strict) {
+            var charCodeBeforeStart = (startColumn > 1 ? this._buffer.getLineCharCode(startLineNumber, startColumn - 2) : 0);
+            var charCodeBeforeEnd = (endColumn > 1 && endColumn <= this._buffer.getLineLength(endLineNumber) ? this._buffer.getLineCharCode(endLineNumber, endColumn - 2) : 0);
+            var startInsideSurrogatePair = strings.isHighSurrogate(charCodeBeforeStart);
+            var endInsideSurrogatePair = strings.isHighSurrogate(charCodeBeforeEnd);
+            if (!startInsideSurrogatePair && !endInsideSurrogatePair) {
+                return true;
+            }
+            return false;
+        }
+        return true;
     };
     TextModel.prototype.validateRange = function (_range) {
         this._assertNotDisposed();
+        // Avoid object allocation and cover most likely case
+        if ((_range instanceof Range) && !(_range instanceof Selection)) {
+            if (this._isValidRange(_range, true)) {
+                return _range;
+            }
+        }
         var start = this._validatePosition(_range.startLineNumber, _range.startColumn, false);
         var end = this._validatePosition(_range.endLineNumber, _range.endColumn, false);
         var startLineNumber = start.lineNumber;
@@ -777,6 +832,9 @@ var TextModel = /** @class */ (function (_super) {
         var lineCount = this.getLineCount();
         return new Range(1, 1, lineCount, this.getLineMaxColumn(lineCount));
     };
+    TextModel.prototype.findMatchesLineByLine = function (searchRange, searchData, captureMatches, limitResultCount) {
+        return this._buffer.findMatchesLineByLine(searchRange, searchData, captureMatches, limitResultCount);
+    };
     TextModel.prototype.findMatches = function (searchString, rawSearchScope, isRegex, matchCase, wordSeparators, captureMatches, limitResultCount) {
         if (limitResultCount === void 0) { limitResultCount = LIMIT_FIND_COUNT; }
         this._assertNotDisposed();
@@ -787,11 +845,37 @@ var TextModel = /** @class */ (function (_super) {
         else {
             searchRange = this.getFullModelRange();
         }
+        if (!isRegex && searchString.indexOf('\n') < 0) {
+            // not regex, not multi line
+            var searchParams = new SearchParams(searchString, isRegex, matchCase, wordSeparators);
+            var searchData = searchParams.parseSearchRequest();
+            if (!searchData) {
+                return [];
+            }
+            return this.findMatchesLineByLine(searchRange, searchData, captureMatches, limitResultCount);
+        }
         return TextModelSearch.findMatches(this, new SearchParams(searchString, isRegex, matchCase, wordSeparators), searchRange, captureMatches, limitResultCount);
     };
     TextModel.prototype.findNextMatch = function (searchString, rawSearchStart, isRegex, matchCase, wordSeparators, captureMatches) {
         this._assertNotDisposed();
         var searchStart = this.validatePosition(rawSearchStart);
+        if (!isRegex && searchString.indexOf('\n') < 0) {
+            var searchParams = new SearchParams(searchString, isRegex, matchCase, wordSeparators);
+            var searchData = searchParams.parseSearchRequest();
+            var lineCount = this.getLineCount();
+            var searchRange = new Range(searchStart.lineNumber, searchStart.column, lineCount, this.getLineMaxColumn(lineCount));
+            var ret = this.findMatchesLineByLine(searchRange, searchData, captureMatches, 1);
+            TextModelSearch.findNextMatch(this, new SearchParams(searchString, isRegex, matchCase, wordSeparators), searchStart, captureMatches);
+            if (ret.length > 0) {
+                return ret[0];
+            }
+            searchRange = new Range(1, 1, searchStart.lineNumber, this.getLineMaxColumn(searchStart.lineNumber));
+            ret = this.findMatchesLineByLine(searchRange, searchData, captureMatches, 1);
+            if (ret.length > 0) {
+                return ret[0];
+            }
+            return null;
+        }
         return TextModelSearch.findNextMatch(this, new SearchParams(searchString, isRegex, matchCase, wordSeparators), searchStart, captureMatches);
     };
     TextModel.prototype.findPreviousMatch = function (searchString, rawSearchStart, isRegex, matchCase, wordSeparators, captureMatches) {
@@ -1297,6 +1381,79 @@ var TextModel = /** @class */ (function (_super) {
     };
     //#endregion
     //#region Tokenization
+    TextModel.prototype.tokenizeViewport = function (startLineNumber, endLineNumber) {
+        if (!this._tokens.tokenizationSupport) {
+            return;
+        }
+        // we tokenize `this._tokens.inValidLineStartIndex` lines in around 20ms so it's a good baseline.
+        var contextBefore = Math.floor(this._tokens.inValidLineStartIndex * 0.3);
+        startLineNumber = Math.max(1, startLineNumber - contextBefore);
+        if (startLineNumber <= this._tokens.inValidLineStartIndex) {
+            this.forceTokenization(endLineNumber);
+            return;
+        }
+        var eventBuilder = new ModelTokensChangedEventBuilder();
+        var nonWhitespaceColumn = this.getLineFirstNonWhitespaceColumn(startLineNumber);
+        var fakeLines = [];
+        var i = startLineNumber - 1;
+        var initialState = null;
+        if (nonWhitespaceColumn > 0) {
+            while (nonWhitespaceColumn > 0 && i >= 1) {
+                var newNonWhitespaceIndex = this.getLineFirstNonWhitespaceColumn(i);
+                if (newNonWhitespaceIndex === 0) {
+                    i--;
+                    continue;
+                }
+                if (newNonWhitespaceIndex < nonWhitespaceColumn) {
+                    initialState = this._tokens._getState(i - 1);
+                    if (initialState) {
+                        break;
+                    }
+                    fakeLines.push(this.getLineContent(i));
+                    nonWhitespaceColumn = newNonWhitespaceIndex;
+                }
+                i--;
+            }
+        }
+        if (!initialState) {
+            initialState = this._tokens.tokenizationSupport.getInitialState();
+        }
+        var state = initialState.clone();
+        for (var i_2 = fakeLines.length - 1; i_2 >= 0; i_2--) {
+            var r = this._tokens._tokenizeText(this._buffer, fakeLines[i_2], state);
+            if (r) {
+                state = r.endState.clone();
+            }
+            else {
+                state = initialState.clone();
+            }
+        }
+        var contextAfter = Math.floor(this._tokens.inValidLineStartIndex * 0.4);
+        endLineNumber = Math.min(this.getLineCount(), endLineNumber + contextAfter);
+        for (var i_3 = startLineNumber; i_3 <= endLineNumber; i_3++) {
+            var text = this.getLineContent(i_3);
+            var r = this._tokens._tokenizeText(this._buffer, text, state);
+            if (r) {
+                this._tokens._setTokens(this._tokens.languageIdentifier.id, i_3 - 1, text.length, r.tokens);
+                /*
+                 * we think it's valid and give it a state but we don't update `_invalidLineStartIndex` then the top-to-bottom tokenization
+                 * goes through the viewport, it can skip them if they already have correct tokens and state, and the lines after the viewport
+                 * can still be tokenized.
+                 */
+                this._tokens._setIsInvalid(i_3 - 1, false);
+                this._tokens._setState(i_3 - 1, state);
+                state = r.endState.clone();
+                eventBuilder.registerChangedTokens(i_3);
+            }
+            else {
+                state = initialState.clone();
+            }
+        }
+        var e = eventBuilder.build();
+        if (e) {
+            this._onDidChangeTokens.fire(e);
+        }
+    };
     TextModel.prototype.forceTokenization = function (lineNumber) {
         if (lineNumber < 1 || lineNumber > this.getLineCount()) {
             throw new Error('Illegal value for lineNumber');
@@ -1412,8 +1569,25 @@ var TextModel = /** @class */ (function (_super) {
         var position = this.validatePosition(_position);
         var lineContent = this.getLineContent(position.lineNumber);
         var lineTokens = this._getLineTokens(position.lineNumber);
-        var offset = position.column - 1;
-        var tokenIndex = lineTokens.findTokenIndexAtOffset(offset);
+        var tokenIndex = lineTokens.findTokenIndexAtOffset(position.column - 1);
+        // (1). First try checking right biased word
+        var _a = TextModel._findLanguageBoundaries(lineTokens, tokenIndex), rbStartOffset = _a[0], rbEndOffset = _a[1];
+        var rightBiasedWord = getWordAtText(position.column, LanguageConfigurationRegistry.getWordDefinition(lineTokens.getLanguageId(tokenIndex)), lineContent.substring(rbStartOffset, rbEndOffset), rbStartOffset);
+        if (rightBiasedWord) {
+            return rightBiasedWord;
+        }
+        // (2). Else, if we were at a language boundary, check the left biased word
+        if (tokenIndex > 0 && rbStartOffset === position.column - 1) {
+            // edge case, where `position` sits between two tokens belonging to two different languages
+            var _b = TextModel._findLanguageBoundaries(lineTokens, tokenIndex - 1), lbStartOffset = _b[0], lbEndOffset = _b[1];
+            var leftBiasedWord = getWordAtText(position.column, LanguageConfigurationRegistry.getWordDefinition(lineTokens.getLanguageId(tokenIndex - 1)), lineContent.substring(lbStartOffset, lbEndOffset), lbStartOffset);
+            if (leftBiasedWord) {
+                return leftBiasedWord;
+            }
+        }
+        return null;
+    };
+    TextModel._findLanguageBoundaries = function (lineTokens, tokenIndex) {
         var languageId = lineTokens.getLanguageId(tokenIndex);
         // go left until a different language is hit
         var startOffset;
@@ -1425,7 +1599,7 @@ var TextModel = /** @class */ (function (_super) {
         for (var i = tokenIndex, tokenCount = lineTokens.getCount(); i < tokenCount && lineTokens.getLanguageId(i) === languageId; i++) {
             endOffset = lineTokens.getEndOffset(i);
         }
-        return getWordAtText(position.column, LanguageConfigurationRegistry.getWordDefinition(languageId), lineContent.substring(startOffset, endOffset), startOffset);
+        return [startOffset, endOffset];
     };
     TextModel.prototype.getWordUntilPosition = function (position) {
         var wordAtPosition = this.getWordAtPosition(position);
@@ -1844,6 +2018,7 @@ var TextModel = /** @class */ (function (_super) {
     TextModel.MODEL_TOKENIZATION_LIMIT = 20 * 1024 * 1024; // 20 MB
     TextModel.MANY_MANY_LINES = 300 * 1000; // 300K lines
     TextModel.DEFAULT_CREATION_OPTIONS = {
+        isForSimpleWidget: false,
         tabSize: EDITOR_MODEL_DEFAULTS.tabSize,
         insertSpaces: EDITOR_MODEL_DEFAULTS.insertSpaces,
         detectIndentation: false,
@@ -2017,8 +2192,13 @@ var DidChangeContentEmitter = /** @class */ (function (_super) {
     __extends(DidChangeContentEmitter, _super);
     function DidChangeContentEmitter() {
         var _this = _super.call(this) || this;
-        _this._actual = _this._register(new Emitter());
-        _this.event = _this._actual.event;
+        /**
+         * Both `fastEvent` and `slowEvent` work the same way and contain the same events, but first we invoke `fastEvent` and then `slowEvent`.
+         */
+        _this._fastEmitter = _this._register(new Emitter());
+        _this.fastEvent = _this._fastEmitter.event;
+        _this._slowEmitter = _this._register(new Emitter());
+        _this.slowEvent = _this._slowEmitter.event;
         _this._deferredCnt = 0;
         _this._deferredEvent = null;
         return _this;
@@ -2032,7 +2212,8 @@ var DidChangeContentEmitter = /** @class */ (function (_super) {
             if (this._deferredEvent !== null) {
                 var e = this._deferredEvent;
                 this._deferredEvent = null;
-                this._actual.fire(e);
+                this._fastEmitter.fire(e);
+                this._slowEmitter.fire(e);
             }
         }
     };
@@ -2046,7 +2227,8 @@ var DidChangeContentEmitter = /** @class */ (function (_super) {
             }
             return;
         }
-        this._actual.fire(e);
+        this._fastEmitter.fire(e);
+        this._slowEmitter.fire(e);
     };
     return DidChangeContentEmitter;
 }(Disposable));

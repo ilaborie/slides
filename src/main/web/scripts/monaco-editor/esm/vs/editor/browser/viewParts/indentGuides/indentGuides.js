@@ -17,7 +17,6 @@ import './indentGuides.css';
 import { DynamicViewOverlay } from '../../view/dynamicViewOverlay.js';
 import { registerThemingParticipant } from '../../../../platform/theme/common/themeService.js';
 import { editorIndentGuides } from '../../../common/view/editorColorRegistry.js';
-import * as dom from '../../../../base/browser/dom.js';
 import { Position } from '../../../common/core/position.js';
 var IndentGuidesOverlay = /** @class */ (function (_super) {
     __extends(IndentGuidesOverlay, _super);
@@ -86,7 +85,7 @@ var IndentGuidesOverlay = /** @class */ (function (_super) {
         var tabSize = this._context.model.getTabSize();
         var tabWidth = tabSize * this._spaceWidth;
         var lineHeight = this._lineHeight;
-        var indentGuideWidth = dom.computeScreenAwareSize(1);
+        var indentGuideWidth = tabWidth;
         var indents = this._context.model.getLinesIndentGuides(visibleStartLineNumber, visibleEndLineNumber);
         var output = [];
         for (var lineNumber = visibleStartLineNumber; lineNumber <= visibleEndLineNumber; lineNumber++) {
@@ -119,6 +118,6 @@ export { IndentGuidesOverlay };
 registerThemingParticipant(function (theme, collector) {
     var editorGuideColor = theme.getColor(editorIndentGuides);
     if (editorGuideColor) {
-        collector.addRule(".monaco-editor .lines-content .cigr { background-color: " + editorGuideColor + "; }");
+        collector.addRule(".monaco-editor .lines-content .cigr { box-shadow: 1px 0 0 0 " + editorGuideColor + " inset; }");
     }
 });

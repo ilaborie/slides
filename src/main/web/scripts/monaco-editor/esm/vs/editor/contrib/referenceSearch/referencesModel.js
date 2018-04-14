@@ -278,14 +278,30 @@ var ReferencesModel = /** @class */ (function () {
             return localize('aria.result.nm', "Found {0} symbols in {1} files", this.references.length, this.groups.length);
         }
     };
-    ReferencesModel.prototype.nextReference = function (reference) {
-        var idx = reference.parent.children.indexOf(reference), len = reference.parent.children.length, totalLength = reference.parent.parent.groups.length;
-        if (idx + 1 < len || totalLength === 1) {
-            return reference.parent.children[(idx + 1) % len];
+    ReferencesModel.prototype.nextOrPreviousReference = function (reference, next) {
+        var parent = reference.parent;
+        var idx = parent.children.indexOf(reference);
+        var childCount = parent.children.length;
+        var groupCount = parent.parent.groups.length;
+        if (groupCount === 1 || next && idx + 1 < childCount || !next && idx > 0) {
+            // cycling within one file
+            if (next) {
+                idx = (idx + 1) % childCount;
+            }
+            else {
+                idx = (idx + childCount - 1) % childCount;
+            }
+            return parent.children[idx];
         }
-        idx = reference.parent.parent.groups.indexOf(reference.parent);
-        idx = (idx + 1) % totalLength;
-        return reference.parent.parent.groups[idx].children[0];
+        idx = parent.parent.groups.indexOf(parent);
+        if (next) {
+            idx = (idx + 1) % groupCount;
+            return parent.parent.groups[idx].children[0];
+        }
+        else {
+            idx = (idx + groupCount - 1) % groupCount;
+            return parent.parent.groups[idx].children[parent.parent.groups[idx].children.length - 1];
+        }
     };
     ReferencesModel.prototype.nearestReference = function (resource, position) {
         var nearest = this._references.map(function (ref, idx) {

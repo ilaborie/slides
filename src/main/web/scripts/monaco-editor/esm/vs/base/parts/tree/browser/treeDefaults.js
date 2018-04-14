@@ -133,7 +133,7 @@ var DefaultController = /** @class */ (function () {
                 eventish.preventDefault(); // we cannot preventDefault onMouseDown because this would break DND otherwise
             }
             eventish.stopPropagation();
-            tree.DOMFocus();
+            tree.domFocus();
             tree.setSelection([element], payload);
             tree.setFocus(element, payload);
             if (this.openOnSingleClick || isDoubleClick || this.isClickOnTwistie(event)) {
@@ -385,6 +385,58 @@ var DefaultAccessibilityProvider = /** @class */ (function () {
     return DefaultAccessibilityProvider;
 }());
 export { DefaultAccessibilityProvider };
+var DefaultTreestyler = /** @class */ (function () {
+    function DefaultTreestyler(styleElement, selectorSuffix) {
+        this.styleElement = styleElement;
+        this.selectorSuffix = selectorSuffix;
+    }
+    DefaultTreestyler.prototype.style = function (styles) {
+        var suffix = this.selectorSuffix ? "." + this.selectorSuffix : '';
+        var content = [];
+        if (styles.listFocusBackground) {
+            content.push(".monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.focused:not(.highlighted) { background-color: " + styles.listFocusBackground + "; }");
+        }
+        if (styles.listFocusForeground) {
+            content.push(".monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.focused:not(.highlighted) { color: " + styles.listFocusForeground + "; }");
+        }
+        if (styles.listActiveSelectionBackground) {
+            content.push(".monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted) { background-color: " + styles.listActiveSelectionBackground + "; }");
+        }
+        if (styles.listActiveSelectionForeground) {
+            content.push(".monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted) { color: " + styles.listActiveSelectionForeground + "; }");
+        }
+        if (styles.listFocusAndSelectionBackground) {
+            content.push("\n\t\t\t\t.monaco-tree-drag-image,\n\t\t\t\t.monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.focused.selected:not(.highlighted) { background-color: " + styles.listFocusAndSelectionBackground + "; }\n\t\t\t");
+        }
+        if (styles.listFocusAndSelectionForeground) {
+            content.push("\n\t\t\t\t.monaco-tree-drag-image,\n\t\t\t\t.monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.focused.selected:not(.highlighted) { color: " + styles.listFocusAndSelectionForeground + "; }\n\t\t\t");
+        }
+        if (styles.listInactiveSelectionBackground) {
+            content.push(".monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted) { background-color: " + styles.listInactiveSelectionBackground + "; }");
+        }
+        if (styles.listInactiveSelectionForeground) {
+            content.push(".monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted) { color: " + styles.listInactiveSelectionForeground + "; }");
+        }
+        if (styles.listHoverBackground) {
+            content.push(".monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row:hover:not(.highlighted):not(.selected):not(.focused) { background-color: " + styles.listHoverBackground + "; }");
+        }
+        if (styles.listHoverForeground) {
+            content.push(".monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row:hover:not(.highlighted):not(.selected):not(.focused) { color: " + styles.listHoverForeground + "; }");
+        }
+        if (styles.listDropBackground) {
+            content.push("\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-wrapper.drop-target,\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row.drop-target { background-color: " + styles.listDropBackground + " !important; color: inherit !important; }\n\t\t\t");
+        }
+        if (styles.listFocusOutline) {
+            content.push("\n\t\t\t\t.monaco-tree-drag-image\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{ border: 1px solid " + styles.listFocusOutline + "; background: #000; }\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row \t\t\t\t\t\t\t\t\t\t\t\t\t\t{ border: 1px solid transparent; }\n\t\t\t\t.monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.focused:not(.highlighted) \t\t\t\t\t\t{ border: 1px dotted " + styles.listFocusOutline + "; }\n\t\t\t\t.monaco-tree" + suffix + ".focused .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted) \t\t\t\t\t\t{ border: 1px solid " + styles.listFocusOutline + "; }\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row.selected:not(.highlighted)  \t\t\t\t\t\t\t{ border: 1px solid " + styles.listFocusOutline + "; }\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row:hover:not(.highlighted):not(.selected):not(.focused)  \t{ border: 1px dashed " + styles.listFocusOutline + "; }\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-wrapper.drop-target,\n\t\t\t\t.monaco-tree" + suffix + " .monaco-tree-rows > .monaco-tree-row.drop-target\t\t\t\t\t\t\t\t\t\t\t\t{ border: 1px dashed " + styles.listFocusOutline + "; }\n\t\t\t");
+        }
+        var newStyles = content.join('\n');
+        if (newStyles !== this.styleElement.innerHTML) {
+            this.styleElement.innerHTML = newStyles;
+        }
+    };
+    return DefaultTreestyler;
+}());
+export { DefaultTreestyler };
 var CollapseAllAction = /** @class */ (function (_super) {
     __extends(CollapseAllAction, _super);
     function CollapseAllAction(viewer, enabled) {
@@ -399,7 +451,7 @@ var CollapseAllAction = /** @class */ (function (_super) {
         this.viewer.collapseAll();
         this.viewer.clearSelection();
         this.viewer.clearFocus();
-        this.viewer.DOMFocus();
+        this.viewer.domFocus();
         this.viewer.focusFirst();
         return TPromise.as(null);
     };

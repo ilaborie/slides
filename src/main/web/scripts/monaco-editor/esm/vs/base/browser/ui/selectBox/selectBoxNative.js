@@ -11,7 +11,7 @@ var SelectBoxNative = /** @class */ (function () {
     function SelectBoxNative(options, selected, styles) {
         this.toDispose = [];
         this.selectElement = document.createElement('select');
-        this.selectElement.className = 'select-box';
+        this.selectElement.className = 'monaco-select-box';
         this._onDidSelect = new Emitter();
         this.styles = styles;
         this.registerListeners();

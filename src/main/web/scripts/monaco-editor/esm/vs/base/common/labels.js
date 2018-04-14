@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import URI from './uri.js';
-import * as platform from './platform.js';
-import { nativeSep, normalize, isEqualOrParent, isEqual, basename as pathsBasename, join } from './paths.js';
-import { endsWith, ltrim } from './strings.js';
+import { nativeSep, normalize, basename as pathsBasename, join, sep } from './paths.js';
+import { endsWith, ltrim, equalsIgnoreCase, startsWithIgnoreCase, rtrim, startsWith } from './strings.js';
 import { Schemas } from './network.js';
+import { isLinux, isWindows, isMacintosh } from './platform.js';
 export function getPathLabel(resource, rootProvider, userHomeProvider) {
     if (!resource) {
         return null;
@@ -15,6 +15,7 @@ export function getPathLabel(resource, rootProvider, userHomeProvider) {
     if (typeof resource === 'string') {
         resource = URI.file(resource);
     }
+    // return early if the resource is neither file:// nor untitled://
     if (resource.scheme !== Schemas.file && resource.scheme !== Schemas.untitled) {
         return resource.with({ query: null, fragment: null }).toString(true);
     }
@@ -23,7 +24,7 @@ export function getPathLabel(resource, rootProvider, userHomeProvider) {
     if (baseResource) {
         var hasMultipleRoots = rootProvider.getWorkspace().folders.length > 1;
         var pathLabel = void 0;
-        if (isEqual(baseResource.uri.fsPath, resource.fsPath, !platform.isLinux /* ignorecase */)) {
+        if (isLinux ? baseResource.uri.fsPath === resource.fsPath : equalsIgnoreCase(baseResource.uri.fsPath, resource.fsPath)) {
             pathLabel = ''; // no label if pathes are identical
         }
         else {
@@ -41,7 +42,7 @@ export function getPathLabel(resource, rootProvider, userHomeProvider) {
     }
     // normalize and tildify (macOS, Linux only)
     var res = normalize(resource.fsPath, true);
-    if (!platform.isWindows && userHomeProvider) {
+    if (!isWindows && userHomeProvider) {
         res = tildify(res, userHomeProvider.userHome);
     }
     return res;
@@ -61,7 +62,7 @@ export function getBaseLabel(resource) {
     return base;
 }
 function hasDriveLetter(path) {
-    return platform.isWindows && path && path[1] === ':';
+    return isWindows && path && path[1] === ':';
 }
 export function normalizeDriveLetter(path) {
     if (hasDriveLetter(path)) {
@@ -69,9 +70,20 @@ export function normalizeDriveLetter(path) {
     }
     return path;
 }
+var normalizedUserHomeCached = Object.create(null);
 export function tildify(path, userHome) {
-    if (path && (platform.isMacintosh || platform.isLinux) && isEqualOrParent(path, userHome, !platform.isLinux /* ignorecase */)) {
-        path = "~" + path.substr(userHome.length);
+    if (isWindows || !path || !userHome) {
+        return path; // unsupported
+    }
+    // Keep a normalized user home path as cache to prevent accumulated string creation
+    var normalizedUserHome = normalizedUserHomeCached.original === userHome ? normalizedUserHomeCached.normalized : void 0;
+    if (!normalizedUserHome) {
+        normalizedUserHome = "" + rtrim(userHome, sep) + sep;
+        normalizedUserHomeCached = { original: userHome, normalized: normalizedUserHome };
+    }
+    // Linux: case sensitive, macOS: case insensitive
+    if (isLinux ? startsWith(path, normalizedUserHome) : startsWithIgnoreCase(path, normalizedUserHome)) {
+        path = "~/" + path.substr(normalizedUserHome.length);
     }
     return path;
 }
@@ -250,7 +262,7 @@ export function template(template, values) {
         if (segment.type === Type.SEPARATOR) {
             var left = segments[index - 1];
             var right = segments[index + 1];
-            return [left, right].every(function (segment) { return segment && segment.type === Type.VARIABLE && segment.value.length > 0; });
+            return [left, right].every(function (segment) { return segment && (segment.type === Type.VARIABLE || segment.type === Type.TEXT) && segment.value.length > 0; });
         }
         // accept any TEXT and VARIABLE
         return true;
@@ -263,7 +275,7 @@ export function template(template, values) {
  * -   macOS: Unsupported (replace && with empty string)
  */
 export function mnemonicMenuLabel(label, forceDisableMnemonics) {
-    if (platform.isMacintosh || forceDisableMnemonics) {
+    if (isMacintosh || forceDisableMnemonics) {
         return label.replace(/\(&&\w\)|&&/g, '');
     }
     return label.replace(/&&/g, '&');
@@ -275,10 +287,10 @@ export function mnemonicMenuLabel(label, forceDisableMnemonics) {
  * -   macOS: Unsupported (replace && with empty string)
  */
 export function mnemonicButtonLabel(label) {
-    if (platform.isMacintosh) {
+    if (isMacintosh) {
         return label.replace(/\(&&\w\)|&&/g, '');
     }
-    return label.replace(/&&/g, platform.isWindows ? '&' : '_');
+    return label.replace(/&&/g, isWindows ? '&' : '_');
 }
 export function unmnemonicLabel(label) {
     return label.replace(/&/g, '&&');

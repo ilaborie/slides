@@ -406,6 +406,7 @@ var InternalEditorOptions = /** @class */ (function () {
             && a.occurrencesHighlight === b.occurrencesHighlight
             && a.codeLens === b.codeLens
             && a.folding === b.folding
+            && a.foldingStrategy === b.foldingStrategy
             && a.showFoldingControls === b.showFoldingControls
             && a.matchBrackets === b.matchBrackets
             && this._equalFindOptions(a.find, b.find)
@@ -687,6 +688,10 @@ var EditorOptionsValidator = /** @class */ (function () {
             renderLineHighlight = _stringSet(opts.renderLineHighlight, defaults.renderLineHighlight, ['none', 'gutter', 'line', 'all']);
         }
         var mouseWheelScrollSensitivity = _float(opts.mouseWheelScrollSensitivity, defaults.scrollbar.mouseWheelScrollSensitivity);
+        if (mouseWheelScrollSensitivity === 0) {
+            // Disallow 0, as it would prevent/block scrolling
+            mouseWheelScrollSensitivity = 1;
+        }
         var scrollbar = this._sanitizeScrollbarOpts(opts.scrollbar, defaults.scrollbar, mouseWheelScrollSensitivity);
         var minimap = this._sanitizeMinimapOpts(opts.minimap, defaults.minimap);
         return {
@@ -756,6 +761,7 @@ var EditorOptionsValidator = /** @class */ (function () {
             occurrencesHighlight: _boolean(opts.occurrencesHighlight, defaults.occurrencesHighlight),
             codeLens: _boolean(opts.codeLens, defaults.codeLens) && _boolean(opts.referenceInfos, true),
             folding: _boolean(opts.folding, defaults.folding),
+            foldingStrategy: _stringSet(opts.foldingStrategy, defaults.foldingStrategy, ['auto', 'indentation']),
             showFoldingControls: _stringSet(opts.showFoldingControls, defaults.showFoldingControls, ['always', 'mouseover']),
             matchBrackets: _boolean(opts.matchBrackets, defaults.matchBrackets),
             find: find,
@@ -857,6 +863,7 @@ var InternalEditorOptionsFactory = /** @class */ (function () {
                 occurrencesHighlight: (accessibilityIsOn ? false : opts.contribInfo.occurrencesHighlight),
                 codeLens: (accessibilityIsOn ? false : opts.contribInfo.codeLens),
                 folding: (accessibilityIsOn ? false : opts.contribInfo.folding),
+                foldingStrategy: opts.contribInfo.foldingStrategy,
                 showFoldingControls: opts.contribInfo.showFoldingControls,
                 matchBrackets: (accessibilityIsOn ? false : opts.contribInfo.matchBrackets),
                 find: opts.contribInfo.find,
@@ -1258,6 +1265,7 @@ export var EDITOR_DEFAULTS = {
         occurrencesHighlight: true,
         codeLens: true,
         folding: true,
+        foldingStrategy: 'auto',
         showFoldingControls: 'mouseover',
         matchBrackets: true,
         find: {

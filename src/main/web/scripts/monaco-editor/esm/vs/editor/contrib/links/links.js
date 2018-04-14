@@ -46,8 +46,12 @@ var HOVER_MESSAGE_GENERAL_META = new MarkdownString().appendText(platform.isMaci
 var HOVER_MESSAGE_COMMAND_META = new MarkdownString().appendText(platform.isMacintosh
     ? nls.localize('links.command.mac', "Cmd + click to execute command")
     : nls.localize('links.command', "Ctrl + click to execute command"));
-var HOVER_MESSAGE_GENERAL_ALT = new MarkdownString().appendText(nls.localize('links.navigate.al', "Alt + click to follow link"));
-var HOVER_MESSAGE_COMMAND_ALT = new MarkdownString().appendText(nls.localize('links.command.al', "Alt + click to execute command"));
+var HOVER_MESSAGE_GENERAL_ALT = new MarkdownString().appendText(platform.isMacintosh
+    ? nls.localize('links.navigate.al.mac', "Option + click to follow link")
+    : nls.localize('links.navigate.al', "Alt + click to follow link"));
+var HOVER_MESSAGE_COMMAND_ALT = new MarkdownString().appendText(platform.isMacintosh
+    ? nls.localize('links.command.al.mac', "Option + click to execute command")
+    : nls.localize('links.command.al', "Alt + click to execute command"));
 var decoration = {
     meta: ModelDecorationOptions.register({
         stickiness: TrackedRangeStickiness.NeverGrowsWhenTypingAtEdges,

@@ -92,7 +92,7 @@ var CursorWordStartLeft = /** @class */ (function (_super) {
             id: 'cursorWordStartLeft',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 15 /* LeftArrow */,
                 mac: { primary: 512 /* Alt */ | 15 /* LeftArrow */ }
             }
@@ -136,7 +136,7 @@ var CursorWordStartLeftSelect = /** @class */ (function (_super) {
             id: 'cursorWordStartLeftSelect',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 15 /* LeftArrow */,
                 mac: { primary: 512 /* Alt */ | 1024 /* Shift */ | 15 /* LeftArrow */ }
             }
@@ -193,7 +193,7 @@ var CursorWordEndRight = /** @class */ (function (_super) {
             id: 'cursorWordEndRight',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 17 /* RightArrow */,
                 mac: { primary: 512 /* Alt */ | 17 /* RightArrow */ }
             }
@@ -237,7 +237,7 @@ var CursorWordEndRightSelect = /** @class */ (function (_super) {
             id: 'cursorWordEndRightSelect',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 17 /* RightArrow */,
                 mac: { primary: 512 /* Alt */ | 1024 /* Shift */ | 17 /* RightArrow */ }
             }
@@ -351,7 +351,7 @@ var DeleteWordLeft = /** @class */ (function (_super) {
             id: 'deleteWordLeft',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 1 /* Backspace */,
                 mac: { primary: 512 /* Alt */ | 1 /* Backspace */ }
             }
@@ -395,7 +395,7 @@ var DeleteWordRight = /** @class */ (function (_super) {
             id: 'deleteWordRight',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 20 /* Delete */,
                 mac: { primary: 512 /* Alt */ | 20 /* Delete */ }
             }

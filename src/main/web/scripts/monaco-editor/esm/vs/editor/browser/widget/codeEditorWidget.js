@@ -31,6 +31,7 @@ import { IInstantiationService } from '../../../platform/instantiation/common/in
 import { ICommandService } from '../../../platform/commands/common/commands.js';
 import { IContextKeyService } from '../../../platform/contextkey/common/contextkey.js';
 import { CommonCodeEditor } from '../../common/commonCodeEditor.js';
+import * as editorCommon from '../../common/editorCommon.js';
 import { EditorExtensionsRegistry } from '../editorExtensions.js';
 import { ICodeEditorService } from '../services/codeEditorService.js';
 import { Configuration } from '../config/configuration.js';
@@ -38,13 +39,14 @@ import { View } from '../view/viewImpl.js';
 import { Disposable } from '../../../base/common/lifecycle.js';
 import { Emitter } from '../../../base/common/event.js';
 import { InternalEditorAction } from '../../common/editorAction.js';
+import { Position } from '../../common/core/position.js';
 import { IThemeService, registerThemingParticipant } from '../../../platform/theme/common/themeService.js';
-import { editorErrorForeground, editorErrorBorder, editorWarningForeground, editorWarningBorder, editorInfoBorder, editorInfoForeground } from '../../common/view/editorColorRegistry.js';
+import { editorErrorForeground, editorErrorBorder, editorWarningForeground, editorWarningBorder, editorInfoBorder, editorInfoForeground, editorHintForeground, editorHintBorder } from '../../common/view/editorColorRegistry.js';
 import { ClassName } from '../../common/model/intervalTree.js';
 var CodeEditorWidget = /** @class */ (function (_super) {
     __extends(CodeEditorWidget, _super);
-    function CodeEditorWidget(domElement, options, instantiationService, codeEditorService, commandService, contextKeyService, themeService) {
-        var _this = _super.call(this, domElement, options, instantiationService, contextKeyService) || this;
+    function CodeEditorWidget(domElement, options, isSimpleWidget, instantiationService, codeEditorService, commandService, contextKeyService, themeService) {
+        var _this = _super.call(this, domElement, options, isSimpleWidget, instantiationService, contextKeyService) || this;
         _this._onMouseUp = _this._register(new Emitter());
         _this.onMouseUp = _this._onMouseUp.event;
         _this._onMouseDown = _this._register(new Emitter());
@@ -72,13 +74,7 @@ var CodeEditorWidget = /** @class */ (function (_super) {
         _this._themeService = themeService;
         _this._focusTracker = new CodeEditorWidgetFocusTracker(domElement);
         _this._focusTracker.onChange(function () {
-            var hasFocus = _this._focusTracker.hasFocus();
-            if (hasFocus) {
-                _this._onDidFocusEditor.fire();
-            }
-            else {
-                _this._onDidBlurEditor.fire();
-            }
+            _this._editorFocus.setValue(_this._focusTracker.hasFocus());
         });
         _this.contentWidgets = {};
         _this.overlayWidgets = {};
@@ -280,7 +276,61 @@ var CodeEditorWidget = /** @class */ (function (_super) {
     };
     CodeEditorWidget.prototype._createView = function () {
         var _this = this;
-        this._view = new View(this._commandService, this._configuration, this._themeService, this.viewModel, this.cursor, function (editorCommand, args) {
+        var commandDelegate;
+        if (this.isSimpleWidget) {
+            commandDelegate = {
+                paste: function (source, text, pasteOnNewLine, multicursorText) {
+                    _this.cursor.trigger(source, editorCommon.Handler.Paste, { text: text, pasteOnNewLine: pasteOnNewLine, multicursorText: multicursorText });
+                },
+                type: function (source, text) {
+                    _this.cursor.trigger(source, editorCommon.Handler.Type, { text: text });
+                },
+                replacePreviousChar: function (source, text, replaceCharCnt) {
+                    _this.cursor.trigger(source, editorCommon.Handler.ReplacePreviousChar, { text: text, replaceCharCnt: replaceCharCnt });
+                },
+                compositionStart: function (source) {
+                    _this.cursor.trigger(source, editorCommon.Handler.CompositionStart, undefined);
+                },
+                compositionEnd: function (source) {
+                    _this.cursor.trigger(source, editorCommon.Handler.CompositionEnd, undefined);
+                },
+                cut: function (source) {
+                    _this.cursor.trigger(source, editorCommon.Handler.Cut, undefined);
+                }
+            };
+        }
+        else {
+            commandDelegate = {
+                paste: function (source, text, pasteOnNewLine, multicursorText) {
+                    _this._commandService.executeCommand(editorCommon.Handler.Paste, {
+                        text: text,
+                        pasteOnNewLine: pasteOnNewLine,
+                        multicursorText: multicursorText
+                    });
+                },
+                type: function (source, text) {
+                    _this._commandService.executeCommand(editorCommon.Handler.Type, {
+                        text: text
+                    });
+                },
+                replacePreviousChar: function (source, text, replaceCharCnt) {
+                    _this._commandService.executeCommand(editorCommon.Handler.ReplacePreviousChar, {
+                        text: text,
+                        replaceCharCnt: replaceCharCnt
+                    });
+                },
+                compositionStart: function (source) {
+                    _this._commandService.executeCommand(editorCommon.Handler.CompositionStart, {});
+                },
+                compositionEnd: function (source) {
+                    _this._commandService.executeCommand(editorCommon.Handler.CompositionEnd, {});
+                },
+                cut: function (source) {
+                    _this._commandService.executeCommand(editorCommon.Handler.Cut, {});
+                }
+            };
+        }
+        this._view = new View(commandDelegate, this._configuration, this._themeService, this.viewModel, this.cursor, function (editorCommand, args) {
             if (!_this.cursor) {
                 return;
             }
@@ -288,12 +338,12 @@ var CodeEditorWidget = /** @class */ (function (_super) {
         });
         var viewEventBus = this._view.getInternalEventBus();
         viewEventBus.onDidGainFocus = function () {
-            _this._onDidFocusEditorText.fire();
+            _this._editorTextFocus.setValue(true);
             // In IE, the focus is not synchronous, so we give it a little help
-            _this._onDidFocusEditor.fire();
+            _this._editorFocus.setValue(true);
         };
         viewEventBus.onDidScroll = function (e) { return _this._onDidScrollChange.fire(e); };
-        viewEventBus.onDidLoseFocus = function () { return _this._onDidBlurEditorText.fire(); };
+        viewEventBus.onDidLoseFocus = function () { return _this._editorTextFocus.setValue(false); };
         viewEventBus.onContextMenu = function (e) { return _this._onContextMenu.fire(e); };
         viewEventBus.onMouseDown = function (e) { return _this._onMouseDown.fire(e); };
         viewEventBus.onMouseUp = function (e) { return _this._onMouseUp.fire(e); };
@@ -310,7 +360,12 @@ var CodeEditorWidget = /** @class */ (function (_super) {
             return;
         }
         if (s && s.cursorState && s.viewState) {
-            this._view.restoreState(this.viewModel.viewLayout.reduceRestoreState(s.viewState));
+            var reducedState = this.viewModel.reduceRestoreState(s.viewState);
+            var linesViewportData = this.viewModel.viewLayout.getLinesViewportDataAtScrollTop(reducedState.scrollTop);
+            var startPosition = this.viewModel.coordinatesConverter.convertViewPositionToModelPosition(new Position(linesViewportData.startLineNumber, 1));
+            var endPosition = this.viewModel.coordinatesConverter.convertViewPositionToModelPosition(new Position(linesViewportData.endLineNumber, 1));
+            this.model.tokenizeViewport(startPosition.lineNumber, endPosition.lineNumber);
+            this._view.restoreState(reducedState);
         }
     };
     CodeEditorWidget.prototype._detachModel = function () {
@@ -348,11 +403,11 @@ var CodeEditorWidget = /** @class */ (function (_super) {
         return false;
     };
     CodeEditorWidget = __decorate([
-        __param(2, IInstantiationService),
-        __param(3, ICodeEditorService),
-        __param(4, ICommandService),
-        __param(5, IContextKeyService),
-        __param(6, IThemeService)
+        __param(3, IInstantiationService),
+        __param(4, ICodeEditorService),
+        __param(5, ICommandService),
+        __param(6, IContextKeyService),
+        __param(7, IThemeService)
     ], CodeEditorWidget);
     return CodeEditorWidget;
 }(CommonCodeEditor));
@@ -385,6 +440,11 @@ var squigglyEnd = encodeURIComponent("'><polygon points='5.5,0 2.5,3 1.1,3 4.1,0
 function getSquigglySVGData(color) {
     return squigglyStart + encodeURIComponent(color.toString()) + squigglyEnd;
 }
+var dotdotdotStart = encodeURIComponent("<svg xmlns=\"http://www.w3.org/2000/svg\" height=\"3\" width=\"12\"><g fill=\"");
+var dotdotdotEnd = encodeURIComponent("\"><circle cx=\"1\" cy=\"1\" r=\"1\"/><circle cx=\"5\" cy=\"1\" r=\"1\"/><circle cx=\"9\" cy=\"1\" r=\"1\"/></g></svg>");
+function getDotDotDotSVGData(color) {
+    return dotdotdotStart + encodeURIComponent(color.toString()) + dotdotdotEnd;
+}
 registerThemingParticipant(function (theme, collector) {
     var errorBorderColor = theme.getColor(editorErrorBorder);
     if (errorBorderColor) {
@@ -409,5 +469,13 @@ registerThemingParticipant(function (theme, collector) {
     var infoForeground = theme.getColor(editorInfoForeground);
     if (infoForeground) {
         collector.addRule(".monaco-editor ." + ClassName.EditorInfoDecoration + " { background: url(\"data:image/svg+xml;utf8," + getSquigglySVGData(infoForeground) + "\") repeat-x bottom left; }");
+    }
+    var hintBorderColor = theme.getColor(editorHintBorder);
+    if (hintBorderColor) {
+        collector.addRule(".monaco-editor ." + ClassName.EditorHintDecoration + " { border-bottom: 2px dotted " + hintBorderColor + "; }");
+    }
+    var hintForeground = theme.getColor(editorHintForeground);
+    if (hintForeground) {
+        collector.addRule(".monaco-editor ." + ClassName.EditorHintDecoration + " { background: url(\"data:image/svg+xml;utf8," + getDotDotDotSVGData(hintForeground) + "\") no-repeat bottom left; }");
     }
 });

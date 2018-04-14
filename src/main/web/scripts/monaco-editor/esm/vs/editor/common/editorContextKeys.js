@@ -9,11 +9,15 @@ export var EditorContextKeys;
     /**
      * A context key that is set when the editor's text has focus (cursor is blinking).
      */
-    EditorContextKeys.textFocus = new RawContextKey('editorTextFocus', false);
+    EditorContextKeys.editorTextFocus = new RawContextKey('editorTextFocus', false);
     /**
      * A context key that is set when the editor's text or an editor's widget has focus.
      */
     EditorContextKeys.focus = new RawContextKey('editorFocus', false);
+    /**
+     * A context key that is set when any editor input has focus (regular editor, repl input...).
+     */
+    EditorContextKeys.textInputFocus = new RawContextKey('textInputFocus', false);
     EditorContextKeys.readOnly = new RawContextKey('editorReadonly', false);
     EditorContextKeys.writable = EditorContextKeys.readOnly.toNegated();
     EditorContextKeys.hasNonEmptySelection = new RawContextKey('editorHasSelection', false);

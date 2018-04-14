@@ -356,17 +356,20 @@ var ListView = /** @class */ (function () {
     });
     ListView.prototype.toMouseEvent = function (browserEvent) {
         var index = this.getItemIndexFromEventTarget(browserEvent.target);
-        var element = index < 0 ? undefined : this.items[index].element;
+        var item = index < 0 ? undefined : this.items[index];
+        var element = item && item.element;
         return { browserEvent: browserEvent, index: index, element: element };
     };
     ListView.prototype.toTouchEvent = function (browserEvent) {
         var index = this.getItemIndexFromEventTarget(browserEvent.target);
-        var element = index < 0 ? undefined : this.items[index].element;
+        var item = index < 0 ? undefined : this.items[index];
+        var element = item && item.element;
         return { browserEvent: browserEvent, index: index, element: element };
     };
     ListView.prototype.toGestureEvent = function (browserEvent) {
         var index = this.getItemIndexFromEventTarget(browserEvent.initialTarget);
-        var element = index < 0 ? undefined : this.items[index].element;
+        var item = index < 0 ? undefined : this.items[index];
+        var element = item && item.element;
         return { browserEvent: browserEvent, index: index, element: element };
     };
     ListView.prototype.onScroll = function (e) {

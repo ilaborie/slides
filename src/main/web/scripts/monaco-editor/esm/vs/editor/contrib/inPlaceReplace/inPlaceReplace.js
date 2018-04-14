@@ -131,7 +131,7 @@ var InPlaceReplaceUp = /** @class */ (function (_super) {
             alias: 'Replace with Previous Value',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 82 /* US_COMMA */
             }
         }) || this;
@@ -154,7 +154,7 @@ var InPlaceReplaceDown = /** @class */ (function (_super) {
             alias: 'Replace with Next Value',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 84 /* US_DOT */
             }
         }) || this;

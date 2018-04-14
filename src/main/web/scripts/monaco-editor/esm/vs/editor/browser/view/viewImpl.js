@@ -53,12 +53,12 @@ import * as viewEvents from '../../common/view/viewEvents.js';
 import { getThemeTypeSelector } from '../../../platform/theme/common/themeService.js';
 var View = /** @class */ (function (_super) {
     __extends(View, _super);
-    function View(commandService, configuration, themeService, model, cursor, execCoreEditorCommandFunc) {
+    function View(commandDelegate, configuration, themeService, model, cursor, execCoreEditorCommandFunc) {
         var _this = _super.call(this) || this;
         _this._cursor = cursor;
         _this._renderAnimationFrame = null;
         _this.outgoingEvents = new ViewOutgoingEvents(model);
-        var viewController = new ViewController(configuration, model, execCoreEditorCommandFunc, _this.outgoingEvents, commandService);
+        var viewController = new ViewController(configuration, model, execCoreEditorCommandFunc, _this.outgoingEvents, commandDelegate);
         // The event dispatcher will always go through _renderOnce before dispatching any events
         _this.eventDispatcher = new ViewEventDispatcher(function (callback) { return _this._renderOnce(callback); });
         // Ensure the view is the first event handler in order to update the layout
@@ -234,6 +234,7 @@ var View = /** @class */ (function (_super) {
     };
     View.prototype.onFocusChanged = function (e) {
         this.domNode.setClassName(this.getEditorClassName());
+        this._context.model.setHasFocus(e.isFocused);
         if (e.isFocused) {
             this.outgoingEvents.emitViewFocusGained();
         }

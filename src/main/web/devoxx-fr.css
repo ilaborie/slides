@@ -31,8 +31,8 @@
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
   --shadowNavbar: rgba(0, 0, 0, .2);
-  --headerHeight: 3rem;
-  --footerHeight: 2rem;
+  --headerHeight: 2.5rem;
+  --footerHeight: 1.5rem;
   --bgSlide: linear-gradient(to top, var(--primary), var(--tertiary)), var(--secondary);
   --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), url('./assets/devoxx-fr/bg.png'), var(--primary);
   --fgCover: var(--white);
@@ -66,7 +66,9 @@
     .devoxx-fr main section::after {
       color: var(--white);
       background: url("./assets/devoxx-fr/logo.png") no-repeat right, url("./assets/devoxx-fr/bandeau_bas.png") no-repeat left;
-      background-size: contain, cover; }
+      background-size: contain, cover;
+      font-size: .8rem;
+      max-height: 2.5rem; }
     .devoxx-fr main section.cover::after {
       background: url("./assets/devoxx-fr/logo.png") no-repeat right;
       background-size: contain; }

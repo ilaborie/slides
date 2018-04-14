@@ -27,6 +27,7 @@ var TreeContext = /** @class */ (function () {
         this.filter = configuration.filter || new TreeDefaults.DefaultFilter();
         this.sorter = configuration.sorter || null;
         this.accessibilityProvider = configuration.accessibilityProvider || new TreeDefaults.DefaultAccessibilityProvider();
+        this.styler = configuration.styler || null;
     }
     return TreeContext;
 }());
@@ -94,16 +95,16 @@ var Tree = /** @class */ (function () {
     Tree.prototype.getHTMLElement = function () {
         return this.view.getHTMLElement();
     };
-    Tree.prototype.layout = function (height) {
-        this.view.layout(height);
+    Tree.prototype.layout = function (height, width) {
+        this.view.layout(height, width);
     };
-    Tree.prototype.DOMFocus = function () {
+    Tree.prototype.domFocus = function () {
         this.view.focus();
     };
     Tree.prototype.isDOMFocused = function () {
         return this.view.isFocused();
     };
-    Tree.prototype.DOMBlur = function () {
+    Tree.prototype.domBlur = function () {
         this.view.blur();
     };
     Tree.prototype.onVisible = function () {
@@ -122,6 +123,10 @@ var Tree = /** @class */ (function () {
         if (element === void 0) { element = null; }
         if (recursive === void 0) { recursive = true; }
         return this.model.refresh(element, recursive);
+    };
+    Tree.prototype.updateWidth = function (element) {
+        var item = this.model.getItem(element);
+        return this.view.updateWidth(item);
     };
     Tree.prototype.expand = function (element) {
         return this.model.expand(element);
@@ -169,7 +174,7 @@ var Tree = /** @class */ (function () {
         this.view.setScrollPosition(pos);
     };
     Tree.prototype.getContentHeight = function () {
-        return this.view.getTotalHeight();
+        return this.view.getContentHeight();
     };
     Tree.prototype.setHighlight = function (element, eventPayload) {
         this.model.setHighlight(element, eventPayload);

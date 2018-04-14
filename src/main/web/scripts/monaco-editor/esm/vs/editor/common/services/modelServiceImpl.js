@@ -17,11 +17,9 @@ import * as network from '../../../base/common/network.js';
 import { Emitter } from '../../../base/common/event.js';
 import { MarkdownString } from '../../../base/common/htmlContent.js';
 import { dispose } from '../../../base/common/lifecycle.js';
-import Severity from '../../../base/common/severity.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
-import { IMarkerService } from '../../../platform/markers/common/markers.js';
+import { IMarkerService, MarkerSeverity } from '../../../platform/markers/common/markers.js';
 import { Range } from '../core/range.js';
-import { Selection } from '../core/selection.js';
 import { TextModel, createTextBuffer } from '../model/textModel.js';
 import * as platform from '../../../base/common/platform.js';
 import { IConfigurationService } from '../../../platform/configuration/common/configuration.js';
@@ -32,6 +30,8 @@ import { EditOperation } from '../core/editOperation.js';
 import { themeColorFromId } from '../../../platform/theme/common/themeService.js';
 import { overviewRulerWarning, overviewRulerError, overviewRulerInfo } from '../view/editorColorRegistry.js';
 import { TrackedRangeStickiness, OverviewRulerLane, DefaultEndOfLine, EndOfLineSequence, EndOfLinePreference } from '../model.js';
+import { isFalsyOrEmpty } from '../../../base/common/arrays.js';
+import { basename } from '../../../base/common/paths.js';
 function MODEL_ID(resource) {
     return resource.toString();
 }
@@ -69,16 +69,20 @@ var ModelMarkerHandler = /** @class */ (function () {
         modelData.acceptMarkerDecorations(newModelDecorations);
     };
     ModelMarkerHandler._createDecorationRange = function (model, rawMarker) {
-        var marker = model.validateRange(new Range(rawMarker.startLineNumber, rawMarker.startColumn, rawMarker.endLineNumber, rawMarker.endColumn));
-        var ret = new Range(marker.startLineNumber, marker.startColumn, marker.endLineNumber, marker.endColumn);
+        var ret = Range.lift(rawMarker);
+        if (rawMarker.severity === MarkerSeverity.Hint && Range.spansMultipleLines(ret)) {
+            // never render hints on multiple lines
+            ret = ret.setEndPosition(ret.startLineNumber, ret.startColumn);
+        }
+        ret = model.validateRange(ret);
         if (ret.isEmpty()) {
             var word = model.getWordAtPosition(ret.getStartPosition());
             if (word) {
                 ret = new Range(ret.startLineNumber, word.startColumn, ret.endLineNumber, word.endColumn);
             }
             else {
-                var maxColumn = model.getLineLastNonWhitespaceColumn(marker.startLineNumber) ||
-                    model.getLineMaxColumn(marker.startLineNumber);
+                var maxColumn = model.getLineLastNonWhitespaceColumn(ret.startLineNumber) ||
+                    model.getLineMaxColumn(ret.startLineNumber);
                 if (maxColumn === 1) {
                     // empty line
                     // console.warn('marker on empty line:', marker);
@@ -107,20 +111,20 @@ var ModelMarkerHandler = /** @class */ (function () {
         var color;
         var darkColor;
         switch (marker.severity) {
-            case Severity.Ignore:
-                // do something
+            case MarkerSeverity.Hint:
+                className = ClassName.EditorHintDecoration;
                 break;
-            case Severity.Warning:
+            case MarkerSeverity.Warning:
                 className = ClassName.EditorWarningDecoration;
                 color = themeColorFromId(overviewRulerWarning);
                 darkColor = themeColorFromId(overviewRulerWarning);
                 break;
-            case Severity.Info:
+            case MarkerSeverity.Info:
                 className = ClassName.EditorInfoDecoration;
                 color = themeColorFromId(overviewRulerInfo);
                 darkColor = themeColorFromId(overviewRulerInfo);
                 break;
-            case Severity.Error:
+            case MarkerSeverity.Error:
             default:
                 className = ClassName.EditorErrorDecoration;
                 color = themeColorFromId(overviewRulerError);
@@ -128,7 +132,7 @@ var ModelMarkerHandler = /** @class */ (function () {
                 break;
         }
         var hoverMessage = null;
-        var message = marker.message, source = marker.source;
+        var message = marker.message, source = marker.source, relatedInformation = marker.relatedInformation;
         if (typeof message === 'string') {
             message = message.trim();
             if (source) {
@@ -140,6 +144,14 @@ var ModelMarkerHandler = /** @class */ (function () {
                 }
             }
             hoverMessage = new MarkdownString().appendCodeblock('_', message);
+            if (!isFalsyOrEmpty(relatedInformation)) {
+                hoverMessage.appendMarkdown('\n');
+                for (var _i = 0, relatedInformation_1 = relatedInformation; _i < relatedInformation_1.length; _i++) {
+                    var _a = relatedInformation_1[_i], message_1 = _a.message, resource = _a.resource, startLineNumber = _a.startLineNumber, startColumn = _a.startColumn;
+                    hoverMessage.appendMarkdown("* [" + basename(resource.path) + "(" + startLineNumber + ", " + startColumn + ")](" + resource.toString(false) + "#" + startLineNumber + "," + startColumn + "): `" + message_1 + "` \n");
+                }
+                hoverMessage.appendMarkdown('\n');
+            }
         }
         return {
             stickiness: TrackedRangeStickiness.NeverGrowsWhenTypingAtEdges,
@@ -172,7 +184,7 @@ var ModelServiceImpl = /** @class */ (function () {
         this._configurationServiceSubscription = this._configurationService.onDidChangeConfiguration(function (e) { return _this._updateModelOptions(); });
         this._updateModelOptions();
     }
-    ModelServiceImpl._readModelOptions = function (config) {
+    ModelServiceImpl._readModelOptions = function (config, isForSimpleWidget) {
         var tabSize = EDITOR_MODEL_DEFAULTS.tabSize;
         if (config.editor && typeof config.editor.tabSize !== 'undefined') {
             var parsedTabSize = parseInt(config.editor.tabSize, 10);
@@ -201,6 +213,7 @@ var ModelServiceImpl = /** @class */ (function () {
             detectIndentation = (config.editor.detectIndentation === 'false' ? false : Boolean(config.editor.detectIndentation));
         }
         return {
+            isForSimpleWidget: isForSimpleWidget,
             tabSize: tabSize,
             insertSpaces: insertSpaces,
             detectIndentation: detectIndentation,
@@ -208,10 +221,10 @@ var ModelServiceImpl = /** @class */ (function () {
             trimAutoWhitespace: trimAutoWhitespace
         };
     };
-    ModelServiceImpl.prototype.getCreationOptions = function (language, resource) {
+    ModelServiceImpl.prototype.getCreationOptions = function (language, resource, isForSimpleWidget) {
         var creationOptions = this._modelCreationOptionsByLanguageAndResource[language + resource];
         if (!creationOptions) {
-            creationOptions = ModelServiceImpl._readModelOptions(this._configurationService.getValue({ overrideIdentifier: language, resource: resource }));
+            creationOptions = ModelServiceImpl._readModelOptions(this._configurationService.getValue({ overrideIdentifier: language, resource: resource }), isForSimpleWidget);
             this._modelCreationOptionsByLanguageAndResource[language + resource] = creationOptions;
         }
         return creationOptions;
@@ -227,7 +240,7 @@ var ModelServiceImpl = /** @class */ (function () {
             var language = modelData.model.getLanguageIdentifier().language;
             var uri = modelData.model.uri;
             var oldOptions = oldOptionsByLanguageAndResource[language + uri];
-            var newOptions = this.getCreationOptions(language, uri);
+            var newOptions = this.getCreationOptions(language, uri, modelData.model.isForSimpleWidget);
             ModelServiceImpl._setModelOptionsForModel(modelData.model, newOptions, oldOptions);
         }
     };
@@ -285,10 +298,10 @@ var ModelServiceImpl = /** @class */ (function () {
         delete this._modelCreationOptionsByLanguageAndResource[model.getLanguageIdentifier().language + model.uri];
     };
     // --- begin IModelService
-    ModelServiceImpl.prototype._createModelData = function (value, languageIdentifier, resource) {
+    ModelServiceImpl.prototype._createModelData = function (value, languageIdentifier, resource, isForSimpleWidget) {
         var _this = this;
         // create & save the model
-        var options = this.getCreationOptions(languageIdentifier.language, resource);
+        var options = this.getCreationOptions(languageIdentifier.language, resource, isForSimpleWidget);
         var model = new TextModel(value, options, languageIdentifier, resource);
         var modelId = MODEL_ID(model.uri);
         if (this._models[modelId]) {
@@ -300,7 +313,7 @@ var ModelServiceImpl = /** @class */ (function () {
         return modelData;
     };
     ModelServiceImpl.prototype.updateModel = function (model, value) {
-        var options = this.getCreationOptions(model.getLanguageIdentifier().language, model.uri);
+        var options = this.getCreationOptions(model.getLanguageIdentifier().language, model.uri, model.isForSimpleWidget);
         var textBuffer = createTextBuffer(value, options.defaultEOL);
         // Return early if the text is already set in that form
         if (model.equalsTextBuffer(textBuffer)) {
@@ -308,7 +321,7 @@ var ModelServiceImpl = /** @class */ (function () {
         }
         // Otherwise find a diff between the values and update model
         model.setEOL(textBuffer.getEOL() === '\r\n' ? EndOfLineSequence.CRLF : EndOfLineSequence.LF);
-        model.pushEditOperations([new Selection(1, 1, 1, 1)], ModelServiceImpl._computeEdits(model, textBuffer), function (inverseEditOperations) { return [new Selection(1, 1, 1, 1)]; });
+        model.pushEditOperations([], ModelServiceImpl._computeEdits(model, textBuffer), function (inverseEditOperations) { return []; });
     };
     ModelServiceImpl._commonPrefix = function (a, aLen, aDelta, b, bLen, bDelta) {
         var maxResult = Math.min(aLen, bLen);
@@ -351,16 +364,17 @@ var ModelServiceImpl = /** @class */ (function () {
             oldRange = new Range(1, 1, modelLineCount, model.getLineMaxColumn(modelLineCount));
             newRange = new Range(1, 1, textBufferLineCount, 1 + textBuffer.getLineLength(textBufferLineCount));
         }
-        return [EditOperation.replace(oldRange, textBuffer.getValueInRange(newRange, EndOfLinePreference.TextDefined))];
+        return [EditOperation.replaceMove(oldRange, textBuffer.getValueInRange(newRange, EndOfLinePreference.TextDefined))];
     };
-    ModelServiceImpl.prototype.createModel = function (value, modeOrPromise, resource) {
+    ModelServiceImpl.prototype.createModel = function (value, modeOrPromise, resource, isForSimpleWidget) {
+        if (isForSimpleWidget === void 0) { isForSimpleWidget = false; }
         var modelData;
         if (!modeOrPromise || TPromise.is(modeOrPromise)) {
-            modelData = this._createModelData(value, PLAINTEXT_LANGUAGE_IDENTIFIER, resource);
+            modelData = this._createModelData(value, PLAINTEXT_LANGUAGE_IDENTIFIER, resource, isForSimpleWidget);
             this.setMode(modelData.model, modeOrPromise);
         }
         else {
-            modelData = this._createModelData(value, modeOrPromise.getLanguageIdentifier(), resource);
+            modelData = this._createModelData(value, modeOrPromise.getLanguageIdentifier(), resource, isForSimpleWidget);
         }
         // handle markers (marker service => model)
         if (this._markerService) {
@@ -442,8 +456,8 @@ var ModelServiceImpl = /** @class */ (function () {
     ModelServiceImpl.prototype._onDidChangeLanguage = function (model, e) {
         var oldModeId = e.oldLanguage;
         var newModeId = model.getLanguageIdentifier().language;
-        var oldOptions = this.getCreationOptions(oldModeId, model.uri);
-        var newOptions = this.getCreationOptions(newModeId, model.uri);
+        var oldOptions = this.getCreationOptions(oldModeId, model.uri, model.isForSimpleWidget);
+        var newOptions = this.getCreationOptions(newModeId, model.uri, model.isForSimpleWidget);
         ModelServiceImpl._setModelOptionsForModel(model, newOptions, oldOptions);
         this._onModelModeChanged.fire({ model: model, oldModeId: oldModeId });
     };

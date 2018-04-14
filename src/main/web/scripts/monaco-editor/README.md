@@ -58,6 +58,8 @@ None. The Monaco Editor is a library and it reflects directly the source code.
 
 No.
 
+> Note: If the extension is fully based on the [LSP](https://microsoft.github.io/language-server-protocol/) and if the language server is authored in JavaScript, then it would be possible.
+
 ❓ **Why all these web workers and why should I care?**
 
 Language services create web workers to compute heavy stuff outside the UI thread. They cost hardly anything in terms of resource overhead and you shouldn't worry too much about them, as long as you get them to work (see above the cross-domain case).

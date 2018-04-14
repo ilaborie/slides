@@ -8,7 +8,7 @@ var HeightMap = /** @class */ (function () {
         this.heightMap = [];
         this.indexes = {};
     }
-    HeightMap.prototype.getTotalHeight = function () {
+    HeightMap.prototype.getContentHeight = function () {
         var last = this.heightMap[this.heightMap.length - 1];
         return !last ? 0 : last.top + last.height;
     };

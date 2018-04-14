@@ -156,9 +156,16 @@ var ModelLinesTokens = /** @class */ (function () {
         this._invalidLineStartIndex = 0;
         this._lastState = null;
     }
+    Object.defineProperty(ModelLinesTokens.prototype, "inValidLineStartIndex", {
+        get: function () {
+            return this._invalidLineStartIndex;
+        },
+        enumerable: true,
+        configurable: true
+    });
     ModelLinesTokens.prototype.getTokens = function (topLevelLanguageId, lineIndex, lineText) {
         var rawLineTokens = null;
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             rawLineTokens = this._tokens[lineIndex]._lineTokens;
         }
         if (rawLineTokens !== null && rawLineTokens !== EMPTY_LINE_TOKENS) {
@@ -184,25 +191,25 @@ var ModelLinesTokens = /** @class */ (function () {
         }
     };
     ModelLinesTokens.prototype._setIsInvalid = function (lineIndex, invalid) {
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             this._tokens[lineIndex]._invalid = invalid;
         }
     };
     ModelLinesTokens.prototype._isInvalid = function (lineIndex) {
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             return this._tokens[lineIndex]._invalid;
         }
         return true;
     };
     ModelLinesTokens.prototype._getState = function (lineIndex) {
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             return this._tokens[lineIndex]._state;
         }
         return null;
     };
     ModelLinesTokens.prototype._setTokens = function (topLevelLanguageId, lineIndex, lineTextLength, tokens) {
         var target;
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             target = this._tokens[lineIndex];
         }
         else {
@@ -222,7 +229,7 @@ var ModelLinesTokens = /** @class */ (function () {
         target._lineTokens = tokens.buffer;
     };
     ModelLinesTokens.prototype._setState = function (lineIndex, state) {
-        if (lineIndex < this._tokens.length) {
+        if (lineIndex < this._tokens.length && this._tokens[lineIndex]) {
             this._tokens[lineIndex]._state = state;
         }
         else {
@@ -300,6 +307,19 @@ var ModelLinesTokens = /** @class */ (function () {
         var lineNumber = this._invalidLineStartIndex + 1;
         this._updateTokensUntilLine(buffer, eventBuilder, lineNumber);
         return lineNumber;
+    };
+    ModelLinesTokens.prototype._tokenizeText = function (buffer, text, state) {
+        var r = null;
+        try {
+            r = this.tokenizationSupport.tokenize2(text, state, 0);
+        }
+        catch (e) {
+            onUnexpectedError(e);
+        }
+        if (!r) {
+            r = nullTokenize2(this.languageIdentifier.id, text, state, 0);
+        }
+        return r;
     };
     ModelLinesTokens.prototype._updateTokensUntilLine = function (buffer, eventBuilder, lineNumber) {
         if (!this.tokenizationSupport) {

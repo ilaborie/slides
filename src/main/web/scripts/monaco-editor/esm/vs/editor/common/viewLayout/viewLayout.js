@@ -137,16 +137,6 @@ var ViewLayout = /** @class */ (function (_super) {
             scrollLeft: currentScrollPosition.scrollLeft
         };
     };
-    ViewLayout.prototype.reduceRestoreState = function (state) {
-        var restoreScrollTop = state.scrollTop;
-        if (typeof state.scrollTopWithoutViewZones === 'number' && !this._linesLayout.hasWhitespace()) {
-            restoreScrollTop = state.scrollTopWithoutViewZones;
-        }
-        return {
-            scrollLeft: state.scrollLeft,
-            scrollTop: restoreScrollTop
-        };
-    };
     // ---- IVerticalLayoutProvider
     ViewLayout.prototype.addWhitespace = function (afterLineNumber, ordinal, height) {
         return this._linesLayout.insertWhitespace(afterLineNumber, ordinal, height);

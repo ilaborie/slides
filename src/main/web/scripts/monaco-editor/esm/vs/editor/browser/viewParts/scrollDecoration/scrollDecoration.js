@@ -48,7 +48,13 @@ var ScrollDecorationViewPart = /** @class */ (function (_super) {
     };
     ScrollDecorationViewPart.prototype._updateWidth = function () {
         var layoutInfo = this._context.configuration.editor.layoutInfo;
-        var newWidth = layoutInfo.width - layoutInfo.minimapWidth;
+        var newWidth = 0;
+        if (layoutInfo.renderMinimap === 0 || (layoutInfo.minimapWidth > 0 && layoutInfo.minimapLeft === 0)) {
+            newWidth = layoutInfo.width;
+        }
+        else {
+            newWidth = layoutInfo.width - layoutInfo.minimapWidth - layoutInfo.verticalScrollbarWidth;
+        }
         if (this._width !== newWidth) {
             this._width = newWidth;
             return true;

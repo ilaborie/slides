@@ -7,7 +7,7 @@ import { isFalsyOrEmpty } from '../../../base/common/arrays.js';
 import { Schemas } from '../../../base/common/network.js';
 import { isEmptyObject } from '../../../base/common/types.js';
 import { Emitter, debounceEvent } from '../../../base/common/event.js';
-import Severity from '../../../base/common/severity.js';
+import { MarkerSeverity } from './markers.js';
 var MapMap;
 (function (MapMap) {
     function get(map, key1, key2) {
@@ -71,13 +71,13 @@ var MarkerStats = /** @class */ (function () {
         }
         for (var _i = 0, _a = this._service.read({ resource: resource }); _i < _a.length; _i++) {
             var severity = _a[_i].severity;
-            if (severity === Severity.Error) {
+            if (severity === MarkerSeverity.Error) {
                 result.errors += 1;
             }
-            else if (severity === Severity.Warning) {
+            else if (severity === MarkerSeverity.Warning) {
                 result.warnings += 1;
             }
-            else if (severity === Severity.Info) {
+            else if (severity === MarkerSeverity.Info) {
                 result.infos += 1;
             }
             else {
@@ -157,7 +157,7 @@ var MarkerService = /** @class */ (function () {
         }
     };
     MarkerService._toMarker = function (owner, resource, data) {
-        var code = data.code, severity = data.severity, message = data.message, source = data.source, startLineNumber = data.startLineNumber, startColumn = data.startColumn, endLineNumber = data.endLineNumber, endColumn = data.endColumn;
+        var code = data.code, severity = data.severity, message = data.message, source = data.source, startLineNumber = data.startLineNumber, startColumn = data.startColumn, endLineNumber = data.endLineNumber, endColumn = data.endColumn, relatedInformation = data.relatedInformation;
         if (!message) {
             return undefined;
         }
@@ -177,7 +177,8 @@ var MarkerService = /** @class */ (function () {
             startLineNumber: startLineNumber,
             startColumn: startColumn,
             endLineNumber: endLineNumber,
-            endColumn: endColumn
+            endColumn: endColumn,
+            relatedInformation: relatedInformation
         };
     };
     MarkerService.prototype.changeAll = function (owner, data) {
@@ -228,18 +229,28 @@ var MarkerService = /** @class */ (function () {
     };
     MarkerService.prototype.read = function (filter) {
         if (filter === void 0) { filter = Object.create(null); }
-        var owner = filter.owner, resource = filter.resource, take = filter.take;
+        var owner = filter.owner, resource = filter.resource, severities = filter.severities, take = filter.take;
         if (!take || take < 0) {
             take = -1;
         }
         if (owner && resource) {
             // exactly one owner AND resource
-            var result = MapMap.get(this._byResource, resource.toString(), owner);
-            if (!result) {
+            var data = MapMap.get(this._byResource, resource.toString(), owner);
+            if (!data) {
                 return [];
             }
             else {
-                return result.slice(0, take > 0 ? take : undefined);
+                var result = [];
+                for (var _i = 0, data_2 = data; _i < data_2.length; _i++) {
+                    var marker = data_2[_i];
+                    if (MarkerService._accept(marker, severities)) {
+                        var newLen = result.push(marker);
+                        if (take > 0 && newLen === take) {
+                            break;
+                        }
+                    }
+                }
+                return result;
             }
         }
         else if (!owner && !resource) {
@@ -247,11 +258,13 @@ var MarkerService = /** @class */ (function () {
             var result = [];
             for (var key1 in this._byResource) {
                 for (var key2 in this._byResource[key1]) {
-                    for (var _i = 0, _a = this._byResource[key1][key2]; _i < _a.length; _i++) {
-                        var data = _a[_i];
-                        var newLen = result.push(data);
-                        if (take > 0 && newLen === take) {
-                            return result;
+                    for (var _a = 0, _b = this._byResource[key1][key2]; _a < _b.length; _a++) {
+                        var data = _b[_a];
+                        if (MarkerService._accept(data, severities)) {
+                            var newLen = result.push(data);
+                            if (take > 0 && newLen === take) {
+                                return result;
+                            }
                         }
                     }
                 }
@@ -268,16 +281,21 @@ var MarkerService = /** @class */ (function () {
             }
             var result = [];
             for (var key in map) {
-                for (var _b = 0, _c = map[key]; _b < _c.length; _b++) {
-                    var data = _c[_b];
-                    var newLen = result.push(data);
-                    if (take > 0 && newLen === take) {
-                        return result;
+                for (var _c = 0, _d = map[key]; _c < _d.length; _c++) {
+                    var data = _d[_c];
+                    if (MarkerService._accept(data, severities)) {
+                        var newLen = result.push(data);
+                        if (take > 0 && newLen === take) {
+                            return result;
+                        }
                     }
                 }
             }
             return result;
         }
+    };
+    MarkerService._accept = function (marker, severities) {
+        return severities === void 0 || (severities & marker.severity) === marker.severity;
     };
     MarkerService._debouncer = function (last, event) {
         if (!last) {

@@ -245,7 +245,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 15 /* LeftArrow */,
                     linux: { primary: 0 }
                 }
@@ -264,7 +264,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 17 /* RightArrow */,
                     linux: { primary: 0 }
                 }
@@ -293,7 +293,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 16 /* UpArrow */,
             linux: { primary: 0 }
         }
@@ -304,7 +304,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 11 /* PageUp */,
             linux: { primary: 0 }
         }
@@ -327,7 +327,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 18 /* DownArrow */,
             linux: { primary: 0 }
         }
@@ -338,7 +338,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 512 /* Alt */ | 12 /* PageDown */,
             linux: { primary: 0 }
         }
@@ -402,7 +402,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 15 /* LeftArrow */,
             mac: { primary: 15 /* LeftArrow */, secondary: [256 /* WinCtrl */ | 32 /* KEY_B */] }
         }
@@ -418,7 +418,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 15 /* LeftArrow */
         }
     }));
@@ -433,7 +433,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 17 /* RightArrow */,
             mac: { primary: 17 /* RightArrow */, secondary: [256 /* WinCtrl */ | 36 /* KEY_F */] }
         }
@@ -449,7 +449,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 17 /* RightArrow */
         }
     }));
@@ -464,7 +464,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 16 /* UpArrow */,
             mac: { primary: 16 /* UpArrow */, secondary: [256 /* WinCtrl */ | 46 /* KEY_P */] }
         }
@@ -480,7 +480,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 16 /* UpArrow */,
             secondary: [2048 /* CtrlCmd */ | 1024 /* Shift */ | 16 /* UpArrow */],
             mac: { primary: 1024 /* Shift */ | 16 /* UpArrow */ },
@@ -498,7 +498,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 11 /* PageUp */
         }
     }));
@@ -513,7 +513,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 11 /* PageUp */
         }
     }));
@@ -528,7 +528,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 18 /* DownArrow */,
             mac: { primary: 18 /* DownArrow */, secondary: [256 /* WinCtrl */ | 44 /* KEY_N */] }
         }
@@ -544,7 +544,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 18 /* DownArrow */,
             secondary: [2048 /* CtrlCmd */ | 1024 /* Shift */ | 18 /* DownArrow */],
             mac: { primary: 1024 /* Shift */ | 18 /* DownArrow */ },
@@ -562,7 +562,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 12 /* PageDown */
         }
     }));
@@ -577,7 +577,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 12 /* PageDown */
         }
     }));
@@ -669,7 +669,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 14 /* Home */,
             mac: { primary: 14 /* Home */, secondary: [2048 /* CtrlCmd */ | 15 /* LeftArrow */] }
         }
@@ -680,7 +680,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 14 /* Home */,
             mac: { primary: 1024 /* Shift */ | 14 /* Home */, secondary: [2048 /* CtrlCmd */ | 1024 /* Shift */ | 15 /* LeftArrow */] }
         }
@@ -693,7 +693,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 0,
                     mac: { primary: 256 /* WinCtrl */ | 31 /* KEY_A */ }
                 }
@@ -735,7 +735,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 13 /* End */,
             mac: { primary: 13 /* End */, secondary: [2048 /* CtrlCmd */ | 17 /* RightArrow */] }
         }
@@ -746,7 +746,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 1024 /* Shift */ | 13 /* End */,
             mac: { primary: 1024 /* Shift */ | 13 /* End */, secondary: [2048 /* CtrlCmd */ | 1024 /* Shift */ | 17 /* RightArrow */] }
         }
@@ -759,7 +759,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 0,
                     mac: { primary: 256 /* WinCtrl */ | 35 /* KEY_E */ }
                 }
@@ -802,7 +802,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 14 /* Home */,
             mac: { primary: 2048 /* CtrlCmd */ | 16 /* UpArrow */ }
         }
@@ -813,7 +813,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 14 /* Home */,
             mac: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 16 /* UpArrow */ }
         }
@@ -838,7 +838,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 13 /* End */,
             mac: { primary: 2048 /* CtrlCmd */ | 18 /* DownArrow */ }
         }
@@ -849,7 +849,7 @@ export var CoreNavigationCommands;
         precondition: null,
         kbOpts: {
             weight: CORE_WEIGHT,
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 13 /* End */,
             mac: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 18 /* DownArrow */ }
         }
@@ -923,7 +923,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 16 /* UpArrow */,
                     mac: { primary: 256 /* WinCtrl */ | 11 /* PageUp */ }
                 }
@@ -948,7 +948,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 11 /* PageUp */,
                     win: { primary: 512 /* Alt */ | 11 /* PageUp */ },
                     linux: { primary: 512 /* Alt */ | 11 /* PageUp */ }
@@ -974,7 +974,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 18 /* DownArrow */,
                     mac: { primary: 256 /* WinCtrl */ | 12 /* PageDown */ }
                 }
@@ -999,7 +999,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 12 /* PageDown */,
                     win: { primary: 512 /* Alt */ | 12 /* PageDown */ },
                     linux: { primary: 512 /* Alt */ | 12 /* PageDown */ }
@@ -1129,7 +1129,7 @@ export var CoreNavigationCommands;
                 precondition: null,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 2048 /* CtrlCmd */ | 39 /* KEY_I */
                 }
             }) || this;
@@ -1149,7 +1149,7 @@ export var CoreNavigationCommands;
                 precondition: EditorContextKeys.hasNonEmptySelection,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 9 /* Escape */,
                     secondary: [1024 /* Shift */ | 9 /* Escape */]
                 }
@@ -1172,7 +1172,7 @@ export var CoreNavigationCommands;
                 precondition: EditorContextKeys.hasMultipleSelections,
                 kbOpts: {
                     weight: CORE_WEIGHT + 1,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 9 /* Escape */,
                     secondary: [1024 /* Shift */ | 9 /* Escape */]
                 }
@@ -1271,7 +1271,7 @@ export var CoreEditingCommands;
                 precondition: EditorContextKeys.writable,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: null,
                     mac: { primary: 256 /* WinCtrl */ | 45 /* KEY_O */ }
                 }
@@ -1291,7 +1291,7 @@ export var CoreEditingCommands;
                 precondition: EditorContextKeys.writable,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: ContextKeyExpr.and(EditorContextKeys.textFocus, EditorContextKeys.tabDoesNotMoveFocus),
+                    kbExpr: ContextKeyExpr.and(EditorContextKeys.editorTextFocus, EditorContextKeys.tabDoesNotMoveFocus),
                     primary: 1024 /* Shift */ | 2 /* Tab */
                 }
             }) || this;
@@ -1311,7 +1311,7 @@ export var CoreEditingCommands;
                 precondition: EditorContextKeys.writable,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: ContextKeyExpr.and(EditorContextKeys.textFocus, EditorContextKeys.tabDoesNotMoveFocus),
+                    kbExpr: ContextKeyExpr.and(EditorContextKeys.editorTextFocus, EditorContextKeys.tabDoesNotMoveFocus),
                     primary: 2 /* Tab */
                 }
             }) || this;
@@ -1331,7 +1331,7 @@ export var CoreEditingCommands;
                 precondition: EditorContextKeys.writable,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 1 /* Backspace */,
                     secondary: [1024 /* Shift */ | 1 /* Backspace */],
                     mac: { primary: 1 /* Backspace */, secondary: [1024 /* Shift */ | 1 /* Backspace */, 256 /* WinCtrl */ | 38 /* KEY_H */, 256 /* WinCtrl */ | 1 /* Backspace */] }
@@ -1357,7 +1357,7 @@ export var CoreEditingCommands;
                 precondition: EditorContextKeys.writable,
                 kbOpts: {
                     weight: CORE_WEIGHT,
-                    kbExpr: EditorContextKeys.textFocus,
+                    kbExpr: EditorContextKeys.textInputFocus,
                     primary: 20 /* Delete */,
                     mac: { primary: 20 /* Delete */, secondary: [256 /* WinCtrl */ | 34 /* KEY_D */, 256 /* WinCtrl */ | 20 /* Delete */] }
                 }
@@ -1472,7 +1472,7 @@ registerCommand(new EditorOrNativeTextInputCommand({
     precondition: EditorContextKeys.writable,
     kbOpts: {
         weight: CORE_WEIGHT,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 2048 /* CtrlCmd */ | 56 /* KEY_Z */
     }
 }));
@@ -1484,7 +1484,7 @@ registerCommand(new EditorOrNativeTextInputCommand({
     precondition: EditorContextKeys.writable,
     kbOpts: {
         weight: CORE_WEIGHT,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 2048 /* CtrlCmd */ | 55 /* KEY_Y */,
         secondary: [2048 /* CtrlCmd */ | 1024 /* Shift */ | 56 /* KEY_Z */],
         mac: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 56 /* KEY_Z */ }

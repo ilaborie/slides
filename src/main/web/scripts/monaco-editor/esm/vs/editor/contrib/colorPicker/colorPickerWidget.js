@@ -25,7 +25,7 @@ import { registerThemingParticipant } from '../../../platform/theme/common/theme
 var $ = dom.$;
 var ColorPickerHeader = /** @class */ (function (_super) {
     __extends(ColorPickerHeader, _super);
-    function ColorPickerHeader(container, model) {
+    function ColorPickerHeader(container, model, themeService) {
         var _this = _super.call(this) || this;
         _this.model = model;
         _this.domNode = $('.colorpicker-header');
@@ -33,6 +33,7 @@ var ColorPickerHeader = /** @class */ (function (_super) {
         _this.pickedColorNode = dom.append(_this.domNode, $('.picked-color'));
         var colorBox = dom.append(_this.domNode, $('.original-color'));
         colorBox.style.backgroundColor = Color.Format.CSS.format(_this.model.originalColor);
+        _this.backgroundColor = themeService.getTheme().getColor(editorHoverBackground) || Color.white;
         _this._register(registerThemingParticipant(function (theme, collector) {
             _this.backgroundColor = theme.getColor(editorHoverBackground) || Color.white;
         }));
@@ -273,14 +274,14 @@ var HueStrip = /** @class */ (function (_super) {
 }(Strip));
 var ColorPickerWidget = /** @class */ (function (_super) {
     __extends(ColorPickerWidget, _super);
-    function ColorPickerWidget(container, model, pixelRatio) {
+    function ColorPickerWidget(container, model, pixelRatio, themeService) {
         var _this = _super.call(this) || this;
         _this.model = model;
         _this.pixelRatio = pixelRatio;
         _this._register(onDidChangeZoomLevel(function () { return _this.layout(); }));
         var element = $('.colorpicker-widget');
         container.appendChild(element);
-        var header = new ColorPickerHeader(element, _this.model);
+        var header = new ColorPickerHeader(element, _this.model, themeService);
         _this.body = new ColorPickerBody(element, _this.model, _this.pixelRatio);
         _this._register(header);
         _this._register(_this.body);

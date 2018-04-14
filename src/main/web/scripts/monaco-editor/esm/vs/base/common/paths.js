@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import { isWindows } from './platform.js';
-import { beginsWithIgnoreCase, equalsIgnoreCase } from './strings.js';
+import { startsWithIgnoreCase, equalsIgnoreCase } from './strings.js';
 /**
  * The forward slash path separator.
  */
@@ -296,7 +296,7 @@ export function isEqualOrParent(path, candidate, ignoreCase) {
         return false;
     }
     if (ignoreCase) {
-        var beginsWith = beginsWithIgnoreCase(path, candidate);
+        var beginsWith = startsWithIgnoreCase(path, candidate);
         if (!beginsWith) {
             return false;
         }

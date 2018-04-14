@@ -1,7 +1,7 @@
 fun main(args: Array<String>) {
-    val pair = Pair(1, "x")
-    val (a, b) = pair
+    val aPair = Pair("Earth", "Moon")
+    val (planet, moon) = aPair
 
-    val triple = Triple(2, "x", listOf(null))
-    val (c, d, e) = triple
+    val aTriple = Triple("Voyager 1", 1977, listOf("Jupiter", "Saturn"))
+    val (probeNane, launchYear, flyOver) = aTriple
 }

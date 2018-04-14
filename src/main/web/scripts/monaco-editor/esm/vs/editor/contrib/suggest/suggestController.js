@@ -196,7 +196,7 @@ var SuggestController = /** @class */ (function () {
         }
         else if (suggestion.command.id === TriggerSuggestAction.id) {
             // retigger
-            this._model.trigger({ auto: this._model.state === 2 /* Auto */ }, true);
+            this._model.trigger({ auto: true }, true);
         }
         else {
             // exec command, done
@@ -286,7 +286,7 @@ var TriggerSuggestAction = /** @class */ (function (_super) {
             alias: 'Trigger Suggest',
             precondition: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasCompletionItemProvider),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 2048 /* CtrlCmd */ | 10 /* Space */,
                 mac: { primary: 256 /* WinCtrl */ | 10 /* Space */ }
             }
@@ -313,7 +313,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (x) { return x.acceptSelectedSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 2 /* Tab */
     }
 }));
@@ -323,7 +323,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (x) { return x.acceptSelectedSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: ContextKeyExpr.and(EditorContextKeys.textFocus, SuggestContext.AcceptSuggestionsOnEnter, SuggestContext.MakesTextEdit),
+        kbExpr: ContextKeyExpr.and(EditorContextKeys.textInputFocus, SuggestContext.AcceptSuggestionsOnEnter, SuggestContext.MakesTextEdit),
         primary: 3 /* Enter */
     }
 }));
@@ -333,7 +333,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (x) { return x.cancelSuggestWidget(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 9 /* Escape */,
         secondary: [1024 /* Shift */ | 9 /* Escape */]
     }
@@ -344,7 +344,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (c) { return c.selectNextSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 18 /* DownArrow */,
         secondary: [2048 /* CtrlCmd */ | 18 /* DownArrow */],
         mac: { primary: 18 /* DownArrow */, secondary: [2048 /* CtrlCmd */ | 18 /* DownArrow */, 256 /* WinCtrl */ | 44 /* KEY_N */] }
@@ -356,7 +356,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (c) { return c.selectNextPageSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 12 /* PageDown */,
         secondary: [2048 /* CtrlCmd */ | 12 /* PageDown */]
     }
@@ -364,7 +364,12 @@ registerEditorCommand(new SuggestCommand({
 registerEditorCommand(new SuggestCommand({
     id: 'selectLastSuggestion',
     precondition: ContextKeyExpr.and(SuggestContext.Visible, SuggestContext.MultipleSuggestions),
-    handler: function (c) { return c.selectLastSuggestion(); }
+    handler: function (c) { return c.selectLastSuggestion(); },
+    kbOpts: {
+        weight: weight,
+        kbExpr: EditorContextKeys.textInputFocus,
+        primary: 13 /* End */
+    }
 }));
 registerEditorCommand(new SuggestCommand({
     id: 'selectPrevSuggestion',
@@ -372,7 +377,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (c) { return c.selectPrevSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 16 /* UpArrow */,
         secondary: [2048 /* CtrlCmd */ | 16 /* UpArrow */],
         mac: { primary: 16 /* UpArrow */, secondary: [2048 /* CtrlCmd */ | 16 /* UpArrow */, 256 /* WinCtrl */ | 46 /* KEY_P */] }
@@ -384,7 +389,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (c) { return c.selectPrevPageSuggestion(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 11 /* PageUp */,
         secondary: [2048 /* CtrlCmd */ | 11 /* PageUp */]
     }
@@ -392,7 +397,12 @@ registerEditorCommand(new SuggestCommand({
 registerEditorCommand(new SuggestCommand({
     id: 'selectFirstSuggestion',
     precondition: ContextKeyExpr.and(SuggestContext.Visible, SuggestContext.MultipleSuggestions),
-    handler: function (c) { return c.selectFirstSuggestion(); }
+    handler: function (c) { return c.selectFirstSuggestion(); },
+    kbOpts: {
+        weight: weight,
+        kbExpr: EditorContextKeys.textInputFocus,
+        primary: 14 /* Home */
+    }
 }));
 registerEditorCommand(new SuggestCommand({
     id: 'toggleSuggestionDetails',
@@ -400,7 +410,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (x) { return x.toggleSuggestionDetails(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 2048 /* CtrlCmd */ | 10 /* Space */,
         mac: { primary: 256 /* WinCtrl */ | 10 /* Space */ }
     }
@@ -411,7 +421,7 @@ registerEditorCommand(new SuggestCommand({
     handler: function (x) { return x.toggleSuggestionFocus(); },
     kbOpts: {
         weight: weight,
-        kbExpr: EditorContextKeys.textFocus,
+        kbExpr: EditorContextKeys.textInputFocus,
         primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 10 /* Space */,
         mac: { primary: 256 /* WinCtrl */ | 512 /* Alt */ | 10 /* Space */ }
     }

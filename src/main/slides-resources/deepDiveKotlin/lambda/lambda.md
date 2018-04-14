@@ -1,3 +1,3 @@
 * ⚠️ pas de `return`
 * pensez à mettre vos lambda comme dernier argument
-* voir aussi les `apply`, `also`, `run` 
+* voir aussi les `apply`, `also`, `run` , `use`, `with`

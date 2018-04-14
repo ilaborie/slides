@@ -2,7 +2,6 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-/// <amd-dependency path="vs/css!./folding" />
 'use strict';
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -14,10 +13,11 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+import './folding.css';
 import * as nls from '../../../nls.js';
 import * as types from '../../../base/common/types.js';
 import { escapeRegExpCharacters } from '../../../base/common/strings.js';
-import { RunOnceScheduler, Delayer } from '../../../base/common/async.js';
+import { RunOnceScheduler, Delayer, asWinJsPromise } from '../../../base/common/async.js';
 import { KeyChord } from '../../../base/common/keyCodes.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { registerEditorAction, registerEditorContribution, EditorAction, registerInstantiatedEditorAction } from '../../browser/editorExtensions.js';
@@ -37,12 +37,13 @@ var FoldingController = /** @class */ (function () {
         this.editor = editor;
         this._isEnabled = this.editor.getConfiguration().contribInfo.folding;
         this._autoHideFoldingControls = this.editor.getConfiguration().contribInfo.showFoldingControls === 'mouseover';
+        this._useFoldingProviders = this.editor.getConfiguration().contribInfo.foldingStrategy !== 'indentation';
         this.globalToDispose = [];
         this.localToDispose = [];
         this.foldingDecorationProvider = new FoldingDecorationProvider(editor);
         this.foldingDecorationProvider.autoHideFoldingControls = this._autoHideFoldingControls;
         this.globalToDispose.push(this.editor.onDidChangeModel(function () { return _this.onModelChanged(); }));
-        this.globalToDispose.push(FoldingProviderRegistry.onDidChange(function () { return _this.onModelChanged(); }));
+        this.globalToDispose.push(FoldingProviderRegistry.onDidChange(function () { return _this.onFoldingStrategyChanged(); }));
         this.globalToDispose.push(this.editor.onDidChangeConfiguration(function (e) {
             if (e.contribInfo) {
                 var oldIsEnabled = _this._isEnabled;
@@ -55,6 +56,11 @@ var FoldingController = /** @class */ (function () {
                 if (oldShowFoldingControls !== _this._autoHideFoldingControls) {
                     _this.foldingDecorationProvider.autoHideFoldingControls = _this._autoHideFoldingControls;
                     _this.onModelContentChanged();
+                }
+                var oldUseFoldingProviders = _this._useFoldingProviders;
+                _this._useFoldingProviders = _this.editor.getConfiguration().contribInfo.foldingStrategy !== 'indentation';
+                if (oldUseFoldingProviders !== _this._useFoldingProviders) {
+                    _this.onFoldingStrategyChanged();
                 }
             }
         }));
@@ -127,6 +133,10 @@ var FoldingController = /** @class */ (function () {
         this.localToDispose.push(this.editor.onMouseUp(function (e) { return _this.onEditorMouseUp(e); }));
         this.localToDispose.push({
             dispose: function () {
+                if (_this.foldingRegionPromise) {
+                    _this.foldingRegionPromise.cancel();
+                    _this.foldingRegionPromise = null;
+                }
                 _this.updateScheduler.cancel();
                 _this.updateScheduler = null;
                 _this.foldingModel = null;
@@ -138,11 +148,15 @@ var FoldingController = /** @class */ (function () {
         });
         this.onModelContentChanged();
     };
+    FoldingController.prototype.onFoldingStrategyChanged = function () {
+        this.rangeProvider = null;
+        this.onModelContentChanged();
+    };
     FoldingController.prototype.getRangeProvider = function () {
         if (!this.rangeProvider) {
-            var foldingProviders = FoldingProviderRegistry.ordered(this.foldingModel.textModel);
-            if (foldingProviders.length) {
-                this.rangeProvider = new SyntaxRangeProvider(foldingProviders);
+            if (this._useFoldingProviders) {
+                var foldingProviders = FoldingProviderRegistry.ordered(this.foldingModel.textModel);
+                this.rangeProvider = foldingProviders.length ? new SyntaxRangeProvider(foldingProviders) : new IndentRangeProvider();
             }
             else {
                 this.rangeProvider = new IndentRangeProvider();
@@ -156,19 +170,24 @@ var FoldingController = /** @class */ (function () {
     FoldingController.prototype.onModelContentChanged = function () {
         var _this = this;
         if (this.updateScheduler) {
+            if (this.foldingRegionPromise) {
+                this.foldingRegionPromise.cancel();
+                this.foldingRegionPromise = null;
+            }
             this.foldingModelPromise = this.updateScheduler.trigger(function () {
-                if (_this.foldingModel) {
-                    // some cursors might have moved into hidden regions, make sure they are in expanded regions
-                    var selections = _this.editor.getSelections();
-                    var selectionLineNumbers_1 = selections ? selections.map(function (s) { return s.startLineNumber; }) : [];
-                    return _this.getRangeProvider().compute(_this.foldingModel.textModel).then(function (foldingRanges) {
-                        if (_this.foldingModel) {
-                            _this.foldingModel.update(foldingRanges, selectionLineNumbers_1);
-                        }
-                        return _this.foldingModel;
-                    });
+                if (!_this.foldingModel) {
+                    return null;
                 }
-                return null;
+                var foldingRegionPromise = _this.foldingRegionPromise = asWinJsPromise(function (token) { return _this.getRangeProvider().compute(_this.foldingModel.textModel, token); });
+                return foldingRegionPromise.then(function (foldingRanges) {
+                    if (foldingRanges && foldingRegionPromise === _this.foldingRegionPromise) {
+                        // some cursors might have moved into hidden regions, make sure they are in expanded regions
+                        var selections = _this.editor.getSelections();
+                        var selectionLineNumbers = selections ? selections.map(function (s) { return s.startLineNumber; }) : [];
+                        _this.foldingModel.update(foldingRanges, selectionLineNumbers);
+                    }
+                    return _this.foldingModel;
+                });
             });
         }
     };
@@ -365,7 +384,7 @@ var UnfoldAction = /** @class */ (function (_super) {
             alias: 'Unfold',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 89 /* US_CLOSE_SQUARE_BRACKET */,
                 mac: {
                     primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 89 /* US_CLOSE_SQUARE_BRACKET */
@@ -404,7 +423,7 @@ var UnFoldRecursivelyAction = /** @class */ (function (_super) {
             alias: 'Unfold Recursively',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 89 /* US_CLOSE_SQUARE_BRACKET */)
             }
         }) || this;
@@ -423,7 +442,7 @@ var FoldAction = /** @class */ (function (_super) {
             alias: 'Fold',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 87 /* US_OPEN_SQUARE_BRACKET */,
                 mac: {
                     primary: 2048 /* CtrlCmd */ | 512 /* Alt */ | 87 /* US_OPEN_SQUARE_BRACKET */
@@ -462,7 +481,7 @@ var FoldRecursivelyAction = /** @class */ (function (_super) {
             alias: 'Fold Recursively',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 87 /* US_OPEN_SQUARE_BRACKET */)
             }
         }) || this;
@@ -482,7 +501,7 @@ var FoldAllBlockCommentsAction = /** @class */ (function (_super) {
             alias: 'Fold All Block Comments',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 85 /* US_SLASH */)
             }
         }) || this;
@@ -510,7 +529,7 @@ var FoldAllRegionsAction = /** @class */ (function (_super) {
             alias: 'Fold All Regions',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 29 /* KEY_8 */)
             }
         }) || this;
@@ -538,7 +557,7 @@ var UnfoldAllRegionsAction = /** @class */ (function (_super) {
             alias: 'Unfold All Regions',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 30 /* KEY_9 */)
             }
         }) || this;
@@ -566,7 +585,7 @@ var FoldAllAction = /** @class */ (function (_super) {
             alias: 'Fold All',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 21 /* KEY_0 */)
             }
         }) || this;
@@ -585,7 +604,7 @@ var UnfoldAllAction = /** @class */ (function (_super) {
             alias: 'Unfold All',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 40 /* KEY_J */)
             }
         }) || this;
@@ -627,7 +646,7 @@ for (var i = 1; i <= 7; i++) {
         alias: "Fold Level " + i,
         precondition: null,
         kbOpts: {
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.editorTextFocus,
             primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | (21 /* KEY_0 */ + i))
         }
     }));

@@ -58,7 +58,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import * as nls from '../../../nls.js';
-import { isPromiseCanceledError, illegalArgument, onUnexpectedExternalError } from '../../../base/common/errors.js';
+import { illegalArgument } from '../../../base/common/errors.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
 import { IFileService } from '../../../platform/files/common/files.js';
 import { RawContextKey, IContextKeyService, ContextKeyExpr } from '../../../platform/contextkey/common/contextkey.js';
@@ -70,7 +70,7 @@ import RenameInputField from './renameInputField.js';
 import { ITextModelService } from '../../common/services/resolverService.js';
 import { optional } from '../../../platform/instantiation/common/instantiation.js';
 import { IThemeService } from '../../../platform/theme/common/themeService.js';
-import { sequence, asWinJsPromise } from '../../../base/common/async.js';
+import { asWinJsPromise } from '../../../base/common/async.js';
 import { RenameProviderRegistry } from '../../common/modes.js';
 import { alert } from '../../../base/browser/ui/aria/aria.js';
 import { Range } from '../../common/core/range.js';
@@ -78,65 +78,78 @@ import { MessageController } from '../message/messageController.js';
 import { EditorState } from '../../browser/core/editorState.js';
 import { KeybindingsRegistry } from '../../../platform/keybinding/common/keybindingsRegistry.js';
 import { INotificationService } from '../../../platform/notification/common/notification.js';
-export function rename(model, position, newName) {
-    var supports = RenameProviderRegistry.ordered(model);
-    var rejects = [];
-    var hasResult = false;
-    var factory = supports.map(function (support) {
-        return function () {
-            if (!hasResult) {
-                return asWinJsPromise(function (token) {
-                    return support.provideRenameEdits(model, position, newName, token);
-                }).then(function (result) {
-                    if (!result) {
-                        // ignore
-                    }
-                    else if (!result.rejectReason) {
-                        hasResult = true;
-                        return result;
-                    }
-                    else {
-                        rejects.push(result.rejectReason);
-                    }
-                    return undefined;
-                });
-            }
-            return undefined;
-        };
-    });
-    return sequence(factory).then(function (values) {
-        var result = values[0];
-        if (rejects.length > 0) {
-            return {
-                edits: undefined,
-                rejectReason: rejects.join('\n')
-            };
-        }
-        else if (!result) {
-            return {
-                edits: undefined,
-                rejectReason: nls.localize('no result', "No result.")
-            };
-        }
-        else {
-            return result;
-        }
-    });
-}
-// TODO@joh
-// merge this into above function to make we always
-// use the same provider for resolving and renamin
-function resolveInitialRenameValue(model, position) {
-    var first = RenameProviderRegistry.ordered(model)[0];
-    if (!first || typeof first.resolveInitialRenameValue !== 'function') {
-        return TPromise.as(null);
+var RenameSkeleton = /** @class */ (function () {
+    function RenameSkeleton(model, position) {
+        this.model = model;
+        this.position = position;
+        this._provider = RenameProviderRegistry.ordered(model);
     }
-    //Use first rename provider so that we always use the same for resolving the location and for the actual rename
-    return asWinJsPromise(function (token) { return first.resolveInitialRenameValue(model, position, token); }).then(function (result) {
-        return !result ? undefined : result;
-    }, function (err) {
-        onUnexpectedExternalError(err);
-        return TPromise.wrapError(new Error('provider failed'));
+    RenameSkeleton.prototype.hasProvider = function () {
+        return this._provider.length > 0;
+    };
+    RenameSkeleton.prototype.resolveRenameLocation = function () {
+        return __awaiter(this, void 0, TPromise, function () {
+            var _this = this;
+            var provider, range, word;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        provider = this._provider[0];
+                        if (!provider.resolveRenameLocation) return [3 /*break*/, 2];
+                        return [4 /*yield*/, asWinJsPromise(function (token) { return provider.resolveRenameLocation(_this.model, _this.position, token); })];
+                    case 1:
+                        range = _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        if (!range) {
+                            word = this.model.getWordAtPosition(this.position);
+                            if (word) {
+                                range = new Range(this.position.lineNumber, word.startColumn, this.position.lineNumber, word.endColumn);
+                            }
+                        }
+                        return [2 /*return*/, range];
+                }
+            });
+        });
+    };
+    RenameSkeleton.prototype.provideRenameEdits = function (newName, i, rejects, position) {
+        if (i === void 0) { i = 0; }
+        if (rejects === void 0) { rejects = []; }
+        if (position === void 0) { position = this.position; }
+        return __awaiter(this, void 0, TPromise, function () {
+            var _this = this;
+            var provider, result;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (i >= this._provider.length) {
+                            return [2 /*return*/, {
+                                    edits: undefined,
+                                    rejectReason: rejects.join('\n')
+                                }];
+                        }
+                        provider = this._provider[i];
+                        return [4 /*yield*/, asWinJsPromise(function (token) { return provider.provideRenameEdits(_this.model, _this.position, newName, token); })];
+                    case 1:
+                        result = _a.sent();
+                        if (!result) {
+                            return [2 /*return*/, this.provideRenameEdits(newName, i + 1, rejects.concat(nls.localize('no result', "No result.")))];
+                        }
+                        else if (result.rejectReason) {
+                            return [2 /*return*/, this.provideRenameEdits(newName, i + 1, rejects.concat(result.rejectReason))];
+                        }
+                        return [2 /*return*/, result];
+                }
+            });
+        });
+    };
+    return RenameSkeleton;
+}());
+export function rename(model, position, newName) {
+    return __awaiter(this, void 0, TPromise, function () {
+        return __generator(this, function (_a) {
+            return [2 /*return*/, new RenameSkeleton(model, position).provideRenameEdits(newName)];
+        });
     });
 }
 // ---  register actions and commands
@@ -163,50 +176,45 @@ var RenameController = /** @class */ (function () {
     RenameController.prototype.run = function () {
         return __awaiter(this, void 0, TPromise, function () {
             var _this = this;
-            var selection, lineNumber, selectionStart, selectionEnd, wordRange, word, initialValue, wordAtPosition;
+            var position, skeleton, range, e_1, text, selection, selectionStart, selectionEnd;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        selection = this.editor.getSelection();
-                        lineNumber = selection.startLineNumber, selectionStart = 0, selectionEnd = 0;
-                        return [4 /*yield*/, resolveInitialRenameValue(this.editor.getModel(), this.editor.getPosition())];
+                        position = this.editor.getPosition();
+                        skeleton = new RenameSkeleton(this.editor.getModel(), position);
+                        _a.label = 1;
                     case 1:
-                        initialValue = _a.sent();
-                        if (initialValue) {
-                            lineNumber = initialValue.range.startLineNumber;
-                            if (initialValue.text) {
-                                word = initialValue.text;
-                            }
-                            else {
-                                word = this.editor.getModel().getValueInRange(initialValue.range);
-                            }
-                            selectionEnd = word.length;
-                            if (!selection.isEmpty() && selection.startLineNumber === selection.endLineNumber) {
-                                selectionStart = Math.max(0, selection.startColumn - initialValue.range.startColumn);
-                                selectionEnd = Math.min(initialValue.range.endColumn, selection.endColumn) - initialValue.range.startColumn;
-                            }
-                            wordRange = new Range(lineNumber, initialValue.range.startColumn, lineNumber, initialValue.range.endColumn);
-                        }
-                        else {
-                            wordAtPosition = this.editor.getModel().getWordAtPosition(selection.getStartPosition());
-                            if (!wordAtPosition) {
-                                return [2 /*return*/, undefined];
-                            }
-                            word = wordAtPosition.word;
-                            selectionEnd = word.length;
-                            if (!selection.isEmpty() && selection.startLineNumber === selection.endLineNumber) {
-                                selectionStart = Math.max(0, selection.startColumn - wordAtPosition.startColumn);
-                                selectionEnd = Math.min(wordAtPosition.endColumn, selection.endColumn) - wordAtPosition.startColumn;
-                            }
-                            wordRange = new Range(lineNumber, wordAtPosition.startColumn, lineNumber, wordAtPosition.endColumn);
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, skeleton.resolveRenameLocation()];
+                    case 2:
+                        range = _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_1 = _a.sent();
+                        MessageController.get(this.editor).showMessage(e_1, position);
+                        return [2 /*return*/, undefined];
+                    case 4:
+                        text = this.editor.getModel().getValueInRange(range);
+                        selection = this.editor.getSelection();
+                        selectionStart = 0;
+                        selectionEnd = text.length;
+                        if (!selection.isEmpty() && selection.startLineNumber === selection.endLineNumber) {
+                            selectionStart = Math.max(0, selection.startColumn - range.startColumn);
+                            selectionEnd = Math.min(range.endColumn, selection.endColumn) - range.startColumn;
                         }
                         this._renameInputVisible.set(true);
-                        return [2 /*return*/, this._renameInputField.getInput(wordRange, word, selectionStart, selectionEnd).then(function (newName) {
+                        return [2 /*return*/, this._renameInputField.getInput(Range.lift(range), text, selectionStart, selectionEnd).then(function (newNameOrFocusFlag) {
                                 _this._renameInputVisible.reset();
+                                if (typeof newNameOrFocusFlag === 'boolean') {
+                                    if (newNameOrFocusFlag) {
+                                        _this.editor.focus();
+                                    }
+                                    return undefined;
+                                }
                                 _this.editor.focus();
                                 var edit = new BulkEdit(_this.editor, null, _this._textModelResolverService, _this._fileService);
                                 var state = new EditorState(_this.editor, 4 /* Position */ | 1 /* Value */ | 2 /* Selection */ | 8 /* Scroll */);
-                                var renameOperation = rename(_this.editor.getModel(), _this.editor.getPosition(), newName).then(function (result) {
+                                var renameOperation = skeleton.provideRenameEdits(newNameOrFocusFlag, 0, [], Range.lift(range).getStartPosition()).then(function (result) {
                                     if (result.rejectReason) {
                                         if (state.validate(_this.editor)) {
                                             MessageController.get(_this.editor).showMessage(result.rejectReason, _this.editor.getPosition());
@@ -222,7 +230,7 @@ var RenameController = /** @class */ (function () {
                                             _this.editor.setSelection(selection);
                                         }
                                         // alert
-                                        alert(nls.localize('aria', "Successfully renamed '{0}' to '{1}'. Summary: {2}", word, newName, edit.ariaMessage()));
+                                        alert(nls.localize('aria', "Successfully renamed '{0}' to '{1}'. Summary: {2}", text, newNameOrFocusFlag, edit.ariaMessage()));
                                     });
                                 }, function (err) {
                                     _this._notificationService.error(nls.localize('rename.failed', "Rename failed to execute."));
@@ -232,11 +240,7 @@ var RenameController = /** @class */ (function () {
                                 return renameOperation;
                             }, function (err) {
                                 _this._renameInputVisible.reset();
-                                _this.editor.focus();
-                                if (!isPromiseCanceledError(err)) {
-                                    return TPromise.wrapError(err);
-                                }
-                                return undefined;
+                                return TPromise.wrapError(err);
                             })];
                 }
             });
@@ -246,7 +250,7 @@ var RenameController = /** @class */ (function () {
         this._renameInputField.acceptInput();
     };
     RenameController.prototype.cancelRenameInput = function () {
-        this._renameInputField.cancelInput();
+        this._renameInputField.cancelInput(true);
     };
     RenameController.ID = 'editor.contrib.renameController';
     RenameController = __decorate([
@@ -269,7 +273,7 @@ var RenameAction = /** @class */ (function (_super) {
             alias: 'Rename Symbol',
             precondition: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasRenameProvider),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 60 /* F2 */
             },
             menuOpts: {

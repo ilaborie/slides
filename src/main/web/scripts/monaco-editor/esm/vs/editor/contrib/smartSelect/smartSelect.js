@@ -156,7 +156,7 @@ var GrowSelectionAction = /** @class */ (function (_super) {
             alias: 'Expand Select',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 512 /* Alt */ | 17 /* RightArrow */,
                 mac: { primary: 2048 /* CtrlCmd */ | 256 /* WinCtrl */ | 1024 /* Shift */ | 17 /* RightArrow */ }
             }
@@ -173,7 +173,7 @@ var ShrinkSelectionAction = /** @class */ (function (_super) {
             alias: 'Shrink Select',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 512 /* Alt */ | 15 /* LeftArrow */,
                 mac: { primary: 2048 /* CtrlCmd */ | 256 /* WinCtrl */ | 1024 /* Shift */ | 15 /* LeftArrow */ }
             }

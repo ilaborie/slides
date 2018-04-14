@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import Event, { Emitter } from './event.js';
+import { Event, Emitter } from './event.js';
 var shortcutEvent = Object.freeze(function (callback, context) {
     var handle = setTimeout(callback.bind(context), 0);
     return { dispose: function () { clearTimeout(handle); } };
@@ -28,7 +28,7 @@ var MutableToken = /** @class */ (function () {
             this._isCancelled = true;
             if (this._emitter) {
                 this._emitter.fire(undefined);
-                this._emitter = undefined;
+                this.dispose();
             }
         }
     };
@@ -52,6 +52,12 @@ var MutableToken = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
+    MutableToken.prototype.dispose = function () {
+        if (this._emitter) {
+            this._emitter.dispose();
+            this._emitter = undefined;
+        }
+    };
     return MutableToken;
 }());
 var CancellationTokenSource = /** @class */ (function () {
@@ -82,7 +88,14 @@ var CancellationTokenSource = /** @class */ (function () {
         }
     };
     CancellationTokenSource.prototype.dispose = function () {
-        this.cancel();
+        if (!this._token) {
+            // ensure to initialize with an empty token if we had none
+            this._token = CancellationToken.None;
+        }
+        else if (this._token instanceof MutableToken) {
+            // actually dispose
+            this._token.dispose();
+        }
     };
     return CancellationTokenSource;
 }());

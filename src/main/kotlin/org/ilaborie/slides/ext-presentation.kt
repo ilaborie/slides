@@ -1,8 +1,21 @@
 package org.ilaborie.slides
 
 import mu.KotlinLogging
-import org.ilaborie.slides.ContentType.*
-import org.ilaborie.slides.content.*
+import org.ilaborie.slides.ContentType.HTML
+import org.ilaborie.slides.ContentType.INTERNAL
+import org.ilaborie.slides.ContentType.MARKDOWN
+import org.ilaborie.slides.content.Content
+import org.ilaborie.slides.content.External
+import org.ilaborie.slides.content.ExternalHtmlContent
+import org.ilaborie.slides.content.ExternalMarkdownContent
+import org.ilaborie.slides.content.ExternalResource
+import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.content.OrderedList
+import org.ilaborie.slides.content.createClient
+import org.ilaborie.slides.content.renderAsHtml
+import org.ilaborie.slides.content.renderAsMarkdown
+import org.ilaborie.slides.content.renderAsString
+import org.ilaborie.slides.content.toExternal
 import java.io.File
 import java.nio.charset.Charset
 
@@ -48,7 +61,7 @@ fun Presentation.buildAll(dist: File, key: String) {
     val output = dist.resolve(this.id)
     output.mkdirs()
     this.writeHtmlTo(output, key)
-    this.writeMarkdownTo(output, key)
+//    this.writeMarkdownTo(output, key)
     htmlToPdf(output.resolve("$key.html"), output.resolve("$key.pdf"))
 }
 

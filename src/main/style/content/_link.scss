@@ -16,7 +16,7 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="github"]::before, &[href*="twitter"]::before, &[href*="jetbrains"]::before,
     &[href*="mozilla"]::before, &[href*="youtube"]::before, &[href*="kotlin"]::before,
     &[href*="android"]::before, &[href*="spring-framework"]::before, &[href*="spring-boot"]::before,
-    &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="javalin"]::before,
+    &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="sparkjava"]::before, &[href*="javalin"]::before,
     &[href*="vertx"]::before, &[href*="ktor"]::before, &[href*="stackoverflow"]::before  {
       content: '';
       width: 1em;
@@ -69,6 +69,9 @@ section article, section h1, section h2, section h3, section h4 {
       background-image: url('./assets/brands/google-doc.png');
     }
     &[href*="sparktutorials"]::before {
+      background-image: url('./assets/brands/spark-java.png');
+    }
+    &[href*="sparkjava"]::before {
       background-image: url('./assets/brands/spark-java.png');
     }
     &[href*="javalin"]::before {

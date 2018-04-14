@@ -57,7 +57,7 @@ var ExecCommandCutAction = /** @class */ (function (_super) {
     function ExecCommandCutAction() {
         var _this = this;
         var kbOpts = {
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 54 /* KEY_X */,
             win: { primary: 2048 /* CtrlCmd */ | 54 /* KEY_X */, secondary: [1024 /* Shift */ | 20 /* Delete */] }
         };
@@ -93,7 +93,7 @@ var ExecCommandCopyAction = /** @class */ (function (_super) {
     function ExecCommandCopyAction() {
         var _this = this;
         var kbOpts = {
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 33 /* KEY_C */,
             win: { primary: 2048 /* CtrlCmd */ | 33 /* KEY_C */, secondary: [2048 /* CtrlCmd */ | 19 /* Insert */] }
         };
@@ -129,7 +129,7 @@ var ExecCommandPasteAction = /** @class */ (function (_super) {
     function ExecCommandPasteAction() {
         var _this = this;
         var kbOpts = {
-            kbExpr: EditorContextKeys.textFocus,
+            kbExpr: EditorContextKeys.textInputFocus,
             primary: 2048 /* CtrlCmd */ | 52 /* KEY_V */,
             win: { primary: 2048 /* CtrlCmd */ | 52 /* KEY_V */, secondary: [1024 /* Shift */ | 19 /* Insert */] }
         };
@@ -162,7 +162,7 @@ var ExecCommandCopyWithSyntaxHighlightingAction = /** @class */ (function (_supe
             alias: 'Copy With Syntax Highlighting',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: null
             }
         }) || this;

@@ -149,7 +149,7 @@ var FormatOnType = /** @class */ (function () {
             if (canceled || isFalsyOrEmpty(edits)) {
                 return;
             }
-            EditOperationsCommand.execute(_this.editor, edits, true);
+            EditOperationsCommand.executeAsCommand(_this.editor, edits);
             alertFormattingEdits(edits);
         }, function (err) {
             unbind.dispose();
@@ -217,7 +217,7 @@ var FormatOnPaste = /** @class */ (function () {
             if (!state.validate(_this.editor) || isFalsyOrEmpty(edits)) {
                 return;
             }
-            EditOperationsCommand.execute(_this.editor, edits, false);
+            EditOperationsCommand.execute(_this.editor, edits);
             alertFormattingEdits(edits);
         });
     };
@@ -253,7 +253,7 @@ var AbstractFormatAction = /** @class */ (function (_super) {
             if (!state.validate(editor) || isFalsyOrEmpty(edits)) {
                 return;
             }
-            EditOperationsCommand.execute(editor, edits, false);
+            EditOperationsCommand.execute(editor, edits);
             alertFormattingEdits(edits);
             editor.focus();
         }, function (err) {
@@ -277,7 +277,7 @@ var FormatDocumentAction = /** @class */ (function (_super) {
             alias: 'Format Document',
             precondition: EditorContextKeys.writable,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 1024 /* Shift */ | 512 /* Alt */ | 36 /* KEY_F */,
                 // secondary: [KeyChord(KeyMod.CtrlCmd | KeyCode.KEY_K, KeyMod.CtrlCmd | KeyCode.KEY_D)],
                 linux: { primary: 2048 /* CtrlCmd */ | 1024 /* Shift */ | 39 /* KEY_I */ }
@@ -306,7 +306,7 @@ var FormatSelectionAction = /** @class */ (function (_super) {
             alias: 'Format Code',
             precondition: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasNonEmptySelection),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 36 /* KEY_F */)
             },
             menuOpts: {

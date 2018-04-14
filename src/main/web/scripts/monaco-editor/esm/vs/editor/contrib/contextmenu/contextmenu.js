@@ -204,7 +204,7 @@ var ShowContextMenu = /** @class */ (function (_super) {
             alias: 'Show Editor Context Menu',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.textInputFocus,
                 primary: 1024 /* Shift */ | 68 /* F10 */
             }
         }) || this;

@@ -259,15 +259,6 @@ var AbstractScrollableElement = /** @class */ (function (_super) {
                 deltaX = deltaY;
                 deltaY = 0;
             }
-            if (Platform.isMacintosh) {
-                // Give preference to vertical scrolling
-                if (deltaY && Math.abs(deltaX) < 0.2) {
-                    deltaX = 0;
-                }
-                if (Math.abs(deltaY) > Math.abs(deltaX) * 0.5) {
-                    deltaX = 0;
-                }
-            }
             var futureScrollPosition = this._scrollable.getFutureScrollPosition();
             var desiredScrollPosition = {};
             if (deltaY) {

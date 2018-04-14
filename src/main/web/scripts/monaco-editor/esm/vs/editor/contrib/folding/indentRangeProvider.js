@@ -11,7 +11,7 @@ var MAX_FOLDING_REGIONS_FOR_INDENT_LIMIT = 5000;
 var IndentRangeProvider = /** @class */ (function () {
     function IndentRangeProvider() {
     }
-    IndentRangeProvider.prototype.compute = function (editorModel) {
+    IndentRangeProvider.prototype.compute = function (editorModel, cancelationToken) {
         var foldingRules = LanguageConfigurationRegistry.getFoldingRules(editorModel.getLanguageIdentifier().id);
         var offSide = foldingRules && foldingRules.offSide;
         var markers = foldingRules && foldingRules.markers;

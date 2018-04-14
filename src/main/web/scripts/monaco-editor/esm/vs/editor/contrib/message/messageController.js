@@ -17,7 +17,6 @@ import { setDisposableTimeout } from '../../../base/common/async.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { alert } from '../../../base/browser/ui/aria/aria.js';
 import { Range } from '../../common/core/range.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { registerEditorContribution, EditorCommand, registerEditorCommand } from '../../browser/editorExtensions.js';
 import { ContentWidgetPositionPreference } from '../../browser/editorBrowser.js';
 import { IContextKeyService, RawContextKey } from '../../../platform/contextkey/common/contextkey.js';

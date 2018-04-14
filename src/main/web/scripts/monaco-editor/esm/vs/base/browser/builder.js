@@ -663,30 +663,6 @@ var Builder = /** @class */ (function () {
         }
         return this;
     };
-    Builder.prototype.minSize = function (width, height) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.minSize.apply(this, width.split(' '));
-        }
-        if (!types.isUndefinedOrNull(width)) {
-            this.currentElement.style.minWidth = this.toPixel(width);
-        }
-        if (!types.isUndefinedOrNull(height)) {
-            this.currentElement.style.minHeight = this.toPixel(height);
-        }
-        return this;
-    };
-    Builder.prototype.maxSize = function (width, height) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.maxSize.apply(this, width.split(' '));
-        }
-        if (!types.isUndefinedOrNull(width)) {
-            this.currentElement.style.maxWidth = this.toPixel(width);
-        }
-        if (!types.isUndefinedOrNull(height)) {
-            this.currentElement.style.maxHeight = this.toPixel(height);
-        }
-        return this;
-    };
     /**
      *  Sets the CSS property display.
      */
@@ -698,8 +674,8 @@ var Builder = /** @class */ (function () {
      *  Shows the current element of the builder.
      */
     Builder.prototype.show = function () {
-        if (this.hasClass('builder-hidden')) {
-            this.removeClass('builder-hidden');
+        if (this.hasClass('monaco-builder-hidden')) {
+            this.removeClass('monaco-builder-hidden');
         }
         this.attr('aria-hidden', 'false');
         // Cancel any pending showDelayed() invocation
@@ -729,8 +705,8 @@ var Builder = /** @class */ (function () {
      *  Hides the current element of the builder.
      */
     Builder.prototype.hide = function () {
-        if (!this.hasClass('builder-hidden')) {
-            this.addClass('builder-hidden');
+        if (!this.hasClass('monaco-builder-hidden')) {
+            this.addClass('monaco-builder-hidden');
         }
         this.attr('aria-hidden', 'true');
         // Cancel any pending showDelayed() invocation
@@ -741,7 +717,7 @@ var Builder = /** @class */ (function () {
      *  Returns true if the current element of the builder is hidden.
      */
     Builder.prototype.isHidden = function () {
-        return this.hasClass('builder-hidden') || this.currentElement.style.display === 'none';
+        return this.hasClass('monaco-builder-hidden') || this.currentElement.style.display === 'none';
     };
     Builder.prototype.cancelVisibilityPromise = function () {
         var promise = this.getProperty(VISIBILITY_BINDING_ID);
@@ -749,71 +725,6 @@ var Builder = /** @class */ (function () {
             promise.cancel();
             this.removeProperty(VISIBILITY_BINDING_ID);
         }
-    };
-    Builder.prototype.border = function (width, style, color) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.border.apply(this, width.split(' '));
-        }
-        this.currentElement.style.borderWidth = this.toPixel(width);
-        if (color) {
-            this.currentElement.style.borderColor = color;
-        }
-        if (style) {
-            this.currentElement.style.borderStyle = style;
-        }
-        return this;
-    };
-    Builder.prototype.borderTop = function (width, style, color) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.borderTop.apply(this, width.split(' '));
-        }
-        this.currentElement.style.borderTopWidth = this.toPixel(width);
-        if (color) {
-            this.currentElement.style.borderTopColor = color;
-        }
-        if (style) {
-            this.currentElement.style.borderTopStyle = style;
-        }
-        return this;
-    };
-    Builder.prototype.borderBottom = function (width, style, color) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.borderBottom.apply(this, width.split(' '));
-        }
-        this.currentElement.style.borderBottomWidth = this.toPixel(width);
-        if (color) {
-            this.currentElement.style.borderBottomColor = color;
-        }
-        if (style) {
-            this.currentElement.style.borderBottomStyle = style;
-        }
-        return this;
-    };
-    Builder.prototype.borderLeft = function (width, style, color) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.borderLeft.apply(this, width.split(' '));
-        }
-        this.currentElement.style.borderLeftWidth = this.toPixel(width);
-        if (color) {
-            this.currentElement.style.borderLeftColor = color;
-        }
-        if (style) {
-            this.currentElement.style.borderLeftStyle = style;
-        }
-        return this;
-    };
-    Builder.prototype.borderRight = function (width, style, color) {
-        if (types.isString(width) && width.indexOf(' ') >= 0) {
-            return this.borderRight.apply(this, width.split(' '));
-        }
-        this.currentElement.style.borderRightWidth = this.toPixel(width);
-        if (color) {
-            this.currentElement.style.borderRightColor = color;
-        }
-        if (style) {
-            this.currentElement.style.borderRightStyle = style;
-        }
-        return this;
     };
     Builder.prototype.toPixel = function (obj) {
         if (obj.toString().indexOf('px') === -1) {

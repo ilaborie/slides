@@ -4,46 +4,36 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import { Position } from '../../common/core/position.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { CoreNavigationCommands } from '../controller/coreCommands.js';
 var ViewController = /** @class */ (function () {
-    function ViewController(configuration, viewModel, execCommandFunc, outgoingEvents, commandService) {
+    function ViewController(configuration, viewModel, execCommandFunc, outgoingEvents, commandDelegate) {
         this.configuration = configuration;
         this.viewModel = viewModel;
         this._execCoreEditorCommandFunc = execCommandFunc;
         this.outgoingEvents = outgoingEvents;
-        this.commandService = commandService;
+        this.commandDelegate = commandDelegate;
     }
     ViewController.prototype._execMouseCommand = function (editorCommand, args) {
         args.source = 'mouse';
         this._execCoreEditorCommandFunc(editorCommand, args);
     };
     ViewController.prototype.paste = function (source, text, pasteOnNewLine, multicursorText) {
-        this.commandService.executeCommand(editorCommon.Handler.Paste, {
-            text: text,
-            pasteOnNewLine: pasteOnNewLine,
-            multicursorText: multicursorText
-        });
+        this.commandDelegate.paste(source, text, pasteOnNewLine, multicursorText);
     };
     ViewController.prototype.type = function (source, text) {
-        this.commandService.executeCommand(editorCommon.Handler.Type, {
-            text: text
-        });
+        this.commandDelegate.type(source, text);
     };
     ViewController.prototype.replacePreviousChar = function (source, text, replaceCharCnt) {
-        this.commandService.executeCommand(editorCommon.Handler.ReplacePreviousChar, {
-            text: text,
-            replaceCharCnt: replaceCharCnt
-        });
+        this.commandDelegate.replacePreviousChar(source, text, replaceCharCnt);
     };
     ViewController.prototype.compositionStart = function (source) {
-        this.commandService.executeCommand(editorCommon.Handler.CompositionStart, {});
+        this.commandDelegate.compositionStart(source);
     };
     ViewController.prototype.compositionEnd = function (source) {
-        this.commandService.executeCommand(editorCommon.Handler.CompositionEnd, {});
+        this.commandDelegate.compositionEnd(source);
     };
     ViewController.prototype.cut = function (source) {
-        this.commandService.executeCommand(editorCommon.Handler.Cut, {});
+        this.commandDelegate.cut(source);
     };
     ViewController.prototype.setSelection = function (source, modelSelection) {
         this._execCoreEditorCommandFunc(CoreNavigationCommands.SetSelection, {

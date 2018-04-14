@@ -17,6 +17,7 @@ import { HoverOperation } from './hoverOperation.js';
 import { GlyphHoverWidget } from './hoverWidgets.js';
 import { $ } from '../../../base/browser/dom.js';
 import { isEmptyMarkdownString } from '../../../base/common/htmlContent.js';
+import { dispose } from '../../../base/common/lifecycle.js';
 var MarginComputer = /** @class */ (function () {
     function MarginComputer(editor) {
         this._editor = editor;
@@ -77,6 +78,7 @@ var ModesGlyphHoverWidget = /** @class */ (function (_super) {
         return _this;
     }
     ModesGlyphHoverWidget.prototype.dispose = function () {
+        this._renderDisposeables = dispose(this._renderDisposeables);
         this._hoverOperation.cancel();
         _super.prototype.dispose.call(this);
     };
@@ -116,10 +118,13 @@ var ModesGlyphHoverWidget = /** @class */ (function (_super) {
     };
     ModesGlyphHoverWidget.prototype._renderMessages = function (lineNumber, messages) {
         var _this = this;
+        dispose(this._renderDisposeables);
+        this._renderDisposeables = [];
         var fragment = document.createDocumentFragment();
         messages.forEach(function (msg) {
             var renderedContents = _this._markdownRenderer.render(msg.value);
-            fragment.appendChild($('div.hover-row', null, renderedContents));
+            _this._renderDisposeables.push(renderedContents);
+            fragment.appendChild($('div.hover-row', null, renderedContents.element));
         });
         this.updateContents(fragment);
         this.showAt(lineNumber);

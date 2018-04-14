@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 import { Promise as WinJSPromise } from './winjs.base.js';
+import * as platform from './platform.js';
 /**
  * A polyfill for the native promises. The implementation is based on
  * WinJS promises but tries to gap differences between winjs promises
@@ -21,14 +22,14 @@ var PolyfillPromise = /** @class */ (function () {
                         resolve(value);
                     }
                     else {
-                        setImmediate(resolve, value);
+                        platform.setImmediate(function () { return resolve(value); });
                     }
                 }, function (err) {
                     if (!initializing) {
                         reject(err);
                     }
                     else {
-                        setImmediate(reject, err);
+                        platform.setImmediate(function () { return reject(err); });
                     }
                 });
                 initializing = false;
@@ -64,14 +65,14 @@ var PolyfillPromise = /** @class */ (function () {
                 onFulfilled(value);
             }
             else {
-                setImmediate(onFulfilled, value);
+                platform.setImmediate(function () { return onFulfilled(value); });
             }
         }, onRejected && function (err) {
             if (!sync) {
                 onFulfilled(err);
             }
             else {
-                setImmediate(onFulfilled, err);
+                platform.setImmediate(function () { return onFulfilled(err); });
             }
         }));
         sync = false;

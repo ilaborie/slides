@@ -14,6 +14,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 import './actionbar.css';
+import * as platform from '../../../common/platform.js';
 import * as nls from '../../../../nls.js';
 import * as lifecycle from '../../../common/lifecycle.js';
 import { Builder, $ } from '../../builder.js';
@@ -117,7 +118,7 @@ var BaseActionItem = /** @class */ (function () {
                 _this.onClick(e);
             }
             else {
-                setImmediate(function () { return _this.onClick(e); });
+                platform.setImmediate(function () { return _this.onClick(e); });
             }
         });
         this.builder.on([DOM.EventType.MOUSE_UP, DOM.EventType.MOUSE_OUT], function (e) {
@@ -637,8 +638,8 @@ var SelectActionItem = /** @class */ (function (_super) {
         _this.registerListeners();
         return _this;
     }
-    SelectActionItem.prototype.setOptions = function (options, selected) {
-        this.selectBox.setOptions(options, selected);
+    SelectActionItem.prototype.setOptions = function (options, selected, disabled) {
+        this.selectBox.setOptions(options, selected, disabled);
     };
     SelectActionItem.prototype.select = function (index) {
         this.selectBox.select(index);

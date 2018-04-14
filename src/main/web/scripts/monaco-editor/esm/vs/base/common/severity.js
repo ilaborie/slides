@@ -41,13 +41,5 @@ var Severity;
         return Severity.Ignore;
     }
     Severity.fromValue = fromValue;
-    function toString(value) {
-        return _displayStrings[value] || strings.empty;
-    }
-    Severity.toString = toString;
-    function compare(a, b) {
-        return b - a;
-    }
-    Severity.compare = compare;
 })(Severity || (Severity = {}));
 export default Severity;

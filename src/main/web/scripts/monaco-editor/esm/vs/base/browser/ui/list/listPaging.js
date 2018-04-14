@@ -53,6 +53,9 @@ var PagedList = /** @class */ (function () {
     PagedList.prototype.isDOMFocused = function () {
         return this.list.getHTMLElement() === document.activeElement;
     };
+    PagedList.prototype.domFocus = function () {
+        this.list.domFocus();
+    };
     Object.defineProperty(PagedList.prototype, "onDidFocus", {
         get: function () {
             return this.list.onDidFocus;
@@ -70,6 +73,13 @@ var PagedList = /** @class */ (function () {
     Object.defineProperty(PagedList.prototype, "widget", {
         get: function () {
             return this.list;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PagedList.prototype, "onDidDispose", {
+        get: function () {
+            return this.list.onDidDispose;
         },
         enumerable: true,
         configurable: true
@@ -187,6 +197,9 @@ var PagedList = /** @class */ (function () {
     };
     PagedList.prototype.style = function (styles) {
         this.list.style(styles);
+    };
+    PagedList.prototype.dispose = function () {
+        this.list.dispose();
     };
     return PagedList;
 }());

@@ -83,7 +83,7 @@ var SearchData = /** @class */ (function () {
     return SearchData;
 }());
 export { SearchData };
-function createFindMatch(range, rawMatches, captureMatches) {
+export function createFindMatch(range, rawMatches, captureMatches) {
     if (!captureMatches) {
         return new FindMatch(range, null);
     }
@@ -355,6 +355,10 @@ function leftIsWordBounday(wordSeparators, text, textLength, matchStartIndex, ma
         // The character before the match is a word separator
         return true;
     }
+    if (charBefore === 13 /* CarriageReturn */ || charBefore === 10 /* LineFeed */) {
+        // The character before the match is line break or carriage return.
+        return true;
+    }
     if (matchLength > 0) {
         var firstCharInMatch = text.charCodeAt(matchStartIndex);
         if (wordSeparators.get(firstCharInMatch) !== 0 /* Regular */) {
@@ -374,6 +378,10 @@ function rightIsWordBounday(wordSeparators, text, textLength, matchStartIndex, m
         // The character after the match is a word separator
         return true;
     }
+    if (charAfter === 13 /* CarriageReturn */ || charAfter === 10 /* LineFeed */) {
+        // The character after the match is line break or carriage return.
+        return true;
+    }
     if (matchLength > 0) {
         var lastCharInMatch = text.charCodeAt(matchStartIndex + matchLength - 1);
         if (wordSeparators.get(lastCharInMatch) !== 0 /* Regular */) {
@@ -383,7 +391,7 @@ function rightIsWordBounday(wordSeparators, text, textLength, matchStartIndex, m
     }
     return false;
 }
-function isValidMatch(wordSeparators, text, textLength, matchStartIndex, matchLength) {
+export function isValidMatch(wordSeparators, text, textLength, matchStartIndex, matchLength) {
     return (leftIsWordBounday(wordSeparators, text, textLength, matchStartIndex, matchLength)
         && rightIsWordBounday(wordSeparators, text, textLength, matchStartIndex, matchLength));
 }
@@ -427,3 +435,4 @@ var Searcher = /** @class */ (function () {
     };
     return Searcher;
 }());
+export { Searcher };

@@ -289,13 +289,17 @@ var CommonFindController = /** @class */ (function (_super) {
         return true;
     };
     CommonFindController.prototype.getGlobalBufferTerm = function () {
-        if (this._editor.getConfiguration().contribInfo.find.globalFindClipboard && this._clipboardService) {
+        if (this._editor.getConfiguration().contribInfo.find.globalFindClipboard
+            && this._clipboardService
+            && !this._editor.getModel().isTooLargeForHavingARichMode()) {
             return this._clipboardService.readFindText();
         }
         return '';
     };
     CommonFindController.prototype.setGlobalBufferTerm = function (text) {
-        if (this._editor.getConfiguration().contribInfo.find.globalFindClipboard && this._clipboardService) {
+        if (this._editor.getConfiguration().contribInfo.find.globalFindClipboard
+            && this._clipboardService
+            && !this._editor.getModel().isTooLargeForHavingARichMode()) {
             this._clipboardService.writeFindText(text);
         }
     };

@@ -23,9 +23,20 @@ var BlockCommentCommand = /** @class */ (function () {
             return false;
         }
         for (var i = 0; i < needleLength; i++) {
-            if (haystack.charCodeAt(offset + i) !== needle.charCodeAt(i)) {
-                return false;
+            var codeA = haystack.charCodeAt(offset + i);
+            var codeB = needle.charCodeAt(i);
+            if (codeA === codeB) {
+                continue;
             }
+            if (codeA >= 65 /* A */ && codeA <= 90 /* Z */ && codeA + 32 === codeB) {
+                // codeA is upper-case variant of codeB
+                continue;
+            }
+            if (codeB >= 65 /* A */ && codeB <= 90 /* Z */ && codeB + 32 === codeA) {
+                // codeB is upper-case variant of codeA
+                continue;
+            }
+            return false;
         }
         return true;
     };

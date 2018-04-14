@@ -31,6 +31,8 @@ var LightBulbWidget = /** @class */ (function () {
             }
         }));
         this._disposables.push(dom.addStandardDisposableListener(this._domNode, 'click', function (e) {
+            // Make sure that focus / cursor location is not lost when clicking widget icon
+            _this._editor.focus();
             // a bit of extra work to make sure the menu
             // doesn't cover the line-text
             var _a = dom.getDomNodePagePosition(_this._domNode), top = _a.top, height = _a.height;

@@ -17,7 +17,6 @@ import { onUnexpectedError } from '../../../base/common/errors.js';
 import { dispose } from '../../../base/common/lifecycle.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
 import { ICommandService } from '../../../platform/commands/common/commands.js';
-import * as editorCommon from '../../common/editorCommon.js';
 import { CodeLensProviderRegistry } from '../../common/modes.js';
 import { registerEditorContribution } from '../../browser/editorExtensions.js';
 import { getCodeLensData } from './codelens.js';
@@ -191,8 +190,13 @@ var CodeLensContribution = /** @class */ (function () {
                 groups.push(lastGroup);
             }
         }
-        var centeredRange = this._editor.getCenteredRangeInViewport();
-        var shouldRestoreCenteredRange = centeredRange && (groups.length !== this._lenses.length && this._editor.getScrollTop() !== 0);
+        var visibleRanges = this._editor.getVisibleRanges();
+        var visiblePosition = (visibleRanges.length > 0 ? visibleRanges[0].getStartPosition() : null);
+        var visiblePositionScrollDelta = 0;
+        if (visiblePosition) {
+            var visiblePositionScrollTop = this._editor.getTopForPosition(visiblePosition.lineNumber, visiblePosition.column);
+            visiblePositionScrollDelta = this._editor.getScrollTop() - visiblePositionScrollTop;
+        }
         this._editor.changeDecorations(function (changeAccessor) {
             _this._editor.changeViewZones(function (accessor) {
                 var codeLensIndex = 0, groupsIndex = 0, helper = new CodeLensHelper();
@@ -227,8 +231,9 @@ var CodeLensContribution = /** @class */ (function () {
                 helper.commit(changeAccessor);
             });
         });
-        if (shouldRestoreCenteredRange) {
-            this._editor.revealRangeInCenter(centeredRange, 1 /* Immediate */);
+        if (visiblePosition) {
+            var visiblePositionScrollTop = this._editor.getTopForPosition(visiblePosition.lineNumber, visiblePosition.column);
+            this._editor.setScrollTop(visiblePositionScrollTop + visiblePositionScrollDelta);
         }
     };
     CodeLensContribution.prototype._onViewportChanged = function () {

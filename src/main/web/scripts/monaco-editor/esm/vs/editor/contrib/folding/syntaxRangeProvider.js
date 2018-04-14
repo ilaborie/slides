@@ -4,40 +4,53 @@
  *--------------------------------------------------------------------------------------------*/
 'use strict';
 import { onUnexpectedExternalError } from '../../../base/common/errors.js';
-import { asWinJsPromise } from '../../../base/common/async.js';
+import { toPromiseLike } from '../../../base/common/async.js';
 import { TPromise } from '../../../base/common/winjs.base.js';
 import { MAX_LINE_NUMBER, FoldingRegions } from './foldingRanges.js';
 var MAX_FOLDING_REGIONS_FOR_INDENT_LIMIT = 5000;
+var foldingContext = {
+    maxRanges: MAX_FOLDING_REGIONS_FOR_INDENT_LIMIT
+};
 var SyntaxRangeProvider = /** @class */ (function () {
     function SyntaxRangeProvider(providers) {
         this.providers = providers;
     }
-    SyntaxRangeProvider.prototype.compute = function (model) {
-        return collectSyntaxRanges(this.providers, model).then(function (ranges) {
-            var res = sanitizeRanges(ranges);
-            //console.log(res.toString());
-            return res;
+    SyntaxRangeProvider.prototype.compute = function (model, cancellationToken) {
+        return collectSyntaxRanges(this.providers, model, cancellationToken).then(function (ranges) {
+            if (ranges) {
+                var res = sanitizeRanges(ranges);
+                return res;
+            }
+            return null;
         });
     };
     return SyntaxRangeProvider;
 }());
 export { SyntaxRangeProvider };
-function collectSyntaxRanges(providers, model) {
-    var rangeData = [];
-    var promises = providers.map(function (provider, rank) { return asWinJsPromise(function (token) { return provider.provideFoldingRanges(model, token); }).then(function (list) {
-        if (list && Array.isArray(list.ranges)) {
-            var nLines = model.getLineCount();
-            for (var _i = 0, _a = list.ranges; _i < _a.length; _i++) {
-                var r = _a[_i];
-                if (r.startLineNumber > 0 && r.endLineNumber > r.startLineNumber && r.endLineNumber <= nLines) {
-                    rangeData.push({ startLineNumber: r.startLineNumber, endLineNumber: r.endLineNumber, rank: rank, type: r.type });
+function collectSyntaxRanges(providers, model, cancellationToken) {
+    var promises = providers.map(function (provider) { return toPromiseLike(provider.provideFoldingRanges(model, foldingContext, cancellationToken)); });
+    return TPromise.join(promises).then(function (lists) {
+        var rangeData = null;
+        if (cancellationToken.isCancellationRequested) {
+            return null;
+        }
+        for (var i = 0; i < lists.length; i++) {
+            var list = lists[i];
+            if (list && Array.isArray(list.ranges)) {
+                if (!Array.isArray(rangeData)) {
+                    rangeData = [];
+                }
+                var nLines = model.getLineCount();
+                for (var _i = 0, _a = list.ranges; _i < _a.length; _i++) {
+                    var r = _a[_i];
+                    if (r.startLineNumber > 0 && r.endLineNumber > r.startLineNumber && r.endLineNumber <= nLines) {
+                        rangeData.push({ startLineNumber: r.startLineNumber, endLineNumber: r.endLineNumber, rank: i, type: r.type });
+                    }
                 }
             }
         }
-    }, onUnexpectedExternalError); });
-    return TPromise.join(promises).then(function () {
         return rangeData;
-    });
+    }, onUnexpectedExternalError);
 }
 var RangesCollector = /** @class */ (function () {
     function RangesCollector(foldingRangesLimit) {

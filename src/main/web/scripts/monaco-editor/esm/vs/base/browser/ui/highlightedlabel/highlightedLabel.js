@@ -5,7 +5,7 @@
 'use strict';
 import * as dom from '../../dom.js';
 import * as objects from '../../../common/objects.js';
-import { render as renderOcticons } from '../octiconLabel/octiconLabel.js';
+import { renderOcticons } from '../octiconLabel/octiconLabel.js';
 var HighlightedLabel = /** @class */ (function () {
     function HighlightedLabel(container) {
         this.domNode = document.createElement('span');

@@ -270,6 +270,8 @@ var ParameterHintsWidget = /** @class */ (function () {
         else {
             this.renderParameters(code, signature, this.hints.activeParameter);
         }
+        dispose(this.renderDisposeables);
+        this.renderDisposeables = [];
         var activeParameter = signature.parameters[this.hints.activeParameter];
         if (activeParameter && activeParameter.documentation) {
             var documentation = $('span.documentation');
@@ -279,7 +281,9 @@ var ParameterHintsWidget = /** @class */ (function () {
             }
             else {
                 dom.addClass(this.docs, 'markdown-docs');
-                documentation.appendChild(this.markdownRenderer.render(activeParameter.documentation));
+                var renderedContents = this.markdownRenderer.render(activeParameter.documentation);
+                this.renderDisposeables.push(renderedContents);
+                documentation.appendChild(renderedContents.element);
             }
             dom.append(this.docs, $('p', null, documentation));
         }
@@ -288,7 +292,9 @@ var ParameterHintsWidget = /** @class */ (function () {
             dom.append(this.docs, $('p', null, signature.documentation));
         }
         else {
-            dom.append(this.docs, this.markdownRenderer.render(signature.documentation));
+            var renderedContents = this.markdownRenderer.render(signature.documentation);
+            this.renderDisposeables.push(renderedContents);
+            dom.append(this.docs, renderedContents.element);
         }
         var currentOverload = String(this.currentSignature + 1);
         if (this.hints.signatures.length < 10) {
@@ -397,8 +403,11 @@ var ParameterHintsWidget = /** @class */ (function () {
     };
     ParameterHintsWidget.prototype.dispose = function () {
         this.disposables = dispose(this.disposables);
-        this.model.dispose();
-        this.model = null;
+        this.renderDisposeables = dispose(this.renderDisposeables);
+        if (this.model) {
+            this.model.dispose();
+            this.model = null;
+        }
     };
     ParameterHintsWidget.ID = 'editor.widget.parameterHintsWidget';
     ParameterHintsWidget = __decorate([

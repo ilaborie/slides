@@ -5,7 +5,7 @@
 'use strict';
 import * as nls from '../../../nls.js';
 import { dispose } from '../../../base/common/lifecycle.js';
-import Event, { Emitter } from '../../../base/common/event.js';
+import { Event, Emitter } from '../../../base/common/event.js';
 var AbstractKeybindingService = /** @class */ (function () {
     function AbstractKeybindingService(contextKeyService, commandService, telemetryService, notificationService, statusService) {
         this.toDispose = [];

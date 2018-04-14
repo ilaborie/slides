@@ -32,8 +32,14 @@ var Settings = /** @class */ (function () {
         this.cursorColor = cursorColor ? cursorColor.transparent(0.7).toString() : null;
         this.themeType = theme.type;
         var minimapEnabled = config.editor.viewInfo.minimap.enabled;
+        var minimapSide = config.editor.viewInfo.minimap.side;
         var backgroundColor = (minimapEnabled ? TokenizationRegistry.getDefaultBackground() : null);
-        this.backgroundColor = (backgroundColor ? Color.Format.CSS.formatHex(backgroundColor) : null);
+        if (backgroundColor === null || minimapSide === 'left') {
+            this.backgroundColor = null;
+        }
+        else {
+            this.backgroundColor = Color.Format.CSS.formatHex(backgroundColor);
+        }
         var position = config.editor.layoutInfo.overviewRuler;
         this.top = position.top;
         this.right = position.right;

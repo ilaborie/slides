@@ -136,6 +136,9 @@ export function startsWith(haystack, needle) {
     if (haystack.length < needle.length) {
         return false;
     }
+    if (haystack === needle) {
+        return true;
+    }
     for (var i = 0; i < needle.length; i++) {
         if (haystack[i] !== needle[i]) {
             return false;
@@ -369,7 +372,7 @@ function doEqualsIgnoreCase(a, b, stopAt) {
     }
     return true;
 }
-export function beginsWithIgnoreCase(str, candidate) {
+export function startsWithIgnoreCase(str, candidate) {
     var candidateLength = candidate.length;
     if (candidate.length > str.length) {
         return false;

@@ -16,7 +16,6 @@ var __extends = (this && this.__extends) || (function () {
 import * as strings from '../../../base/common/strings.js';
 import { Position } from '../core/position.js';
 import { Range } from '../core/range.js';
-import * as editorCommon from '../editorCommon.js';
 import { TokenizationRegistry } from '../modes.js';
 import { tokenizeLineToHTML } from '../modes/textToHtmlTokenizer.js';
 import { ViewModelDecorations } from './viewModelDecorations.js';
@@ -24,11 +23,10 @@ import { MinimapLinesRenderingData, ViewLineRenderingData } from './viewModel.js
 import { SplitLinesCollection, IdentityLinesCollection } from './splitLinesCollection.js';
 import * as viewEvents from '../view/viewEvents.js';
 import { MinimapTokensColorTracker } from '../view/minimapCharRenderer.js';
-import * as textModelEvents from '../model/textModelEvents.js';
 import { CharacterHardWrappingLineMapperFactory } from './characterHardWrappingLineMapper.js';
 import { ViewLayout } from '../viewLayout/viewLayout.js';
 import { Color } from '../../../base/common/color.js';
-import { EndOfLinePreference } from '../model.js';
+import { EndOfLinePreference, TrackedRangeStickiness } from '../model.js';
 var USE_IDENTITY_LINES_COLLECTION = true;
 var ViewModel = /** @class */ (function (_super) {
     __extends(ViewModel, _super);
@@ -37,6 +35,9 @@ var ViewModel = /** @class */ (function (_super) {
         _this.editorId = editorId;
         _this.configuration = configuration;
         _this.model = model;
+        _this.hasFocus = false;
+        _this.viewportStartLineTrackedRange = null;
+        _this.viewportStartLineTop = 0;
         if (USE_IDENTITY_LINES_COLLECTION && _this.model.isTooLargeForTokenization()) {
             _this.lines = new IdentityLinesCollection(_this.model);
         }
@@ -85,6 +86,10 @@ var ViewModel = /** @class */ (function (_super) {
         _super.prototype.dispose.call(this);
         this.decorations.dispose();
         this.lines.dispose();
+        this.viewportStartLineTrackedRange = this.model._setTrackedRange(this.viewportStartLineTrackedRange, null, TrackedRangeStickiness.NeverGrowsWhenTypingAtEdges);
+    };
+    ViewModel.prototype.setHasFocus = function (hasFocus) {
+        this.hasFocus = hasFocus;
     };
     ViewModel.prototype._onConfigurationChanged = function (eventsCollector, e) {
         // We might need to restore the current centered view range, so save it (if available)
@@ -118,7 +123,7 @@ var ViewModel = /** @class */ (function (_super) {
     };
     ViewModel.prototype._registerModelEvents = function () {
         var _this = this;
-        this._register(this.model.onDidChangeRawContent(function (e) {
+        this._register(this.model.onDidChangeRawContentFast(function (e) {
             try {
                 var eventsCollector = _this._beginEmit();
                 var hadOtherModelChange = false;
@@ -189,6 +194,15 @@ var ViewModel = /** @class */ (function (_super) {
             // Update the configuration and reset the centered view line
             _this._centeredViewLine = -1;
             _this.configuration.setMaxLineNumber(_this.model.getLineCount());
+            // Recover viewport
+            if (!_this.hasFocus && _this.model.getAttachedEditorCount() >= 2 && _this.viewportStartLineTrackedRange) {
+                var modelRange = _this.model._getTrackedRange(_this.viewportStartLineTrackedRange);
+                if (modelRange) {
+                    var viewPosition = _this.coordinatesConverter.convertModelPositionToViewPosition(modelRange.getStartPosition());
+                    var viewPositionTop = _this.viewLayout.getVerticalOffsetForLineNumber(viewPosition.lineNumber);
+                    _this.viewLayout.deltaScrollNow(0, viewPositionTop - _this.viewportStartLineTop);
+                }
+            }
         }));
         this._register(this.model.onDidChangeTokens(function (e) {
             var viewRanges = [];
@@ -314,6 +328,37 @@ var ViewModel = /** @class */ (function (_super) {
         var endViewLineNumber = partialData.completelyVisibleEndLineNumber;
         return new Range(startViewLineNumber, this.getLineMinColumn(startViewLineNumber), endViewLineNumber, this.getLineMaxColumn(endViewLineNumber));
     };
+    ViewModel.prototype.saveState = function () {
+        var compatViewState = this.viewLayout.saveState();
+        var scrollTop = compatViewState.scrollTop;
+        var firstViewLineNumber = this.viewLayout.getLineNumberAtVerticalOffset(scrollTop);
+        var firstPosition = this.coordinatesConverter.convertViewPositionToModelPosition(new Position(firstViewLineNumber, this.getLineMinColumn(firstViewLineNumber)));
+        var firstPositionDeltaTop = this.viewLayout.getVerticalOffsetForLineNumber(firstViewLineNumber) - scrollTop;
+        return {
+            scrollLeft: compatViewState.scrollLeft,
+            firstPosition: firstPosition,
+            firstPositionDeltaTop: firstPositionDeltaTop
+        };
+    };
+    ViewModel.prototype.reduceRestoreState = function (state) {
+        if (typeof state.firstPosition === 'undefined') {
+            // This is a view state serialized by an older version
+            return this._reduceRestoreStateCompatibility(state);
+        }
+        var modelPosition = this.model.validatePosition(state.firstPosition);
+        var viewPosition = this.coordinatesConverter.convertModelPositionToViewPosition(modelPosition);
+        var scrollTop = this.viewLayout.getVerticalOffsetForLineNumber(viewPosition.lineNumber) - state.firstPositionDeltaTop;
+        return {
+            scrollLeft: state.scrollLeft,
+            scrollTop: scrollTop
+        };
+    };
+    ViewModel.prototype._reduceRestoreStateCompatibility = function (state) {
+        return {
+            scrollLeft: state.scrollLeft,
+            scrollTop: state.scrollTopWithoutViewZones
+        };
+    };
     ViewModel.prototype.getTabSize = function () {
         return this.model.getOptions().tabSize;
     };
@@ -326,6 +371,9 @@ var ViewModel = /** @class */ (function (_super) {
     ViewModel.prototype.setViewport = function (startLineNumber, endLineNumber, centeredLineNumber) {
         this._centeredViewLine = centeredLineNumber;
         this.lines.warmUpLookupCache(startLineNumber, endLineNumber);
+        var position = this.coordinatesConverter.convertViewPositionToModelPosition(new Position(startLineNumber, this.getLineMinColumn(startLineNumber)));
+        this.viewportStartLineTrackedRange = this.model._setTrackedRange(this.viewportStartLineTrackedRange, new Range(position.lineNumber, position.column, position.lineNumber, position.column), TrackedRangeStickiness.NeverGrowsWhenTypingAtEdges);
+        this.viewportStartLineTop = this.viewLayout.getVerticalOffsetForLineNumber(startLineNumber);
     };
     ViewModel.prototype.getLinesIndentGuides = function (startLineNumber, endLineNumber) {
         return this.lines.getViewLinesIndentGuides(startLineNumber, endLineNumber);

@@ -16,7 +16,7 @@ var __extends = (this && this.__extends) || (function () {
 import * as paths from '../../../base/common/paths.js';
 import { isLinux } from '../../../base/common/platform.js';
 import { createDecorator } from '../../instantiation/common/instantiation.js';
-import { beginsWithIgnoreCase } from '../../../base/common/strings.js';
+import { startsWithIgnoreCase } from '../../../base/common/strings.js';
 import { isEqualOrParent, isEqual } from '../../../base/common/resources.js';
 import { isUndefinedOrNull } from '../../../base/common/types.js';
 export var IFileService = createDecorator('fileService');
@@ -162,22 +162,9 @@ export function isParent(path, candidate, ignoreCase) {
         candidate += paths.nativeSep;
     }
     if (ignoreCase) {
-        return beginsWithIgnoreCase(path, candidate);
+        return startsWithIgnoreCase(path, candidate);
     }
     return path.indexOf(candidate) === 0;
-}
-export function indexOf(path, candidate, ignoreCase) {
-    if (candidate.length > path.length) {
-        return -1;
-    }
-    if (path === candidate) {
-        return 0;
-    }
-    if (ignoreCase) {
-        path = path.toLowerCase();
-        candidate = candidate.toLowerCase();
-    }
-    return path.indexOf(candidate);
 }
 /**
  * Helper method to convert a snapshot into its full string form.

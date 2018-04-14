@@ -3,8 +3,39 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import Severity from '../../../base/common/severity.js';
 import { createDecorator } from '../../instantiation/common/instantiation.js';
+import { localize } from '../../../nls.js';
+import Severity from '../../../base/common/severity.js';
+export var MarkerSeverity;
+(function (MarkerSeverity) {
+    MarkerSeverity[MarkerSeverity["Hint"] = 1] = "Hint";
+    MarkerSeverity[MarkerSeverity["Info"] = 2] = "Info";
+    MarkerSeverity[MarkerSeverity["Warning"] = 4] = "Warning";
+    MarkerSeverity[MarkerSeverity["Error"] = 8] = "Error";
+})(MarkerSeverity || (MarkerSeverity = {}));
+(function (MarkerSeverity) {
+    function compare(a, b) {
+        return b - a;
+    }
+    MarkerSeverity.compare = compare;
+    var _displayStrings = Object.create(null);
+    _displayStrings[MarkerSeverity.Error] = localize('sev.error', "Error");
+    _displayStrings[MarkerSeverity.Warning] = localize('sev.warning', "Warning");
+    _displayStrings[MarkerSeverity.Info] = localize('sev.info', "Info");
+    function toString(a) {
+        return _displayStrings[a] || '';
+    }
+    MarkerSeverity.toString = toString;
+    function fromSeverity(severity) {
+        switch (severity) {
+            case Severity.Error: return MarkerSeverity.Error;
+            case Severity.Warning: return MarkerSeverity.Warning;
+            case Severity.Info: return MarkerSeverity.Info;
+            case Severity.Ignore: return MarkerSeverity.Hint;
+        }
+    }
+    MarkerSeverity.fromSeverity = fromSeverity;
+})(MarkerSeverity || (MarkerSeverity = {}));
 export var IMarkerData;
 (function (IMarkerData) {
     var emptyString = '';
@@ -23,7 +54,7 @@ export var IMarkerData;
             result.push(emptyString);
         }
         if (markerData.severity !== void 0 && markerData.severity !== null) {
-            result.push(Severity.toString(markerData.severity));
+            result.push(MarkerSeverity.toString(markerData.severity));
         }
         else {
             result.push(emptyString);

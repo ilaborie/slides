@@ -18,7 +18,6 @@ import { ViewPart, PartFingerprints } from '../../view/viewPart.js';
 import { getOrCreateMinimapCharRenderer } from '../../../common/view/runtimeMinimapCharRenderer.js';
 import * as dom from '../../../../base/browser/dom.js';
 import { MinimapTokensColorTracker } from '../../../common/view/minimapCharRenderer.js';
-import * as editorCommon from '../../../common/editorCommon.js';
 import { createFastDomNode } from '../../../../base/browser/fastDomNode.js';
 import { RenderedLinesCollection } from '../../view/viewLayer.js';
 import { Range } from '../../../common/core/range.js';

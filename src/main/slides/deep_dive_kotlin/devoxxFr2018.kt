@@ -3,9 +3,13 @@ package deep_dive_kotlin
 import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
+import org.ilaborie.slides.content.Content
 import org.ilaborie.slides.content.Emphasis
+import org.ilaborie.slides.content.ExternalImageContent
+import org.ilaborie.slides.content.ExternalResource
 import org.ilaborie.slides.content.HtmlContent
 import org.ilaborie.slides.content.Language
+import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
@@ -73,6 +77,14 @@ fun main(args: Array<String>) {
 //        .let(::println)
 }
 
+val historiqueTitle: Content = UnorderedList(
+    listOf(
+        ExternalImageContent("Very old logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k-very-old.png")),
+        ExternalImageContent("Old logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k-old.svg")),
+        ExternalImageContent("Logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k.svg"))
+    )
+)
+
 fun prezDevoxxFr2018() =
     presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
         addScript("../scripts/navigation.js")
@@ -114,9 +126,9 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Introduction Kotlin") {
-            slideFromResource(title = "Historique", contentType = HTML) {
+            slideFromResource(title = historiqueTitle, contentType = HTML) {
                 // FIXME Igor
-                styleClass = setOf("manu")
+                styleClass = setOf("manu", "contrast")
             }
             slideFromResource(title = "Cibles", contentType = HTML) { styleClass = setOf("manu") }
 
@@ -226,7 +238,7 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Les lambdas", key = "lambda") {
-            slide(title = "function.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+            slide(title = "function.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/lambda/function.kt")
             }
             slide(title = "function.java", styleClass = setOf("code", "kotlin", "manu")) {
@@ -238,7 +250,7 @@ fun prezDevoxxFr2018() =
             slide(title = "lambda.java", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/lambda/LambdaKt.java")
             }
-            slide(title = "let.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+            slide(title = "let.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/lambda/let.kt")
             }
             slide(title = "let.java", styleClass = setOf("code", "kotlin", "manu")) {
@@ -248,7 +260,12 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Les classes", key = "class") {
-            // TODO manu
+            slide(title = "astronomy.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+                codeFromResource("/deepDiveKotlin/class/astronomy.kt")
+            }
+            slide(title = "astronomy.java", styleClass = setOf("code", "java", "manu")) {
+                codeFromResource("/deepDiveKotlin/class/Planet.java")
+            }
             slide(title = "Héritage en Kotlin", styleClass = setOf("code", "kotlin", "igor", "live-code")) {
                 codeFromResource("/deepDiveKotlin/class/inheritance.kt")
             }
@@ -276,27 +293,36 @@ fun prezDevoxxFr2018() =
             slide(title = "ByteCode d'alias", styleClass = setOf("code", "bytecode", "igor")) {
                 codeFromResource("/deepDiveKotlin/class/TypealiasKt.class.txt")
             }
-
-            // TODO manu
             slideFromResource(title = "Classe, le bilan", key = "class-bilan") {
                 styleClass = setOf("bilan", "contrast", "manu", "igor")
             }
         }
 
         part(title = "Extensions de fonctions", key = "extensions_de_fonction") {
-            slideFromResource(title = "Extension") { styleClass = setOf("manu") }
-            // TODO manu
+            slide(title = "extension.kt", styleClass = setOf("code", "kotlin", "live-code", "manu")) {
+                codeFromResource("/deepDiveKotlin/extensions_de_fonction/extension.kt")
+            }
+            slide(title = "extension.java", styleClass = setOf("java", "code", "manu")) {
+                codeFromResource("/deepDiveKotlin/extensions_de_fonction/ExtensionKt.java")
+            }
+            slideFromResource(title = "Extension") { styleClass = setOf("bilan", "contrast", "manu") }
         }
 
         part(title = "Pause") {}
 
         part(title = "ByteCode Android", key = "android") {
-            // TODO manu
             slide(title = "Compilation pour Android", key = "compile-android", styleClass = setOf("diagram", "manu")) {
                 svg("/deepDiveKotlin/android/Compile Android.svg")
             }
-//            slideFromResource(title = "Android ByteCode") { styleClass = setOf("manu") }
-//            slideFromResource(title = "ProGuard") { styleClass = setOf("manu") }
+            slide(title = "Dex", styleClass = setOf("code", "hex", "manu", "live-code")) {
+                linkText("https://source.android.com/devices/tech/dalvik/dex-format") { "Dalvik Executable format " }
+                bash { "hexdump -C HelloWorld.dex" } // TODO
+                codeFromResource("/deepDiveKotlin/android/HelloWorld.class.hex")
+            }
+            slide(title = "smali", styleClass = setOf("code", "smali", "manu", "live-code")) {
+                bash { "cat HelloWorld.smali" } // TODO
+                codeFromResource("/deepDiveKotlin/android/HelloWorld.smali")
+            }
         }
 
         part(title = "Autres structures", key = "structure") {
@@ -341,7 +367,8 @@ fun prezDevoxxFr2018() =
                   styleClass = setOf("code", "bytecode", "igor")) {
                 codeFromResource("/deepDiveKotlin/structure/Tailrec_factorialKt${'$'}tailRecFactorial$1.class.txt")
             }
-            slideFromResource(title = "Performances sur 10!") { styleClass = setOf("measure", "contrast", "igor") }
+            slideFromResource(title = HtmlContent("Performances sur <code>10!</code>"),
+                              key = "performances_sur_10_") { styleClass = setOf("measure", "contrast", "igor") }
             slideFromResource(title = "Bilan structures", key = "bilan-structures") {
                 styleClass = setOf("details", "contrast", "igor")
             }
@@ -360,7 +387,13 @@ fun prezDevoxxFr2018() =
             slide(title = "sequence.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
                 codeFromResource("/deepDiveKotlin/collection/sequence.kt")
             }
-            slideFromResource(title = "Performance des sequences") {
+            slideFromResource(title = "Performance des sequences 1/2", key = "performance_des_sequences") {
+                styleClass = setOf("measure", "contrast", "manu")
+            }
+            slide(title = "sequence2.kt", styleClass = setOf("code", "kotlin", "manu")) {
+                codeFromResource("/deepDiveKotlin/collection/sequence2.kt")
+            }
+            slideFromResource(title = "Performance des sequences 2/2", key = "performance_des_sequences2") {
                 styleClass = setOf("measure", "contrast", "manu")
             }
             slide(title = "ranges.kt", styleClass = setOf("code", "kotlin", "manu")) {
@@ -381,8 +414,20 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "Les delegates", key = "delegate") {
-            slideFromResource(title = "Delegate") { styleClass = setOf("manu") }
+            slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+                codeFromResource("/deepDiveKotlin/delegate/delegate.kt")
+            }
+            slide(title = "observable.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+                codeFromResource("/deepDiveKotlin/delegate/observables.kt")
+            }
+            slide(title = "lazy.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+                codeFromResource("/deepDiveKotlin/delegate/lazy.kt")
+            }
+            slide(title = "lateinit.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
+                codeFromResource("/deepDiveKotlin/delegate/lateinit.kt")
+            }
             // TODO manu
+            slideFromResource(title = "Delegate") { styleClass = setOf("manu") }
         }
 
         part(title = "Un peu plus sur les fonctions", key = "plus_sur_les_fonctions") {
@@ -406,17 +451,20 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "Web et Natif", contentType = HTML) {
                 styleClass = setOf("contrast", "igor", "manu")
             }
+            slideFromResource(title = "Bilan", key = "bilan-other") {
+                styleClass = setOf("contrast", "manu", "igor")
+            }
             slide(title = "trends", styleClass = setOf("contrast", "trends", "igor", "manu")) {
                 svg("/deepDiveKotlin/conclusion/trends.svg")
                 linkText("https://insights.stackoverflow.com/trends?tags=kotlin%2Cscala%2Cgroovy%2Cclojure") {
                     "Stackoverflow insights"
                 }
-
             }
             slideFromResource(title = "Kotlin vs Java", key = "kotlin_vs_java") {
                 styleClass = setOf("contrast", "manu", "igor")
             }
             slideFromResource(title = "Liens") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Liens presentation") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Merci") { styleClass = setOf("contrast", "manu", "igor") }
         }

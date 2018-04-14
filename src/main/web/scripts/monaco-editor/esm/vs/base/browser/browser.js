@@ -3,7 +3,6 @@
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 'use strict';
-import * as Platform from '../common/platform.js';
 import { Emitter } from '../common/event.js';
 var WindowManager = /** @class */ (function () {
     function WindowManager() {

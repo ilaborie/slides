@@ -11,4 +11,5 @@ import './standalone/browser/quickOpen/quickOutline.js';
 import './standalone/browser/quickOpen/gotoLine.js';
 import './standalone/browser/quickOpen/quickCommand.js';
 import './standalone/browser/toggleHighContrast/toggleHighContrast.js';
+import './standalone/browser/referenceSearch/standaloneReferenceSearch.js';
 export * from './editor.api.js';

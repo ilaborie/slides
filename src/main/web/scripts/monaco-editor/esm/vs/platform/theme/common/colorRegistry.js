@@ -16,11 +16,15 @@ var ColorRegistry = /** @class */ (function () {
         this.colorReferenceSchema = { type: 'string', enum: [], enumDescriptions: [] };
         this.colorsById = {};
     }
-    ColorRegistry.prototype.registerColor = function (id, defaults, description, needsTransparency) {
+    ColorRegistry.prototype.registerColor = function (id, defaults, description, needsTransparency, deprecationMessage) {
         if (needsTransparency === void 0) { needsTransparency = false; }
         var colorContribution = { id: id, description: description, defaults: defaults, needsTransparency: needsTransparency };
         this.colorsById[id] = colorContribution;
-        this.colorSchema.properties[id] = { type: 'string', description: description, format: 'color-hex', default: '#ff0000' };
+        var propertySchema = { type: 'string', description: description, format: 'color-hex', default: '#ff0000' };
+        if (deprecationMessage) {
+            propertySchema.deprecationMessage = deprecationMessage;
+        }
+        this.colorSchema.properties[id] = propertySchema;
         this.colorReferenceSchema.enum.push(id);
         this.colorReferenceSchema.enumDescriptions.push(description);
         return id;
@@ -59,8 +63,8 @@ var ColorRegistry = /** @class */ (function () {
 }());
 var colorRegistry = new ColorRegistry();
 platform.Registry.add(Extensions.ColorContribution, colorRegistry);
-export function registerColor(id, defaults, description, needsTransparency) {
-    return colorRegistry.registerColor(id, defaults, description, needsTransparency);
+export function registerColor(id, defaults, description, needsTransparency, deprecationMessage) {
+    return colorRegistry.registerColor(id, defaults, description, needsTransparency, deprecationMessage);
 }
 export function getColorRegistry() {
     return colorRegistry;
@@ -105,7 +109,6 @@ export var listActiveSelectionForeground = registerColor('list.activeSelectionFo
 export var listInactiveSelectionBackground = registerColor('list.inactiveSelectionBackground', { dark: '#3F3F46', light: '#CCCEDB', hc: null }, nls.localize('listInactiveSelectionBackground', "List/Tree background color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not."));
 export var listInactiveSelectionForeground = registerColor('list.inactiveSelectionForeground', { dark: null, light: null, hc: null }, nls.localize('listInactiveSelectionForeground', "List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not."));
 export var listInactiveFocusBackground = registerColor('list.inactiveFocusBackground', { dark: '#313135', light: '#d8dae6', hc: null }, nls.localize('listInactiveSelectionBackground', "List/Tree background color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not."));
-export var listInactiveFocusForeground = registerColor('list.inactiveFocusForeground', { dark: null, light: null, hc: null }, nls.localize('listInactiveSelectionForeground', "List/Tree foreground color for the selected item when the list/tree is inactive. An active list/tree has keyboard focus, an inactive does not."));
 export var listHoverBackground = registerColor('list.hoverBackground', { dark: '#2A2D2E', light: '#F0F0F0', hc: null }, nls.localize('listHoverBackground', "List/Tree background when hovering over items using the mouse."));
 export var listHoverForeground = registerColor('list.hoverForeground', { dark: null, light: null, hc: null }, nls.localize('listHoverForeground', "List/Tree foreground when hovering over items using the mouse."));
 export var listDropBackground = registerColor('list.dropBackground', { dark: listFocusBackground, light: listFocusBackground, hc: null }, nls.localize('listDropBackground', "List/Tree drag and drop background when moving items around using the mouse."));
@@ -194,8 +197,8 @@ export var overviewRulerCurrentContentForeground = registerColor('editorOverview
 export var overviewRulerIncomingContentForeground = registerColor('editorOverviewRuler.incomingContentForeground', { dark: transparent(mergeIncomingHeaderBackground, rulerTransparency), light: transparent(mergeIncomingHeaderBackground, rulerTransparency), hc: mergeBorder }, nls.localize('overviewRulerIncomingContentForeground', 'Incoming overview ruler foreground for inline merge-conflicts.'));
 export var overviewRulerCommonContentForeground = registerColor('editorOverviewRuler.commonContentForeground', { dark: transparent(mergeCommonHeaderBackground, rulerTransparency), light: transparent(mergeCommonHeaderBackground, rulerTransparency), hc: mergeBorder }, nls.localize('overviewRulerCommonContentForeground', 'Common ancestor overview ruler foreground for inline merge-conflicts.'));
 var findMatchColorDefault = new Color(new RGBA(246, 185, 77, 0.7));
-export var overviewRulerFindMatchForeground = registerColor('editorOverviewRuler.findMatchForeground', { dark: findMatchColorDefault, light: findMatchColorDefault, hc: findMatchColorDefault }, nls.localize('overviewRulerFindMatchForeground', 'Overview ruler marker color for find matches.'));
-export var overviewRulerSelectionHighlightForeground = registerColor('editorOverviewRuler.selectionHighlightForeground', { dark: '#A0A0A0', light: '#A0A0A0', hc: '#A0A0A0' }, nls.localize('overviewRulerSelectionHighlightForeground', 'Overview ruler marker color for selection highlights.'));
+export var overviewRulerFindMatchForeground = registerColor('editorOverviewRuler.findMatchForeground', { dark: findMatchColorDefault, light: findMatchColorDefault, hc: findMatchColorDefault }, nls.localize('overviewRulerFindMatchForeground', 'Overview ruler marker color for find matches. The color must not be opaque to not hide underlying decorations.'), true);
+export var overviewRulerSelectionHighlightForeground = registerColor('editorOverviewRuler.selectionHighlightForeground', { dark: '#A0A0A0CC', light: '#A0A0A0CC', hc: '#A0A0A0CC' }, nls.localize('overviewRulerSelectionHighlightForeground', 'Overview ruler marker color for selection highlights. The color must not be opaque to not hide underlying decorations.'), true);
 // ----- color functions
 export function darken(colorValue, factor) {
     return function (theme) {

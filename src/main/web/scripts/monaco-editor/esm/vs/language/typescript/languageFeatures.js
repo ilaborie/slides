@@ -134,7 +134,7 @@ var DiagnostcsAdapter = /** @class */ (function (_super) {
         var _a = this._offsetToPosition(resource, diag.start), startLineNumber = _a.lineNumber, startColumn = _a.column;
         var _b = this._offsetToPosition(resource, diag.start + diag.length), endLineNumber = _b.lineNumber, endColumn = _b.column;
         return {
-            severity: monaco.Severity.Error,
+            severity: monaco.MarkerSeverity.Error,
             startLineNumber: startLineNumber,
             startColumn: startColumn,
             endLineNumber: endLineNumber,

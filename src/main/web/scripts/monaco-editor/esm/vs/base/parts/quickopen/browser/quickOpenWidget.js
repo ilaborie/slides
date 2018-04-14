@@ -165,6 +165,7 @@ var QuickOpenWidget = /** @class */ (function () {
                     indentPixels: 0,
                     alwaysFocused: true,
                     verticalScrollMode: ScrollbarVisibility.Visible,
+                    horizontalScrollMode: ScrollbarVisibility.Hidden,
                     ariaLabel: nls.localize('treeAriaLabel', "Quick Picker"),
                     keyboardSupport: _this.options.keyboardSupport,
                     preventRootFocus: true
@@ -234,7 +235,7 @@ var QuickOpenWidget = /** @class */ (function () {
             }).
                 clone();
         })
-            .addClass('quick-open-widget')
+            .addClass('monaco-quick-open-widget')
             .build(this.container);
         // Support layout
         if (this.layoutDimensions) {
@@ -334,7 +335,7 @@ var QuickOpenWidget = /** @class */ (function () {
             // Transition into quick navigate mode if not yet done
             if (!this.quickNavigateConfiguration && quickNavigate) {
                 this.quickNavigateConfiguration = quickNavigate;
-                this.tree.DOMFocus();
+                this.tree.domFocus();
             }
             // Navigate
             this.navigateInTree(next ? 18 /* DownArrow */ : 16 /* UpArrow */);
@@ -420,7 +421,7 @@ var QuickOpenWidget = /** @class */ (function () {
         if (this.quickNavigateConfiguration) {
             this.inputContainer.hide();
             this.builder.show();
-            this.tree.DOMFocus();
+            this.tree.domFocus();
         }
         else {
             this.inputContainer.show();
@@ -604,7 +605,7 @@ var QuickOpenWidget = /** @class */ (function () {
         this.progressBar.stop().getContainer().hide();
         // Clear Focus
         if (this.tree.isDOMFocused()) {
-            this.tree.DOMBlur();
+            this.tree.domBlur();
         }
         else if (this.inputBox.hasFocus()) {
             this.inputBox.blur();
@@ -628,11 +629,14 @@ var QuickOpenWidget = /** @class */ (function () {
             this.inputBox.setPlaceHolder(placeHolder);
         }
     };
-    QuickOpenWidget.prototype.setValue = function (value, selection) {
+    QuickOpenWidget.prototype.setValue = function (value, selectionOrStableHint) {
         if (this.inputBox) {
             this.inputBox.value = value;
-            if (Array.isArray(selection)) {
-                var start = selection[0], end = selection[1];
+            if (selectionOrStableHint === null) {
+                // null means stable-selection
+            }
+            else if (Array.isArray(selectionOrStableHint)) {
+                var start = selectionOrStableHint[0], end = selectionOrStableHint[1];
                 this.inputBox.select({ start: start, end: end });
             }
             else {

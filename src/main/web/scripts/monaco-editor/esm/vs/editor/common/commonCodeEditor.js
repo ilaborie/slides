@@ -35,7 +35,7 @@ import { EndOfLinePreference } from './model.js';
 var EDITOR_ID = 0;
 var CommonCodeEditor = /** @class */ (function (_super) {
     __extends(CommonCodeEditor, _super);
-    function CommonCodeEditor(domElement, options, instantiationService, contextKeyService) {
+    function CommonCodeEditor(domElement, options, isSimpleWidget, instantiationService, contextKeyService) {
         var _this = _super.call(this) || this;
         _this._onDidDispose = _this._register(new Emitter());
         _this.onDidDispose = _this._onDidDispose.event;
@@ -59,14 +59,12 @@ var CommonCodeEditor = /** @class */ (function (_super) {
         _this.onDidChangeCursorSelection = _this._onDidChangeCursorSelection.event;
         _this._onDidLayoutChange = _this._register(new Emitter());
         _this.onDidLayoutChange = _this._onDidLayoutChange.event;
-        _this._onDidFocusEditorText = _this._register(new Emitter());
-        _this.onDidFocusEditorText = _this._onDidFocusEditorText.event;
-        _this._onDidBlurEditorText = _this._register(new Emitter());
-        _this.onDidBlurEditorText = _this._onDidBlurEditorText.event;
-        _this._onDidFocusEditor = _this._register(new Emitter());
-        _this.onDidFocusEditor = _this._onDidFocusEditor.event;
-        _this._onDidBlurEditor = _this._register(new Emitter());
-        _this.onDidBlurEditor = _this._onDidBlurEditor.event;
+        _this._editorTextFocus = _this._register(new BooleanEventEmitter());
+        _this.onDidFocusEditorText = _this._editorTextFocus.onDidChangeToTrue;
+        _this.onDidBlurEditorText = _this._editorTextFocus.onDidChangeToFalse;
+        _this._editorFocus = _this._register(new BooleanEventEmitter());
+        _this.onDidFocusEditor = _this._editorFocus.onDidChangeToTrue;
+        _this.onDidBlurEditor = _this._editorFocus.onDidChangeToFalse;
         _this._onWillType = _this._register(new Emitter());
         _this.onWillType = _this._onWillType.event;
         _this._onDidType = _this._register(new Emitter());
@@ -77,6 +75,7 @@ var CommonCodeEditor = /** @class */ (function (_super) {
         _this.id = (++EDITOR_ID);
         _this._decorationTypeKeysToIds = {};
         _this._decorationTypeSubtypes = {};
+        _this.isSimpleWidget = isSimpleWidget;
         options = options || {};
         _this._configuration = _this._register(_this._createConfiguration(options));
         _this._register(_this._configuration.onDidChange(function (e) {
@@ -461,7 +460,7 @@ var CommonCodeEditor = /** @class */ (function (_super) {
             }
         }
         var cursorState = this.cursor.saveState();
-        var viewState = this.viewModel.viewLayout.saveState();
+        var viewState = this.viewModel.saveState();
         return {
             cursorState: cursorState,
             viewState: viewState,
@@ -785,6 +784,33 @@ var CommonCodeEditor = /** @class */ (function (_super) {
     return CommonCodeEditor;
 }(Disposable));
 export { CommonCodeEditor };
+var BooleanEventEmitter = /** @class */ (function (_super) {
+    __extends(BooleanEventEmitter, _super);
+    function BooleanEventEmitter() {
+        var _this = _super.call(this) || this;
+        _this._onDidChangeToTrue = _this._register(new Emitter());
+        _this.onDidChangeToTrue = _this._onDidChangeToTrue.event;
+        _this._onDidChangeToFalse = _this._register(new Emitter());
+        _this.onDidChangeToFalse = _this._onDidChangeToFalse.event;
+        _this._value = 0 /* NotSet */;
+        return _this;
+    }
+    BooleanEventEmitter.prototype.setValue = function (_value) {
+        var value = (_value ? 2 /* True */ : 1 /* False */);
+        if (this._value === value) {
+            return;
+        }
+        this._value = value;
+        if (this._value === 2 /* True */) {
+            this._onDidChangeToTrue.fire();
+        }
+        else if (this._value === 1 /* False */) {
+            this._onDidChangeToFalse.fire();
+        }
+    };
+    return BooleanEventEmitter;
+}(Disposable));
+export { BooleanEventEmitter };
 var EditorContextKeysManager = /** @class */ (function (_super) {
     __extends(EditorContextKeysManager, _super);
     function EditorContextKeysManager(editor, contextKeyService) {
@@ -792,7 +818,8 @@ var EditorContextKeysManager = /** @class */ (function (_super) {
         _this._editor = editor;
         contextKeyService.createKey('editorId', editor.getId());
         _this._editorFocus = EditorContextKeys.focus.bindTo(contextKeyService);
-        _this._editorTextFocus = EditorContextKeys.textFocus.bindTo(contextKeyService);
+        _this._textInputFocus = EditorContextKeys.textInputFocus.bindTo(contextKeyService);
+        _this._editorTextFocus = EditorContextKeys.editorTextFocus.bindTo(contextKeyService);
         _this._editorTabMovesFocus = EditorContextKeys.tabMovesFocus.bindTo(contextKeyService);
         _this._editorReadonly = EditorContextKeys.readOnly.bindTo(contextKeyService);
         _this._hasMultipleSelections = EditorContextKeys.hasMultipleSelections.bindTo(contextKeyService);
@@ -825,8 +852,9 @@ var EditorContextKeysManager = /** @class */ (function (_super) {
         }
     };
     EditorContextKeysManager.prototype._updateFromFocus = function () {
-        this._editorFocus.set(this._editor.hasWidgetFocus());
-        this._editorTextFocus.set(this._editor.isFocused());
+        this._editorFocus.set(this._editor.hasWidgetFocus() && !this._editor.isSimpleWidget);
+        this._editorTextFocus.set(this._editor.isFocused() && !this._editor.isSimpleWidget);
+        this._textInputFocus.set(this._editor.isFocused());
     };
     return EditorContextKeysManager;
 }(Disposable));

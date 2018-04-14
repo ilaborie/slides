@@ -197,7 +197,7 @@ var QuickFixAction = /** @class */ (function (_super) {
             alias: 'Quick Fix',
             precondition: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasCodeActionsProvider),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 2048 /* CtrlCmd */ | 84 /* US_DOT */
             }
         }) || this;
@@ -269,7 +269,7 @@ var RefactorAction = /** @class */ (function (_super) {
             alias: 'Refactor',
             precondition: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasCodeActionsProvider),
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: 256 /* WinCtrl */ | 1024 /* Shift */ | 48 /* KEY_R */
             }
         }) || this;

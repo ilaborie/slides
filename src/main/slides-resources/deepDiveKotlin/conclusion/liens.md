@@ -3,4 +3,3 @@
 * [Forum](https://discuss.kotlinlang.org/)
 * [Slack](https://kotlinslack.herokuapp.com/)
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
-* [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)

@@ -375,11 +375,20 @@ var sizeUtils = {
     getBorderLeftWidth: function (element) {
         return getDimension(element, 'border-left-width', 'borderLeftWidth');
     },
+    getBorderRightWidth: function (element) {
+        return getDimension(element, 'border-right-width', 'borderRightWidth');
+    },
     getBorderTopWidth: function (element) {
         return getDimension(element, 'border-top-width', 'borderTopWidth');
     },
     getBorderBottomWidth: function (element) {
         return getDimension(element, 'border-bottom-width', 'borderBottomWidth');
+    },
+    getPaddingLeft: function (element) {
+        return getDimension(element, 'padding-left', 'paddingLeft');
+    },
+    getPaddingRight: function (element) {
+        return getDimension(element, 'padding-right', 'paddingRight');
     },
     getPaddingTop: function (element) {
         return getDimension(element, 'padding-top', 'paddingTop');
@@ -474,6 +483,11 @@ export var StandardWindow = new /** @class */ (function () {
 export function getTotalWidth(element) {
     var margin = sizeUtils.getMarginLeft(element) + sizeUtils.getMarginRight(element);
     return element.offsetWidth + margin;
+}
+export function getContentWidth(element) {
+    var border = sizeUtils.getBorderLeftWidth(element) + sizeUtils.getBorderRightWidth(element);
+    var padding = sizeUtils.getPaddingLeft(element) + sizeUtils.getPaddingRight(element);
+    return element.offsetWidth - border - padding;
 }
 export function getTotalScrollWidth(element) {
     var margin = sizeUtils.getMarginLeft(element) + sizeUtils.getMarginRight(element);
@@ -840,7 +854,7 @@ export function domContentLoaded() {
     return new TPromise(function (c, e) {
         var readyState = document.readyState;
         if (readyState === 'complete' || (document && document.body !== null)) {
-            window.setImmediate(c);
+            platform.setImmediate(c);
         }
         else {
             window.addEventListener('DOMContentLoaded', c, false);

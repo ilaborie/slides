@@ -5,9 +5,9 @@
 'use strict';
 import { compareAnything } from '../../../common/comparers.js';
 import { matchesPrefix, createMatches, matchesCamelCase, isUpper } from '../../../common/filters.js';
-import { isEqual, nativeSep } from '../../../common/paths.js';
-import { isWindows } from '../../../common/platform.js';
-import { stripWildcards } from '../../../common/strings.js';
+import { nativeSep } from '../../../common/paths.js';
+import { isWindows, isLinux } from '../../../common/platform.js';
+import { stripWildcards, equalsIgnoreCase } from '../../../common/strings.js';
 var NO_MATCH = 0;
 var NO_SCORE = [NO_MATCH, []];
 // const DEBUG = false;
@@ -201,7 +201,7 @@ export function prepareQuery(original) {
     if (original) {
         value = stripWildcards(original).replace(/\s/g, ''); // get rid of all wildcards and whitespace
         if (isWindows) {
-            value = value.replace(/\//g, '\\'); // Help Windows users to search for paths when using slash
+            value = value.replace(/\//g, nativeSep); // Help Windows users to search for paths when using slash
         }
         lowercase = value.toLowerCase();
         containsPathSeparator = value.indexOf(nativeSep) >= 0;
@@ -234,7 +234,7 @@ export function scoreItem(item, query, fuzzy, accessor, cache) {
 }
 function doScoreItem(label, description, path, query, fuzzy) {
     // 1.) treat identity matches on full path highest
-    if (path && isEqual(query.original, path, true)) {
+    if (path && isLinux ? query.original === path : equalsIgnoreCase(query.original, path)) {
         return { score: PATH_IDENTITY_SCORE, labelMatch: [{ start: 0, end: label.length }], descriptionMatch: description ? [{ start: 0, end: description.length }] : void 0 };
     }
     // We only consider label matches if the query is not including file path separators

@@ -32,7 +32,7 @@ import { IThemeService } from '../../platform/theme/common/themeService.js';
 var CodeEditor = /** @class */ (function (_super) {
     __extends(CodeEditor, _super);
     function CodeEditor(domElement, options, instantiationService, codeEditorService, commandService, contextKeyService, themeService) {
-        return _super.call(this, domElement, options, instantiationService, codeEditorService, commandService, contextKeyService, themeService) || this;
+        return _super.call(this, domElement, options, false, instantiationService, codeEditorService, commandService, contextKeyService, themeService) || this;
     }
     CodeEditor.prototype._getContributions = function () {
         return EditorExtensionsRegistry.getEditorContributions();

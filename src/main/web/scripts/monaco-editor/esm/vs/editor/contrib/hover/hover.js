@@ -34,15 +34,16 @@ import { MouseTargetType } from '../../browser/editorBrowser.js';
 import { ModesContentHoverWidget } from './modesContentHover.js';
 import { ModesGlyphHoverWidget } from './modesGlyphHover.js';
 import { dispose } from '../../../base/common/lifecycle.js';
-import { registerThemingParticipant } from '../../../platform/theme/common/themeService.js';
+import { registerThemingParticipant, IThemeService } from '../../../platform/theme/common/themeService.js';
 import { editorHoverHighlight, editorHoverBackground, editorHoverBorder, textLinkForeground, textCodeBlockBackground } from '../../../platform/theme/common/colorRegistry.js';
 import { EditorContextKeys } from '../../common/editorContextKeys.js';
 import { MarkdownRenderer } from '../markdown/markdownRenderer.js';
 var ModesHoverController = /** @class */ (function () {
-    function ModesHoverController(editor, _openerService, _modeService) {
+    function ModesHoverController(editor, _openerService, _modeService, _themeService) {
         var _this = this;
         this._openerService = _openerService;
         this._modeService = _modeService;
+        this._themeService = _themeService;
         this._editor = editor;
         this._toUnhook = [];
         this._isMouseDown = false;
@@ -149,7 +150,7 @@ var ModesHoverController = /** @class */ (function () {
     };
     ModesHoverController.prototype._createHoverWidget = function () {
         var renderer = new MarkdownRenderer(this._editor, this._modeService, this._openerService);
-        this._contentWidget = new ModesContentHoverWidget(this._editor, renderer);
+        this._contentWidget = new ModesContentHoverWidget(this._editor, renderer, this._themeService);
         this._glyphWidget = new ModesGlyphHoverWidget(this._editor, renderer);
     };
     ModesHoverController.prototype.showContentHover = function (range, focus) {
@@ -172,7 +173,8 @@ var ModesHoverController = /** @class */ (function () {
     ModesHoverController.ID = 'editor.contrib.hover';
     ModesHoverController = __decorate([
         __param(1, IOpenerService),
-        __param(2, IModeService)
+        __param(2, IModeService),
+        __param(3, IThemeService)
     ], ModesHoverController);
     return ModesHoverController;
 }());
@@ -186,7 +188,7 @@ var ShowHoverAction = /** @class */ (function (_super) {
             alias: 'Show Hover',
             precondition: null,
             kbOpts: {
-                kbExpr: EditorContextKeys.textFocus,
+                kbExpr: EditorContextKeys.editorTextFocus,
                 primary: KeyChord(2048 /* CtrlCmd */ | 41 /* KEY_K */, 2048 /* CtrlCmd */ | 39 /* KEY_I */)
             }
         }) || this;

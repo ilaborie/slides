@@ -5,8 +5,8 @@ buildscript {
     ext{
         kotlinVersion = '1.2.31'
         serializationVersion = '0.4.2'
-        feignVersion = '9.5.1'
-        loggingVersion = '1.4.9'
+        feignVersion = '9.6.0'
+        loggingVersion = '1.5.4'
         logbackVersion = '1.3.0-alpha4'
     }
 
@@ -87,7 +87,7 @@ task deepDiveKotlin(type: JavaExec) {
 //    main = "js_functional.Js_functionalKt"
 //}
 
-//task demo(type: JavaExec) {
-//    classpath sourceSets.main.runtimeClasspath
-//    main = "demo.DemoKt"
-//}
+task demo(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "demo.DemoKt"
+}

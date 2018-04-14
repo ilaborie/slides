@@ -87,4 +87,19 @@ export var locale = _locale;
 export var translationsConfigFile = _translationsConfigFile;
 var _globals = (typeof self === 'object' ? self : typeof global === 'object' ? global : {});
 export var globals = _globals;
+var _setImmediate = null;
+export function setImmediate(callback) {
+    if (_setImmediate === null) {
+        if (globals.setImmediate) {
+            _setImmediate = globals.setImmediate.bind(globals);
+        }
+        else if (typeof process !== 'undefined' && typeof process.nextTick === 'function') {
+            _setImmediate = process.nextTick.bind(process);
+        }
+        else {
+            _setImmediate = globals.setTimeout.bind(globals);
+        }
+    }
+    return _setImmediate(callback);
+}
 export var OS = (_isMacintosh ? 2 /* Macintosh */ : (_isWindows ? 1 /* Windows */ : 3 /* Linux */));

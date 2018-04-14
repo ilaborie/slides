@@ -5,17 +5,22 @@
 'use strict';
 import { globals } from '../common/platform.js';
 import { logOnceWebWorkerWarning } from '../common/worker/simpleWorker.js';
-function getWorkerUrl(workerId, label) {
-    // Option for hosts to overwrite the worker script url (used in the standalone editor)
-    if (globals.MonacoEnvironment && typeof globals.MonacoEnvironment.getWorkerUrl === 'function') {
-        return globals.MonacoEnvironment.getWorkerUrl(workerId, label);
+function getWorker(workerId, label) {
+    // Option for hosts to overwrite the worker script (used in the standalone editor)
+    if (globals.MonacoEnvironment) {
+        if (typeof globals.MonacoEnvironment.getWorker === 'function') {
+            return globals.MonacoEnvironment.getWorker(workerId, label);
+        }
+        if (typeof globals.MonacoEnvironment.getWorkerUrl === 'function') {
+            return new Worker(globals.MonacoEnvironment.getWorkerUrl(workerId, label));
+        }
     }
     // ESM-comment-begin
     // 	if (typeof require === 'function') {
-    // 		return require.toUrl('./' + workerId) + '#' + label;
+    // 		return new Worker(require.toUrl('./' + workerId) + '#' + label);
     // 	}
     // ESM-comment-end
-    throw new Error("You must define a function MonacoEnvironment.getWorkerUrl");
+    throw new Error("You must define a function MonacoEnvironment.getWorkerUrl or MonacoEnvironment.getWorker");
 }
 /**
  * A worker that uses HTML5 web workers so that is has
@@ -24,7 +29,7 @@ function getWorkerUrl(workerId, label) {
 var WebWorker = /** @class */ (function () {
     function WebWorker(moduleId, id, label, onMessageCallback, onErrorCallback) {
         this.id = id;
-        this.worker = new Worker(getWorkerUrl('workerMain.js', label));
+        this.worker = getWorker('workerMain.js', label);
         this.postMessage(moduleId);
         this.worker.onmessage = function (ev) {
             onMessageCallback(ev.data);
