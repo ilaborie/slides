@@ -297,17 +297,6 @@ fun prezDevoxxFr2018() =
                 styleClass = setOf("bilan", "contrast", "manu", "igor")
             }
         }
-
-        part(title = "Extensions de fonctions", key = "extensions_de_fonction") {
-            slide(title = "extension.kt", styleClass = setOf("code", "kotlin", "live-code", "manu")) {
-                codeFromResource("/deepDiveKotlin/extensions_de_fonction/extension.kt")
-            }
-            slide(title = "extension.java", styleClass = setOf("java", "code", "manu")) {
-                codeFromResource("/deepDiveKotlin/extensions_de_fonction/ExtensionKt.java")
-            }
-            slideFromResource(title = "Extension") { styleClass = setOf("bilan", "contrast", "manu") }
-        }
-
         part(title = "Pause") {}
 
         part(title = "ByteCode Android", key = "android") {
@@ -384,6 +373,16 @@ fun prezDevoxxFr2018() =
             slideFromResource(title = "Bilan structures", key = "bilan-structures") {
                 styleClass = setOf("details", "contrast", "igor")
             }
+        }
+
+        part(title = "Extensions de fonctions", key = "extensions_de_fonction") {
+            slide(title = "extension.kt", styleClass = setOf("code", "kotlin", "live-code", "manu")) {
+                codeFromResource("/deepDiveKotlin/extensions_de_fonction/extension.kt")
+            }
+            slide(title = "extension.java", styleClass = setOf("java", "code", "manu")) {
+                codeFromResource("/deepDiveKotlin/extensions_de_fonction/ExtensionKt.java")
+            }
+            slideFromResource(title = "Extension") { styleClass = setOf("bilan", "contrast", "manu") }
         }
 
         part(title = "Les collections", key = "collection") {

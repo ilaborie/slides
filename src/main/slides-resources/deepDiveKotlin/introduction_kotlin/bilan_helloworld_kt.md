@@ -1,5 +1,5 @@
 
-* Kotlin ajoute des contrôles
+* 👮‍♂️ Kotlin ajoute des contrôles
 * du coup on a besoin de JARs en plus
 
 | jar                           |taille|
@@ -14,4 +14,4 @@
 | jackson-databind-2.9.5.jar    | 1.3M | 
  
 
-* Performances ?
+* 🏎 Performances ?

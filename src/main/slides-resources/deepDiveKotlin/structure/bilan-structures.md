@@ -12,6 +12,6 @@
     <h4 id="-tips">✨ Tips</h4>
     <ul>
         <li>privilégier les <code>when</code> si vous avez plus de 2 cas</li>
-        <li>si vous faites des fonctions recursives, faites les <code>tailrec</code></li>
+        <li>si vous faites des fonctions récursives, faites les <code>tailrec</code></li>
     </ul>
 </div>

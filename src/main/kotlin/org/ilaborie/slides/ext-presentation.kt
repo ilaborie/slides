@@ -61,7 +61,7 @@ fun Presentation.buildAll(dist: File, key: String) {
     val output = dist.resolve(this.id)
     output.mkdirs()
     this.writeHtmlTo(output, key)
-//    this.writeMarkdownTo(output, key)
+    this.writeMarkdownTo(output, key)
     htmlToPdf(output.resolve("$key.html"), output.resolve("$key.pdf"))
 }
 
