@@ -314,11 +314,11 @@ pre[class*="language-"] {
 .slides-nav strong, .slides-nav nav {
   font-size: .25rem; }
 
-section.code.live-code article, section.code.play article {
+section.code.live-code article, section.code.play article, section.blur article {
   position: relative; }
-  section.code.live-code article > *, section.code.play article > * {
+  section.code.live-code article > *, section.code.play article > *, section.blur article > * {
     filter: blur(8px); }
-  section.code.live-code article::after, section.code.play article::after {
+  section.code.live-code article::after, section.code.play article::after, section.blur article::after {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -562,14 +562,34 @@ section#generics article pre::after, section#star article pre::after {
 
 section#part_pause {
   background: url("./assets/devoxx-fr/break.png");
-  background-size: cover; }
+  background-size: cover;
+  filter: blur(8px); }
   section#part_pause h2 {
     color: rgba(0, 0, 0, 0.5);
     text-shadow: none;
-    font-size: 6rem; }
+    font-size: 6rem;
+    cursor: pointer; }
     section#part_pause h2::before {
       content: '⏸ ';
       color: white; }
+  section#part_pause article {
+    font-size: 4rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: var(--codeFont);
+    padding: 1rem; }
+    section#part_pause article .sep::before {
+      content: ':';
+      color: rgba(0, 0, 0, 0.75); }
+    section#part_pause article .digit {
+      background-color: rgba(0, 0, 0, 0.75);
+      border-radius: 1rem;
+      color: rgba(255, 255, 255, 0.75);
+      margin: .125rem;
+      width: 1.5ch;
+      display: flex;
+      justify-content: center; }
 
 section#performances_sur_10_ article blockquote p {
   font-size: 1rem; }
@@ -647,3 +667,16 @@ section#merci {
   background-size: cover; }
   section#merci h1 {
     margin: 5rem 0; }
+
+@media print {
+  .devoxx-fr section {
+    font-size: .9rem; }
+  section.code.live-code article > *, section.code.play article > *, section.blur article > * {
+    filter: none; }
+  section.code.live-code article::after, section.code.play article::after, section.blur article::after {
+    content: ''; }
+  section pre code {
+    font-size: 16px;
+    line-height: 18px; }
+  section#part_pause {
+    filter: none; } }

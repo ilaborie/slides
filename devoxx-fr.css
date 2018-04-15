@@ -68,7 +68,8 @@
       background: url("./assets/devoxx-fr/logo.png") no-repeat right, url("./assets/devoxx-fr/bandeau_bas.png") no-repeat left;
       background-size: contain, cover;
       font-size: .8rem;
-      max-height: 2.5rem; }
+      max-height: 2.5rem;
+      text-shadow: 0.05em 0.05em rgba(0, 0, 0, 0.5); }
     .devoxx-fr main section.cover::after {
       background: url("./assets/devoxx-fr/logo.png") no-repeat right;
       background-size: contain; }
