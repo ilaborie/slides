@@ -103,6 +103,7 @@
       background-size: contain, cover;
       font-size: .8rem;
       max-height: 2.5rem;
+      text-shadow: .05em .05em rgba(0, 0, 0, .5);
     }
 
     &.cover::after {

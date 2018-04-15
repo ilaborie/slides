@@ -7,7 +7,7 @@
   }
 }
 
-section.code.live-code, section.code.play {
+section.code.live-code, section.code.play, section.blur {
   article {
     position: relative;
     & > * {
@@ -353,15 +353,38 @@ section#generics, section#star {
 section#part_pause {
   background: url('./assets/devoxx-fr/break.png');
   background-size: cover;
+  filter: blur(8px);
 
   h2 {
     color: rgba(0, 0, 0, .5);
     text-shadow: none;
     font-size: 6rem;
-
+    cursor: pointer;
     &::before {
       content: '⏸ ';
       color: white;
+    }
+  }
+
+  article {
+    font-size: 4rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: var(--codeFont);
+    padding: 1rem;
+    .sep::before {
+      content: ':';
+      color: rgba(0, 0, 0, .75);
+    }
+    .digit {
+      background-color: rgba(0, 0, 0, .75);
+      border-radius: 1rem;
+      color: hsla(0, 100%, 100%, .75);
+      margin: .125rem;
+      width: 1.5ch;
+      display: flex;
+      justify-content: center;
     }
   }
 }
