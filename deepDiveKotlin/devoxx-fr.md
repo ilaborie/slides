@@ -847,11 +847,11 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 2,
-   d1 = {"\u0000\u0014\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005\u001a\b\u0010\u0006\u001a\u0004\u0018\u00010\u0004"},
-   d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V", "something"}
+        mv = {1, 1, 9},
+        bv = {1, 0, 2},
+        k = 2,
+        d1 = {"\u0000\u0014\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005\u001a\b\u0010\u0006\u001a\u0004\u0018\u00010\u0004"},
+        d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V", "something"}
 )
 public final class NullSafetyKt {
    public static final void main(@NotNull String[] args) {
@@ -3282,7 +3282,7 @@ public final class _09_structures.recusion.Rec_factorialKt {
 fun tailRecFactorial(n: Int): Int {
 
     tailrec fun aux(n: Int, acc: Int): Int =
-        if (n < 1) 1 else aux(n - 1, acc * n)
+        if (n < 1) acc else aux(n - 1, acc * n)
 
     return aux(n, 1)
 }
@@ -3367,12 +3367,16 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 <https://github.com/MonkeyPatchIo/kotlin-perf>
 
-| Benchmark              | Mode  | Cnt |         Score |          Error | Units |
-|------------------------|-------|-----|---------------|----------------|-------|
-| factorialJava          | thrpt | 200 | 274141213.561 | ± 28963758.069 | ops/s |
-| factorialKotlinFor     | thrpt | 200 | 267717955.205 | ±  8457315.205 | ops/s |
-| factorialKotlinRec     | thrpt | 200 |  56270660.700 | ±  2453418.383 | ops/s |
-| factorialKotlinTailRec | thrpt | 200 | 341898899.761 | ± 11456349.191 | ops/s |
+| Benchmark              | Mode  | Cnt |         Score |         Error | Units |
+|------------------------|-------|-----|---------------|---------------|-------|
+| factorialJavaFor       | thrpt | 200 | 433372258.508 | ± 1218796.228 | ops/s |
+| factorialKotlinFor     | thrpt | 200 | 374900724.013 | ± 1836466.839 | ops/s |
+| factorialJavaRec       | thrpt | 200 |  71945600.003 | ± 1621282.609 | ops/s |
+| factorialKotlinRec     | thrpt | 200 |  75889169.327 | ±  803516.130 | ops/s |
+| factorialJavaTailRec   | thrpt | 200 |  74708348.540 | ±  385285.112 | ops/s |
+| factorialKotlinTailRec | thrpt | 200 | 432005903.950 | ± 2558012.821 | ops/s |
+| factorialJavaReduce    | thrpt | 200 |  21560855.907 | ±  586144.742 | ops/s |
+| factorialKotlinReduce  | thrpt | 200 |  99169022.775 | ± 2711794.007 | ops/s |
 
 
 
@@ -3456,7 +3460,7 @@ public final class ExtensionKt {
 ```
 
 
-* Permet d'enrichire les APIs Java
+* Permet d'enrichir les APIs Java
   * [Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/languages.html#kotlin-spring-projects-in-kotlin)
   * [RxKotlin](https://github.com/ReactiveX/RxKotlin)
   * [SparkJava](http://sparkjava.com/news#spark-kotlin-released)
@@ -4491,6 +4495,35 @@ fun main(args: Array<String>) {
 
 ```
 
+```java
+package _13_advanced_function;
+
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+        mv = {1, 1, 9},
+        bv = {1, 0, 2},
+        k = 2,
+        d1 = {"\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005"},
+        d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V"}
+)
+public final class ReifiedKt {
+    public static final void main(@NotNull String[] args) {
+        Intrinsics.checkParameterIsNotNull(args, "args");
+        Pojo p1 = new Pojo();
+        p1.setName("Plop1");
+        System.out.println(p1);
+        JavaBeanBuilder this_$iv = JavaBeanBuilder.INSTANCE;
+        Pojo p2 = (Pojo)this_$iv.createBean(Pojo.class);
+        p2.setName("Plop2");
+        System.out.println(p2);
+    }
+}
+
+```
+
 <div>
 	<h4 id="cas-d-utilisation-du-reified">Cas d'utilisation du <code>reified</code></h4>
 	<ul>
@@ -4740,6 +4773,7 @@ fun main(args: Array<String>) {
 * 👍 Ecosystème et communauté
 * 🚀 Évolution rapide
 * 🐣 Code multiplatform 
+* DSL
 
 > Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.
 
@@ -4757,6 +4791,7 @@ fun main(args: Array<String>) {
 * Slides en PDF: [http://bit.ly/KotlinDevoxxFRpdf](http://bit.ly/KotlinDevoxxFRpdf)
 * [kotlin-perf](https://github.com/MonkeyPatchIo/kotlin-perf)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+* 😼 [catnip](https://github.com/ilaborie/catnip/)
 
 
 
