@@ -504,3 +504,28 @@ section#merci {
     margin: 5rem 0;
   }
 }
+
+@media print {
+  .devoxx-fr section {
+    font-size: .9rem;
+  }
+  section.code.live-code, section.code.play, section.blur {
+    article {
+      & > * {
+        filter: none;
+      }
+      &::after {
+        content: '';
+      }
+    }
+  }
+  section {
+    pre code {
+      font-size: 16px;
+      line-height: 18px;
+    }
+  }
+  section#part_pause {
+    filter: none;
+  }
+}

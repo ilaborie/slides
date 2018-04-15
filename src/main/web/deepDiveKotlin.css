@@ -667,3 +667,16 @@ section#merci {
   background-size: cover; }
   section#merci h1 {
     margin: 5rem 0; }
+
+@media print {
+  .devoxx-fr section {
+    font-size: .9rem; }
+  section.code.live-code article > *, section.code.play article > *, section.blur article > * {
+    filter: none; }
+  section.code.live-code article::after, section.code.play article::after, section.blur article::after {
+    content: ''; }
+  section pre code {
+    font-size: 16px;
+    line-height: 18px; }
+  section#part_pause {
+    filter: none; } }
