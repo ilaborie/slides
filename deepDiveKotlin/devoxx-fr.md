@@ -44,10 +44,10 @@
 5. Les fonctions
 6. Les lambdas
 7. Les classes
-8. Extensions de fonctions
-9. Pause
-10. ByteCode Android
-11. Autres structures
+8. Pause
+9. ByteCode Android
+10. Autres structures
+11. Extensions de fonctions
 12. Les collections
 13. Les delegates
 14. Un peu plus sur les fonctions
@@ -226,36 +226,83 @@ public class _00_helloworld.HelloWorld {
 </svg>
 
 
-* environ 200 opérations possibles (maxi. 256 opscodes)
-* préfix pour le type d'opérations (`i` pour entier, `d` pour double, ...)
+* Environ 200 opérations possibles (maxi. 256 opscodes)
+* Préfix pour le type d'opérations (`i` pour entier, `d` pour double, ...)
 
 
-* manipulation de la pile, des variables locales (`iconst_0`, `istore`, `iload`, ...)
-* controle du flux des instructions (`if_icmpgt`, `goto`, ...)
-* manipulation d'objets (`invokevirtual`, `invokedynamic`, ...)
-* arithmétiques et conversion de type (`iadd`, `iinc`, `i2d`, ...)
-* autres (`athrow`, ...)
+* Manipulation de la pile, des variables locales (`iconst_0`, `istore`, `iload`, ...)
+* Contrôle du flux des instructions (`if_icmpgt`, `goto`, ...)
+* Arithmétiques et conversion de type (`iadd`, `iinc`, `i2d`, ...)
+* Manipulation d'objets (`invokevirtual`, `invokedynamic`, ...)
+* Autres (`athrow`, ...)
+
 
 <div class="catnip"></div>
-
 
 
 
 * [Mastering Java Bytecode at the Core of the JVM](https://zeroturnaround.com/rebellabs/rebel-labs-report-mastering-java-bytecode-at-the-core-of-the-jvm/)
 * [Introduction to Java Bytecode](https://mahmoudanouti.wordpress.com/2018/03/20/introduction-to-java-bytecode/)
 * [The Java® Virtual Machine Specification](https://docs.oracle.com/javase/specs/jvms/se10/html/index.html)
-* [The Java Virtual Machine Instruction Set ](https://docs.oracle.com/javase/specs/jvms/se10/html/jvms-6.html)
-
+* [The Java Virtual Machine Instruction Set](https://docs.oracle.com/javase/specs/jvms/se10/html/jvms-6.html)
+* [Suivez le lapin blanc : Exploration au coeur de la JVM](https://www.youtube.com/watch?v=rB0ElXf05nU)
 
 * [Byte Buddy](http://bytebuddy.net/#/)
 * [asm](http://asm.ow2.org/)
 
-> Soyez curieux: regardez comment ça marche avec `javap -c`
+> Soyez curieux, regardez comment ça marche avec `javap -c` !
 
 
 
 
-No resource: /deepDiveKotlin/introduction_kotlin/_____.html
+<ul>
+	<li class="start"></li>
+	<li>
+		<strong>2011 - 2015</strong>
+		<div>
+			<p>Dévoilé par JetBrains</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2016</strong>
+		<div>
+			<p>
+				<mark>v1.0</mark>
+			</p>
+			<p>Support annoncé par Spring</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2017</strong>
+		<div>
+			<p>
+				<mark>v1.1</mark>
+				: coroutines, JS, ...
+			</p>
+			<p>Support annoncé par Google</p>
+			<p>
+				<mark>v1.2</mark>
+				: multiplatform
+			</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2018</strong>
+		<div>
+			<p>Kotlin Native 0.6</p>
+			<p><mark>v1.3 ?</mark></p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>...</strong>
+	</li>
+	<li class="end"></li>
+</ul>
+
 
 <img src="../assets/brands/java.svg" alt="JVM" class="jvm">
 <img src="../assets/brands/android.svg" alt="Android" class="android">
@@ -475,6 +522,7 @@ kotlinc HelloWorld.kt
     </g>
 </svg>
 
+
 `00000000  ca fe ba be 00 00 00 32  00 33 01 00 1b 5f 30 30  |.......2.3..._00|
 00000010  5f 68 65 6c 6c 6f 77 6f  72 6c 64 2f 48 65 6c 6c  |_helloworld/Hell|
 00000020  6f 57 6f 72 6c 64 4b 74  07 00 01 01 00 10 6a 61  |oWorldKt......ja|
@@ -585,7 +633,7 @@ public final class HelloWorldKt {
 ```
 
 
-* Kotlin ajoute des contrôles
+* 👮‍♂️ Kotlin ajoute des contrôles
 * du coup on a besoin de JARs en plus
 
 | jar                           |taille|
@@ -600,7 +648,7 @@ public final class HelloWorldKt {
 | jackson-databind-2.9.5.jar    | 1.3M | 
  
 
-* Performances ?
+* 🏎 Performances ?
 
 
 
@@ -609,10 +657,10 @@ public final class HelloWorldKt {
 * <https://github.com/JetBrains/kotlin-benchmarks>
 * <https://github.com/MonkeyPatchIo/kotlin-perf>
 
-| Benchmark              |  Mode | Cnt |     Score |    Error  | Units |
-|------------------------|-------|-----|-----------|-----------|-------|
-| MyBenchmark.testJava   | thrpt | 200 | 66490.271 | ± 879.996 | ops/s |
-| MyBenchmark.testKotlin | thrpt | 200 | 72393.914 | ± 935.962 | ops/s |
+| Benchmark  |  Mode | Cnt |     Score |     Error | Units |
+|------------|-------|-----|-----------|-----------|-------|
+| testJava   | thrpt | 200 | 66490.271 | ± 879.996 | ops/s |
+| testKotlin | thrpt | 200 | 72393.914 | ± 935.962 | ops/s |
 
 
 
@@ -753,11 +801,11 @@ public final class _01_basic.NumericKt {
 
 ```
 
-* plus de `;` <sup>*</sup>
+* Plus de `;` <sup>*</sup>
 * 😍 String templating
-* 😘 plus de types primitifs (avant la compilation)
-* 🧐 inférence de types
-* on peut mélanger du code Java et Kotlin
+* 😘 Plus de types primitifs (avant la compilation)
+* 🧐 Inférence de type
+* On peut mélanger du code Java et Kotlin
 
 
 
@@ -767,28 +815,26 @@ public final class _01_basic.NumericKt {
 [Null References: The Billion Dollar Mistake](https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare)
 
 ```kotlin
-fun nullsafety() {
+fun main(args: Array<String>) {
 
     val somethingNotNull: String = "aString"
     // somethingNotNull: String = null => compilation error
 
     var length = somethingNotNull.length
 
-    var something : String? = null
+    var something: String? = null
     length = something?.length ?: 0
 
     length = something()?.length ?: 0
 
+    // length = something()!!.length // throw kotlin.KotlinNullPointerException
+
     // SmartCast
     something = "aString"
     length = something.length
-
-    fun sumf (x:Int, y:Int) = x + y
-
-    val sum: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
 }
 
-fun something():String? = null
+fun something(): String? = null
 
 ```
 
@@ -796,28 +842,34 @@ fun something():String? = null
 package _02_null_safety;
 
 import kotlin.Metadata;
-import kotlin.jvm.functions.Function2;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(
    mv = {1, 1, 9},
    bv = {1, 0, 2},
    k = 2,
-   d1 = {"\u0000\f\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\u001a\u0006\u0010\u0000\u001a\u00020\u0001\u001a\b\u0010\u0002\u001a\u0004\u0018\u00010\u0003"},
-   d2 = {"nullsafety", "", "something", ""}
+   d1 = {"\u0000\u0014\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005\u001a\b\u0010\u0006\u001a\u0004\u0018\u00010\u0004"},
+   d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V", "something"}
 )
 public final class NullSafetyKt {
-   public static final void nullsafety() {
+   public static final void main(@NotNull String[] args) {
+      Intrinsics.checkParameterIsNotNull(args, "args");
       String somethingNotNull = "aString";
       int length = somethingNotNull.length();
       String something = (String)null;
       int length = false;
       String var10000 = something();
       length = var10000 != null ? var10000.length() : 0;
+      var10000 = something();
+      if (var10000 == null) {
+         Intrinsics.throwNpe();
+      }
+
+      length = var10000.length();
       something = "aString";
       length = something.length();
-      <undefinedtype> sumf$ = null.INSTANCE;
-      Function2 sum = (Function2)null.INSTANCE;
    }
 
    @Nullable
@@ -829,7 +881,8 @@ public final class NullSafetyKt {
 ```
 
 
-* plus de `NullPointerException`
+* 🎸 Elvis operator: `?:`
+* 🙌 plus de `NullPointerException`
 * ⚠️ quand on appel du Java
 
 
@@ -1847,6 +1900,7 @@ fun main(args: Array<String>) {
 
 
 
+
 ```kotlin
 fun buildString(prefix: String,
                 who: String,
@@ -2028,12 +2082,12 @@ public final class _03_fun.Default_valueKt {
   (sauf si c'est évident et une surcharge comme le `toString`)
 - Kotlin est plus expressif que Java => évitez de faire des fonctions trop longues
 - Sautez une ligne après le `=`
-- Utilisez le passage des arguments par nom quand ça lève des ambigüités
+- Utilisez le passage des arguments par nom quand ça lève des ambiguïtés
 
 #### 📝 Notes
 
 - Le passage des arguments par nom, ne marche pas sur les appels de code Java
- 
+
 
 
 
@@ -2043,7 +2097,7 @@ fun apply(x: Int, y: Int, operation: (Int, Int) -> Int): Int =
     operation(x, y)
 
 // Declare function
-fun sumf(x: Int, y: Int) =
+fun sumf(x: Int, y: Int) : Int =
     x + y
 
 // call apply with function reference
@@ -2115,10 +2169,10 @@ public final class FunctionKt {
 val suml: (Int, Int) -> Int = { x: Int, y: Int -> x + y }
 
 // call apply with suml lambda
-val sum3 = apply(1,2, suml)
+val sum3 = apply(1, 2, suml)
 
 // call apply with lamda
-val sum4 = apply(1,3) { x, y -> x+y}
+val sum4 = apply(1, 3) { x, y -> x + y }
 
 ```
 
@@ -2227,7 +2281,8 @@ public final class LetKt {
 
 * ⚠️ pas de `return`
 * pensez à mettre vos lambda comme dernier argument
-* voir aussi les `apply`, `also`, `run` 
+* voir aussi les `apply`, `also`, `run` , `use`, `with`
+  * [the tldr; on Kotlin’s let, apply, also, with and run functions](https://proandroiddev.com/the-tldr-on-kotlins-let-apply-also-with-and-run-functions-6253f06d152b)
 
 
 
@@ -2265,7 +2320,7 @@ enum class PlanetKind {
 
     companion object {
         fun fromName(name: String): PlanetKind {
-            return PlanetKind.valueOf(name)
+            return PlanetKind.valueOf(name) // enumValueOf(name)
         }
     }
 }
@@ -2385,40 +2440,33 @@ public final class Planet implements AstronomicalBody {
 ```
 
 ```kotlin
-open class Animal { // need open
-    open fun talk(): String =
-        "???"
+open class SmallBody {
+    open fun sizeRange(): IntRange = 0..10
 }
 
-data class Cat(val name: String) : Animal() {
-    override fun talk(): String = // need override
-        "Meow"
-}
+data class Comet(val name: String) : SmallBody()
 
-data class Dog(val name: String) : Animal() {
-    override fun talk(): String =  // need override
-        "Woof"
+data class Asteroid(val name: String) : SmallBody() {
+    override fun sizeRange(): IntRange = 0..4
 }
 
 fun main(args: Array<String>) {
-    val pets: List<Animal> = listOf(Cat("Felix"), Dog("Rex"))
+    val bodies = listOf(Comet("Halley"), Asteroid("Adeona"))
 
-    // 😱
-    pets.forEach { pet ->
-        println("$pet: ${pet.talk()}")
+    bodies.forEach { body ->
+        println("$body: ${body.sizeRange()}")
     }
-    // Cat(name=Felix): Meow
-    // Dog(name=Rex): Woof
 }
+
 ```
 
-* ⚠️ Les contrôles de types générics ne sont fait qu'au moment de la compilation
-* Covariant (consome): `out`, en java `? extends T`
-* Contravariant (produit): `in`, en java `? super T`
+* ⚠️ Les contrôles de types génériques ne sont fait qu'au moment de la compilation
+* Covariant: `out`, en java `? extends T`
+* Contravariant: `in`, en java `? super T`
 
 
 <div>
-    <h4>Borne supérieur</h4>
+    <h4>Borne supérieure</h4>
     <pre class="lang-kotlin"><code><span class="token keyword">fun</span> <span class="token operator">&lt;</span>T <span class="token operator">:</span> Comparable<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token operator">&gt;</span> <span class="token function">sort</span><span class="token punctuation">(</span>list<span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span><span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>T<span class="token operator">&gt;</span></code></pre>
 </div>
 
@@ -2478,74 +2526,6 @@ public final class _06_class_2.TypealiasKt {
 * 🤔 Mais pourquoi on n'a pas ça en Java ?
 * Une seule classe par fichier n'est pas utile
 * 🤓 `sealed` permet de faire des types algébriques de données (Algebraic Data Type)
-
-
-
-
-```kotlin
-val AstronomicalBody.size: Int
-    get() = name.length
-
-fun AstronomicalBody.display() = "Planet $name $size"
-
-fun main(args: Array<String>) {
-    SolarSystem.bodies
-        .forEach { println(it.display()) }
-}
-
-```
-
-```java
-package _08_extension;
-
-import astronomy.AstronomicalBody;
-import astronomy.SolarSystem;
-import java.util.Iterator;
-import kotlin.Metadata;
-import kotlin.jvm.internal.Intrinsics;
-import org.jetbrains.annotations.NotNull;
-
-@Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 2,
-   d1 = {"\u0000 \n\u0000\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0005\u001a\u00020\u00062\f\u0010\u0007\u001a\b\u0012\u0004\u0012\u00020\t0\b¢\u0006\u0002\u0010\n\u001a\n\u0010\u000b\u001a\u00020\t*\u00020\u0002\"\u0015\u0010\u0000\u001a\u00020\u0001*\u00020\u00028F¢\u0006\u0006\u001a\u0004\b\u0003\u0010\u0004"},
-   d2 = {"size", "", "Lastronomy/AstronomicalBody;", "getSize", "(Lastronomy/AstronomicalBody;)I", "main", "", "args", "", "", "([Ljava/lang/String;)V", "display"}
-)
-public final class ExtensionKt {
-   public static final int getSize(@NotNull AstronomicalBody $receiver) {
-      Intrinsics.checkParameterIsNotNull($receiver, "$receiver");
-      return $receiver.getName().length();
-   }
-
-   @NotNull
-   public static final String display(@NotNull AstronomicalBody $receiver) {
-      Intrinsics.checkParameterIsNotNull($receiver, "$receiver");
-      return "Planet " + $receiver.getName() + ' ' + getSize($receiver);
-   }
-
-   public static final void main(@NotNull String[] args) {
-      Intrinsics.checkParameterIsNotNull(args, "args");
-      Iterable $receiver$iv = (Iterable)SolarSystem.INSTANCE.getBodies();
-      Iterator var2 = $receiver$iv.iterator();
-
-      while(var2.hasNext()) {
-         Object element$iv = var2.next();
-         AstronomicalBody it = (AstronomicalBody)element$iv;
-         String var5 = display(it);
-         System.out.println(var5);
-      }
-
-   }
-}
-
-```
-
-
-* Permet d'enrichire les api Java
-  * [Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/languages.html#kotlin-spring-projects-in-kotlin), [RxKotlin](https://github.com/ReactiveX/RxKotlin), [SparkJava](http://sparkjava.com/news#spark-kotlin-released)
-* Permet la __SoC__
- 
 
 
 
@@ -2874,6 +2854,252 @@ public final class ExtensionKt {
     </g>
 </svg>
 
+[Dalvik Executable format ](https://source.android.com/devices/tech/dalvik/dex-format)
+```bash
+java -jar ./scripts/lib/d8.jar --release \
+            --output ./target/android/dex \
+            ./target/android/hello.jar
+```
+`00000000  64 65 78 0a 30 33 35 00  06 50 f0 61 50 10 7c c0  |dex.035..P.aP.|.|
+00000010  b2 f9 77 2d 54 df 60 f3  ac dd b0 10 eb 55 53 e1  |..w-T.`......US.|
+00000020  28 f6 10 00 70 00 00 00  78 56 34 12 00 00 00 00  |(...p...xV4.....|
+00000030  00 00 00 00 4c f5 10 00  12 17 00 00 70 00 00 00  |....L.......p...|
+00000040  31 03 00 00 b8 5c 00 00  2a 08 00 00 7c 69 00 00  |1....\..*...|i..|
+00000050  30 03 00 00 74 cb 00 00  20 1a 00 00 f4 e4 00 00  |0...t... .......|
+00000060  75 02 00 00 f4 b5 01 00  94 f1 0e 00 94 04 02 00  |u...............|
+00000070  4a f1 07 00 4c f1 07 00  75 f1 07 00 a4 f1 07 00  |J...L...u.......|
+00000080  c2 f1 07 00 e0 f1 07 00  00 f2 07 00 23 f2 07 00  |............#...|
+00000090  71 f2 07 00 b9 f2 07 00  07 f3 07 00 37 f3 07 00  |q...........7...|
+000000a0  69 f3 07 00 90 f3 07 00  bc f3 07 00 e3 f3 07 00  |i...............|
+000000b0  27 f4 07 00 71 f4 07 00  8f f4 07 00 ad f4 07 00  |'...q...........|
+000000c0  cb f4 07 00 ed f4 07 00  0f f5 07 00 2c f5 07 00  |............,...|
+000000d0  49 f5 07 00 79 f5 07 00  b1 f5 07 00 e9 f5 07 00  |I...y...........|
+000000e0  1a f6 07 00 51 f6 07 00  7b f6 07 00 a6 f6 07 00  |....Q...{.......|
+000000f0  d1 f6 07 00 0a f7 07 00  47 f7 07 00 84 f7 07 00  |........G.......|
+00000100  c1 f7 07 00 02 f8 07 00  43 f8 07 00 84 f8 07 00  |........C.......|
+00000110  f1 f8 07 00 12 f9 07 00  41 f9 07 00 6e f9 07 00  |........A...n...|
+00000120  b0 f9 07 00 dd f9 07 00  0a fa 07 00 39 fa 07 00  |............9...|
+00000130  68 fa 07 00 ab fa 07 00  e0 fa 07 00 25 fb 07 00  |h...........%...|
+00000140  f3 fb 07 00 3b fc 07 00  79 fc 07 00 b1 fc 07 00  |....;...y.......|
+00000150  eb fc 07 00 26 fd 07 00  68 fd 07 00 9e fd 07 00  |....&...h.......|
+00000160  e7 fd 07 00 2a fe 07 00  5c fe 07 00 9d fe 07 00  |....*...\.......|
+00000170  de fe 07 00 25 ff 07 00  5b ff 07 00 90 ff 07 00  |....%...[.......|
+00000180  c0 ff 07 00 fc ff 07 00  75 00 08 00 ca 00 08 00  |........u.......|
+00000190  30 01 08 00 a7 01 08 00  2f 02 08 00 c9 02 08 00  |0......./.......|
+000001a0  74 03 08 00 30 04 08 00  fd 04 08 00 db 05 08 00  |t...0...........|
+000001b0  ca 06 08 00 ca 07 08 00  db 08 08 00 fd 09 08 00  |................|
+000001c0  30 0b 08 00 76 0c 08 00  cd 0d 08 00 35 0f 08 00  |0...v.......5...|
+000001d0  ae 10 08 00 38 12 08 00  d3 13 08 00 7f 15 08 00  |....8...........|
+000001e0  3c 17 08 00 7b 17 08 00  b8 17 08 00 f5 17 08 00  |<...{...........|
+000001f0  34 18 08 00 80 18 08 00  cc 18 08 00 18 19 08 00  |4...............|
+00000200  64 19 08 00 b0 19 08 00  fc 19 08 00 48 1a 08 00  |d...........H...|
+00000210  94 1a 08 00 c8 1a 08 00  ff 1a 08 00 3f 1b 08 00  |............?...|
+00000220  87 1b 08 00 62 1c 08 00  a8 1c 08 00 16 1d 08 00  |....b...........|
+00000230  57 1d 08 00 a4 1d 08 00  e8 1d 08 00 31 1e 08 00  |W...........1...|
+00000240  86 1e 08 00 d1 1e 08 00  23 1f 08 00 7a 1f 08 00  |........#...z...|
+00000250  bf 1f 08 00 06 20 08 00  4d 20 08 00 f8 20 08 00  |..... ..M ... ..|
+00000260  4f 21 08 00 84 21 08 00  b9 21 08 00 f8 21 08 00  |O!...!...!...!..|
+00000270  4e 22 08 00 9d 22 08 00  e7 22 08 00 21 23 08 00  |N"..."..."..!#..|
+00000280  6b 23 08 00 d2 23 08 00  0e 24 08 00 4a 24 08 00  |k#...#...$..J$..|
+00000290  8d 24 08 00 e1 24 08 00  43 25 08 00 c6 25 08 00  |.$...$..C%...%..|
+000002a0  14 26 08 00 6c 26 08 00  b9 26 08 00 0c 27 08 00  |.&..l&...&...'..|
+000002b0  61 27 08 00 9f 27 08 00  e3 27 08 00 55 28 08 00  |a'...'...'..U(..|
+000002c0  d1 28 08 00 2a 29 08 00  db 29 08 00 8c 2a 08 00  |.(..*)...)...*..|
+000002d0  e5 2a 08 00 3e 2b 08 00  97 2b 08 00 e6 2b 08 00  |.*..>+...+...+..|
+000002e0  8c 2c 08 00 a5 2f 08 00  ed 2f 08 00 1a 31 08 00  |.,.../.../...1..|
+000002f0  6f 31 08 00 c4 31 08 00  31 32 08 00 88 32 08 00  |o1...1..12...2..|
+00000300  fa 32 08 00 87 33 08 00  2c 34 08 00 75 34 08 00  |.2...3..,4..u4..|
+00000310  da 34 08 00 85 35 08 00  ed 35 08 00 50 36 08 00  |.4...5...5..P6..|
+00000320  a1 36 08 00 fe 36 08 00  48 37 08 00 8e 37 08 00  |.6...6..H7...7..|
+00000330  ce 37 08 00 6f 38 08 00  dc 38 08 00 23 39 08 00  |.7..o8...8..#9..|
+00000340  64 39 08 00 a1 39 08 00  f4 39 08 00 47 3a 08 00  |d9...9...9..G:..|
+00000350  b1 3a 08 00 0f 3b 08 00  ae 3b 08 00 5a 3c 08 00  |.:...;...;..Z<..|
+00000360  e4 3c 08 00 c0 3d 08 00  4a 3e 08 00 ae 3e 08 00  |.<...=..J>...>..|
+00000370  0f 3f 08 00 b0 3f 08 00  83 40 08 00 f4 40 08 00  |.?...?...@...@..|
+00000380  3f 41 08 00 8b 41 08 00  06 42 08 00 6d 42 08 00  |?A...A...B..mB..|
+00000390  14 43 08 00 a7 43 08 00  0e 44 08 00 75 44 08 00  |.C...C...D..uD..|
+000003a0  41 45 08 00 9b 45 08 00  f5 45 08 00 61 46 08 00  |AE...E...E..aF..|
+000003b0  14 47 08 00 c7 47 08 00  25 48 08 00 78 48 08 00  |.G...G..%H..xH..|
+000003c0  11 49 08 00 d7 49 08 00  44 4a 08 00 b3 4a 08 00  |.I...I..DJ...J..|
+000003d0  20 4b 08 00 b1 4b 08 00  d7 4d 08 00 58 4e 08 00  | K...K...M..XN..|
+000003e0  f5 4e 08 00 99 4f 08 00  36 50 08 00 cd 50 08 00  |.N...O..6P...P..|
+000003f0  44 51 08 00 c4 51 08 00  3d 52 08 00 af 52 08 00  |DQ...Q..=R...R..|
+00000400  2c 53 08 00 aa 53 08 00  15 54 08 00 af 54 08 00  |,S...S...T...T..|
+00000410  4a 55 08 00 68 56 08 00  7b 57 08 00 5a 58 08 00  |JU..hV..{W..ZX..|
+00000420  19 59 08 00 1c 5a 08 00  13 5b 08 00 91 5b 08 00  |.Y...Z...[...[..|
+00000430  f8 5b 08 00 7c 5c 08 00  5d 5d 08 00 2a 5e 08 00  |.[..|\..]]..*^..|
+00000440  8d 5e 08 00 41 5f 08 00  ef 5f 08 00 ab 60 08 00  |.^..A_..._...`..|
+00000450  2f 61 08 00 ba 61 08 00  54 62 08 00 4a 63 08 00  |/a...a..Tb..Jc..|
+00000460  2c 64 08 00 8d 64 08 00  58 65 08 00 dc 65 08 00  |,d...d..Xe...e..|
+00000470  5c 66 08 00 dc 66 08 00  43 67 08 00 eb 67 08 00  |\f...f..Cg...g..|
+00000480  71 68 08 00 f5 68 08 00  9a 69 08 00 5a 6a 08 00  |qh...h...i..Zj..|
+00000490  1a 6b 08 00 e5 6c 08 00  3d 76 08 00 42 77 08 00  |.k...l..=v..Bw..|
+000004a0  c5 77 08 00 8e 78 08 00  39 79 08 00 15 7a 08 00  |.w...x..9y...z..|
+000004b0  f4 7a 08 00 06 7c 08 00  95 7c 08 00 63 7d 08 00  |.z...|...|..c}..|
+000004c0  03 7e 08 00 b9 7e 08 00  73 7f 08 00 4b 80 08 00  |.~...~..s...K...|
+000004d0  cf 80 08 00 8a 81 08 00  13 82 08 00 a0 82 08 00  |................|
+000004e0  6f 83 08 00 1b 84 08 00  ce 84 08 00 9d 85 08 00  |o...............|
+000004f0  2a 86 08 00 ee 86 08 00  7f 88 08 00 84 89 08 00  |*...............|
+00000500  54 8a 08 00 22 8b 08 00  34 8c 08 00 47 8d 08 00  |T..."...4...G...|
+00000510  f7 8d 08 00 7d 8e 08 00  03 8f 08 00 89 8f 08 00  |....}...........|
+00000520  0f 90 08 00 95 90 08 00  1b 91 08 00 a0 91 08 00  |................|
+00000530  25 92 08 00 aa 92 08 00  2f 93 08 00 b4 93 08 00  |%......./.......|
+00000540  39 94 08 00 be 94 08 00  4d 95 08 00 52 96 08 00  |9.......M...R...|
+00000550  02 97 08 00 16 98 08 00  b1 99 08 00 35 9a 08 00  |............5...|
+00000560  ca 9a 08 00 56 9b 08 00  c2 9c 08 00 dc 9d 08 00  |....V...........|
+00000570  8b 9e 08 00 95 9f 08 00  4e a1 08 00 7d a2 08 00  |........N...}...|
+00000580  66 a3 08 00 61 a4 08 00  fe a4 08 00 93 a5 08 00  |f...a...........|
+00000590  2e a6 08 00 f3 a6 08 00  bb a7 08 00 83 a8 08 00  |................|
+000005a0  4b a9 08 00 13 aa 08 00  db aa 08 00 a3 ab 08 00  |K...............|
+000005b0  8a ac 08 00 6a ad 08 00  3e ae 08 00 f6 ae 08 00  |....j...>.......|
+000005c0  b0 b0 08 00 ab b1 08 00  94 b2 08 00 bb b3 08 00  |................|
+000005d0  2a b5 08 00 bf b5 08 00  40 b6 08 00 2f b7 08 00  |*.......@.../...|
+000005e0  47 b8 08 00 5f b9 08 00  3c ba 08 00 b7 bb 08 00  |G..._...<.......|
+000005f0  a9 bc 08 00 d3 bd 08 00  eb be 08 00 f0 bf 08 00  |................|
+00000600  b9 c0 08 00 59 c1 08 00  4b c2 08 00 08 c3 08 00  |....Y...K.......|
+00000610  d5 c3 08 00 d6 c4 08 00  36 c6 08 00 86 c7 08 00  |........6.......|
+00000620  66 c8 08 00 65 c9 08 00  e3 ca 08 00 d9 cb 08 00  |f...e...........|
+00000630  b0 cc 08 00 d0 cd 08 00  6b cf 08 00 4f d0 08 00  |........k...O...|
+00000640  33 d1 08 00 0e d2 08 00  2c d5 08 00 72 da 08 00  |3.......,...r...|
+00000650  69 db 08 00 88 dd 08 00  99 df 08 00 83 e0 08 00  |i...............|
+00000660  3c e3 08 00 c7 e4 08 00  5f e6 08 00 2b e7 08 00  |<......._...+...|
+00000670  e6 e8 08 00 9a ea 08 00  40 eb 08 00 e3 ed 08 00  |........@.......|
+00000680  59 f5 08 00 85 f6 08 00  bd f7 08 00 ac f8 08 00  |Y...............|
+00000690  86 fa 08 00 f4 fb 08 00  83 fd 08 00 9e ff 08 00  |................|
+000006a0  0d 01 09 00 e8 01 09 00  9e 03 09 00 50 06 09 00  |............P...|
+000006b0  ff 08 09 00 a3 0b 09 00  40 12 09 00 66 14 09 00  |........@...f...|
+000006c0  89 15 09 00 1e 17 09 00  76 19 09 00 1f 1b 09 00  |........v.......|
+000006d0  ab 1c 09 00 99 1e 09 00  32 20 09 00 77 22 09 00  |........2 ..w"..|
+000006e0  e7 25 09 00 a2 27 09 00  46 2a 09 00 8f 36 09 00  |.%...'..F*...6..|
+000006f0  d2 38 09 00 65 40 09 00  20 43 09 00 35 46 09 00  |.8..e@.. C..5F..|
+00000700  5f 4d 09 00 5f 5b 09 00  46 61 09 00 00 68 09 00  |_M.._[..Fa...h..|
+00000710  06 6b 09 00 d6 7e 09 00  e5 9f 09 00 e7 9f 0a 00  |.k...~..........|
+00000720  72 b7 0a 00 b5 e4 0a 00  7b eb 0a 00 7e eb 0a 00  |r.......{...~...|
+00000730  81 eb 0a 00 85 eb 0a 00  8b eb 0a 00 b2 eb 0a 00  |................|
+00000740  b8 eb 0a 00 bd eb 0a 00  cb eb 0a 00 d2 eb 0a 00  |................|
+00000750  de eb 0a 00 f9 eb 0a 00  0e ec 0a 00 18 ec 0a 00  |................|
+00000760  33 ec 0a 00 4b ec 0a 00  60 ec 0a 00 79 ec 0a 00  |3...K...`...y...|
+00000770  8b ec 0a 00 d2 ec 0a 00  1d ed 0a 00 2c ed 0a 00  |............,...|
+00000780  49 ed 0a 00 5e ed 0a 00  71 ed 0a 00 95 ed 0a 00  |I...^...q.......|
+00000790  9d ed 0a 00 b7 ed 0a 00  c3 ed 0a 00 da ed 0a 00  |................|
+000007a0  f0 ed 0a 00 f9 ed 0a 00  02 ee 0a 00 0a ee 0a 00  |................|
+000007b0  22 ee 0a 00 2f ee 0a 00  3c ee 0a 00 49 ee 0a 00  |".../...<...I...|
+000007c0  5e ee 0a 00 6b ee 0a 00  7c ee 0a 00 86 ee 0a 00  |^...k...|.......|
+000007d0  91 ee 0a 00 a1 ee 0a 00  ae ee 0a 00 b7 ee 0a 00  |................|
+000007e0  bf ee 0a 00 ce ee 0a 00  d6 ee 0a 00 e1 ee 0a 00  |................|
+000007f0  e7 ee 0a 00 f5 ee 0a 00  fd ee 0a 00 0c ef 0a 00  |................|
+00000800  17 ef 0a 00 21 ef 0a 00  29 ef 0a 00 3a ef 0a 00  |....!...)...:...|
+00000810  53 ef 0a 00 5f ef 0a 00  6a ef 0a 00 7d ef 0a 00  |S..._...j...}...|
+00000820  87 ef 0a 00 90 ef 0a 00  9e ef 0a 00 b4 ef 0a 00  |................|
+00000830  bb ef 0a 00 c6 ef 0a 00  d2 ef 0a 00 d9 ef 0a 00  |................|
+00000840  e8 ef 0a 00 f5 ef 0a 00  fc ef 0a 00 0b f0 0a 00  |................|
+00000850  17 f0 0a 00 27 f0 0a 00  2a f0 0a 00 2e f0 0a 00  |....'...*.......|
+00000860  32 f0 0a 00 37 f0 0a 00  3c f0 0a 00 41 f0 0a 00  |2...7...<...A...|
+00000870  46 f0 0a 00 4b f0 0a 00  67 f0 0a 00 79 f0 0a 00  |F...K...g...y...|
+00000880  90 f0 0a 00 a4 f0 0a 00  bd f0 0a 00 d2 f0 0a 00  |................|
+00000890  ec f0 0a 00 02 f1 0a 00  17 f1 0a 00 2e f1 0a 00  |................|
+000008a0  42 f1 0a 00 58 f1 0a 00  6d f1 0a 00 83 f1 0a 00  |B...X...m.......|
+000008b0  9c f1 0a 00 ba f1 0a 00  d4 f1 0a 00 ee f1 0a 00  |................|
+`
+
+```bash
+~/.android-sdk/build-tools/23.0.1/dexdump -d \
+      ./target/android/dex/classes.dex \
+      > ./target/android/dex/classes.dex.dump
+```
+```java
+Processing './target/android/dex/classes.dex'...
+Opened './target/android/dex/classes.dex', DEX version '035'
+Class #0            -
+  Class descriptor  : 'L_00_helloworld/HelloWorldKt;'
+  Access flags      : 0x0011 (PUBLIC FINAL)
+  Superclass        : 'Ljava/lang/Object;'
+  Interfaces        -
+  Static fields     -
+  Instance fields   -
+  Direct methods    -
+    #0              : (in L_00_helloworld/HelloWorldKt;)
+      name          : 'main'
+      type          : '([Ljava/lang/String;)V'
+      access        : 0x0019 (PUBLIC STATIC FINAL)
+      code          -
+      registers     : 2
+      ins           : 1
+      outs          : 2
+      insns size    : 13 16-bit code units
+020494:                                        |[020494] _00_helloworld.HelloWorldKt.main:([Ljava/lang/String;)V
+0204a4: 1a00 1310                              |0000: const-string v0, "args" // string@1013
+0204a8: 7120 a811 0100                         |0002: invoke-static {v1, v0}, Lkotlin/jvm/internal/Intrinsics;.checkParameterIsNotNull:(Ljava/lang/Object;Ljava/lang/String;)V // method@11a8
+0204ae: 1a01 0808                              |0005: const-string v1, "Hello Devoxx" // string@0808
+0204b2: 6200 0c00                              |0007: sget-object v0, Ljava/lang/System;.out:Ljava/io/PrintStream; // field@000c
+0204b6: 6e20 3f00 1000                         |0009: invoke-virtual {v0, v1}, Ljava/io/PrintStream;.println:(Ljava/lang/Object;)V // method@003f
+0204bc: 0e00                                   |000c: return-void
+      catches       : (none)
+      positions     : 
+        0x0007 line=4
+      locals        : 
+
+  Virtual methods   -
+  source_file_idx   : 2057 (HelloWorld.kt)
+...
+
+```
+
+```bash
+sh ./scripts/lib/dextools/d2j-dex2smali.sh \
+     ./target/android/dex/classes.dex -f \
+     -o ./target/android/smali
+```
+```java
+.class public final L_00_helloworld/HelloWorldKt;
+.super Ljava/lang/Object;
+.source "HelloWorld.kt"
+
+.annotation system Ldalvik/annotation/SourceDebugExtension;
+  value = "SMAP\nHelloWorld.kt\nKotlin\n*S Kotlin\n*F\n+ 1 HelloWorld.kt\n_00_helloworld/HelloWorldKt\n*L\n1#1,5:1\n*E\n"
+.end annotation
+.annotation runtime Lkotlin/Metadata;
+  bv = {
+    1,
+    0,
+    2
+  }
+  d1 = {
+    "\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\u000c\u0010\u0002\u001a\u0008\u0012\u0004\u0012\u00020\u00040\u0003\u00a2\u0006\u0002\u0010\u0005"
+  }
+  d2 = {
+    "main",
+    "",
+    "args",
+    "",
+    "",
+    "([Ljava/lang/String;)V"
+  }
+  k = 2
+  mv = {
+    1,
+    1,
+    9
+  }
+.end annotation
+
+.method public final static main([Ljava/lang/String;)V
+  .parameter # [Ljava/lang/String;
+    .annotation build Lorg/jetbrains/annotations/NotNull;
+    .end annotation
+  .end parameter
+  .registers 2
+    const-string v0, "args"
+    invoke-static { p0, v0 }, Lkotlin/jvm/internal/Intrinsics;->checkParameterIsNotNull(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string p0, "Hello Devoxx"
+  .line 4
+    sget-object v0, Ljava/lang/System;->out:Ljava/io/PrintStream;
+    invoke-virtual { v0, p0 }, Ljava/io/PrintStream;->println(Ljava/lang/Object;)V
+    return-void
+.end method
+
+```
+
 
 
 ```kotlin
@@ -3141,12 +3367,12 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 
 <https://github.com/MonkeyPatchIo/kotlin-perf>
 
-|Benchmark                          | Mode  | Cnt |         Score |          Error | Units |
-|-----------------------------------|-------|-----|---------------|----------------|-------|
-|MyBenchmark.factorialJava          | thrpt | 200 | 274141213.561 | ± 28963758.069 | ops/s |
-|MyBenchmark.factorialKotlinFor     | thrpt | 200 | 267717955.205 | ±  8457315.205 | ops/s |
-|MyBenchmark.factorialKotlinRec     | thrpt | 200 |  56270660.700 | ±  2453418.383 | ops/s |
-|MyBenchmark.factorialKotlinTailRec | thrpt | 200 | 341898899.761 | ± 11456349.191 | ops/s |
+| Benchmark              | Mode  | Cnt |         Score |          Error | Units |
+|------------------------|-------|-----|---------------|----------------|-------|
+| factorialJava          | thrpt | 200 | 274141213.561 | ± 28963758.069 | ops/s |
+| factorialKotlinFor     | thrpt | 200 | 267717955.205 | ±  8457315.205 | ops/s |
+| factorialKotlinRec     | thrpt | 200 |  56270660.700 | ±  2453418.383 | ops/s |
+| factorialKotlinTailRec | thrpt | 200 | 341898899.761 | ± 11456349.191 | ops/s |
 
 
 
@@ -3163,11 +3389,645 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
     <h4 id="-tips">✨ Tips</h4>
     <ul>
         <li>privilégier les <code>when</code> si vous avez plus de 2 cas</li>
-        <li>si vous faites des fonctions recursives, faites les <code>tailrec</code></li>
+        <li>si vous faites des fonctions récursives, faites les <code>tailrec</code></li>
     </ul>
 </div>
 
 
+
+
+```kotlin
+val AstronomicalBody.size: Int
+    get() = name.length
+
+fun AstronomicalBody.display() = "Body $name $size"
+
+fun main(args: Array<String>) {
+    SolarSystem.bodies
+        .forEach { println(it.display()) }
+}
+
+```
+
+```java
+package _08_extension;
+
+import astronomy.AstronomicalBody;
+import astronomy.SolarSystem;
+import java.util.Iterator;
+import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
+import org.jetbrains.annotations.NotNull;
+
+@Metadata(
+        mv = {1, 1, 9},
+        bv = {1, 0, 2},
+        k = 2,
+        d1 = {"\u0000 \n\u0000\n\u0002\u0010\b\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0005\u001a\u00020\u00062\f\u0010\u0007\u001a\b\u0012\u0004\u0012\u00020\t0\b¢\u0006\u0002\u0010\n\u001a\n\u0010\u000b\u001a\u00020\t*\u00020\u0002\"\u0015\u0010\u0000\u001a\u00020\u0001*\u00020\u00028F¢\u0006\u0006\u001a\u0004\b\u0003\u0010\u0004"},
+        d2 = {"size", "", "Lastronomy/AstronomicalBody;", "getSize", "(Lastronomy/AstronomicalBody;)I", "main", "", "args", "", "", "([Ljava/lang/String;)V", "display"}
+)
+public final class ExtensionKt {
+   public static final int getSize(@NotNull AstronomicalBody $receiver) {
+      Intrinsics.checkParameterIsNotNull($receiver, "$receiver");
+      return $receiver.getName().length();
+   }
+
+   @NotNull
+   public static final String display(@NotNull AstronomicalBody $receiver) {
+      Intrinsics.checkParameterIsNotNull($receiver, "$receiver");
+      return "Body " + $receiver.getName() + ' ' + getSize($receiver);
+   }
+
+   public static final void main(@NotNull String[] args) {
+      Intrinsics.checkParameterIsNotNull(args, "args");
+      Iterable $receiver$iv = (Iterable)SolarSystem.INSTANCE.getBodies();
+      Iterator var2 = $receiver$iv.iterator();
+
+      while(var2.hasNext()) {
+         Object element$iv = var2.next();
+         AstronomicalBody it = (AstronomicalBody)element$iv;
+         String var5 = display(it);
+         System.out.println(var5);
+      }
+
+   }
+}
+
+```
+
+
+* Permet d'enrichire les APIs Java
+  * [Spring](https://docs.spring.io/spring/docs/current/spring-framework-reference/languages.html#kotlin-spring-projects-in-kotlin)
+  * [RxKotlin](https://github.com/ReactiveX/RxKotlin)
+  * [SparkJava](http://sparkjava.com/news#spark-kotlin-released)
+  * ...
+* Permet la _SoC_ (Separation of Concerns)
+ 
+
+
+
+
+<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 710 552" preserveAspectRatio="xMidYMid meet">
+    <defs/>
+    <g transform="translate(0.5,0.5)">
+        <path d="M 221 202.5 L 221 202.4 L 231 202.27 L 241 202.66 L 251 203.22 L 261 202.49 L 271 202.83 L 281 201.76 L 291 202.66 L 301 202.42 L 311 203.25 L 321 203.19 L 331 202.5 L 330.69 202.5 L 330.31 212.5 L 330.58 222.5 L 330.49 232.5 L 331.01 242.5 L 331 252.5 L 331 252.92 L 321 252.43 L 311 253.19 L 301 251.97 L 291 252.91 L 281 252.42 L 271 251.9 L 261 252.62 L 251 252.5 L 241 253.23 L 231 253 L 221 252.5 L 221.31 252.5 L 221.44 242.5 L 220.63 232.5 L 220.48 222.5 L 220.42 212.5 L 221 202.5 L 221 202.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 221 202.5 L 221 202.4 L 231 202.27 L 241 202.66 L 251 203.22 L 261 202.49 L 271 202.83 L 281 201.76 L 291 202.66 L 301 202.42 L 311 203.25 L 321 203.19 L 331 202.5 L 330.69 202.5 L 330.31 212.5 L 330.58 222.5 L 330.49 232.5 L 331.01 242.5 L 331 252.5 L 331 252.92 L 321 252.43 L 311 253.19 L 301 251.97 L 291 252.91 L 281 252.42 L 271 251.9 L 261 252.62 L 251 252.5 L 241 253.23 L 231 253 L 221 252.5 L 221.31 252.5 L 221.44 242.5 L 220.63 232.5 L 220.48 222.5 L 220.42 212.5 L 221 202.5 L 221 202.5 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(236.5,213.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Iterable&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 491 228 L 491 228.46 L 481.02 228.09 L 471.03 227.95 L 461.05 228.52 L 451.06 228.09 L 441.08 227.44 L 431.09 227.4 L 421.11 227.49 L 411.13 228.54 L 401.14 227.67 L 391.16 227.45 L 381.17 227.15 L 371.19 228.05 L 361.2 227.36 L 351.22 228.3 L 341.24 227.65"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 333.24 227.63 L 333.3 227.76 L 334.87 226.89 L 336.46 226.09 L 338.04 225.25 L 339.54 224.25 L 341.25 223.65 L 341.39 223.65 L 341.02 225.25 L 341.14 226.85 L 341.36 228.45 L 341.35 230.05 L 341.23 231.65 L 341.13 231.45 L 339.58 230.75 L 338.01 230.01 L 336.43 229.24 L 334.9 228.57 L 333.24 227.63 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 566 302.5 L 566.04 302.5 L 565.95 294.55 L 565.91 286.59 L 565.76 278.64 L 565.99 270.69 L 566 262.74"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 566 254.74 L 566.06 254.77 L 566.64 256.26 L 567.47 257.87 L 568.46 259.56 L 569.25 261.16 L 570 262.74 L 570 262.82 L 568.4 262.62 L 566.8 262.57 L 565.2 262.97 L 563.6 262.75 L 562 262.74 L 562.21 262.84 L 562.59 261.03 L 563.6 259.54 L 564.46 257.97 L 565.17 256.32 L 566 254.74 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 491 327.5 L 491 327.88 L 481.02 327.38 L 471.03 327.73 L 461.05 327 L 451.06 328.14 L 441.08 327.46 L 431.09 327.97 L 421.11 327.61 L 411.13 327.38 L 401.14 328.15 L 391.16 326.79 L 381.17 327 L 371.19 328.25 L 361.2 327.18 L 351.22 328 L 341.24 327.5"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 333.24 327.5 L 333.27 327.57 L 334.94 326.91 L 336.42 325.87 L 338.12 325.27 L 339.63 324.28 L 341.24 323.5 L 341.26 323.5 L 341.19 325.1 L 341.42 326.7 L 341.45 328.3 L 341.38 329.9 L 341.24 331.5 L 341.16 331.35 L 339.69 330.8 L 338.07 329.97 L 336.33 328.89 L 334.91 328.44 L 333.24 327.5 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 491 302.5 L 491 303.21 L 501 301.8 L 511 302.09 L 521 303.08 L 531 302.67 L 541 303.12 L 551 302.89 L 561 302.51 L 571 302.46 L 581 302.53 L 591 301.93 L 601 302.29 L 611 302.87 L 621 303.06 L 631 302.36 L 641 302.5 L 641.41 302.5 L 640.45 312.5 L 640.94 322.5 L 641.68 332.5 L 641.05 342.5 L 641 352.5 L 641 352.46 L 631 352.73 L 621 352.37 L 611 351.83 L 601 351.88 L 591 352.19 L 581 352.28 L 571 353.03 L 561 352.01 L 551 352.37 L 541 352.72 L 531 352.64 L 521 353.11 L 511 352.06 L 501 353.17 L 491 352.5 L 491.6 352.5 L 491.75 342.5 L 490.92 332.5 L 490.37 322.5 L 491.64 312.5 L 491 302.5 L 491 302.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 491 302.5 L 491 303.21 L 501 301.8 L 511 302.09 L 521 303.08 L 531 302.67 L 541 303.12 L 551 302.89 L 561 302.51 L 571 302.46 L 581 302.53 L 591 301.93 L 601 302.29 L 611 302.87 L 621 303.06 L 631 302.36 L 641 302.5 L 641.41 302.5 L 640.45 312.5 L 640.94 322.5 L 641.68 332.5 L 641.05 342.5 L 641 352.5 L 641 352.46 L 631 352.73 L 621 352.37 L 611 351.83 L 601 351.88 L 591 352.19 L 581 352.28 L 571 353.03 L 561 352.01 L 551 352.37 L 541 352.72 L 531 352.64 L 521 353.11 L 511 352.06 L 501 353.17 L 491 352.5 L 491.6 352.5 L 491.75 342.5 L 490.92 332.5 L 490.37 322.5 L 491.64 312.5 L 491 302.5 L 491 302.5 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(500.5,313.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="130" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableIterable&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="65" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableIterable&lt;T&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 276 302.5 L 275.9 302.5 L 276.04 294.65 L 275.82 286.79 L 276.09 278.94 L 275.82 271.09 L 276 263.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 276 255.24 L 276.2 255.33 L 276.74 256.8 L 277.44 258.35 L 278.4 260.03 L 279.41 261.74 L 280 263.24 L 280 263.41 L 278.4 263.39 L 276.8 263.21 L 275.2 263.02 L 273.6 263.25 L 272 263.24 L 272.13 263.3 L 272.74 261.61 L 273.73 260.1 L 274.34 258.41 L 275.27 256.87 L 276 255.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 221 302.5 L 221 302.28 L 231 302.55 L 241 302.1 L 251 302.18 L 261 302.31 L 271 301.93 L 281 303.12 L 291 302.76 L 301 302.5 L 311 302.62 L 321 302.04 L 331 302.5 L 330.32 302.5 L 330.51 312.5 L 330.67 322.5 L 331.57 332.5 L 330.92 342.5 L 331 352.5 L 331 352.67 L 321 352.33 L 311 351.94 L 301 352.57 L 291 352.13 L 281 352.57 L 271 352.8 L 261 352.63 L 251 353.22 L 241 351.95 L 231 351.76 L 221 352.5 L 220.54 352.5 L 221.21 342.5 L 221.14 332.5 L 220.44 322.5 L 220.52 312.5 L 221 302.5 L 221 302.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 221 302.5 L 221 302.28 L 231 302.55 L 241 302.1 L 251 302.18 L 261 302.31 L 271 301.93 L 281 303.12 L 291 302.76 L 301 302.5 L 311 302.62 L 321 302.04 L 331 302.5 L 330.32 302.5 L 330.51 312.5 L 330.67 322.5 L 331.57 332.5 L 330.92 342.5 L 331 352.5 L 331 352.67 L 321 352.33 L 311 351.94 L 301 352.57 L 291 352.13 L 281 352.57 L 271 352.8 L 261 352.63 L 251 353.22 L 241 351.95 L 231 351.76 L 221 352.5 L 220.54 352.5 L 221.21 342.5 L 221.14 332.5 L 220.44 322.5 L 220.52 312.5 L 221 302.5 L 221 302.5 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(228.5,313.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="94" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Collection&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="47" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 491 202.5 L 491 201.89 L 501 202.32 L 511 202.51 L 521 202.91 L 531 202.73 L 541 202.79 L 551 201.92 L 561 202.15 L 571 202.95 L 581 202.39 L 591 203.04 L 601 202.29 L 611 202.12 L 621 201.91 L 631 201.79 L 641 202.5 L 640.32 202.5 L 641.61 212.5 L 640.99 222.5 L 640.51 232.5 L 641.6 242.5 L 641 252.5 L 641 251.92 L 631 252.13 L 621 252.39 L 611 252.75 L 601 252.85 L 591 253.04 L 581 252.29 L 571 252.82 L 561 252.66 L 551 251.88 L 541 253.16 L 531 251.91 L 521 251.84 L 511 252.68 L 501 253.22 L 491 252.5 L 490.83 252.5 L 490.47 242.5 L 490.51 232.5 L 490.38 222.5 L 491.74 212.5 L 491 202.5 L 491 202.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 491 202.5 L 491 201.89 L 501 202.32 L 511 202.51 L 521 202.91 L 531 202.73 L 541 202.79 L 551 201.92 L 561 202.15 L 571 202.95 L 581 202.39 L 591 203.04 L 601 202.29 L 611 202.12 L 621 201.91 L 631 201.79 L 641 202.5 L 640.32 202.5 L 641.61 212.5 L 640.99 222.5 L 640.51 232.5 L 641.6 242.5 L 641 252.5 L 641 251.92 L 631 252.13 L 621 252.39 L 611 252.75 L 601 252.85 L 591 253.04 L 581 252.29 L 571 252.82 L 561 252.66 L 551 251.88 L 541 253.16 L 531 251.91 L 521 251.84 L 511 252.68 L 501 253.22 L 491 252.5 L 490.83 252.5 L 490.47 242.5 L 490.51 232.5 L 490.38 222.5 L 491.74 212.5 L 491 202.5 L 491 202.5 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(500.5,213.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="130" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableIterable&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="65" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableIterable&lt;T&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 346 424 L 345.77 424 L 346.19 417.7 L 346.12 411.4 L 345.78 405.1 L 346.23 398.8 L 346 392.5 Q 346 382.5 336 382.5 L 336 382.4 L 326 382.45 L 316 382.3 L 306 383.02 L 296 382.97 L 286 382.5 Q 276 382.5 276 372.87 L 276.11 372.87 L 276.2 370.94 L 276.02 369.02 L 276.22 367.09 L 275.96 365.16 L 276 363.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 276 355.24 L 276.14 355.31 L 276.77 356.82 L 277.55 358.41 L 278.54 360.11 L 279.06 361.56 L 280 363.24 L 280 363.2 L 278.4 363.09 L 276.8 363.24 L 275.2 363.21 L 273.6 363.26 L 272 363.24 L 271.98 363.22 L 272.85 361.66 L 273.64 360.06 L 274.48 358.48 L 275.01 356.74 L 276 355.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 291 424 L 291 423.72 L 301 423.5 L 311 423.52 L 321 424.21 L 331 424.25 L 341 424.21 L 351 423.89 L 361 424.47 L 371 424.04 L 381 424.43 L 391 424.01 L 401 424 L 401.42 424 L 401.33 434 L 401.74 444 L 400.7 454 L 400.37 464 L 401 474 L 401 474.2 L 391 474.22 L 381 474.36 L 371 474.36 L 361 474.17 L 351 473.29 L 341 474.01 L 331 473.47 L 321 473.51 L 311 474.47 L 301 473.56 L 291 474 L 290.73 474 L 291.67 464 L 291.68 454 L 290.57 444 L 290.51 434 L 291 424 L 291 424 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 291 424 L 291 423.72 L 301 423.5 L 311 423.52 L 321 424.21 L 331 424.25 L 341 424.21 L 351 423.89 L 361 424.47 L 371 424.04 L 381 424.43 L 391 424.01 L 401 424 L 401.42 424 L 401.33 434 L 401.74 444 L 400.7 454 L 400.37 464 L 401 474 L 401 474.2 L 391 474.22 L 381 474.36 L 371 474.36 L 361 474.17 L 351 473.29 L 341 474.01 L 331 473.47 L 321 473.51 L 311 474.47 L 301 473.56 L 291 474 L 290.73 474 L 291.67 464 L 291.68 454 L 290.57 444 L 290.51 434 L 291 424 L 291 424 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(306.5,435.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Set&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 641 422.5 L 641.1 422.5 L 641.02 418.5 L 641.13 414.5 L 640.92 410.5 L 640.82 406.5 L 641 402.5 Q 641 392.5 631 392.5 L 631 393.19 L 621.83 392.27 L 612.67 391.78 L 603.5 392.44 L 594.33 392.62 L 585.17 392.14 L 576 392.5 Q 566 392.5 566 382.5 L 566.06 382.5 L 566.05 378.65 L 566.14 374.79 L 566.18 370.94 L 565.98 367.09 L 566 363.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 566 355.24 L 566.19 355.33 L 566.89 356.88 L 567.65 358.46 L 568.48 360.08 L 569.32 361.7 L 570 363.24 L 570 363.25 L 568.4 363.12 L 566.8 363.04 L 565.2 363.07 L 563.6 363.04 L 562 363.24 L 561.86 363.17 L 562.89 361.68 L 563.51 359.99 L 564.45 358.46 L 565.14 356.81 L 566 355.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 641 472.5 L 640.52 472.5 L 641.45 482.5 L 640.76 492.5 L 641.46 502.5 L 641.73 512.5 L 641 522.5 Q 641 532.5 631 532.5 L 631 533.18 L 621.12 533.01 L 611.23 532.99 L 601.35 532.25 L 591.47 532.07 L 581.58 532.4 L 571.7 533.17 L 561.81 532.02 L 551.93 532.37 L 542.05 531.85 L 532.16 531.82 L 522.28 531.79 L 512.4 533.2 L 502.51 531.9 L 492.63 532.86 L 482.74 532.09 L 472.86 532.71 L 462.98 532.89 L 453.09 533.15 L 443.21 531.88 L 433.33 532.19 L 423.44 532.3 L 413.56 532.37 L 403.67 532.7 L 393.79 531.9 L 383.91 532.84 L 374.02 531.89 L 364.14 532.67 L 354.26 531.99 L 344.37 532.17 L 334.49 532.13 L 324.6 531.86 L 314.72 532.53 L 304.84 532.63 L 294.95 531.78 L 285.07 532.8 L 275.19 533.16 L 265.3 531.75 L 255.42 533.24 L 245.53 532.25 L 235.65 532.07 L 225.77 532.41 L 215.88 531.76 L 206 532.5 Q 196 532.5 196 522.5 L 195.96 522.5 L 195.77 514.85 L 196.18 507.19 L 195.82 499.54 L 195.92 491.89 L 196 484.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 196 476.24 L 195.94 476.21 L 196.64 477.76 L 197.8 479.54 L 198.43 481.05 L 199.09 482.58 L 200 484.24 L 200 484.46 L 198.4 484.04 L 196.8 484.32 L 195.2 484.02 L 193.6 484.38 L 192 484.24 L 191.81 484.14 L 192.99 482.73 L 193.46 480.96 L 194.31 479.39 L 195.29 477.88 L 196 476.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 586 422.5 L 586 422.13 L 596 422.42 L 606 422.57 L 616 422.58 L 626 423.16 L 636 422.11 L 646 421.8 L 656 423.04 L 666 422.96 L 676 421.93 L 686 421.86 L 696 422.5 L 696.45 422.5 L 696.2 432.5 L 696.09 442.5 L 695.97 452.5 L 695.8 462.5 L 696 472.5 L 696 471.82 L 686 472.78 L 676 472.97 L 666 472.93 L 656 473.14 L 646 473.04 L 636 472.45 L 626 471.89 L 616 473.13 L 606 471.77 L 596 472.49 L 586 472.5 L 586.31 472.5 L 585.78 462.5 L 585.56 452.5 L 586.59 442.5 L 585.51 432.5 L 586 422.5 L 586 422.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 586 422.5 L 586 422.13 L 596 422.42 L 606 422.57 L 616 422.58 L 626 423.16 L 636 422.11 L 646 421.8 L 656 423.04 L 666 422.96 L 676 421.93 L 686 421.86 L 696 422.5 L 696.45 422.5 L 696.2 432.5 L 696.09 442.5 L 695.97 452.5 L 695.8 462.5 L 696 472.5 L 696 471.82 L 686 472.78 L 676 472.97 L 666 472.93 L 656 473.14 L 646 473.04 L 636 472.45 L 626 471.89 L 616 473.13 L 606 471.77 L 596 472.49 L 586 472.5 L 586.31 472.5 L 585.78 462.5 L 585.56 452.5 L 586.59 442.5 L 585.51 432.5 L 586 422.5 L 586 422.5 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(590.5,433.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="101" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableList&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="51" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableList&lt;T&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 196 424 L 195.96 424 L 196.06 417.7 L 195.86 411.4 L 196.02 405.1 L 196.06 398.8 L 196 392.5 Q 196 382.5 206 382.5 L 206 382.93 L 216 382.03 L 226 382.1 L 236 382.11 L 246 382.02 L 256 383.05 L 266 382.5 Q 276 382.5 276 372.87 L 276.1 372.87 L 275.92 370.94 L 276.15 369.02 L 275.99 367.09 L 276.22 365.16 L 276 363.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 276 355.24 L 276.12 355.29 L 276.76 356.82 L 277.61 358.44 L 278.45 360.06 L 278.99 361.53 L 280 363.24 L 280 362.99 L 278.4 363.38 L 276.8 363.39 L 275.2 363.12 L 273.6 363.4 L 272 363.24 L 272.01 363.24 L 272.58 361.53 L 273.8 360.14 L 274.45 358.46 L 275.3 356.89 L 276 355.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 141 424 L 141 423.38 L 151 424.14 L 161 424.04 L 171 424.69 L 181 423.69 L 191 424.22 L 201 424.44 L 211 424 L 221 424.08 L 231 423.53 L 241 423.84 L 251 424 L 251.28 424 L 251.69 434 L 251.38 444 L 250.62 454 L 250.59 464 L 251 474 L 251 474.12 L 241 473.93 L 231 474.01 L 221 474.34 L 211 474.59 L 201 473.98 L 191 474.16 L 181 473.97 L 171 474.58 L 161 473.54 L 151 474.14 L 141 474 L 141.24 474 L 140.95 464 L 141.22 454 L 141.42 444 L 141.01 434 L 141 424 L 141 424 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 141 424 L 141 423.38 L 151 424.14 L 161 424.04 L 171 424.69 L 181 423.69 L 191 424.22 L 201 424.44 L 211 424 L 221 424.08 L 231 423.53 L 241 423.84 L 251 424 L 251.28 424 L 251.69 434 L 251.38 444 L 250.62 454 L 250.59 464 L 251 474 L 251 474.12 L 241 473.93 L 231 474.01 L 221 474.34 L 211 474.59 L 201 473.98 L 191 474.16 L 181 473.97 L 171 474.58 L 161 473.54 L 151 474.14 L 141 474 L 141.24 474 L 140.95 464 L 141.22 454 L 141.42 444 L 141.01 434 L 141 424 L 141 424 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(156.5,435.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>List&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 506 424 L 506.19 424.03 L 505.13 419.65 L 504.64 415.35 L 503.84 411.01 L 503.1 406.68 L 502.57 402.38 Q 501 392.5 511 392.5 L 511 392.62 L 519.8 392.56 L 528.6 392.71 L 537.4 392.56 L 546.2 392.47 L 555 392.5 Q 565 392.5 565.15 382.5 L 565.03 382.5 L 565.45 378.55 L 565.29 374.59 L 565.16 370.64 L 565.4 366.69 L 565.46 362.73"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 565.58 354.74 L 565.76 354.82 L 566.34 356.34 L 566.98 357.89 L 567.87 359.56 L 568.46 361.08 L 569.46 362.8 L 569.45 362.63 L 567.85 362.58 L 566.26 362.8 L 564.66 362.61 L 563.06 362.79 L 561.46 362.67 L 561.36 362.62 L 562.06 360.97 L 563.12 359.5 L 563.93 357.91 L 564.91 356.4 L 565.58 354.74 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 451 449 L 451 449.01 L 443.05 449.17 L 435.09 449.05 L 427.14 448.84 L 419.19 449.18 L 411.24 449"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 403.24 449 L 403.26 449.06 L 404.91 448.35 L 406.33 447.19 L 408.08 446.68 L 409.7 445.94 L 411.24 445 L 411.06 445 L 411.37 446.6 L 411.31 448.2 L 411.45 449.8 L 411.32 451.4 L 411.24 453 L 411.24 453.01 L 409.61 452.15 L 408.12 451.58 L 406.44 450.6 L 404.73 449.6 L 403.24 449 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 451 424 L 451 424.08 L 461 423.8 L 471 423.46 L 481 423.38 L 491 424.01 L 501 423.74 L 511 424.03 L 521 424.19 L 531 423.83 L 541 423.31 L 551 423.98 L 561 424 L 561.1 424 L 560.54 434 L 561.16 444 L 560.35 454 L 560.54 464 L 561 474 L 561 473.98 L 551 474.2 L 541 473.47 L 531 474.39 L 521 473.29 L 511 474.42 L 501 473.98 L 491 474.69 L 481 473.8 L 471 474.41 L 461 474.13 L 451 474 L 450.77 474 L 450.42 464 L 450.49 454 L 450.37 444 L 450.34 434 L 451 424 L 451 424 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 451 424 L 451 424.08 L 461 423.8 L 471 423.46 L 481 423.38 L 491 424.01 L 501 423.74 L 511 424.03 L 521 424.19 L 531 423.83 L 541 423.31 L 551 423.98 L 561 424 L 561.1 424 L 560.54 434 L 561.16 444 L 560.35 454 L 560.54 464 L 561 474 L 561 473.98 L 551 474.2 L 541 473.47 L 531 474.39 L 521 473.29 L 511 474.42 L 501 473.98 L 491 474.69 L 481 473.8 L 471 474.41 L 461 474.13 L 451 474 L 450.77 474 L 450.42 464 L 450.49 454 L 450.37 444 L 450.34 434 L 451 424 L 451 424 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(458.5,435.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="94" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableSet&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="47" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 221 11 L 221 10.65 L 231 10.71 L 241 10.87 L 251 10.79 L 261 11.24 L 271 10.69 L 281 10.89 L 291 11.64 L 301 11.63 L 311 11.3 L 321 10.72 L 331 11 L 331.09 11 L 331.51 21 L 331.38 31 L 331.64 41 L 331.72 51 L 331 61 L 331 60.31 L 321 61.29 L 311 61.64 L 301 60.72 L 291 61.32 L 281 61.46 L 271 61.49 L 261 61.2 L 251 61.4 L 241 60.81 L 231 61.53 L 221 61 L 220.42 61 L 220.77 51 L 220.71 41 L 221.64 31 L 220.31 21 L 221 11 L 221 11 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 221 11 L 221 10.65 L 231 10.71 L 241 10.87 L 251 10.79 L 261 11.24 L 271 10.69 L 281 10.89 L 291 11.64 L 301 11.63 L 311 11.3 L 321 10.72 L 331 11 L 331.09 11 L 331.51 21 L 331.38 31 L 331.64 41 L 331.72 51 L 331 61 L 331 60.31 L 321 61.29 L 311 61.64 L 301 60.72 L 291 61.32 L 281 61.46 L 271 61.49 L 261 61.2 L 251 61.4 L 241 60.81 L 231 61.53 L 221 61 L 220.42 61 L 220.77 51 L 220.71 41 L 221.64 31 L 220.31 21 L 221 11 L 221 11 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(236.5,22.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Iterator&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 489 36 L 489 35.77 L 479.15 35.64 L 469.3 36.63 L 459.45 35.98 L 449.6 35.48 L 439.75 35.85 L 429.89 35.63 L 420.04 36.64 L 410.19 36.16 L 400.34 35.68 L 390.49 36.45 L 380.64 35.71 L 370.79 36.24 L 360.94 35.62 L 351.09 36.11 L 341.24 36"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 333.24 36 L 333.25 36.03 L 334.81 35.15 L 336.39 34.3 L 338.12 33.77 L 339.67 32.87 L 341.24 32 L 341.38 32 L 341.44 33.6 L 341.35 35.2 L 341.17 36.8 L 341.2 38.4 L 341.24 40 L 341.29 40.11 L 339.56 39.06 L 338 38.33 L 336.54 37.81 L 334.73 36.58 L 333.24 36 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 489 11 L 489 10.45 L 499.27 10.88 L 509.53 10.34 L 519.8 10.57 L 530.07 11.2 L 540.33 11.48 L 550.6 10.3 L 560.87 10.85 L 571.13 10.9 L 581.4 10.81 L 591.67 11.58 L 601.93 10.3 L 612.2 10.66 L 622.47 10.61 L 632.73 10.55 L 643 11 L 642.79 11 L 642.31 21 L 643.66 31 L 643.16 41 L 642.26 51 L 643 61 L 643 61.02 L 632.73 61.61 L 622.47 61.26 L 612.2 60.99 L 601.93 61.55 L 591.67 60.28 L 581.4 61.06 L 571.13 61.58 L 560.87 61.49 L 550.6 60.63 L 540.33 60.48 L 530.07 61.66 L 519.8 60.42 L 509.53 60.55 L 499.27 61.09 L 489 61 L 489.29 61 L 489.49 51 L 488.49 41 L 489.16 31 L 489.34 21 L 489 11 L 489 11 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 489 11 L 489 10.45 L 499.27 10.88 L 509.53 10.34 L 519.8 10.57 L 530.07 11.2 L 540.33 11.48 L 550.6 10.3 L 560.87 10.85 L 571.13 10.9 L 581.4 10.81 L 591.67 11.58 L 601.93 10.3 L 612.2 10.66 L 622.47 10.61 L 632.73 10.55 L 643 11 L 642.79 11 L 642.31 21 L 643.66 31 L 643.16 41 L 642.26 51 L 643 61 L 643 61.02 L 632.73 61.61 L 622.47 61.26 L 612.2 60.99 L 601.93 61.55 L 591.67 60.28 L 581.4 61.06 L 571.13 61.58 L 560.87 61.49 L 550.6 60.63 L 540.33 60.48 L 530.07 61.66 L 519.8 60.42 L 509.53 60.55 L 499.27 61.09 L 489 61 L 489.29 61 L 489.49 51 L 488.49 41 L 489.16 31 L 489.34 21 L 489 11 L 489 11 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(500.5,22.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="130" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableIterator&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="65" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableIterator&lt;T&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 276 203 L 276 67.71" fill="none" stroke="#333333" stroke-width="3" stroke-miterlimit="10"
+              stroke-dasharray="9 9" pointer-events="none"/>
+        <path d="M 283.5 79.35 L 276 64.35 L 268.5 79.35" fill="none" stroke="#333333" stroke-width="3"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(252.5,126.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="46" height="11"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 11px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">
+                            Provide
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="23" y="11" fill="#000000" text-anchor="middle" font-size="11px" font-family="Fira Code">
+                    Provide
+                </text>
+            </switch>
+        </g>
+        <path d="M 566 203 L 566 67.71" fill="none" stroke="#333333" stroke-width="3" stroke-miterlimit="10"
+              stroke-dasharray="9 9" pointer-events="none"/>
+        <path d="M 573.5 79.35 L 566 64.35 L 558.5 79.35" fill="none" stroke="#333333" stroke-width="3"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(539.5,135.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="46" height="11"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 11px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">
+                            Provide
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="23" y="11" fill="#000000" text-anchor="middle" font-size="11px" font-family="Fira Code">
+                    Provide
+                </text>
+            </switch>
+        </g>
+        <path d="M 31 91 L 31 90.42 L 41 91.7 L 51 91.66 L 61 90.4 L 71 90.87 L 81 90.44 L 91 91.28 L 101 90.4 L 111 90.7 L 121 90.87 L 131 91.07 L 141 91 L 141.73 91 L 140.38 101 L 141.33 111 L 141.36 121 L 140.48 131 L 141 141 L 141 141.28 L 131 140.35 L 121 141.04 L 111 140.89 L 101 140.89 L 91 140.83 L 81 140.92 L 71 141.26 L 61 141.37 L 51 141.69 L 41 140.61 L 31 141 L 30.68 141 L 31.72 131 L 31.34 121 L 31.1 111 L 31.38 101 L 31 91 L 31 91 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 31 91 L 31 90.42 L 41 91.7 L 51 91.66 L 61 90.4 L 71 90.87 L 81 90.44 L 91 91.28 L 101 90.4 L 111 90.7 L 121 90.87 L 131 91.07 L 141 91 L 141.73 91 L 140.38 101 L 141.33 111 L 141.36 121 L 140.48 131 L 141 141 L 141 141.28 L 131 140.35 L 121 141.04 L 111 140.89 L 101 140.89 L 91 140.83 L 81 140.92 L 71 141.26 L 61 141.37 L 51 141.69 L 41 140.61 L 31 141 L 30.68 141 L 31.72 131 L 31.34 121 L 31.1 111 L 31.38 101 L 31 91 L 31 91 Z Z"
+              fill="#dae8fc" stroke="#6c8ebf" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(46.5,102.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Sequence&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 86 91 L 86 46 Q 86 36 96 36 L 214.29 36" fill="none" stroke="#333333" stroke-width="3"
+              stroke-miterlimit="10" stroke-dasharray="9 9" pointer-events="none"/>
+        <path d="M 202.65 43.5 L 217.65 36 L 202.65 28.5" fill="none" stroke="#333333" stroke-width="3"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(102.5,30.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="46" height="11"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 11px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;background-color:#ffffff;">
+                            Provide
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="23" y="11" fill="#000000" text-anchor="middle" font-size="11px" font-family="Fira Code">
+                    Provide
+                </text>
+            </switch>
+        </g>
+        <path d="M 86 196 L 86.24 196 L 85.95 187.05 L 86.18 178.09 L 85.94 169.14 L 86.16 160.19 L 86 151.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 86 143.24 L 85.87 143.17 L 86.92 144.89 L 87.6 146.44 L 88.52 148.1 L 89.04 149.55 L 90 151.24 L 90 151.46 L 88.4 151.24 L 86.8 151.38 L 85.2 151.42 L 83.6 151.29 L 82 151.24 L 82.01 151.24 L 82.93 149.7 L 83.79 148.13 L 84.35 146.41 L 85.01 144.74 L 86 143.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 11 196 L 11 196.27 L 21 195.52 L 31 195.53 L 41 195.71 L 51 195.56 L 61 195.45 L 71 196.65 L 81 195.96 L 91 195.88 L 101 196.36 L 111 195.81 L 121 196.44 L 131 196.47 L 141 195.31 L 151 195.48 L 161 196 L 161.17 196 L 160.49 206 L 161.61 216 L 160.64 226 L 160.94 236 L 161 246 L 161 245.45 L 151 246.05 L 141 246.71 L 131 246.7 L 121 246.27 L 111 246.61 L 101 246.17 L 91 245.77 L 81 246 L 71 246.26 L 61 245.43 L 51 245.52 L 41 246.62 L 31 245.61 L 21 245.52 L 11 246 L 10.67 246 L 11.19 236 L 11.21 226 L 10.87 216 L 10.43 206 L 11 196 L 11 196 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 11 196 L 11 196.27 L 21 195.52 L 31 195.53 L 41 195.71 L 51 195.56 L 61 195.45 L 71 196.65 L 81 195.96 L 91 195.88 L 101 196.36 L 111 195.81 L 121 196.44 L 131 196.47 L 141 195.31 L 151 195.48 L 161 196 L 161.17 196 L 160.49 206 L 161.61 216 L 160.64 226 L 160.94 236 L 161 246 L 161 245.45 L 151 246.05 L 141 246.71 L 131 246.7 L 121 246.27 L 111 246.61 L 101 246.17 L 91 245.77 L 81 246 L 71 246.26 L 61 245.43 L 51 245.52 L 41 246.62 L 31 245.61 L 21 245.52 L 11 246 L 10.67 246 L 11.19 236 L 11.21 226 L 10.87 216 L 10.43 206 L 11 196 L 11 196 Z Z"
+              fill="#dae8fc" stroke="#6c8ebf" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(17.5,207.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="137" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>DropTakeSequence&lt;T&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="69" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;DropTakeSequence&lt;T&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+    </g>
+</svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 489 192" preserveAspectRatio="xMidYMid meet">
+    <defs/>
+    <g transform="translate(0.5,0.5)">
+        <path d="M 31 17.5 L 31 17.55 L 41 17.34 L 51 17.61 L 61 17.86 L 71 17.45 L 81 17.97 L 91 16.95 L 101 17.09 L 111 18.02 L 121 16.91 L 131 17.2 L 141 17.5 L 141.73 17.5 L 140.61 27.5 L 140.64 37.5 L 140.86 47.5 L 141.32 57.5 L 141 67.5 L 141 67.73 L 131 66.8 L 121 67.9 L 111 68.01 L 101 68.01 L 91 66.97 L 81 66.83 L 71 66.79 L 61 67.89 L 51 67.14 L 41 67.57 L 31 67.5 L 31.6 67.5 L 31 57.5 L 30.79 47.5 L 31.29 37.5 L 31.66 27.5 L 31 17.5 L 31 17.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 31 17.5 L 31 17.55 L 41 17.34 L 51 17.61 L 61 17.86 L 71 17.45 L 81 17.97 L 91 16.95 L 101 17.09 L 111 18.02 L 121 16.91 L 131 17.2 L 141 17.5 L 141.73 17.5 L 140.61 27.5 L 140.64 37.5 L 140.86 47.5 L 141.32 57.5 L 141 67.5 L 141 67.73 L 131 66.8 L 121 67.9 L 111 68.01 L 101 68.01 L 91 66.97 L 81 66.83 L 71 66.79 L 61 67.89 L 51 67.14 L 41 67.57 L 31 67.5 L 31.6 67.5 L 31 57.5 L 30.79 47.5 L 31.29 37.5 L 31.66 27.5 L 31 17.5 L 31 17.5 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(46.5,28.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="79" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>Map&lt;K,V&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="40" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">[Not
+                    supported by viewer]
+                </text>
+            </switch>
+        </g>
+        <path d="M 316 42.5 L 316 42.42 L 305.7 43.13 L 295.4 41.92 L 285.11 41.84 L 274.81 43.23 L 264.51 42.78 L 254.21 42.81 L 243.92 43 L 233.62 42.28 L 223.32 42.63 L 213.02 42.96 L 202.72 43.18 L 192.43 42.01 L 182.13 42.72 L 171.83 41.91 L 161.53 42.97 L 151.24 42.5"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 143.24 42.5 L 143.32 42.66 L 144.9 41.83 L 146.36 40.75 L 147.97 39.98 L 149.63 39.28 L 151.24 38.5 L 151.38 38.5 L 151.48 40.1 L 151.12 41.7 L 151.06 43.3 L 151.42 44.9 L 151.24 46.5 L 151.26 46.55 L 149.53 45.49 L 148.09 45.02 L 146.5 44.22 L 144.9 43.42 L 143.24 42.5 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 316 17.5 L 316 17.37 L 326 17.05 L 336 17.16 L 346 17.41 L 356 18.15 L 366 17.64 L 376 17.75 L 386 16.77 L 396 17.07 L 406 18.15 L 416 18.06 L 426 18.13 L 436 17.5 L 436.05 17.5 L 436.33 27.5 L 436.15 37.5 L 435.93 47.5 L 436.37 57.5 L 436 67.5 L 436 67.52 L 426 67.78 L 416 67.83 L 406 66.94 L 396 67.85 L 386 67.19 L 376 67.32 L 366 67.77 L 356 67.64 L 346 67.46 L 336 68.16 L 326 67.37 L 316 67.5 L 315.49 67.5 L 316.21 57.5 L 316.16 47.5 L 316.56 37.5 L 316.72 27.5 L 316 17.5 L 316 17.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 316 17.5 L 316 17.37 L 326 17.05 L 336 17.16 L 346 17.41 L 356 18.15 L 366 17.64 L 376 17.75 L 386 16.77 L 396 17.07 L 406 18.15 L 416 18.06 L 426 18.13 L 436 17.5 L 436.05 17.5 L 436.33 27.5 L 436.15 37.5 L 435.93 47.5 L 436.37 57.5 L 436 67.5 L 436 67.52 L 426 67.78 L 416 67.83 L 406 66.94 L 396 67.85 L 386 67.19 L 376 67.32 L 366 67.77 L 356 67.64 L 346 67.46 L 336 68.16 L 326 67.37 L 316 67.5 L 315.49 67.5 L 316.21 57.5 L 316.16 47.5 L 316.56 37.5 L 316.72 27.5 L 316 17.5 L 316 17.5 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(321.5,28.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="108" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableMap&lt;K,V&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="54" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableMap&lt;K,V&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 86 127.5 L 86.5 127.5 L 85.7 117.65 L 85.8 107.79 L 86.54 97.94 L 86.56 88.09 L 86 78.24" fill="none"
+              stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10"
+              stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 86 70.24 L 85.86 70.17 L 86.85 71.86 L 87.39 73.33 L 88.18 74.93 L 89.19 76.63 L 90 78.24 L 90 78 L 88.4 78.33 L 86.8 78.09 L 85.2 78.08 L 83.6 78.47 L 82 78.24 L 82.12 78.3 L 82.75 76.61 L 83.79 75.13 L 84.47 73.47 L 85.28 71.87 L 86 70.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 11.5 127.5 L 11.5 127.29 L 21.43 127.42 L 31.37 127.22 L 41.3 127.52 L 51.23 127.02 L 61.17 127.97 L 71.1 128.22 L 81.03 126.77 L 90.97 127.11 L 100.9 127.75 L 110.83 127.69 L 120.77 127.92 L 130.7 127.36 L 140.63 126.78 L 150.57 127.94 L 160.5 127.5 L 160.53 127.5 L 160.66 137.5 L 159.79 147.5 L 160.44 157.5 L 160.94 167.5 L 160.5 177.5 L 160.5 177.09 L 150.57 176.89 L 140.63 177.44 L 130.7 177.75 L 120.77 177.1 L 110.83 176.9 L 100.9 177.79 L 90.97 177.4 L 81.03 177.49 L 71.1 177.68 L 61.17 178.06 L 51.23 177.86 L 41.3 176.83 L 31.37 178.24 L 21.43 178.15 L 11.5 177.5 L 11.11 177.5 L 11.87 167.5 L 12.08 157.5 L 12.02 147.5 L 11.32 137.5 L 11.5 127.5 L 11.5 127.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 11.5 127.5 L 11.5 127.29 L 21.43 127.42 L 31.37 127.22 L 41.3 127.52 L 51.23 127.02 L 61.17 127.97 L 71.1 128.22 L 81.03 126.77 L 90.97 127.11 L 100.9 127.75 L 110.83 127.69 L 120.77 127.92 L 130.7 127.36 L 140.63 126.78 L 150.57 127.94 L 160.5 127.5 L 160.53 127.5 L 160.66 137.5 L 159.79 147.5 L 160.44 157.5 L 160.94 167.5 L 160.5 177.5 L 160.5 177.09 L 150.57 176.89 L 140.63 177.44 L 130.7 177.75 L 120.77 177.1 L 110.83 176.9 L 100.9 177.79 L 90.97 177.4 L 81.03 177.49 L 71.1 177.68 L 61.17 178.06 L 51.23 177.86 L 41.3 176.83 L 31.37 178.24 L 21.43 178.15 L 11.5 177.5 L 11.11 177.5 L 11.87 167.5 L 12.08 157.5 L 12.02 147.5 L 11.32 137.5 L 11.5 127.5 L 11.5 127.5 Z Z"
+              fill="#d5e8d4" stroke="#82b366" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(17.5,138.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="137" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MapWithDefault&lt;K,V&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="69" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MapWithDefault&lt;K,V&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 376 127.5 L 375.7 127.5 L 375.66 117.65 L 375.43 107.79 L 376.41 97.94 L 375.94 88.09 L 376 78.24"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 376 70.24 L 375.96 70.22 L 376.58 71.73 L 377.62 73.45 L 378.34 75.01 L 379.01 76.54 L 380 78.24 L 380 78.3 L 378.4 78.33 L 376.8 78.18 L 375.2 78.34 L 373.6 78.06 L 372 78.24 L 372.05 78.26 L 372.9 76.68 L 373.4 74.93 L 374.32 73.4 L 375.02 71.74 L 376 70.24 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 276.5 152.73 L 276.5 153.03 L 266.93 152.89 L 257.36 152.81 L 247.79 152.89 L 238.22 152.26 L 228.65 152.83 L 219.08 153.54 L 209.51 153.12 L 199.94 152.94 L 190.37 152.69 L 180.81 152.86 L 171.24 152.98"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 163.24 152.99 L 163.18 152.88 L 164.77 152.07 L 166.52 151.56 L 168.03 150.58 L 169.52 149.57 L 171.23 148.98 L 171.19 148.98 L 171.38 150.58 L 171.3 152.18 L 171 153.78 L 171.03 155.38 L 171.25 156.98 L 171.14 156.76 L 169.67 156.24 L 168.07 155.44 L 166.35 154.4 L 164.76 153.64 L 163.24 152.99 Z Z"
+              fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 276.5 127.5 L 276.5 126.84 L 286.45 127.57 L 296.4 127.07 L 306.35 126.98 L 316.3 128.22 L 326.25 127.08 L 336.2 128.06 L 346.15 126.98 L 356.1 128.04 L 366.05 127.99 L 376 127.28 L 385.95 128.24 L 395.9 127.47 L 405.85 127.36 L 415.8 128.03 L 425.75 127.23 L 435.7 127.89 L 445.65 126.91 L 455.6 126.85 L 465.55 127.8 L 475.5 127.5 L 475.96 127.5 L 475.92 137.5 L 475.87 147.5 L 475.17 157.5 L 475.48 167.5 L 475.5 177.5 L 475.5 177.93 L 465.55 178.08 L 455.6 177.91 L 445.65 178.05 L 435.7 177.84 L 425.75 177.97 L 415.8 177.55 L 405.85 177.13 L 395.9 176.94 L 385.95 178.09 L 376 177.05 L 366.05 176.97 L 356.1 177.06 L 346.15 177.63 L 336.2 177.52 L 326.25 177.63 L 316.3 178.17 L 306.35 176.94 L 296.4 177.92 L 286.45 177.03 L 276.5 177.5 L 276.97 177.5 L 276.01 167.5 L 277.09 157.5 L 275.99 147.5 L 275.8 137.5 L 276.5 127.5 L 276.5 127.5 Z Z"
+              fill="#000000" stroke="#000000" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" transform="translate(2,3)" opacity="0.25"/>
+        <path d="M 276.5 127.5 L 276.5 126.84 L 286.45 127.57 L 296.4 127.07 L 306.35 126.98 L 316.3 128.22 L 326.25 127.08 L 336.2 128.06 L 346.15 126.98 L 356.1 128.04 L 366.05 127.99 L 376 127.28 L 385.95 128.24 L 395.9 127.47 L 405.85 127.36 L 415.8 128.03 L 425.75 127.23 L 435.7 127.89 L 445.65 126.91 L 455.6 126.85 L 465.55 127.8 L 475.5 127.5 L 475.96 127.5 L 475.92 137.5 L 475.87 147.5 L 475.17 157.5 L 475.48 167.5 L 475.5 177.5 L 475.5 177.93 L 465.55 178.08 L 455.6 177.91 L 445.65 178.05 L 435.7 177.84 L 425.75 177.97 L 415.8 177.55 L 405.85 177.13 L 395.9 176.94 L 385.95 178.09 L 376 177.05 L 366.05 176.97 L 356.1 177.06 L 346.15 177.63 L 336.2 177.52 L 326.25 177.63 L 316.3 178.17 L 306.35 176.94 L 296.4 177.92 L 286.45 177.03 L 276.5 177.5 L 276.97 177.5 L 276.01 167.5 L 277.09 157.5 L 275.99 147.5 L 275.8 137.5 L 276.5 127.5 L 276.5 127.5 Z Z"
+              fill="#e1d5e7" stroke="#9673a6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"
+              stroke-miterlimit="10" pointer-events="none"/>
+        <g transform="translate(282.5,138.5)">
+            <switch>
+                <foreignObject style="overflow:visible;" pointer-events="all" width="187" height="27"
+                               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div xmlns="http://www.w3.org/1999/xhtml"
+                         style="display: inline-block; font-size: 12px; font-family: &quot;Fira Code&quot;; color: rgb(0, 0, 0); line-height: 1.2; vertical-align: top; white-space: nowrap; text-align: center;">
+                        <div xmlns="http://www.w3.org/1999/xhtml"
+                             style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
+                            <br/>
+                            <b>MutableMapWithDefault&lt;K,V&gt;</b>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="94" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
+                    «interface»&lt;br&gt;&lt;b&gt;MutableMapWithDefault&lt;K,V&gt;&lt;/b&gt;
+                </text>
+            </switch>
+        </g>
+        <path d="M 406 18 L 406 18" fill="none" stroke="#808080" stroke-width="2" stroke-linejoin="round"
+              stroke-linecap="round" stroke-miterlimit="10" stroke-dasharray="6 6" pointer-events="none"/>
+        <path d="M 406 18 L 406 18 L 406 18 L 406 18 Z Z" fill="none" stroke="#808080" stroke-width="2"
+              stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" pointer-events="none"/>
+    </g>
+</svg>
 
 
 ```kotlin
@@ -3273,6 +4133,42 @@ println(s)
 
 
 ```kotlin
+fun <T> timed(block: () -> T) {
+    val startTime = System.currentTimeMillis()
+    val result = block()
+    val endTime = System.currentTimeMillis()
+    val duration = endTime - startTime
+    val readable = String.format("%d min %02d seconds", duration / 60000, (duration % 60000) / 1000)
+    println("$result in $readable")
+}
+
+fun main(args: Array<String>) {
+    fun Long.toMB(): String =
+        "${this / 1048576}MB"
+
+    fun Runtime.usedMemory(): String =
+        (totalMemory() - freeMemory()).toMB()
+
+    fun Runtime.getMemoryInfo(): String =
+        "used: ${usedMemory()}, total: ${totalMemory().toMB()}"
+
+    timed {
+        (0..1_000_000)
+            .asSequence()
+            .onEach {
+                if (it % 10_000 == 0) {
+                    println(Runtime.getRuntime().getMemoryInfo())
+                }
+                println(it)
+            }
+            .map { Moon(it.toString()) }
+            .first()
+    }
+}
+
+```
+
+```kotlin
 for (i in 1..3) print(i) // prints 123
 
 for (i in 3 downTo 1) print(i) // prints 321
@@ -3341,7 +4237,7 @@ public final class RangesKt {
 
 ```kotlin
 fun main(args: Array<String>) {
-    val aPair = Pair("Earth", "Moon")
+    val aPair = "Earth" to "Moon" // ~  Pair("Earth", "Moon")
     val (planet, moon) = aPair
 
     val aTriple = Triple("Voyager 1", 1977, listOf("Jupiter", "Saturn"))
@@ -3362,31 +4258,31 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(
-   mv = {1, 1, 9},
-   bv = {1, 0, 2},
-   k = 2,
-   d1 = {"\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005"},
-   d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V"}
+        mv = {1, 1, 9},
+        bv = {1, 0, 2},
+        k = 2,
+        d1 = {"\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005"},
+        d2 = {"main", "", "args", "", "", "([Ljava/lang/String;)V"}
 )
 public final class TuplesKt {
    public static final void main(@NotNull String[] args) {
       Intrinsics.checkParameterIsNotNull(args, "args");
-      Pair pair = new Pair(1, "x");
-      int var2 = ((Number)pair.component1()).intValue();
-      String b = (String)pair.component2();
-      Triple triple = new Triple(2, "x", CollectionsKt.listOf((Object)null));
-      int var5 = ((Number)triple.component1()).intValue();
-      String var6 = (String)triple.component2();
-      List e = (List)triple.component3();
+      Pair aPair = kotlin.TuplesKt.to("Earth", "Moon");
+      String var2 = (String)aPair.component1();
+      String moon = (String)aPair.component2();
+      Triple aTriple = new Triple("Voyager 1", 1977, CollectionsKt.listOf(new String[]{"Jupiter", "Saturn"}));
+      String var5 = (String)aTriple.component1();
+      int var6 = ((Number)aTriple.component2()).intValue();
+      List flyOver = (List)aTriple.component3();
    }
 }
 
 ```
 
 
-- Super on a de l'immutabilité, des `map`, `flatMap`, `fold`, `aggregate`...
-- Mais ça reste des collections Java
-- Avant d'utiliser les sequences, faite des mesures
+- 💪 Super on a de l'immutabilité, des `map`, `flatMap`, `fold`, `aggregate`,...
+- 🤨 Mais ça reste des collections Java
+- ⚖️ Avant d'utiliser les `Sequence`, faites des mesures
 
 
 
@@ -3397,27 +4293,13 @@ import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
 fun main(args: Array<String>) {
-    val p : String by MyDelegateClass()
-    println(p)
+    val value: String by MyDelegateClass()
+    println(value)
 }
 
 class MyDelegateClass : ReadOnlyProperty<Nothing?, String> {
-    override operator fun getValue(thisRef: Nothing?, property: KProperty<*>) = "p"
-}
-
-```
-
-```kotlin
-import kotlin.properties.Delegates
-
-fun main(args: Array<String>) {
-
-    var obserbable: String by Delegates.observable("Initial value") {
-        prop, old, new ->
-            println("$old -> $new")
-    }
-
-    obserbable = "new value"
+    override operator fun getValue(thisRef: Nothing?,
+                                   property: KProperty<*>) = "Hello Devoxx"
 }
 
 ```
@@ -3435,9 +4317,25 @@ fun main(args: Array<String>) {
     val ultimateQuestionOfLife: Int by lazy {
         DeepThought.answer()
     }
-    println("The Ultimate Question of Life, the Universe and Everything ?")
+    println("The Ultimate Question of Life, " +
+                    "the Universe and Everything ?")
     print("Answer: ")
     println(ultimateQuestionOfLife)
+}
+
+```
+
+```kotlin
+import kotlin.properties.Delegates
+
+fun main(args: Array<String>) {
+
+    var observable: String by Delegates.observable("Initial value") {
+        _, old, new ->
+            println("$old -> $new")
+    }
+
+    observable = "new value"
 }
 
 ```
@@ -3447,12 +4345,18 @@ lateinit var str: String
 
 fun main(args: Array<String>) {
     // println(str) kotlin.UninitializedPropertyAccessException
-    str = "a"
+    str = "Hello Devoxx"
     println(str)
 }
 
 ```
 
+* Lazy : utile pour les propriétés qui ne sont pas systématiquement utilisées.<br>
+  ⚠️ À manipuler avec précaution dans les activités Android ( avec le cycle de vie, cela peut référencer une ancienne instance)
+
+* Delegate : Observable, Not null, ...
+* lateinit : évite les null check pour les propriétés qui ne peuvent être initialisées immédiatement (ex référence de vues sur `Activity`, `Fragment`).
+  * Ne peut pas être utilisé avec les types primitifs
 
 
 
@@ -3567,8 +4471,10 @@ class Pojo {
 }
 
 object JavaBeanBuilder {
+
     fun <T> createBean(clazz: Class<T>): T =
         clazz.newInstance()
+
     inline fun <reified T> createBean(): T =
         createBean(T::class.java)
 }
@@ -3582,19 +4488,20 @@ fun main(args: Array<String>) {
     p2.name = "Plop2"
     println(p2)
 }
+
 ```
 
 <div>
 	<h4 id="cas-d-utilisation-du-reified">Cas d'utilisation du <code>reified</code></h4>
 	<ul>
-		<li>pour créer des extensions kotlin des fonctions Java qui utilisent des <code>Class&lt;T&gt;</code>  </li>
+		<li>Pour créer des extensions Kotlin des fonctions Java qui utilisent des <code>Class&lt;T&gt;</code>  </li>
 	</ul>
 </div>
 <div>
-	<h4 id="cas-d-utilisation-des-inline-noinline">Cas d'utilisation des <code>inline</code>, <code>noinline</code></h4>
+	<h4 id="cas-d-utilisation-des-inline-noinline">Cas d'utilisation des <code>inline</code>, <code>noinline</code>, <code>crossiline</code></h4>
 	<ul>
-		<li>quand on utilise <code>reified</code> </li>
-		<li>quand on sait se qu'on fait, <a href="https://kotlinlang.org/docs/reference/inline-functions.html">https://kotlinlang.org/docs/reference/inline-functions.html</a></li>
+		<li>Quand on utilise <code>reified</code> </li>
+		<li>Quand on sait se qu'on fait, <a href="https://kotlinlang.org/docs/reference/inline-functions.html">https://kotlinlang.org/docs/reference/inline-functions.html</a></li>
 	</ul>
 </div>
 
@@ -3605,14 +4512,16 @@ fun main(args: Array<String>) {
 * Support officiel par Google
 * [Using Project Kotlin for Android](https://docs.google.com/document/d/1ReS3ep-hjxWA8kZi0YqDbEhCqTt29hG8P44aA9W0DM8/edit)
 * [Kotlin Guide](https://android.github.io/kotlin-guides/)
-* [Kotlin extensions for Android](https://github.com/android/android-ktx)
+* [android-ktx](https://github.com/android/android-ktx)
+* [Kotlin Android Extensions](https://kotlinlang.org/docs/tutorials/android-plugin.html)
 
 
-* Supporter officiellement depuis [Spring 5](https://projects.spring.io/spring-framework/), [Spring Boot 2](https://projects.spring.io/spring-boot/)
+* Supporté officiellement depuis [Spring 5](https://projects.spring.io/spring-framework/), [Spring Boot 2](https://projects.spring.io/spring-boot/)
 * [SparkJava](https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html), [javalin](https://javalin.io/)
 * [Vert.x](http://vertx.io/docs/vertx-core/kotlin/)
 * [KTor](http://ktor.io/)
 * ...
+
 
 <div>
 	<h4 id="-web">🕸 Web</h4>
@@ -3630,6 +4539,14 @@ fun main(args: Array<String>) {
 		<li>WebAssembly</li>
 	</ul>
 </div>
+
+
+
+* 💎 JVM 
+* 😎 Le byte code c'est cool 
+* 🔮 Généralement, ça ne suffit pas pour prédire les performances
+* ⚖️ Mesurez !
+
 
 
 <svg id="trend-chart" title="Stack Overflow Trends Chart" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -3815,14 +4732,14 @@ fun main(args: Array<String>) {
 
 [Stackoverflow insights](https://insights.stackoverflow.com/trends?tags=kotlin%2Cscala%2Cgroovy%2Cclojure)
 
-No resource: /deepDiveKotlin/conclusion/bilan-other.md
-
 
 * C'est déjà mature
 * ✊ Code plus expressif, plus sûr, plus simple
 * 🤝 Interopérable avec Java
 * 👍 Outillage (editeur, gradle, maven)
 * 👍 Ecosystème et communauté
+* 🚀 Évolution rapide
+* 🐣 Code multiplatform 
 
 > Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.
 
@@ -3832,7 +4749,15 @@ No resource: /deepDiveKotlin/conclusion/bilan-other.md
 * [Forum](https://discuss.kotlinlang.org/)
 * [Slack](https://kotlinslack.herokuapp.com/)
 * [Koans](https://kotlinlang.org/docs/tutorials/koans.html)
+* [KEEP - Kotlin Evolution and Enhancement Process](https://github.com/Kotlin/KEEP)
+
+
+
+* Slides en HTML: [http://bit.ly/KotlinDevoxxFR](http://bit.ly/KotlinDevoxxFR)
+* Slides en PDF: [http://bit.ly/KotlinDevoxxFRpdf](http://bit.ly/KotlinDevoxxFRpdf)
+* [kotlin-perf](https://github.com/MonkeyPatchIo/kotlin-perf)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
+
 
 
 
@@ -3842,8 +4767,9 @@ No resource: /deepDiveKotlin/conclusion/bilan-other.md
 * [Javalin](https://github.com/tipsy/javalin)
 * [RxKotlin](https://github.com/ReactiveX/RxKotlin)
 * [⋀rrow](http://arrow-kt.io/)
-
+* ...
 * [Kotlin is Awesome](https://kotlin.link/)
+
 
 
 
