@@ -461,7 +461,7 @@ fun prezDevoxxFr2018() =
             slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
             }
-            slide(title = "reified.java", styleClass = setOf("code", "java", "igor", "play")) {
+            slide(title = "reified.java", styleClass = setOf("code", "java", "igor")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/ReifiedKt.java")
             }
             slideFromResource(title = "Plus sur les fonctions", contentType = HTML) {
