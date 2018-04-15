@@ -90,7 +90,7 @@
 <a href="#astronomy_kt" class="code kotlin manu live-code" title="astronomy.kt">56</a>
 <a href="#astronomy_java" class="code java manu" title="astronomy.java">57</a>
 <a href="#heritage_en_kotlin" class="code kotlin igor live-code" title="Héritage en Kotlin">58</a>
-<a href="#generics" class="details contrast igor" title="Générics">59</a>
+<a href="#generics" class="details contrast igor" title="Génériques">59</a>
 <a href="#star" class="details igor" title="Projection *">60</a>
 <a href="#sealed" class="code kotlin igor" title="Sealed">61</a>
 <a href="#alias_en_kotlin" class="code kotlin igor" title="Alias en Kotlin">62</a>
@@ -148,18 +148,19 @@
 <a href="#inline_kt" class="code kotlin igor" title="inline.kt">114</a>
 <a href="#logger_java" class="code java igor" title="Logger.java">115</a>
 <a href="#reified_kt" class="code kotlin igor play" title="reified.kt">116</a>
-<a href="#plus_sur_les_fonctions" class="details contrast igor" title="Plus sur les fonctions">117</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">118</a>
-<a href="#android" class="contrast manu" title="Android">119</a>
-<a href="#serveur" class="contrast igor" title="Serveur">120</a>
-<a href="#web_et_natif" class="contrast igor manu" title="Web et Natif">121</a>
-<a href="#bilan-other" class="details contrast igor manu" title="Bilan">122</a>
-<a href="#tendance" class="contrast trends igor manu" title="Tendance">123</a>
-<a href="#kotlin_vs_java" class="contrast manu igor" title="Kotlin vs Java">124</a>
-<a href="#liens" class="contrast manu igor" title="Liens">125</a>
-<a href="#liens_presentation" class="contrast manu igor" title="Liens presentation">126</a>
-<a href="#bibliotheques" class="contrast manu igor" title="Bibliothèques">127</a>
-<a href="#merci" class="contrast manu igor" title="Merci">128</a></nav>
+<a href="#reified_java" class="code java igor play" title="reified.java">117</a>
+<a href="#plus_sur_les_fonctions" class="details contrast igor" title="Plus sur les fonctions">118</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">119</a>
+<a href="#android" class="contrast manu" title="Android">120</a>
+<a href="#serveur" class="contrast igor" title="Serveur">121</a>
+<a href="#web_et_natif" class="contrast igor manu" title="Web et Natif">122</a>
+<a href="#bilan-other" class="details contrast igor manu" title="Bilan">123</a>
+<a href="#tendance" class="contrast trends igor manu" title="Tendance">124</a>
+<a href="#kotlin_vs_java" class="contrast manu igor" title="Kotlin vs Java">125</a>
+<a href="#liens" class="contrast manu igor" title="Liens">126</a>
+<a href="#liens_presentation" class="contrast manu igor" title="Liens presentation">127</a>
+<a href="#bibliotheques" class="contrast manu igor" title="Bibliothèques">128</a>
+<a href="#merci" class="contrast manu igor" title="Merci">129</a></nav>
     </div>
     <main>
 
@@ -1350,11 +1351,11 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
 <span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Nullable<span class="token punctuation">;</span>
 
 <span class="token annotation punctuation">@Metadata</span><span class="token punctuation">(</span>
-   mv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-   bv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-   k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
-   d1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"\u0000\u0014\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005\u001a\b\u0010\u0006\u001a\u0004\u0018\u00010\u0004"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-   d2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"main"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"args"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"([Ljava/lang/String;)V"</span><span class="token punctuation">,</span> <span class="token string">"something"</span><span class="token punctuation">}</span>
+        mv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        bv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        d1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"\u0000\u0014\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0002\b\u0002\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005\u001a\b\u0010\u0006\u001a\u0004\u0018\u00010\u0004"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        d2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"main"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"args"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"([Ljava/lang/String;)V"</span><span class="token punctuation">,</span> <span class="token string">"something"</span><span class="token punctuation">}</span>
 <span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">NullSafetyKt</span> <span class="token punctuation">{</span>
    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NotNull</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -3168,10 +3169,10 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
 </section>
 
 
-<!-- Slide Générics -->
+<!-- Slide Génériques -->
 <section id="generics" class="details contrast igor">
     <a href="#heritage_en_kotlin" class="previous" aria-label="Précédant"></a>
-    <h3>Générics</h3>
+    <h3>Génériques</h3>
     <article>
         <ul>
 <li>⚠️ Les contrôles de types génériques ne sont fait qu&#39;au moment de la compilation</li>
@@ -4158,7 +4159,7 @@ Class #<span class="token number">0</span>            <span class="token operato
 <span class="token keyword">fun</span> <span class="token function">tailRecFactorial</span><span class="token punctuation">(</span>n<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token punctuation">{</span>
 
     <span class="token keyword">tailrec</span> <span class="token keyword">fun</span> <span class="token function">aux</span><span class="token punctuation">(</span>n<span class="token operator">:</span> Int<span class="token punctuation">,</span> acc<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Int <span class="token operator">=</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token number">1</span> <span class="token keyword">else</span> <span class="token function">aux</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> acc <span class="token keyword">else</span> <span class="token function">aux</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span>
 
     <span class="token keyword">return</span> <span class="token function">aux</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
@@ -4277,35 +4278,67 @@ Class #<span class="token number">0</span>            <span class="token operato
 </thead>
 <tbody>
 <tr>
-<td>factorialJava</td>
+<td>factorialJavaFor</td>
 <td>thrpt</td>
 <td>200</td>
-<td>274141213.561</td>
-<td>± 28963758.069</td>
+<td>433372258.508</td>
+<td>± 1218796.228</td>
 <td>ops/s</td>
 </tr>
 <tr>
 <td>factorialKotlinFor</td>
 <td>thrpt</td>
 <td>200</td>
-<td>267717955.205</td>
-<td>±  8457315.205</td>
+<td>374900724.013</td>
+<td>± 1836466.839</td>
+<td>ops/s</td>
+</tr>
+<tr>
+<td>factorialJavaRec</td>
+<td>thrpt</td>
+<td>200</td>
+<td>71945600.003</td>
+<td>± 1621282.609</td>
 <td>ops/s</td>
 </tr>
 <tr>
 <td>factorialKotlinRec</td>
 <td>thrpt</td>
 <td>200</td>
-<td>56270660.700</td>
-<td>±  2453418.383</td>
+<td>75889169.327</td>
+<td>±  803516.130</td>
+<td>ops/s</td>
+</tr>
+<tr>
+<td>factorialJavaTailRec</td>
+<td>thrpt</td>
+<td>200</td>
+<td>74708348.540</td>
+<td>±  385285.112</td>
 <td>ops/s</td>
 </tr>
 <tr>
 <td>factorialKotlinTailRec</td>
 <td>thrpt</td>
 <td>200</td>
-<td>341898899.761</td>
-<td>± 11456349.191</td>
+<td>432005903.950</td>
+<td>± 2558012.821</td>
+<td>ops/s</td>
+</tr>
+<tr>
+<td>factorialJavaReduce</td>
+<td>thrpt</td>
+<td>200</td>
+<td>21560855.907</td>
+<td>±  586144.742</td>
+<td>ops/s</td>
+</tr>
+<tr>
+<td>factorialKotlinReduce</td>
+<td>thrpt</td>
+<td>200</td>
+<td>99169022.775</td>
+<td>± 2711794.007</td>
 <td>ops/s</td>
 </tr>
 </tbody>
@@ -4434,7 +4467,7 @@ Class #<span class="token number">0</span>            <span class="token operato
     <h3>Extension</h3>
     <article>
         <ul>
-<li>Permet d&#39;enrichire les APIs Java<ul>
+<li>Permet d&#39;enrichir les APIs Java<ul>
 <li><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/languages.html#kotlin-spring-projects-in-kotlin">Spring</a></li>
 <li><a href="https://github.com/ReactiveX/RxKotlin">RxKotlin</a></li>
 <li><a href="http://sparkjava.com/news#spark-kotlin-released">SparkJava</a></li>
@@ -5726,13 +5759,49 @@ Class #<span class="token number">0</span>            <span class="token operato
 <span class="token punctuation">}</span>
 </code></pre>
     </article>
+    <a href="#reified_java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide reified.java -->
+<section id="reified_java" class="code java igor play">
+    <a href="#reified_kt" class="previous" aria-label="Précédant"></a>
+    <h3>reified.java</h3>
+    <article>
+        <pre class="lang-java"><code class="lang-java"><span class="token keyword">package</span> _13_advanced_function<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>Metadata<span class="token punctuation">;</span>
+<span class="token keyword">import</span> kotlin<span class="token punctuation">.</span>jvm<span class="token punctuation">.</span>internal<span class="token punctuation">.</span>Intrinsics<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>jetbrains<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>NotNull<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Metadata</span><span class="token punctuation">(</span>
+        mv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        bv <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        k <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        d1 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"\u0000\u0012\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u0011\n\u0002\u0010\u000e\n\u0000\u001a\u0019\u0010\u0000\u001a\u00020\u00012\f\u0010\u0002\u001a\b\u0012\u0004\u0012\u00020\u00040\u0003¢\u0006\u0002\u0010\u0005"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        d2 <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"main"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"args"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"([Ljava/lang/String;)V"</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">ReifiedKt</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token annotation punctuation">@NotNull</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Intrinsics<span class="token punctuation">.</span><span class="token function">checkParameterIsNotNull</span><span class="token punctuation">(</span>args<span class="token punctuation">,</span> <span class="token string">"args"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Pojo p1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Pojo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p1<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"Plop1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        JavaBeanBuilder this_$iv <span class="token operator">=</span> JavaBeanBuilder<span class="token punctuation">.</span>INSTANCE<span class="token punctuation">;</span>
+        Pojo p2 <span class="token operator">=</span> <span class="token punctuation">(</span>Pojo<span class="token punctuation">)</span>this_$iv<span class="token punctuation">.</span><span class="token function">createBean</span><span class="token punctuation">(</span>Pojo<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        p2<span class="token punctuation">.</span><span class="token function">setName</span><span class="token punctuation">(</span><span class="token string">"Plop2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>p2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </article>
     <a href="#plus_sur_les_fonctions" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Plus sur les fonctions -->
 <section id="plus_sur_les_fonctions" class="details contrast igor">
-    <a href="#reified_kt" class="previous" aria-label="Précédant"></a>
+    <a href="#reified_java" class="previous" aria-label="Précédant"></a>
     <h3>Plus sur les fonctions</h3>
     <article>
         <div>
@@ -6051,6 +6120,7 @@ Class #<span class="token number">0</span>            <span class="token operato
 <li>👍 Ecosystème et communauté</li>
 <li>🚀 Évolution rapide</li>
 <li>🐣 Code multiplatform </li>
+<li>DSL</li>
 </ul>
 <blockquote>
 <p>Kotlin réussit une belle alchimie entre pragmatisme, puissance, sûreté, accessibilité.</p>
@@ -6090,6 +6160,7 @@ Class #<span class="token number">0</span>            <span class="token operato
 <li>Slides en PDF: <a href="http://bit.ly/KotlinDevoxxFRpdf">http://bit.ly/KotlinDevoxxFRpdf</a></li>
 <li><a href="https://github.com/MonkeyPatchIo/kotlin-perf">kotlin-perf</a></li>
 <li><a href="https://github.com/MonkeyPatchIo/KotlinByExample">Kotlin by example</a></li>
+<li>😼 <a href="https://github.com/ilaborie/catnip/">catnip</a></li>
 </ul>
 
     </article>

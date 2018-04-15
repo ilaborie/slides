@@ -269,7 +269,7 @@ fun prezDevoxxFr2018() =
             slide(title = "Héritage en Kotlin", styleClass = setOf("code", "kotlin", "igor", "live-code")) {
                 codeFromResource("/deepDiveKotlin/class/inheritance.kt")
             }
-            slideFromResource("Générics", key = "generics") { styleClass = setOf("details", "contrast", "igor") }
+            slideFromResource("Génériques", key = "generics") { styleClass = setOf("details", "contrast", "igor") }
             slide(HtmlContent("Projection <code>*</code>"), key = "star", styleClass = setOf("details", "igor")) {
                 code(Language.Kotlin) {
                     "interface Function<in T, out U>"
@@ -460,6 +460,9 @@ fun prezDevoxxFr2018() =
             }
             slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
+            }
+            slide(title = "reified.java", styleClass = setOf("code", "java", "igor", "play")) {
+                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/ReifiedKt.java")
             }
             slideFromResource(title = "Plus sur les fonctions", contentType = HTML) {
                 styleClass = setOf("details", "contrast", "igor")
