@@ -4532,7 +4532,7 @@ public final class ReifiedKt {
 	</ul>
 </div>
 <div>
-	<h4 id="cas-d-utilisation-des-inline-noinline">Cas d'utilisation des <code>inline</code>, <code>noinline</code>, <code>crossiline</code></h4>
+	<h4 id="cas-d-utilisation-des-inline-noinline">Cas d'utilisation des <code>inline</code>, <code>noinline</code>, <code>crossinline</code></h4>
 	<ul>
 		<li>Quand on utilise <code>reified</code> </li>
 		<li>Quand on sait se qu'on fait, <a href="https://kotlinlang.org/docs/reference/inline-functions.html">https://kotlinlang.org/docs/reference/inline-functions.html</a></li>
