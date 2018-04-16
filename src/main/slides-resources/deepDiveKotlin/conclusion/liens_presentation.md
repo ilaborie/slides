@@ -3,4 +3,4 @@
 * Slides en PDF: [http://bit.ly/KotlinDevoxxFRpdf](http://bit.ly/KotlinDevoxxFRpdf)
 * [kotlin-perf](https://github.com/MonkeyPatchIo/kotlin-perf)
 * [Kotlin by example](https://github.com/MonkeyPatchIo/KotlinByExample)
-* 😼 [catnip](https://github.com/ilaborie/catnip/)
+* [catnip](https://github.com/ilaborie/catnip/)
