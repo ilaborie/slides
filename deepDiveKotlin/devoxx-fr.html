@@ -3912,13 +3912,14 @@ Class #<span class="token number">0</span>            <span class="token operato
     <article>
         <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">fun</span> <span class="token function">handleAstronomicalBody</span><span class="token punctuation">(</span>body<span class="token operator">:</span> AstronomicalBody<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">val</span> message <span class="token operator">=</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>body <span class="token keyword">is</span> Planet <span class="token operator">&amp;&amp;</span>
-            body<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Earth"</span>
-        <span class="token punctuation">)</span> <span class="token string">"Welcome Earth"</span>
-        <span class="token keyword">else</span> <span class="token string">"Welcome martian"</span>
-
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>body <span class="token keyword">is</span> Planet <span class="token operator">&amp;&amp;</span> body<span class="token punctuation">.</span>name <span class="token operator">==</span> <span class="token string">"Earth"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token string">"Welcome Earth"</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token string">"Welcome martian"</span>
+        <span class="token punctuation">}</span>
     <span class="token function">println</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre>
+<span class="token punctuation">}</span>
+</code></pre>
     </article>
     <a href="#for_kt" class="next" aria-label="Suivant"></a>
 </section>
@@ -4559,12 +4560,12 @@ Class #<span class="token number">0</span>            <span class="token operato
                         <div xmlns="http://www.w3.org/1999/xhtml"
                              style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
                             <br/>
-                            <b>MutableIterable&lt;T&gt;</b>
+                            <b>MutableCollection&lt;T&gt;</b>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="65" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
-                    «interface»&lt;br&gt;&lt;b&gt;MutableIterable&lt;T&gt;&lt;/b&gt;
+                    «interface»&lt;br&gt;&lt;b&gt;MutableCollection&lt;T&gt;&lt;/b&gt;
                 </text>
             </switch>
         </g>
