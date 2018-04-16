@@ -3105,13 +3105,14 @@ sh ./scripts/lib/dextools/d2j-dex2smali.sh \
 ```kotlin
 fun handleAstronomicalBody(body: AstronomicalBody) {
     val message =
-        if (body is Planet &&
-            body.name == "Earth"
-        ) "Welcome Earth"
-        else "Welcome martian"
-
+        if (body is Planet && body.name == "Earth") {
+            "Welcome Earth"
+        } else {
+            "Welcome martian"
+        }
     println(message)
 }
+
 ```
 
 ```kotlin
@@ -3532,12 +3533,12 @@ public final class ExtensionKt {
                         <div xmlns="http://www.w3.org/1999/xhtml"
                              style="display:inline-block;text-align:inherit;text-decoration:inherit;">«interface»
                             <br/>
-                            <b>MutableIterable&lt;T&gt;</b>
+                            <b>MutableCollection&lt;T&gt;</b>
                         </div>
                     </div>
                 </foreignObject>
                 <text x="65" y="20" fill="#000000" text-anchor="middle" font-size="12px" font-family="Fira Code">
-                    «interface»&lt;br&gt;&lt;b&gt;MutableIterable&lt;T&gt;&lt;/b&gt;
+                    «interface»&lt;br&gt;&lt;b&gt;MutableCollection&lt;T&gt;&lt;/b&gt;
                 </text>
             </switch>
         </g>
