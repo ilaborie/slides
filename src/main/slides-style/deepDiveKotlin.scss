@@ -412,6 +412,17 @@ section#performances_sur_10_ {
   }
 }
 
+section#performances_sur_10_2 {
+  article {
+    justify-content: center;
+    align-items: center;
+    img {
+      background-color: hsla(0, 100%, 100%, .75);
+      max-height: 75vh;
+    }
+  }
+}
+
 section#performance_des_sequences, section#performance_des_sequences2 {
   article {
     blockquote p {

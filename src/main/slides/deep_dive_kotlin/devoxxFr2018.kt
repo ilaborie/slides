@@ -14,6 +14,7 @@ import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.html
+import org.ilaborie.slides.dsl.img
 import org.ilaborie.slides.dsl.linkText
 import org.ilaborie.slides.dsl.part
 import org.ilaborie.slides.dsl.presentation
@@ -368,8 +369,12 @@ fun prezDevoxxFr2018() =
                   styleClass = setOf("code", "bytecode", "igor")) {
                 codeFromResource("/deepDiveKotlin/structure/Tailrec_factorialKt${'$'}tailRecFactorial$1.class.txt")
             }
-            slideFromResource(title = HtmlContent("Performances sur <code>10!</code>"),
+            slideFromResource(title = HtmlContent("Performances sur <code>10!</code> 1/2"),
                               key = "performances_sur_10_") { styleClass = setOf("measure", "contrast", "igor") }
+            slide(title = HtmlContent("Performances sur <code>10!</code> 2/2"),
+                              key = "performances_sur_10_2", styleClass = setOf("measure", "contrast", "igor")) {
+                img("Performances sur 10!", "/deepDiveKotlin/structure/factorial performance.png")
+            }
             slideFromResource(title = "Bilan structures", key = "bilan-structures") {
                 styleClass = setOf("details", "contrast", "igor")
             }

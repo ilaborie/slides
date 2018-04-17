@@ -3380,6 +3380,8 @@ final class _09_structures.recusion.Tailrec_factorialKt$tailRecFactorial$1 exten
 | factorialKotlinReduce  | thrpt | 200 |  99169022.775 | ± 2711794.007 | ops/s |
 
 
+![Performances sur 10!](/deepDiveKotlin/structure/factorial performance.png)
+
 
 
 * Il y a aussi des `break` et `continue`, label pour les boucles
