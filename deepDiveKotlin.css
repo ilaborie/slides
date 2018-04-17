@@ -602,6 +602,13 @@ section#performances_sur_10_ article table {
     section#performances_sur_10_ article table td:nth-child(n + 3) {
       text-align: right; }
 
+section#performances_sur_10_2 article {
+  justify-content: center;
+  align-items: center; }
+  section#performances_sur_10_2 article img {
+    background-color: rgba(255, 255, 255, 0.75);
+    max-height: 75vh; }
+
 section#performance_des_sequences article blockquote p, section#performance_des_sequences2 article blockquote p {
   font-size: 1rem; }
 
