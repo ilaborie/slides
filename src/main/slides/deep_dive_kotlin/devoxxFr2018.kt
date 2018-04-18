@@ -102,6 +102,9 @@ fun prezDevoxxFr2018() =
         }
 
         part(title = "ByteCode Java ?", key = "bytecode") {
+            slide(title = "javac", styleClass = setOf("diagram", "igor")) {
+                svg("/deepDiveKotlin/bytecode/Compile Java.svg")
+            }
             slide(title = "HelloWorld.java", key = "hw-java", styleClass = setOf("code", "java", "igor", "live-code")) {
                 codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.java")
                 bash { "javac HelloWorld.java" }
@@ -113,9 +116,6 @@ fun prezDevoxxFr2018() =
             slide(title = "Explorons le ByteCode", styleClass = setOf("code", "bytecode", "igor", "live-code")) {
                 bash { "javap -c HelloWorld.class" }
                 codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.txt")
-            }
-            slide(title = "javac", styleClass = setOf("diagram", "igor")) {
-                svg("/deepDiveKotlin/bytecode/Compile Java.svg")
             }
             slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
                 styleClass = setOf("details", "contrast", "igor")
