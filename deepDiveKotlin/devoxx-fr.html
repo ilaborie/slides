@@ -35,10 +35,10 @@
         <nav><a href="#speakers" class="manu igor" title="Speakers">1</a>
 <a href="#roadmap" class="roadmap" title="🗺 Roadmap">2</a></nav>
 <nav><a href="#part_bytecode_java__" class="part" title="ByteCode Java ?">3</a>
-<a href="#hw-java" class="code java igor live-code" title="HelloWorld.java">4</a>
-<a href="#java_bytecode_binary" class="code hex igor live-code" title="Java ByteCode binary">5</a>
-<a href="#explorons_le_bytecode" class="code bytecode igor live-code" title="Explorons le ByteCode">6</a>
-<a href="#javac" class="diagram igor" title="javac">7</a>
+<a href="#javac" class="diagram igor" title="javac">4</a>
+<a href="#hw-java" class="code java igor live-code" title="HelloWorld.java">5</a>
+<a href="#java_bytecode_binary" class="code hex igor live-code" title="Java ByteCode binary">6</a>
+<a href="#explorons_le_bytecode" class="code bytecode igor live-code" title="Explorons le ByteCode">7</a>
 <a href="#bytecode-details" class="details contrast igor" title="À propos du ByteCode">8</a>
 <a href="#bytecode-play" class="" title="Jouons un peu">9</a>
 <a href="#bytecode-links" class="bilan contrast igor" title="Liens">10</a></nav>
@@ -256,100 +256,13 @@
     <article>
         
     </article>
-    <a href="#hw-java" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide HelloWorld.java -->
-<section id="hw-java" class="code java igor live-code">
-    <a href="#part_bytecode_java__" class="previous" aria-label="Précédant"></a>
-    <h3>HelloWorld.java</h3>
-    <article>
-        <pre class="lang-java"><code class="lang-java"><span class="token keyword">package</span> _00_helloworld<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello Devoxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<pre class="lang-bash"><code class="lang-bash">javac HelloWorld.java</code></pre>
-    </article>
-    <a href="#java_bytecode_binary" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Java ByteCode binary -->
-<section id="java_bytecode_binary" class="code hex igor live-code">
-    <a href="#hw-java" class="previous" aria-label="Précédant"></a>
-    <h3>Java ByteCode binary</h3>
-    <article>
-        <pre class="lang-bash"><code class="lang-bash">hexdump -C HelloWorld.class</code></pre>
-<code>00000000  ca fe ba be 00 00 00 34  00 1d 0a 00 06 00 0f 09  |.......4........|
-00000010  00 10 00 11 08 00 12 0a  00 13 00 14 07 00 15 07  |................|
-00000020  00 16 01 00 06 3c 69 6e  69 74 3e 01 00 03 28 29  |.....<init>...()|
-00000030  56 01 00 04 43 6f 64 65  01 00 0f 4c 69 6e 65 4e  |V...Code...LineN|
-00000040  75 6d 62 65 72 54 61 62  6c 65 01 00 04 6d 61 69  |umberTable...mai|
-00000050  6e 01 00 16 28 5b 4c 6a  61 76 61 2f 6c 61 6e 67  |n...([Ljava/lang|
-00000060  2f 53 74 72 69 6e 67 3b  29 56 01 00 0a 53 6f 75  |/String;)V...Sou|
-00000070  72 63 65 46 69 6c 65 01  00 0f 48 65 6c 6c 6f 57  |rceFile...HelloW|
-00000080  6f 72 6c 64 2e 6a 61 76  61 0c 00 07 00 08 07 00  |orld.java.......|
-00000090  17 0c 00 18 00 19 01 00  0c 48 65 6c 6c 6f 20 44  |.........Hello D|
-000000a0  65 76 6f 78 78 07 00 1a  0c 00 1b 00 1c 01 00 19  |evoxx...........|
-000000b0  5f 30 30 5f 68 65 6c 6c  6f 77 6f 72 6c 64 2f 48  |_00_helloworld/H|
-000000c0  65 6c 6c 6f 57 6f 72 6c  64 01 00 10 6a 61 76 61  |elloWorld...java|
-000000d0  2f 6c 61 6e 67 2f 4f 62  6a 65 63 74 01 00 10 6a  |/lang/Object...j|
-000000e0  61 76 61 2f 6c 61 6e 67  2f 53 79 73 74 65 6d 01  |ava/lang/System.|
-000000f0  00 03 6f 75 74 01 00 15  4c 6a 61 76 61 2f 69 6f  |..out...Ljava/io|
-00000100  2f 50 72 69 6e 74 53 74  72 65 61 6d 3b 01 00 13  |/PrintStream;...|
-00000110  6a 61 76 61 2f 69 6f 2f  50 72 69 6e 74 53 74 72  |java/io/PrintStr|
-00000120  65 61 6d 01 00 07 70 72  69 6e 74 6c 6e 01 00 15  |eam...println...|
-00000130  28 4c 6a 61 76 61 2f 6c  61 6e 67 2f 53 74 72 69  |(Ljava/lang/Stri|
-00000140  6e 67 3b 29 56 00 21 00  05 00 06 00 00 00 00 00  |ng;)V.!.........|
-00000150  02 00 01 00 07 00 08 00  01 00 09 00 00 00 1d 00  |................|
-00000160  01 00 01 00 00 00 05 2a  b7 00 01 b1 00 00 00 01  |.......*........|
-00000170  00 0a 00 00 00 06 00 01  00 00 00 03 00 09 00 0b  |................|
-00000180  00 0c 00 01 00 09 00 00  00 25 00 02 00 01 00 00  |.........%......|
-00000190  00 09 b2 00 02 12 03 b6  00 04 b1 00 00 00 01 00  |................|
-000001a0  0a 00 00 00 0a 00 02 00  00 00 06 00 08 00 07 00  |................|
-000001b0  01 00 0d 00 00 00 02 00  0e                       |.........|
-000001b9
-</code>
-    </article>
-    <a href="#explorons_le_bytecode" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Explorons le ByteCode -->
-<section id="explorons_le_bytecode" class="code bytecode igor live-code">
-    <a href="#java_bytecode_binary" class="previous" aria-label="Précédant"></a>
-    <h3>Explorons le ByteCode</h3>
-    <article>
-        <pre class="lang-bash"><code class="lang-bash">javap -c HelloWorld.class</code></pre>
-<pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"HelloWorld.java"</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">_00_helloworld<span class="token punctuation">.</span>HelloWorld</span> <span class="token punctuation">{</span>
-  <span class="token keyword">public</span> _00_helloworld<span class="token punctuation">.</span><span class="token function">HelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Code<span class="token operator">:</span>
-       <span class="token number">0</span><span class="token operator">:</span> aload_0
-       <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment">// Method java/lang/Object."&lt;init>":()V</span>
-       <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    Code<span class="token operator">:</span>
-       <span class="token number">0</span><span class="token operator">:</span> getstatic     #<span class="token number">2</span>                  <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
-       <span class="token number">3</span><span class="token operator">:</span> ldc           #<span class="token number">3</span>                  <span class="token comment">// String Hello Devoxx</span>
-       <span class="token number">5</span><span class="token operator">:</span> invokevirtual #<span class="token number">4</span>                  <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
-       <span class="token number">8</span><span class="token operator">:</span> <span class="token keyword">return</span>
-<span class="token punctuation">}</span>
-</code></pre>
-    </article>
     <a href="#javac" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide javac -->
 <section id="javac" class="diagram igor">
-    <a href="#explorons_le_bytecode" class="previous" aria-label="Précédant"></a>
+    <a href="#part_bytecode_java__" class="previous" aria-label="Précédant"></a>
     <h3>javac</h3>
     <article>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
@@ -452,13 +365,100 @@
     </g>
 </svg>
     </article>
+    <a href="#hw-java" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide HelloWorld.java -->
+<section id="hw-java" class="code java igor live-code">
+    <a href="#javac" class="previous" aria-label="Précédant"></a>
+    <h3>HelloWorld.java</h3>
+    <article>
+        <pre class="lang-java"><code class="lang-java"><span class="token keyword">package</span> _00_helloworld<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HelloWorld</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello Devoxx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="lang-bash"><code class="lang-bash">javac HelloWorld.java</code></pre>
+    </article>
+    <a href="#java_bytecode_binary" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Java ByteCode binary -->
+<section id="java_bytecode_binary" class="code hex igor live-code">
+    <a href="#hw-java" class="previous" aria-label="Précédant"></a>
+    <h3>Java ByteCode binary</h3>
+    <article>
+        <pre class="lang-bash"><code class="lang-bash">hexdump -C HelloWorld.class</code></pre>
+<code>00000000  ca fe ba be 00 00 00 34  00 1d 0a 00 06 00 0f 09  |.......4........|
+00000010  00 10 00 11 08 00 12 0a  00 13 00 14 07 00 15 07  |................|
+00000020  00 16 01 00 06 3c 69 6e  69 74 3e 01 00 03 28 29  |.....<init>...()|
+00000030  56 01 00 04 43 6f 64 65  01 00 0f 4c 69 6e 65 4e  |V...Code...LineN|
+00000040  75 6d 62 65 72 54 61 62  6c 65 01 00 04 6d 61 69  |umberTable...mai|
+00000050  6e 01 00 16 28 5b 4c 6a  61 76 61 2f 6c 61 6e 67  |n...([Ljava/lang|
+00000060  2f 53 74 72 69 6e 67 3b  29 56 01 00 0a 53 6f 75  |/String;)V...Sou|
+00000070  72 63 65 46 69 6c 65 01  00 0f 48 65 6c 6c 6f 57  |rceFile...HelloW|
+00000080  6f 72 6c 64 2e 6a 61 76  61 0c 00 07 00 08 07 00  |orld.java.......|
+00000090  17 0c 00 18 00 19 01 00  0c 48 65 6c 6c 6f 20 44  |.........Hello D|
+000000a0  65 76 6f 78 78 07 00 1a  0c 00 1b 00 1c 01 00 19  |evoxx...........|
+000000b0  5f 30 30 5f 68 65 6c 6c  6f 77 6f 72 6c 64 2f 48  |_00_helloworld/H|
+000000c0  65 6c 6c 6f 57 6f 72 6c  64 01 00 10 6a 61 76 61  |elloWorld...java|
+000000d0  2f 6c 61 6e 67 2f 4f 62  6a 65 63 74 01 00 10 6a  |/lang/Object...j|
+000000e0  61 76 61 2f 6c 61 6e 67  2f 53 79 73 74 65 6d 01  |ava/lang/System.|
+000000f0  00 03 6f 75 74 01 00 15  4c 6a 61 76 61 2f 69 6f  |..out...Ljava/io|
+00000100  2f 50 72 69 6e 74 53 74  72 65 61 6d 3b 01 00 13  |/PrintStream;...|
+00000110  6a 61 76 61 2f 69 6f 2f  50 72 69 6e 74 53 74 72  |java/io/PrintStr|
+00000120  65 61 6d 01 00 07 70 72  69 6e 74 6c 6e 01 00 15  |eam...println...|
+00000130  28 4c 6a 61 76 61 2f 6c  61 6e 67 2f 53 74 72 69  |(Ljava/lang/Stri|
+00000140  6e 67 3b 29 56 00 21 00  05 00 06 00 00 00 00 00  |ng;)V.!.........|
+00000150  02 00 01 00 07 00 08 00  01 00 09 00 00 00 1d 00  |................|
+00000160  01 00 01 00 00 00 05 2a  b7 00 01 b1 00 00 00 01  |.......*........|
+00000170  00 0a 00 00 00 06 00 01  00 00 00 03 00 09 00 0b  |................|
+00000180  00 0c 00 01 00 09 00 00  00 25 00 02 00 01 00 00  |.........%......|
+00000190  00 09 b2 00 02 12 03 b6  00 04 b1 00 00 00 01 00  |................|
+000001a0  0a 00 00 00 0a 00 02 00  00 00 06 00 08 00 07 00  |................|
+000001b0  01 00 0d 00 00 00 02 00  0e                       |.........|
+000001b9
+</code>
+    </article>
+    <a href="#explorons_le_bytecode" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Explorons le ByteCode -->
+<section id="explorons_le_bytecode" class="code bytecode igor live-code">
+    <a href="#java_bytecode_binary" class="previous" aria-label="Précédant"></a>
+    <h3>Explorons le ByteCode</h3>
+    <article>
+        <pre class="lang-bash"><code class="lang-bash">javap -c HelloWorld.class</code></pre>
+<pre class="lang-java"><code class="lang-java">Compiled from <span class="token string">"HelloWorld.java"</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">_00_helloworld<span class="token punctuation">.</span>HelloWorld</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> _00_helloworld<span class="token punctuation">.</span><span class="token function">HelloWorld</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> aload_0
+       <span class="token number">1</span><span class="token operator">:</span> invokespecial #<span class="token number">1</span>                  <span class="token comment">// Method java/lang/Object."&lt;init>":()V</span>
+       <span class="token number">4</span><span class="token operator">:</span> <span class="token keyword">return</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Code<span class="token operator">:</span>
+       <span class="token number">0</span><span class="token operator">:</span> getstatic     #<span class="token number">2</span>                  <span class="token comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span>
+       <span class="token number">3</span><span class="token operator">:</span> ldc           #<span class="token number">3</span>                  <span class="token comment">// String Hello Devoxx</span>
+       <span class="token number">5</span><span class="token operator">:</span> invokevirtual #<span class="token number">4</span>                  <span class="token comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span>
+       <span class="token number">8</span><span class="token operator">:</span> <span class="token keyword">return</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </article>
     <a href="#bytecode-details" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide À propos du ByteCode -->
 <section id="bytecode-details" class="details contrast igor">
-    <a href="#javac" class="previous" aria-label="Précédant"></a>
+    <a href="#explorons_le_bytecode" class="previous" aria-label="Précédant"></a>
     <h3>À propos du ByteCode</h3>
     <article>
         <ul>
