@@ -4110,6 +4110,7 @@ println(s)
 
 > Ne croyez pas les benchmarks, faites les vous-même !
 
+<https://github.com/MonkeyPatchIo/kotlin-perf>
 
 | Benchmark             |  Mode | Cnt |     Score |      Error | Units |
 |-----------------------|-------|-----|-----------|------------|-------|
@@ -4132,6 +4133,7 @@ println(s)
 
 > Ne croyez pas les benchmarks, faites les vous-même !
 
+<https://github.com/MonkeyPatchIo/kotlin-perf>
 
 | Benchmark                  |  Mode | Cnt |       Score |        Error | Units |
 |----------------------------|-------|-----|-------------|--------------|-------|
