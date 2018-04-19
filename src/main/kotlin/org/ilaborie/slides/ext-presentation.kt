@@ -57,12 +57,18 @@ fun Presentation.writeMarkdownTo(folder: File, key: String = "index", charset: C
     file.writeText(renderAsMarkdown(), charset)
 }
 
-fun Presentation.buildAll(dist: File, key: String) {
+fun Presentation.buildAll(dist: File, key: String,
+                          exportMarkdown: Boolean = false,
+                          exportPdf: Boolean = false) {
     val output = dist.resolve(this.id)
     output.mkdirs()
     this.writeHtmlTo(output, key)
-    this.writeMarkdownTo(output, key)
-    htmlToPdf(output.resolve("$key.html"), output.resolve("$key.pdf"))
+    if (exportMarkdown) {
+        this.writeMarkdownTo(output, key)
+    }
+    if (exportPdf) {
+        htmlToPdf(output.resolve("$key.html"), output.resolve("$key.pdf"))
+    }
 }
 
 // Externals

@@ -77,15 +77,15 @@ compileTestKotlin {
 //    main = "kotlin_bbl.MainKt"
 //}
 
-task deepDiveKotlin(type: JavaExec) {
-    classpath sourceSets.main.runtimeClasspath
-    main = "deep_dive_kotlin.DevoxxFr2018Kt"
-}
-
-//task jsFunctional(type: JavaExec) {
+//task deepDiveKotlin(type: JavaExec) {
 //    classpath sourceSets.main.runtimeClasspath
-//    main = "js_functional.Js_functionalKt"
+//    main = "deep_dive_kotlin.DevoxxFr2018Kt"
 //}
+
+task jsFunctional(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = "js_functional.Js_functionalKt"
+}
 
 task demo(type: JavaExec) {
     classpath sourceSets.main.runtimeClasspath

@@ -449,15 +449,15 @@ const mult5: (a: number, b: number) => number =
     <h3>Pure Function</h3>
     <article>
         <h3 id="eviter-les-fonctions-avec-effet-de-bord">Eviter les fonctions avec effet de bord</h3>
-<pre><code class="lang-typescript">var sum = <span class="hljs-number">0</span>;
+<pre><code class="lang-typescript">var sum = 0;
 
-[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+[1, 2, 3, 4, 5]
     .forEach(elt =&gt; sum += elt);
 console.log({sum});
 </code></pre>
 <p>⚠️ danger, c&#39;est un nid à bugs.</p>
 <p>=&gt; Éviter les fonctions qui n&#39;ont pas de paramètres, ou retournent <code>void</code></p>
-<pre><code class="lang-typescript">const sum = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]
+<pre><code class="lang-typescript">const sum = [1, 2, 3, 4, 5]
     .reduce((acc, elt) =&gt; acc += elt);
 console.log({sum});
 </code></pre>
@@ -477,15 +477,15 @@ console.log({sum});
 <p>referentially transparent</p>
 <p>avec <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
 <p>Comment fait-on ?</p>
-<pre><code class="lang-typescript"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">List</span>&lt;T&gt; {</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-built_in">array</span>: T[];
+<pre><code class="lang-typescript">class List&lt;T&gt; {
+    private array: T[];
 
     constructor(elements: T[] = []) {
-        <span class="hljs-keyword">this</span>.<span class="hljs-built_in">array</span> = [... elements]; 
+        this.array = [... elements]; 
     }
 
     add(element: T) : List&lt;T&gt; {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> [...<span class="hljs-keyword">this</span>.<span class="hljs-built_in">array</span>, element];
+        return new [...this.array, element];
     }
 
 }
@@ -508,6 +508,7 @@ console.log({sum});
 // g: Y =&gt; Z
 // compose: (Y =&gt; Z, X =&gt; Y) =&gt; X =&gt; Z
 const compose = (g, f) =&gt; x =&gt; g(f(x))
+
 </code></pre>
 <p><a href="https://github.com/isiahmeadows/function-composition-proposal">Function Composition</a>
 <a href="https://github.com/simonstaton/Function.prototype.compose-TC39-Proposal">Function.prototype.compose</a></p>
@@ -523,41 +524,48 @@ const compose = (g, f) =&gt; x =&gt; g(f(x))
     <h3>Recursion</h3>
     <article>
         <p>⚠️ choisisons <code>n</code> comme un <code>number</code> <code>&gt;</code> à <code>0</code></p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> factorial1 = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> {
-    <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">1</span>) {
-        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+<pre><code class="lang-typescript">const factorial1 = n =&gt; {
+    if (n&lt;=1) {
+        return 1;
     }
-    <span class="hljs-keyword">return</span> n * factorial1(n - <span class="hljs-number">1</span>);
+    return n * factorial1(n - 1);
 };
 
-<span class="hljs-keyword">const</span> factorial2 = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> 
-    (n&lt;=<span class="hljs-number">1</span>) ? <span class="hljs-number">1</span> : n * factorial2(n - <span class="hljs-number">1</span>);
+const factorial2 = n =&gt; 
+    (n&lt;=1) ? 1 : n * factorial2(n - 1);
 </code></pre>
 <h3 id="tail-recursion">Tail Recursion</h3>
-<pre><code class="lang-typescript">const factorial3 = <span class="hljs-function"><span class="hljs-params">(n, acc = <span class="hljs-number">1</span>)</span> =&gt;</span>
-    (n&lt;=<span class="hljs-number">1</span>) ? acc : factorial3(n - <span class="hljs-number">1</span>, acc * );
-</code></pre>
-<p><a href="http://kangax.github.io/compat-table/es6/#test-proper_tail_calls_(tail_call_optimisation">Support de la tail-rec</a>)</p>
-<p>###
-⚠️ Éviter les recusions entre plusieurs fonctions:</p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> a = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> {
-    <span class="hljs-keyword">if</span> (n &gt; <span class="hljs-number">42</span>) {
-        <span class="hljs-keyword">return</span> b(n - <span class="hljs-number">42</span>);
+<pre><code class="lang-typescript">const factorial3 = (n, acc = 1) =&gt;
+    (n&lt;=1) ? acc : factorial3(n - 1, acc * ); 
+```gi
+
+[Support de la tail-rec](http://kangax.github.io/compat-table/es6/#test-proper_tail_calls_(tail_call_optimisation))
+
+###
+⚠️ Éviter les recusions entre plusieurs fonctions:
+
+```typescript
+const a = n =&gt; {
+    if (n &gt; 42) {
+        return b(n - 42);
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+    return 2;
 }
 
-<span class="hljs-keyword">const</span> b = <span class="hljs-function"><span class="hljs-params">n</span> =&gt;</span> {
-    <span class="hljs-keyword">if</span> (n &lt; <span class="hljs-number">123</span>) {
-        <span class="hljs-keyword">return</span> a(n + <span class="hljs-number">42</span>);
+const b = n =&gt; {
+    if (n &lt; 123) {
+        return a(n + 42);
     }
-    <span class="hljs-keyword">return</span> <span class="hljs-number">3</span>;
+    return 3;
 }
 </code></pre>
 <blockquote>
 <p>Recursion is the GOTO of functional programming
--- Erik Meijer (&quot;Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire&quot;, 1991) </p>
+-- Erik Meijer (&quot;Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire&quot;, 1991)</p>
 </blockquote>
+<p><a href="https://babeljs.io/learn-es2015/#tail-calls">https://babeljs.io/learn-es2015/#tail-calls</a>
+<a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a> 
+<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls">http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls</a></p>
 
     </article>
     <a href="#lisibilite" class="next" aria-label="Suivant"></a>
@@ -570,15 +578,15 @@ const compose = (g, f) =&gt; x =&gt; g(f(x))
     <h3>Lisibilité</h3>
     <article>
         <pre><code class="lang-typescript">speakers
-   .filter(<span class="hljs-function"><span class="hljs-params">speaker</span> =&gt;</span> speaker.xp &gt; <span class="hljs-number">10</span> &amp;&amp;
-        speaker.some(<span class="hljs-function"><span class="hljs-params">lang</span> =&gt;</span> lang === <span class="hljs-string">'JavaScript'</span>))
+   .filter(speaker =&gt; speaker.xp &gt; 10 &amp;&amp;
+        speaker.some(lang =&gt; lang === &#39;JavaScript&#39;))
 </code></pre>
 <pre><code class="lang-typescript">speakers
-   .filter(<span class="hljs-function"><span class="hljs-params">speaker</span> =&gt;</span> speaker.xp &gt; <span class="hljs-number">10</span>) <span class="hljs-comment">// is experimented</span>
-   .filter(<span class="hljs-function"><span class="hljs-params">speaker</span> =&gt;</span> speaker.some(<span class="hljs-function"><span class="hljs-params">lang</span> =&gt;</span> lang === <span class="hljs-string">'JavaScript'</span>)) <span class="hljs-comment">// is love JS</span>
+   .filter(speaker =&gt; speaker.xp &gt; 10) // is experimented
+   .filter(speaker =&gt; speaker.some(lang =&gt; lang === &#39;JavaScript&#39;)) // is love JS
 </code></pre>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> isExperimented = <span class="hljs-function"><span class="hljs-params">speaker</span> =&gt;</span> speaker.xp &gt; <span class="hljs-number">10</span>; 
-<span class="hljs-keyword">const</span> isLoveJS = <span class="hljs-function"><span class="hljs-params">speaker</span> =&gt;</span> speaker.loves.some(<span class="hljs-function"><span class="hljs-params">lang</span> =&gt;</span> lang === <span class="hljs-string">'JavaScript'</span>); 
+<pre><code class="lang-typescript">const isExperimented = speaker =&gt; speaker.xp &gt; 10; 
+const isLoveJS = speaker =&gt; speaker.loves.some(lang =&gt; lang === &#39;JavaScript&#39;); 
 
 speakers
    .filter(isExperimented)
@@ -695,25 +703,26 @@ Ailurus fulgens
         <h3 id="currying">Currying</h3>
 <p>The act of transforming a function of several arguments into a chain of functions of one argument that will yield the same result when called in sequence with the same arguments.</p>
 <p><code>f(x, y, z) = g(x)(y)(z)</code></p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> mult = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span>, b: <span class="hljs-built_in">number</span></span>) =&gt;</span> a * b;
+<pre><code class="lang-typescript">const mult = (a: number, b: number) =&gt; a * b;
 
-<span class="hljs-comment">// idea: identity = mult(1, _)</span>
-<span class="hljs-keyword">const</span> identity = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span></span>) =&gt;</span> mult(<span class="hljs-number">1</span>, a);
+// idea: identity = mult(1, _)
+const identity = (a: number) =&gt; mult(1, a);
 
-<span class="hljs-comment">// better</span>
-<span class="hljs-keyword">const</span> multCurry = <span class="hljs-function">(<span class="hljs-params">a: <span class="hljs-built_in">number</span></span>) =&gt;</span> {
-    <span class="hljs-keyword">return</span> <span class="hljs-function">(<span class="hljs-params">b: <span class="hljs-built_in">number</span></span>) =&gt;</span> a * b;
+// better
+const multCurry = (a: number) =&gt; {
+    return (b: number) =&gt; a * b;
 }
 
-<span class="hljs-comment">// Type: number =&gt; number =&gt; number</span>
-<span class="hljs-keyword">const</span> multCurry2 = <span class="hljs-function"><span class="hljs-params">a</span> =&gt;</span> b =&gt; a * b;
+// Type: number =&gt; number =&gt; number
+const multCurry2 = a =&gt; b =&gt; a * b;
 
-<span class="hljs-comment">// Idea: géné</span>
+// Idea: géné
 </code></pre>
 <p><a href="https://github.com/tc39/proposal-partial-application">Partial Application Syntax, stage 1</a></p>
-<pre><code class="lang-typescript"><span class="hljs-keyword">const</span> addOne = <span class="hljs-built_in">add</span>(<span class="hljs-number">1</span>, ?); <span class="hljs-comment">// apply from the left</span>
-<span class="hljs-keyword">const</span> addTen = <span class="hljs-built_in">add</span>(?, <span class="hljs-number">10</span>); <span class="hljs-comment">// apply from the right</span>
-<span class="hljs-keyword">const</span> maxGreaterThanZero = Math.<span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, ...); <span class="hljs-comment">// remaining arguments placeholder</span>
+<pre><code class="lang-typescript">const addOne = add(1, ?); // apply from the left
+const addTen = add(?, 10); // apply from the right
+const maxGreaterThanZero = Math.max(0, ...); // remaining arguments placeholder
+
 </code></pre>
 <p>Also usable with <a href="https://github.com/tc39/proposal-pipeline-operator">The Pipeline Operator, stage 1</a></p>
 
@@ -731,12 +740,12 @@ Ailurus fulgens
 <p><a href="https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e">https://medium.freecodecamp.org/understanding-memoize-in-javascript-51d07d19430e</a>
 <a href="https://www.sitepoint.com/implementing-memoization-in-javascript/">https://www.sitepoint.com/implementing-memoization-in-javascript/</a></p>
 <pre><code class="lang-typescript">
-<span class="hljs-keyword">const</span> fibonacci = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(n)</span> </span>{
-    <span class="hljs-keyword">switch</span> (n) {
-        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span> : <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span> : <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-        <span class="hljs-keyword">default</span>:
-            <span class="hljs-keyword">return</span> fibonacci(n<span class="hljs-number">-2</span>) + fibonacci(n<span class="hljs-number">-1</span>);
+const fibonacci = function(n) {
+    switch (n) {
+        case 1 : return 1;
+        case 2 : return 1;
+        default:
+            return fibonacci(n-2) + fibonacci(n-1);
     }  
 }
 </code></pre>
@@ -752,8 +761,8 @@ Ailurus fulgens
     <h3>ADT</h3>
     <article>
         <h3 id="abstract-data-type">Abstract Data Type</h3>
-<pre><code class="lang-sml"><span class="hljs-keyword">datatype</span> rational = <span class="hljs-type">Whole</span> <span class="hljs-keyword">of</span> <span class="hljs-built_in">int</span>
-                  | <span class="hljs-type">Frac</span>  <span class="hljs-keyword">of</span> <span class="hljs-built_in">int</span>*<span class="hljs-built_in">int</span>
+<pre><code class="lang-sml">datatype rational = Whole of int
+                  | Frac  of int*int
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>type union</p>
@@ -769,22 +778,23 @@ Ailurus fulgens
     <h3>Pattern Matching</h3>
     <article>
         <p>Un exemple:</p>
-<pre><code class="lang-javascript"><span class="hljs-built_in">let</span> getLength = <span class="hljs-built_in">vector</span> =&gt; match (<span class="hljs-built_in">vector</span>) {
-    { x, y, z }: Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span> + z ** <span class="hljs-number">2</span>),
-    { x, y }:    Math.<span class="hljs-built_in">sqrt</span>(x ** <span class="hljs-number">2</span> + y ** <span class="hljs-number">2</span>),
-    [...]:       <span class="hljs-built_in">vector</span>.<span class="hljs-built_in">length</span>,
-    <span class="hljs-keyword">else</span>: {
-        <span class="hljs-built_in">throw</span> <span class="hljs-built_in">new</span> Error(<span class="hljs-string">"Unknown vector type"</span>);
+<pre><code class="lang-javascript">let getLength = vector =&gt; match (vector) {
+    { x, y, z }: Math.sqrt(x ** 2 + y ** 2 + z ** 2),
+    { x, y }:    Math.sqrt(x ** 2 + y ** 2),
+    [...]:       vector.length,
+    else: {
+        throw new Error(&quot;Unknown vector type&quot;);
     }
 }
 </code></pre>
 <p>Pour implémenter du pattern-matching il faut de la déconstruction.
 On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
-<pre><code class="lang-java"><span class="hljs-keyword">const</span> myPoint = { x: 14, y: 3 };
-<span class="hljs-keyword">const</span> {x, y} = myPoint; <span class="hljs-comment">// x === 14, y === 3</span>
+<pre><code class="lang-java">const myPoint = { x: 14, y: 3 };
+const {x, y} = myPoint; // x === 14, y === 3
 
-<span class="hljs-keyword">const</span> <span class="hljs-keyword">tab</span> = [1, 2, 3, 4];
-<span class="hljs-keyword">const</span> [head, ...tail] = <span class="hljs-keyword">tab</span>; <span class="hljs-comment">// head === 1, tail === [ 2, 3, 4]</span>
+const tab = [1, 2, 3, 4];
+const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
+
 </code></pre>
 <p>C&#39;est une <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 Proposal</a></p>
 
@@ -798,10 +808,10 @@ On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
     <a href="#pattern_matching" class="previous" aria-label="Précédant"></a>
     <h3>Monads</h3>
     <article>
-        <pre><code class="lang-typescript"><span class="hljs-function"><span class="hljs-title">Some</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>
-    <span class="hljs-selector-class">.map</span> { it + <span class="hljs-number">1</span> }
-    <span class="hljs-selector-class">.flatMap</span> { Some(<span class="hljs-string">"4"</span> + it) }
-    <span class="hljs-selector-class">.map</span> { it }
+        <pre><code class="lang-typescript">Some(1)
+    .map { it + 1 }
+    .flatMap { Some(&quot;4&quot; + it) }
+    .map { it }
 </code></pre>
 
     </article>
