@@ -4,7 +4,7 @@
   "author": "Igor Laborie <ilaborie@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "copy:monaco": "cp -r node_modules/monaco-editor/esm src/main/web/scripts/monaco-editor/",
+    "copy:monaco": "cp -r node_modules/monaco-editor/min src/main/web/scripts/monaco-editor/",
     "postinstall": "npm-run-all copy:*",
     "serve": "ts-node src/main/typescript/server.ts",
     "style:slides": "node-sass src/main/style/slides.scss --output src/main/web/",

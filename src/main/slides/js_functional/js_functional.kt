@@ -27,7 +27,7 @@ fun main(args: Array<String>) {
 fun jsFunctional() =
     presentation(title = "Programmation fonctionnelle en JavaScript :", key = "jsFunctional") {
         addScript("../scripts/navigation.js")
-        addScript("../scripts/monaco-editor/min/vs/loader.js")
+        addScript("../scripts/monaco-editor/vs/loader.js")
         addScript("../scripts/code-editor.js")
 
         part(title = "Introduction", key = "intro") {

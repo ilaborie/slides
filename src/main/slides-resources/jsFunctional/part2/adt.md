@@ -1,5 +1,5 @@
 
-### Abstract Data Type
+### Algebraic Data Type
 
 ```sml
 datatype rational = Whole of int

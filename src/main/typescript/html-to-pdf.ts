@@ -5,7 +5,7 @@ export function renderPdf(from: string, to: string): Promise<void> {
         waitUntil: 'networkidle0'
     };
 
-    const wait = value => new Promise(resolve => {
+    const wait = <T>(value: T) => new Promise<T>(resolve => {
         setTimeout(() => resolve(value), 1000);
     });
 
