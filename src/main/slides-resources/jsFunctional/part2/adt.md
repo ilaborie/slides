@@ -10,3 +10,6 @@ datatype rational = Whole of int
 ### TypeScript
 
 type union
+
+
+<https://github.com/natefaubion/adt.js>
