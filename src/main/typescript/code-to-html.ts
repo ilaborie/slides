@@ -2,7 +2,7 @@ import {createInterface} from 'readline';
 import * as Prism from 'prismjs';
 const loadLanguages = require('prismjs/components/index');
 
-loadLanguages(['kotlin', 'bash', 'java']);
+loadLanguages(['kotlin', 'bash', 'java', 'typescript']);
 
 // HACK
 

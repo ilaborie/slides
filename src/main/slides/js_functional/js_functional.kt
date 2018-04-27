@@ -3,7 +3,16 @@ package js_functional
 import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
-import org.ilaborie.slides.dsl.*
+import org.ilaborie.slides.dsl.codeEditorFromResources
+import org.ilaborie.slides.dsl.codeFromResource
+import org.ilaborie.slides.dsl.header
+import org.ilaborie.slides.dsl.html
+import org.ilaborie.slides.dsl.p
+import org.ilaborie.slides.dsl.part
+import org.ilaborie.slides.dsl.presentation
+import org.ilaborie.slides.dsl.roadmap
+import org.ilaborie.slides.dsl.slide
+import org.ilaborie.slides.dsl.slideFromResource
 import org.ilaborie.slides.generateMissingExternals
 import org.ilaborie.slides.hasMissingExternals
 import java.io.File
@@ -64,7 +73,23 @@ fun jsFunctional() =
                                         "/jsFunctional/code/01-functions.ts",
                                         "/jsFunctional/code/01-functions-final.ts")
             }
-            slideFromResource(title = "Pure Function")
+            slide(title = "Effets de bord") {
+                p {
+                    html{ "Eviter les fonctions avec effet de bord"}
+                }
+                codeFromResource("/jsFunctional/code/02-side-effect.ts")
+                p {
+                    html {
+                        "⚠️ danger, c'est un nid à bugs.<br>" +
+                                "=> Éviter les fonctions qui n'ont pas de paramètres, ou retournent `void`"
+                    }
+                }
+            }
+            slide(title = "Function", key = "pure_function_2", styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Functions sans effet de bord",
+                                        "/jsFunctional/code/02-side-effect.ts",
+                                        "/jsFunctional/code/02-side-effect-final.ts")
+            }
             slideFromResource(title = "Immutable")
             slideFromResource(title = "Composition")
             slideFromResource(title = "Recursion")
