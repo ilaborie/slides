@@ -1,14 +1,5 @@
 
 
-const
-
-Object.freeze
-
-referentially transparent
-
-
-avec [ImmutableJS](https://facebook.github.io/immutable-js/)
-
 Comment fait-on ?
 
 ```typescript
@@ -26,4 +17,4 @@ class List<T> {
 }
 ```
 
-
+avec [ImmutableJS](https://facebook.github.io/immutable-js/)

@@ -59,20 +59,20 @@
     "@types/express" "*"
 
 "@types/node@*":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.0.tgz#c40f8e07dce607d3ef25a626b93a6a7cdcf97881"
+  version "8.10.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.11.tgz#971ea8cb91adbe0b74e3fbd867dec192d5893a5f"
 
-"@types/node@^9.0.0":
-  version "9.6.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.7.tgz#5f3816d1db2155edcde1b2e3aa5d0e5c520cb564"
+"@types/node@^10.0.0":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.1.tgz#9095e8b9b10d1de6d49a939b2f65c2872a47afd9"
 
 "@types/prismjs@^1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@types/prismjs/-/prismjs-1.9.0.tgz#38af9491e2f105079a443703ee675fb27371ec94"
 
 "@types/puppeteer@^1.0.0":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.2.2.tgz#d6df9df96ebf804951ce9dd1a0fb153dad34099a"
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@types/puppeteer/-/puppeteer-1.2.3.tgz#d4d31f5c789932db6f918095f4a139805022d0ed"
   dependencies:
     "@types/events" "*"
     "@types/node" "*"
@@ -93,8 +93,8 @@
     "@types/tough-cookie" "*"
 
 "@types/serve-static@*":
-  version "1.13.1"
-  resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.13.1.tgz#1d2801fa635d274cd97d4ec07e26b21b44127492"
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/@types/serve-static/-/serve-static-1.13.2.tgz#f5ac4d7a6420a99a6a45af4719f4dcd8cd907a48"
   dependencies:
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
@@ -358,8 +358,8 @@ ci-info@^1.0.0:
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-1.1.3.tgz#710193264bb05c77b8c90d02f5aaf22216a667b2"
 
 clipboard@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.0.tgz#4661dc972fb72a4c4770b8db78aa9b1caef52b50"
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.1.tgz#a12481e1c13d8a50f5f036b0560fe5d16d74e46a"
   dependencies:
     good-listener "^1.2.2"
     select "^1.1.2"
@@ -2019,8 +2019,8 @@ trim-newlines@^1.0.0:
     glob "^6.0.4"
 
 ts-node@^6.0.0:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-6.0.1.tgz#e2dd65abcadae530d2b2109cfd19202ba9f90402"
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-6.0.2.tgz#e132d530e53173bc6a8c21ea65f64d8b47bc573e"
   dependencies:
     arrify "^1.0.0"
     chalk "^2.3.0"

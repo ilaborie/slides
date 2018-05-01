@@ -1,12 +1,8 @@
 
+* plus simple
 * Plus facile à tester
 * moins de bugs
-* plus simple
 * plus évolutif
-*
-
-
-
 
 What Is Wrong With Mutability?
 * Hard to reason (prone error)

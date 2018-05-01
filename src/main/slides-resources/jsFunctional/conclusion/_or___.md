@@ -7,4 +7,4 @@ Mais encore insuffisant à nom gout:
 
 * `flatMap` 😭
   [Proposal for flatten and flatMap - Stage 3](https://github.com/tc39/proposal-flatMap)
-* un lazy Array (comme les `Stream` Java)
+* des structure lazy (comme le Stream de Scala)

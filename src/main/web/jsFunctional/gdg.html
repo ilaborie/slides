@@ -36,34 +36,38 @@
 <a href="#function" class="full-screen" title="Function">12</a>
 <a href="#effets_de_bord" class="" title="Effets de bord">13</a>
 <a href="#pure_function_2" class="full-screen" title="Function">14</a>
-<a href="#immutable" class="" title="Immutable">15</a>
-<a href="#composition" class="" title="Composition">16</a>
-<a href="#recursion" class="" title="Recursion">17</a>
-<a href="#lisibilite" class="" title="Lisibilité">18</a>
-<a href="#part_i___bilan" class="" title="Part I - bilan">19</a></nav>
-<nav><a href="#part_entracte" class="part" title="Entracte">20</a>
-<a href="#pandaroux" class="" title="PandaRoux">21</a></nav>
-<nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">22</a>
-<a href="#jargon" class="" title="Jargon">23</a>
-<a href="#currification" class="" title="Currification">24</a>
-<a href="#memoisation" class="" title="Memoïsation">25</a>
-<a href="#adt" class="" title="ADT">26</a>
-<a href="#pattern_matching" class="" title="Pattern Matching">27</a>
-<a href="#monads" class="" title="Monads">28</a>
-<a href="#part_ii___bilan" class="" title="Part II - bilan">29</a></nav>
-<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">30</a>
-<a href="#what" class="" title="What">31</a>
-<a href="#rules" class="" title="Rules">32</a>
-<a href="#whenmatter" class="" title="WhenMatter">33</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">34</a>
-<a href="#_or___" class="" title="🦄 or 💩 ?">35</a>
-<a href="#bibliotheque" class="" title="Bibliothèque">36</a>
-<a href="#quote" class="hide-title" title="Quote">37</a>
-<a href="#values" class="" title="Values">38</a>
-<a href="#value_of_js" class="" title="Value of JS">39</a>
-<a href="#why_functional" class="" title="Why functional">40</a>
-<a href="#liens" class="" title="Liens">41</a>
-<a href="#questions" class="hide-title" title="Questions">42</a></nav>
+<a href="#statement_vs_expression" class="full-screen" title="Instruction vs Expression">15</a>
+<a href="#we_mess_with_state" class="" title="We mess with state">16</a>
+<a href="#immutable_1" class="full-screen" title="Immutable">17</a>
+<a href="#immutable_2" class="" title="Immutable">18</a>
+<a href="#composition" class="" title="Composition">19</a>
+<a href="#recursion" class="" title="Recursion">20</a>
+<a href="#lisibilite" class="" title="Lisibilité">21</a>
+<a href="#part1_bilan_1" class="" title="Part I - bilan 1/2">22</a>
+<a href="#part1_bilan_2" class="" title="Part I - bilan 2/2">23</a></nav>
+<nav><a href="#part_entracte" class="part" title="Entracte">24</a>
+<a href="#pandaroux" class="" title="PandaRoux">25</a></nav>
+<nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">26</a>
+<a href="#jargon" class="" title="Jargon">27</a>
+<a href="#currification" class="" title="Currification">28</a>
+<a href="#memoisation" class="" title="Memoïsation">29</a>
+<a href="#adt" class="" title="ADT">30</a>
+<a href="#pattern_matching" class="" title="Pattern Matching">31</a>
+<a href="#monads" class="" title="Monads">32</a>
+<a href="#part_ii___bilan" class="" title="Part II - bilan">33</a></nav>
+<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">34</a>
+<a href="#what" class="" title="What">35</a>
+<a href="#rules" class="" title="Rules">36</a>
+<a href="#whenmatter" class="" title="WhenMatter">37</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">38</a>
+<a href="#_or___" class="" title="🦄 or 💩 ?">39</a>
+<a href="#bibliotheque" class="" title="Bibliothèque">40</a>
+<a href="#quote" class="hide-title" title="Quote">41</a>
+<a href="#values" class="" title="Values">42</a>
+<a href="#value_of_js" class="" title="Value of JS">43</a>
+<a href="#why_functional" class="" title="Why functional">44</a>
+<a href="#liens" class="" title="Liens">45</a>
+<a href="#questions" class="hide-title" title="Questions">46</a></nav>
     </div>
     <main>
 
@@ -389,8 +393,6 @@ console.log(`Plop`);
 
 </pre>
   <pre class="finalCode" data-lang="typescript">// Function is First-class citizen
-
-
 function mult(a, b) {
     return a * b;
 }
@@ -455,7 +457,7 @@ const mult5: (a: number, b: number) => number =
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
     <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>elt <span class="token operator">=></span> sum <span class="token operator">+=</span> elt<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sum<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> sum <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>⚠️ danger, c'est un nid à bugs.<br>=> Éviter les fonctions qui n'ont pas de paramètres, ou retournent `void`</p>
     </article>
@@ -476,12 +478,15 @@ const mult5: (a: number, b: number) => number =
 [1, 2, 3, 4, 5]
     .forEach(elt => sum += elt);
 
-console.log({sum});
+console.log({ sum });
 </pre>
-  <pre class="finalCode" data-lang="typescript">const sum = [1, 2, 3, 4, 5]
+  <pre class="finalCode" data-lang="typescript">// let sum = 0;
+// [1, 2, 3, 4, 5].forEach(elt => sum += elt);
+
+const sum = [1, 2, 3, 4, 5]
     .reduce((acc, elt) => acc + elt);
 
-console.log({sum});
+console.log({ sum });
 </pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
@@ -498,20 +503,123 @@ console.log({sum});
 </div>
 
     </article>
-    <a href="#immutable" class="next" aria-label="Suivant"></a>
+    <a href="#statement_vs_expression" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Instruction vs Expression -->
+<section id="statement_vs_expression" class="full-screen">
+    <a href="#pure_function_2" class="previous" aria-label="Précédant"></a>
+    <h3>Instruction vs Expression</h3>
+    <article>
+        
+<div class="code-editor" data-lang="typescript">
+  <h4>Instruction vs Expression</h4>
+  <pre class="initialCode">const isEven = (n: number): boolean => {
+    if (n % 2 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+
+</pre>
+  <pre class="finalCode" data-lang="typescript">// const isEven = (n: number): boolean => {
+//     return (n % 2 === 0) ? true : false;
+// };
+
+// const isEven = (n: number): boolean =>
+//     (n % 2 === 0) ? true : false;
+
+const isEven = (n: number): boolean =>
+    (n % 2 === 0);
+</pre>
+  <div class="toolbar">
+  <button type="button" class="full-screen"></button>
+  <button type="button" class="reset"></button>
+  <button type="button" class="load-final"></button>
+  <button type="button" class="format"></button>
+  <button type="button" class="clear-console"></button>
+  <button type="button" class="run"></button>
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
+
+    </article>
+    <a href="#we_mess_with_state" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide We mess with state -->
+<section id="we_mess_with_state" class="">
+    <a href="#statement_vs_expression" class="previous" aria-label="Précédant"></a>
+    <h3>We mess with state</h3>
+    <article>
+        
+<blockquote cite="http://worrydream.com/EarlyHistoryOfSmalltalk/">
+    <p> The last thing you wanted any programmer to do is mess with internal state even if presented figuratively. Instead, the objects should be presented as <em>sites of higher level behaviors more appropriate for use as dynamic components</em>.</p>
+    <footer>--Alan Key, The Early History Of Smalltalk</footer>
+</blockquote>
+
+    </article>
+    <a href="#immutable_1" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Immutable -->
-<section id="immutable" class="">
-    <a href="#pure_function_2" class="previous" aria-label="Précédant"></a>
+<section id="immutable_1" class="full-screen">
+    <a href="#we_mess_with_state" class="previous" aria-label="Précédant"></a>
     <h3>Immutable</h3>
     <article>
-        <p>const</p>
-<p>Object.freeze</p>
-<p>referentially transparent</p>
-<p>avec <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
-<p>Comment fait-on ?</p>
+        
+<div class="code-editor" data-lang="typescript">
+  <h4>Immutable</h4>
+  <pre class="initialCode">// let & const
+let oLet = {a: 1, b: 2};
+oLet.a = 3;
+
+console.info({oLet});
+
+const oConst = {a: 10, b: 20};
+oConst.a = 30;
+
+console.info({oLet});
+
+// Transparence référentielle ?
+
+
+// Deconstruction
+</pre>
+  <pre class="finalCode" data-lang="typescript"></pre>
+  <div class="toolbar">
+  <button type="button" class="full-screen"></button>
+  <button type="button" class="reset"></button>
+  <button type="button" class="load-final"></button>
+  <button type="button" class="format"></button>
+  <button type="button" class="clear-console"></button>
+  <button type="button" class="run"></button>
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
+
+    </article>
+    <a href="#immutable_2" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Immutable -->
+<section id="immutable_2" class="">
+    <a href="#immutable_1" class="previous" aria-label="Précédant"></a>
+    <h3>Immutable</h3>
+    <article>
+        <p>Comment fait-on ?</p>
 <pre><code class="lang-typescript">class List&lt;T&gt; {
     private array: T[];
 
@@ -525,6 +633,7 @@ console.log({sum});
 
 }
 </code></pre>
+<p>avec <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
 
     </article>
     <a href="#composition" class="next" aria-label="Suivant"></a>
@@ -533,7 +642,7 @@ console.log({sum});
 
 <!-- Slide Composition -->
 <section id="composition" class="">
-    <a href="#immutable" class="previous" aria-label="Précédant"></a>
+    <a href="#immutable_2" class="previous" aria-label="Précédant"></a>
     <h3>Composition</h3>
     <article>
         <h3 id="high-order-function">High Order function</h3>
@@ -629,24 +738,37 @@ speakers
 </code></pre>
 
     </article>
-    <a href="#part_i___bilan" class="next" aria-label="Suivant"></a>
+    <a href="#part1_bilan_1" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Part I - bilan -->
-<section id="part_i___bilan" class="">
+<!-- Slide Part I - bilan 1/2 -->
+<section id="part1_bilan_1" class="">
     <a href="#lisibilite" class="previous" aria-label="Précédant"></a>
-    <h3>Part I - bilan</h3>
+    <h3>Part I - bilan 1/2</h3>
     <article>
         <ul>
-<li><code>function</code> first-class citizen 💪</li>
-<li>immutable faisable ✍️</li>
-<li>eviter les effets de bord 💼<ul>
-<li>Boucles: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
+<li>💪 <code>function</code> first-class citizen</li>
+<li>✍️ immutable faisable</li>
+<li>⚠️ eviter les effets de bord</li>
+</ul>
+
+    </article>
+    <a href="#part1_bilan_2" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Part I - bilan 2/2 -->
+<section id="part1_bilan_2" class="">
+    <a href="#part1_bilan_1" class="previous" aria-label="Précédant"></a>
+    <h3>Part I - bilan 2/2</h3>
+    <article>
+        <ul>
+<li>Plus de boucles: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
 <li>les <code>var</code> ou <code>let</code> =&gt; utiliser <code>const</code></li>
-<li>les functions sans arguments, ou qui</li>
+<li>⚠️ aux functions sans arguments, ou retournant <code>void</code></li>
 <li>les mutations dans les objects comme <code>o.x = 5;</code> =&gt; utiliser <code>Object.assign</code> ou la déconstruction </li>
-<li>les mutations dans Array : <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code></li>
+<li>les mutations dans Array : <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code><ul>
 <li>les mutations dans Map : <code>clear</code>, <code>delete</code>, <code>set</code></li>
 <li>les mutations dans Set : <code>add</code>, <code>clear</code>, <code>delete</code></li>
 </ul>
@@ -660,7 +782,7 @@ speakers
 
 <!-- Slide Entracte -->
 <section id="part_entracte" class="part">
-    <a href="#part_i___bilan" class="previous" aria-label="Précédant"></a>
+    <a href="#part1_bilan_2" class="previous" aria-label="Précédant"></a>
     <h2>Entracte</h2>
     <article>
         
@@ -971,7 +1093,7 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 <ul>
 <li><code>flatMap</code> 😭
 <a href="https://github.com/tc39/proposal-flatMap">Proposal for flatten and flatMap - Stage 3</a></li>
-<li>un lazy Array (comme les <code>Stream</code> Java)</li>
+<li>des structure lazy (comme le Stream de Scala)</li>
 </ul>
 
     </article>
@@ -1042,11 +1164,10 @@ ecosysteme
     <h3>Why functional</h3>
     <article>
         <ul>
+<li>plus simple</li>
 <li>Plus facile à tester</li>
 <li>moins de bugs</li>
-<li>plus simple</li>
-<li>plus évolutif
-*</li>
+<li>plus évolutif</li>
 </ul>
 <p>What Is Wrong With Mutability?</p>
 <ul>
@@ -1099,7 +1220,7 @@ ecosysteme
     </main>
 
     <script type="application/javascript" src="../scripts/navigation.js"></script>
-<script type="application/javascript" src="../scripts/monaco-editor/vs/loader.js"></script>
+<script type="application/javascript" src="../scripts/monaco-editor/min/vs/loader.js"></script>
 <script type="application/javascript" src="../scripts/code-editor.js"></script>
 </body>
 </html>

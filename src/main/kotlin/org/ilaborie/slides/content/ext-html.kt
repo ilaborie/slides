@@ -153,7 +153,7 @@ fun Definitions.renderAsHtml() = map
     }
 
 fun Quote.renderAsHtml() = """
-<blockquote${if (cite != null) "cite=\"$cite\"" else ""}>
+<blockquote${if (cite != null) " cite=\"$cite\"" else ""}>
     <p>${content.renderAsHtml()}</p>${if (author != null) "\n    <footer>--$author</footer>" else ""}
 </blockquote>
 """

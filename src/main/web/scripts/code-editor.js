@@ -1,4 +1,4 @@
-require.config({paths: {'vs': '../scripts/monaco-editor/vs'}});
+require.config({paths: {'vs': '../scripts/monaco-editor/min/vs'}});
 
 // Before loading vs/editor/editor.main, define a global MonacoEnvironment that overwrites
 // the default worker url location (used when creating WebWorkers). The problem here is that
@@ -48,10 +48,12 @@ require(['vs/editor/editor.main'], function () {
     // Output
     const colorizeOutput = (params) => {
         const finalNode = params.parent.querySelector('.finalCode');
-        monaco.editor.colorizeElement(finalNode, {})
-            .then(() => {
-                // finalNode.classList.toggle("finalCode");
-            });
+        if (finalNode) {
+            monaco.editor.colorizeElement(finalNode, {})
+                .then(() => {
+                    // finalNode.classList.toggle("finalCode");
+                });
+        }
         return params;
     };
 

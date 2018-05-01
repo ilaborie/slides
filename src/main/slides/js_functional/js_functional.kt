@@ -10,6 +10,7 @@ import org.ilaborie.slides.dsl.html
 import org.ilaborie.slides.dsl.p
 import org.ilaborie.slides.dsl.part
 import org.ilaborie.slides.dsl.presentation
+import org.ilaborie.slides.dsl.quote
 import org.ilaborie.slides.dsl.roadmap
 import org.ilaborie.slides.dsl.slide
 import org.ilaborie.slides.dsl.slideFromResource
@@ -36,7 +37,7 @@ fun main(args: Array<String>) {
 fun jsFunctional() =
     presentation(title = "Programmation fonctionnelle en JavaScript :", key = "jsFunctional") {
         addScript("../scripts/navigation.js")
-        addScript("../scripts/monaco-editor/vs/loader.js")
+        addScript("../scripts/monaco-editor/min/vs/loader.js")
         addScript("../scripts/code-editor.js")
 
         part(title = "Introduction", key = "intro") {
@@ -75,7 +76,7 @@ fun jsFunctional() =
             }
             slide(title = "Effets de bord") {
                 p {
-                    html{ "Eviter les fonctions avec effet de bord"}
+                    html { "Eviter les fonctions avec effet de bord" }
                 }
                 codeFromResource("/jsFunctional/code/02-side-effect.ts")
                 p {
@@ -90,11 +91,32 @@ fun jsFunctional() =
                                         "/jsFunctional/code/02-side-effect.ts",
                                         "/jsFunctional/code/02-side-effect-final.ts")
             }
-            slideFromResource(title = "Immutable")
+            slide(title = "Instruction vs Expression",
+                  key = "statement_vs_expression",
+                  styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Instruction vs Expression",
+                                        "/jsFunctional/code/03-if-then-else.ts",
+                                        "/jsFunctional/code/03-if-then-else-final.ts")
+            }
+
+            slide(title = "We mess with state") {
+                quote(author = "Alan Key, The Early History Of Smalltalk", cite = "http://worrydream.com/EarlyHistoryOfSmalltalk/") {
+                    html {" The last thing you wanted any programmer to do is mess with internal state even if presented figuratively. Instead, the objects should be presented as <em>sites of higher level behaviors more appropriate for use as dynamic components</em>."}
+                }
+            }
+            slide(title = "Immutable",
+                  key = "immutable_1",
+                  styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Immutable",
+                                        "/jsFunctional/code/04-immutable.ts",
+                                        "/jsFunctional/code/04-immutable-final.ts")
+            }
+            slideFromResource(title = "Immutable", key = "immutable_2")
             slideFromResource(title = "Composition")
             slideFromResource(title = "Recursion")
             slideFromResource(title = "Lisibilité")
-            slideFromResource(title = "Part I - bilan")
+            slideFromResource(title = "Part I - bilan 1/2", key= "part1_bilan_1")
+            slideFromResource(title = "Part I - bilan 2/2", key= "part1_bilan_2")
         }
         part("Entracte") {
             slideFromResource(title = "PandaRoux", contentType = HTML)
