@@ -5,4 +5,4 @@
 * on effectue  des **mesures**
 * on isole la zone à optimiser (la plus petite possible)
 * on expliquer pourquoi on n'a perdu de la lisibilité
-* on suit l'évolution des performances dans toute la durée de vie du projet
+* on suit l'évolution des performances

@@ -39,7 +39,8 @@ fun main(args: Array<String>) {
 
 fun jsFunctional() =
     presentation(title = HtmlContent("""Programmation fonctionnelle en JavaScript :
-        |<div><span class="shake">🦄</span> ou <span class="shake">💩</span></div>""".trimMargin()), key = "jsFunctional") {
+        |<div><span class="shake">🦄</span> ou <span class="shake">💩</span></div>""".trimMargin()),
+                 key = "jsFunctional") {
         addScript("../scripts/navigation.js")
         addScript("../scripts/monaco-editor/min/vs/loader.js")
         addScript("../scripts/code-editor.js")
@@ -188,13 +189,13 @@ fun jsFunctional() =
             slideFromResource(title = "WhenMatter")
         }
         part("Conclusion") {
-            slideFromResource(title = "🦄 or 💩 ?")
+            slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")
             slideFromResource(title = "Bibliothèques", key = "bibliotheque")
             slideFromResource(title = "Alternatives", key = "alternatives")
             slideFromResource(title = "Quote") { styleClass += "hide-title" }
             slideFromResource(title = "Valeur", key = "values")
-            slideFromResource(title = "Value of JS")
-            slideFromResource(title = "Why functional", key = "why_functional")
+            slideFromResource(title = "Intéret du JS", key = "value_of_js")
+            slideFromResource(title = "Codons en fonctionel", key = "why_functional")
             slideFromResource(title = "Liens")
             slide("Questions", styleClass = setOf("hide-title")) {
                 header(3) {
