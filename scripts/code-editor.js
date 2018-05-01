@@ -20,7 +20,6 @@ require(['vs/editor/editor.main'], function () {
         fontFamily: 'Fira Code, monospace',
         fontSize: 24,
         fontLigatures: true
-
         // FIXME keybinding: format, fix
     };
 
@@ -48,10 +47,12 @@ require(['vs/editor/editor.main'], function () {
     // Output
     const colorizeOutput = (params) => {
         const finalNode = params.parent.querySelector('.finalCode');
-        monaco.editor.colorizeElement(finalNode, {})
-            .then(() => {
-                finalNode.classList.toggle("finalCode");
-            });
+        if (finalNode && finalNode.textContent) {
+            monaco.editor.colorizeElement(finalNode, {})
+                .then(() => {
+                    // finalNode.classList.toggle("finalCode");
+                });
+        }
         return params;
     };
 

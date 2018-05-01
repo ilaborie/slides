@@ -1,19 +1,154 @@
 @charset "UTF-8";
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  background: none;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none; }
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc; }
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none; } }
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto; }
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0; }
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal; }
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray; }
+
+.token.punctuation {
+  color: #999; }
+
+.namespace {
+  opacity: .7; }
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #9a6e3a;
+  background: rgba(255, 255, 255, 0.5); }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a; }
+
+.token.function,
+.token.class-name {
+  color: #DD4A68; }
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90; }
+
+.token.important,
+.token.bold {
+  font-weight: bold; }
+
+.token.italic {
+  font-style: italic; }
+
+.token.entity {
+  cursor: help; }
+
 .gdg.jsFunctional {
-  --primary: #5F5455;
+  --primary: #2c0563;
   --bgFooter: var(--primary);
   --fgFooter: white;
   --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript #🦊';
-  --logoFooter: url("https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg"); }
+  --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg'); }
+
+.shake:hover {
+  cursor: none;
+  display: inline-block;
+  animation: shakeIt 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+@keyframes shakeIt {
+  10%, 90% {
+    transform: translateX(-1px); }
+  20%, 80% {
+    transform: translateX(2px); }
+  30%, 50%, 70% {
+    transform: translateX(-4px); }
+  40%, 60% {
+    transform: translateX(4px); } }
+
+pre.lang-typescript {
+  box-shadow: inset 0 0 .125rem black;
+  padding: .25rem;
+  background-color: white; }
 
 #jsFunctional h1 {
   font-size: 2rem;
   display: flex;
   flex-direction: column; }
-
-#jsFunctional h1::after {
-  content: '🦄 ou 💩 ?';
-  font-size: 3.5rem; }
+  #jsFunctional h1 div {
+    font-size: 3.5rem; }
 
 #speaker {
   background: #00b0f0; }
@@ -58,7 +193,12 @@
   #knowledge div ul li + li::before {
     content: ', '; }
 
-#roadmap ol li:nth-child(1)::before, #roadmap ol li:nth-child(5)::before {
+#roadmap ol li a {
+  text-decoration: none; }
+  #roadmap ol li a::before {
+    content: none; }
+
+#roadmap ol li:nth-child(1)::before, #roadmap ol li:nth-child(4)::before {
   float: left;
   margin-right: .25rem;
   display: inline-block;
@@ -110,3 +250,8 @@
       list-style: none; }
       #static_vs_dynamic article div ul li {
         text-align: center; }
+
+#liens article {
+  align-items: center; }
+  #liens article a {
+    font-size: 1.5rem; }
