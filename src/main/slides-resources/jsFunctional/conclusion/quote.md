@@ -4,4 +4,4 @@
 
 
 -- John McCarthy
-    "The Little Thoughts of Thinking Machines", Psychology Today, December 1983, pp. 46–49. Reprinted in Formalizing Common Sense: Papers By John McCarthy, 1990, ISBN 0893915351
+    "The Little Thoughts of Thinking Machines", Psychology Today, December 1983

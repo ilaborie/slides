@@ -1,0 +1,18 @@
+
+<pre class="lang-typescript step"><code class="lang-typescript">speakers
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span>
+        speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<pre class="lang-typescript step"><code class="lang-typescript">speakers
+    <span class="token comment">// is experimented</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token comment">// is love JS</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<pre class="lang-typescript step"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">isExperimented</span> <span class="token operator">=</span> speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isLoveJS</span> <span class="token operator">=</span> speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+speakers
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isExperimented<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isLoveJS<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>

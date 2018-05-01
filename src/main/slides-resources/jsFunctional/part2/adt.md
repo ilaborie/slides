@@ -11,5 +11,3 @@ datatype rational = Whole of int
 
 type union
 
-
-<https://github.com/natefaubion/adt.js>

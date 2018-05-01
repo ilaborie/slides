@@ -17,6 +17,8 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="mozilla"]::before, &[href*="youtube"]::before, &[href*="kotlin"]::before,
     &[href*="android"]::before, &[href*="spring-framework"]::before, &[href*="spring-boot"]::before,
     &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="sparkjava"]::before, &[href*="javalin"]::before,
+    &[href*="immutable"]::before, &[href*="ramda"]::before, &[href*="elm"]::before, &[href*="reasonml"]::before,
+    &[href*="purescript"]::before, &[href*="clojurescript"]::before,
     &[href*="vertx"]::before, &[href*="ktor"]::before, &[href*="stackoverflow"]::before  {
       content: '';
       width: 1em;
@@ -83,6 +85,24 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="ktor"]::before {
       background-image: url('./assets/brands/ktor.png');
     }
+    &[href*="ramda"]::before {
+      background-image: url('./assets/brands/ramda.svg');
+    }
+    &[href*="elm"]::before {
+      background-image: url('./assets/brands/elm.svg');
+    }
+    &[href*="reasonml"]::before {
+      background-image: url('./assets/brands/reason.svg');
+    }
+    &[href*="purescript"]::before {
+      background-image: url('./assets/brands/purescript.svg');
+    }
+    &[href*="clojurescript"]::before {
+      background-image: url('./assets/brands/cljs.png');
+    }
+    &[href*="immutable"]::before {
+      background-image: url('./assets/brands/immutable.png');
+    }
 
     &[href*="frog"]::before {
       content: '🐸 ';
@@ -121,6 +141,9 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="caniuse"]::before {
       content: '📊 ';
+    }
+    &[href*="bit.ly"]::before {
+      content: '🧛‍♂️';
     }
     &[href^=mailto]::before {
       content: '✉️ ';

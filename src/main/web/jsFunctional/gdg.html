@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Programmation fonctionnelle en JavaScript :</title>
+    <title>Programmation fonctionnelle en JavaScript : 🦄 ou 💩</title>
     <link rel="stylesheet" href="../slides.css">
     <link rel="stylesheet" href="../jsFunctional.css">
     <link rel="stylesheet" href="../gdg.css">
@@ -13,12 +13,11 @@
     <link rel="icon" type="image/png" href="../assets/gdg/favicon.png" />
 </head>
 <body class="gdg jsFunctional">
-    <div class="slides-nav hide-print" style="grid-template-columns : repeat(8, auto);">
-        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript :">0</a>
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(7, auto);">
+        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript : 🦄 ou 💩">0</a>
         <strong>Introduction</strong>
 <strong>Langages fonctionnels</strong>
 <strong>Programmation fonctionnelle en JS - Part I</strong>
-<strong>Entracte</strong>
 <strong>Programmation fonctionnelle en JS - Part II</strong>
 <strong>Remaques sur la performance</strong>
 <strong>Conclusion</strong>
@@ -37,44 +36,47 @@
 <a href="#effets_de_bord" class="" title="Effets de bord">13</a>
 <a href="#pure_function_2" class="full-screen" title="Function">14</a>
 <a href="#statement_vs_expression" class="full-screen" title="Instruction vs Expression">15</a>
-<a href="#we_mess_with_state" class="" title="We mess with state">16</a>
+<a href="#mess_with_state" class="" title="Mess with state">16</a>
 <a href="#immutable_1" class="full-screen" title="Immutable">17</a>
 <a href="#immutable_2" class="" title="Immutable">18</a>
-<a href="#composition" class="" title="Composition">19</a>
-<a href="#recursion" class="" title="Recursion">20</a>
-<a href="#lisibilite" class="" title="Lisibilité">21</a>
-<a href="#part1_bilan_1" class="" title="Part I - bilan 1/2">22</a>
-<a href="#part1_bilan_2" class="" title="Part I - bilan 2/2">23</a></nav>
-<nav><a href="#part_entracte" class="part" title="Entracte">24</a>
-<a href="#pandaroux" class="" title="PandaRoux">25</a></nav>
-<nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">26</a>
-<a href="#jargon" class="" title="Jargon">27</a>
-<a href="#currification" class="" title="Currification">28</a>
-<a href="#memoisation" class="" title="Memoïsation">29</a>
-<a href="#adt" class="" title="ADT">30</a>
-<a href="#pattern_matching" class="" title="Pattern Matching">31</a>
-<a href="#monads" class="" title="Monads">32</a>
-<a href="#part_ii___bilan" class="" title="Part II - bilan">33</a></nav>
-<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">34</a>
-<a href="#what" class="" title="What">35</a>
-<a href="#rules" class="" title="Rules">36</a>
-<a href="#whenmatter" class="" title="WhenMatter">37</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">38</a>
-<a href="#_or___" class="" title="🦄 or 💩 ?">39</a>
-<a href="#bibliotheque" class="" title="Bibliothèque">40</a>
-<a href="#quote" class="hide-title" title="Quote">41</a>
-<a href="#values" class="" title="Values">42</a>
-<a href="#value_of_js" class="" title="Value of JS">43</a>
-<a href="#why_functional" class="" title="Why functional">44</a>
-<a href="#liens" class="" title="Liens">45</a>
-<a href="#questions" class="hide-title" title="Questions">46</a></nav>
+<a href="#hoc" class="full-screen" title="High Order function">19</a>
+<a href="#for___" class="" title="for : 🤢">20</a>
+<a href="#composition" class="" title="Composition">21</a>
+<a href="#recursion" class="" title="Recursion 1/2">22</a>
+<a href="#recursion-2" class="" title="Recursion 2/2">23</a>
+<a href="#lisibilite" class="steps" title="Lisibilité">24</a>
+<a href="#part1_bilan_1" class="" title="Part I - bilan 1/2">25</a>
+<a href="#part1_bilan_2" class="" title="Part I - bilan 2/2">26</a></nav>
+<nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">27</a>
+<a href="#jargon" class="" title="Jargon">28</a>
+<a href="#currification" class="" title="Currification">29</a>
+<a href="#memoisation" class="" title="Memoïsation">30</a>
+<a href="#adt" class="" title="Algebraic Data Type">31</a>
+<a href="#pattern_matching" class="" title="Pattern Matching">32</a>
+<a href="#high_order_kinds" class="" title="High Order Kinds">33</a>
+<a href="#part_ii___bilan" class="" title="Part II - bilan">34</a></nav>
+<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">35</a>
+<a href="#what" class="" title="What">36</a>
+<a href="#rules" class="" title="Rules">37</a>
+<a href="#whenmatter" class="" title="WhenMatter">38</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">39</a>
+<a href="#_or___" class="" title="🦄 or 💩 ?">40</a>
+<a href="#bibliotheque" class="" title="Bibliothèques">41</a>
+<a href="#alternatives" class="" title="Alternatives">42</a>
+<a href="#quote" class="hide-title" title="Quote">43</a>
+<a href="#values" class="" title="Valeur">44</a>
+<a href="#value_of_js" class="" title="Value of JS">45</a>
+<a href="#why_functional" class="" title="Why functional">46</a>
+<a href="#liens" class="" title="Liens">47</a>
+<a href="#questions" class="hide-title" title="Questions">48</a></nav>
     </div>
     <main>
 
-<!-- Slide Programmation fonctionnelle en JavaScript : -->
+<!-- Slide Programmation fonctionnelle en JavaScript : 🦄 ou 💩 -->
 <section id="jsFunctional" class="cover">
     
-    <h1>Programmation fonctionnelle en JavaScript :</h1>
+    <h1>Programmation fonctionnelle en JavaScript :
+<div><span class="shake">🦄</span> ou <span class="shake">💩</span></div></h1>
     <article>
         
     </article>
@@ -163,12 +165,11 @@
     <a href="#knowledge" class="previous" aria-label="Précédant"></a>
     <h3>🗺 Plan</h3>
     <article>
-        <ol><li>Langages fonctionnels</li>
-<li>Programmation fonctionnelle en JS - Part I</li>
-<li>Entracte</li>
-<li>Programmation fonctionnelle en JS - Part II</li>
-<li>Remaques sur la performance</li>
-<li>Conclusion</li></ol>
+        <ol><li><a href="#part_langages_fonctionnels">Langages fonctionnels</a></li>
+<li><a href="#part_programmation_fonctionnelle_en_js___part_i">Programmation fonctionnelle en JS - Part I</a></li>
+<li><a href="#part_programmation_fonctionnelle_en_js___part_ii">Programmation fonctionnelle en JS - Part II</a></li>
+<li><a href="#part_remaques_sur_la_performance">Remaques sur la performance</a></li>
+<li><a href="#part_conclusion">Conclusion</a></li></ol>
     </article>
     <a href="#part_langages_fonctionnels" class="next" aria-label="Suivant"></a>
 </section>
@@ -389,9 +390,7 @@ console.log(`Plop`);
 
 (function() {
     // scoped to the function
-})();
-
-</pre>
+})();</pre>
   <pre class="finalCode" data-lang="typescript">// Function is First-class citizen
 function mult(a, b) {
     return a * b;
@@ -424,9 +423,7 @@ const mult5: (a: number, b: number) => number =
 
 (function() {
     // scoped to the function
-})();
-
-</pre>
+})();</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -455,11 +452,10 @@ const mult5: (a: number, b: number) => number =
 <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>elt <span class="token operator">=></span> sum <span class="token operator">+=</span> elt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>elt <span class="token operator">=></span> <span class="token punctuation">{</span>sum <span class="token operator">+=</span> elt<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> sum <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>⚠️ danger, c'est un nid à bugs.<br>=> Éviter les fonctions qui n'ont pas de paramètres, ou retournent `void`</p>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> sum <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>⚠️ danger, c'est un nid à bugs.<br><code>=></code> Éviter les fonctions qui n'ont pas de paramètres, ou retournent <code>void</code></p>
     </article>
     <a href="#pure_function_2" class="next" aria-label="Suivant"></a>
 </section>
@@ -476,18 +472,16 @@ const mult5: (a: number, b: number) => number =
   <pre class="initialCode">let sum = 0;
 
 [1, 2, 3, 4, 5]
-    .forEach(elt => sum += elt);
+    .forEach(elt => {sum += elt});
 
-console.log({ sum });
-</pre>
+console.log({ sum });</pre>
   <pre class="finalCode" data-lang="typescript">// let sum = 0;
 // [1, 2, 3, 4, 5].forEach(elt => sum += elt);
 
 const sum = [1, 2, 3, 4, 5]
     .reduce((acc, elt) => acc + elt);
 
-console.log({ sum });
-</pre>
+console.log({ sum });</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -523,8 +517,8 @@ console.log({ sum });
     }
 };
 
-
-</pre>
+[2, 3, 4, 5]
+    .forEach(elt => console.log(elt, 'even?', isEven(elt)));</pre>
   <pre class="finalCode" data-lang="typescript">// const isEven = (n: number): boolean => {
 //     return (n % 2 === 0) ? true : false;
 // };
@@ -533,8 +527,7 @@ console.log({ sum });
 //     (n % 2 === 0) ? true : false;
 
 const isEven = (n: number): boolean =>
-    (n % 2 === 0);
-</pre>
+    (n % 2 === 0);</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -550,14 +543,14 @@ const isEven = (n: number): boolean =>
 </div>
 
     </article>
-    <a href="#we_mess_with_state" class="next" aria-label="Suivant"></a>
+    <a href="#mess_with_state" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide We mess with state -->
-<section id="we_mess_with_state" class="">
+<!-- Slide Mess with state -->
+<section id="mess_with_state" class="">
     <a href="#statement_vs_expression" class="previous" aria-label="Précédant"></a>
-    <h3>We mess with state</h3>
+    <h3>Mess with state</h3>
     <article>
         
 <blockquote cite="http://worrydream.com/EarlyHistoryOfSmalltalk/">
@@ -572,7 +565,7 @@ const isEven = (n: number): boolean =>
 
 <!-- Slide Immutable -->
 <section id="immutable_1" class="full-screen">
-    <a href="#we_mess_with_state" class="previous" aria-label="Précédant"></a>
+    <a href="#mess_with_state" class="previous" aria-label="Précédant"></a>
     <h3>Immutable</h3>
     <article>
         
@@ -582,19 +575,33 @@ const isEven = (n: number): boolean =>
 let oLet = {a: 1, b: 2};
 oLet.a = 3;
 
-console.info({oLet});
 
 const oConst = {a: 10, b: 20};
 oConst.a = 30;
 
+// Transparence référentielle ?
+// Deconstruction
+
 console.info({oLet});
+console.info({oConst});
+
+
+</pre>
+  <pre class="finalCode" data-lang="typescript">// let & const
+let oLet = {a: 1, b: 2};
+oLet.a = 3;
+
 
 // Transparence référentielle ?
-
+const oConst = Object.freeze({a: 10, b: 20});
+oConst.a = 30;
 
 // Deconstruction
-</pre>
-  <pre class="finalCode" data-lang="typescript"></pre>
+const oConst2 = {...oConst, a: 30};
+
+console.info({oLet});
+console.info({oConst});
+console.info({oConst2});</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -619,22 +626,105 @@ console.info({oLet});
     <a href="#immutable_1" class="previous" aria-label="Précédant"></a>
     <h3>Immutable</h3>
     <article>
-        <p>Comment fait-on ?</p>
-<pre><code class="lang-typescript">class List&lt;T&gt; {
-    private array: T[];
+        <p>Comment fait-on avec les structures de données ?</p>
+<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">class</span> <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> array<span class="token punctuation">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-    constructor(elements: T[] = []) {
-        this.array = [... elements]; 
-    }
+    <span class="token keyword">constructor</span><span class="token punctuation">(</span>elements<span class="token punctuation">:</span> <span class="token constant">T</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span> elements<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    add(element: T) : List&lt;T&gt; {
-        return new [...this.array, element];
-    }
+    <span class="token function">add</span><span class="token punctuation">(</span>element<span class="token punctuation">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token punctuation">:</span> List<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">List</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">this</span><span class="token punctuation">.</span>array<span class="token punctuation">,</span> element<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>On peut utiliser 
+<a href="https://facebook.github.io/immutable-js/">Immutable.js</a></p>
+    </article>
+    <a href="#hoc" class="next" aria-label="Suivant"></a>
+</section>
 
+
+<!-- Slide High Order function -->
+<section id="hoc" class="full-screen">
+    <a href="#immutable_2" class="previous" aria-label="Précédant"></a>
+    <h3>High Order function</h3>
+    <article>
+        
+<div class="code-editor" data-lang="typescript">
+  <h4>High Order function</h4>
+  <pre class="initialCode">const TODO = () => {throw new Error('Not yet implemented!')};
+const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const isEven = (n: number): boolean =>
+    (n % 2 === 0);
+
+const evenDigits = TODO();
+const oddSquared = TODO();
+
+console.log(evenDigits);
+console.log(oddSquared);</pre>
+  <pre class="finalCode" data-lang="typescript">const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const isEven = (n: number): boolean =>
+    (n % 2 === 0);
+
+function isEvenOrOdd(even: boolean) {
+    return (n: number) => even ? isEven(n) : !isEven(n);
 }
-</code></pre>
-<p>avec <a href="https://facebook.github.io/immutable-js/">ImmutableJS</a></p>
 
+const evenDigits = digits.filter(isEven);
+const oddSquared = digits
+    .filter(isEvenOrOdd(false))
+    .map(n => n ** 2);
+
+console.log(evenDigits);
+console.log(oddSquared);
+</pre>
+  <div class="toolbar">
+  <button type="button" class="full-screen"></button>
+  <button type="button" class="reset"></button>
+  <button type="button" class="load-final"></button>
+  <button type="button" class="format"></button>
+  <button type="button" class="clear-console"></button>
+  <button type="button" class="run"></button>
+  </div>
+  <div class="editor-panel"></div>
+  <div class="console-panel">
+    <ul></ul>
+  </div>
+</div>
+
+    </article>
+    <a href="#for___" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide for : 🤢 -->
+<section id="for___" class="">
+    <a href="#hoc" class="previous" aria-label="Précédant"></a>
+    <h3>for : 🤢</h3>
+    <article>
+        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Event</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span> <span class="token comment">/* ...*/</span><span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> funErrors <span class="token operator">=</span> <span class="token punctuation">(</span>events<span class="token punctuation">:</span> Event<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> size <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Event<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=></span>
+    events
+        <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>evt <span class="token operator">=></span> evt<span class="token punctuation">.</span>error<span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> notFunErrors <span class="token operator">=</span> <span class="token punctuation">(</span>events<span class="token punctuation">:</span> Event<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> size <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Event<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> result<span class="token punctuation">:</span> Event<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> events<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 🤮</span>
+        <span class="token keyword">const</span> evt <span class="token operator">=</span> events<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>evt<span class="token punctuation">.</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>result<span class="token punctuation">.</span>length <span class="token operator">>=</span> size<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
     </article>
     <a href="#composition" class="next" aria-label="Suivant"></a>
 </section>
@@ -642,101 +732,96 @@ console.info({oLet});
 
 <!-- Slide Composition -->
 <section id="composition" class="">
-    <a href="#immutable_2" class="previous" aria-label="Précédant"></a>
+    <a href="#for___" class="previous" aria-label="Précédant"></a>
     <h3>Composition</h3>
     <article>
-        <h3 id="high-order-function">High Order function</h3>
-<p>map, reduce, filter, sort</p>
-<pre><code class="lang-typescript">
-// f: X =&gt; Y
-// g: Y =&gt; Z
-// compose: (Y =&gt; Z, X =&gt; Y) =&gt; X =&gt; Z
-const compose = (g, f) =&gt; x =&gt; g(f(x))
+        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">compose</span> <span class="token operator">=</span> <span class="token punctuation">(</span>g <span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token operator">=></span> x <span class="token operator">=></span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-</code></pre>
-<p><a href="https://github.com/isiahmeadows/function-composition-proposal">Function Composition</a>
-<a href="https://github.com/simonstaton/Function.prototype.compose-TC39-Proposal">Function.prototype.compose</a></p>
+<span class="token keyword">const</span> <span class="token function-variable function">composeAll</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">...</span>functions<span class="token punctuation">)</span> <span class="token operator">=></span>
+    x <span class="token operator">=></span> functions<span class="token punctuation">.</span><span class="token function">reduceRight</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> fun<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">fun</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<a href="https://github.com/tc39/proposal-pipeline-operator">Stage 1 -  pipeline operator</a>
+<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">doubleSay</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str <span class="token operator">+</span> <span class="token string">', '</span> <span class="token operator">+</span> str<span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">capitalize</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">exclaim</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str <span class="token operator">+</span> <span class="token string">'!'</span><span class="token punctuation">;</span>
 
+<span class="token keyword">const</span> result1 <span class="token operator">=</span> <span class="token function">exclaim</span><span class="token punctuation">(</span><span class="token function">capitalize</span><span class="token punctuation">(</span><span class="token function">doubleSay</span><span class="token punctuation">(</span><span class="token string">'hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> result2 <span class="token operator">=</span> <span class="token string">'hello'</span>
+    <span class="token operator">|</span><span class="token operator">></span> doubleSay
+    <span class="token operator">|</span><span class="token operator">></span> capitalize
+    <span class="token operator">|</span><span class="token operator">></span> exclaim<span class="token punctuation">;</span></code></pre>
     </article>
     <a href="#recursion" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Recursion -->
+<!-- Slide Recursion 1/2 -->
 <section id="recursion" class="">
     <a href="#composition" class="previous" aria-label="Précédant"></a>
-    <h3>Recursion</h3>
+    <h3>Recursion 1/2</h3>
     <article>
-        <p>⚠️ choisisons <code>n</code> comme un <code>number</code> <code>&gt;</code> à <code>0</code></p>
-<pre><code class="lang-typescript">const factorial1 = n =&gt; {
-    if (n&lt;=1) {
-        return 1;
-    }
-    return n * factorial1(n - 1);
-};
+        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> acc <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 🤢</span>
+        acc <span class="token operator">*=</span> i<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> acc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span>
+    <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token punctuation">:</span> n <span class="token operator">*</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> aux <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> acc<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span>
+        <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">?</span> acc <span class="token punctuation">:</span> <span class="token function">aux</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">aux</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+    </article>
+    <a href="#recursion-2" class="next" aria-label="Suivant"></a>
+</section>
 
-const factorial2 = n =&gt; 
-    (n&lt;=1) ? 1 : n * factorial2(n - 1);
-</code></pre>
-<h3 id="tail-recursion">Tail Recursion</h3>
-<pre><code class="lang-typescript">const factorial3 = (n, acc = 1) =&gt;
-    (n&lt;=1) ? acc : factorial3(n - 1, acc * ); 
-```gi
 
-[Support de la tail-rec](http://kangax.github.io/compat-table/es6/#test-proper_tail_calls_(tail_call_optimisation))
+<!-- Slide Recursion 2/2 -->
+<section id="recursion-2" class="">
+    <a href="#recursion" class="previous" aria-label="Précédant"></a>
+    <h3>Recursion 2/2</h3>
+    <article>
+        <a href="https://jsperf.com/plop-factorial">Test jsperf</a>
+<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls">Tail Position Calls</a>
+<a href="https://kangax.github.io/compat-table/es6/">Compatibilité</a>
 
-###
-⚠️ Éviter les recusions entre plusieurs fonctions:
-
-```typescript
-const a = n =&gt; {
-    if (n &gt; 42) {
-        return b(n - 42);
-    }
-    return 2;
-}
-
-const b = n =&gt; {
-    if (n &lt; 123) {
-        return a(n + 42);
-    }
-    return 3;
-}
-</code></pre>
-<blockquote>
-<p>Recursion is the GOTO of functional programming
--- Erik Meijer (&quot;Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire&quot;, 1991)</p>
+<blockquote cite="https://maartenfokkinga.github.io/utwente/mmf91m.pdf">
+    <p> Recursion is the GOTO of functional programming</p>
+    <footer>--Erik Meijer, "Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire", 1991</footer>
 </blockquote>
-<p><a href="https://babeljs.io/learn-es2015/#tail-calls">https://babeljs.io/learn-es2015/#tail-calls</a>
-<a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a> 
-<a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls">http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls</a></p>
 
+<ul></ul>
     </article>
     <a href="#lisibilite" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Lisibilité -->
-<section id="lisibilite" class="">
-    <a href="#recursion" class="previous" aria-label="Précédant"></a>
+<section id="lisibilite" class="steps">
+    <a href="#recursion-2" class="previous" aria-label="Précédant"></a>
     <h3>Lisibilité</h3>
     <article>
-        <pre><code class="lang-typescript">speakers
-   .filter(speaker =&gt; speaker.xp &gt; 10 &amp;&amp;
-        speaker.some(lang =&gt; lang === &#39;JavaScript&#39;))
+        
+<pre class="lang-typescript step"><code class="lang-typescript">speakers
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span> <span class="token operator">&amp;&amp;</span>
+        speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+
+<pre class="lang-typescript step"><code class="lang-typescript">speakers
+    <span class="token comment">// is experimented</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">)</span>
+    <span class="token comment">// is love JS</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<pre><code class="lang-typescript">speakers
-   .filter(speaker =&gt; speaker.xp &gt; 10) // is experimented
-   .filter(speaker =&gt; speaker.some(lang =&gt; lang === &#39;JavaScript&#39;)) // is love JS
-</code></pre>
-<pre><code class="lang-typescript">const isExperimented = speaker =&gt; speaker.xp &gt; 10; 
-const isLoveJS = speaker =&gt; speaker.loves.some(lang =&gt; lang === &#39;JavaScript&#39;); 
+
+<pre class="lang-typescript step"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">isExperimented</span> <span class="token operator">=</span> speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>xp <span class="token operator">></span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">isLoveJS</span> <span class="token operator">=</span> speaker <span class="token operator">=></span> speaker<span class="token punctuation">.</span>languages<span class="token punctuation">.</span><span class="token function">some</span><span class="token punctuation">(</span>lang <span class="token operator">=></span> lang <span class="token operator">===</span> <span class="token string">'JavaScript'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 speakers
-   .filter(isExperimented)
-   .filter(isLoveJS)
-</code></pre>
-
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isExperimented<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isLoveJS<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
     </article>
     <a href="#part1_bilan_1" class="next" aria-label="Suivant"></a>
 </section>
@@ -749,8 +834,17 @@ speakers
     <article>
         <ul>
 <li>💪 <code>function</code> first-class citizen</li>
-<li>✍️ immutable faisable</li>
-<li>⚠️ eviter les effets de bord</li>
+<li>✍️ immutable faisable<ul>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/freeze"><code>Object.freeze</code></a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object/seal"><code>Object.seal</code></a></li>
+<li><a href="https://github.com/keithamus/proposal-object-freeze-seal-syntax">Stage 1 - <code>Object.freeze</code> + <code>Object.seal</code> syntax</a></li>
+<li><a href="https://facebook.github.io/immutable-js/">Immutable.js</a></li>
+</ul>
+</li>
+<li>⚠️ eviter les effets de bord<ul>
+<li><code>=&gt;</code> 💖 tests </li>
+</ul>
+</li>
 </ul>
 
     </article>
@@ -764,58 +858,15 @@ speakers
     <h3>Part I - bilan 2/2</h3>
     <article>
         <ul>
-<li>Plus de boucles: <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
-<li>les <code>var</code> ou <code>let</code> =&gt; utiliser <code>const</code></li>
+<li>✋  <code>while</code>, <code>do...while</code>, <code>for</code>, <code>for...of</code>, <code>for...in</code>   </li>
+<li>✋ <code>var</code> ou <code>let</code> <code>=&gt;</code> ❤️ <code>const</code></li>
+<li>✋ <code>o.x = 5;</code> <code>=&gt;</code> ❤️ <code>Object.assign({}, o, {x:5})</code> ou <code>{...o, x: 5}</code></li>
+<li>✋ <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array#Les_mutateurs">mutateurs Array</a>: <code>push</code>, <code>pop</code>, <code>shift</code>, <code>unshift</code>, <code>sort</code>, <code>splice</code>, ...</li>
+<li>❤️ <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array#Les_accesseurs">accesseurs Array</a>: <code>filter</code>, <code>map</code>, <code>slice</code>, ...</li>
+<li>✋ Map : <code>clear</code>, <code>delete</code>, <code>set</code></li>
+<li>✋ Set : <code>add</code>, <code>clear</code>, <code>delete</code></li>
 <li>⚠️ aux functions sans arguments, ou retournant <code>void</code></li>
-<li>les mutations dans les objects comme <code>o.x = 5;</code> =&gt; utiliser <code>Object.assign</code> ou la déconstruction </li>
-<li>les mutations dans Array : <code>copyWithin</code>, <code>fill</code>, <code>pop</code>, <code>push</code>, <code>reverse</code>, <code>shift</code>,<code>sort</code>, <code>splice</code>, <code>unshift</code><ul>
-<li>les mutations dans Map : <code>clear</code>, <code>delete</code>, <code>set</code></li>
-<li>les mutations dans Set : <code>add</code>, <code>clear</code>, <code>delete</code></li>
 </ul>
-</li>
-</ul>
-
-    </article>
-    <a href="#part_entracte" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Entracte -->
-<section id="part_entracte" class="part">
-    <a href="#part1_bilan_2" class="previous" aria-label="Précédant"></a>
-    <h2>Entracte</h2>
-    <article>
-        
-    </article>
-    <a href="#pandaroux" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide PandaRoux -->
-<section id="pandaroux" class="">
-    <a href="#part_entracte" class="previous" aria-label="Précédant"></a>
-    <h3>PandaRoux</h3>
-    <article>
-        <figure>
-	<img src="https://commons.wikimedia.org/wiki/File%3ABristol.zoo.red.panda.arp.jpg" alt="">
-	<figcaption>
-		By Adrian Pingstone (Photographed by Adrian Pingstone) [Public domain], <a
-			href="https://commons.wikimedia.org/wiki/File%3ABristol.zoo.red.panda.arp.jpg">via Wikimedia Commons</a>
-	</figcaption>
-</figure>
-
-<figure>
-	<img src="https://unsplash.com/photos/QZwf5yNopUo" alt="">
-	<figcaption>Photo by Lance Anderson on Unsplash</figcaption>
-</figure>
-
-Ailurus fulgens
-
-
-<fact>
-	Habitat: the Himalayan forests of Nepal and China.
-</fact>
-
 
     </article>
     <a href="#part_programmation_fonctionnelle_en_js___part_ii" class="next" aria-label="Suivant"></a>
@@ -824,7 +875,7 @@ Ailurus fulgens
 
 <!-- Slide Programmation fonctionnelle en JS - Part II -->
 <section id="part_programmation_fonctionnelle_en_js___part_ii" class="part">
-    <a href="#pandaroux" class="previous" aria-label="Précédant"></a>
+    <a href="#part1_bilan_2" class="previous" aria-label="Précédant"></a>
     <h2>Programmation fonctionnelle en JS - Part II</h2>
     <article>
         
@@ -912,10 +963,10 @@ const fibonacci = function(n) {
 </section>
 
 
-<!-- Slide ADT -->
+<!-- Slide Algebraic Data Type -->
 <section id="adt" class="">
     <a href="#memoisation" class="previous" aria-label="Précédant"></a>
-    <h3>ADT</h3>
+    <h3>Algebraic Data Type</h3>
     <article>
         <h3 id="algebraic-data-type">Algebraic Data Type</h3>
 <pre><code class="lang-sml">datatype rational = Whole of int
@@ -923,7 +974,6 @@ const fibonacci = function(n) {
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>type union</p>
-<p><a href="https://github.com/natefaubion/adt.js">https://github.com/natefaubion/adt.js</a></p>
 
     </article>
     <a href="#pattern_matching" class="next" aria-label="Suivant"></a>
@@ -957,14 +1007,14 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 <p>C&#39;est une <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 Proposal</a></p>
 
     </article>
-    <a href="#monads" class="next" aria-label="Suivant"></a>
+    <a href="#high_order_kinds" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Monads -->
-<section id="monads" class="">
+<!-- Slide High Order Kinds -->
+<section id="high_order_kinds" class="">
     <a href="#pattern_matching" class="previous" aria-label="Précédant"></a>
-    <h3>Monads</h3>
+    <h3>High Order Kinds</h3>
     <article>
         <pre><code class="lang-typescript">Some(1)
     .map { it + 1 }
@@ -979,7 +1029,7 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 
 <!-- Slide Part II - bilan -->
 <section id="part_ii___bilan" class="">
-    <a href="#monads" class="previous" aria-label="Précédant"></a>
+    <a href="#high_order_kinds" class="previous" aria-label="Précédant"></a>
     <h3>Part II - bilan</h3>
     <article>
         <ul>
@@ -1027,17 +1077,14 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
     <h3>Rules</h3>
     <article>
         <blockquote>
-<p>Douter de toutes les mythes et légende</p>
+<p>Douter de toutes les mythes et légendes</p>
 </blockquote>
 <ul>
 <li>on fait aux bonnes structures de données (Data oriented design)</li>
 <li>on évite les IO (disque, résau), c&#39;est l&#39;occasion de faire de la FRP</li>
-</ul>
-<ul>
 <li>le code doit être bien testé</li>
 <li>on priviligie la lisibilité du code à une (hypothétique) optimisation de performance</li>
 <li>mettre en cache n&#39;est pas toujours la bonne solution</li>
-<li></li>
 </ul>
 
     </article>
@@ -1054,15 +1101,12 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 <p>tout les leviers sont bon, y compris le langage</p>
 </blockquote>
 <ul>
-<li>si besoin de meilleures performances (à définir), on définit le seuil désiré</li>
+<li>on définit le seuil désiré</li>
 <li>on effectue  des <strong>mesures</strong></li>
-<li>on isole la zone à optimiser, idéalement la plus petite possible</li>
-<li><p>on commente, pour expliquer pourquoi on n&#39;a perdu de la lisibilité</p>
-</li>
-<li><p>on suit l&#39;évolution des performances dans toute la durée de vie du projet</p>
-</li>
+<li>on isole la zone à optimiser (la plus petite possible)</li>
+<li>on expliquer pourquoi on n&#39;a perdu de la lisibilité</li>
+<li>on suit l&#39;évolution des performances dans toute la durée de vie du projet</li>
 </ul>
-<p><a href="https://streams.spec.whatwg.org/">https://streams.spec.whatwg.org/</a></p>
 
     </article>
     <a href="#part_conclusion" class="next" aria-label="Suivant"></a>
@@ -1086,14 +1130,17 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
     <h3>🦄 or 💩 ?</h3>
     <article>
         <ul>
-<li>les bases sont présentes.</li>
-<li>écosystème dans ce domaine, plutôt à la mode</li>
+<li>🌾 les bases sont présentes.</li>
+<li>👗 écosystème dans ce domaine, plutôt à la mode</li>
 </ul>
-<p>Mais encore insuffisant à nom gout: </p>
 <ul>
-<li><code>flatMap</code> 😭
-<a href="https://github.com/tc39/proposal-flatMap">Proposal for flatten and flatMap - Stage 3</a></li>
-<li>des structure lazy (comme le Stream de Scala)</li>
+<li>😭 <code>flatMap</code><br>
+ <a href="https://github.com/tc39/proposal-flatMap">Stage 3 - Array.prototype.{flatMap,flatten}</a></li>
+<li><p>des structures lazy (comme les <code>Stream</code> de Scala)</p>
+</li>
+<li><p>🤬 il n&#39;y a pas d&#39;emoji pour les paresseux !<br>
+<a href="https://www.unicode.org/L2/L2018/18074-sloth-emoji-.pdf">Proposal for SLOTH Emoji</a></p>
+</li>
 </ul>
 
     </article>
@@ -1101,12 +1148,40 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 </section>
 
 
-<!-- Slide Bibliothèque -->
+<!-- Slide Bibliothèques -->
 <section id="bibliotheque" class="">
     <a href="#_or___" class="previous" aria-label="Précédant"></a>
-    <h3>Bibliothèque</h3>
+    <h3>Bibliothèques</h3>
     <article>
-        
+        <ul>
+<li><a href="https://github.com/tc39/proposals">ECMAScript Proposals</a></li>
+<li><a href="https://facebook.github.io/immutable-js/">Immutable.js</a></li>
+<li><a href="http://ramdajs.com/">Ramda</a></li>
+<li><a href="https://github.com/natefaubion/adt.js">adt.js</a></li>
+<li><a href="https://github.com/jfmengels/eslint-plugin-fp">eslint-plugin-fp</a>, <a href="https://github.com/bodil/eslint-config-cleanjs">eslint-config-cleanjs</a></li>
+<li><a href="https://github.com/fluture-js/Fluture">🦋 FantasyLand compliant (monadic) alternative to Promises</a></li>
+<li>...</li>
+<li><a href="https://github.com/stoeffel/awesome-fp-js">Awesome FP JS Awesome</a></li>
+</ul>
+
+    </article>
+    <a href="#alternatives" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Alternatives -->
+<section id="alternatives" class="">
+    <a href="#bibliotheque" class="previous" aria-label="Précédant"></a>
+    <h3>Alternatives</h3>
+    <article>
+        <ul>
+<li><a href="http://elm-lang.org/">Elm</a></li>
+<li><a href="https://reasonml.github.io/">ReasonML</a></li>
+<li><a href="https://clojurescript.org/">ClojureScript</a></li>
+<li><a href="http://www.purescript.org/">PureScript</a></li>
+<li>...</li>
+</ul>
+
     </article>
     <a href="#quote" class="next" aria-label="Suivant"></a>
 </section>
@@ -1114,24 +1189,24 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 
 <!-- Slide Quote -->
 <section id="quote" class="hide-title">
-    <a href="#bibliotheque" class="previous" aria-label="Précédant"></a>
+    <a href="#alternatives" class="previous" aria-label="Précédant"></a>
     <h3>Quote</h3>
     <article>
         <blockquote>
 <p>Program designers have a tendency to think of the users as idiots who need to be controlled. They should rather think of their program as a servant, whose master, the user, should be able to control it. If designers and programmers think about the apparent mental qualities that their programs will have, they&#39;ll create programs that are easier and pleasanter — more humane — to deal with.</p>
 </blockquote>
 <p>-- John McCarthy
-    &quot;The Little Thoughts of Thinking Machines&quot;, Psychology Today, December 1983, pp. 46–49. Reprinted in Formalizing Common Sense: Papers By John McCarthy, 1990, ISBN 0893915351</p>
+    &quot;The Little Thoughts of Thinking Machines&quot;, Psychology Today, December 1983</p>
 
     </article>
     <a href="#values" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Values -->
+<!-- Slide Valeur -->
 <section id="values" class="">
     <a href="#quote" class="previous" aria-label="Précédant"></a>
-    <h3>Values</h3>
+    <h3>Valeur</h3>
     <article>
         <blockquote>
 <p>La valeur principale d&#39;un programme est dans ce qu&#39;il réalise, pas dans son style.</p>
@@ -1148,10 +1223,12 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
     <a href="#values" class="previous" aria-label="Précédant"></a>
     <h3>Value of JS</h3>
     <article>
-        <p>expressivité
-souplesse
-ecosysteme
-évolu dans le bon sens</p>
+        <ul>
+<li>🗣 expressivité</li>
+<li>🤸‍♀️ souplesse</li>
+<li>💰 ecosystème</li>
+<li>🦎 évolution dans le bon sens</li>
+</ul>
 
     </article>
     <a href="#why_functional" class="next" aria-label="Suivant"></a>
@@ -1169,17 +1246,6 @@ ecosysteme
 <li>moins de bugs</li>
 <li>plus évolutif</li>
 </ul>
-<p>What Is Wrong With Mutability?</p>
-<ul>
-<li>Hard to reason (prone error)</li>
-<li>Hard to make concurrent or parallelize</li>
-</ul>
-<p>What Is Wrong With side-effect function?</p>
-<ul>
-<li>Hard to reason (prone error)</li>
-<li>Hard to make concurrent or parallelize</li>
-<li>Hard to test</li>
-</ul>
 
     </article>
     <a href="#liens" class="next" aria-label="Suivant"></a>
@@ -1191,16 +1257,7 @@ ecosysteme
     <a href="#why_functional" class="previous" aria-label="Précédant"></a>
     <h3>Liens</h3>
     <article>
-        <p>slides</p>
-<ul>
-<li><a href="https://github.com/tc39/proposals">tc39 ECMAScript proposals</a></li>
-<li><p><a href="https://github.com/fantasyland/fantasy-land#apply">Fantasy Land Specification (aka &quot;Algebraic JavaScript Specification&quot;)</a></p>
-</li>
-<li><p>TODO eslint rules: immutable, pure, ...</p>
-</li>
-</ul>
-<p><a href="https://github.com/jfmengels/eslint-plugin-fp">eslint-plugin-fp</a></p>
-<p><a href="https://github.com/fluture-js/Fluture">🦋 FantasyLand compliant (monadic) alternative to Promises</a></p>
+        <p><a href="http://bit.ly/funJS">Slides HTML: http://bit.ly/funJS</a></p>
 
     </article>
     <a href="#questions" class="next" aria-label="Suivant"></a>

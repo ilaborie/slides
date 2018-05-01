@@ -1,6 +1,5 @@
 
-
-expressivité
-souplesse
-ecosysteme
-évolu dans le bon sens
+* 🗣 expressivité
+* 🤸‍♀️ souplesse
+* 💰 ecosystème
+* 🦎 évolution dans le bon sens

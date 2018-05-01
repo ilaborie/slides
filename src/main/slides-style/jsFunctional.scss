@@ -1,7 +1,7 @@
 @import "../../../node_modules/prismjs/themes/prism";
 
 .gdg.jsFunctional {
-  --primary: #210183;
+  --primary: #2c0563;
 
   // Footer
   --bgFooter: var(--primary);
@@ -10,6 +10,29 @@
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg');
 }
 
+.shake:hover {
+  cursor: none;
+  display: inline-block;
+  animation: shakeIt 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+@keyframes shakeIt {
+  10%, 90% {
+    transform: translateX(-1px);
+  }
+
+  20%, 80% {
+    transform: translateX(2px);
+  }
+
+  30%, 50%, 70% {
+    transform: translateX(-4px);
+  }
+
+  40%, 60% {
+    transform: translateX(4px);
+  }
+}
 
 pre.lang-typescript {
   box-shadow: inset 0 0 .125rem black;
@@ -22,10 +45,9 @@ pre.lang-typescript {
     font-size: 2rem;
     display: flex;
     flex-direction: column;
-  }
-  h1::after {
-    content: '🦄 ou 💩 ?';
-    font-size: 3.5rem;
+    div {
+      font-size: 3.5rem;
+    }
   }
 }
 
@@ -97,8 +119,13 @@ pre.lang-typescript {
 
 #roadmap {
   ol {
-    li:nth-child(1), li:nth-child(5) {
-      //background: gold;
+    li a {
+      text-decoration: none;
+      &::before {
+        content: none;
+      }
+    }
+    li:nth-child(1), li:nth-child(4) {
 
       &::before {
         float: left;
@@ -135,13 +162,14 @@ pre.lang-typescript {
 #flavour article, #only_one article {
   align-items: center;
 }
+
 #flavour article {
   ul {
     padding-left: 1rem;
   }
 }
-#only_one article {
 
+#only_one article {
 }
 
 #rim article {
@@ -178,5 +206,12 @@ pre.lang-typescript {
         text-align: center;
       }
     }
+  }
+}
+
+#liens article{
+  align-items: center;
+  a {
+    font-size: 1.5rem;
   }
 }

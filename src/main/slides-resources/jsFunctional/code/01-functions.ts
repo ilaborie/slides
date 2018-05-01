@@ -16,4 +16,3 @@ console.log(`Plop`);
 (function() {
     // scoped to the function
 })();
-

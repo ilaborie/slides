@@ -10,6 +10,7 @@ import org.ilaborie.slides.content.ExternalHtmlContent
 import org.ilaborie.slides.content.ExternalMarkdownContent
 import org.ilaborie.slides.content.ExternalResource
 import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.content.Link
 import org.ilaborie.slides.content.OrderedList
 import org.ilaborie.slides.content.createClient
 import org.ilaborie.slides.content.renderAsHtml
@@ -93,8 +94,8 @@ fun Presentation.defaultContent(parent: Slides, slide: Slide): Content =
         is RoadMapSlide -> OrderedList(
             slides.filterIsInstance<Group>()
                 .filterNot { it.skipPart }
-                .map { it.title }
-                .map { HtmlContent(it) })
+                .map { it.title to "part_${it.title.normalize()}" }
+                .map { (title, key) -> Link(content = HtmlContent(title), link = "#$key") })
         else            -> {
             val contentType = slide.contentType().toFileExtension()
             val resource = (listOf(this.id) +

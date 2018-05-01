@@ -117,11 +117,26 @@ pre[class*="language-"] {
   cursor: help; }
 
 .gdg.jsFunctional {
-  --primary: #210183;
+  --primary: #2c0563;
   --bgFooter: var(--primary);
   --fgFooter: white;
   --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript #🦊';
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg'); }
+
+.shake:hover {
+  cursor: none;
+  display: inline-block;
+  animation: shakeIt 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+@keyframes shakeIt {
+  10%, 90% {
+    transform: translateX(-1px); }
+  20%, 80% {
+    transform: translateX(2px); }
+  30%, 50%, 70% {
+    transform: translateX(-4px); }
+  40%, 60% {
+    transform: translateX(4px); } }
 
 pre.lang-typescript {
   box-shadow: inset 0 0 .125rem black;
@@ -132,10 +147,8 @@ pre.lang-typescript {
   font-size: 2rem;
   display: flex;
   flex-direction: column; }
-
-#jsFunctional h1::after {
-  content: '🦄 ou 💩 ?';
-  font-size: 3.5rem; }
+  #jsFunctional h1 div {
+    font-size: 3.5rem; }
 
 #speaker {
   background: #00b0f0; }
@@ -180,7 +193,12 @@ pre.lang-typescript {
   #knowledge div ul li + li::before {
     content: ', '; }
 
-#roadmap ol li:nth-child(1)::before, #roadmap ol li:nth-child(5)::before {
+#roadmap ol li a {
+  text-decoration: none; }
+  #roadmap ol li a::before {
+    content: none; }
+
+#roadmap ol li:nth-child(1)::before, #roadmap ol li:nth-child(4)::before {
   float: left;
   margin-right: .25rem;
   display: inline-block;
@@ -232,3 +250,8 @@ pre.lang-typescript {
       list-style: none; }
       #static_vs_dynamic article div ul li {
         text-align: center; }
+
+#liens article {
+  align-items: center; }
+  #liens article a {
+    font-size: 1.5rem; }

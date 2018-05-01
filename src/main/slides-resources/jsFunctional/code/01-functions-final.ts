@@ -31,4 +31,3 @@ const mult5: (a: number, b: number) => number =
 (function() {
     // scoped to the function
 })();
-
