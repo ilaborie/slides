@@ -174,7 +174,8 @@ fun jsFunctional() =
 //            slideFromResource(title = "PandaRoux", contentType = HTML)
 //        }
         part("Programmation fonctionnelle en JS - Part II", key = "part2") {
-            slideFromResource(title = "Jargon", key = "jargon")
+            slideFromResource(title = "Ce qu'on a appris", key = "jargon_1")
+            slideFromResource(title = "Ce qu'on va voir maintenant", key = "jargon_2")
             slideFromResource(title = "Currification")
             slideFromResource(title = "Memoïsation")
             slideFromResource(title = "Algebraic Data Type", key = "adt")

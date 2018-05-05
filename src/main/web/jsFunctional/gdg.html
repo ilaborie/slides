@@ -48,27 +48,28 @@
 <a href="#part1_bilan_1" class="" title="Part I - bilan 1/2">25</a>
 <a href="#part1_bilan_2" class="" title="Part I - bilan 2/2">26</a></nav>
 <nav><a href="#part_programmation_fonctionnelle_en_js___part_ii" class="part" title="Programmation fonctionnelle en JS - Part II">27</a>
-<a href="#jargon" class="" title="Jargon">28</a>
-<a href="#currification" class="" title="Currification">29</a>
-<a href="#memoisation" class="" title="Memoïsation">30</a>
-<a href="#adt" class="" title="Algebraic Data Type">31</a>
-<a href="#pattern_matching" class="" title="Pattern Matching">32</a>
-<a href="#high_order_kinds" class="" title="High Order Kinds">33</a>
-<a href="#part_ii___bilan" class="" title="Part II - bilan">34</a></nav>
-<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">35</a>
-<a href="#what" class="" title="What">36</a>
-<a href="#rules" class="" title="Rules">37</a>
-<a href="#whenmatter" class="" title="WhenMatter">38</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">39</a>
-<a href="#_or___" class="" title="🦄 ou 💩 ?">40</a>
-<a href="#bibliotheque" class="" title="Bibliothèques">41</a>
-<a href="#alternatives" class="" title="Alternatives">42</a>
-<a href="#quote" class="hide-title" title="Quote">43</a>
-<a href="#values" class="" title="Valeur">44</a>
-<a href="#value_of_js" class="" title="Intéret du JS">45</a>
-<a href="#why_functional" class="" title="Codons en fonctionel">46</a>
-<a href="#liens" class="" title="Liens">47</a>
-<a href="#questions" class="hide-title" title="Questions">48</a></nav>
+<a href="#jargon_1" class="" title="Ce qu'on a appris">28</a>
+<a href="#jargon_2" class="" title="Ce qu'on va voir maintenant">29</a>
+<a href="#currification" class="" title="Currification">30</a>
+<a href="#memoisation" class="" title="Memoïsation">31</a>
+<a href="#adt" class="" title="Algebraic Data Type">32</a>
+<a href="#pattern_matching" class="" title="Pattern Matching">33</a>
+<a href="#high_order_kinds" class="" title="High Order Kinds">34</a>
+<a href="#part_ii___bilan" class="" title="Part II - bilan">35</a></nav>
+<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">36</a>
+<a href="#what" class="" title="What">37</a>
+<a href="#rules" class="" title="Rules">38</a>
+<a href="#whenmatter" class="" title="WhenMatter">39</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">40</a>
+<a href="#_or___" class="" title="🦄 ou 💩 ?">41</a>
+<a href="#bibliotheque" class="" title="Bibliothèques">42</a>
+<a href="#alternatives" class="" title="Alternatives">43</a>
+<a href="#quote" class="hide-title" title="Quote">44</a>
+<a href="#values" class="" title="Valeur">45</a>
+<a href="#value_of_js" class="" title="Intéret du JS">46</a>
+<a href="#why_functional" class="" title="Codons en fonctionel">47</a>
+<a href="#liens" class="" title="Liens">48</a>
+<a href="#questions" class="hide-title" title="Questions">49</a></nav>
     </div>
     <main>
 
@@ -880,17 +881,28 @@ speakers
     <article>
         
     </article>
-    <a href="#jargon" class="next" aria-label="Suivant"></a>
+    <a href="#jargon_1" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Jargon -->
-<section id="jargon" class="">
+<!-- Slide Ce qu'on a appris -->
+<section id="jargon_1" class="">
     <a href="#part_programmation_fonctionnelle_en_js___part_ii" class="previous" aria-label="Précédant"></a>
-    <h3>Jargon</h3>
+    <h3>Ce qu'on a appris</h3>
     <article>
-        <p>Curryfication, Memoïsation, Algebraic Data Type, Pattern Matching,
-Functor, Monïde, Endomorphisme, Monade</p>
+        <p>No resource: /jsFunctional/part2/jargon_1.md</p>
+
+    </article>
+    <a href="#jargon_2" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Ce qu'on va voir maintenant -->
+<section id="jargon_2" class="">
+    <a href="#jargon_1" class="previous" aria-label="Précédant"></a>
+    <h3>Ce qu'on va voir maintenant</h3>
+    <article>
+        <p>No resource: /jsFunctional/part2/jargon_2.md</p>
 
     </article>
     <a href="#currification" class="next" aria-label="Suivant"></a>
@@ -899,7 +911,7 @@ Functor, Monïde, Endomorphisme, Monade</p>
 
 <!-- Slide Currification -->
 <section id="currification" class="">
-    <a href="#jargon" class="previous" aria-label="Précédant"></a>
+    <a href="#jargon_2" class="previous" aria-label="Précédant"></a>
     <h3>Currification</h3>
     <article>
         <h3 id="currying">Currying</h3>
@@ -1147,6 +1159,7 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
         <ul>
 <li><a href="https://github.com/tc39/proposals">ECMAScript Proposals</a></li>
 <li><a href="https://facebook.github.io/immutable-js/">Immutable.js</a></li>
+<li><a href="https://github.com/swannodette/mori">ClojureScript&#39;s persistent data</a></li>
 <li><a href="http://ramdajs.com/">Ramda</a></li>
 <li><a href="https://github.com/natefaubion/adt.js">adt.js</a></li>
 <li><a href="https://github.com/jfmengels/eslint-plugin-fp">eslint-plugin-fp</a>, <a href="https://github.com/bodil/eslint-config-cleanjs">eslint-config-cleanjs</a></li>
@@ -1232,10 +1245,12 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
     <h3>Codons en fonctionel</h3>
     <article>
         <ul>
-<li>plus simple</li>
-<li>Plus facile à tester</li>
-<li>moins de bugs</li>
-<li>plus évolutif</li>
+<li>🍼 plus simple</li>
+<li>✅ Plus facile à tester</li>
+<li>🐛 moins de bugs</li>
+<li>🦎 plus évolutif</li>
+<li>♻️ applicable sur tous les (bon) langages</li>
+<li>🎓 apprendre</li>
 </ul>
 
     </article>
