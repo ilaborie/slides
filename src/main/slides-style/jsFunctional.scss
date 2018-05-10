@@ -10,10 +10,13 @@
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg');
 }
 
-.shake:hover {
-  cursor: none;
-  display: inline-block;
-  animation: shakeIt 0.82s cubic-bezier(.36, .07, .19, .97) both;
+.shake {
+  color: initial;
+  &:hover {
+    cursor: none;
+    display: inline-block;
+    animation: shakeIt 0.82s cubic-bezier(.36, .07, .19, .97) both;
+  }
 }
 
 @keyframes shakeIt {
@@ -209,7 +212,7 @@ pre.lang-typescript {
   }
 }
 
-#liens article{
+#liens article {
   align-items: center;
   a {
     font-size: 1.5rem;

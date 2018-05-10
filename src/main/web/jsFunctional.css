@@ -123,10 +123,12 @@ pre[class*="language-"] {
   --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript #🦊';
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg'); }
 
-.shake:hover {
-  cursor: none;
-  display: inline-block;
-  animation: shakeIt 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+.shake {
+  color: initial; }
+  .shake:hover {
+    cursor: none;
+    display: inline-block;
+    animation: shakeIt 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
 
 @keyframes shakeIt {
   10%, 90% {
