@@ -260,6 +260,10 @@ pre.lang-typescript {
     #static_vs_dynamic article div.step .year::after {
       content: ')'; }
 
+#memoisation_2 article p {
+  text-align: center;
+  width: 100%; }
+
 #liens article {
   align-items: center; }
   #liens article a {

@@ -183,7 +183,14 @@ C'est un nid à bugs.<br>
                                         "/jsFunctional/code/06-curry-final.ts")
             }
             slideFromResource(title = "Curryfication", key = "currification_2")
-            slideFromResource(title = "Memoïsation")
+            slide(title = "Memoïsation", key ="memoisation",
+                  styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Memoïsation",
+                                        "/jsFunctional/code/07-fibo.ts",
+                                        "/jsFunctional/code/07-fibo-final.ts")
+            }
+            slideFromResource(title = "Memoïsation", key = "memoisation_2")
+
             slideFromResource(title = "Algebraic Data Type", key = "adt")
             slideFromResource(title = "Pattern Matching")
 //            slideFromResource(title = "Monads")
