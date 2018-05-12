@@ -83,7 +83,7 @@ fun jsFunctional() =
                 codeFromResource("/jsFunctional/code/02-side-effect.ts")
                 p {
                     html {
-"""
+                        """
 ⚠️ Évitez les fonctions avec effet de bord !<br>
 C'est un nid à bugs.<br>
 <code>=></code> Évitez les fonctions qui retournent <code>void</code>, ou qui n'ont pas de paramètres.
@@ -137,16 +137,16 @@ C'est un nid à bugs.<br>
                 codeFromResource("/jsFunctional/code/no-for.ts")
             }
             slide(title = "Composition") {
-                codeFromResource("/jsFunctional/code/composition.ts")
+                codeFromResource("/jsFunctional/code/composition.js")
                 linkText("https://github.com/tc39/proposal-pipeline-operator") {
                     "Stage 1 -  pipeline operator"
                 }
-                codeFromResource("/jsFunctional/code/pipeline.ts")
+                codeFromResource("/jsFunctional/code/pipeline.js")
             }
             slide(title = "Recursion 1/2", key = "recursion") {
-                codeFromResource("/jsFunctional/code/factorial-for.ts")
-                codeFromResource("/jsFunctional/code/factorial-rec.ts")
-                codeFromResource("/jsFunctional/code/factorial-tailrec.ts")
+                codeFromResource("/jsFunctional/code/factorial-for.js")
+                codeFromResource("/jsFunctional/code/factorial-rec.js")
+                codeFromResource("/jsFunctional/code/factorial-tailrec.js")
             }
             slide(title = "Recursion 2/2", key = "recursion-2") {
                 ul {
@@ -163,9 +163,9 @@ C'est un nid à bugs.<br>
                 styleClass = setOf("steps")
             }
 //            slide("Lisibilité") {
-//                codeFromResource("/jsFunctional/code/read-1.ts")
-//                codeFromResource("/jsFunctional/code/read-2.ts")
-//                codeFromResource("/jsFunctional/code/read-3.ts")
+//                codeFromResource("/jsFunctional/code/read-1.js")
+//                codeFromResource("/jsFunctional/code/read-2.js")
+//                codeFromResource("/jsFunctional/code/read-3.js")
 //            }
             slideFromResource(title = "Part I - bilan 1/2", key = "part1_bilan_1")
             slideFromResource(title = "Part I - bilan 2/2", key = "part1_bilan_2")
@@ -177,30 +177,57 @@ C'est un nid à bugs.<br>
             slideFromResource(title = "Ce qu'on a appris", key = "jargon_1")
             slideFromResource(title = "Ce qu'on va voir maintenant", key = "jargon_2")
             slide(title = "Curryfication", key = "currification_1",
-                styleClass = setOf("full-screen")) {
+                  styleClass = setOf("full-screen")) {
                 codeEditorFromResources("Curryfication",
                                         "/jsFunctional/code/06-curry.ts",
                                         "/jsFunctional/code/06-curry-final.ts")
             }
             slideFromResource(title = "Curryfication", key = "currification_2")
-            slide(title = "Memoïsation", key ="memoisation",
+            slide(title = "Memoïsation", key = "memoisation",
                   styleClass = setOf("full-screen")) {
                 codeEditorFromResources("Memoïsation",
                                         "/jsFunctional/code/07-fibo.ts",
                                         "/jsFunctional/code/07-fibo-final.ts")
             }
             slideFromResource(title = "Memoïsation", key = "memoisation_2")
+            slide(title = "Algebraic Data Type", key = "adt") {
+                codeFromResource("/jsFunctional/code/adt.re")
+                p { html { "😞 les <em>enum</em> ou les <em>type union</em> de TypeScript ne sont pas des ADT." } }
+                linkText("https://github.com/natefaubion/adt.js") { "Algebraic data types for Javascript" }
+            }
+            slide(title = "Pattern Matching") {
+                codeFromResource("/jsFunctional/code/pattern-matching.re")
+                codeFromResource("/jsFunctional/code/pattern-matching.js")
+                p {
+                    html {
+                        """🔮 <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 - ECMAScript Pattern Matching</a>"""
+                    }
+                }
+            }
+            slide(title = "Déconstruction") {
+                codeFromResource("/jsFunctional/code/deconstruction.js")
+            }
+            slide(title = "M-word", key = "monad-def") {
+                quote(author = "🤡") {
+                    html { "A monad is just a monoïd in the category of endo-functors, what's the problem?" }
+                }
 
-            slideFromResource(title = "Algebraic Data Type", key = "adt")
-            slideFromResource(title = "Pattern Matching")
-//            slideFromResource(title = "Monads")
+            }
+            slide(title = "Functor") {
+                codeFromResource("/jsFunctional/code/functor.ts")
+                codeFromResource("/jsFunctional/code/endofunctor.ts")
+            }
+            slide(title = "Monoid") {
+                codeFromResource("/jsFunctional/code/monoid.ts")
+            }
+            slideFromResource(title = "Monad en JS")
             slideFromResource(title = "High Order Kinds")
             slideFromResource(title = "Part II - bilan")
         }
         part("Remaques sur la performance", key = "perfo") {
-            slideFromResource(title = "What")
-            slideFromResource(title = "Rules")
-            slideFromResource(title = "WhenMatter")
+            slideFromResource(title = "Quoi ?", key= "what")
+            slideFromResource(title = "Règles", key="rules")
+            slideFromResource(title = "Si besoin...", key="whenmatter")
         }
         part("Conclusion") {
             slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")

@@ -56,22 +56,27 @@
 <a href="#memoisation_2" class="" title="Memoïsation">33</a>
 <a href="#adt" class="" title="Algebraic Data Type">34</a>
 <a href="#pattern_matching" class="" title="Pattern Matching">35</a>
-<a href="#high_order_kinds" class="" title="High Order Kinds">36</a>
-<a href="#part_ii___bilan" class="" title="Part II - bilan">37</a></nav>
-<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">38</a>
-<a href="#what" class="" title="What">39</a>
-<a href="#rules" class="" title="Rules">40</a>
-<a href="#whenmatter" class="" title="WhenMatter">41</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">42</a>
-<a href="#_or___" class="" title="🦄 ou 💩 ?">43</a>
-<a href="#bibliotheque" class="" title="Bibliothèques">44</a>
-<a href="#alternatives" class="" title="Alternatives">45</a>
-<a href="#quote" class="hide-title" title="Quote">46</a>
-<a href="#values" class="" title="Valeur">47</a>
-<a href="#value_of_js" class="" title="Intéret du JS">48</a>
-<a href="#why_functional" class="" title="Codons en fonctionel">49</a>
-<a href="#liens" class="" title="Liens">50</a>
-<a href="#questions" class="hide-title" title="Questions">51</a></nav>
+<a href="#deconstruction" class="" title="Déconstruction">36</a>
+<a href="#monad-def" class="" title="M-word">37</a>
+<a href="#functor" class="" title="Functor">38</a>
+<a href="#monoid" class="" title="Monoid">39</a>
+<a href="#monad_en_js" class="" title="Monad en JS">40</a>
+<a href="#high_order_kinds" class="" title="High Order Kinds">41</a>
+<a href="#part_ii___bilan" class="" title="Part II - bilan">42</a></nav>
+<nav><a href="#part_remaques_sur_la_performance" class="part" title="Remaques sur la performance">43</a>
+<a href="#what" class="" title="Quoi ?">44</a>
+<a href="#rules" class="" title="Règles">45</a>
+<a href="#whenmatter" class="" title="Si besoin...">46</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">47</a>
+<a href="#_or___" class="" title="🦄 ou 💩 ?">48</a>
+<a href="#bibliotheque" class="" title="Bibliothèques">49</a>
+<a href="#alternatives" class="" title="Alternatives">50</a>
+<a href="#quote" class="hide-title" title="Quote">51</a>
+<a href="#values" class="" title="Valeur">52</a>
+<a href="#value_of_js" class="" title="Intéret du JS">53</a>
+<a href="#why_functional" class="" title="Codons en fonctionel">54</a>
+<a href="#liens" class="" title="Liens">55</a>
+<a href="#questions" class="hide-title" title="Questions">56</a></nav>
     </div>
     <main>
 
@@ -737,12 +742,12 @@ console.log(oddSquared);
     <a href="#for___" class="previous" aria-label="Précédant"></a>
     <h3>Composition</h3>
     <article>
-        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">compose</span> <span class="token operator">=</span> <span class="token punctuation">(</span>g <span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token operator">=></span> x <span class="token operator">=></span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">compose</span> <span class="token operator">=</span> <span class="token punctuation">(</span>g <span class="token punctuation">,</span> f<span class="token punctuation">)</span> <span class="token operator">=></span> x <span class="token operator">=></span> <span class="token function">g</span><span class="token punctuation">(</span><span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token function-variable function">composeAll</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">...</span>functions<span class="token punctuation">)</span> <span class="token operator">=></span>
     x <span class="token operator">=></span> functions<span class="token punctuation">.</span><span class="token function">reduceRight</span><span class="token punctuation">(</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> fun<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">fun</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <a href="https://github.com/tc39/proposal-pipeline-operator">Stage 1 -  pipeline operator</a>
-<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> <span class="token function-variable function">doubleSay</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str <span class="token operator">+</span> <span class="token string">', '</span> <span class="token operator">+</span> str<span class="token punctuation">;</span>
+<pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">doubleSay</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str <span class="token operator">+</span> <span class="token string">', '</span> <span class="token operator">+</span> str<span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token function-variable function">capitalize</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> str<span class="token punctuation">.</span><span class="token function">substring</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token function-variable function">exclaim</span> <span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">)</span> <span class="token operator">=></span> str <span class="token operator">+</span> <span class="token string">'!'</span><span class="token punctuation">;</span>
 
@@ -762,17 +767,17 @@ console.log(oddSquared);
     <a href="#composition" class="previous" aria-label="Précédant"></a>
     <h3>Recursion 1/2</h3>
     <article>
-        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">factorial</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> acc <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 🤢</span>
         acc <span class="token operator">*=</span> i<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> acc<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
-<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span>
+<pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">factorial</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span>
     <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token punctuation">:</span> n <span class="token operator">*</span> <span class="token function">factorial</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> factorial <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> aux <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">,</span> acc<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">number</span> <span class="token operator">=></span>
+<pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">factorial</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token function-variable function">aux</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">,</span> acc<span class="token punctuation">)</span> <span class="token operator">=></span>
         <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">?</span> acc <span class="token punctuation">:</span> <span class="token function">aux</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">return</span> <span class="token function">aux</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
@@ -1021,8 +1026,7 @@ const fibonacci: IntFun = n => {
     }
 };
 
-[1, 2, 3, 4, 5, 6]
-    .forEach(i => console.log(i, fibonacci(i)));</pre>
+console.log('fibonacci(15)', fibonacci(15));</pre>
   <pre class="finalCode" data-lang="typescript">type IntFun = (number) => number;
 
 const stupidMemoizer = (fun: IntFun): IntFun => {
@@ -1047,8 +1051,7 @@ const fibonacci: IntFun = stupidMemoizer(n => {
     }
 });
 
-[1, 2, 3, 4, 5, 6]
-    .forEach(i => console.log(i, fibonacci(i)));</pre>
+console.log('fibonacci(15)', fibonacci(15));</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -1089,13 +1092,11 @@ const fibonacci: IntFun = stupidMemoizer(n => {
     <a href="#memoisation_2" class="previous" aria-label="Précédant"></a>
     <h3>Algebraic Data Type</h3>
     <article>
-        <h3 id="algebraic-data-type">Algebraic Data Type</h3>
-<pre><code class="lang-sml">datatype rational = Whole of int
-                  | Frac  of int*int
-</code></pre>
-<h3 id="typescript">TypeScript</h3>
-<p>type union</p>
-
+        <pre class="lang-reason"><code class="lang-reason"><span class="token keyword">type</span> schoolPerson <span class="token operator">=</span> <span class="token constructor variable">Teacher</span>
+                  <span class="token operator">|</span> <span class="token constructor variable">Director</span>
+                  <span class="token operator">|</span> <span class="token constructor variable">Student</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>😞 les <em>enum</em> ou les <em>type union</em> de TypeScript ne sont pas des ADT.</p>
+<a href="https://github.com/natefaubion/adt.js">Algebraic data types for Javascript</a>
     </article>
     <a href="#pattern_matching" class="next" aria-label="Suivant"></a>
 </section>
@@ -1106,27 +1107,95 @@ const fibonacci: IntFun = stupidMemoizer(n => {
     <a href="#adt" class="previous" aria-label="Précédant"></a>
     <h3>Pattern Matching</h3>
     <article>
-        <p>Un exemple:</p>
-<pre><code class="lang-javascript">let getLength = vector =&gt; match (vector) {
-    { x, y, z }: Math.sqrt(x ** 2 + y ** 2 + z ** 2),
-    { x, y }:    Math.sqrt(x ** 2 + y ** 2),
-    [...]:       vector.length,
-    else: {
-        throw new Error(&quot;Unknown vector type&quot;);
-    }
-}
-</code></pre>
-<p>Pour implémenter du pattern-matching il faut de la déconstruction.
-On l&#39;a déjà sur les <code>{}</code> et les <code>[]</code>.</p>
-<pre><code class="lang-java">const myPoint = { x: 14, y: 3 };
-const {x, y} = myPoint; // x === 14, y === 3
+        <pre class="lang-reason"><code class="lang-reason"><span class="token keyword">let</span> greeting <span class="token operator">=</span> stranger <span class="token operator">=></span>
+  <span class="token keyword">switch</span> <span class="token punctuation">(</span>stranger<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token operator">|</span> <span class="token constructor variable">Teacher</span> <span class="token operator">=></span> <span class="token string">"Hey professor!"</span>
+  <span class="token operator">|</span> <span class="token constructor variable">Director</span> <span class="token operator">=></span> <span class="token string">"Hello director."</span>
+  <span class="token operator">|</span> <span class="token constructor variable">Student</span><span class="token punctuation">(</span><span class="token string">"Richard"</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"Still here Ricky?"</span>
+  <span class="token operator">|</span> <span class="token constructor variable">Student</span><span class="token punctuation">(</span>anyOtherName<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token string">"Hey, "</span> <span class="token operator">+</span><span class="token operator">+</span> anyOtherName <span class="token operator">+</span><span class="token operator">+</span> <span class="token string">"."</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
+<pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">getLength</span> <span class="token operator">=</span> vector <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">match</span> <span class="token punctuation">(</span>vector<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        when <span class="token punctuation">{</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z <span class="token punctuation">}</span> <span class="token operator">~</span><span class="token operator">></span> <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>x <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">+</span> y <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">+</span> z <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        when <span class="token punctuation">{</span> x<span class="token punctuation">,</span> y <span class="token punctuation">}</span> <span class="token operator">~</span><span class="token operator">></span> <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">sqrt</span><span class="token punctuation">(</span>x <span class="token operator">**</span> <span class="token number">2</span> <span class="token operator">+</span> y <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span>
+        when <span class="token punctuation">[</span><span class="token operator">...</span>etc<span class="token punctuation">]</span> <span class="token operator">~</span><span class="token operator">></span> <span class="token keyword">return</span> vector<span class="token punctuation">.</span>length
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token function">getLength</span><span class="token punctuation">(</span><span class="token punctuation">{</span>x<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> z<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// 3.74165</span></code></pre>
+<p>🔮 <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 - ECMAScript Pattern Matching</a></p>
+    </article>
+    <a href="#deconstruction" class="next" aria-label="Suivant"></a>
+</section>
 
-const tab = [1, 2, 3, 4];
-const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 
-</code></pre>
-<p>C&#39;est une <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 Proposal</a></p>
+<!-- Slide Déconstruction -->
+<section id="deconstruction" class="">
+    <a href="#pattern_matching" class="previous" aria-label="Précédant"></a>
+    <h3>Déconstruction</h3>
+    <article>
+        <pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> myPoint <span class="token operator">=</span> <span class="token punctuation">{</span> x<span class="token punctuation">:</span> <span class="token number">14</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span> <span class="token number">3</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">{</span>x<span class="token punctuation">,</span> y<span class="token punctuation">}</span> <span class="token operator">=</span> myPoint<span class="token punctuation">;</span> <span class="token comment">// x === 14, y === 3</span>
 
+<span class="token keyword">const</span> tab <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>head<span class="token punctuation">,</span> <span class="token operator">...</span>tail<span class="token punctuation">]</span> <span class="token operator">=</span> tab<span class="token punctuation">;</span> <span class="token comment">// head === 1, tail === [ 2, 3, 4]</span></code></pre>
+    </article>
+    <a href="#monad-def" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide M-word -->
+<section id="monad-def" class="">
+    <a href="#deconstruction" class="previous" aria-label="Précédant"></a>
+    <h3>M-word</h3>
+    <article>
+        
+<blockquote>
+    <p>A monad is just a monoïd in the category of endo-functors, what's the problem?</p>
+    <footer>--🤡</footer>
+</blockquote>
+
+    </article>
+    <a href="#functor" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Functor -->
+<section id="functor" class="">
+    <a href="#monad-def" class="previous" aria-label="Précédant"></a>
+    <h3>Functor</h3>
+    <article>
+        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Functor</span><span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">map</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">W</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Functor<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">class</span> <span class="token class-name">AnEndoFunctor</span> <span class="token keyword">implements</span> <span class="token class-name">Functor</span><span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">map</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">W</span><span class="token punctuation">)</span><span class="token punctuation">:</span> AnEndoFunctor<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+    </article>
+    <a href="#monoid" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Monoid -->
+<section id="monoid" class="">
+    <a href="#functor" class="previous" aria-label="Précédant"></a>
+    <h3>Monoid</h3>
+    <article>
+        <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Monoid</span><span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">flatMap</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> Monoid<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">:</span> Monoid<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+    </article>
+    <a href="#monad_en_js" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Monad en JS -->
+<section id="monad_en_js" class="">
+    <a href="#monoid" class="previous" aria-label="Précédant"></a>
+    <h3>Monad en JS</h3>
+    <article>
+        
     </article>
     <a href="#high_order_kinds" class="next" aria-label="Suivant"></a>
 </section>
@@ -1134,7 +1203,7 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 
 <!-- Slide High Order Kinds -->
 <section id="high_order_kinds" class="">
-    <a href="#pattern_matching" class="previous" aria-label="Précédant"></a>
+    <a href="#monad_en_js" class="previous" aria-label="Précédant"></a>
     <h3>High Order Kinds</h3>
     <article>
         <p>Ok, crééons</p>
@@ -1172,10 +1241,10 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 </section>
 
 
-<!-- Slide What -->
+<!-- Slide Quoi ? -->
 <section id="what" class="">
     <a href="#part_remaques_sur_la_performance" class="previous" aria-label="Précédant"></a>
-    <h3>What</h3>
+    <h3>Quoi ?</h3>
     <article>
         <h3 id="performance-en-quoi-">Performance en quoi ?</h3>
 <ul>
@@ -1190,10 +1259,10 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 </section>
 
 
-<!-- Slide Rules -->
+<!-- Slide Règles -->
 <section id="rules" class="">
     <a href="#what" class="previous" aria-label="Précédant"></a>
-    <h3>Rules</h3>
+    <h3>Règles</h3>
     <article>
         <blockquote>
 <p>Douter de toutes les mythes et légendes</p>
@@ -1211,10 +1280,10 @@ const [head, ...tail] = tab; // head === 1, tail === [ 2, 3, 4]
 </section>
 
 
-<!-- Slide WhenMatter -->
+<!-- Slide Si besoin... -->
 <section id="whenmatter" class="">
     <a href="#rules" class="previous" aria-label="Précédant"></a>
-    <h3>WhenMatter</h3>
+    <h3>Si besoin...</h3>
     <article>
         <blockquote>
 <p>tout les leviers sont bon, y compris le langage</p>

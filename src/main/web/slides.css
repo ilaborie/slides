@@ -364,7 +364,7 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
   section article a[href*="elm"]::before, section h1 a[href*="elm"]::before, section h2 a[href*="elm"]::before, section h3 a[href*="elm"]::before, section h4 a[href*="elm"]::before {
     background-image: url("./assets/brands/elm.svg"); }
   section article a[href*="reasonml"]::before, section h1 a[href*="reasonml"]::before, section h2 a[href*="reasonml"]::before, section h3 a[href*="reasonml"]::before, section h4 a[href*="reasonml"]::before {
-    background-image: url("./assets/brands/reason.svg"); }
+    background-image: url("./assets/brands/reason.png"); }
   section article a[href*="purescript"]::before, section h1 a[href*="purescript"]::before, section h2 a[href*="purescript"]::before, section h3 a[href*="purescript"]::before, section h4 a[href*="purescript"]::before {
     background-image: url("./assets/brands/purescript.svg"); }
   section article a[href*="clojurescript"]::before, section h1 a[href*="clojurescript"]::before, section h2 a[href*="clojurescript"]::before, section h3 a[href*="clojurescript"]::before, section h4 a[href*="clojurescript"]::before {
