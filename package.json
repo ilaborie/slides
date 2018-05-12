@@ -26,7 +26,6 @@
   "devDependencies": {
     "@types/express": "^4.0.39",
     "@types/marked": "^0.3.0",
-    "@types/node": "^10.0.0",
     "@types/prismjs": "^1.9.0",
     "@types/puppeteer": "^1.0.0",
     "@types/request": "^2.0.8",
@@ -39,6 +38,7 @@
   },
   "dependencies": {
     "@types/morgan": "^1.7.35",
+    "@types/node": "8",
     "express": "^4.16.2",
     "marked": "^0.3.6",
     "monaco-editor": "^0.12.0",

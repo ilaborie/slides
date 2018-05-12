@@ -222,11 +222,15 @@ pre.lang-typescript {
   #warmup blockquote cite, #fun blockquote cite {
     font-size: 1rem; }
 
-#flavour article, #only_one article {
+#flavour article {
   align-items: center; }
+  #flavour article ul {
+    padding-left: 1rem; }
 
-#flavour article ul {
-  padding-left: 1rem; }
+#only_one article {
+  align-items: center; }
+  #only_one article blockquote p {
+    font-size: 1.75rem; }
 
 #rim article {
   align-items: center; }
@@ -246,12 +250,15 @@ pre.lang-typescript {
   align-items: center; }
   #static_vs_dynamic article blockquote {
     grid-column: 1 / 3; }
-  #static_vs_dynamic article div {
-    text-align: center; }
-    #static_vs_dynamic article div ul {
-      list-style: none; }
-      #static_vs_dynamic article div ul li {
-        text-align: center; }
+  #static_vs_dynamic article div.step {
+    display: grid;
+    grid-template-columns: 1fr auto; }
+    #static_vs_dynamic article div.step h4, #static_vs_dynamic article div.step span {
+      grid-column: 1 / 3; }
+    #static_vs_dynamic article div.step .year::before {
+      content: '('; }
+    #static_vs_dynamic article div.step .year::after {
+      content: ')'; }
 
 #liens article {
   align-items: center; }

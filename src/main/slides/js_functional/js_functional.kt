@@ -80,14 +80,14 @@ fun jsFunctional() =
                                         "/jsFunctional/code/01-functions-final.ts")
             }
             slide(title = "Effets de bord") {
-                p {
-                    html { "Eviter les fonctions avec effet de bord" }
-                }
                 codeFromResource("/jsFunctional/code/02-side-effect.ts")
                 p {
                     html {
-                        "⚠️ danger, c'est un nid à bugs.<br>" +
-                                "<code>=></code> Éviter les fonctions qui n'ont pas de paramètres, ou retournent <code>void</code>"
+"""
+⚠️ Évitez les fonctions avec effet de bord !<br>
+C'est un nid à bugs.<br>
+<code>=></code> Évitez les fonctions qui retournent <code>void</code>, ou qui n'ont pas de paramètres.
+"""
                     }
                 }
             }
@@ -129,7 +129,7 @@ fun jsFunctional() =
             }
             slide(title = "High Order function", key = "hoc",
                   styleClass = setOf("full-screen")) {
-                codeEditorFromResources("High Order function",
+                codeEditorFromResources("High Order functions",
                                         "/jsFunctional/code/05-hoc.ts",
                                         "/jsFunctional/code/05-hoc-final.ts")
             }
@@ -176,7 +176,13 @@ fun jsFunctional() =
         part("Programmation fonctionnelle en JS - Part II", key = "part2") {
             slideFromResource(title = "Ce qu'on a appris", key = "jargon_1")
             slideFromResource(title = "Ce qu'on va voir maintenant", key = "jargon_2")
-            slideFromResource(title = "Currification")
+            slide(title = "Curryfication", key = "currification_1",
+                styleClass = setOf("full-screen")) {
+                codeEditorFromResources("Curryfication",
+                                        "/jsFunctional/code/06-curry.ts",
+                                        "/jsFunctional/code/06-curry-final.ts")
+            }
+            slideFromResource(title = "Curryfication", key = "currification_2")
             slideFromResource(title = "Memoïsation")
             slideFromResource(title = "Algebraic Data Type", key = "adt")
             slideFromResource(title = "Pattern Matching")

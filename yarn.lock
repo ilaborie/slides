@@ -58,9 +58,13 @@
   dependencies:
     "@types/express" "*"
 
-"@types/node@*", "@types/node@^10.0.0":
+"@types/node@*":
   version "10.0.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.6.tgz#c0bce8e539bf34c1b850c13ff46bead2fecc2e58"
+
+"@types/node@8":
+  version "8.10.14"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.14.tgz#a24767cfa22023f1bf7e751c0ead56a14c07ed45"
 
 "@types/prismjs@^1.9.0":
   version "1.9.0"

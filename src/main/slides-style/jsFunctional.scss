@@ -162,17 +162,18 @@ pre.lang-typescript {
   }
 }
 
-#flavour article, #only_one article {
-  align-items: center;
-}
-
 #flavour article {
+  align-items: center;
   ul {
     padding-left: 1rem;
   }
 }
 
 #only_one article {
+  align-items: center;
+  blockquote p {
+    font-size: 1.75rem;
+  }
 }
 
 #rim article {
@@ -201,13 +202,20 @@ pre.lang-typescript {
   blockquote {
     grid-column: 1 / 3;
   }
-  div {
-    text-align: center;
-    ul {
-      list-style: none;
-      li {
-        text-align: center;
-      }
+
+
+  div.step {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    h4, span {
+      grid-column: 1 / 3;
+    }
+    .year::before {
+      content: '(';
+    }
+    .year::after {
+      content: ')';
     }
   }
 }
