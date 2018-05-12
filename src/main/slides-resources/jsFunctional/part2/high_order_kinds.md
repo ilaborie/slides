@@ -1,5 +1,4 @@
+* Mais on n'a pas envie d'implémenter `map`, `flatMap` pour chaques Monades.
+* Si on définissait des types plus abstrait pour cela ?
 
-Ok, crééons
-
-`Option<V>`, `Either<A,B>`, `Result<S,E>`, `Future<V>`, ...
-
+`=>` High Order Kind 

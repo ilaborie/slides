@@ -1,7 +1,4 @@
 
-* [Category Theory]()
-* <https://medium.com/@tzehsiang/javascript-functor-applicative-monads-in-pictures-b567c6415221>
-
 
  
 ### Monoïd

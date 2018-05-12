@@ -4,5 +4,5 @@
 * on définit le seuil désiré
 * on effectue  des **mesures**
 * on isole la zone à optimiser (la plus petite possible)
-* on expliquer pourquoi on n'a perdu de la lisibilité
+* on commente pourquoi on n'a perdu de la lisibilité
 * on suit l'évolution des performances

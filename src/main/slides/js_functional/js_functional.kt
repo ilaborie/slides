@@ -8,6 +8,7 @@ import org.ilaborie.slides.dsl.codeEditorFromResources
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.header
 import org.ilaborie.slides.dsl.html
+import org.ilaborie.slides.dsl.link
 import org.ilaborie.slides.dsl.linkText
 import org.ilaborie.slides.dsl.p
 import org.ilaborie.slides.dsl.part
@@ -211,23 +212,41 @@ C'est un nid à bugs.<br>
                 quote(author = "🤡") {
                     html { "A monad is just a monoïd in the category of endo-functors, what's the problem?" }
                 }
-
             }
             slide(title = "Functor") {
+                quote(author = "😂", cite = "https://fr.wikipedia.org/wiki/Foncteur") {
+                    html {
+                        "généralisation aux catégories de la notion de morphisme."
+                    }
+                }
                 codeFromResource("/jsFunctional/code/functor.ts")
                 codeFromResource("/jsFunctional/code/endofunctor.ts")
+                link("https://github.com/fantasyland/fantasy-land#functor") {
+                    html { "Fantasy Land <code>Functor</code>" }
+                }
             }
-            slide(title = "Monoid") {
-                codeFromResource("/jsFunctional/code/monoid.ts")
+            slide(title = "Monoïd") {
+                quote(author = "🤣", cite = "https://fr.wikipedia.org/wiki/Mono%C3%AFde") {
+                    html { "C'est un magma associatif et unifère, c'est-à-dire un demi-groupe unifère." }
+                }
+                codeFromResource("/jsFunctional/code/semigroup.ts") // FIXME No Code
+                codeFromResource("/jsFunctional/code/monoid.ts")  // FIXME No Code
             }
-            slideFromResource(title = "Monad en JS")
-            slideFromResource(title = "High Order Kinds")
+            slide(title = "Monade 1/3") {
+                codeFromResource("/jsFunctional/code/monad.ts")
+                linkText(link = "https://github.com/tc39/proposal-flatMap") {
+                    "Stage 3 - Array.prototype.{flatMap,flatten}"
+                }
+            }
+            slideFromResource(title = "Monade ", key = "monad_2")
+            slideFromResource(title = "Monades en JS")
+            slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
             slideFromResource(title = "Part II - bilan")
         }
         part("Remaques sur la performance", key = "perfo") {
-            slideFromResource(title = "Quoi ?", key= "what")
-            slideFromResource(title = "Règles", key="rules")
-            slideFromResource(title = "Si besoin...", key="whenmatter")
+            slideFromResource(title = "Quoi ?", key = "what")
+            slideFromResource(title = "Règles", key = "rules")
+            slideFromResource(title = "Si besoin...", key = "whenmatter")
         }
         part("Conclusion") {
             slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")

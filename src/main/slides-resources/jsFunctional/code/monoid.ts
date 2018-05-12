@@ -1,3 +1,5 @@
-interface Monoid<V> {
-    flatMap(mapper: (V) => Monoid<W>): Monoid<W>;
+interface Monoid extends SemiGroup {
+    empty: Monoid;
+    // monoid.concat(empty) = monoid
+    // empty.concat(monoid) = monoid
 }

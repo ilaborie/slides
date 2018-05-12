@@ -1,5 +1,5 @@
 
-* Function as First class citizen
+* Function as First Class Citizen
 * High Order Function
-* Referential transparency
+* Referential Transparency
 * Idempotent
