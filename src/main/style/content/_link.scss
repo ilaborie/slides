@@ -19,7 +19,7 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="sparkjava"]::before, &[href*="javalin"]::before,
     &[href*="immutable"]::before, &[href*="ramda"]::before, &[href*="elm"]::before, &[href*="reasonml"]::before,
     &[href*="purescript"]::before, &[href*="clojurescript"]::before,
-    &[href*="tc39"]::before,
+    &[href*="medium"]::before, &[href*="tc39"]::before,
     &[href*="vertx"]::before, &[href*="ktor"]::before, &[href*="stackoverflow"]::before  {
       content: '';
       width: 1em;

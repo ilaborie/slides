@@ -6,4 +6,4 @@
 * [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp), [eslint-config-cleanjs](https://github.com/bodil/eslint-config-cleanjs)
 * [🦋 FantasyLand compliant (monadic) alternative to Promises](https://github.com/fluture-js/Fluture)
 * ...
-* [Awesome FP JS Awesome](https://github.com/stoeffel/awesome-fp-js)
+* [Awesome FP JS](https://github.com/stoeffel/awesome-fp-js)
