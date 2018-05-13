@@ -6,5 +6,6 @@
 * Viens de [Moses Schönfinkel](https://en.wikipedia.org/wiki/Moses_Sch%C3%B6nfinkel) et [Haskell Curry](https://en.wikipedia.org/wiki/Haskell_Curry) 
 * [Stage 1 - Partial Application Syntax](https://github.com/tc39/proposal-partial-application)
 * [Ramda curry](http://ramdajs.com/docs/#curry)
+* [`Function.bind`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 * ⚠️ sens des arguments
 

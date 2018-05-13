@@ -8,6 +8,7 @@ import org.ilaborie.slides.dsl.codeEditorFromResources
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.header
 import org.ilaborie.slides.dsl.html
+import org.ilaborie.slides.dsl.img
 import org.ilaborie.slides.dsl.link
 import org.ilaborie.slides.dsl.linkText
 import org.ilaborie.slides.dsl.p
@@ -17,6 +18,7 @@ import org.ilaborie.slides.dsl.quote
 import org.ilaborie.slides.dsl.roadmap
 import org.ilaborie.slides.dsl.slide
 import org.ilaborie.slides.dsl.slideFromResource
+import org.ilaborie.slides.dsl.step
 import org.ilaborie.slides.dsl.ul
 import org.ilaborie.slides.generateMissingExternals
 import org.ilaborie.slides.hasMissingExternals
@@ -82,14 +84,10 @@ fun jsFunctional() =
             }
             slide(title = "Effets de bord") {
                 codeFromResource("/jsFunctional/code/02-side-effect.ts")
-                p {
-                    html {
-                        """
-⚠️ Évitez les fonctions avec effet de bord !<br>
-C'est un nid à bugs.<br>
-<code>=></code> Évitez les fonctions qui retournent <code>void</code>, ou qui n'ont pas de paramètres.
-"""
-                    }
+                ul {
+                    html { "⚠️ Évitez les fonctions avec effet de bord !" }
+                    html { "C'est un nid à bugs." }
+                    html { "<code>=></code> Évitez les fonctions qui retournent <code>void</code>, ou qui n'ont pas de paramètres." }
                 }
             }
             slide(title = "Function", key = "pure_function_2", styleClass = setOf("full-screen")) {
@@ -137,37 +135,40 @@ C'est un nid à bugs.<br>
             slide(title = "for : 🤢") {
                 codeFromResource("/jsFunctional/code/no-for.ts")
             }
-            slide(title = "Composition") {
-                codeFromResource("/jsFunctional/code/composition.js")
-                linkText("https://github.com/tc39/proposal-pipeline-operator") {
-                    "Stage 1 -  pipeline operator"
+            slide(title = "Composition", styleClass = setOf("steps")) {
+                step { codeFromResource("/jsFunctional/code/composition.js") }
+                step {
+                    linkText("https://github.com/tc39/proposal-pipeline-operator") {
+                        "Stage 1 -  pipeline operator"
+                    }
+                    codeFromResource("/jsFunctional/code/pipeline.js")
                 }
-                codeFromResource("/jsFunctional/code/pipeline.js")
             }
-            slide(title = "Recursion 1/2", key = "recursion") {
-                codeFromResource("/jsFunctional/code/factorial-for.js")
-                codeFromResource("/jsFunctional/code/factorial-rec.js")
-                codeFromResource("/jsFunctional/code/factorial-tailrec.js")
+            slide(title = "Recursion 1/2", key = "recursion", styleClass = setOf("steps")) {
+                step { codeFromResource("/jsFunctional/code/factorial-for.js") }
+                step { codeFromResource("/jsFunctional/code/factorial-rec.js") }
+                step { codeFromResource("/jsFunctional/code/factorial-tailrec.js") }
             }
-            slide(title = "Recursion 2/2", key = "recursion-2") {
-                ul {
-                    linkText("https://jsperf.com/plop-factorial") { "Test jsperf" }
-                    linkText("http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls") { "Tail Position Calls" }
-                    linkText("https://kangax.github.io/compat-table/es6/") { "Compatibilité" }
+            slide(title = "Recursion 2/2", key = "recursion-2", styleClass = setOf("steps")) {
+                step {
+                    ul {
+                        linkText("https://jsperf.com/plop-factorial") { "Test jsperf" }
+                        linkText("http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls") { "Tail Position Calls" }
+                        linkText("https://kangax.github.io/compat-table/es6/") { "Compatibilité" }
+                    }
+                }
+                step {
                     quote(author = "Erik Meijer, \"Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire\", 1991",
                           cite = "https://maartenfokkinga.github.io/utwente/mmf91m.pdf") {
                         html { " Recursion is the GOTO of functional programming" }
                     }
                 }
             }
-            slideFromResource(title = "Lisibilité", contentType = HTML) {
-                styleClass = setOf("steps")
+            slide("Lisibilité", styleClass = setOf("steps")) {
+                step { codeFromResource("/jsFunctional/code/read-1.js") }
+                step { codeFromResource("/jsFunctional/code/read-2.js") }
+                step { codeFromResource("/jsFunctional/code/read-3.js") }
             }
-//            slide("Lisibilité") {
-//                codeFromResource("/jsFunctional/code/read-1.js")
-//                codeFromResource("/jsFunctional/code/read-2.js")
-//                codeFromResource("/jsFunctional/code/read-3.js")
-//            }
             slideFromResource(title = "Part I - bilan 1/2", key = "part1_bilan_1")
             slideFromResource(title = "Part I - bilan 2/2", key = "part1_bilan_2")
         }
@@ -196,49 +197,85 @@ C'est un nid à bugs.<br>
                 p { html { "😞 les <em>enum</em> ou les <em>type union</em> de TypeScript ne sont pas des ADT." } }
                 linkText("https://github.com/natefaubion/adt.js") { "Algebraic data types for Javascript" }
             }
-            slide(title = "Pattern Matching") {
-                codeFromResource("/jsFunctional/code/pattern-matching.re")
-                codeFromResource("/jsFunctional/code/pattern-matching.js")
-                p {
-                    html {
-                        """🔮 <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 - ECMAScript Pattern Matching</a>"""
+            slide(title = "Pattern Matching", styleClass = setOf("steps")) {
+                step {
+                    codeFromResource("/jsFunctional/code/pattern-matching.re")
+                }
+                step {
+                    codeFromResource("/jsFunctional/code/pattern-matching.js")
+                    p {
+                        html {
+                            """🔮 <a href="https://github.com/tc39/proposal-pattern-matching">Stage 0 - ECMAScript Pattern Matching</a>"""
+                        }
                     }
                 }
             }
             slide(title = "Déconstruction") {
                 codeFromResource("/jsFunctional/code/deconstruction.js")
             }
-            slide(title = "M-word", key = "monad-def") {
-                quote(author = "🤡") {
-                    html { "A monad is just a monoïd in the category of endo-functors, what's the problem?" }
-                }
-            }
-            slide(title = "Functor") {
-                quote(author = "😂", cite = "https://fr.wikipedia.org/wiki/Foncteur") {
-                    html {
-                        "généralisation aux catégories de la notion de morphisme."
+            slide(title = "M-word", key = "monad-def", styleClass = setOf("steps")) {
+                step {
+                    quote(author = "🤡") {
+                        html { "A monad is just a monoïd in the category of endofunctors, what's the problem?" }
                     }
                 }
-                codeFromResource("/jsFunctional/code/functor.ts")
-                codeFromResource("/jsFunctional/code/endofunctor.ts")
-                link("https://github.com/fantasyland/fantasy-land#functor") {
-                    html { "Fantasy Land <code>Functor</code>" }
+            }
+            slide(title = "Functor", styleClass = setOf("steps")) {
+                step {
+                    quote(author = "😂", cite = "https://fr.wikipedia.org/wiki/Foncteur") {
+                        html {
+                            "Généralisation aux catégories de la notion de morphisme."
+                        }
+                    }
+                }
+                step {
+                    codeFromResource("/jsFunctional/code/functor.ts")
+                    codeFromResource("/jsFunctional/code/endofunctor.ts")
+                    link("https://github.com/fantasyland/fantasy-land#functor") {
+                        html { "Fantasy Land <code>Functor</code>" }
+                    }
                 }
             }
-            slide(title = "Monoïd") {
-                quote(author = "🤣", cite = "https://fr.wikipedia.org/wiki/Mono%C3%AFde") {
-                    html { "C'est un magma associatif et unifère, c'est-à-dire un demi-groupe unifère." }
+            slide(title = "Monoïd", styleClass = setOf("steps")) {
+                step {
+                    quote(author = "🤣", cite = "https://fr.wikipedia.org/wiki/Mono%C3%AFde") {
+                        html { "C'est un magma associatif et unifère, c'est-à-dire un demi-groupe unifère." }
+                    }
                 }
-                codeFromResource("/jsFunctional/code/semigroup.ts") // FIXME No Code
-                codeFromResource("/jsFunctional/code/monoid.ts")  // FIXME No Code
+                step {
+                    codeFromResource("/jsFunctional/code/semigroup.ts")
+                    codeFromResource("/jsFunctional/code/monoid.ts")
+                    link("https://github.com/fantasyland/fantasy-land#monoid") {
+                        html { "Fantasy Land <code>Monoid</code>" }
+                    }
+                }
             }
-            slide(title = "Monade 1/3") {
+            slide(title = "Monade") {
                 codeFromResource("/jsFunctional/code/monad.ts")
                 linkText(link = "https://github.com/tc39/proposal-flatMap") {
                     "Stage 3 - Array.prototype.{flatMap,flatten}"
                 }
+                link("https://github.com/fantasyland/fantasy-land#monad") {
+                    html { "Fantasy Land <code>Monad</code>" }
+                }
+                img("", "/jsFunctional/part2/fantasy-lang.png")
             }
-            slideFromResource(title = "Monade ", key = "monad_2")
+            slide(title = "Monade pour les humains", key = "monad_2", styleClass = setOf("steps")) {
+                step {
+                    quote(author = "\uD83D\uDE33, \uD83E\uDD2F") {
+                        html { "J'ai toujours pas compris !" }
+                    }
+                }
+                step {
+                    ul {
+                        html { "C'est un <del>objet</del> \uD83C\uDF2F" }
+                        html { "qui a des méthodes simples comme par exemple <code>map</code> ou <code>flatMap</code>" }
+                        html { "qui doivent respectées des règles (axioms)" }
+                        html { "ce qui garenti une haute composabilité." }
+                        html { "<code>Option&lt;V&gt;</code>, <code>Either&lt;A,B&gt;</code>, <code>Result&lt;S,E&gt;</code>, <code>Future&lt;V&gt;</code>, ..." }
+                    }
+                }
+            }
             slideFromResource(title = "Monades en JS")
             slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
             slideFromResource(title = "Part II - bilan")
@@ -252,7 +289,7 @@ C'est un nid à bugs.<br>
             slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")
             slideFromResource(title = "Bibliothèques", key = "bibliotheque")
             slideFromResource(title = "Alternatives", key = "alternatives")
-            slideFromResource(title = "Quote") { styleClass += "hide-title" }
+//            slideFromResource(title = "Quote") { styleClass += "hide-title" }
             slideFromResource(title = "Valeur", key = "values")
             slideFromResource(title = "Intéret du JS", key = "value_of_js")
             slideFromResource(title = "Codons en fonctionel", key = "why_functional")

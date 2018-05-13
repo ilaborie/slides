@@ -1,4 +1,4 @@
-interface Event { error: boolean; /* ...*/}
+interface Event { error: boolean; /* ... */}
 
 const funErrors = (events: Event[], size = 10): Event[] =>
     events

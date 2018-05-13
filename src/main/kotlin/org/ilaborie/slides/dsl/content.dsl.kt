@@ -1,8 +1,36 @@
 package org.ilaborie.slides.dsl
 
 
-import org.ilaborie.slides.content.*
-import org.ilaborie.slides.content.web.*
+import org.ilaborie.slides.content.Block
+import org.ilaborie.slides.content.Code
+import org.ilaborie.slides.content.Content
+import org.ilaborie.slides.content.Definitions
+import org.ilaborie.slides.content.Emphasis
+import org.ilaborie.slides.content.EmptyContent
+import org.ilaborie.slides.content.ExternalCodeContent
+import org.ilaborie.slides.content.ExternalHtmlContent
+import org.ilaborie.slides.content.ExternalImageContent
+import org.ilaborie.slides.content.ExternalLink
+import org.ilaborie.slides.content.ExternalResource
+import org.ilaborie.slides.content.ExternalSvgContent
+import org.ilaborie.slides.content.Figure
+import org.ilaborie.slides.content.HtmlContent
+import org.ilaborie.slides.content.Language
+import org.ilaborie.slides.content.Link
+import org.ilaborie.slides.content.Notice
+import org.ilaborie.slides.content.NoticeKind
+import org.ilaborie.slides.content.OrderedList
+import org.ilaborie.slides.content.Paragraph
+import org.ilaborie.slides.content.Quote
+import org.ilaborie.slides.content.Step
+import org.ilaborie.slides.content.Title
+import org.ilaborie.slides.content.UnorderedList
+import org.ilaborie.slides.content.renderAsString
+import org.ilaborie.slides.content.web.CodeEditorAction
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.ExternalCodeEditor
+import org.ilaborie.slides.content.web.StyleEditable
 import java.util.*
 
 typealias IContentBuilder = () -> Content
@@ -69,6 +97,15 @@ class MapContentContainer(private val f: (Map<Content, Content>) -> Content) : I
 /**
  * Content
  */
+
+// Step
+fun ContentContainer.step(builder: ContentContainer.() -> Unit) {
+    add(builder) {
+        Step(content = it)
+    }
+}
+
+
 // Code
 fun ContentContainer.code(language: Language = Language.None, codeBuilder: () -> String) {
     add { Code(language = language, code = codeBuilder()) }

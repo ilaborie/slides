@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /**
  * prism.js default theme for JavaScript, CSS and HTML
  * Based on dabblet (http://dabblet.com)
@@ -120,7 +119,7 @@ pre[class*="language-"] {
   --primary: #2c0563;
   --bgFooter: var(--primary);
   --fgFooter: white;
-  --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript #🦊';
+  --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript';
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg'); }
 
 .shake {
@@ -129,6 +128,9 @@ pre[class*="language-"] {
     cursor: none;
     display: inline-block;
     animation: shakeIt 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+
+section.steps article > div.step {
+  width: 100%; }
 
 @keyframes shakeIt {
   10%, 90% {
@@ -258,7 +260,11 @@ pre.lang-typescript {
     #static_vs_dynamic article div.step .year::before {
       content: '('; }
     #static_vs_dynamic article div.step .year::after {
-      content: ')'; }
+      content: ')';
+      margin-right: 1rem; }
+
+#currification_2 article blockquote, #currification_2 article p {
+  margin: .5rem 0; }
 
 #memoisation_2 article p {
   text-align: center;

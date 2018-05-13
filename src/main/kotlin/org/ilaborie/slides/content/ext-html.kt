@@ -3,7 +3,20 @@ package org.ilaborie.slides.content
 import org.ilaborie.slides.Group
 import org.ilaborie.slides.Presentation
 import org.ilaborie.slides.Slide
-import org.ilaborie.slides.content.web.*
+import org.ilaborie.slides.content.web.Available
+import org.ilaborie.slides.content.web.Browser
+import org.ilaborie.slides.content.web.Buggy
+import org.ilaborie.slides.content.web.CodeEditor
+import org.ilaborie.slides.content.web.CssCompatibility
+import org.ilaborie.slides.content.web.EditableZone
+import org.ilaborie.slides.content.web.ExternalCodeEditor
+import org.ilaborie.slides.content.web.Feature
+import org.ilaborie.slides.content.web.Flag
+import org.ilaborie.slides.content.web.NotAvailable
+import org.ilaborie.slides.content.web.Partial
+import org.ilaborie.slides.content.web.Prefix
+import org.ilaborie.slides.content.web.Stat
+import org.ilaborie.slides.content.web.StyleEditable
 import org.ilaborie.slides.defaultContent
 import java.text.DecimalFormat
 
@@ -121,6 +134,7 @@ fun Content.renderAsHtml(): String = when (this) {
     is Notice                  -> this.renderAsHtml()
     is CodeEditor              -> this.renderAsHtml()
     is ExternalCodeEditor      -> this.codeEditor.renderAsHtml()
+    is Step                    -> """<div class="step">${content.renderAsHtml()}</div>"""
     else                       -> TODO()
 }
 
@@ -136,7 +150,8 @@ fun StyleEditable.renderAsHtml() =
 
 fun Code.renderAsHtml() = when (language) {
     Language.None -> "<code>$code</code>"
-    else          -> """<pre class="lang-$language"><code class="lang-$language">${getFormattedCode(language, code)}</code></pre>"""
+    else          -> """<pre class="lang-$language"><code class="lang-$language">${getFormattedCode(language,
+                                                                                                    code)}</code></pre>"""
 }
 
 private val codeCache = mutableMapOf<Pair<Language, String>, String>()

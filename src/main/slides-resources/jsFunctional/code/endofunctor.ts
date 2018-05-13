@@ -1,5 +1,3 @@
-class AnEndoFunctor implements Functor<V> {
-    map(mapper: (V) => W): AnEndoFunctor<W> {
-        // ...
-    }
+interface EndoFunctor<V> {
+    map(mapper: (V) => V): Functor<V>;
 }

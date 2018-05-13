@@ -6,7 +6,7 @@
   // Footer
   --bgFooter: var(--primary);
   --fgFooter: white;
-  --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript #🦊';
+  --txtFooter: '@gdgtoulouse @ToulouseJS @ilaborie #JavaScript';
   --logoFooter: url('https://pbs.twimg.com/profile_images/785806413037707264/P57kaRFv_400x400.jpg');
 }
 
@@ -17,6 +17,10 @@
     display: inline-block;
     animation: shakeIt 0.82s cubic-bezier(.36, .07, .19, .97) both;
   }
+}
+
+section.steps article > div.step {
+  width: 100%;
 }
 
 @keyframes shakeIt {
@@ -215,7 +219,14 @@ pre.lang-typescript {
     }
     .year::after {
       content: ')';
+      margin-right: 1rem;
     }
+  }
+}
+
+#currification_2 article {
+  blockquote, p {
+    margin: .5rem 0;
   }
 }
 

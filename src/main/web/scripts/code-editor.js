@@ -151,9 +151,13 @@ require(['vs/editor/editor.main'], function () {
                             .replace(/console\.info/g, 'info')
                             .replace(/console\.warn/g, 'warn')
                             .replace(/console\.error/g, 'error');
-                        const result = eval(hack);
-                        if (result) {
-                            log(`result: ${result}`, 'result');
+                        try {
+                            const result = eval(hack);
+                            if (result) {
+                                log(`result: ${result}`, 'result');
+                            }
+                        } catch (e) {
+                            error(e.message?e.message: e.toString());
                         }
                     })
                     .catch(error => {
