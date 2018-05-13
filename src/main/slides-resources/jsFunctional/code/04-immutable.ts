@@ -1,13 +1,13 @@
-// let & const
+// let
 let oLet = {a: 1, b: 2};
-oLet.a = 3;
+// oLet.a = 3;
 
-
+// Const
 const oConst = {a: 10, b: 20};
-oConst.a = 30;
+// oConst.a = 30;
 
 // Transparence référentielle ?
-// Deconstruction
+// Modification pour immutable
 
 console.info({oLet});
 console.info({oConst});

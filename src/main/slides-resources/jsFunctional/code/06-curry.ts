@@ -1,7 +1,7 @@
 // type: (number, number) => number
 const mult = (a, b) => a * b;
 
-// idea: identity = mult(1, _)
+// idée: identity = mult(1, _)
 
 // double = mult(2, _)
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Programmation fonctionnelle en JavaScript : 🦄 ou 💩</title>
+    <title>Programmation fonctionnelle en JavaScript : 🦄 ou 💩?</title>
     <link rel="stylesheet" href="../slides.css">
     <link rel="stylesheet" href="../jsFunctional.css">
     <link rel="stylesheet" href="../gdg.css">
@@ -14,7 +14,7 @@
 </head>
 <body class="gdg jsFunctional">
     <div class="slides-nav hide-print" style="grid-template-columns : repeat(7, auto);">
-        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript : 🦄 ou 💩">0</a>
+        <a href="#jsFunctional" class="cover" title="Programmation fonctionnelle en JavaScript : 🦄 ou 💩?">0</a>
         <strong>Introduction</strong>
 <strong>Langages fonctionnels</strong>
 <strong>Programmation fonctionnelle en JS - Part I</strong>
@@ -81,11 +81,11 @@
     </div>
     <main>
 
-<!-- Slide Programmation fonctionnelle en JavaScript : 🦄 ou 💩 -->
+<!-- Slide Programmation fonctionnelle en JavaScript : 🦄 ou 💩? -->
 <section id="jsFunctional" class="cover">
     
     <h1>Programmation fonctionnelle en JavaScript :
-<div><span class="shake">🦄</span> ou <span class="shake">💩</span></div></h1>
+<div><span class="shake">🦄</span> ou <span class="shake">💩</span>?</div></h1>
     <article>
         
     </article>
@@ -380,55 +380,33 @@
   <h4>Functions en JavaScript</h4>
   <pre class="initialCode">// Function is First-class citizen
 
-
 function mult(a, b) {
     return a * b;
 }
 
-console.log(`Plop`);
+console.log(mult(3, 14));
 
-// variable
-// ES2015+
-// TypeScript
-
-// Anomynous
-
-(function() {
-    // scoped to the function
-})();</pre>
+// variable, ES2015+, TypeScript
+</pre>
   <pre class="finalCode" data-lang="typescript">// Function is First-class citizen
 function mult(a, b) {
     return a * b;
 }
 
 console.log(typeof mult); // function
-console.log(mult.name); // mult
+console.log(mult(3, 14));
 
 // Variable
-
 const mult2 = function(a, b) {
     return a * b;
 };
 
-console.log(mult2.name); // mult2
-
 // ES2015+
-
 const mult3 = (a, b) => a * b;
 
 // TypeScript
-
 const mult4 = (a: number, b: number): number => a * b;
-
-const mult5: (a: number, b: number) => number =
-    (a, b) => a * b;
-
-
-// Anomynous
-
-(function() {
-    // scoped to the function
-})();</pre>
+</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -456,9 +434,11 @@ const mult5: (a: number, b: number) => number =
         <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">let</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
 
 <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>elt <span class="token operator">=></span> <span class="token punctuation">{</span>sum <span class="token operator">+=</span> elt<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>elt <span class="token operator">=></span> <span class="token punctuation">{</span>
+        sum <span class="token operator">+=</span> elt
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span> sum <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token punctuation">{</span>sum<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul><li>⚠️ Évitez les fonctions avec effet de bord !</li>
 <li>C'est un nid à bugs.</li>
 <li><code>=></code> Évitez les fonctions qui retournent <code>void</code>, ou qui n'ont pas de paramètres.</li></ul>
@@ -478,13 +458,12 @@ const mult5: (a: number, b: number) => number =
   <pre class="initialCode">let sum = 0;
 
 [1, 2, 3, 4, 5]
-    .forEach(elt => {sum += elt});
+    .forEach(elt => {
+        sum += elt
+    });
 
-console.log({ sum });</pre>
-  <pre class="finalCode" data-lang="typescript">// let sum = 0;
-// [1, 2, 3, 4, 5].forEach(elt => sum += elt);
-
-const sum = [1, 2, 3, 4, 5]
+console.log({sum});</pre>
+  <pre class="finalCode" data-lang="typescript">const sum = [1, 2, 3, 4, 5]
     .reduce((acc, elt) => acc + elt);
 
 console.log({ sum });</pre>
@@ -525,15 +504,11 @@ console.log({ sum });</pre>
 
 [2, 3, 4, 5]
     .forEach(elt => console.log(elt, 'even?', isEven(elt)));</pre>
-  <pre class="finalCode" data-lang="typescript">// const isEven = (n: number): boolean => {
-//     return (n % 2 === 0) ? true : false;
-// };
+  <pre class="finalCode" data-lang="typescript">const isEven = (n: number): boolean =>
+    (n % 2 === 0);
 
-// const isEven = (n: number): boolean =>
-//     (n % 2 === 0) ? true : false;
-
-const isEven = (n: number): boolean =>
-    (n % 2 === 0);</pre>
+[2, 3, 4, 5]
+    .forEach(elt => console.log(elt, 'even?', isEven(elt)));</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>
@@ -577,16 +552,16 @@ const isEven = (n: number): boolean =>
         
 <div class="code-editor" data-lang="typescript">
   <h4>Immutable</h4>
-  <pre class="initialCode">// let & const
+  <pre class="initialCode">// let
 let oLet = {a: 1, b: 2};
-oLet.a = 3;
+// oLet.a = 3;
 
-
+// Const
 const oConst = {a: 10, b: 20};
-oConst.a = 30;
+// oConst.a = 30;
 
 // Transparence référentielle ?
-// Deconstruction
+// Modification pour immutable
 
 console.info({oLet});
 console.info({oConst});
@@ -660,10 +635,10 @@ console.info({oConst2});</pre>
 <div class="code-editor" data-lang="typescript">
   <h4>High Order functions</h4>
   <pre class="initialCode">const TODO = () => {throw new Error('Not yet implemented!')};
+
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const isEven = (n: number): boolean =>
-    (n % 2 === 0);
+const isEven = (n: number): boolean => (n % 2 === 0);
 
 const evenDigits = TODO();
 const oddSquared = TODO();
@@ -672,14 +647,15 @@ console.log(evenDigits);
 console.log(oddSquared);</pre>
   <pre class="finalCode" data-lang="typescript">const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const isEven = (n: number): boolean =>
-    (n % 2 === 0);
+
 
 function isEvenOrOdd(even: boolean) {
+    const isEven = (n: number): boolean => (n % 2 === 0);
     return (n: number) => even ? isEven(n) : !isEven(n);
 }
 
-const evenDigits = digits.filter(isEven);
+const evenDigits = digits.filter(isEvenOrOdd(true));
+
 const oddSquared = digits
     .filter(isEvenOrOdd(false))
     .map(n => n ** 2);
@@ -928,7 +904,7 @@ speakers
   <pre class="initialCode">// type: (number, number) => number
 const mult = (a, b) => a * b;
 
-// idea: identity = mult(1, _)
+// idée: identity = mult(1, _)
 
 // double = mult(2, _)
 
@@ -944,7 +920,11 @@ const identity = mult(1);
 
 const double = mult(2);
 
-const double = mult(3);</pre>
+const triple = mult(3);
+
+[identity, double, triple]
+    .map(fun => fun(42))
+    .forEach(x => console.log(x));</pre>
   <div class="toolbar">
   <button type="button" class="full-screen"></button>
   <button type="button" class="reset"></button>

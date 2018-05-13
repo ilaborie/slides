@@ -42,7 +42,7 @@ fun main(args: Array<String>) {
 
 fun jsFunctional() =
     presentation(title = HtmlContent("""Programmation fonctionnelle en JavaScript :
-        |<div><span class="shake">🦄</span> ou <span class="shake">💩</span></div>""".trimMargin()),
+        |<div><span class="shake">🦄</span> ou <span class="shake">💩</span>?</div>""".trimMargin()),
                  key = "jsFunctional") {
         addScript("../scripts/navigation.js")
         addScript("../scripts/monaco-editor/min/vs/loader.js")

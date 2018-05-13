@@ -5,4 +5,8 @@ const identity = mult(1);
 
 const double = mult(2);
 
-const double = mult(3);
+const triple = mult(3);
+
+[identity, double, triple]
+    .map(fun => fun(42))
+    .forEach(x => console.log(x));
