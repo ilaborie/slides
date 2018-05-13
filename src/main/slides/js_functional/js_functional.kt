@@ -151,11 +151,10 @@ fun jsFunctional() =
             }
             slide(title = "Recursion 2/2", key = "recursion-2", styleClass = setOf("steps")) {
                 step {
-                    ul {
-                        linkText("https://jsperf.com/plop-factorial") { "Test jsperf" }
-                        linkText("http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls") { "Tail Position Calls" }
-                        linkText("https://kangax.github.io/compat-table/es6/") { "Compatibilité" }
-                    }
+
+                    linkText("https://jsperf.com/plop-factorial") { "Test jsperf" }
+                    linkText("http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls") { "Tail Position Calls" }
+                    linkText("https://kangax.github.io/compat-table/es6/") { "Compatibilité" }
                 }
                 step {
                     quote(author = "Erik Meijer, \"Functional Programming with Bananas, Lenses, Envelopes and Barbed Wire\", 1991",
@@ -195,7 +194,7 @@ fun jsFunctional() =
             slide(title = "Algebraic Data Type", key = "adt") {
                 codeFromResource("/jsFunctional/code/adt.re")
                 p { html { "😞 les <em>enum</em> ou les <em>type union</em> de TypeScript ne sont pas des ADT." } }
-                linkText("https://github.com/natefaubion/adt.js") { "Algebraic data types for Javascript" }
+                linkText("https://github.com/natefaubion/adt.js") { "adt.js" }
             }
             slide(title = "Pattern Matching", styleClass = setOf("steps")) {
                 step {

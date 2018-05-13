@@ -5,4 +5,4 @@
 * ❤️ [accesseurs Array](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array#Les_accesseurs): `filter`, `map`, `slice`, `reduce` ...
 * ✋ Map : `clear`, `delete`, `set`
 * ✋ Set : `add`, `clear`, `delete`
-* ⚠️ aux functions sans arguments, ou retournant `void`
+* ⚠️ aux fonctions sans arguments, ou retournant `void`

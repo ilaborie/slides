@@ -1,3 +1,3 @@
-interface Functor<V> {
-    map(mapper: (V) => W): Functor<W>;
+interface Functor<A> {
+    map(mapper: (A) => B): Functor<B>;
 }

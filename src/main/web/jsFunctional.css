@@ -263,6 +263,12 @@ pre.lang-typescript {
       content: ')';
       margin-right: 1rem; }
 
+#recursion-2 article .step:first-child {
+  display: flex;
+  flex-direction: column; }
+  #recursion-2 article .step:first-child a {
+    margin: .5rem 0; }
+
 #currification_2 article blockquote, #currification_2 article p {
   margin: .5rem 0; }
 

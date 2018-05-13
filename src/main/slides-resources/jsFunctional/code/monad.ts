@@ -1,3 +1,3 @@
 interface Monad<A> extends Functor<A> {
-    flatMap(mapper: (V) => Monad<W>): Monad<W>;
+    flatMap(mapper: (A) => Monad<B>): Monad<B>;
 }

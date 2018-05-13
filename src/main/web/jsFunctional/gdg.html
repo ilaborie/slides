@@ -778,7 +778,7 @@ console.log(oddSquared);
 <div class="step"><pre class="lang-javascript"><code class="lang-javascript"><span class="token keyword">const</span> <span class="token function-variable function">factorial</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token function-variable function">aux</span> <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">,</span> acc<span class="token punctuation">)</span> <span class="token operator">=></span>
         <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">?</span> acc <span class="token punctuation">:</span> <span class="token function">aux</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> acc <span class="token operator">*</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token function">aux</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token function">aux</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
     </article>
     <a href="#recursion-2" class="next" aria-label="Suivant"></a>
@@ -792,8 +792,7 @@ console.log(oddSquared);
     <article>
         <div class="step"><a href="https://jsperf.com/plop-factorial">Test jsperf</a>
 <a href="http://www.ecma-international.org/ecma-262/6.0/#sec-tail-position-calls">Tail Position Calls</a>
-<a href="https://kangax.github.io/compat-table/es6/">Compatibilité</a>
-<ul></ul></div>
+<a href="https://kangax.github.io/compat-table/es6/">Compatibilité</a></div>
 <div class="step">
 <blockquote cite="https://maartenfokkinga.github.io/utwente/mmf91m.pdf">
     <p> Recursion is the GOTO of functional programming</p>
@@ -864,7 +863,7 @@ speakers
 <li>❤️ <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array#Les_accesseurs">accesseurs Array</a>: <code>filter</code>, <code>map</code>, <code>slice</code>, <code>reduce</code> ...</li>
 <li>✋ Map : <code>clear</code>, <code>delete</code>, <code>set</code></li>
 <li>✋ Set : <code>add</code>, <code>clear</code>, <code>delete</code></li>
-<li>⚠️ aux functions sans arguments, ou retournant <code>void</code></li>
+<li>⚠️ aux fonctions sans arguments, ou retournant <code>void</code></li>
 </ul>
 
     </article>
@@ -1089,7 +1088,7 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
                   <span class="token operator">|</span> <span class="token constructor variable">Director</span>
                   <span class="token operator">|</span> <span class="token constructor variable">Student</span><span class="token punctuation">(</span>string<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>😞 les <em>enum</em> ou les <em>type union</em> de TypeScript ne sont pas des ADT.</p>
-<a href="https://github.com/natefaubion/adt.js">Algebraic data types for Javascript</a>
+<a href="https://github.com/natefaubion/adt.js">adt.js</a>
     </article>
     <a href="#pattern_matching" class="next" aria-label="Suivant"></a>
 </section>
@@ -1163,8 +1162,8 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
     <footer>--😂</footer>
 </blockquote>
 </div>
-<div class="step"><pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Functor</span><span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">map</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">W</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Functor<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">;</span>
+<div class="step"><pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Functor</span><span class="token operator">&lt;</span><span class="token constant">A</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token function">map</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">A</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">B</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Functor<span class="token operator">&lt;</span><span class="token constant">B</span><span class="token operator">></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">EndoFunctor</span><span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token function">map</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token constant">V</span><span class="token punctuation">)</span><span class="token punctuation">:</span> Functor<span class="token operator">&lt;</span><span class="token constant">V</span><span class="token operator">></span><span class="token punctuation">;</span>
@@ -1206,7 +1205,7 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
     <h3>Monade</h3>
     <article>
         <pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">interface</span> <span class="token class-name">Monad</span><span class="token operator">&lt;</span><span class="token constant">A</span><span class="token operator">></span> <span class="token keyword">extends</span> <span class="token class-name">Functor</span><span class="token operator">&lt;</span><span class="token constant">A</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">flatMap</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">V</span><span class="token punctuation">)</span> <span class="token operator">=></span> Monad<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">:</span> Monad<span class="token operator">&lt;</span><span class="token constant">W</span><span class="token operator">></span><span class="token punctuation">;</span>
+    <span class="token function">flatMap</span><span class="token punctuation">(</span>mapper<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token constant">A</span><span class="token punctuation">)</span> <span class="token operator">=></span> Monad<span class="token operator">&lt;</span><span class="token constant">B</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">:</span> Monad<span class="token operator">&lt;</span><span class="token constant">B</span><span class="token operator">></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <a href="https://github.com/tc39/proposal-flatMap">Stage 3 - Array.prototype.{flatMap,flatten}</a>
 <a href="https://github.com/fantasyland/fantasy-land#monad">Fantasy Land <code>Monad</code></a>
@@ -1230,8 +1229,8 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
 <div class="step"><ul><li>C'est un <del>objet</del> 🌯</li>
 <li>qui a des méthodes simples comme par exemple <code>map</code> ou <code>flatMap</code></li>
 <li>qui doivent respectées des règles (axioms)</li>
-<li>ce qui garenti une haute composabilité.</li></ul>
-<ul><li><code>Option&lt;V&gt;</code>, <code>Either&lt;A,B&gt;</code>, <code>Result&lt;S,E&gt;</code>, <code>Future&lt;V&gt;</code>, ...</li></ul></div>
+<li>ce qui garenti une haute composabilité.</li>
+<li><code>Option&lt;V&gt;</code>, <code>Either&lt;A,B&gt;</code>, <code>Result&lt;S,E&gt;</code>, <code>Future&lt;V&gt;</code>, ...</li></ul></div>
     </article>
     <a href="#monades_en_js" class="next" aria-label="Suivant"></a>
 </section>
@@ -1246,9 +1245,8 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
 <li>ça ressemble aux <code>Promise&lt;T&gt;</code></li>
 <li>Pour comprendre correctement les monades, il faut comprendre la Théorie des catégories ! Ou pas ?</li>
 </ul>
-<p><a href="https://github.com/fantasyland/fantasy-land/blob/master/figures/dependencies.png">Fantasy Land Specification</a></p>
 <ul>
-<li><a href="https://github.com/fantasyland/fantasy-land">Algebraic JavaScript Specification</a></li>
+<li><a href="https://github.com/fantasyland/fantasy-land">Fantasy Land - Algebraic JavaScript Specification</a></li>
 <li><a href="https://tech.evojam.com/2016/02/22/practical-intro-to-monads-in-javascript/">Practical Intro to Monads in JavaScript</a></li>
 <li><a href="https://medium.com/@tzehsiang/javascript-functor-applicative-monads-in-pictures-b567c6415221">Javascript Functor, Applicative, Monads in pictures</a></li>
 </ul>
