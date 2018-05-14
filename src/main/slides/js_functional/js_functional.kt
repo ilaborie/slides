@@ -301,4 +301,96 @@ fun jsFunctional() =
                 }
             }
         }
+        part("Quizz") {
+            slide(title = "Question 1", key = "q1", styleClass = setOf("quizz", "steps")) {
+                step {
+                    html {
+                        """
+                            <div><strong>Quel est le prénom de Haskell Curry ? </strong></div>
+                            <div>A. Haskell</div>
+                            <div>C. Brooks</div>
+                            <div>B. Curry</div>
+                            <div>D. Obi-Wan</div>
+                        """.trimIndent()
+                    }
+                }
+                step {
+                    html {
+                        "Réponse A"
+                    }
+                }
+            }
+            slide(title = "Question 2", key = "q2", styleClass = setOf("quizz", "steps")) {
+                step {
+                    html {
+                        """
+                            <div><strong>Combien de doigts à un paresseux à deux doigts ?</strong></div>
+                            <div>A. deux</div>
+                            <div>B. quarante-deux</div>
+                            <div>C. dix</div>
+                            <div>D. huits</div>
+                        """.trimIndent()
+                    }
+                }
+                step {
+                    html {
+                        "Réponse C"
+                    }
+                }
+            }
+            slide(title = "Question 3", key = "q3", styleClass = setOf("quizz", "steps")) {
+                step {
+                    html {
+                        """
+                            <div><strong>Qui a dit "La récurcivité c'est le GOTO de la programation fonctionelle" ?</strong></div>
+                            <div>A. Moses Schönfinkel</div>
+                            <div>B. Erik Meijer</div>
+                            <div>C. Edsger Dijkstra</div>
+                            <div>D. Donald Duck</div>
+                        """.trimIndent()
+                    }
+                }
+                step {
+                    html {
+                        "Réponse B"
+                    }
+                }
+            }
+            slide(title = "Question 4", key = "q4", styleClass = setOf("quizz", "steps")) {
+                step {
+                    html {
+                        """
+                            <div><strong>La fonction <code>() => 42</code></strong></div>
+                            <div>A. a un effet de bord</div>
+                            <div>B. est idempotent</div>
+                            <div>C. n'est pas currifiable</div>
+                            <div>D. est une fonction d'ordre supérieur</div>
+                        """.trimIndent()
+                    }
+                }
+                step {
+                    html {
+                        "Réponse B"
+                    }
+                }
+            }
+            slide(title = "Question 5", key = "q5", styleClass = setOf("quizz", "steps")) {
+                step {
+                    html {
+                        """
+                            <div><strong>Avec la méthode <code>reduce</code>, je faire facilement?</strong></div>
+                            <div>A. un équivalent de <code>flatMap</code></div>
+                            <div>B. le min (ou max) d'un tableau</div>
+                            <div>C. le café</div>
+                            <div>D. toutes les réponses sont bonnes</div>
+                        """.trimIndent()
+                    }
+                }
+                step {
+                    html {
+                        "Réponse D"
+                    }
+                }
+            }
+        }
     }
