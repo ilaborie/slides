@@ -37,7 +37,7 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web/")
-    jsFunctional.buildAll(dist, "gdg")
+    jsFunctional.buildAll(dist, "gdg", exportPdf = false)
 }
 
 fun jsFunctional() =
@@ -144,6 +144,7 @@ fun jsFunctional() =
                     codeFromResource("/jsFunctional/code/pipeline.js")
                 }
             }
+            /*
             slide(title = "Recursion 1/2", key = "recursion", styleClass = setOf("steps")) {
                 step { codeFromResource("/jsFunctional/code/factorial-for.js") }
                 step { codeFromResource("/jsFunctional/code/factorial-rec.js") }
@@ -163,6 +164,7 @@ fun jsFunctional() =
                     }
                 }
             }
+            */
             slide("Lisibilité", styleClass = setOf("steps")) {
                 step { codeFromResource("/jsFunctional/code/read-1.js") }
                 step { codeFromResource("/jsFunctional/code/read-2.js") }

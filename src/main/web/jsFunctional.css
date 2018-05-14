@@ -280,3 +280,11 @@ pre.lang-typescript {
   align-items: center; }
   #liens article a {
     font-size: 1.5rem; }
+
+@media print {
+  :root {
+    --baseFontSize: 3.8vmin !important; }
+  pre {
+    font-size: .75rem; }
+  #rim article {
+    flex-direction: row; } }

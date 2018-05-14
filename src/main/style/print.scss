@@ -44,3 +44,20 @@ section.steps .step {
 .editable {
   z-index: 0;
 }
+
+
+@media print {
+  section.steps .step {
+    transform: none;
+  }
+  section article {
+    .code-editor {
+      .toolbar, .editor-panel, .console-panel {
+        display: none;
+      }
+      .finalCode {
+        display: block;
+      }
+    }
+  }
+}

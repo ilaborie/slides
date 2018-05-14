@@ -27,7 +27,7 @@
   --counterFont: 'Pixel Emulator', fantasy;
   --bgNavbar: var(--white);
   --fgNavbar: var(--primary);
-  --shadowNavbar: rgba(0, 0, 0, 0.2);
+  --shadowNavbar: rgba(0, 0, 0, .2);
   --headerHeight: 3rem;
   --footerHeight: 2rem;
   --bgSlide: var(--secondary);
@@ -40,7 +40,7 @@
   --bgHeader: var(--primary);
   --fgHeader: var(--secondary);
   --bgSlideNav: transparent;
-  --fgSlideNav: rgba(0, 0, 0, 0.2);
+  --fgSlideNav: rgba(0, 0, 0, .2);
   --navigationWidth: 10vw;
   --bgCounter: transparend;
   --fgCounter: var(--secondary);
@@ -84,3 +84,11 @@ section.steps .step {
 
 .editable {
   z-index: 0; }
+
+@media print {
+  section.steps .step {
+    transform: none; }
+  section article .code-editor .toolbar, section article .code-editor .editor-panel, section article .code-editor .console-panel {
+    display: none; }
+  section article .code-editor .finalCode {
+    display: block; } }

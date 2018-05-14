@@ -36,7 +36,8 @@ app.post('/code', (req: Request, res: Response) => {
     const body = req.body as string;
     console.log(`code [${lang}]`);
     code(lang, body)
-        .then(html => res.send(html));
+        .then(html => res.send(html))
+        .catch(e => res.status(400).send(e));
 });
 
 // get Browser Compatibility
@@ -46,7 +47,8 @@ app.get('/compatibility', (req: Request, res: Response) => {
     const features = req.query['features'].split(',');
     console.log(`compatibility ${country} ${threshold}: ${features.join(', ')}`);
     compatibility(country, threshold, features)
-        .then(html => res.send(html));
+        .then(html => res.send(html))
+        .catch(e => res.status(400).send(e));
 });
 
 // Markdown to HTML, with syntax highlighting
@@ -54,7 +56,8 @@ app.post('/markdown', (req: Request, res: Response) => {
     console.log(`markdown`);
     const body = req.body as string;
     markdown(body)
-        .then(html => res.send(html));
+        .then(html => res.send(html))
+        .catch(e => res.status(400).send(e));
 });
 
 // Generate PDF
@@ -63,7 +66,8 @@ app.post('/pdf', (req: Request, res: Response) => {
     const to = req.query['to'];
     console.log(`pdf ${from} -> ${to}`);
     renderPdf(from, to)
-        .then(() => res.send('ok'));
+        .then(() => res.send('ok'))
+        .catch(e => res.status(400).send(e));
 });
 
 // Markdown to HTML, with syntax highlighting

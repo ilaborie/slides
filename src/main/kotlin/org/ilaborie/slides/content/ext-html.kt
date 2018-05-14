@@ -263,7 +263,7 @@ fun CodeEditor.renderAsHtml(): String {
 <div class="code-editor" data-lang="$language">
   <h4>$title</h4>
   <pre class="initialCode">$code</pre>
-  <pre class="finalCode" data-lang="$language">$finalCode</pre>
+  <pre class="finalCode" data-lang="$language">${Code(finalCode, language).renderAsHtml()}</pre>
   <div class="toolbar">
   ${buttons.joinToString("\n  ") { """<button type="button" class="$it"></button>""" }}
   </div>
