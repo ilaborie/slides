@@ -6,5 +6,5 @@
   * `=>` bibliothèques
 * ⚠️ eviter les effets de bord `=>` 💖 tests<br>
   fonctions sans arguments, ou retournant `void` 
-* [`do` expressions](https://github.com/tc39/proposal-do-expressions)
+* [Stage 1 - `do` expressions](https://github.com/tc39/proposal-do-expressions)
 

@@ -642,6 +642,7 @@ oConst<span class="token punctuation">.</span>a <span class="token operator">=</
 <div class="code-editor" data-lang="typescript">
   <h4>High Order functions</h4>
   <pre class="initialCode">const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+type Predicate<T> = (T) => boolean;
 
 const isEven = (n: number): boolean => (n % 2 === 0);
 
@@ -651,18 +652,21 @@ const oddSquared = [];// FIXME
 console.log(evenDigits);
 console.log(oddSquared);</pre>
   <pre class="finalCode" data-lang="typescript"><pre class="lang-typescript"><code class="lang-typescript"><span class="token keyword">const</span> digits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">type</span> Predicate<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token constant">T</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
 
 
+<span class="token keyword">const</span> isEven <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">boolean</span> <span class="token operator">=></span> <span class="token punctuation">(</span>n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">function</span> <span class="token function">isEvenOrOdd</span><span class="token punctuation">(</span>even<span class="token punctuation">:</span> <span class="token builtin">boolean</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> isEven <span class="token operator">=</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">boolean</span> <span class="token operator">=></span> <span class="token punctuation">(</span>n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token builtin">number</span><span class="token punctuation">)</span> <span class="token operator">=></span> even <span class="token operator">?</span> <span class="token function">isEven</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">:</span> <span class="token operator">!</span><span class="token function">isEven</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">const</span> not <span class="token operator">=</span> <span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">(</span>fun<span class="token punctuation">:</span> Predicate<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span><span class="token punctuation">)</span><span class="token punctuation">:</span> Predicate<span class="token operator">&lt;</span><span class="token constant">T</span><span class="token operator">></span> <span class="token operator">=></span>
+    <span class="token punctuation">(</span>n<span class="token punctuation">:</span> <span class="token constant">T</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">!</span><span class="token function">fun</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> evenDigits <span class="token operator">=</span> digits<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token function">isEvenOrOdd</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> isOdd <span class="token operator">=</span> <span class="token function">not</span><span class="token punctuation">(</span>isEven<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">const</span> evenDigits <span class="token operator">=</span> digits<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isEven<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> oddSquared <span class="token operator">=</span> digits
-    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token function">isEvenOrOdd</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>isOdd<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>n <span class="token operator">=></span> n <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>evenDigits<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -779,7 +783,7 @@ speakers<span class="token punctuation">.</span><span class="token function">fil
 </li>
 <li>⚠️ eviter les effets de bord <code>=&gt;</code> 💖 tests<br>
 fonctions sans arguments, ou retournant <code>void</code> </li>
-<li><a href="https://github.com/tc39/proposal-do-expressions"><code>do</code> expressions</a></li>
+<li><a href="https://github.com/tc39/proposal-do-expressions">Stage 1 - <code>do</code> expressions</a></li>
 </ul>
 
     </article>
@@ -1010,7 +1014,7 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
     <article>
         <ul>
 <li><a href="https://lodash.com/docs/4.17.10#memoize">_.memoize</a></li>
-<li>💎 Pas d&#39;effet de bord <code>=&gt;</code> on peut mettre en cache ! </li>
+<li>💎 purtée <code>=&gt;</code> on peut mettre en cache ! </li>
 </ul>
 <p><img src="./npm-memoize.png" alt="npm search"></p>
 
