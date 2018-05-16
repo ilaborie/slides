@@ -146,6 +146,9 @@ pre.lang-typescript {
         background-repeat: no-repeat;
       }
     }
+    li:nth-child(4) {
+      opacity: .5;
+    }
   }
 }
 
@@ -244,6 +247,11 @@ pre.lang-typescript {
   p {
     text-align: center;
     width: 100%;
+  }
+}
+#monoid article {
+  blockquote,p,pre {
+    margin: .25rem 0;
   }
 }
 

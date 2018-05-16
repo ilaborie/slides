@@ -7,6 +7,6 @@ const mult = (a, b) => a * b;
 
 // triple = mult(3, _)
 
-// [identity, double, triple]
-//     .map(fun => fun(42))
-//     .forEach(x => console.log(x));
+[identity, double, triple]
+    .map(fun => fun(42))
+    .forEach(x => console.log(x));

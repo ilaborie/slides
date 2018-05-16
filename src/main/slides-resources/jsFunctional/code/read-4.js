@@ -1,0 +1,1 @@
+speakers.filter(and(isExperimented, isLoveJS));

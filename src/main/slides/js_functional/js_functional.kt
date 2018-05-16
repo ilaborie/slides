@@ -124,6 +124,8 @@ fun jsFunctional() =
                 p {
                     html { "On peut utiliser " }
                     linkText("https://facebook.github.io/immutable-js/") { "Immutable.js" }
+                    html { ", " }
+                    linkText("http://swannodette.github.io/mori/") { "mori" }
                 }
             }
             slide(title = "High Order function", key = "hoc",
@@ -169,6 +171,7 @@ fun jsFunctional() =
                 step { codeFromResource("/jsFunctional/code/read-1.js") }
                 step { codeFromResource("/jsFunctional/code/read-2.js") }
                 step { codeFromResource("/jsFunctional/code/read-3.js") }
+                step { codeFromResource("/jsFunctional/code/read-4.js") }
             }
             slideFromResource(title = "Part I - bilan 1/2", key = "part1_bilan_1")
             slideFromResource(title = "Part I - bilan 2/2", key = "part1_bilan_2")
@@ -231,10 +234,12 @@ fun jsFunctional() =
                 }
                 step {
                     codeFromResource("/jsFunctional/code/functor.ts")
-                    codeFromResource("/jsFunctional/code/endofunctor.ts")
                     link("https://github.com/fantasyland/fantasy-land#functor") {
                         html { "Fantasy Land <code>Functor</code>" }
                     }
+                }
+                step {
+                    codeFromResource("/jsFunctional/code/endofunctor.ts")
                 }
             }
             slide(title = "Monoïd", styleClass = setOf("steps")) {
@@ -245,9 +250,17 @@ fun jsFunctional() =
                 }
                 step {
                     codeFromResource("/jsFunctional/code/semigroup.ts")
+                }
+                step {
                     codeFromResource("/jsFunctional/code/monoid.ts")
-                    link("https://github.com/fantasyland/fantasy-land#monoid") {
-                        html { "Fantasy Land <code>Monoid</code>" }
+                    p {
+                        link("https://github.com/fantasyland/fantasy-land#monoid") {
+                            html { "Fantasy Land <code>Monoid</code>" }
+                        }
+                        html { ", " }
+                        link("https://github.com/fantasyland/fantasy-land#semigroup") {
+                            html { "Fantasy Land <code>Semigroup</code>" }
+                        }
                     }
                 }
             }
@@ -278,7 +291,7 @@ fun jsFunctional() =
                 }
             }
             slideFromResource(title = "Monades en JS")
-            slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
+//            slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
             slideFromResource(title = "Part II - bilan")
         }
         part("Remaques sur la performance", key = "perfo") {
@@ -291,9 +304,9 @@ fun jsFunctional() =
             slideFromResource(title = "Bibliothèques", key = "bibliotheque")
             slideFromResource(title = "Alternatives", key = "alternatives")
 //            slideFromResource(title = "Quote") { styleClass += "hide-title" }
-            slideFromResource(title = "Valeur", key = "values")
             slideFromResource(title = "Intéret du JS", key = "value_of_js")
             slideFromResource(title = "Codons en fonctionel", key = "why_functional")
+            slideFromResource(title = "Valeur", key = "values")
             slideFromResource(title = "Liens")
             slide("Questions", styleClass = setOf("hide-title")) {
                 header(3) {
@@ -316,7 +329,7 @@ fun jsFunctional() =
                 }
                 step {
                     html {
-                        "Réponse A"
+                        "Réponse <strong>A</strong>"
                     }
                 }
             }
@@ -328,13 +341,13 @@ fun jsFunctional() =
                             <div>A. deux</div>
                             <div>B. quarante-deux</div>
                             <div>C. dix</div>
-                            <div>D. huits</div>
+                            <div>D. huit</div>
                         """.trimIndent()
                     }
                 }
                 step {
                     html {
-                        "Réponse C"
+                        "Réponse <strong>C</strong>"
                     }
                 }
             }
@@ -352,7 +365,7 @@ fun jsFunctional() =
                 }
                 step {
                     html {
-                        "Réponse B"
+                        "Réponse <strong>B</strong>"
                     }
                 }
             }
@@ -370,7 +383,7 @@ fun jsFunctional() =
                 }
                 step {
                     html {
-                        "Réponse B"
+                        "Réponse <strong>B</strong>"
                     }
                 }
             }
@@ -388,7 +401,7 @@ fun jsFunctional() =
                 }
                 step {
                     html {
-                        "Réponse D"
+                        "Réponse <strong>D</strong>"
                     }
                 }
             }

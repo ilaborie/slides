@@ -213,6 +213,9 @@ pre.lang-typescript {
   background-size: contain;
   background-repeat: no-repeat; }
 
+#roadmap ol li:nth-child(4) {
+  opacity: .5; }
+
 #warmup article, #fun article {
   align-items: center; }
 
@@ -275,6 +278,9 @@ pre.lang-typescript {
 #memoisation_2 article p {
   text-align: center;
   width: 100%; }
+
+#monoid article blockquote, #monoid article p, #monoid article pre {
+  margin: .25rem 0; }
 
 #liens article {
   align-items: center; }
