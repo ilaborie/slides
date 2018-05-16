@@ -267,7 +267,7 @@ fun jsFunctional() =
             slide(title = "Monade") {
                 codeFromResource("/jsFunctional/code/monad.ts")
                 linkText(link = "https://github.com/tc39/proposal-flatMap") {
-                    "Stage 3 - Array.prototype.{flatMap,flatten}"
+                    "Stage 3 - <code>Array.prototype.{flatMap,flatten}</code>"
                 }
                 link("https://github.com/fantasyland/fantasy-land#monad") {
                     html { "Fantasy Land <code>Monad</code>" }
