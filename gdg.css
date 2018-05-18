@@ -81,3 +81,6 @@
   .gdg pre.lang-typescript:after {
     content: '';
     background-image: url("./assets/brands/typescript.svg"); }
+  .gdg pre.lang-reason:after {
+    content: '';
+    background-image: url("./assets/brands/reason.png"); }

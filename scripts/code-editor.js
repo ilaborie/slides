@@ -44,18 +44,6 @@ require(['vs/editor/editor.main'], function () {
         return {parent, editor, consolePanel, language, code, finalCode};
     };
 
-    // Output
-    const colorizeOutput = (params) => {
-        const finalNode = params.parent.querySelector('.finalCode');
-        if (finalNode && finalNode.textContent) {
-            monaco.editor.colorizeElement(finalNode, {})
-                .then(() => {
-                    // finalNode.classList.toggle("finalCode");
-                });
-        }
-        return params;
-    };
-
     // actions
     const actions = {
         'full-screen': {
@@ -151,9 +139,13 @@ require(['vs/editor/editor.main'], function () {
                             .replace(/console\.info/g, 'info')
                             .replace(/console\.warn/g, 'warn')
                             .replace(/console\.error/g, 'error');
-                        const result = eval(hack);
-                        if (result) {
-                            log(`result: ${result}`, 'result');
+                        try {
+                            const result = eval(hack);
+                            if (result) {
+                                log(`result: ${result}`, 'result');
+                            }
+                        } catch (e) {
+                            error(e.message?e.message: e.toString());
                         }
                     })
                     .catch(error => {
@@ -236,7 +228,6 @@ require(['vs/editor/editor.main'], function () {
     Array.from(document.querySelectorAll('.code-editor'))
         .map(extractData)
         .map(createEditor)
-        .map(colorizeOutput)
         .map(registerActions)
         .map(registerEditorActions)
     ;
