@@ -9,6 +9,8 @@ $bgSize2: $bgSize1 / 2;
 $bgSize3: $bgSize1 / 4;
 
 
+@import "../../../node_modules/highlight.js/styles/darcula";
+
 body.kotlinBbl {
   --txtFooter: '#BrownBagLunch @ilaborie #kotlin';
 
