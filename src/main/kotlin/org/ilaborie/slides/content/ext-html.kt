@@ -76,6 +76,7 @@ fun Presentation.renderAsHtml(key: String): String {
     <main>
 ${body.joinToString(separator = "\n")}
     </main>
+    <canvas class="background"></canvas>
 
     ${this.scripts.joinToString(separator = "\n") {
         """<script type="application/javascript" src="$it"></script>"""

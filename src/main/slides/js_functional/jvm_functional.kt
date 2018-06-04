@@ -1,5 +1,6 @@
 package js_functional
 
+import jvm_functional.jvmFunctional
 import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
@@ -148,9 +149,9 @@ fun jsFunctional() =
             }
             /*
             slide(title = "Recursion 1/2", key = "recursion", styleClass = setOf("steps")) {
-                step { codeFromResource("/jsFunctional/code/factorial-for.js") }
-                step { codeFromResource("/jsFunctional/code/factorial-rec.js") }
-                step { codeFromResource("/jsFunctional/code/factorial-tailrec.js") }
+                step { codeFromResource("/jvmFunctional/code/factorial-for.js") }
+                step { codeFromResource("/jvmFunctional/code/factorial-rec.js") }
+                step { codeFromResource("/jvmFunctional/code/factorial-tailrec.js") }
             }
             slide(title = "Recursion 2/2", key = "recursion-2", styleClass = setOf("steps")) {
                 step {

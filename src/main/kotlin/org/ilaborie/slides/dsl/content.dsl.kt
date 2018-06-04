@@ -249,7 +249,8 @@ fun ContentContainer.linkText(link: String, alt: String? = null, builder: () -> 
 
 // List
 
-fun ContentContainer.ul(builder: ListContentContainer.() -> Unit) {
+fun ContentContainer.
+        ul(builder: ListContentContainer.() -> Unit) {
     addList(builder) {
         UnorderedList(it)
     }

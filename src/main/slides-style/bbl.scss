@@ -60,5 +60,76 @@
   // Code
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
+
+
+
+  // Code lang
+  pre[class*="lang-"] {
+    background: ghostwhite;
+    font-family: var(--codeFont);
+    overflow: visible;
+    font-size: .75rem;
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, .75);
+    border-radius: .25rem;
+    padding: .25rem;
+    tab-size: 2;
+    min-width: 100%;
+    position: relative;
+    box-sizing: border-box;
+
+    &:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .125em;
+      font-size: 75%;
+      border-radius: .25em;
+      //background-color: #eee;
+      //box-shadow: 0 0 0 .25em #eee;
+      color: #2d2d2d;
+      width: 1rem;
+      height: 1rem;
+      margin: .25em;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  pre.lang-bash {
+    color: #2dc82d;
+    code {
+      &::before {
+        content: '$ ';
+        color: #999;
+      }
+    }
+  }
+  pre.lang-kotlin:after {
+    content: '';
+    background-image: url('./assets/brands/kotlin.svg');
+  }
+  pre.lang-java:after {
+    content: '';
+    background-image: url('./assets/brands/java.svg');
+  }
+  pre.lang-scala:after {
+    content: '';
+    background-image: url('./assets/brands/scala.svg');
+  }
+
+  pre.lang-javascript:after {
+    content: '';
+    background-image: url('./assets/brands/javascript.svg');
+  }
+  pre.lang-typescript:after {
+    content: '';
+    background-image: url('./assets/brands/typescript.svg');
+  }
+  pre.lang-reason:after {
+    content: '';
+    background-image: url('./assets/brands/reason.png');
+  }
 }
 

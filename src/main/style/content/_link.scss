@@ -18,7 +18,7 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="android"]::before, &[href*="spring-framework"]::before, &[href*="spring-boot"]::before,
     &[href*="docs.google"]::before, &[href*="sparktutorials"]::before, &[href*="sparkjava"]::before, &[href*="javalin"]::before,
     &[href*="immutable"]::before, &[href*="ramda"]::before, &[href*="elm"]::before, &[href*="reasonml"]::before,
-    &[href*="purescript"]::before, &[href*="clojurescript"]::before,
+    &[href*="purescript"]::before, &[href*="clojurescript"]::before, &[href*="clojure"]::before, &[href*="scala"]::before,
     &[href*="medium"]::before, &[href*="tc39"]::before,
     &[href*="vertx"]::before, &[href*="ktor"]::before, &[href*="stackoverflow"]::before  {
       content: '';
@@ -98,8 +98,14 @@ section article, section h1, section h2, section h3, section h4 {
     &[href*="purescript"]::before {
       background-image: url('./assets/brands/purescript.svg');
     }
+    &[href*="clojure"]::before {
+      background-image: url('./assets/brands/clojure.png');
+    }
     &[href*="clojurescript"]::before {
       background-image: url('./assets/brands/cljs.png');
+    }
+    &[href*="scala"]::before {
+      background-image: url('./assets/brands/scala.svg');
     }
     &[href*="immutable"]::before {
       background-image: url('./assets/brands/immutable.png');
