@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web/")
-    jvmFunctional.buildAll(dist, "bbl", exportPdf = true)
+    jvmFunctional.buildAll(dist, "bbl", exportPdf = false)
 }
 
 fun jvmFunctional() =
@@ -281,8 +281,8 @@ fun jvmFunctional() =
             slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")
             slideFromResource(title = "Future et bibliothèques", key = "bibliotheque")
             slideFromResource(title = "Alternatives", key = "alternatives")
-            slideFromResource(title = "Codons en fonctionel", key = "why_functional")
-            slideFromResource(title = "Valeur", key = "values")
+            slideFromResource(title = "Codons en fonc   tionel", key = "why_functional")
+//            slideFromResource(title = "Valeur", key = "values")
             slide("Questions", styleClass = setOf("hide-title")) {
                 header(3) {
                     html { "Questions ?" }

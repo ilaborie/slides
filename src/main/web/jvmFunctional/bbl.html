@@ -81,9 +81,8 @@
 <a href="#_or___" class="" title="🦄 ou 💩 ?">58</a>
 <a href="#bibliotheque" class="" title="Future et bibliothèques">59</a>
 <a href="#alternatives" class="" title="Alternatives">60</a>
-<a href="#why_functional" class="" title="Codons en fonctionel">61</a>
-<a href="#values" class="" title="Valeur">62</a>
-<a href="#questions" class="hide-title" title="Questions">63</a></nav>
+<a href="#why_functional" class="" title="Codons en fonc tionel">61</a>
+<a href="#questions" class="hide-title" title="Questions">62</a></nav>
     </div>
     <main>
 
@@ -791,7 +790,7 @@ IntPredicate isOdd <span class="token operator">=</span> not<span class="token p
     <span class="token keyword">return</span> <span class="token function">factorialTailRecAux</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">factorialTailRecAux</span><span class="token punctuation">(</span><span class="token keyword">int</span> acc<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token function">factorialTailRecAux</span><span class="token punctuation">(</span>acc <span class="token operator">*</span> n<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">?</span> acc <span class="token operator">:</span> <span class="token function">factorialTailRecAux</span><span class="token punctuation">(</span>acc <span class="token operator">*</span> n<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <div class="step"><pre class="lang-java"><code class="lang-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">factorialStream</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> IntStream<span class="token punctuation">.</span><span class="token function">rangeClosed</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
@@ -957,7 +956,7 @@ speakers<span class="token punctuation">.</span><span class="token function">fil
         <pre class="lang-java"><code class="lang-java">IntBinaryOperator mult <span class="token operator">=</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
 
 <span class="token comment">// Curry</span>
-IntFunction<span class="token generics function"><span class="token punctuation">&lt;</span>IntFunction<span class="token punctuation">></span></span> curriedMult <span class="token operator">=</span> b <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">-</span><span class="token operator">></span> a<span class="token operator">*</span> b<span class="token punctuation">;</span>
+IntFunction<span class="token generics function"><span class="token punctuation">&lt;</span>IntFunction<span class="token punctuation">></span></span> curriedMult <span class="token operator">=</span> b <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">-</span><span class="token operator">></span> a <span class="token operator">*</span> b<span class="token punctuation">;</span>
 
 <span class="token comment">// Usage</span>
 IntFunction identity <span class="token operator">=</span> a <span class="token operator">-</span><span class="token operator">></span> mult<span class="token punctuation">.</span><span class="token function">applyAsInt</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1384,14 +1383,18 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
     <h3>Future et bibliothèques</h3>
     <article>
         <ul>
-<li><p><a href="http://openjdk.java.net/projects/amber/">Project Amber</a>, pour quand ?</p>
+<li><a href="http://openjdk.java.net/projects/amber/">Project Amber</a></li>
+<li><p><a href="http://openjdk.java.net/projects/valhalla/">Project Valhalla</a></p>
+</li>
+<li><p><a href="http://openjdk.java.net/projects/code-tools/jmh/">JMH</a></p>
 </li>
 <li><p><a href="http://www.vavr.io/">Vavr</a></p>
 </li>
 <li><p><code>java.util.concurrent.Flow</code>, <a href="https://github.com/ReactiveX/RxJava">RxJava</a>, <a href="https://projectreactor.io/">Reactor</a></p>
 </li>
-<li><p><a href="https://github.com/akullpp/awesome-java#functional-programming">Awesome Java # FP</a></p>
+<li><p><a href="https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/">https://drboolean.gitbooks.io/mostly-adequate-guide-old/content/</a></p>
 </li>
+<li><a href="https://github.com/akullpp/awesome-java#functional-programming">Awesome Java # FP</a></li>
 </ul>
 
     </article>
@@ -1416,10 +1419,10 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
 </section>
 
 
-<!-- Slide Codons en fonctionel -->
+<!-- Slide Codons en fonc tionel -->
 <section id="why_functional" class="">
     <a href="#alternatives" class="previous" aria-label="Précédant"></a>
-    <h3>Codons en fonctionel</h3>
+    <h3>Codons en fonc   tionel</h3>
     <article>
         <ul>
 <li>🍼 plus simple</li>
@@ -1431,28 +1434,13 @@ console.log('fibonacci(15)', fibonacci(15));</pre>
 </ul>
 
     </article>
-    <a href="#values" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Valeur -->
-<section id="values" class="">
-    <a href="#why_functional" class="previous" aria-label="Précédant"></a>
-    <h3>Valeur</h3>
-    <article>
-        <blockquote>
-<p>La valeur principale d&#39;un programme est dans ce qu&#39;il réalise, pas dans son style.</p>
-</blockquote>
-<p>Mais en temps qu&#39;artisan développeur, j&#39;accorde de l&#39;importance au style.</p>
-
-    </article>
     <a href="#questions" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Questions -->
 <section id="questions" class="hide-title">
-    <a href="#values" class="previous" aria-label="Précédant"></a>
+    <a href="#why_functional" class="previous" aria-label="Précédant"></a>
     <h3>Questions</h3>
     <article>
         <h3>Questions ?</h3>
