@@ -438,8 +438,6 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain; }
-  section article a[href*="stackoverflow"]::before, section h1 a[href*="stackoverflow"]::before, section h2 a[href*="stackoverflow"]::before, section h3 a[href*="stackoverflow"]::before, section h4 a[href*="stackoverflow"]::before {
-    background-image: url("./assets/brands/stackoverflow.svg"); }
   section article a[href*="medium"]::before, section h1 a[href*="medium"]::before, section h2 a[href*="medium"]::before, section h3 a[href*="medium"]::before, section h4 a[href*="medium"]::before {
     background-image: url("./assets/brands/medium.svg"); }
   section article a[href*="spring-framework"]::before, section h1 a[href*="spring-framework"]::before, section h2 a[href*="spring-framework"]::before, section h3 a[href*="spring-framework"]::before, section h4 a[href*="spring-framework"]::before {
@@ -494,6 +492,8 @@ section article a, section h1 a, section h2 a, section h3 a, section h4 a {
     background-image: url("./assets/brands/immutable.png"); }
   section article a[href*="tc39"]::before, section h1 a[href*="tc39"]::before, section h2 a[href*="tc39"]::before, section h3 a[href*="tc39"]::before, section h4 a[href*="tc39"]::before {
     background-image: url("./assets/brands/tc39.png"); }
+  section article a[href*="stackoverflow"]::before, section h1 a[href*="stackoverflow"]::before, section h2 a[href*="stackoverflow"]::before, section h3 a[href*="stackoverflow"]::before, section h4 a[href*="stackoverflow"]::before {
+    background-image: url("./assets/brands/stackoverflow.svg"); }
   section article a[href*="frog"]::before, section h1 a[href*="frog"]::before, section h2 a[href*="frog"]::before, section h3 a[href*="frog"]::before, section h4 a[href*="frog"]::before {
     content: '🐸 '; }
   section article a[href*="garden"]::before, section h1 a[href*="garden"]::before, section h2 a[href*="garden"]::before, section h3 a[href*="garden"]::before, section h4 a[href*="garden"]::before {

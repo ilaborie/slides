@@ -31,7 +31,7 @@ import java.io.File
 fun main(args: Array<String>) {
     val logger = KotlinLogging.logger("DeepDive Kotlin")
 
-    val deepDiveKotlin = prezDevoxxFr2018()
+    val deepDiveKotlin = prezJugTls()
 
     val slidesDir = File("src/main/slides-resources/")
 
@@ -41,7 +41,7 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web/")
-    deepDiveKotlin.buildAll(dist, "devoxx-fr")
+    deepDiveKotlin.buildAll(dist, "jug", exportPdf = false)
 
     // Generates notes
 //    val hasCode = listOf("play", "live-code")
@@ -86,7 +86,7 @@ private val historiqueTitle: Content = UnorderedList(
     )
 )
 
-fun prezDevoxxFr2018() =
+fun prezJugTls() =
     presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
         addScript("../scripts/navigation.js")
         addScript("../scripts/catnip.js")
@@ -298,7 +298,6 @@ fun prezDevoxxFr2018() =
                 styleClass = setOf("bilan", "contrast", "manu", "igor")
             }
         }
-        part(title = "Pause") {}
 
         part(title = "ByteCode Android", key = "android") {
             slide(title = "Compilation pour Android", key = "compile-android", styleClass = setOf("diagram", "manu")) {
@@ -493,8 +492,8 @@ fun prezDevoxxFr2018() =
                 styleClass = setOf("contrast", "manu", "igor")
             }
             slideFromResource(title = "Liens") { styleClass = setOf("contrast", "manu", "igor") }
-            slideFromResource(title = "Liens presentation") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Liens presentation", key="liens_presentation_jug") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast", "manu", "igor") }
-            slideFromResource(title = "Merci") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Merci", key = "merci-jug") { styleClass = setOf("contrast", "manu", "igor") }
         }
     }

@@ -146,56 +146,6 @@
     background-size: cover;
   }
 
-  main section.code {
-    background: url('./assets/devoxx-fr/code.png');
-    background-size: cover;
-
-    article {
-      justify-content: center;
-      pre {
-        max-width: 100%;
-        overflow: auto;
-
-        &.lang-bash {
-          overflow: initial;
-        }
-      }
-    }
-
-    &.java {
-      background: url('./assets/devoxx-fr/coffee.png');
-      background-size: cover;
-    }
-    &.kotlin {
-      background: url('./assets/devoxx-fr/kotlin.png');
-      background-size: cover;
-    }
-    &.hex, &.smali {
-      background: url('./assets/devoxx-fr/cpu.png');
-      background-size: cover;
-      article {
-        & > code {
-          box-sizing: border-box;
-          padding: .25rem;
-          border-radius: .125rem;
-          background: var(--bgCode);
-          color: var(--fgCode);
-          white-space: pre;
-          overflow: auto;
-          font-size: .6rem;
-          width: 100%;
-        }
-      }
-    }
-    &.bytecode {
-      background: url('./assets/devoxx-fr/gears.png');
-      background-size: cover;
-      article pre.lang-java::after {
-        display: none;
-      }
-    }
-  }
-
   section article > pre[class*="lang-"] {
     align-self: center;
   }
@@ -279,23 +229,5 @@
     border-radius: .06125rem;
   }
 
-  section article {
-    table {
-      background: hsla(0, 100%, 100%, .25);
-      border-radius: .25em;
-      border-collapse: collapse;
-      border: medium solid transparent;
-      th, td {
-        margin: 0;
-        padding: .125em .25em;
-        border: thin solid rgba(0, 0, 0, .5);
-      }
-      th {
-        border-bottom-width: medium;
-        border-bottom-color: white;
-      }
-
-    }
-  }
 
 }

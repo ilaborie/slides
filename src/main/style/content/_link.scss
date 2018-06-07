@@ -29,9 +29,6 @@ section article, section h1, section h2, section h3, section h4 {
       background-repeat: no-repeat;
       background-size: contain;
     }
-    &[href*="stackoverflow"]::before {
-      background-image: url('./assets/brands/stackoverflow.svg');
-    }
     &[href*="medium"]::before {
       background-image: url('./assets/brands/medium.svg');
     }
@@ -112,6 +109,9 @@ section article, section h1, section h2, section h3, section h4 {
     }
     &[href*="tc39"]::before {
       background-image: url('./assets/brands/tc39.png');
+    }
+    &[href*="stackoverflow"]::before {
+      background-image: url('./assets/brands/stackoverflow.svg');
     }
 
     &[href*="frog"]::before {

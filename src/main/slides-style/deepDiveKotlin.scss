@@ -1,5 +1,204 @@
 @import "catnip";
-@import "../../../node_modules/prismjs/themes/prism-tomorrow";
+@import "../../../node_modules/prismjs/themes/prism.css";
+
+
+.deepDiveKotlin {
+  main section.code {
+    background: ghostwhite;
+    background-size: cover;
+
+    article {
+      justify-content: center;
+      pre {
+        max-width: 100%;
+        overflow: auto;
+
+        &.lang-bash {
+          overflow: initial;
+        }
+      }
+    }
+
+    &.java {
+      background: url('./assets/devoxx-fr/coffee.png');
+      background-size: cover;
+    }
+    &.kotlin {
+      background: url('./assets/devoxx-fr/kotlin.png');
+      background-size: cover;
+    }
+    &.hex, &.smali {
+      background: url('./assets/devoxx-fr/cpu.png');
+      background-size: cover;
+      article {
+        & > code {
+          box-sizing: border-box;
+          padding: .25rem;
+          border-radius: .125rem;
+          background: var(--bgCode);
+          color: var(--fgCode);
+          white-space: pre;
+          overflow: auto;
+          font-size: .6rem;
+          width: 100%;
+        }
+      }
+    }
+    &.bytecode {
+      background: url('./assets/devoxx-fr/gears.png');
+      background-size: cover;
+      article pre.lang-java::after {
+        display: none;
+      }
+    }
+  }
+
+
+  .token.operator {
+    background: none;
+  }
+
+  section {
+    h1 {
+      font-size: 3rem;
+      text-shadow: .05rem .05rem 2px white,
+                  .1rem .1rem 1px currentColor;
+    }
+  }
+
+  section article {
+    table {
+      background: hsla(0, 100%, 100%, .5);
+      border-radius: .25em;
+      border-collapse: collapse;
+      border: medium solid transparent;
+      th, td {
+        margin: 0;
+        padding: .125em .25em;
+        border: thin solid rgba(0, 0, 0, .75);
+      }
+      th {
+        border-bottom-width: medium;
+        border-bottom-color: black;
+      }
+
+    }
+  }
+}
+
+.jug.deepDiveKotlin {
+  --primary: #2c0563;
+
+  // Footer
+  --bgFooter: var(--primary);
+  --fgFooter: white;
+  --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin';
+
+  section {
+    background-image:none !important;
+    background: ghostwhite;
+  }
+  section#roadmap {
+    article {
+      background: initial;
+      padding: initial;
+      box-shadow: none;
+      border-radius: initial;
+
+      a::before {
+        content: '';
+        display: inline;
+      }
+      a {
+        text-shadow: none;
+      }
+    }
+  }
+
+
+  section#bytecode-play {
+    article {
+      .catnip {
+        --primaryColor: var(--primary);
+        background: rgba(0, 0, 0, .1);
+      }
+    }
+  }
+
+  section#historique {
+    background-image: url('./assets/devoxx-fr/historic.png');
+    background-size: cover;
+    article {
+      color: white;
+      ul {
+        li {
+          strong {
+            text-shadow: 1px 1px hsla(0, 0%, 60%, 0.8);
+          }
+
+          div {
+            display: inline-block;
+            position: absolute;
+            background: hsla(0, 0%, 60%, 0.8);
+            border-radius: .5rem;
+            padding: 0 0.5rem;
+            font-size: .5rem;
+            transform: rotate(-20deg);
+            mark {
+              padding: 0 .125rem;
+              border-radius: .125rem;
+            }
+          }
+        }
+        li:nth-child(2n) {
+          flex-grow: 1;
+        }
+        li:nth-child(2) {
+          div {
+            top: -2.8rem;
+          }
+        }
+        li:nth-child(3) {
+        }
+        li:nth-child(4) {
+          div {
+            bottom: -4.9rem;
+          }
+        }
+        li:nth-child(5) {
+        }
+        li:nth-child(6) {
+          div {
+            top: -5.8rem;
+          }
+        }
+        li:nth-child(7) {
+        }
+        li:nth-child(8) {
+          div {
+            bottom: -4rem;
+          }
+        }
+      }
+
+    }
+  }
+
+  section#cibles {
+    article {
+
+      img {
+        filter: drop-shadow(0 0 .1rem white);
+      }
+
+      h4 {
+        filter: drop-shadow(0 0 .1rem white);
+      }
+    }
+  }
+
+}
+
 
 .slides-nav {
   strong, nav {
@@ -95,7 +294,7 @@ section#speakers {
 }
 
 section#roadmap {
-  background: url('./assets/devoxx-fr/roadmap.png');
+  background-image: url('./assets/devoxx-fr/roadmap.png');
   background-size: cover;
   article {
     background: rgba(0, 0, 0, .5);
@@ -107,7 +306,7 @@ section#roadmap {
       padding-left: 2rem;
       column-count: 2;
       column-gap: 5rem;
-      text-shadow: .0625em .0625em rgba(0, 0, 0, .5);;
+      text-shadow: .0625em .0625em rgba(0, 0, 0, .5);
     }
   }
 }
@@ -117,7 +316,7 @@ section.list-big {
 }
 
 section#bytecode-play {
-  background: url('./assets/devoxx-fr/matrix.png');
+  background-image: url('./assets/devoxx-fr/matrix.png');
   background-size: cover;
   article {
     justify-content: center;
@@ -174,7 +373,7 @@ section#bilan_helloworld_kt {
 }
 
 section#historique {
-  background: url('./assets/devoxx-fr/historic.png');
+  background-image: url('./assets/devoxx-fr/historic.png');
   background-size: cover;
   article {
     ul {
@@ -282,7 +481,7 @@ section#historique {
 }
 
 section#cibles {
-  background: url('./assets/devoxx-fr/target.png');
+  background-image: url('./assets/devoxx-fr/target.png');
   background-size: cover;
   article {
     display: grid;
@@ -333,7 +532,7 @@ section#performance_helloworld_kt article {
 }
 
 section#billion_dollar_mistake {
-  background: url('./assets/devoxx-fr/mistake.png');
+  background-image: url('./assets/devoxx-fr/mistake.png');
   background-size: cover;
   article {
     blockquote p {
@@ -351,7 +550,7 @@ section#generics, section#star {
 }
 
 section#part_pause {
-  background: url('./assets/devoxx-fr/break.png');
+  background-image: url('./assets/devoxx-fr/break.png');
   background-size: cover;
   filter: blur(8px);
 
@@ -444,7 +643,7 @@ section#performance_des_sequences, section#performance_des_sequences2 {
 }
 
 section#android {
-  background: url('./assets/devoxx-fr/android.png');
+  background-image: url('./assets/devoxx-fr/android.png');
   background-size: cover;
 
   h3::before {
@@ -460,17 +659,17 @@ section#android {
 }
 
 section#serveur {
-  background: url('./assets/devoxx-fr/server.png');
+  background-image: url('./assets/devoxx-fr/server.png');
   background-size: cover;
 }
 
 section#web_et_natif {
-  background: url('./assets/devoxx-fr/natif.png');
+  background-image: url('./assets/devoxx-fr/natif.png');
   background-size: cover;
 }
 
 section#tendance {
-  background: url('./assets/devoxx-fr/stock-exchange.png');
+  background-image: url('./assets/devoxx-fr/stock-exchange.png');
   background-size: cover;
   article {
     justify-content: space-around;
@@ -489,7 +688,7 @@ section#tendance {
 }
 
 section#kotlin_vs_java {
-  background: url('./assets/devoxx-fr/dino.png');
+  background-image: url('./assets/devoxx-fr/dino.png');
   background-size: cover;
   article {
     blockquote p {
@@ -499,17 +698,17 @@ section#kotlin_vs_java {
 }
 
 section#liens, section#liens_presentation {
-  background: url('./assets/devoxx-fr/links.png');
+  background-image: url('./assets/devoxx-fr/links.png');
   background-size: cover;
 }
 
 section#bibliotheques {
-  background: url('./assets/devoxx-fr/library.png');
+  background-image: url('./assets/devoxx-fr/library.png');
   background-size: cover;
 }
 
 section#merci {
-  background: url('./assets/devoxx-fr/thanks.png');
+  background-image: url('./assets/devoxx-fr/thanks.png');
   background-size: cover;
   h1 {
     margin: 5rem 0;

@@ -16,6 +16,7 @@
     "style:koltinHandsOn": "node-sass src/main/slides-style/kotlinHandsOn.scss --output src/main/web/",
     "style:deepDiveKotlin": "node-sass src/main/slides-style/deepDiveKotlin.scss --output src/main/web/",
     "style:bbl": "node-sass src/main/slides-style/bbl.scss --output src/main/web/",
+    "style:jug": "node-sass src/main/slides-style/jug.scss --output src/main/web/",
     "style:gdg": "node-sass src/main/slides-style/gdg.scss --output src/main/web/",
     "style:breizhcamp": "node-sass src/main/slides-style/breizhcamp.scss --output src/main/web/",
     "style:devfest-tls": "node-sass src/main/slides-style/devfest-tls.scss --output src/main/web/",
