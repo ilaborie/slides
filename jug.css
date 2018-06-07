@@ -1,0 +1,90 @@
+.jug {
+  --who: 'BBL Toulouse';
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+  --primary: #364081;
+  --secondary: white;
+  --fontBody: 'Open Sans', cursive, system-ui, sans-serif;
+  --coverFont: Montserrat, cursive;
+  --titleFont: Montserrat, cursive, system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: Montserrat, cursive;
+  --quoteFont: 'Open Sans', 'Just Another Hand', cursive;
+  --counterFont: 'OCR A Std', fantasy;
+  --bgNavbar: var(--secondary);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
+  --fgSlide: var(--primary);
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
+  --fgCover: var(--primary);
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%),;
+  --fgPart: var(--primary);
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+  --bgCounter: transparent;
+  --fgCounter: var(--secondary);
+  --txtFooter: '#BrownBagLunch @ilaborie';
+  --bgFooter: #0095D5;
+  --fgFooter: var(--secondary);
+  --logoFooter: url('./assets/jug/logo.png');
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa; }
+  .jug pre[class*="lang-"] {
+    background: white;
+    font-family: var(--codeFont);
+    font-size: .75rem;
+    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.75);
+    border-radius: .25rem;
+    padding: .25rem;
+    tab-size: 2;
+    min-width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    overflow: auto;
+    width: 100%; }
+    .jug pre[class*="lang-"]:after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: .125em;
+      font-size: 75%;
+      border-radius: .25em;
+      color: #2d2d2d;
+      width: 1rem;
+      height: 1rem;
+      margin: .25em;
+      display: inline-block;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: contain; }
+  .jug pre.lang-bash {
+    color: #2dc82d; }
+    .jug pre.lang-bash code::before {
+      content: '$ ';
+      color: #999; }
+  .jug pre.lang-kotlin:after {
+    content: '';
+    background-image: url("./assets/brands/kotlin.svg"); }
+  .jug pre.lang-java:after {
+    content: '';
+    background-image: url("./assets/brands/java.svg"); }
+  .jug pre.lang-scala:after {
+    content: '';
+    background-image: url("./assets/brands/scala.svg"); }
+  .jug pre.lang-javascript:after {
+    content: '';
+    background-image: url("./assets/brands/javascript.svg"); }
+  .jug pre.lang-typescript:after {
+    content: '';
+    background-image: url("./assets/brands/typescript.svg"); }
+  .jug pre.lang-reason:after {
+    content: '';
+    background-image: url("./assets/brands/reason.png"); }

@@ -89,40 +89,6 @@
   .devoxx-fr main section.measure {
     background: url("./assets/devoxx-fr/measure.png");
     background-size: cover; }
-  .devoxx-fr main section.code {
-    background: url("./assets/devoxx-fr/code.png");
-    background-size: cover; }
-    .devoxx-fr main section.code article {
-      justify-content: center; }
-      .devoxx-fr main section.code article pre {
-        max-width: 100%;
-        overflow: auto; }
-        .devoxx-fr main section.code article pre.lang-bash {
-          overflow: initial; }
-    .devoxx-fr main section.code.java {
-      background: url("./assets/devoxx-fr/coffee.png");
-      background-size: cover; }
-    .devoxx-fr main section.code.kotlin {
-      background: url("./assets/devoxx-fr/kotlin.png");
-      background-size: cover; }
-    .devoxx-fr main section.code.hex, .devoxx-fr main section.code.smali {
-      background: url("./assets/devoxx-fr/cpu.png");
-      background-size: cover; }
-      .devoxx-fr main section.code.hex article > code, .devoxx-fr main section.code.smali article > code {
-        box-sizing: border-box;
-        padding: .25rem;
-        border-radius: .125rem;
-        background: var(--bgCode);
-        color: var(--fgCode);
-        white-space: pre;
-        overflow: auto;
-        font-size: .6rem;
-        width: 100%; }
-    .devoxx-fr main section.code.bytecode {
-      background: url("./assets/devoxx-fr/gears.png");
-      background-size: cover; }
-      .devoxx-fr main section.code.bytecode article pre.lang-java::after {
-        display: none; }
   .devoxx-fr section article > pre[class*="lang-"] {
     align-self: center; }
   .devoxx-fr section.contrast article {
@@ -179,15 +145,3 @@
     background-color: rgba(255, 255, 255, 0.4);
     padding: .06125rem;
     border-radius: .06125rem; }
-  .devoxx-fr section article table {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: .25em;
-    border-collapse: collapse;
-    border: medium solid transparent; }
-    .devoxx-fr section article table th, .devoxx-fr section article table td {
-      margin: 0;
-      padding: .125em .25em;
-      border: thin solid rgba(0, 0, 0, 0.5); }
-    .devoxx-fr section article table th {
-      border-bottom-width: medium;
-      border-bottom-color: white; }
