@@ -281,7 +281,7 @@ fun jvmFunctional() =
             slideFromResource(title = "🦄 ou 💩 ?", key = "_or___")
             slideFromResource(title = "Future et bibliothèques", key = "bibliotheque")
             slideFromResource(title = "Alternatives", key = "alternatives")
-            slideFromResource(title = "Codons en fonc   tionel", key = "why_functional")
+            slideFromResource(title = "Codons en fonctionel", key = "why_functional")
 //            slideFromResource(title = "Valeur", key = "values")
             slide("Questions", styleClass = setOf("hide-title")) {
                 header(3) {
