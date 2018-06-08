@@ -20,15 +20,15 @@
     }
 
     &.java {
-      background: url('./assets/devoxx-fr/coffee.png');
+      background-image: url('./assets/devoxx-fr/coffee.png');
       background-size: cover;
     }
     &.kotlin {
-      background: url('./assets/devoxx-fr/kotlin.png');
+      background-image: url('./assets/devoxx-fr/kotlin.png');
       background-size: cover;
     }
     &.hex, &.smali {
-      background: url('./assets/devoxx-fr/cpu.png');
+      background-image: url('./assets/devoxx-fr/cpu.png');
       background-size: cover;
       article {
         & > code {
@@ -45,7 +45,7 @@
       }
     }
     &.bytecode {
-      background: url('./assets/devoxx-fr/gears.png');
+      background-image: url('./assets/devoxx-fr/gears.png');
       background-size: cover;
       article pre.lang-java::after {
         display: none;

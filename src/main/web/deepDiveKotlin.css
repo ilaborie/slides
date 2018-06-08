@@ -221,13 +221,13 @@
       .deepDiveKotlin main section.code article pre.lang-bash {
         overflow: initial; }
   .deepDiveKotlin main section.code.java {
-    background: url("./assets/devoxx-fr/coffee.png");
+    background-image: url("./assets/devoxx-fr/coffee.png");
     background-size: cover; }
   .deepDiveKotlin main section.code.kotlin {
-    background: url("./assets/devoxx-fr/kotlin.png");
+    background-image: url("./assets/devoxx-fr/kotlin.png");
     background-size: cover; }
   .deepDiveKotlin main section.code.hex, .deepDiveKotlin main section.code.smali {
-    background: url("./assets/devoxx-fr/cpu.png");
+    background-image: url("./assets/devoxx-fr/cpu.png");
     background-size: cover; }
     .deepDiveKotlin main section.code.hex article > code, .deepDiveKotlin main section.code.smali article > code {
       box-sizing: border-box;
@@ -240,7 +240,7 @@
       font-size: .6rem;
       width: 100%; }
   .deepDiveKotlin main section.code.bytecode {
-    background: url("./assets/devoxx-fr/gears.png");
+    background-image: url("./assets/devoxx-fr/gears.png");
     background-size: cover; }
     .deepDiveKotlin main section.code.bytecode article pre.lang-java::after {
       display: none; }
