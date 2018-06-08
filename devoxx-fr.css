@@ -102,7 +102,7 @@
     .devoxx-fr section article ol p, .devoxx-fr section article ul p, .devoxx-fr section article dl p {
       margin: .25rem 0; }
   .devoxx-fr pre[class*="lang-"] {
-    background: #2d2d2d;
+    background: whitesmoke;
     font-family: var(--codeFont);
     overflow: visible;
     font-size: .75rem;
