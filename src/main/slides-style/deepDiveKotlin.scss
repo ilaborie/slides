@@ -1,11 +1,11 @@
 @import "catnip";
 @import "../../../node_modules/prismjs/themes/prism.css";
 
-
 .deepDiveKotlin {
   main section.code {
     background: ghostwhite;
     background-size: cover;
+    color: initial;
 
     article {
       justify-content: center;
@@ -53,7 +53,6 @@
     }
   }
 
-
   .token.operator {
     background: none;
   }
@@ -62,7 +61,7 @@
     h1 {
       font-size: 3rem;
       text-shadow: .05rem .05rem 2px white,
-                  .1rem .1rem 1px currentColor;
+      .1rem .1rem 1px currentColor;
     }
   }
 
@@ -95,7 +94,7 @@
   --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin';
 
   section {
-    background-image:none !important;
+    background-image: none !important;
     background: ghostwhite;
   }
   section#roadmap {
@@ -115,6 +114,11 @@
     }
   }
 
+  section.cover {
+    background-image: url("./assets/jug/kotlin-duo.png") !important;
+    background-size: cover;
+    background-position: right;
+  }
 
   section#bytecode-play {
     article {
@@ -198,7 +202,6 @@
   }
 
 }
-
 
 .slides-nav {
   strong, nav {
