@@ -212,7 +212,8 @@
 
 .deepDiveKotlin main section.code {
   background: ghostwhite;
-  background-size: cover; }
+  background-size: cover;
+  color: initial; }
   .deepDiveKotlin main section.code article {
     justify-content: center; }
     .deepDiveKotlin main section.code article pre {
@@ -283,6 +284,10 @@
       display: inline; }
     .jug.deepDiveKotlin section#roadmap article a {
       text-shadow: none; }
+  .jug.deepDiveKotlin section.cover {
+    background-image: url("./assets/jug/kotlin-duo.png") !important;
+    background-size: cover;
+    background-position: right; }
   .jug.deepDiveKotlin section#bytecode-play article .catnip {
     --primaryColor: var(--primary);
     background: rgba(0, 0, 0, 0.1); }

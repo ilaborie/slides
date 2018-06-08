@@ -26,39 +26,41 @@
     // Countdown
     let time = 10 * 60; // 10 min
     const pauseSection = document.getElementById('part_pause');
-    const pauseArticle = pauseSection.querySelector('article');
+    if (pauseSection) {
+        const pauseArticle = pauseSection.querySelector('article');
 
-    const renderTime = time => {
-        const min = (time / 60) | 0;
-        const seconds = time % 60;
+        const renderTime = time => {
+            const min = (time / 60) | 0;
+            const seconds = time % 60;
 
-        const min1 = (min / 10) | 0;
-        const min2 = min % 10;
-        const sec1 = (seconds / 10) | 0;
-        const sec2 = seconds % 10;
+            const min1 = (min / 10) | 0;
+            const min2 = min % 10;
+            const sec1 = (seconds / 10) | 0;
+            const sec2 = seconds % 10;
 
-        pauseArticle.innerHTML = time >= 0 ? `
+            pauseArticle.innerHTML = time >= 0 ? `
             <div class="digit">${min1}</div>
             <div class="digit">${min2}</div>
             <div class="sep"></div>
             <div class="digit">${sec1}</div>
             <div class="digit">${sec2}</div>` : '';
-    };
+        };
 
-    let timeId;
-    pauseSection.addEventListener('click', () => {
-        if (!timeId) {
-            console.debug('start Countdown');
-            pauseSection.style.filter = 'none';
-            renderTime(time);
-            timeId = setInterval(function () {
-                time--;
+        let timeId;
+        pauseSection.addEventListener('click', () => {
+            if (!timeId) {
+                console.debug('start Countdown');
+                pauseSection.style.filter = 'none';
                 renderTime(time);
-                if (time === 0) {
-                    clearInterval(timeId);
-                }
-            }, 1000);
-        }
-    });
+                timeId = setInterval(function () {
+                    time--;
+                    renderTime(time);
+                    if (time === 0) {
+                        clearInterval(timeId);
+                    }
+                }, 1000);
+            }
+        });
+    }
 
 })();
