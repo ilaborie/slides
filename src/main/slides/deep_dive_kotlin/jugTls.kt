@@ -8,10 +8,8 @@ import org.ilaborie.slides.content.Emphasis
 import org.ilaborie.slides.content.ExternalImageContent
 import org.ilaborie.slides.content.ExternalResource
 import org.ilaborie.slides.content.HtmlContent
-import org.ilaborie.slides.content.Language
 import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.dsl.bash
-import org.ilaborie.slides.dsl.code
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.html
 import org.ilaborie.slides.dsl.img
@@ -119,9 +117,9 @@ fun prezJugTls() =
                 bash { "javap -c HelloWorld.class" }
                 codeFromResource("/deepDiveKotlin/bytecode/HelloWorld.class.txt")
             }
-            slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
-                styleClass = setOf("details", "contrast", "igor")
-            }
+//            slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
+//                styleClass = setOf("details", "contrast", "igor")
+//            }
             slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML)
             slideFromResource(title = "Liens", key = "bytecode-links") {
                 styleClass = setOf("bilan", "contrast", "igor")
@@ -141,19 +139,19 @@ fun prezJugTls() =
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
                 bash { "kotlinc HelloWorld.kt" }
             }
-            slide(title = "kotlinc", styleClass = setOf("diagram", "manu")) {
+            slide(title = "kotlinc", styleClass = setOf("diagram", "igor")) {
                 svg("/deepDiveKotlin/introduction_kotlin/Compile Kotlin.svg")
             }
-            slide(title = "hexdump", styleClass = setOf("code", "hex", "manu")) {
+            slide(title = "hexdump", styleClass = setOf("code", "hex", "igor")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.hex")
             }
-            slide(title = "Java ByteCode", styleClass = setOf("code", "bytecode", "manu")) {
+            slide(title = "Java ByteCode", styleClass = setOf("code", "bytecode", "igor")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.class.txt")
             }
-            slide(title = "HelloWorld-java", styleClass = setOf("code", "java", "manu")) {
+            slide(title = "HelloWorld-java", styleClass = setOf("code", "java", "igor")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorldKt.java")
             }
-            slideFromResource(title = "Bilan HelloWorld.kt") { styleClass = setOf("bilan", "contrast", "manu") }
+            slideFromResource(title = "Bilan HelloWorld.kt") { styleClass = setOf("bilan", "contrast", "igor") }
 //            slideFromResource(title = "Performances ?", key = "performance") {
 //                styleClass = setOf("measure", "contrast", "manu")
 //            }
@@ -161,29 +159,29 @@ fun prezJugTls() =
         }
 
         part(title = "Les bases", key = "basic") {
-            slide(title = "val-var.kt", styleClass = setOf("code", "kotlin", "igor")) {
+            slide(title = "val-var.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/val-var.kt")
             }
-            slide(title = "string-template.kt", styleClass = setOf("code", "kotlin", "igor")) {
+            slide(title = "string-template.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/string-template.kt")
             }
-            slide(title = "string-template.java", styleClass = setOf("code", "java", "igor")) {
+            slide(title = "string-template.java", styleClass = setOf("code", "java", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/String_templatesKt.java")
             }
-            slide(title = "ByteCode de string-template", styleClass = setOf("code", "bytecode", "igor")) {
+            slide(title = "ByteCode de string-template", styleClass = setOf("code", "bytecode", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/String_templatesKt.class.txt")
             }
-            slide(title = "numeric.kt", styleClass = setOf("code", "kotlin", "igor")) {
+            slide(title = "numeric.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/numeric.kt")
             }
-            slide(title = "numeric.java", styleClass = setOf("code", "java", "igor")) {
+            slide(title = "numeric.java", styleClass = setOf("code", "java", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/NumericKt.java")
             }
-            slide(title = "ByteCode de numeric", styleClass = setOf("code", "bytecode", "igor")) {
+            slide(title = "ByteCode de numeric", styleClass = setOf("code", "bytecode", "manu")) {
                 codeFromResource("/deepDiveKotlin/basic/NumericKt.class.txt")
             }
             slideFromResource(title = "C'est simple", key = "basic-bilan") {
-                styleClass = setOf("bilan", "contrast", "igor")
+                styleClass = setOf("bilan", "contrast", "manu")
             }
         }
 
@@ -202,7 +200,9 @@ fun prezJugTls() =
             slide(title = "null-safety.java", styleClass = setOf("code", "java", "manu")) {
                 codeFromResource("/deepDiveKotlin/null_safety/NullSafetyKt.java")
             }
-            slideFromResource(title ="Bilan null-safety", key = "elvis") { styleClass = setOf("bilan", "contrast", "manu") }
+            slideFromResource(title = "Bilan null-safety", key = "elvis") {
+                styleClass = setOf("bilan", "contrast", "manu")
+            }
         }
 
         part(title = "Les types", key = "types") {
@@ -307,23 +307,29 @@ fun prezJugTls() =
             }
             slide(title = "Dalvik EXecutable format", styleClass = setOf("code", "hex", "manu")) {
                 linkText("https://source.android.com/devices/tech/dalvik/dex-format") { "Dalvik Executable format " }
-                bash { """java -jar ./scripts/lib/d8.jar --release \
+                bash {
+                    """java -jar ./scripts/lib/d8.jar --release \
                     |            --output ./target/android/dex \
-                    |            ./target/android/hello.jar""".trimMargin() }
+                    |            ./target/android/hello.jar""".trimMargin()
+                }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.txt")
             }
 
             slide(title = "dexdump", styleClass = setOf("code", "hex", "manu")) {
 
-                bash { """~/.android-sdk/build-tools/23.0.1/dexdump -d \
+                bash {
+                    """~/.android-sdk/build-tools/23.0.1/dexdump -d \
                     |      ./target/android/dex/classes.dex \
-                    |      > ./target/android/dex/classes.dex.dump""".trimMargin() }
+                    |      > ./target/android/dex/classes.dex.dump""".trimMargin()
+                }
                 codeFromResource("/deepDiveKotlin/android/classes.dex.dump")
             }
             slide(title = "smali", styleClass = setOf("code", "smali", "manu")) {
-                bash { """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
+                bash {
+                    """sh ./scripts/lib/dextools/d2j-dex2smali.sh \
                     |     ./target/android/dex/classes.dex -f \
-                    |     -o ./target/android/smali""".trimMargin() }
+                    |     -o ./target/android/smali""".trimMargin()
+                }
                 codeFromResource("/deepDiveKotlin/android/HelloWorldKt.smali")
             }
         }
@@ -373,7 +379,7 @@ fun prezJugTls() =
             slideFromResource(title = HtmlContent("Performances sur <code>10!</code> 1/2"),
                               key = "performances_sur_10_") { styleClass = setOf("measure", "contrast", "igor") }
             slide(title = HtmlContent("Performances sur <code>10!</code> 2/2"),
-                              key = "performances_sur_10_2", styleClass = setOf("measure", "contrast", "igor")) {
+                  key = "performances_sur_10_2", styleClass = setOf("measure", "contrast", "igor")) {
                 img("Performances sur 10!", "/deepDiveKotlin/structure/factorial performance.png")
             }
             slideFromResource(title = "Bilan structures", key = "bilan-structures") {
@@ -401,9 +407,9 @@ fun prezJugTls() =
             slide(title = "api.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/collection/api.kt")
             }
-            slide(title = "immutable-mutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
-                codeFromResource("/deepDiveKotlin/collection/immutable-mutable.kt")
-            }
+//            slide(title = "immutable-mutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
+//                codeFromResource("/deepDiveKotlin/collection/immutable-mutable.kt")
+//            }
 //            slide(title = "break-immutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
 //                codeFromResource("/deepDiveKotlin/collection/break-immutable.kt")
 //            }
@@ -475,7 +481,7 @@ fun prezJugTls() =
         }
 
         part(title = "Conclusion") {
-//            slideFromResource(title = "Android") { styleClass = setOf("contrast", "manu") }
+            //            slideFromResource(title = "Android") { styleClass = setOf("contrast", "manu") }
 //            slideFromResource(title = "Serveur") { styleClass = setOf("contrast", "igor") }
 //            slideFromResource(title = "Web et Natif", contentType = HTML) {
 //                styleClass = setOf("contrast", "igor", "manu")
@@ -493,7 +499,9 @@ fun prezJugTls() =
                 styleClass = setOf("contrast", "manu")
             }
             slideFromResource(title = "Liens") { styleClass = setOf("contrast", "manu", "igor") }
-            slideFromResource(title = "Liens présentation", key="liens_presentation_jug") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Liens présentation", key = "liens_presentation_jug") {
+                styleClass = setOf("contrast", "manu", "igor")
+            }
             slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Merci", key = "merci-jug") { styleClass = setOf("contrast", "manu", "igor") }
         }
