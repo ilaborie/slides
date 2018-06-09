@@ -85,6 +85,28 @@
   }
 }
 
+.devoxx-fr.deepDiveKotlin {
+  section.diagram {
+    background: url('./assets/devoxx-fr/diag.png');
+    background-size: cover;
+  }
+
+  section.bilan {
+    background: url('./assets/devoxx-fr/takeaway.png');
+    background-size: cover;
+  }
+
+  section.details {
+    background: url('./assets/devoxx-fr/zoom.png');
+    background-size: cover;
+  }
+
+  section.measure {
+    background: url('./assets/devoxx-fr/measure.png');
+    background-size: cover;
+  }
+}
+
 .jug.deepDiveKotlin {
   --primary: #2c0563;
 
@@ -92,12 +114,59 @@
   --bgFooter: var(--primary);
   --fgFooter: white;
   --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin';
+}
+
+.jug.deepDiveKotlin main {
 
   section {
-    background-image: none !important;
-    background: ghostwhite;
+    background-color: ghostwhite;
   }
+
+  section.cover {
+    background-image: url("./assets/jug/duotone/kotlin.png");
+    background-size: cover;
+    background-position: right;
+  }
+
+  section.diagram {
+    background: url('./assets/jug/duotone/diag.png');
+    background-size: cover;
+  }
+
+  section.bilan {
+    background: url('./assets/jug/duotone/takeaway.png');
+    background-size: cover;
+  }
+
+  section.details {
+    background: url('./assets/jug/duotone/zoom.png');
+    background-size: cover;
+  }
+
+  section.measure {
+    background: url('./assets/jug/duotone/measure.png');
+    background-size: cover;
+  }
+
+  section.java {
+    background-image: url('./assets/jug/duotone/coffee.png');
+    background-size: cover;
+  }
+  section.kotlin {
+    background-image: url('./assets/jug/duotone/kotlin.png');
+    background-size: cover;
+  }
+  section.hex, section.smali {
+    background-image: url('./assets/jug/duotone/cpu.png');
+    background-size: cover;
+  }
+  section.bytecode {
+    background-image: url('./assets/jug/duotone/gears.png');
+    background-size: cover;
+  }
+
   section#roadmap {
+    background-image: url('./assets/jug/duotone/roadmap.png');
     article {
       background: initial;
       padding: initial;
@@ -113,14 +182,8 @@
       }
     }
   }
-
-  section.cover {
-    background-image: url("./assets/jug/kotlin-duo.png") !important;
-    background-size: cover;
-    background-position: right;
-  }
-
   section#bytecode-play {
+    background-image: url('./assets/jug/duotone/matrix.png');
     article {
       .catnip {
         --primaryColor: var(--primary);
@@ -130,8 +193,7 @@
   }
 
   section#historique {
-    background-image: url('./assets/devoxx-fr/historic.png');
-    background-size: cover;
+    background-image: url('./assets/jug/duotone/historic.png');
     article {
       color: white;
       ul {
@@ -189,6 +251,7 @@
   }
 
   section#cibles {
+    background-image: url('./assets/jug/duotone/target.png');
     article {
 
       img {
@@ -201,6 +264,44 @@
     }
   }
 
+  section#billion_dollar_mistake {
+    background-image: url('./assets/jug/duotone/mistake.png');
+  }
+
+
+  section#android {
+    background-image: url('./assets/jug/duotone/android.png');
+  }
+
+  section#serveur {
+    background-image: url('./assets/jug/duotone/server.png');
+  }
+
+  section#web_et_natif {
+    background-image: url('./assets/jug/duotone/natif.png');
+  }
+
+  section#tendance {
+    background-image: url('./assets/jug/duotone/stock-exchange.png');
+  }
+
+  section#kotlin_vs_java {
+    background-image: url('./assets/jug/duotone/dino.png');
+  }
+
+  section#liens, section#liens_presentation_jug {
+    background-image: url('./assets/jug/duotone/links.png');
+    background-size: cover;
+  }
+
+  section#bibliotheques {
+    background-image: url('./assets/jug/duotone/library.png');
+  }
+
+  section#merci-jug {
+    background-image: url('./assets/jug/duotone/thanks.png');
+    background-size: cover;
+  }
 }
 
 .slides-nav {

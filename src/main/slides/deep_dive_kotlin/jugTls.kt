@@ -29,6 +29,8 @@ import java.io.File
 
 
 fun main(args: Array<String>) {
+    // Duotone: #e1eff2, #99a4bf
+
     val logger = KotlinLogging.logger("DeepDive Kotlin")
 
     val deepDiveKotlin = prezJugTls()
@@ -189,7 +191,7 @@ fun prezJugTls() =
             slide(title = Emphasis(HtmlContent("billion-dollar mistake")), styleClass = setOf("contrast", "manu")) {
                 quote(author = "Tony Hoare (C.A.R. Hoare)") {
                     html {
-                        "I call it my billion-dollar mistake. It was the invention of the <code>null</code> reference in 1965. At that time, I was designing the first comprehensive type system for references in an object oriented language (ALGOL W). My goal was to ensure that all use of references should be absolutely safe, with checking performed automatically by the compiler. But I couldn't resist the temptation to put in a <code>null</code> reference, simply because it was so easy to implement. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years."
+                        "I call it my <em>billion-dollar mistake</em>. It was the invention of the <code>null</code> reference in 1965. At that time, [...]. This has led to innumerable errors, vulnerabilities, and system crashes, which have probably caused a billion dollars of pain and damage in the last forty years."
                     }
                 }
                 linkText("https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare") { "Null References: The Billion Dollar Mistake" }

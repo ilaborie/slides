@@ -126,26 +126,6 @@
     text-shadow: .0625rem .0625rem rgba(0, 0, 0, .5);
   }
 
-  main section.diagram {
-    background: url('./assets/devoxx-fr/diag.png');
-    background-size: cover;
-  }
-
-  main section.bilan {
-    background: url('./assets/devoxx-fr/takeaway.png');
-    background-size: cover;
-  }
-
-  main section.details {
-    background: url('./assets/devoxx-fr/zoom.png');
-    background-size: cover;
-  }
-
-  main section.measure {
-    background: url('./assets/devoxx-fr/measure.png');
-    background-size: cover;
-  }
-
   section article > pre[class*="lang-"] {
     align-self: center;
   }
