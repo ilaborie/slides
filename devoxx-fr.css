@@ -77,18 +77,6 @@
     line-height: 1.5; }
   .devoxx-fr blockquote p {
     text-shadow: 0.0625rem 0.0625rem rgba(0, 0, 0, 0.5); }
-  .devoxx-fr main section.diagram {
-    background: url("./assets/devoxx-fr/diag.png");
-    background-size: cover; }
-  .devoxx-fr main section.bilan {
-    background: url("./assets/devoxx-fr/takeaway.png");
-    background-size: cover; }
-  .devoxx-fr main section.details {
-    background: url("./assets/devoxx-fr/zoom.png");
-    background-size: cover; }
-  .devoxx-fr main section.measure {
-    background: url("./assets/devoxx-fr/measure.png");
-    background-size: cover; }
   .devoxx-fr section article > pre[class*="lang-"] {
     align-self: center; }
   .devoxx-fr section.contrast article {

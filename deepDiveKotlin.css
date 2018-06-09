@@ -266,63 +266,150 @@
     border-bottom-width: medium;
     border-bottom-color: black; }
 
+.devoxx-fr.deepDiveKotlin section.diagram {
+  background: url("./assets/devoxx-fr/diag.png");
+  background-size: cover; }
+
+.devoxx-fr.deepDiveKotlin section.bilan {
+  background: url("./assets/devoxx-fr/takeaway.png");
+  background-size: cover; }
+
+.devoxx-fr.deepDiveKotlin section.details {
+  background: url("./assets/devoxx-fr/zoom.png");
+  background-size: cover; }
+
+.devoxx-fr.deepDiveKotlin section.measure {
+  background: url("./assets/devoxx-fr/measure.png");
+  background-size: cover; }
+
 .jug.deepDiveKotlin {
   --primary: #2c0563;
   --bgFooter: var(--primary);
   --fgFooter: white;
   --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin'; }
-  .jug.deepDiveKotlin section {
-    background-image: none !important;
-    background: ghostwhite; }
-  .jug.deepDiveKotlin section#roadmap article {
+
+.jug.deepDiveKotlin main section {
+  background-color: ghostwhite; }
+
+.jug.deepDiveKotlin main section.cover {
+  background-image: url("./assets/jug/duotone/kotlin.png");
+  background-size: cover;
+  background-position: right; }
+
+.jug.deepDiveKotlin main section.diagram {
+  background: url("./assets/jug/duotone/diag.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.bilan {
+  background: url("./assets/jug/duotone/takeaway.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.details {
+  background: url("./assets/jug/duotone/zoom.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.measure {
+  background: url("./assets/jug/duotone/measure.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.java {
+  background-image: url("./assets/jug/duotone/coffee.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.kotlin {
+  background-image: url("./assets/jug/duotone/kotlin.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.hex, .jug.deepDiveKotlin main section.smali {
+  background-image: url("./assets/jug/duotone/cpu.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section.bytecode {
+  background-image: url("./assets/jug/duotone/gears.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section#roadmap {
+  background-image: url("./assets/jug/duotone/roadmap.png"); }
+  .jug.deepDiveKotlin main section#roadmap article {
     background: initial;
     padding: initial;
     box-shadow: none;
     border-radius: initial; }
-    .jug.deepDiveKotlin section#roadmap article a::before {
+    .jug.deepDiveKotlin main section#roadmap article a::before {
       content: '';
       display: inline; }
-    .jug.deepDiveKotlin section#roadmap article a {
+    .jug.deepDiveKotlin main section#roadmap article a {
       text-shadow: none; }
-  .jug.deepDiveKotlin section.cover {
-    background-image: url("./assets/jug/kotlin-duo.png") !important;
-    background-size: cover;
-    background-position: right; }
-  .jug.deepDiveKotlin section#bytecode-play article .catnip {
+
+.jug.deepDiveKotlin main section#bytecode-play {
+  background-image: url("./assets/jug/duotone/matrix.png"); }
+  .jug.deepDiveKotlin main section#bytecode-play article .catnip {
     --primaryColor: var(--primary);
     background: rgba(0, 0, 0, 0.1); }
-  .jug.deepDiveKotlin section#historique {
-    background-image: url("./assets/devoxx-fr/historic.png");
-    background-size: cover; }
-    .jug.deepDiveKotlin section#historique article {
-      color: white; }
-      .jug.deepDiveKotlin section#historique article ul li strong {
-        text-shadow: 1px 1px rgba(153, 153, 153, 0.8); }
-      .jug.deepDiveKotlin section#historique article ul li div {
-        display: inline-block;
-        position: absolute;
-        background: rgba(153, 153, 153, 0.8);
-        border-radius: .5rem;
-        padding: 0 0.5rem;
-        font-size: .5rem;
-        transform: rotate(-20deg); }
-        .jug.deepDiveKotlin section#historique article ul li div mark {
-          padding: 0 .125rem;
-          border-radius: .125rem; }
-      .jug.deepDiveKotlin section#historique article ul li:nth-child(2n) {
-        flex-grow: 1; }
-      .jug.deepDiveKotlin section#historique article ul li:nth-child(2) div {
-        top: -2.8rem; }
-      .jug.deepDiveKotlin section#historique article ul li:nth-child(4) div {
-        bottom: -4.9rem; }
-      .jug.deepDiveKotlin section#historique article ul li:nth-child(6) div {
-        top: -5.8rem; }
-      .jug.deepDiveKotlin section#historique article ul li:nth-child(8) div {
-        bottom: -4rem; }
-  .jug.deepDiveKotlin section#cibles article img {
+
+.jug.deepDiveKotlin main section#historique {
+  background-image: url("./assets/jug/duotone/historic.png"); }
+  .jug.deepDiveKotlin main section#historique article {
+    color: white; }
+    .jug.deepDiveKotlin main section#historique article ul li strong {
+      text-shadow: 1px 1px rgba(153, 153, 153, 0.8); }
+    .jug.deepDiveKotlin main section#historique article ul li div {
+      display: inline-block;
+      position: absolute;
+      background: rgba(153, 153, 153, 0.8);
+      border-radius: .5rem;
+      padding: 0 0.5rem;
+      font-size: .5rem;
+      transform: rotate(-20deg); }
+      .jug.deepDiveKotlin main section#historique article ul li div mark {
+        padding: 0 .125rem;
+        border-radius: .125rem; }
+    .jug.deepDiveKotlin main section#historique article ul li:nth-child(2n) {
+      flex-grow: 1; }
+    .jug.deepDiveKotlin main section#historique article ul li:nth-child(2) div {
+      top: -2.8rem; }
+    .jug.deepDiveKotlin main section#historique article ul li:nth-child(4) div {
+      bottom: -4.9rem; }
+    .jug.deepDiveKotlin main section#historique article ul li:nth-child(6) div {
+      top: -5.8rem; }
+    .jug.deepDiveKotlin main section#historique article ul li:nth-child(8) div {
+      bottom: -4rem; }
+
+.jug.deepDiveKotlin main section#cibles {
+  background-image: url("./assets/jug/duotone/target.png"); }
+  .jug.deepDiveKotlin main section#cibles article img {
     filter: drop-shadow(0 0 0.1rem white); }
-  .jug.deepDiveKotlin section#cibles article h4 {
+  .jug.deepDiveKotlin main section#cibles article h4 {
     filter: drop-shadow(0 0 0.1rem white); }
+
+.jug.deepDiveKotlin main section#billion_dollar_mistake {
+  background-image: url("./assets/jug/duotone/mistake.png"); }
+
+.jug.deepDiveKotlin main section#android {
+  background-image: url("./assets/jug/duotone/android.png"); }
+
+.jug.deepDiveKotlin main section#serveur {
+  background-image: url("./assets/jug/duotone/server.png"); }
+
+.jug.deepDiveKotlin main section#web_et_natif {
+  background-image: url("./assets/jug/duotone/natif.png"); }
+
+.jug.deepDiveKotlin main section#tendance {
+  background-image: url("./assets/jug/duotone/stock-exchange.png"); }
+
+.jug.deepDiveKotlin main section#kotlin_vs_java {
+  background-image: url("./assets/jug/duotone/dino.png"); }
+
+.jug.deepDiveKotlin main section#liens, .jug.deepDiveKotlin main section#liens_presentation_jug {
+  background-image: url("./assets/jug/duotone/links.png");
+  background-size: cover; }
+
+.jug.deepDiveKotlin main section#bibliotheques {
+  background-image: url("./assets/jug/duotone/library.png"); }
+
+.jug.deepDiveKotlin main section#merci-jug {
+  background-image: url("./assets/jug/duotone/thanks.png");
+  background-size: cover; }
 
 .slides-nav strong, .slides-nav nav {
   font-size: .25rem; }
