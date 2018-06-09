@@ -1,16 +1,21 @@
 
+This repository contains a Kotlin DSL to create sildes, 
+a NodeJS server to process things I don't want to do on JVM,
+some slides of my talks.
+
+This is not a framework to share and enhance (at the time).
+
+How to build slides:
+
+1. grab node dependencies with `yarn`
+2. run `npm start` to run the server
+3. create your slides in `src/slides` with a `main`
+4. add a gradle task to run your main (see examples in `build.gradle`)
+5. run the gradle task
+
 TODO
 ---
 
-* use crazy pattern <http://lea.verou.me/css3patterns/>
-* or create one from <https://www.google.fr/search?biw=1920&bih=1104&tbm=isch&sa=1&q=arabic+maroc+image+pattern+css&oq=arabic+maroc+image+pattern+css&gs_l=psy-ab.3...9001.17328.0.17476.21.18.3.0.0.0.102.1246.16j2.18.0....0...1.1.64.psy-ab..1.0.0.o883ZKt9Y9E>
-
-
-<https://unsplash.com/documentation#search-photos>
-
-Thanks for resources
----
-
-* [CommitStrip](https://www.commitstrip.com/)
-* [World Vector Logo](https://worldvectorlogo.com/)
-* [Browser Logos](https://github.com/alrra/browser-logos)
+* clean code
+* document
+* Thanks for resources
