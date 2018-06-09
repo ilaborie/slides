@@ -273,29 +273,29 @@ fun prezJugTls() =
                 codeFromResource("/deepDiveKotlin/class/inheritance.kt")
             }
             slideFromResource("Génériques", key = "generics") { styleClass = setOf("details", "contrast", "igor") }
-            slide(HtmlContent("Projection <code>*</code>"), key = "star", styleClass = setOf("details", "igor")) {
-                code(Language.Kotlin) {
-                    "interface Function<in T, out U>"
-                }
-                code(Language.Kotlin) {
-                    "Function<*, String> // correspond à Function<in Nothing, String>"
-                }
-                code(Language.Kotlin) {
-                    "Function<Int, *> // correspond à Function<Int, out Any?>"
-                }
-                code(Language.Kotlin) {
-                    "Function<*, *> // correspond à Function<in Nothing, out Any?>"
-                }
-            }
+//            slide(HtmlContent("Projection <code>*</code>"), key = "star", styleClass = setOf("details", "igor")) {
+//                code(Language.Kotlin) {
+//                    "interface Function<in T, out U>"
+//                }
+//                code(Language.Kotlin) {
+//                    "Function<*, String> // correspond à Function<in Nothing, String>"
+//                }
+//                code(Language.Kotlin) {
+//                    "Function<Int, *> // correspond à Function<Int, out Any?>"
+//                }
+//                code(Language.Kotlin) {
+//                    "Function<*, *> // correspond à Function<in Nothing, out Any?>"
+//                }
+//            }
             slide(title = "Sealed", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/class/json.kt")
             }
             slide(title = "Alias en Kotlin", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/class/typealias.kt")
             }
-            slide(title = "ByteCode d'alias", styleClass = setOf("code", "bytecode", "igor")) {
-                codeFromResource("/deepDiveKotlin/class/TypealiasKt.class.txt")
-            }
+//            slide(title = "ByteCode d'alias", styleClass = setOf("code", "bytecode", "igor")) {
+//                codeFromResource("/deepDiveKotlin/class/TypealiasKt.class.txt")
+//            }
             slideFromResource(title = "Classe, le bilan", key = "class-bilan") {
                 styleClass = setOf("bilan", "contrast", "manu", "igor")
             }
@@ -350,15 +350,15 @@ fun prezJugTls() =
             slide(title = "for-factorial.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/structure/for-factorial.kt")
             }
-            slide(title = "ByteCode factoriel avec for", styleClass = setOf("code", "bytecode", "igor")) {
-                codeFromResource("/deepDiveKotlin/structure/For_factorialKt.class.txt")
-            }
+//            slide(title = "ByteCode factoriel avec for", styleClass = setOf("code", "bytecode", "igor")) {
+//                codeFromResource("/deepDiveKotlin/structure/For_factorialKt.class.txt")
+//            }
             slide(title = "rec-factorial.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/structure/rec-factorial.kt")
             }
-            slide(title = "ByteCode factoriel avec recursivité", styleClass = setOf("code", "bytecode", "igor")) {
-                codeFromResource("/deepDiveKotlin/structure/Rec_factorialKt.class.txt")
-            }
+//            slide(title = "ByteCode factoriel avec recursivité", styleClass = setOf("code", "bytecode", "igor")) {
+//                codeFromResource("/deepDiveKotlin/structure/Rec_factorialKt.class.txt")
+//            }
             slide(title = "tailrec-factorial.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/structure/tailrec-factorial.kt")
             }
@@ -398,48 +398,49 @@ fun prezJugTls() =
             slide(title = "Les Maps", styleClass = setOf("diagram", "igor")) {
                 svg("/deepDiveKotlin/collection/Map.svg")
             }
-            slide(title = "api.kt", styleClass = setOf("code", "kotlin", "igor", "live-code")) {
+            slide(title = "api.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/collection/api.kt")
             }
             slide(title = "immutable-mutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
                 codeFromResource("/deepDiveKotlin/collection/immutable-mutable.kt")
             }
-            slide(title = "break-immutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
-                codeFromResource("/deepDiveKotlin/collection/break-immutable.kt")
-            }
-            slide(title = "sequence.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+//            slide(title = "break-immutable.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
+//                codeFromResource("/deepDiveKotlin/collection/break-immutable.kt")
+//            }
+            slide(title = "sequence.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/collection/sequence.kt")
             }
-            slideFromResource(title = "Performance des sequences 1/2", key = "performance_des_sequences") {
+            slideFromResource(title = "Performance des sequences", key = "performance_des_sequences") {
                 styleClass = setOf("measure", "contrast", "manu")
             }
-            slide(title = "sequence2.kt", styleClass = setOf("code", "kotlin", "manu")) {
-                codeFromResource("/deepDiveKotlin/collection/sequence2.kt")
-            }
-            slideFromResource(title = "Performance des sequences 2/2", key = "performance_des_sequences2") {
-                styleClass = setOf("measure", "contrast", "manu")
-            }
+//            slide(title = "sequence2.kt", styleClass = setOf("code", "kotlin", "manu")) {
+//                codeFromResource("/deepDiveKotlin/collection/sequence2.kt")
+//            }
+//            slideFromResource(title = "Performance des sequences 2/2", key = "performance_des_sequences2") {
+//                styleClass = setOf("measure", "contrast", "manu")
+//            }
             slide(title = "timed-sequence.kt", styleClass = setOf("code", "play", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/collection/timed-sequence.kt")
             }
             slide(title = "ranges.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/collection/ranges.kt")
             }
-            slide(title = "ranges.java", styleClass = setOf("code", "java", "manu")) {
-                codeFromResource("/deepDiveKotlin/collection/RangesKt.java")
-            }
+//            slide(title = "ranges.java", styleClass = setOf("code", "java", "manu")) {
+//                codeFromResource("/deepDiveKotlin/collection/RangesKt.java")
+//            }
             slide(title = "tuples.kt", styleClass = setOf("code", "kotlin", "manu")) {
                 codeFromResource("/deepDiveKotlin/collection/tuples.kt")
             }
-            slide(title = "tuples.java", styleClass = setOf("code", "java", "manu")) {
-                codeFromResource("/deepDiveKotlin/collection/TuplesKt.java")
-            }
+//            slide(title = "tuples.java", styleClass = setOf("code", "java", "manu")) {
+//                codeFromResource("/deepDiveKotlin/collection/TuplesKt.java")
+//            }
             slideFromResource(title = "Bilan collection", key = "collection") {
                 styleClass = setOf("details", "contrast", "igor", "manu")
             }
         }
 
-        part(title = "Les delegates", key = "delegate") {
+        part(title = "Bonus") {
+            // FIXME 1 example slide
             slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
                 codeFromResource("/deepDiveKotlin/delegate/delegate.kt")
             }
@@ -455,9 +456,7 @@ fun prezJugTls() =
             slideFromResource(title = "Delegate") {
                 styleClass = setOf("details", "contrast", "manu")
             }
-        }
-
-        part(title = "Un peu plus sur les fonctions", key = "plus_sur_les_fonctions") {
+            // FIXME 1 example slide
             slide(title = "inline.kt", styleClass = setOf("code", "kotlin", "igor")) {
                 codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/inline.kt")
             }
@@ -476,13 +475,13 @@ fun prezJugTls() =
         }
 
         part(title = "Conclusion") {
-            slideFromResource(title = "Android") { styleClass = setOf("contrast", "manu") }
-            slideFromResource(title = "Serveur") { styleClass = setOf("contrast", "igor") }
-            slideFromResource(title = "Web et Natif", contentType = HTML) {
-                styleClass = setOf("contrast", "igor", "manu")
-            }
+//            slideFromResource(title = "Android") { styleClass = setOf("contrast", "manu") }
+//            slideFromResource(title = "Serveur") { styleClass = setOf("contrast", "igor") }
+//            slideFromResource(title = "Web et Natif", contentType = HTML) {
+//                styleClass = setOf("contrast", "igor", "manu")
+//            }
             slideFromResource(title = "Bilan", key = "bilan-other") {
-                styleClass = setOf("details", "contrast", "igor", "manu")
+                styleClass = setOf("details", "contrast", "igor")
             }
             slide(title = "Tendance", styleClass = setOf("contrast", "trends", "igor", "manu")) {
                 svg("/deepDiveKotlin/conclusion/trends.svg")
@@ -491,10 +490,10 @@ fun prezJugTls() =
                 }
             }
             slideFromResource(title = "Kotlin vs Java", key = "kotlin_vs_java") {
-                styleClass = setOf("contrast", "manu", "igor")
+                styleClass = setOf("contrast", "manu")
             }
             slideFromResource(title = "Liens") { styleClass = setOf("contrast", "manu", "igor") }
-            slideFromResource(title = "Liens presentation", key="liens_presentation_jug") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Liens présentation", key="liens_presentation_jug") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Bibliothèques") { styleClass = setOf("contrast", "manu", "igor") }
             slideFromResource(title = "Merci", key = "merci-jug") { styleClass = setOf("contrast", "manu", "igor") }
         }
