@@ -253,6 +253,11 @@
   font-size: 3rem;
   text-shadow: .05rem .05rem 2px white, .1rem .1rem 1px currentColor; }
 
+.deepDiveKotlin section article blockquote {
+  margin: .5em 0; }
+  .deepDiveKotlin section article blockquote p {
+    margin: .5em 0; }
+
 .deepDiveKotlin section article table {
   background: rgba(255, 255, 255, 0.5);
   border-radius: .25em;
@@ -290,6 +295,15 @@
 
 .jug.deepDiveKotlin main section {
   background-color: ghostwhite; }
+  .jug.deepDiveKotlin main section.igor {
+    --txtFooter: '@toulousejug @ilaborie #Kotlin'; }
+  .jug.deepDiveKotlin main section.manu, .jug.deepDiveKotlin main section.roadmap {
+    --txtFooter: '@toulousejug @EmmanuelVinas #Kotlin'; }
+  .jug.deepDiveKotlin main section.manu.igor {
+    --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin'; }
+  .jug.deepDiveKotlin main section.part {
+    background-color: var(--primary);
+    color: var(--secondary); }
 
 .jug.deepDiveKotlin main section.cover {
   background-image: url("./assets/jug/duotone/kotlin.png");
