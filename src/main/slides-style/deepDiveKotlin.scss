@@ -63,6 +63,13 @@
       text-shadow: .05rem .05rem 2px white,
       .1rem .1rem 1px currentColor;
     }
+
+    article blockquote {
+      margin: .5em 0;
+      p {
+        margin: .5em 0;
+      }
+    }
   }
 
   section article {
@@ -120,6 +127,23 @@
 
   section {
     background-color: ghostwhite;
+
+    &.igor {
+      --txtFooter: '@toulousejug @ilaborie #Kotlin';
+    }
+
+    &.manu, &.roadmap {
+      --txtFooter: '@toulousejug @EmmanuelVinas #Kotlin';
+    }
+
+    &.manu.igor {
+      --txtFooter: '@toulousejug @EmmanuelVinas @ilaborie #Kotlin';
+    }
+
+    &.part {
+      background-color:  var(--primary);
+      color:  var(--secondary);
+    }
   }
 
   section.cover {
@@ -267,7 +291,6 @@
   section#billion_dollar_mistake {
     background-image: url('./assets/jug/duotone/mistake.png');
   }
-
 
   section#android {
     background-image: url('./assets/jug/duotone/android.png');

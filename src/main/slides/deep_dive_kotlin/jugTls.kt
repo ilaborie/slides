@@ -3,12 +3,8 @@ package deep_dive_kotlin
 import mu.KotlinLogging
 import org.ilaborie.slides.ContentType.HTML
 import org.ilaborie.slides.buildAll
-import org.ilaborie.slides.content.Content
 import org.ilaborie.slides.content.Emphasis
-import org.ilaborie.slides.content.ExternalImageContent
-import org.ilaborie.slides.content.ExternalResource
 import org.ilaborie.slides.content.HtmlContent
-import org.ilaborie.slides.content.UnorderedList
 import org.ilaborie.slides.dsl.bash
 import org.ilaborie.slides.dsl.codeFromResource
 import org.ilaborie.slides.dsl.html
@@ -41,7 +37,7 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web/")
-    deepDiveKotlin.buildAll(dist, "jug", exportPdf = false)
+    deepDiveKotlin.buildAll(dist, "jug", exportPdf = true)
 
     // Generates notes
 //    val hasCode = listOf("play", "live-code")
@@ -78,14 +74,6 @@ fun main(args: Array<String>) {
 //        .let(::println)
 }
 
-private val historiqueTitle: Content = UnorderedList(
-    listOf(
-        ExternalImageContent("Very old logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k-very-old.png")),
-        ExternalImageContent("Old logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k-old.svg")),
-        ExternalImageContent("Logo", ExternalResource("/deepDiveKotlin/introduction_kotlin/k.svg"))
-    )
-)
-
 fun prezJugTls() =
     presentation(title = HtmlContent("Deep Dive Kotlin :<br/> du Hello World au ByteCode"), key = "deepDiveKotlin") {
         addScript("../scripts/navigation.js")
@@ -120,7 +108,9 @@ fun prezJugTls() =
 //            slideFromResource(title = "À propos du ByteCode", key = "bytecode-details") {
 //                styleClass = setOf("details", "contrast", "igor")
 //            }
-            slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML)
+            slideFromResource(title = "Jouons un peu", key = "bytecode-play", contentType = HTML) {
+                styleClass += "igor"
+            }
             slideFromResource(title = "Liens", key = "bytecode-links") {
                 styleClass = setOf("bilan", "contrast", "igor")
             }
@@ -135,7 +125,7 @@ fun prezJugTls() =
 
             slide(title = "HelloWorld.kt",
                   key = "hw-kotlin",
-                  styleClass = setOf("code", "kotlin", "manu", "live-code")) {
+                  styleClass = setOf("code", "kotlin", "igor", "live-code")) {
                 codeFromResource("/deepDiveKotlin/introduction_kotlin/HelloWorld.kt")
                 bash { "kotlinc HelloWorld.kt" }
             }
@@ -446,34 +436,14 @@ fun prezJugTls() =
         }
 
         part(title = "Bonus") {
-            // FIXME 1 example slide
-            slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
-                codeFromResource("/deepDiveKotlin/delegate/delegate.kt")
-            }
-            slide(title = "lazy.kt", styleClass = setOf("code", "kotlin", "manu", "live-code")) {
-                codeFromResource("/deepDiveKotlin/delegate/lazy.kt")
-            }
-            slide(title = "observable.kt", styleClass = setOf("code", "kotlin", "manu", "play")) {
-                codeFromResource("/deepDiveKotlin/delegate/observables.kt")
-            }
-            slide(title = "lateinit.kt", styleClass = setOf("code", "kotlin", "manu")) {
-                codeFromResource("/deepDiveKotlin/delegate/lateinit.kt")
+            slide(title = "delegate.kt", styleClass = setOf("code", "kotlin", "manu")) {
+                codeFromResource("/deepDiveKotlin/bonus/delegate.kt")
             }
             slideFromResource(title = "Delegate") {
                 styleClass = setOf("details", "contrast", "manu")
             }
-            // FIXME 1 example slide
-            slide(title = "inline.kt", styleClass = setOf("code", "kotlin", "igor")) {
-                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/inline.kt")
-            }
-            slide(title = "Logger.java", styleClass = setOf("code", "java", "igor")) {
-                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/Logger.java")
-            }
-            slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor", "play")) {
-                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/reified.kt")
-            }
-            slide(title = "reified.java", styleClass = setOf("code", "java", "igor")) {
-                codeFromResource("/deepDiveKotlin/plus_sur_les_fonctions/ReifiedKt.java")
+            slide(title = "reified.kt", styleClass = setOf("code", "kotlin", "igor")) {
+                codeFromResource("/deepDiveKotlin/bonus/reified.kt")
             }
             slideFromResource(title = "Plus sur les fonctions", contentType = HTML) {
                 styleClass = setOf("details", "contrast", "igor")
@@ -498,7 +468,7 @@ fun prezJugTls() =
             slideFromResource(title = "Kotlin vs Java", key = "kotlin_vs_java") {
                 styleClass = setOf("contrast", "manu")
             }
-            slideFromResource(title = "Liens") { styleClass = setOf("contrast", "manu", "igor") }
+            slideFromResource(title = "Liens", key = "Liens_jug") { styleClass = setOf("contrast", "manu", "igor", "two-columns") }
             slideFromResource(title = "Liens présentation", key = "liens_presentation_jug") {
                 styleClass = setOf("contrast", "manu", "igor")
             }

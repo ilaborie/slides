@@ -12,6 +12,5 @@ fun main(args: Array<String>) {
     }
     println("The Ultimate Question of Life, " +
                     "the Universe and Everything ?")
-    print("Answer: ")
-    println(ultimateQuestionOfLife)
+    println("Answer: $ultimateQuestionOfLife" )
 }
