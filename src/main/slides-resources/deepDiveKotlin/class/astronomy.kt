@@ -9,7 +9,7 @@ data class Planet(override val name: String,
     }
 
     operator fun plus(moon: Moon): Planet {
-        return this.copy(moons = kotlin.collections.listOf(moon))
+        return this.copy(moons = moons + moon)
     }
 }
 

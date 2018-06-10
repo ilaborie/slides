@@ -2938,7 +2938,7 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
     <span class="token punctuation">}</span>
 
     operator <span class="token keyword">fun</span> <span class="token function">plus</span><span class="token punctuation">(</span>moon<span class="token operator">:</span> Moon<span class="token punctuation">)</span><span class="token operator">:</span> Planet <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>moons <span class="token operator">=</span> kotlin<span class="token punctuation">.</span>collections<span class="token punctuation">.</span><span class="token function">listOf</span><span class="token punctuation">(</span>moon<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">copy</span><span class="token punctuation">(</span>moons <span class="token operator">=</span> moons <span class="token operator">+</span> moon<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -3093,22 +3093,24 @@ x <span class="token operator">+=</span> <span class="token number">4</span>
     <a href="#astronomy_java" class="previous" aria-label="Précédant"></a>
     <h3>Héritage en Kotlin</h3>
     <article>
-        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">open</span> <span class="token keyword">class</span> SmallBody <span class="token punctuation">{</span>
-    <span class="token keyword">open</span> <span class="token keyword">fun</span> <span class="token function">sizeRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> IntRange <span class="token operator">=</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">10</span>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">class</span> SmallBody <span class="token punctuation">{</span>
+    <span class="token keyword">fun</span> <span class="token function">sizeRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> IntRange <span class="token operator">=</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">10</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Comet</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">SmallBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment">// Inherit SmallBody</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Comet</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span>
 
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Asteroid</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">SmallBody</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">sizeRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> IntRange <span class="token operator">=</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">4</span>
+<span class="token comment">// Inherit SmallBody</span>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Asteroid</span><span class="token punctuation">(</span><span class="token keyword">val</span> name<span class="token operator">:</span> String<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">fun</span> <span class="token function">sizeRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> IntRange <span class="token operator">=</span> <span class="token number">0</span><span class="token operator">..</span><span class="token number">4</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">val</span> bodies <span class="token operator">=</span> <span class="token function">listOf</span><span class="token punctuation">(</span><span class="token function">Comet</span><span class="token punctuation">(</span><span class="token string">"Halley"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">Asteroid</span><span class="token punctuation">(</span><span class="token string">"Adeona"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
-    bodies<span class="token punctuation">.</span><span class="token function">forEach</span> <span class="token punctuation">{</span> body <span class="token operator">-></span>
-        <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"<span class="token interpolation variable">$body</span>: <span class="token interpolation"><span class="token delimiter variable">${</span>body<span class="token punctuation">.</span><span class="token function">sizeRange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter variable">}</span></span>"</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
+<span class="token comment">//    bodies.forEach { body -></span>
+<span class="token comment">//        println("$body: ${body.sizeRange()}")</span>
+<span class="token comment">//    }</span>
 <span class="token punctuation">}</span>
 </code></pre>
     </article>
@@ -5501,7 +5503,8 @@ Class #<span class="token number">0</span>            <span class="token operato
 <li><a href="https://discuss.kotlinlang.org/">Forum</a></li>
 <li><a href="https://kotlinslack.herokuapp.com/">Slack</a></li>
 <li><a href="https://kotlinlang.org/docs/tutorials/koans.html">Koans</a></li>
-<li><p><a href="https://github.com/Kotlin/KEEP">KEEP</a></p>
+<li><a href="https://github.com/Kotlin/KEEP">KEEP</a></li>
+<li><p><a href="https://kotlinlang.org/docs/reference/multiplatform.html">Multi Platform</a></p>
 </li>
 <li><p><a href="https://android.github.io/kotlin-guides/">Kotlin Guide</a></p>
 </li>
@@ -5510,7 +5513,6 @@ Class #<span class="token number">0</span>            <span class="token operato
 <li><a href="https://projects.spring.io/spring-framework/">Spring 5</a>, <a href="https://projects.spring.io/spring-boot/">Spring Boot 2</a></li>
 <li><a href="https://sparktutorials.github.io/2017/01/28/using-spark-with-kotlin.html">SparkJava</a>, <a href="https://javalin.io/">javalin</a>, <a href="http://vertx.io/docs/vertx-core/kotlin/">Vert.x</a></li>
 <li><a href="http://ktor.io/">KTor</a></li>
-<li><a href="https://kotlinlang.org/docs/reference/multiplatform.html">Multi Platform</a></li>
 </ul>
 
     </article>
