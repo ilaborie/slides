@@ -1,0 +1,101 @@
+
+@import "../../../node_modules/highlight.js/styles/darcula";
+
+.breizhcamp {
+  --who: 'SunnyTech !';
+  --blue: #4285f4;
+  --yellow: #f4b400;
+  --green: #0f9d58;
+  --red: #db4437;
+  --black: #000;
+  --white: #fff;
+  --g1: #263238;
+  --g2: #37424b;
+  --g3: #455a64;
+  --g4: #ebebeb;
+  --g5: #f7f7f7;
+  --alpha1: rgba(0, 0, 0, .54);
+  --alpha2: rgba(0, 0, 0, .87);
+  --orange: #f36f21;
+  --fontColor: #333;
+
+  // Customization
+  --primary: #40383C;
+  --secondary: var(--white);
+
+  // Fonts
+  --fontBody: system, system-ui, sans-serif;
+  --coverFont: 'Permanent Marker', cursive;
+  --titleFont: system, system-ui, sans-serif;
+  --codeFont: code, monospace;
+  --footerFont: code, monospace;
+  --partFont: 'Permanent Marker', cursive;
+  --quoteFont: 'Just Another Hand', cursive;
+  --counterFont: 'Press Start 2P', fantasy;
+
+  // Navbar
+  --bgNavbar: var(--white);
+  --fgNavbar: var(--primary);
+  --shadowNavbar: rgba(0, 0, 0, .2);
+
+  // Slide
+  --headerHeight: 3rem;
+  --footerHeight: 2rem;
+  --bgSlide: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgSlide: var(--primary);
+
+  // Slide Cover
+  --bgCover: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgCover: var(--primary);
+
+  // Slide Part
+  --bgPart: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%), var(--secondary);
+  --fgPart: var(--primary);
+
+  // Slide standard
+  --headerFontSize: 1.5rem;
+  --bgHeader: var(--primary);
+  --fgHeader: var(--secondary);
+
+  // Slide Navigation
+  --bgSlideNav: transparent;
+  --fgSlideNav: rgba(0, 0, 0, .2);
+  --navigationWidth: 10vw;
+
+  // Slide Counter
+  --bgCounter: transparend;
+  --fgCounter: var(--secondary);
+
+  // Slide Footercon
+  --txtFooter: '@SunnyTech_MTP @alexandre_del31 @ilaborie #Kotlin #🥂';
+  --logoFooter: url('./assets/sunnytech/logo.svg');
+  --bgFooter: var(--primary);
+  --fgFooter: var(--secondary);
+
+  // Code
+  --bgCode: #2b2b2b;
+  --fgCode: #bababa;
+
+  // Timing
+  --startAt: '13h30';
+  --exoAt: '13h45';
+  --endAt: '15h30';
+  main section::after {
+    background-origin: unset;
+  }
+
+
+  main section {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, .1) 80%, rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  main section.part::before {
+    color: var(--primary);
+  }
+
+  main section::after {
+    background-origin: content-box;
+    padding-right: .25rem;
+  }
+
+}

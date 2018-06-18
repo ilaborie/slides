@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Découvrir Kotlin</title>
+    <title></title>
     <link rel="stylesheet" href="../slides.css">
     <link rel="stylesheet" href="../kotlinBbl.css">
     <link rel="stylesheet" href="../bbl.css">
@@ -23,27 +23,28 @@
         <nav><a href="#speakers" class="" title="Speakers">1</a>
 <a href="#pourquoi_un_nouveau_langage__" class="" title="Pourquoi un nouveau langage ?">2</a>
 <a href="#caracteristiques_de_kotlin" class="" title="Caractéristiques de Kotlin">3</a>
-<a href="#cible" class="" title="Cible">4</a>
-<a href="#hello_world" class="" title="Hello World">5</a></nav>
-<nav><a href="#part_water_pouring_problem" class="part" title="Water Pouring Problem">6</a>
-<a href="#verres" class="" title="Verres">7</a>
-<a href="#remplir" class="" title="Remplir">8</a>
-<a href="#vider" class="" title="Vider">9</a>
-<a href="#verser" class="" title="Verser">10</a>
-<a href="#demo" class="" title="Démo">11</a></nav>
-<nav><a href="#part_live_coding" class="part" title="Live Coding">12</a>
-<a href="#glass___state" class="" title="Glass & State">13</a>
-<a href="#move" class="" title="Move">14</a>
-<a href="#solver" class="" title="Solver">15</a>
-<a href="#state__move" class="" title="State::move">16</a></nav>
-<nav><a href="#part_kotlin_des_maintenant" class="part" title="Kotlin dès maintenant">17</a>
-<a href="#android" class="" title="Android">18</a>
-<a href="#serveur" class="" title="Serveur">19</a>
-<a href="#web_et_natif" class="" title="Web et Natif">20</a></nav>
-<nav><a href="#part_conclusion" class="part" title="Conclusion">21</a>
-<a href="#pourquoi_kotlin" class="" title="Pourquoi Kotlin">22</a>
-<a href="#liens" class="" title="Liens">23</a>
-<a href="#question" class="hide-title" title="Question">24</a></nav>
+<a href="#historique" class="" title="Historique">4</a>
+<a href="#cible" class="" title="Cible">5</a>
+<a href="#hello_world" class="" title="Hello World">6</a></nav>
+<nav><a href="#part_water_pouring_problem" class="part" title="Water Pouring Problem">7</a>
+<a href="#verres" class="" title="Verres">8</a>
+<a href="#remplir" class="" title="Remplir">9</a>
+<a href="#vider" class="" title="Vider">10</a>
+<a href="#verser" class="" title="Verser">11</a>
+<a href="#demo" class="" title="Démo">12</a></nav>
+<nav><a href="#part_live_coding" class="part" title="Live Coding">13</a>
+<a href="#glass___state" class="" title="Glass & State">14</a>
+<a href="#move" class="" title="Move">15</a>
+<a href="#solver" class="" title="Solver">16</a>
+<a href="#state__move" class="" title="State::move">17</a></nav>
+<nav><a href="#part_kotlin_des_maintenant" class="part" title="Kotlin dès maintenant">18</a>
+<a href="#android" class="" title="Android">19</a>
+<a href="#serveur" class="" title="Serveur">20</a>
+<a href="#web_et_natif" class="" title="Web et Natif">21</a></nav>
+<nav><a href="#part_conclusion" class="part" title="Conclusion">22</a>
+<a href="#pourquoi_kotlin" class="" title="Pourquoi Kotlin">23</a>
+<a href="#liens" class="" title="Liens">24</a>
+<a href="#question" class="hide-title" title="Question">25</a></nav>
     </div>
     <main>
 
@@ -132,13 +133,71 @@
 </ul>
 
     </article>
+    <a href="#historique" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Historique -->
+<section id="historique" class="">
+    <a href="#caracteristiques_de_kotlin" class="previous" aria-label="Précédant"></a>
+    <h3>Historique</h3>
+    <article>
+        <ul>
+	<li class="start"></li>
+	<li>
+		<strong>2011 - 2015</strong>
+		<div>
+			<p>Dévoilé par JetBrains</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2016</strong>
+		<div>
+			<p>
+				<mark>v1.0</mark>
+			</p>
+			<p>Support annoncé par Spring</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2017</strong>
+		<div>
+			<p>
+				<mark>v1.1</mark>
+				: coroutines, JS, ...
+			</p>
+			<p>Support annoncé par Google</p>
+			<p>
+				<mark>v1.2</mark>
+				: multiplatform
+			</p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>2018</strong>
+		<div>
+			<p>Kotlin Native 0.7</p>
+			<p><mark>v1.3 ?</mark></p>
+		</div>
+	</li>
+	<li class="sep"></li>
+	<li>
+		<strong>...</strong>
+	</li>
+	<li class="end"></li>
+</ul>
+
+    </article>
     <a href="#cible" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Cible -->
 <section id="cible" class="">
-    <a href="#caracteristiques_de_kotlin" class="previous" aria-label="Précédant"></a>
+    <a href="#historique" class="previous" aria-label="Précédant"></a>
     <h3>Cible</h3>
     <article>
         <img src="../assets/brands/java.svg" alt="JVM" class="jvm">
@@ -160,9 +219,9 @@
     <a href="#cible" class="previous" aria-label="Précédant"></a>
     <h3>Hello World</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">main</span><span class="hljs-params">(args: <span class="hljs-type">Array</span>&lt;<span class="hljs-type">String</span>&gt;)</span></span> {
-    println(<span class="hljs-string">"Hello World!"</span>)
-}</code></pre>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello World!"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
 
 <div class="notice notice-tips">
     <ul><li>Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin<br></li>
@@ -328,25 +387,25 @@
     <a href="#part_live_coding" class="previous" aria-label="Précédant"></a>
     <h3>Glass & State</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Glass</span></span>(<span class="hljs-keyword">val</span> capacity: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> current: <span class="hljs-built_in">Int</span> = <span class="hljs-number">0</span>) {
-    init {
-        require(capacity &gt; <span class="hljs-number">0</span>)
-        require(current <span class="hljs-keyword">in</span> <span class="hljs-number">0.</span>.capacity)
-    }
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Glass</span><span class="token punctuation">(</span><span class="token keyword">val</span> capacity<span class="token operator">:</span> Int<span class="token punctuation">,</span> <span class="token keyword">val</span> current<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span> <span class="token punctuation">{</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>capacity <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>current <span class="token keyword">in</span> <span class="token number">0</span><span class="token operator">..</span>capacity<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
 
-    <span class="hljs-keyword">val</span> isEmpty: <span class="hljs-built_in">Boolean</span> = (current == <span class="hljs-number">0</span>)
-    <span class="hljs-keyword">val</span> isFull: <span class="hljs-built_in">Boolean</span> = (current == capacity)
-    <span class="hljs-keyword">val</span> remainingVolume: <span class="hljs-built_in">Int</span>  <span class="hljs-keyword">by</span> lazy { capacity - current }
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span></span>: Glass = copy(current = <span class="hljs-number">0</span>)
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">fill</span><span class="hljs-params">()</span></span>: Glass = copy(current = capacity)
-    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">plus</span><span class="hljs-params">(value: <span class="hljs-type">Int</span>)</span></span>: Glass =
-        copy(current = (current + value).coerceAtMost(capacity))
-    <span class="hljs-keyword">operator</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">minus</span><span class="hljs-params">(value: <span class="hljs-type">Int</span>)</span></span>: Glass =
-        copy(current = (current - value).coerceAtLeast(<span class="hljs-number">0</span>))
-    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span> = <span class="hljs-string">"<span class="hljs-variable">$current</span>/<span class="hljs-variable">$capacity</span>"</span>
-}
+    <span class="token keyword">val</span> isEmpty<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token punctuation">(</span>current <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">val</span> isFull<span class="token operator">:</span> Boolean <span class="token operator">=</span> <span class="token punctuation">(</span>current <span class="token operator">==</span> capacity<span class="token punctuation">)</span>
+    <span class="token keyword">val</span> remainingVolume<span class="token operator">:</span> Int  <span class="token keyword">by</span> lazy <span class="token punctuation">{</span> capacity <span class="token operator">-</span> current <span class="token punctuation">}</span>
+    <span class="token keyword">fun</span> <span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Glass <span class="token operator">=</span> <span class="token function">copy</span><span class="token punctuation">(</span>current <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">fun</span> <span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> Glass <span class="token operator">=</span> <span class="token function">copy</span><span class="token punctuation">(</span>current <span class="token operator">=</span> capacity<span class="token punctuation">)</span>
+    operator <span class="token keyword">fun</span> <span class="token function">plus</span><span class="token punctuation">(</span>value<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Glass <span class="token operator">=</span>
+        <span class="token function">copy</span><span class="token punctuation">(</span>current <span class="token operator">=</span> <span class="token punctuation">(</span>current <span class="token operator">+</span> value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">coerceAtMost</span><span class="token punctuation">(</span>capacity<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    operator <span class="token keyword">fun</span> <span class="token function">minus</span><span class="token punctuation">(</span>value<span class="token operator">:</span> Int<span class="token punctuation">)</span><span class="token operator">:</span> Glass <span class="token operator">=</span>
+        <span class="token function">copy</span><span class="token punctuation">(</span>current <span class="token operator">=</span> <span class="token punctuation">(</span>current <span class="token operator">-</span> value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">coerceAtLeast</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">override</span> <span class="token keyword">fun</span> <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">"<span class="token interpolation variable">$current</span>/<span class="token interpolation variable">$capacity</span>"</span>
+<span class="token punctuation">}</span>
 
-typealias State = List&lt;Glass&gt;</code></pre>
+<span class="token keyword">typealias</span> State <span class="token operator">=</span> List<span class="token operator">&lt;</span>Glass<span class="token operator">></span></code></pre>
     </article>
     <a href="#move" class="next" aria-label="Suivant"></a>
 </section>
@@ -357,17 +416,17 @@ typealias State = List&lt;Glass&gt;</code></pre>
     <a href="#glass___state" class="previous" aria-label="Précédant"></a>
     <h3>Move</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">sealed</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Move</span></span>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">sealed</span> <span class="token keyword">class</span> Move
 
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Empty</span></span>(<span class="hljs-keyword">val</span> index: <span class="hljs-built_in">Int</span>) : Move()
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Empty</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Fill</span></span>(<span class="hljs-keyword">val</span> index: <span class="hljs-built_in">Int</span>) : Move()
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Fill</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Pour</span></span>(<span class="hljs-keyword">val</span> from: <span class="hljs-built_in">Int</span>, <span class="hljs-keyword">val</span> to: <span class="hljs-built_in">Int</span>) : Move() {
-    init {
-        require(from != to)
-    }
-}</code></pre>
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Pour</span><span class="token punctuation">(</span><span class="token keyword">val</span> from<span class="token operator">:</span> Int<span class="token punctuation">,</span> <span class="token keyword">val</span> <span class="token keyword">to</span><span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span> <span class="token punctuation">{</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>from <span class="token operator">!=</span> <span class="token keyword">to</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
     </article>
     <a href="#solver" class="next" aria-label="Suivant"></a>
 </section>
@@ -378,24 +437,24 @@ typealias State = List&lt;Glass&gt;</code></pre>
     <a href="#move" class="previous" aria-label="Précédant"></a>
     <h3>Solver</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-keyword">private</span> typealias StateWithHistory = Pair&lt;State, List&lt;Move&gt;&gt;
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">private</span> <span class="token keyword">typealias</span> StateWithHistory <span class="token operator">=</span> Pair<span class="token operator">&lt;</span>State<span class="token punctuation">,</span> List<span class="token operator">&lt;</span>Move<span class="token operator">></span><span class="token operator">></span>
 
-<span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solve</span><span class="hljs-params">(from: <span class="hljs-type">State</span>, to: <span class="hljs-type">State</span>)</span></span>: List&lt;Move&gt; {
-    tailrec <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">solveAux</span><span class="hljs-params">(states: <span class="hljs-type">List</span>&lt;<span class="hljs-type">StateWithHistory</span>&gt;, visitedStates: <span class="hljs-type">Set</span>&lt;<span class="hljs-type">State</span>&gt;)</span></span> {
-        <span class="hljs-keyword">val</span> solution: StateWithHistory? = states.find { (state, _) -&gt; state == to }
-        <span class="hljs-keyword">if</span> (solution != <span class="hljs-literal">null</span>) { <span class="hljs-keyword">return</span> solution.second }
+<span class="token keyword">fun</span> <span class="token function">solve</span><span class="token punctuation">(</span>from<span class="token operator">:</span> State<span class="token punctuation">,</span> <span class="token keyword">to</span><span class="token operator">:</span> State<span class="token punctuation">)</span><span class="token operator">:</span> List<span class="token operator">&lt;</span>Move<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token keyword">tailrec</span> <span class="token keyword">fun</span> <span class="token function">solveAux</span><span class="token punctuation">(</span>states<span class="token operator">:</span> List<span class="token operator">&lt;</span>StateWithHistory<span class="token operator">></span><span class="token punctuation">,</span> visitedStates<span class="token operator">:</span> Set<span class="token operator">&lt;</span>State<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">val</span> solution<span class="token operator">:</span> StateWithHistory<span class="token operator">?</span> <span class="token operator">=</span> states<span class="token punctuation">.</span><span class="token function">find</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> _<span class="token punctuation">)</span> <span class="token operator">-></span> state <span class="token operator">==</span> <span class="token keyword">to</span> <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>solution <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> solution<span class="token punctuation">.</span>second <span class="token punctuation">}</span>
 
-        <span class="hljs-keyword">val</span> next = states
-            .flatMap { (state, history) -&gt;
-                state.availableMoves()
-                    .map { move -&gt; state.move(move) to (history + move) }
-            }
-            .filterNot { (state, _) -&gt; visitedStates.contains(state) }
-        <span class="hljs-keyword">val</span> nextVisited = visitedStates + next.map { it.first }
-        <span class="hljs-keyword">return</span> solveAux(next, nextVisited)
-    }
-    <span class="hljs-keyword">return</span> solveAux(listOf(from to emptyList()), setOf(from))
-}</code></pre>
+        <span class="token keyword">val</span> next <span class="token operator">=</span> states
+            <span class="token punctuation">.</span><span class="token function">flatMap</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> history<span class="token punctuation">)</span> <span class="token operator">-></span>
+                state<span class="token punctuation">.</span><span class="token function">availableMoves</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">map</span> <span class="token punctuation">{</span> move <span class="token operator">-></span> state<span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span>move<span class="token punctuation">)</span> <span class="token keyword">to</span> <span class="token punctuation">(</span>history <span class="token operator">+</span> move<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">.</span><span class="token function">filterNot</span> <span class="token punctuation">{</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> _<span class="token punctuation">)</span> <span class="token operator">-></span> visitedStates<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token punctuation">}</span>
+        <span class="token keyword">val</span> nextVisited <span class="token operator">=</span> visitedStates <span class="token operator">+</span> next<span class="token punctuation">.</span><span class="token function">map</span> <span class="token punctuation">{</span> it<span class="token punctuation">.</span>first <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token function">solveAux</span><span class="token punctuation">(</span>next<span class="token punctuation">,</span> nextVisited<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token function">solveAux</span><span class="token punctuation">(</span><span class="token function">listOf</span><span class="token punctuation">(</span>from <span class="token keyword">to</span> <span class="token function">emptyList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">setOf</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
     </article>
     <a href="#state__move" class="next" aria-label="Suivant"></a>
 </section>
@@ -406,18 +465,18 @@ typealias State = List&lt;Glass&gt;</code></pre>
     <a href="#solver" class="previous" aria-label="Précédant"></a>
     <h3>State::move</h3>
     <article>
-        <pre class="hljs lang-kotlin"><code><span class="hljs-function"><span class="hljs-keyword">fun</span> State.<span class="hljs-title">move</span><span class="hljs-params">(move: <span class="hljs-type">Move</span>)</span></span>: State =
-    mapIndexed { index, glass -&gt;
-        <span class="hljs-keyword">when</span> (move) {
-            <span class="hljs-keyword">is</span> Empty -&gt; <span class="hljs-keyword">if</span> (index == move.index) glass.empty() <span class="hljs-keyword">else</span> glass
-            <span class="hljs-keyword">is</span> Fill  -&gt; <span class="hljs-keyword">if</span> (index == move.index) glass.fill() <span class="hljs-keyword">else</span> glass
-            <span class="hljs-keyword">is</span> Pour  -&gt; <span class="hljs-keyword">when</span> (index) {
-                move.from -&gt; glass - <span class="hljs-keyword">get</span>(move.to).remainingVolume
-                move.to   -&gt; glass + <span class="hljs-keyword">get</span>(move.from).current
-                <span class="hljs-keyword">else</span>      -&gt; glass
-            }
-        }
-    }
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">fun</span> State<span class="token punctuation">.</span><span class="token function">move</span><span class="token punctuation">(</span>move<span class="token operator">:</span> Move<span class="token punctuation">)</span><span class="token operator">:</span> State <span class="token operator">=</span>
+    mapIndexed <span class="token punctuation">{</span> index<span class="token punctuation">,</span> glass <span class="token operator">-></span>
+        <span class="token keyword">when</span> <span class="token punctuation">(</span>move<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">is</span> Empty <span class="token operator">-></span> <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> move<span class="token punctuation">.</span>index<span class="token punctuation">)</span> glass<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> glass
+            <span class="token keyword">is</span> Fill  <span class="token operator">-></span> <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> move<span class="token punctuation">.</span>index<span class="token punctuation">)</span> glass<span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">else</span> glass
+            <span class="token keyword">is</span> Pour  <span class="token operator">-></span> <span class="token keyword">when</span> <span class="token punctuation">(</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                move<span class="token punctuation">.</span>from <span class="token operator">-></span> glass <span class="token operator">-</span> <span class="token keyword">get</span><span class="token punctuation">(</span>move<span class="token punctuation">.</span>to<span class="token punctuation">)</span><span class="token punctuation">.</span>remainingVolume
+                move<span class="token punctuation">.</span>to   <span class="token operator">-></span> glass <span class="token operator">+</span> <span class="token keyword">get</span><span class="token punctuation">(</span>move<span class="token punctuation">.</span>from<span class="token punctuation">)</span><span class="token punctuation">.</span>current
+                <span class="token keyword">else</span>      <span class="token operator">-></span> glass
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
 </code></pre>
     </article>
     <a href="#part_kotlin_des_maintenant" class="next" aria-label="Suivant"></a>
@@ -553,6 +612,7 @@ typealias State = List&lt;Glass&gt;</code></pre>
 </section>
 
     </main>
+    <canvas class="background"></canvas>
 
     <script type="application/javascript" src="../scripts/navigation.js"></script>
 <script type="application/javascript" src="../scripts/water-pouring.js"></script>

@@ -238,6 +238,85 @@ section article > pre.hljs {
       align-self: center;
       grid-area: mkp; }
 
+#historique article {
+  color: white; }
+  #historique article ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: .125rem;
+    width: 100%; }
+    #historique article ul li {
+      position: relative;
+      height: 2rem;
+      display: flex;
+      align-items: center; }
+      #historique article ul li strong {
+        text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        text-align: center; }
+      #historique article ul li div {
+        display: inline-block;
+        position: absolute;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: .5rem;
+        padding: 0 0.5rem;
+        font-size: .5rem;
+        transform: rotate(-20deg); }
+        #historique article ul li div mark {
+          padding: 0 .125rem;
+          border-radius: .125rem; }
+    #historique article ul li:nth-child(2n) {
+      flex-grow: 1; }
+    #historique article ul li.start, #historique article ul li.sep, #historique article ul li.end {
+      border: 1rem solid transparent;
+      display: inline-block;
+      height: 0; }
+    #historique article ul li.start {
+      border-color: darkslategray;
+      border-left-color: transparent; }
+    #historique article ul li:nth-child(2) {
+      background: darkslategray; }
+      #historique article ul li:nth-child(2) div {
+        top: -2.8rem;
+        left: 0.5rem;
+        width: 5rem; }
+    #historique article ul li:nth-child(3) {
+      background: darkmagenta;
+      border-left-color: darkslategray; }
+    #historique article ul li:nth-child(4) {
+      background: darkmagenta; }
+      #historique article ul li:nth-child(4) div {
+        bottom: -4.9rem;
+        left: -4rem;
+        width: 4.5rem; }
+    #historique article ul li:nth-child(5) {
+      background: darkslateblue;
+      border-left-color: darkmagenta; }
+    #historique article ul li:nth-child(6) {
+      background: darkslateblue; }
+      #historique article ul li:nth-child(6) div {
+        top: -5.8rem;
+        left: -0.75rem;
+        width: 7rem; }
+    #historique article ul li:nth-child(7) {
+      background: teal;
+      border-left-color: darkslateblue; }
+    #historique article ul li:nth-child(8) {
+      background: teal; }
+      #historique article ul li:nth-child(8) div {
+        bottom: -4rem;
+        left: -3.5rem;
+        width: 4rem; }
+    #historique article ul li:nth-child(9) {
+      background: forestgreen;
+      border-left-color: teal; }
+    #historique article ul li:nth-child(10) {
+      background: forestgreen; }
+    #historique article ul li.end {
+      border-color: transparent;
+      border-left-color: forestgreen; }
+
 section.list-big {
   font-size: 1.3rem; }
 

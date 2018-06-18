@@ -35,6 +35,7 @@ fun kotlinBbl() = presentation(title = "", key = "kotlinBbl") {
         slideFromResource(title = "Speakers", contentType = HTML)
         slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
         slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
+        slideFromResource(title = "Historique", contentType = HTML)
         slideFromResource(title = "Cible", contentType = HTML)
         slide("Hello World") {
             codeFromResource("/kotlinBbl/code/hello.kt")

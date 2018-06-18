@@ -63,6 +63,7 @@ data class Figure(val title: Content, val externalImage: External, val copyright
 
 // Styled
 data class Paragraph(val content: Content) : Content()
+
 data class Step(val content: Content) : Content()
 
 data class Quote(val content: Content, val author: String? = null, val cite: String? = null) : Content()
@@ -83,19 +84,19 @@ enum class Language {
 
     companion object {
         fun findForExtension(ext: String): Language? = when {
-            ext.endsWith("css")  -> CSS
-            ext.endsWith("html") -> HTML
-            ext.endsWith("java") -> Java
+            ext.endsWith("css")       -> CSS
+            ext.endsWith("html")      -> HTML
+            ext.endsWith("java")      -> Java
             ext.endsWith("class.txt") -> Java
-            ext.endsWith("dex.dump") -> Java
-            ext.endsWith("scala") -> Scala
-            ext.endsWith("smali") -> Java
-            ext.endsWith("kt")   -> Kotlin
-            ext.endsWith("ts")   -> TypeScript
-            ext.endsWith("js")   -> JavaScript
-            ext.endsWith("sh")   -> Bash
-            ext.endsWith("re")   -> Reason
-            else                 -> null
+            ext.endsWith("dex.dump")  -> Java
+            ext.endsWith("scala")     -> Scala
+            ext.endsWith("smali")     -> Java
+            ext.endsWith("kt")        -> Kotlin
+            ext.endsWith("ts")        -> TypeScript
+            ext.endsWith("js")        -> JavaScript
+            ext.endsWith("sh")        -> Bash
+            ext.endsWith("re")        -> Reason
+            else                      -> null
         }
     }
 }
