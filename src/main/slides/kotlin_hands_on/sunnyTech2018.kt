@@ -24,7 +24,7 @@ fun main(args: Array<String>) {
     }
 
     val dist = File("src/main/web/")
-    kotlinHandsOn.buildAll(dist, "sunnytech")
+    kotlinHandsOn.buildAll(dist, "sunnytech", exportPdf = true)
 }
 
 fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "kotlinHandsOn") {

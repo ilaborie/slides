@@ -1,4 +1,5 @@
-data class Glass(val capacity: Int, val current: Int = 0) {
+data class Glass(val capacity: Int,
+                 val current: Int = 0) {
 
     init {
         require(capacity > 0) {
