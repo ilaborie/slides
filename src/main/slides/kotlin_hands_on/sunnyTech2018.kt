@@ -33,7 +33,7 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
 
     part(title = "Introduction") {
         skipHeader = true
-        slideFromResource(title = "Speakers", key = "speakers-bc", contentType = HTML)
+        slideFromResource(title = "Speakers", key = "speakers-st", contentType = HTML)
         slideFromResource(title = "🗺 Roadmap", key = "roadmap-bc", contentType = HTML)
         slideFromResource(title = "Wifi", key = "wifi", contentType = HTML)
         slideFromResource(title = "Pré-requis - IDE", key = "pre_requis___ide-bc", contentType = HTML)
