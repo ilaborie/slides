@@ -180,17 +180,20 @@ section article > pre.hljs {
       padding: .25rem; }
 
 #pre_requis___ide article .wifi,
-#pre_requis___exercices article .wifi {
+#pre_requis___exercices article .wifi,
+#pre_requis___exercices-st article .wifi {
   font-size: 1.2rem;
   align-self: stretch;
   text-align: center; }
 
 #pre_requis___ide article img,
-#pre_requis___exercices article img {
+#pre_requis___exercices article img,
+#pre_requis___exercices-st article img {
   max-height: 3rem; }
 
 #pre_requis___ide article li code,
-#pre_requis___exercices article li code {
+#pre_requis___exercices article li code,
+#pre_requis___exercices-st article li code {
   background: white;
   box-shadow: inset 0 0 0.25rem;
   padding: .125rem .5rem;
@@ -349,13 +352,15 @@ section.operation article {
     section.operation article > div .ope {
       font-size: 2rem; }
 
-#choisir_son_exercice article {
+#choisir_son_exercice article,
+#choisir_st article {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
   align-items: stretch;
   justify-content: stretch; }
-  #choisir_son_exercice article p {
+  #choisir_son_exercice article p,
+  #choisir_st article p {
     background: rgba(255, 255, 255, 0.5);
     border: thin solid currentColor;
     border-radius: .25rem;
@@ -366,14 +371,17 @@ section.operation article {
     align-items: stretch;
     text-align: center;
     transition: all .4s ease-in-out; }
-    #choisir_son_exercice article p:hover {
+    #choisir_son_exercice article p:hover,
+    #choisir_st article p:hover {
       box-shadow: 0.125rem 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
       transform: translateY(-0.03125rem); }
-    #choisir_son_exercice article p a {
+    #choisir_son_exercice article p a,
+    #choisir_st article p a {
       align-self: center;
       font-weight: bold;
       margin: .5rem; }
-      #choisir_son_exercice article p a::before {
+      #choisir_son_exercice article p a::before,
+      #choisir_st article p a::before {
         content: ''; }
 
 section.exo article {
