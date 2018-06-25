@@ -1,7 +1,7 @@
 
 #### Pré-requis
 
-* Java 6+
+* Java 8+
 * Un IDE qui marche bien avec Kotlin comme [IntelliJ IDEA CE](https://www.jetbrains.com/idea/download/)
 
 

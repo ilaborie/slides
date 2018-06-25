@@ -37,10 +37,10 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
         slideFromResource(title = "🗺 Roadmap", key = "roadmap-bc", contentType = HTML)
         slideFromResource(title = "Wifi", key = "wifi", contentType = HTML)
         slideFromResource(title = "Pré-requis - IDE", key = "pre_requis___ide-bc", contentType = HTML)
-        slideFromResource(title = "Pré-requis - Exercices", contentType = HTML)
+        slideFromResource(title = "Pré-requis - Exercices", key = "pre_requis___exercices-st",  contentType = HTML)
 //        slideFromResource(title = "Pourquoi un nouveau langage ?", contentType = MARKDOWN)
-        slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
-        slideFromResource(title = "Cible", contentType = HTML)
+//        slideFromResource(title = "Caractéristiques de Kotlin", contentType = MARKDOWN)
+//        slideFromResource(title = "Cible", contentType = HTML)
     }
     part(title = "Water Pouring Problem") {
         slide(title = "Tonneau magique") {
@@ -54,7 +54,7 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
     }
     part("Pour démarrer") {
         slide("Hello World") {
-            codeFromResource("/kotlinHandsOn/hello-world-bc.kt")
+            codeFromResource("/kotlinHandsOn/hello-world-st.kt")
             notice(NoticeKind.Tips) {
                 ul {
                     html { "Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin" }
@@ -82,11 +82,11 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
         }
     }
     part("Excercices") {
-        slideFromResource(title = "Choisir son exercice")
+        slideFromResource(title = "Choisir son exercice", key="choisir_st")
+        slideFromResource(title = "Basique", key = "freestyle") { styleClass = setOf("exo") }
         slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass = setOf("exo") }
         slideFromResource(title = "Android") { styleClass = setOf("exo") }
         slideFromResource(title = "Navigateur avec KotlinJS") { styleClass = setOf("exo") }
-        slideFromResource(title = "Freestyle") { styleClass = setOf("exo") }
         slideFromResource(title = "Liens")
     }
 }

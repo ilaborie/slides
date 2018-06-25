@@ -93,7 +93,8 @@ section article>pre.hljs {
 }
 
 #pre_requis___ide,
-#pre_requis___exercices {
+#pre_requis___exercices,
+#pre_requis___exercices-st {
   article {
     .wifi {
       font-size: 1.2rem;
@@ -304,7 +305,8 @@ section.operation {
   }
 }
 
-#choisir_son_exercice {
+#choisir_son_exercice,
+#choisir_st  {
   article {
     display: grid;
     grid-template-columns: 1fr 1fr;

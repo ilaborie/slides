@@ -72,10 +72,10 @@ task kotlinHandsOn(type: JavaExec) {
     main = "kotlin_hands_on.SunnyTech2018Kt"
 }
 
-task kotlinBbl(type: JavaExec) {
-    classpath sourceSets.main.runtimeClasspath
-    main = "kotlin_bbl.MainKt"
-}
+//task kotlinBbl(type: JavaExec) {
+//    classpath sourceSets.main.runtimeClasspath
+//    main = "kotlin_bbl.MainKt"
+//}
 
 //task deepDiveKotlin(type: JavaExec) {
 //    classpath sourceSets.main.runtimeClasspath
