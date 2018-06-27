@@ -118,9 +118,9 @@ Darcula color scheme from the JetBrains family of IDEs
   --fgFooter: var(--white);
   --bgCode: #2b2b2b;
   --fgCode: #bababa;
-  --startAt: '10h05';
-  --exoAt: '10h15';
-  --endAt: '11h45'; }
+  --startAt: '13h20';
+  --exoAt: '13h30';
+  --endAt: '15h00'; }
   .sunnytech main section {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.1) 80%, rgba(0, 0, 0, 0.3) 100%); }
   .sunnytech main section.part {
@@ -144,17 +144,17 @@ Darcula color scheme from the JetBrains family of IDEs
       transition: all .2s ease-out; }
     .sunnytech main section.cover h1:hover {
       filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.85)) drop-shadow(16px 16px 20px rgba(0, 0, 0, 0.25)); }
-  .sunnytech main section h2 {
+  .sunnytech main section h1 h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
-  .sunnytech main section h3 {
+  .sunnytech main section h1 h3 {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.25); }
-  .sunnytech main section::before, .sunnytech main section::after {
+  .sunnytech main section h1::before, .sunnytech main section h1::after {
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5); }
-  .sunnytech main section::after {
+  .sunnytech main section main section::after {
     background-origin: content-box;
     padding-right: .25rem; }
-  .sunnytech pre[class*="lang-"] {
+  .sunnytech main section pre[class*="lang-"] {
     background: white;
     font-family: var(--codeFont);
     font-size: .75rem;
@@ -167,7 +167,7 @@ Darcula color scheme from the JetBrains family of IDEs
     box-sizing: border-box;
     overflow: auto;
     width: 100%; }
-    .sunnytech pre[class*="lang-"]:after {
+    .sunnytech main section pre[class*="lang-"]:after {
       position: absolute;
       top: 0;
       right: 0;
@@ -182,38 +182,37 @@ Darcula color scheme from the JetBrains family of IDEs
       background-position: center center;
       background-repeat: no-repeat;
       background-size: contain; }
-  .sunnytech pre.lang-bash {
+  .sunnytech main section pre.lang-bash {
     color: #2dc82d; }
-    .sunnytech pre.lang-bash code::before {
+    .sunnytech main section pre.lang-bash code::before {
       content: '$ ';
       color: #999; }
-  .sunnytech pre.lang-kotlin:after {
+  .sunnytech main section pre.lang-kotlin:after {
     content: '';
     background-image: url("./assets/brands/kotlin.svg"); }
-  .sunnytech pre.lang-java:after {
+  .sunnytech main section pre.lang-java:after {
     content: '';
     background-image: url("./assets/brands/java.svg"); }
-  .sunnytech pre.lang-scala:after {
+  .sunnytech main section pre.lang-scala:after {
     content: '';
     background-image: url("./assets/brands/scala.svg"); }
-  .sunnytech pre.lang-javascript:after {
+  .sunnytech main section pre.lang-javascript:after {
     content: '';
     background-image: url("./assets/brands/javascript.svg"); }
-  .sunnytech pre.lang-typescript:after {
+  .sunnytech main section pre.lang-typescript:after {
     content: '';
     background-image: url("./assets/brands/typescript.svg"); }
-  .sunnytech pre.lang-reason:after {
+  .sunnytech main section pre.lang-reason:after {
     content: '';
     background-image: url("./assets/brands/reason.png"); }
-
-@media print {
-  main section.cover h1 {
-    -webkit-text-fill-color: initial;
-    -webkit-background-clip: initial;
-    background-image: initial;
-    color: var(--main);
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    display: flex;
-    filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.85)) drop-shadow(16px 16px 20px rgba(0, 0, 0, 0.25)); } }
+  @media print {
+    .sunnytech main section.cover h1 {
+      -webkit-text-fill-color: initial;
+      -webkit-background-clip: initial;
+      background-image: initial;
+      color: var(--main);
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      display: flex;
+      filter: drop-shadow(1px 1px 0px rgba(0, 0, 0, 0.85)) drop-shadow(16px 16px 20px rgba(0, 0, 0, 0.25)); } }
