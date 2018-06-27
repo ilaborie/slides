@@ -52,6 +52,13 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
         slideFromResource(title = "Vider", contentType = HTML) { styleClass = setOf("operation") }
         slideFromResource(title = "Démo", contentType = HTML)
     }
+    part("Excercices") {
+        slideFromResource(title = "Choisir son exercice", key="choisir_st")
+        slideFromResource(title = "Basique", key = "freestyle") { styleClass = setOf("exo") }
+        slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass = setOf("exo") }
+        slideFromResource(title = "Android") { styleClass = setOf("exo") }
+        slideFromResource(title = "Navigateur avec KotlinJS") { styleClass = setOf("exo") }
+    }
     part("Pour démarrer") {
         slide("Hello World") {
             codeFromResource("/kotlinHandsOn/hello-world-st.kt")
@@ -81,12 +88,5 @@ fun prezSunnyTech2018() = presentation(title = "Kotlin par l'exemple", key = "ko
             }
         }
     }
-    part("Excercices") {
-        slideFromResource(title = "Choisir son exercice", key="choisir_st")
-        slideFromResource(title = "Basique", key = "freestyle") { styleClass = setOf("exo") }
-        slideFromResource(title = "Serveur avec SpringBoot 2") { styleClass = setOf("exo") }
-        slideFromResource(title = "Android") { styleClass = setOf("exo") }
-        slideFromResource(title = "Navigateur avec KotlinJS") { styleClass = setOf("exo") }
-        slideFromResource(title = "Liens")
-    }
+    part("A vos clavier") {}
 }

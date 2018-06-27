@@ -13,12 +13,13 @@
     <link rel="icon" type="image/png" href="../assets/sunnytech/favicon.png" />
 </head>
 <body class="sunnytech kotlinHandsOn">
-    <div class="slides-nav hide-print" style="grid-template-columns : repeat(5, auto);">
+    <div class="slides-nav hide-print" style="grid-template-columns : repeat(6, auto);">
         <a href="#kotlinHandsOn" class="cover" title="Kotlin par l'exemple">0</a>
         <strong>Introduction</strong>
 <strong>Water Pouring Problem</strong>
-<strong>Pour démarrer</strong>
 <strong>Excercices</strong>
+<strong>Pour démarrer</strong>
+<strong>A vos clavier</strong>
         <nav><a href="#speakers-st" class="" title="Speakers">1</a>
 <a href="#roadmap-bc" class="" title="🗺 Roadmap">2</a>
 <a href="#wifi" class="" title="Wifi">3</a>
@@ -31,17 +32,17 @@
 <a href="#verser" class="operation" title="Verser">10</a>
 <a href="#vider" class="operation" title="Vider">11</a>
 <a href="#demo" class="" title="Démo">12</a></nav>
-<nav><a href="#part_pour_demarrer" class="part" title="Pour démarrer">13</a>
-<a href="#hello_world" class="" title="Hello World">14</a>
-<a href="#glass" class="" title="Glass">15</a>
-<a href="#moves" class="" title="Moves">16</a></nav>
-<nav><a href="#part_excercices" class="part" title="Excercices">17</a>
-<a href="#choisir_st" class="" title="Choisir son exercice">18</a>
-<a href="#freestyle" class="exo" title="Basique">19</a>
-<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">20</a>
-<a href="#android" class="exo" title="Android">21</a>
-<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">22</a>
-<a href="#liens" class="" title="Liens">23</a></nav>
+<nav><a href="#part_excercices" class="part" title="Excercices">13</a>
+<a href="#choisir_st" class="" title="Choisir son exercice">14</a>
+<a href="#freestyle" class="exo" title="Basique">15</a>
+<a href="#serveur_avec_springboot_2" class="exo" title="Serveur avec SpringBoot 2">16</a>
+<a href="#android" class="exo" title="Android">17</a>
+<a href="#navigateur_avec_kotlinjs" class="exo" title="Navigateur avec KotlinJS">18</a></nav>
+<nav><a href="#part_pour_demarrer" class="part" title="Pour démarrer">19</a>
+<a href="#hello_world" class="" title="Hello World">20</a>
+<a href="#glass" class="" title="Glass">21</a>
+<a href="#moves" class="" title="Moves">22</a></nav>
+<nav><a href="#part_a_vos_clavier" class="part" title="A vos clavier">23</a></nav>
     </div>
     <main>
 
@@ -175,15 +176,22 @@
     <a href="#pre_requis___ide-bc" class="previous" aria-label="Précédant"></a>
     <h3>Pré-requis - Exercices</h3>
     <article>
-        <ol>
+        
+Version basique:
+
+<ol>
+	<li><code>git clone http://github.com/MonkeyPatchIo/KotlinByExample-Lite</code></li>
+</ol>
+
+Pour ceux qui ont: du réseau et qui veulent faire l'exercice serveur ou android ou web :
+
+<ol>
 	<li>
-		<code>git clone http://github.com/MonkeyPatchIo/KotlinByExample-Lite</code> ou
 		<code>git clone http://github.com/MonkeyPatchIo/KotlinByExample</code></li>
 	<li>
-		<code>git checkout {branch}</code> avec la branche dans <code>exo-lite</code> ou <code>exo-mobile</code>, <code>exo-server</code>, <code>exo-web</code>
+		<code>git checkout {branch}</code> avec la branche dans <code>exo-mobile</code>, <code>exo-server</code>, <code>exo-web</code>
 	</li>
 	<li>
-		Pour mobile, serveur, ou web :
 		<code>./gradlew clean assemble test</code> (les tests doivent être en erreurs)
 	</li>
 </ol>
@@ -337,103 +345,13 @@
     <article>
         <div class="water-pouring-demo"></div>
     </article>
-    <a href="#part_pour_demarrer" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Pour démarrer -->
-<section id="part_pour_demarrer" class="part">
-    <a href="#demo" class="previous" aria-label="Précédant"></a>
-    <h2>Pour démarrer</h2>
-    <article>
-        
-    </article>
-    <a href="#hello_world" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Hello World -->
-<section id="hello_world" class="">
-    <a href="#part_pour_demarrer" class="previous" aria-label="Précédant"></a>
-    <h3>Hello World</h3>
-    <article>
-        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello Sunny-Tech !"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-
-</code></pre>
-
-<div class="notice notice-tips">
-    <ul><li>Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin</li>
-<li>Ou copiez du code Java dans un fichier Kotlin</li></ul>
-</div>
-
-    </article>
-    <a href="#glass" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Glass -->
-<section id="glass" class="">
-    <a href="#hello_world" class="previous" aria-label="Précédant"></a>
-    <h3>Glass</h3>
-    <article>
-        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Glass</span><span class="token punctuation">(</span><span class="token keyword">val</span> capacity<span class="token operator">:</span> Int<span class="token punctuation">,</span>
-                 <span class="token keyword">val</span> current<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    <span class="token keyword">init</span> <span class="token punctuation">{</span>
-        <span class="token function">require</span><span class="token punctuation">(</span>capacity <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token string">"Capacity: <span class="token interpolation variable">$capacity</span> should be > 0"</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">require</span><span class="token punctuation">(</span>current <span class="token keyword">in</span> <span class="token number">0</span><span class="token operator">..</span>capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token string">"Current: <span class="token interpolation variable">$current</span> should be into [0, <span class="token interpolation variable">$capacity</span>]"</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token keyword">typealias</span> State <span class="token operator">=</span> List<span class="token operator">&lt;</span>Glass<span class="token operator">></span>
-</code></pre>
-
-<div class="notice notice-info">
-    <ul><li>En écrivant du Kotlin vous aurez plein de <code>fun</code> !</li>
-<li>Le <code>typealias</code> nécessite Kotlin 1.1.</li></ul>
-</div>
-
-    </article>
-    <a href="#moves" class="next" aria-label="Suivant"></a>
-</section>
-
-
-<!-- Slide Moves -->
-<section id="moves" class="">
-    <a href="#glass" class="previous" aria-label="Précédant"></a>
-    <h3>Moves</h3>
-    <article>
-        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">sealed</span> <span class="token keyword">class</span> Move
-
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Empty</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Fill</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Pour</span><span class="token punctuation">(</span><span class="token keyword">val</span> from<span class="token operator">:</span> Int<span class="token punctuation">,</span> <span class="token keyword">val</span> <span class="token keyword">to</span><span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">init</span> <span class="token punctuation">{</span>
-        <span class="token function">require</span><span class="token punctuation">(</span>from <span class="token operator">!=</span> <span class="token keyword">to</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-
-<div class="notice notice-info">
-    <ul><li>Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em></li>
-<li>Le <code>sealed</code> nécessite Kotlin 1.1.</li></ul>
-</div>
-
-    </article>
     <a href="#part_excercices" class="next" aria-label="Suivant"></a>
 </section>
 
 
 <!-- Slide Excercices -->
 <section id="part_excercices" class="part">
-    <a href="#moves" class="previous" aria-label="Précédant"></a>
+    <a href="#demo" class="previous" aria-label="Précédant"></a>
     <h2>Excercices</h2>
     <article>
         
@@ -550,25 +468,106 @@ Définition et affichage de la solution dans un navigateur</p>
 </ul>
 
     </article>
-    <a href="#liens" class="next" aria-label="Suivant"></a>
+    <a href="#part_pour_demarrer" class="next" aria-label="Suivant"></a>
 </section>
 
 
-<!-- Slide Liens -->
-<section id="liens" class="">
+<!-- Slide Pour démarrer -->
+<section id="part_pour_demarrer" class="part">
     <a href="#navigateur_avec_kotlinjs" class="previous" aria-label="Précédant"></a>
-    <h3>Liens</h3>
+    <h2>Pour démarrer</h2>
     <article>
-        <ul>
-<li><a href="https://kotlinlang.org/docs/tutorials/koans.html">Koans</a></li>
-<li><a href="http://kotlinlang.org/docs/reference/">Référence</a></li>
-<li><a href="https://kotlin.link/">https://kotlin.link/</a></li>
-<li><a href="https://blog.jetbrains.com/kotlin/">Blog</a></li>
-<li><a href="https://discuss.kotlinlang.org/">Forum</a></li>
-<li><a href="https://kotlinslack.herokuapp.com/">Slack</a></li>
-<li><a href="https://github.com/Kotlin/KEEP">Kotlin Evolution and Enhancement Process</a></li>
-</ul>
+        
+    </article>
+    <a href="#hello_world" class="next" aria-label="Suivant"></a>
+</section>
 
+
+<!-- Slide Hello World -->
+<section id="hello_world" class="">
+    <a href="#part_pour_demarrer" class="previous" aria-label="Précédant"></a>
+    <h3>Hello World</h3>
+    <article>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">fun</span> <span class="token function">main</span><span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello Sunny-Tech !"</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+
+<div class="notice notice-tips">
+    <ul><li>Utilisez <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>(Cmd|Ctrl)</kbd> + <kbd>K</kbd> pour convertir une classe Java en Kotlin</li>
+<li>Ou copiez du code Java dans un fichier Kotlin</li></ul>
+</div>
+
+    </article>
+    <a href="#glass" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Glass -->
+<section id="glass" class="">
+    <a href="#hello_world" class="previous" aria-label="Précédant"></a>
+    <h3>Glass</h3>
+    <article>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Glass</span><span class="token punctuation">(</span><span class="token keyword">val</span> capacity<span class="token operator">:</span> Int<span class="token punctuation">,</span>
+                 <span class="token keyword">val</span> current<span class="token operator">:</span> Int <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">init</span> <span class="token punctuation">{</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>capacity <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token string">"Capacity: <span class="token interpolation variable">$capacity</span> should be > 0"</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>current <span class="token keyword">in</span> <span class="token number">0</span><span class="token operator">..</span>capacity<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token string">"Current: <span class="token interpolation variable">$current</span> should be into [0, <span class="token interpolation variable">$capacity</span>]"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">typealias</span> State <span class="token operator">=</span> List<span class="token operator">&lt;</span>Glass<span class="token operator">></span>
+</code></pre>
+
+<div class="notice notice-info">
+    <ul><li>En écrivant du Kotlin vous aurez plein de <code>fun</code> !</li>
+<li>Le <code>typealias</code> nécessite Kotlin 1.1.</li></ul>
+</div>
+
+    </article>
+    <a href="#moves" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide Moves -->
+<section id="moves" class="">
+    <a href="#glass" class="previous" aria-label="Précédant"></a>
+    <h3>Moves</h3>
+    <article>
+        <pre class="lang-kotlin"><code class="lang-kotlin"><span class="token keyword">sealed</span> <span class="token keyword">class</span> Move
+
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Empty</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Fill</span><span class="token punctuation">(</span><span class="token keyword">val</span> index<span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">data</span> <span class="token keyword">class</span> <span class="token function">Pour</span><span class="token punctuation">(</span><span class="token keyword">val</span> from<span class="token operator">:</span> Int<span class="token punctuation">,</span> <span class="token keyword">val</span> <span class="token keyword">to</span><span class="token operator">:</span> Int<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">Move</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">init</span> <span class="token punctuation">{</span>
+        <span class="token function">require</span><span class="token punctuation">(</span>from <span class="token operator">!=</span> <span class="token keyword">to</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+<div class="notice notice-info">
+    <ul><li>Avec les <code>sealed</code> et les <code>data class</code> on peut faire des <em>Abstract Data Class</em></li>
+<li>Le <code>sealed</code> nécessite Kotlin 1.1.</li></ul>
+</div>
+
+    </article>
+    <a href="#part_a_vos_clavier" class="next" aria-label="Suivant"></a>
+</section>
+
+
+<!-- Slide A vos clavier -->
+<section id="part_a_vos_clavier" class="part">
+    <a href="#moves" class="previous" aria-label="Précédant"></a>
+    <h2>A vos clavier</h2>
+    <article>
+        
     </article>
     
 </section>
