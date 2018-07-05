@@ -101,7 +101,7 @@ fun jvmFunctional() =
                 codeFromResource("/jvmFunctional/code/if-then-else-2.kt")
             }
             slide(title = "Mess with state") {
-                quote(author = "Alan Key, The Early History Of Smalltalk",
+                quote(author = "Alan Kay, The Early History Of Smalltalk",
                       cite = "http://worrydream.com/EarlyHistoryOfSmalltalk/") {
                     html { " The last thing you wanted any programmer to do is mess with internal state even if presented figuratively. Instead, the objects should be presented as <em>sites of higher level behaviors more appropriate for use as dynamic components</em>." }
                 }
@@ -129,11 +129,11 @@ fun jvmFunctional() =
                     html { ", ..." }
                 }
             }
-            slide(title = "Java High Order function") {
+            slide(title = "Java Higher Order Functions") {
                 codeFromResource("/jvmFunctional/code/hoc-1.java")
                 codeFromResource("/jvmFunctional/code/hoc-2.java")
             }
-            slide(title = "Scala, Kotlin High Order function") {
+            slide(title = "Scala, Kotlin Higher Order Functions") {
                 codeFromResource("/jvmFunctional/code/hoc.scala")
                 codeFromResource("/jvmFunctional/code/hoc.kt")
             }
@@ -262,17 +262,17 @@ fun jvmFunctional() =
                     ul {
                         html { "C'est un <del>objet</del> \uD83C\uDF2F" }
                         html { "qui a des méthodes simples comme par exemple <code>map</code> ou <code>flatMap</code>" }
-                        html { "qui doivent respectées des règles (axioms)" }
-                        html { "ce qui garenti une haute composabilité." }
+                        html { "qui doit respectr des règles (axioms)" }
+                        html { "ce qui garantit une haute composabilité." }
                         html { "<code>Option&lt;V&gt;</code>, <code>Either&lt;A,B&gt;</code>, <code>Try&lt;S,E&gt;</code>, <code>Future&lt;V&gt;</code>, ..." }
                     }
                 }
             }
 //            slideFromResource(title = "Monades en JS")
-            slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
+            slideFromResource(title = "🧠 Higher Order Kinds", key = "high_order_kinds")
 //            slideFromResource(title = "Partie II - bilan")
         }
-        part("Remaques sur la performance", key = "perfo") {
+        part("Remarques sur la performance", key = "perfo") {
             slideFromResource(title = "Quoi ?", key = "what")
             slideFromResource(title = "Règles", key = "rules")
             slideFromResource(title = "Si besoin...", key = "whenmatter")

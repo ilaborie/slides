@@ -105,7 +105,7 @@ fun jsFunctional() =
             }
 
             slide(title = "Mess with state") {
-                quote(author = "Alan Key, The Early History Of Smalltalk",
+                quote(author = "Alan Kay, The Early History Of Smalltalk",
                       cite = "http://worrydream.com/EarlyHistoryOfSmalltalk/") {
                     html { " The last thing you wanted any programmer to do is mess with internal state even if presented figuratively. Instead, the objects should be presented as <em>sites of higher level behaviors more appropriate for use as dynamic components</em>." }
                 }
@@ -129,9 +129,9 @@ fun jsFunctional() =
                     linkText("http://swannodette.github.io/mori/") { "mori" }
                 }
             }
-            slide(title = "High Order function", key = "hoc",
+            slide(title = "Higher Order Functions", key = "hoc",
                   styleClass = setOf("full-screen")) {
-                codeEditorFromResources("High Order functions",
+                codeEditorFromResources("Higher Order Functions",
                                         "/jsFunctional/code/05-hoc.ts",
                                         "/jsFunctional/code/05-hoc-final.ts")
             }
@@ -285,17 +285,17 @@ fun jsFunctional() =
                     ul {
                         html { "C'est un <del>objet</del> \uD83C\uDF2F" }
                         html { "qui a des méthodes simples comme par exemple <code>map</code> ou <code>flatMap</code>" }
-                        html { "qui doivent respectées des règles (axioms)" }
-                        html { "ce qui garenti une haute composabilité." }
+                        html { "qui doit respecter des règles (axioms)" }
+                        html { "ce qui garantit une haute composabilité." }
                         html { "<code>Option&lt;V&gt;</code>, <code>Either&lt;A,B&gt;</code>, <code>Result&lt;S,E&gt;</code>, <code>Future&lt;V&gt;</code>, ..." }
                     }
                 }
             }
             slideFromResource(title = "Monades en JS")
-//            slideFromResource(title = "🧠 High Order Kinds", key = "high_order_kinds")
+//            slideFromResource(title = "🧠 Higher Order Kinds", key = "high_order_kinds")
             slideFromResource(title = "Part II - bilan")
         }
-        part("Remaques sur la performance", key = "perfo") {
+        part("Remarques sur la performance", key = "perfo") {
             slideFromResource(title = "Quoi ?", key = "what")
             slideFromResource(title = "Règles", key = "rules")
             slideFromResource(title = "Si besoin...", key = "whenmatter")
@@ -338,7 +338,7 @@ fun jsFunctional() =
                 step {
                     html {
                         """
-                            <div><strong>Combien de doigts à un paresseux à deux doigts ?</strong></div>
+                            <div><strong>Combien de doigts a un paresseux à deux doigts ?</strong></div>
                             <div>A. deux</div>
                             <div>B. quarante-deux</div>
                             <div>C. dix</div>
@@ -356,7 +356,7 @@ fun jsFunctional() =
                 step {
                     html {
                         """
-                            <div><strong>Qui a dit "La récurcivité c'est le GOTO de la programation fonctionelle" ?</strong></div>
+                            <div><strong>Qui a dit "La récursivité c'est le GOTO de la programation fonctionelle" ?</strong></div>
                             <div>A. Moses Schönfinkel</div>
                             <div>B. Erik Meijer</div>
                             <div>C. Edsger Dijkstra</div>
@@ -376,7 +376,7 @@ fun jsFunctional() =
                         """
                             <div><strong>La fonction <code>() => 42</code></strong></div>
                             <div>A. a un effet de bord</div>
-                            <div>B. est idempotent</div>
+                            <div>B. est idempotente</div>
                             <div>C. n'est pas currifiable</div>
                             <div>D. est une fonction d'ordre supérieur</div>
                         """.trimIndent()
@@ -392,7 +392,7 @@ fun jsFunctional() =
                 step {
                     html {
                         """
-                            <div><strong>Avec la méthode <code>reduce</code>, je faire facilement?</strong></div>
+                            <div><strong>Avec la méthode <code>reduce</code>, je peux faire facilement?</strong></div>
                             <div>A. un équivalent de <code>flatMap</code></div>
                             <div>B. le min (ou max) d'un tableau</div>
                             <div>C. le café</div>
